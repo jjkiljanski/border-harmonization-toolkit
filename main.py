@@ -1,6 +1,5 @@
 import os
 import json
-from datetime import datetime
 
 from border_changes import *
 from summarize import *
@@ -19,4 +18,5 @@ for change in json_changes:
     if change["type"] == "d_many_to_one":
         changes_list.append(DManyToOneChange(change))
 
-summarize_by_date(changes_list)
+list_change_dates(changes_list)
+#summarize_by_date(changes_list)

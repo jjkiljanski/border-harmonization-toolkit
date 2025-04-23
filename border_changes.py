@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from datetime import datetime
 
 class Change(ABC):
     # Base Change class
@@ -11,7 +12,7 @@ class Change(ABC):
 
         # Initiate Change class with the required attributes
         self.type = self.change_dict["type"]
-        self.date = self.change_dict["date"]
+        self.date = datetime.strptime(self.change_dict["date"], "%d.%m.%Y").date()
         self.source = self.change_dict["source"]
         self.description = self.change_dict["description"]
         self.matter = self.change_dict["matter"]
