@@ -20,6 +20,3 @@ for change in json_changes:
         changes_list.append(DManyToOneChange(change))
 
 summarize_by_date(changes_list)
-
-
- 
