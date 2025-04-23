@@ -52,7 +52,7 @@ class Change(ABC):
         pass
 
 class VChange(Change):
-    # Class describing the change of voivodship for a district.
+    # Class describing the change of region for a district.
     def __init__(self, change_dict):
         super().__init__(change_dict)  # Assign standard general Change description attributes
 
@@ -60,7 +60,7 @@ class VChange(Change):
         self.validate_matter_struct()
 
         # Initiate subclass-specific attributes
-        self.v_from = self.matter['from']['voivodship']
+        self.v_from = self.matter['from']['region']
         self.d_from = self.matter['from']['district']
         self.v_to = self.matter['to']
 
@@ -72,13 +72,13 @@ class VChange(Change):
         if set(self.matter.keys()) != exp_matter_keys:
             raise ValueError (f"Wrong structure of the VChange.matter attribute: {self.matter}.")
         
-        exp_from_keys = {"voivodship", "district"} # Expected self.matter["from"] keys
+        exp_from_keys = {"region", "district"} # Expected self.matter["from"] keys
         if set(self.matter["from"].keys()) != exp_from_keys:
             raise ValueError (f"Wrong structure of the VChange.matter[\"from\"] attribute: {self.matter}.")
 
         ##### Check the keys' types #####
-        if not isinstance(self.matter["from"]["voivodship"], str):
-            raise ValueError (f"self.matter[\"from\"][\"voivodship\"] attrib. must be string in {self.matter}.")
+        if not isinstance(self.matter["from"]["region"], str):
+            raise ValueError (f"self.matter[\"from\"][\"region\"] attrib. must be string in {self.matter}.")
         if not isinstance(self.matter["from"]["district"], str):
             raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be string in {self.matter}.")
         if not isinstance(self.matter["to"], str):
@@ -94,7 +94,7 @@ class VChange(Change):
             raise ValueError("Wrong value for the lang parameter.")
         
     def districts_involved(self):
-        # Returns the list of (district, its_voivodship) for all districts involved in the change
+        # Returns the list of (district, its_region) for all districts involved in the change
         return [(self.v_from, self.d_from), (self.v_to, self.d_from)]
     
     def apply(self, administrative_state):
@@ -109,7 +109,7 @@ class DOneToManyChange(Change):
         self.validate_matter_struct()
 
         # Initiate subclass-specific attributes
-        self.v_from = self.matter['from']['voivodship']
+        self.v_from = self.matter['from']['region']
         self.d_from = self.matter['from']['district']
         self.delete_district = self.matter['from']['delete_district']
         self.many_to = self.matter['to']
@@ -122,29 +122,29 @@ class DOneToManyChange(Change):
         if set(self.matter.keys()) != exp_matter_keys:
             raise ValueError (f"Wrong structure of the DOneToManyChange.matter attribute: {self.matter}.")
         
-        exp_from_keys = {"voivodship", "district", "delete_district"} # Expected self.matter["from"] keys
+        exp_from_keys = {"region", "district", "delete_district"} # Expected self.matter["from"] keys
         if set(self.matter["from"].keys()) != exp_from_keys:
             raise ValueError (f"Wrong structure of the DOneToManyChange.matter[\"from\"] attribute: {self.matter}.")
         
         if not isinstance(self.matter["to"], list): # self.matter["to"] should be a list of dicts
             raise ValueError (f"DOneToManyChange.matter[\"to\"] attribute must be a list: {self.matter}.")
         
-        exp_to_keys = {"voivodship", "district", "weight_from", "weight_to"} # Expected self.matter["from"] keys
+        exp_to_keys = {"region", "district", "weight_from", "weight_to"} # Expected self.matter["from"] keys
         for destination in self.matter["to"]:
             if set(destination.keys()) != exp_to_keys:
                 raise ValueError (f"Wrong structure of the DOneToManyChange.matter[\"to\"] attributes: {self.matter}.")
 
         ##### Check the keys' types #####
-        if not isinstance(self.matter["from"]["voivodship"], str):
-            raise ValueError (f"self.matter[\"from\"][\"voivodship\"] attrib. must be string in {self.matter}.")
+        if not isinstance(self.matter["from"]["region"], str):
+            raise ValueError (f"self.matter[\"from\"][\"region\"] attrib. must be string in {self.matter}.")
         if not isinstance(self.matter["from"]["district"], str):
             raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be string in {self.matter}.")
         if not isinstance(self.matter["from"]["delete_district"], bool):
             raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be bool in {self.matter}.")
         
         for destination in self.matter["to"]:
-            if not isinstance(destination["voivodship"], str):
-                raise ValueError (f"\"voivodship\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
+            if not isinstance(destination["region"], str):
+                raise ValueError (f"\"region\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
             if not isinstance(destination["district"], str):
                 raise ValueError (f"\"district\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
             if not (isinstance(destination["weight_from"], float) or destination["weight_from"] is None):
@@ -154,7 +154,7 @@ class DOneToManyChange(Change):
 
 
     def echo(self, lang = "pol"):
-        destination_districts = ", ".join([f"{destination['district']} ({destination['voivodship']})" for destination in self.many_to])
+        destination_districts = ", ".join([f"{destination['district']} ({destination['region']})" for destination in self.many_to])
         if lang == "pol":
             if self.delete_district:
                 print(f"{self.date} zniesiono powiat {self.d_from} ({self.v_from}), a jego terytorium włączono do powiatów: {destination_districts} ({self.source}).")
@@ -169,9 +169,9 @@ class DOneToManyChange(Change):
             raise ValueError("Wrong value for the lang parameter.")
         
     def districts_involved(self):
-        # Returns the list of (district, its_voivodship) for all districts involved in the change
+        # Returns the list of (district, its_region) for all districts involved in the change
         all_districts_involved = [(self.v_from, self.d_from)]
-        all_districts_involved += [(destination['voivodship'], destination['district']) for destination in self.many_to]
+        all_districts_involved += [(destination['region'], destination['district']) for destination in self.many_to]
         return all_districts_involved
     
     def apply(self, administrative_state):
@@ -187,7 +187,7 @@ class DManyToOneChange(Change):
 
         # Initiate subclass-specific attributes
         self.many_from = self.matter['from']
-        self.v_to = self.matter['to']['voivodship']
+        self.v_to = self.matter['to']['region']
         self.d_to = self.matter['to']['district']
 
         # This variable is not defined in JSON. It is set only after the whole graph of border changes is created.
@@ -204,19 +204,19 @@ class DManyToOneChange(Change):
         if not isinstance(self.matter["from"], list): # self.matter["from"] should be a list of dicts
             raise ValueError (f"DManyToOneChange.matter[\"from\"] attribute must be a list: {self.matter}.")
         
-        exp_from_keys = {"voivodship", "district", "weight_from", "weight_to"} # Expected self.matter["from"] keys
+        exp_from_keys = {"region", "district", "weight_from", "weight_to"} # Expected self.matter["from"] keys
         for origin in self.matter["from"]:
             if set(origin.keys()) != exp_from_keys:
                 raise ValueError (f"Wrong structure of the DManyToOneChange.matter[\"from\"] attributes: {self.matter}.")
         
-        exp_to_keys = {"voivodship", "district"} # Expected self.matter["to"] keys
+        exp_to_keys = {"region", "district"} # Expected self.matter["to"] keys
         if set(self.matter["to"].keys()) != exp_to_keys:
             raise ValueError (f"Wrong structure of the DManyToOneChange.matter[\"to\"] attribute: {self.matter}.")
 
         ##### Check the keys' types #####
         for origin in self.matter["from"]:
-            if not isinstance(origin["voivodship"], str):
-                raise ValueError (f"\"voivodship\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
+            if not isinstance(origin["region"], str):
+                raise ValueError (f"\"region\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
             if not isinstance(origin["district"], str):
                 raise ValueError (f"\"district\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
             if not (isinstance(origin["weight_from"], float) or origin["weight_from"] is None):
@@ -224,13 +224,13 @@ class DManyToOneChange(Change):
             if not (isinstance(origin["weight_to"], float) or origin["weight_to"] is None):
                 raise ValueError (f"\"weight_to\" attrib. for dicts in the self.matter[\"to\"] list must be float or None in {self.matter}.")
 
-        if not isinstance(self.matter["to"]["voivodship"], str):
-            raise ValueError (f"self.matter[\"from\"][\"voivodship\"] attrib. must be string in {self.matter}.")
+        if not isinstance(self.matter["to"]["region"], str):
+            raise ValueError (f"self.matter[\"from\"][\"region\"] attrib. must be string in {self.matter}.")
         if not isinstance(self.matter["to"]["district"], str):
             raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be string in {self.matter}.")
 
     def echo(self, lang = "pol"):
-        origin_districts = ", ".join([f"{origin['district']} ({origin['voivodship']})" for origin in self.many_from])
+        origin_districts = ", ".join([f"{origin['district']} ({origin['region']})" for origin in self.many_from])
         if lang == "pol":
             if self.create_district:
                 print(f"{self.date} utworzono powiat {self.d_to} ({self.v_to}) z części powiatów: {origin_districts} ({self.source}).")
@@ -245,8 +245,8 @@ class DManyToOneChange(Change):
             raise ValueError("Wrong value for the lang parameter.")
         
     def districts_involved(self):
-        # Returns the list of (district, its_voivodship) for all districts involved in the change
-        all_districts_involved = [(origin['voivodship'], origin['district']) for origin in self.many_from]
+        # Returns the list of (district, its_region) for all districts involved in the change
+        all_districts_involved = [(origin['region'], origin['district']) for origin in self.many_from]
         all_districts_involved += [(self.v_to, self.d_to)]
         return all_districts_involved
     
