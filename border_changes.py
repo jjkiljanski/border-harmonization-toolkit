@@ -7,7 +7,7 @@ class Change(ABC):
 
     def __init__(self, change_entry):
         # Validate the structure of the change_dict for initiation
-        self.change_dict = change_entry.dict()
+        self.change_dict = change_entry.model_dump()
 
         # Initiate Change class with the required attributes
         self.type = self.change_dict["type"]

@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Union, Optional, Literal, List
+from typing import Union, Optional, Literal, List, Dict
 
 
 # VChange data model
@@ -71,5 +71,14 @@ class DManyToOneEntry(BaseModel):
 
 # Create combined change entry using a discriminated union.
 ChangeEntry = Union[VChangeEntry, DOneToManyEntry, DManyToOneEntry]
- 
- 
+
+################# AdministrativeState model #################
+
+class District(BaseModel):
+    name: str
+    district_type: Literal["w", "m"]
+    seat: str
+
+class AdministrativeStateEntry(BaseModel):
+    valid_from: str
+    regions: Dict[str, List[District]]

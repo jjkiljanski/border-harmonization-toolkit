@@ -25,15 +25,14 @@ list_change_dates(changes_list)
 
 ########## Load and initiate the initial state of administrative division ##########
 
-# initial_state_dict = {}
-# with open("initial_state.json", 'r', encoding='utf-8') as file:
-#     initial_state_dict = json.load(file)
+initial_state = load_state_from_json("data_input/initial_state.json")
+initial_state_dict = initial_state.model_dump()
 
-# administrative_states = []
-# administrative_states.append(AdministrativeState(initial_state_dict))
-# print(administrative_states[0])
-# administrative_states[0].valid_to = '1921.08.01'
-# administrative_states[0].to_csv()
+administrative_states = []
+administrative_states.append(AdministrativeState(initial_state_dict))
+print(administrative_states[0])
+administrative_states[0].valid_to = '1921.08.01'
+administrative_states[0].to_csv()
 
 # current_state = administrative_states[0]
 
