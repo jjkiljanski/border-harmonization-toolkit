@@ -44,6 +44,12 @@ class Change(ABC):
     @abstractmethod
     def districts_involved(self):
         """Abstract method for listing districts involved in the change."""
+        pass
+    
+    @abstractmethod
+    def apply(self, administrative_state):
+        """Abstract method for applying the change to the currect administrative state"""
+        pass
 
 class VChange(Change):
     # Class describing the change of voivodship for a district.
@@ -88,7 +94,11 @@ class VChange(Change):
             raise ValueError("Wrong value for the lang parameter.")
         
     def districts_involved(self):
+        # Returns the list of (district, its_voivodship) for all districts involved in the change
         return [(self.v_from, self.d_from), (self.v_to, self.d_from)]
+    
+    def apply(self, administrative_state):
+        pass
     
 class DOneToManyChange(Change):
     # Class describing the change where the territory of one district is split between many.
@@ -159,9 +169,13 @@ class DOneToManyChange(Change):
             raise ValueError("Wrong value for the lang parameter.")
         
     def districts_involved(self):
+        # Returns the list of (district, its_voivodship) for all districts involved in the change
         all_districts_involved = [(self.v_from, self.d_from)]
         all_districts_involved += [(destination['voivodship'], destination['district']) for destination in self.many_to]
         return all_districts_involved
+    
+    def apply(self, administrative_state):
+        pass
 
 class DManyToOneChange(Change):
     # Class describing the change where the territory of one district is split between many.
@@ -231,7 +245,11 @@ class DManyToOneChange(Change):
             raise ValueError("Wrong value for the lang parameter.")
         
     def districts_involved(self):
+        # Returns the list of (district, its_voivodship) for all districts involved in the change
         all_districts_involved = [(origin['voivodship'], origin['district']) for origin in self.many_from]
         all_districts_involved += [(self.v_to, self.d_to)]
         return all_districts_involved
+    
+    def apply(self, administrative_state):
+        pass
 
