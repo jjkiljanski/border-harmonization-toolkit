@@ -1,1597 +1,1534 @@
 {
-  "metadata": {
-    "date": "19.02.1921"
-  },
-  "regions": [
-    {
-      "name": "Białostockie",
-      "districts": [
-        {
-          "name": "augustowski",
-          "type": "w",
-          "seat": "Augustów"
-        },
-        {
-          "name": "białostocki",
-          "type": "w",
-          "seat": "Białystok"
-        },
-        {
-          "name": "białowieski",
-          "type": "w",
-          "seat": "Białowieża"
-        },
-        {
-          "name": "bielski",
-          "type": "w",
-          "seat": "Bielsk"
-        },
-        {
-          "name": "grodzieński",
-          "type": "w",
-          "seat": "Grodno"
-        },
-        {
-          "name": "kolneński",
-          "type": "w",
-          "seat": "Kolno"
-        },
-        {
-          "name": "łomżyński",
-          "type": "w",
-          "seat": "Łomża"
-        },
-        {
-          "name": "ostrołęcki",
-          "type": "w",
-          "seat": "Ostrołęka"
-        },
-        {
-          "name": "ostrowski",
-          "type": "w",
-          "seat": "Ostrów Mazowiecki"
-        },
-        {
-          "name": "sejneński",
-          "type": "w",
-          "seat": "Sejny"
-        },
-        {
-          "name": "sokólski",
-          "type": "w",
-          "seat": "Sokółka"
-        },
-        {
-          "name": "suwalski",
-          "type": "w",
-          "seat": "Suwałki"
-        },
-        {
-          "name": "szczuczyński (woj. białostockie)",
-          "type": "w",
-          "seat": "Grajewo"
-        },
-        {
-          "name": "wołkowyski",
-          "type": "w",
-          "seat": "Wołkowysk"
-        },
-        {
-          "name": "wysokomazowiecki",
-          "type": "wysoko-mazowiecki",
-          "seat": "w"
-        }
-      ]
-    },
-    {
-      "name": "Kieleckie",
-      "districts": [
-        {
-          "name": "będziński",
-          "type": "w",
-          "seat": "Będzin"
-        },
-        {
-          "name": "częstochowski",
-          "type": "w",
-          "seat": "Częstochowa"
-        },
-        {
-          "name": "iłżecki",
-          "type": "w",
-          "seat": "Iłża"
-        },
-        {
-          "name": "jędrzejowski",
-          "type": "w",
-          "seat": "Jędrzejów"
-        },
-        {
-          "name": "kielecki",
-          "type": "w",
-          "seat": "Kielce"
-        },
-        {
-          "name": "konecki",
-          "type": "w",
-          "seat": "Końskie"
-        },
-        {
-          "name": "kozienicki",
-          "type": "w",
-          "seat": "Kozienice"
-        },
-        {
-          "name": "miechowski",
-          "type": "w",
-          "seat": "Miechów"
-        },
-        {
-          "name": "olkuski",
-          "type": "w",
-          "seat": "Olkusz"
-        },
-        {
-          "name": "opatowski",
-          "type": "w",
-          "seat": "Opatów"
-        },
-        {
-          "name": "opoczyński",
-          "type": "w",
-          "seat": "Opoczno"
-        },
-        {
-          "name": "pińczowski",
-          "type": "w",
-          "seat": "Pińczów"
-        },
-        {
-          "name": "radomski",
-          "type": "w",
-          "seat": "Radom"
-        },
-        {
-          "name": "sandomierski",
-          "type": "w",
-          "seat": "Sandomierz"
-        },
-        {
-          "name": "stopnicki",
-          "type": "w",
-          "seat": "Stopnica"
-        },
-        {
-          "name": "włoszczowski",
-          "type": "w",
-          "seat": "Włoszczowa"
-        }
-      ]
-    },
-    {
-      "name": "Krakowskie",
-      "districts": [
-        {
-          "name": "bialski",
-          "type": "w",
-          "seat": "Biała"
-        },
-        {
-          "name": "bocheński",
-          "type": "w",
-          "seat": "Bochnia"
-        },
-        {
-          "name": "brzeski",
-          "type": "w",
-          "seat": "Brzesko"
-        },
-        {
-          "name": "chrzanowski",
-          "type": "w",
-          "seat": "Chrzanów"
-        },
-        {
-          "name": "dąbrowski",
-          "type": "w",
-          "seat": "Dąbrowa"
-        },
-        {
-          "name": "gorlicki",
-          "type": "w",
-          "seat": "Gorlice"
-        },
-        {
-          "name": "grybowski",
-          "type": "w",
-          "seat": "Grybów"
-        },
-        {
-          "name": "jasielski",
-          "type": "w",
-          "seat": "Jasło"
-        },
-        {
-          "name": "krakowski",
-          "type": "w",
-          "seat": "Kraków"
-        },
-        {
-          "name": "Kraków",
-          "type": "m",
-          "seat": "Kraków"
-        },
-        {
-          "name": "limanowski",
-          "type": "w",
-          "seat": "Limanowa"
-        },
-        {
-          "name": "mielecki",
-          "type": "w",
-          "seat": "Mielec"
-        },
-        {
-          "name": "myślenicki",
-          "type": "w",
-          "seat": "Myślenice"
-        },
-        {
-          "name": "nowosądecki",
-          "type": "w",
-          "seat": "Nowy Sącz"
-        },
-        {
-          "name": "nowotarski",
-          "type": "w",
-          "seat": "Nowy Targ"
-        },
-        {
-          "name": "oświęcimski",
-          "type": "w",
-          "seat": "Oświęcim"
-        },
-        {
-          "name": "pilzneński",
-          "type": "pilźnieński",
-          "seat": "w"
-        },
-        {
-          "name": "podgórski",
-          "type": "w",
-          "seat": "Podgórze"
-        },
-        {
-          "name": "ropczycki",
-          "type": "dębicki",
-          "seat": "w"
-        },
-        {
-          "name": "spisko-orawski",
-          "type": "w",
-          "seat": "Spisz-Orawa"
-        },
-        {
-          "name": "tarnowski",
-          "type": "w",
-          "seat": "Tarnów"
-        },
-        {
-          "name": "wadowicki",
-          "type": "w",
-          "seat": "Wadowice"
-        },
-        {
-          "name": "wielicki",
-          "type": "w",
-          "seat": "Wieliczka"
-        },
-        {
-          "name": "żywiecki",
-          "type": "w",
-          "seat": "Żywiec"
-        }
-      ]
-    },
-    {
-      "name": "Lubelskie",
-      "districts": [
-        {
-          "name": "bialski",
-          "type": "w",
-          "seat": "Biała"
-        },
-        {
-          "name": "biłgorajski",
-          "type": "w",
-          "seat": "Biłgoraj"
-        },
-        {
-          "name": "chełmski",
-          "type": "w",
-          "seat": "Chełm"
-        },
-        {
-          "name": "garwoliński",
-          "type": "w",
-          "seat": "Garwolin"
-        },
-        {
-          "name": "hrubieszowski",
-          "type": "w",
-          "seat": "Hrubieszów"
-        },
-        {
-          "name": "janowski",
-          "type": "w",
-          "seat": "Janów"
-        },
-        {
-          "name": "konstantynowski",
-          "type": "w",
-          "seat": "Konstantynów"
-        },
-        {
-          "name": "krasnostawski",
-          "type": "w",
-          "seat": "Krasnystaw"
-        },
-        {
-          "name": "lubartowski",
-          "type": "w",
-          "seat": "Lubartów"
-        },
-        {
-          "name": "lubelski",
-          "type": "w",
-          "seat": "Lublin"
-        },
-        {
-          "name": "Lublin",
-          "type": "m",
-          "seat": "Lublin"
-        },
-        {
-          "name": "łukowski",
-          "type": "w",
-          "seat": "Łuków"
-        },
-        {
-          "name": "puławski",
-          "type": "w",
-          "seat": "Puławy"
-        },
-        {
-          "name": "radzyński",
-          "type": "w",
-          "seat": "Radzyn"
-        },
-        {
-          "name": "siedlecki",
-          "type": "w",
-          "seat": "Siedlce"
-        },
-        {
-          "name": "sokołowski",
-          "type": "w",
-          "seat": "Sokołów Podlaski"
-        },
-        {
-          "name": "tomaszowski",
-          "type": "w",
-          "seat": "Tomaszów"
-        },
-        {
-          "name": "węgrowski",
-          "type": "w",
-          "seat": "Węgrów"
-        },
-        {
-          "name": "włodawski",
-          "type": "w",
-          "seat": "Włodawa"
-        },
-        {
-          "name": "zamojski",
-          "type": "w",
-          "seat": "Zamość"
-        }
-      ]
-    },
-    {
-      "name": "Lwowskie",
-      "districts": [
-        {
-          "name": "bóbrecki",
-          "type": "w",
-          "seat": "Bóbrka"
-        },
-        {
-          "name": "brzozowski",
-          "type": "w",
-          "seat": "Brzozów"
-        },
-        {
-          "name": "cieszanowski",
-          "type": "w",
-          "seat": "Cieszanów"
-        },
-        {
-          "name": "dobromilski",
-          "type": "w",
-          "seat": "Dobromil"
-        },
-        {
-          "name": "drohobycki",
-          "type": "w",
-          "seat": "Drohobycz"
-        },
-        {
-          "name": "gródecki",
-          "type": "w",
-          "seat": "Gródek Jagiel."
-        },
-        {
-          "name": "jarosławski",
-          "type": "w",
-          "seat": "Jarosław"
-        },
-        {
-          "name": "jaworowski",
-          "type": "w",
-          "seat": "Jaworów"
-        },
-        {
-          "name": "kolbuszowski",
-          "type": "w",
-          "seat": "Kolbuszowa"
-        },
-        {
-          "name": "krośnieński",
-          "type": "w",
-          "seat": "Krosno"
-        },
-        {
-          "name": "liski",
-          "type": "leski",
-          "seat": "w"
-        },
-        {
-          "name": "lwowski",
-          "type": "w",
-          "seat": "Lwów"
-        },
-        {
-          "name": "Lwów",
-          "type": "m",
-          "seat": "Lwów"
-        },
-        {
-          "name": "łańcucki",
-          "type": "w",
-          "seat": "Łańcut"
-        },
-        {
-          "name": "mościski",
-          "type": "w",
-          "seat": "Mościska"
-        },
-        {
-          "name": "niżański",
-          "type": "w",
-          "seat": "Nisko"
-        },
-        {
-          "name": "przemyski",
-          "type": "w",
-          "seat": "Przemyśl"
-        },
-        {
-          "name": "przeworski",
-          "type": "w",
-          "seat": "Przeworsk"
-        },
-        {
-          "name": "rawski",
-          "type": "w",
-          "seat": "Rawa"
-        },
-        {
-          "name": "rudecki",
-          "type": "w",
-          "seat": "Rudki"
-        },
-        {
-          "name": "rzeszowski",
-          "type": "w",
-          "seat": "Rzeszów"
-        },
-        {
-          "name": "samborski",
-          "type": "w",
-          "seat": "Sambor"
-        },
-        {
-          "name": "sanocki",
-          "type": "w",
-          "seat": "Sanok"
-        },
-        {
-          "name": "sokalski",
-          "type": "w",
-          "seat": "Sokal"
-        },
-        {
-          "name": "starosamborski",
-          "type": "w",
-          "seat": "Stary Sambor"
-        },
-        {
-          "name": "strzyżowski",
-          "type": "w",
-          "seat": "Strzyżów"
-        },
-        {
-          "name": "tarnobrzeski",
-          "type": "w",
-          "seat": "Tarnobrzeg"
-        },
-        {
-          "name": "żółkiewski",
-          "type": "w",
-          "seat": "Żółkiew"
-        }
-      ]
-    },
-    {
-      "name": "Łódzkie",
-      "districts": [
-        {
-          "name": "brzeziński",
-          "type": "w",
-          "seat": "Brzeziny"
-        },
-        {
-          "name": "kaliski",
-          "type": "w",
-          "seat": "Kalisz"
-        },
-        {
-          "name": "kolski",
-          "type": "w",
-          "seat": "Koło"
-        },
-        {
-          "name": "koniński",
-          "type": "w",
-          "seat": "Konin"
-        },
-        {
-          "name": "łaski",
-          "type": "w",
-          "seat": "Łask"
-        },
-        {
-          "name": "łęczycki",
-          "type": "w",
-          "seat": "Łęczyca"
-        },
-        {
-          "name": "łódzki",
-          "type": "w",
-          "seat": "Łódź"
-        },
-        {
-          "name": "Łódź",
-          "type": "m",
-          "seat": "Łódź"
-        },
-        {
-          "name": "piotrkowski",
-          "type": "w",
-          "seat": "Piotrków"
-        },
-        {
-          "name": "radomszczański",
-          "type": "w",
-          "seat": "Radomsko"
-        },
-        {
-          "name": "sieradzki",
-          "type": "w",
-          "seat": "Sieradz"
-        },
-        {
-          "name": "słupecki",
-          "type": "w",
-          "seat": "Słupca"
-        },
-        {
-          "name": "turecki",
-          "type": "w",
-          "seat": "Turek"
-        },
-        {
-          "name": "wieluński",
-          "type": "w",
-          "seat": "Wieluń"
-        }
-      ]
-    },
-    {
-      "name": "miasto stołeczne Warszawa",
-      "districts": [
-        {
-          "name": "południowo-warszawski",
-          "type": "m",
-          "seat": "Warszawa"
-        },
-        {
-          "name": "północno-warszawski",
-          "type": "m",
-          "seat": "Warszawa"
-        },
-        {
-          "name": "prasko-warszawski",
-          "type": "m",
-          "seat": "Warszawa"
-        },
-        {
-          "name": "śródmiejsko-warszawski",
-          "type": "m",
-          "seat": "Warszawa"
-        }
-      ]
-    },
-    {
-      "name": "Nowogródzkie",
-      "districts": [
-        {
-          "name": "baranowicki",
-          "type": "w",
-          "seat": "Baranowicze"
-        },
-        {
-          "name": "duniłowicki",
-          "type": "w",
-          "seat": "Duniłowicze"
-        },
-        {
-          "name": "dziśnieński",
-          "type": "w",
-          "seat": "Głębokie"
-        },
-        {
-          "name": "lidzki",
-          "type": "w",
-          "seat": "Lida"
-        },
-        {
-          "name": "nieświeski",
-          "type": "w",
-          "seat": "Nieśwież"
-        },
-        {
-          "name": "nowogródzki",
-          "type": "w",
-          "seat": "Nowogródek"
-        },
-        {
-          "name": "słonimski",
-          "type": "w",
-          "seat": "Słonim"
-        },
-        {
-          "name": "stołpecki",
-          "type": "w",
-          "seat": "Stołpce"
-        },
-        {
-          "name": "wilejski",
-          "type": "w",
-          "seat": "Wilejka"
-        },
-        {
-          "name": "wołożyński",
-          "type": "w",
-          "seat": "Wołożyn"
-        }
-      ]
-    },
-    {
-        "name": "Okr.adm.wileński",
-        "districts": [
-        ]
-    },
-    {
-      "name": "Poleskie",
-      "districts": [
-        {
-          "name": "brzeski",
-          "type": "w",
-          "seat": "Brześć n.Bug."
-        },
-        {
-          "name": "drohicki",
-          "type": "w",
-          "seat": "Drohiczyn (Poleski)"
-        },
-        {
-          "name": "kobryński",
-          "type": "w",
-          "seat": "Kobryń"
-        },
-        {
-          "name": "kosowski",
-          "type": "iwacewicki",
-          "seat": "w"
-        },
-        {
-          "name": "koszyrski",
-          "type": "w",
-          "seat": "Kamień Koszyr"
-        },
-        {
-          "name": "łuniniecki",
-          "type": "w",
-          "seat": "Łuniniec"
-        },
-        {
-          "name": "piński",
-          "type": "w",
-          "seat": "Pińsk"
-        },
-        {
-          "name": "prużański",
-          "type": "w",
-          "seat": "Prużana"
-        },
-        {
-          "name": "sarneński",
-          "type": "w",
-          "seat": "Sarny"
-        }
-      ]
-    },
-    {
-      "name": "Pomorskie",
-      "districts": [
-        {
-          "name": "brodnicki",
-          "type": "w",
-          "seat": "Brodnica"
-        },
-        {
-          "name": "chełmiński",
-          "type": "w",
-          "seat": "Chełmno"
-        },
-        {
-          "name": "chojnicki",
-          "type": "w",
-          "seat": "Chojnice"
-        },
-        {
-          "name": "działdowski",
-          "type": "w",
-          "seat": "Działdowo"
-        },
-        {
-          "name": "gniewski",
-          "type": "w",
-          "seat": "Gniew"
-        },
-        {
-          "name": "Grudziądz",
-          "type": "m",
-          "seat": "Grudziądz"
-        },
-        {
-          "name": "grudziądzki",
-          "type": "w",
-          "seat": "Grudziądz"
-        },
-        {
-          "name": "kartuski",
-          "type": "w",
-          "seat": "Kartuzy"
-        },
-        {
-          "name": "kościerski",
-          "type": "w",
-          "seat": "Kościerzyna"
-        },
-        {
-          "name": "lubawski",
-          "type": "w",
-          "seat": "Nowe Miasto Lubawskie"
-        },
-        {
-          "name": "pucki",
-          "type": "w",
-          "seat": "Puck"
-        },
-        {
-          "name": "sępoleński",
-          "type": "w",
-          "seat": "Sępolno"
-        },
-        {
-          "name": "starogardzki",
-          "type": "w",
-          "seat": "Starogard"
-        },
-        {
-          "name": "świecki",
-          "type": "w",
-          "seat": "Świecie"
-        },
-        {
-          "name": "tczewski",
-          "type": "w",
-          "seat": "Tczew"
-        },
-        {
-          "name": "Toruń",
-          "type": "m",
-          "seat": "Toruń"
-        },
-        {
-          "name": "toruński",
-          "type": "w",
-          "seat": "Toruń"
-        },
-        {
-          "name": "tucholski",
-          "type": "w",
-          "seat": "Tuchola"
-        },
-        {
-          "name": "wąbrzeski",
-          "type": "w",
-          "seat": "Wąbrzeźno"
-        },
-        {
-          "name": "wejherowski",
-          "type": "w",
-          "seat": "Wejherowo"
-        }
-      ]
-    },
-    {
-      "name": "Poznańskie",
-      "districts": [
-        {
-          "name": "bydgoski",
-          "type": "w",
-          "seat": "Bydgoszcz"
-        },
-        {
-          "name": "Bydgoszcz",
-          "type": "m",
-          "seat": "Bydgoszcz"
-        },
-        {
-          "name": "chodzieski",
-          "type": "w",
-          "seat": "Chodzież"
-        },
-        {
-          "name": "czarnkowski",
-          "type": "w",
-          "seat": "Czarnków"
-        },
-        {
-          "name": "gnieźnieński",
-          "type": "w",
-          "seat": "Gniezno"
-        },
-        {
-          "name": "gostyński",
-          "type": "w",
-          "seat": "Gostyń"
-        },
-        {
-          "name": "grodziski",
-          "type": "w",
-          "seat": "Grodzisk"
-        },
-        {
-          "name": "inowrocławski",
-          "type": "w",
-          "seat": "Inowrocław"
-        },
-        {
-          "name": "jarociński",
-          "type": "w",
-          "seat": "Jarocin"
-        },
-        {
-          "name": "kępiński",
-          "type": "w",
-          "seat": "Kępno"
-        },
-        {
-          "name": "kościański",
-          "type": "w",
-          "seat": "Kościan"
-        },
-        {
-          "name": "koźmiński",
-          "type": "w",
-          "seat": "Koźmin"
-        },
-        {
-          "name": "krotoszyński",
-          "type": "w",
-          "seat": "Krotoszyn"
-        },
-        {
-          "name": "leszczyński",
-          "type": "w",
-          "seat": "Leszno"
-        },
-        {
-          "name": "międzychodzki",
-          "type": "w",
-          "seat": "Międzychód"
-        },
-        {
-          "name": "mogileński",
-          "type": "w",
-          "seat": "Mogilno"
-        },
-        {
-          "name": "nowotomyski",
-          "type": "w",
-          "seat": "Nowy Tomyśl"
-        },
-        {
-          "name": "obornicki",
-          "type": "w",
-          "seat": "Oborniki"
-        },
-        {
-          "name": "odolanowski",
-          "type": "w",
-          "seat": "Odolanów"
-        },
-        {
-          "name": "ostrowski",
-          "type": "w",
-          "seat": "Ostrów"
-        },
-        {
-          "name": "ostrzeszowski",
-          "type": "w",
-          "seat": "Ostrzeszów"
-        },
-        {
-          "name": "pleszewski",
-          "type": "w",
-          "seat": "Pleszew"
-        },
-        {
-          "name": "Poznań",
-          "type": "m",
-          "seat": "Poznań"
-        },
-        {
-          "name": "poznański wschodni",
-          "type": "w",
-          "seat": "Poznań Wsch."
-        },
-        {
-          "name": "poznański zachodni",
-          "type": "w",
-          "seat": "Poznań Zach."
-        },
-        {
-          "name": "rawicki",
-          "type": "w",
-          "seat": "Rawicz"
-        },
-        {
-          "name": "strzelneński",
-          "type": "strzeliński",
-          "seat": "w"
-        },
-        {
-          "name": "szamotulski",
-          "type": "w",
-          "seat": "Szamotuły"
-        },
-        {
-          "name": "szubiński",
-          "type": "w",
-          "seat": "Szubin"
-        },
-        {
-          "name": "śmigielski",
-          "type": "w",
-          "seat": "Śmigiel"
-        },
-        {
-          "name": "średzki",
-          "type": "w",
-          "seat": "Środa"
-        },
-        {
-          "name": "śremski",
-          "type": "w",
-          "seat": "Śrem"
-        },
-        {
-          "name": "wągrowiecki",
-          "type": "w",
-          "seat": "Wągrowiec"
-        },
-        {
-          "name": "witkowski",
-          "type": "w",
-          "seat": "Witkowo"
-        },
-        {
-          "name": "wolsztyński",
-          "type": "babimojski",
-          "seat": "w"
-        },
-        {
-          "name": "wrzesiński",
-          "type": "w",
-          "seat": "Września"
-        },
-        {
-          "name": "wyrzyski",
-          "type": "w",
-          "seat": "Wyrzysk"
-        },
-        {
-          "name": "żniński",
-          "type": "w",
-          "seat": "Żnin"
-        }
-      ]
-    },
-    {
-      "name": "Stanisławowskie",
-      "districts": [
-        {
-          "name": "bohorodczański",
-          "type": "w",
-          "seat": "Bohorodczany"
-        },
-        {
-          "name": "doliński",
-          "type": "w",
-          "seat": "Dolina"
-        },
-        {
-          "name": "horodeński",
-          "type": "w",
-          "seat": "Horodenka"
-        },
-        {
-          "name": "kałuski",
-          "type": "w",
-          "seat": "Kałusz"
-        },
-        {
-          "name": "kołomyjski",
-          "type": "w",
-          "seat": "Kołomyja"
-        },
-        {
-          "name": "kosowski",
-          "type": "w",
-          "seat": "Kosów"
-        },
-        {
-          "name": "nadwórniański",
-          "type": "w",
-          "seat": "Nadwórna"
-        },
-        {
-          "name": "peczeniżyński",
-          "type": "w",
-          "seat": "Peczeniżyn"
-        },
-        {
-          "name": "rohatyński",
-          "type": "w",
-          "seat": "Rohatyn"
-        },
-        {
-          "name": "skolski",
-          "type": "w",
-          "seat": "Skole"
-        },
-        {
-          "name": "stanisławowski",
-          "type": "w",
-          "seat": "Stanisławów"
-        },
-        {
-          "name": "stryjski",
-          "type": "w",
-          "seat": "Stryj"
-        },
-        {
-          "name": "śniatyński",
-          "type": "w",
-          "seat": "Śniatyń"
-        },
-        {
-          "name": "tłumacki",
-          "type": "w",
-          "seat": "Tłumacz"
-        },
-        {
-          "name": "turczański",
-          "type": "w",
-          "seat": "Turka"
-        },
-        {
-          "name": "żydaczowski",
-          "type": "w",
-          "seat": "Żydaczów"
-        }
-      ]
-    },
-    {
-      "name": "Śląskie",
-      "districts": [
-        {
-          "name": "bielski",
-          "type": "w",
-          "seat": "Bielsko"
-        },
-        {
-          "name": "Bielsko",
-          "type": "m",
-          "seat": "Bielsko"
-        },
-        {
-          "name": "cieszyński",
-          "type": "w",
-          "seat": "Cieszyn"
-        },
-        {
-          "name": "frysztacki",
-          "type": "w",
-          "seat": "Frysztat"
-        }
-      ]
-    },
-    {
-      "name": "Tarnopolskie",
-      "districts": [
-        {
-          "name": "borszczowski",
-          "type": "w",
-          "seat": "Borszczów"
-        },
-        {
-          "name": "brodzki",
-          "type": "w",
-          "seat": "Brody"
-        },
-        {
-          "name": "brzeżański",
-          "type": "w",
-          "seat": "Brzeżany"
-        },
-        {
-          "name": "buczacki",
-          "type": "w",
-          "seat": "Buczacz"
-        },
-        {
-          "name": "czortkowski",
-          "type": "w",
-          "seat": "Czortków"
-        },
-        {
-          "name": "husiatyński",
-          "type": "w",
-          "seat": "Husiatyn"
-        },
-        {
-          "name": "kamionecki",
-          "type": "w",
-          "seat": "Kamionka Strumiłowa"
-        },
-        {
-          "name": "podhajecki",
-          "type": "w",
-          "seat": "Podhajce"
-        },
-        {
-          "name": "przemyślański",
-          "type": "w",
-          "seat": "Przemyślany"
-        },
-        {
-          "name": "radziechowski",
-          "type": "w",
-          "seat": "Radziechów"
-        },
-        {
-          "name": "skałacki",
-          "type": "w",
-          "seat": "Skałat"
-        },
-        {
-          "name": "tarnopolski",
-          "type": "w",
-          "seat": "Tarnopol"
-        },
-        {
-          "name": "trembowelski",
-          "type": "w",
-          "seat": "Trembowla"
-        },
-        {
-          "name": "zaleszczycki",
-          "type": "w",
-          "seat": "Zaleszczyki"
-        },
-        {
-          "name": "zbaraski",
-          "type": "w",
-          "seat": "Zbaraż"
-        },
-        {
-          "name": "zborowski",
-          "type": "w",
-          "seat": "Zborów"
-        },
-        {
-          "name": "złoczowski",
-          "type": "w",
-          "seat": "Złoczów"
-        }
-      ]
-    },
-    {
-      "name": "Warszawskie",
-      "districts": [
-        {
-          "name": "błoński",
-          "type": "w",
-          "seat": "Błonie"
-        },
-        {
-          "name": "ciechanowski",
-          "type": "w",
-          "seat": "Ciechanów"
-        },
-        {
-          "name": "gostyniński",
-          "type": "w",
-          "seat": "Gostynin"
-        },
-        {
-          "name": "grójecki",
-          "type": "w",
-          "seat": "Grójec"
-        },
-        {
-          "name": "kutnowski",
-          "type": "w",
-          "seat": "Kutno"
-        },
-        {
-          "name": "lipnowski",
-          "type": "w",
-          "seat": "Lipno"
-        },
-        {
-          "name": "łowicki",
-          "type": "w",
-          "seat": "Łowicz"
-        },
-        {
-          "name": "makowski",
-          "type": "w",
-          "seat": "Maków"
-        },
-        {
-          "name": "miński",
-          "type": "w",
-          "seat": "Mińsk Mazow."
-        },
-        {
-          "name": "mławski",
-          "type": "w",
-          "seat": "Mława"
-        },
-        {
-          "name": "nieszawski",
-          "type": "w",
-          "seat": "Nieszawa"
-        },
-        {
-          "name": "płocki",
-          "type": "w",
-          "seat": "Płock"
-        },
-        {
-          "name": "płoński",
-          "type": "w",
-          "seat": "Płońsk"
-        },
-        {
-          "name": "przasnycki",
-          "type": "w",
-          "seat": "Przasnysz"
-        },
-        {
-          "name": "pułtuski",
-          "type": "w",
-          "seat": "Pułtusk"
-        },
-        {
-          "name": "radzymiński",
-          "type": "w",
-          "seat": "Radzymin"
-        },
-        {
-          "name": "rawski",
-          "type": "rawsko-mazowiecki",
-          "seat": "w"
-        },
-        {
-          "name": "rypiński",
-          "type": "w",
-          "seat": "Rypin"
-        },
-        {
-          "name": "sierpecki",
-          "type": "w",
-          "seat": "Sierpc"
-        },
-        {
-          "name": "skierniewicki",
-          "type": "w",
-          "seat": "Skierniewice"
-        },
-        {
-          "name": "sochaczewski",
-          "type": "w",
-          "seat": "Sochaczew"
-        },
-        {
-          "name": "warszawski",
-          "type": "w",
-          "seat": "Warszawa"
-        },
-        {
-          "name": "włocławski",
-          "type": "w",
-          "seat": "Włocławek"
-        }
-      ]
-    },
-    {
-      "name": "Wołyń",
-      "districts": [
-        {
-          "name": "dubieński",
-          "type": "w",
-          "seat": "Dubno"
-        },
-        {
-          "name": "horochowski",
-          "type": "w",
-          "seat": "Horochów"
-        },
-        {
-          "name": "kowelski",
-          "type": "w",
-          "seat": "Kowel"
-        },
-        {
-          "name": "krzemieniecki",
-          "type": "w",
-          "seat": "Krzemieniec"
-        },
-        {
-          "name": "lubomelski",
-          "type": "w",
-          "seat": "Luboml"
-        },
-        {
-          "name": "łucki",
-          "type": "w",
-          "seat": "Łuck"
-        },
-        {
-          "name": "ostrogski",
-          "type": "w",
-          "seat": "Ostróg"
-        },
-        {
-          "name": "rówieński",
-          "type": "w",
-          "seat": "Równe"
-        },
-        {
-          "name": "włodzimierski",
-          "type": "w",
-          "seat": "Włodzimierz"
-        }
-      ]
-    },
-    {
-        "name": "Czechosłowacja",
-        "districts": [
-          {
-            "name": "bardiowski",
-            "type": "w",
-            "seat": "X"
-          },
-          {
-            "name": "czadecki",
-            "type": "w",
-            "seat": "X"
-          },
-          {
-            "name": "czeskocieszyński",
-            "type": "w",
-            "seat": "X"
-          },
-          {
-            "name": "frydecki",
-            "type": "w",
-            "seat": "X"
-          },
-          {
-            "name": "kieżmarski",
-            "type": "w",
-            "seat": "X"
-          },
-          {
-            "name": "namiestowski",
-            "type": "w",
-            "seat": "X"
-          },
-          {
-            "name": "sniński",
-            "type": "w",
-            "seat": "X"
-          },
-          {
-            "name": "starolubowelski",
-            "type": "w",
-            "seat": "X"
-          },
-          {
-            "name": "starowiejski",
-            "type": "w",
-            "seat": "X"
-          },
-          {
-            "name": "trzciański",
-            "type": "w",
-            "seat": "X"
-          }
-        ]
-    },
-    {
-        "name": "Niemcy",
-        "districts": [
-        {
-            "name": "Bytom wieś",
-            "type": "w",
-            "seat": "Bytom"
-        },
-        {
-            "name": "Bytom miasto",
-            "type": "m",
-            "seat": "Bytom"
-        },
-        {
-            "name": "zabrski",
-            "type": "w",
-            "seat": "Zabrze"
-        },
-          {
-            "name": "Katowice",
-            "type": "m",
-            "seat": "Katowice"
-          },
-          {
-            "name": "katowicki",
-            "type": "w",
-            "seat": "Katowice"
-          },
-          {
-            "name": "Królewska Huta",
-            "type": "m",
-            "seat": "Królewska Huta"
-          },
-          {
-            "name": "lubliniecki",
-            "type": "w",
-            "seat": "Lubliniec"
-          },
-          {
-            "name": "pszczyński",
-            "type": "w",
-            "seat": "Pszczyna"
-          },
-          {
-            "name": "raciborski",
-            "type": "w",
-            "seat": "Racibórz"
-          },
-          {
-            "name": "rybnicki",
-            "type": "w",
-            "seat": "Rybnik"
-          },
-          {
-            "name": "tarnogórski",
-            "type": "w",
-            "seat": "Tarnowskie Góry"
-          },
-          {
-            "name": "zabrski",
-            "type": "w",
-            "seat": "Łuck"
-          }
-        ]
+  "valid_from": "19.02.1921",
+  "regions": {
+    "Białostockie": [
+      {
+        "name": "augustowski",
+        "type": "w",
+        "seat": "Augustów"
       },
       {
-        "name": "Litwa",
-        "districts": [
-          {
-            "name": "brasławski",
-            "type": "w",
-            "seat": "Brasław"
-          },
-          {
-            "name": "oszmiański",
-            "type": "w",
-            "seat": "Oszmiany"
-          },
-          {
-            "name": "święciański",
-            "type": "w",
-            "seat": "Święciany"
-          },
-          {
-            "name": "trocki",
-            "type": "w",
-            "seat": "Troki"
-          },
-          {
-            "name": "wileński",
-            "type": "w",
-            "seat": "Wilno"
-          },
-          {
-            "name": "Wilno",
-            "type": "m",
-            "seat": "Wilno"
-          },
-          {
-            "name": "ostrogski",
-            "type": "w",
-            "seat": "Ostróg"
-          },
-          {
-            "name": "rówieński",
-            "type": "w",
-            "seat": "Równe"
-          },
-          {
-            "name": "włodzimierski",
-            "type": "w",
-            "seat": "Włodzimierz"
-          }
-        ]
+        "name": "białostocki",
+        "type": "w",
+        "seat": "Białystok"
+      },
+      {
+        "name": "białowieski",
+        "type": "w",
+        "seat": "Białowieża"
+      },
+      {
+        "name": "bielski",
+        "type": "w",
+        "seat": "Bielsk"
+      },
+      {
+        "name": "grodzieński",
+        "type": "w",
+        "seat": "Grodno"
+      },
+      {
+        "name": "kolneński",
+        "type": "w",
+        "seat": "Kolno"
+      },
+      {
+        "name": "łomżyński",
+        "type": "w",
+        "seat": "Łomża"
+      },
+      {
+        "name": "ostrołęcki",
+        "type": "w",
+        "seat": "Ostrołęka"
+      },
+      {
+        "name": "ostrowski",
+        "type": "w",
+        "seat": "Ostrów Mazowiecki"
+      },
+      {
+        "name": "sejneński",
+        "type": "w",
+        "seat": "Sejny"
+      },
+      {
+        "name": "sokólski",
+        "type": "w",
+        "seat": "Sokółka"
+      },
+      {
+        "name": "suwalski",
+        "type": "w",
+        "seat": "Suwałki"
+      },
+      {
+        "name": "szczuczyński (woj. białostockie)",
+        "type": "w",
+        "seat": "Grajewo"
+      },
+      {
+        "name": "wołkowyski",
+        "type": "w",
+        "seat": "Wołkowysk"
+      },
+      {
+        "name": "wysokomazowiecki",
+        "type": "wysoko-mazowiecki",
+        "seat": "w"
       }
-  ]
+    ],
+    "Kieleckie": [
+      {
+        "name": "będziński",
+        "type": "w",
+        "seat": "Będzin"
+      },
+      {
+        "name": "częstochowski",
+        "type": "w",
+        "seat": "Częstochowa"
+      },
+      {
+        "name": "iłżecki",
+        "type": "w",
+        "seat": "Iłża"
+      },
+      {
+        "name": "jędrzejowski",
+        "type": "w",
+        "seat": "Jędrzejów"
+      },
+      {
+        "name": "kielecki",
+        "type": "w",
+        "seat": "Kielce"
+      },
+      {
+        "name": "konecki",
+        "type": "w",
+        "seat": "Końskie"
+      },
+      {
+        "name": "kozienicki",
+        "type": "w",
+        "seat": "Kozienice"
+      },
+      {
+        "name": "miechowski",
+        "type": "w",
+        "seat": "Miechów"
+      },
+      {
+        "name": "olkuski",
+        "type": "w",
+        "seat": "Olkusz"
+      },
+      {
+        "name": "opatowski",
+        "type": "w",
+        "seat": "Opatów"
+      },
+      {
+        "name": "opoczyński",
+        "type": "w",
+        "seat": "Opoczno"
+      },
+      {
+        "name": "pińczowski",
+        "type": "w",
+        "seat": "Pińczów"
+      },
+      {
+        "name": "radomski",
+        "type": "w",
+        "seat": "Radom"
+      },
+      {
+        "name": "sandomierski",
+        "type": "w",
+        "seat": "Sandomierz"
+      },
+      {
+        "name": "stopnicki",
+        "type": "w",
+        "seat": "Stopnica"
+      },
+      {
+        "name": "włoszczowski",
+        "type": "w",
+        "seat": "Włoszczowa"
+      }
+    ],
+    "Krakowskie": [
+      {
+        "name": "bialski",
+        "type": "w",
+        "seat": "Biała"
+      },
+      {
+        "name": "bocheński",
+        "type": "w",
+        "seat": "Bochnia"
+      },
+      {
+        "name": "brzeski",
+        "type": "w",
+        "seat": "Brzesko"
+      },
+      {
+        "name": "chrzanowski",
+        "type": "w",
+        "seat": "Chrzanów"
+      },
+      {
+        "name": "dąbrowski",
+        "type": "w",
+        "seat": "Dąbrowa"
+      },
+      {
+        "name": "gorlicki",
+        "type": "w",
+        "seat": "Gorlice"
+      },
+      {
+        "name": "grybowski",
+        "type": "w",
+        "seat": "Grybów"
+      },
+      {
+        "name": "jasielski",
+        "type": "w",
+        "seat": "Jasło"
+      },
+      {
+        "name": "krakowski",
+        "type": "w",
+        "seat": "Kraków"
+      },
+      {
+        "name": "Kraków",
+        "type": "m",
+        "seat": "Kraków"
+      },
+      {
+        "name": "limanowski",
+        "type": "w",
+        "seat": "Limanowa"
+      },
+      {
+        "name": "mielecki",
+        "type": "w",
+        "seat": "Mielec"
+      },
+      {
+        "name": "myślenicki",
+        "type": "w",
+        "seat": "Myślenice"
+      },
+      {
+        "name": "nowosądecki",
+        "type": "w",
+        "seat": "Nowy Sącz"
+      },
+      {
+        "name": "nowotarski",
+        "type": "w",
+        "seat": "Nowy Targ"
+      },
+      {
+        "name": "oświęcimski",
+        "type": "w",
+        "seat": "Oświęcim"
+      },
+      {
+        "name": "pilzneński",
+        "type": "pilźnieński",
+        "seat": "w"
+      },
+      {
+        "name": "podgórski",
+        "type": "w",
+        "seat": "Podgórze"
+      },
+      {
+        "name": "ropczycki",
+        "type": "dębicki",
+        "seat": "w"
+      },
+      {
+        "name": "spisko-orawski",
+        "type": "w",
+        "seat": "Spisz-Orawa"
+      },
+      {
+        "name": "tarnowski",
+        "type": "w",
+        "seat": "Tarnów"
+      },
+      {
+        "name": "wadowicki",
+        "type": "w",
+        "seat": "Wadowice"
+      },
+      {
+        "name": "wielicki",
+        "type": "w",
+        "seat": "Wieliczka"
+      },
+      {
+        "name": "żywiecki",
+        "type": "w",
+        "seat": "Żywiec"
+      }
+    ],
+    "Lubelskie": [
+      {
+        "name": "bialski",
+        "type": "w",
+        "seat": "Biała"
+      },
+      {
+        "name": "biłgorajski",
+        "type": "w",
+        "seat": "Biłgoraj"
+      },
+      {
+        "name": "chełmski",
+        "type": "w",
+        "seat": "Chełm"
+      },
+      {
+        "name": "garwoliński",
+        "type": "w",
+        "seat": "Garwolin"
+      },
+      {
+        "name": "hrubieszowski",
+        "type": "w",
+        "seat": "Hrubieszów"
+      },
+      {
+        "name": "janowski",
+        "type": "w",
+        "seat": "Janów"
+      },
+      {
+        "name": "konstantynowski",
+        "type": "w",
+        "seat": "Konstantynów"
+      },
+      {
+        "name": "krasnostawski",
+        "type": "w",
+        "seat": "Krasnystaw"
+      },
+      {
+        "name": "lubartowski",
+        "type": "w",
+        "seat": "Lubartów"
+      },
+      {
+        "name": "lubelski",
+        "type": "w",
+        "seat": "Lublin"
+      },
+      {
+        "name": "Lublin",
+        "type": "m",
+        "seat": "Lublin"
+      },
+      {
+        "name": "łukowski",
+        "type": "w",
+        "seat": "Łuków"
+      },
+      {
+        "name": "puławski",
+        "type": "w",
+        "seat": "Puławy"
+      },
+      {
+        "name": "radzyński",
+        "type": "w",
+        "seat": "Radzyn"
+      },
+      {
+        "name": "siedlecki",
+        "type": "w",
+        "seat": "Siedlce"
+      },
+      {
+        "name": "sokołowski",
+        "type": "w",
+        "seat": "Sokołów Podlaski"
+      },
+      {
+        "name": "tomaszowski",
+        "type": "w",
+        "seat": "Tomaszów"
+      },
+      {
+        "name": "węgrowski",
+        "type": "w",
+        "seat": "Węgrów"
+      },
+      {
+        "name": "włodawski",
+        "type": "w",
+        "seat": "Włodawa"
+      },
+      {
+        "name": "zamojski",
+        "type": "w",
+        "seat": "Zamość"
+      }
+    ],
+    "Lwowskie": [
+      {
+        "name": "bóbrecki",
+        "type": "w",
+        "seat": "Bóbrka"
+      },
+      {
+        "name": "brzozowski",
+        "type": "w",
+        "seat": "Brzozów"
+      },
+      {
+        "name": "cieszanowski",
+        "type": "w",
+        "seat": "Cieszanów"
+      },
+      {
+        "name": "dobromilski",
+        "type": "w",
+        "seat": "Dobromil"
+      },
+      {
+        "name": "drohobycki",
+        "type": "w",
+        "seat": "Drohobycz"
+      },
+      {
+        "name": "gródecki",
+        "type": "w",
+        "seat": "Gródek Jagiel."
+      },
+      {
+        "name": "jarosławski",
+        "type": "w",
+        "seat": "Jarosław"
+      },
+      {
+        "name": "jaworowski",
+        "type": "w",
+        "seat": "Jaworów"
+      },
+      {
+        "name": "kolbuszowski",
+        "type": "w",
+        "seat": "Kolbuszowa"
+      },
+      {
+        "name": "krośnieński",
+        "type": "w",
+        "seat": "Krosno"
+      },
+      {
+        "name": "liski",
+        "type": "leski",
+        "seat": "w"
+      },
+      {
+        "name": "lwowski",
+        "type": "w",
+        "seat": "Lwów"
+      },
+      {
+        "name": "Lwów",
+        "type": "m",
+        "seat": "Lwów"
+      },
+      {
+        "name": "łańcucki",
+        "type": "w",
+        "seat": "Łańcut"
+      },
+      {
+        "name": "mościski",
+        "type": "w",
+        "seat": "Mościska"
+      },
+      {
+        "name": "niżański",
+        "type": "w",
+        "seat": "Nisko"
+      },
+      {
+        "name": "przemyski",
+        "type": "w",
+        "seat": "Przemyśl"
+      },
+      {
+        "name": "przeworski",
+        "type": "w",
+        "seat": "Przeworsk"
+      },
+      {
+        "name": "rawski",
+        "type": "w",
+        "seat": "Rawa"
+      },
+      {
+        "name": "rudecki",
+        "type": "w",
+        "seat": "Rudki"
+      },
+      {
+        "name": "rzeszowski",
+        "type": "w",
+        "seat": "Rzeszów"
+      },
+      {
+        "name": "samborski",
+        "type": "w",
+        "seat": "Sambor"
+      },
+      {
+        "name": "sanocki",
+        "type": "w",
+        "seat": "Sanok"
+      },
+      {
+        "name": "sokalski",
+        "type": "w",
+        "seat": "Sokal"
+      },
+      {
+        "name": "starosamborski",
+        "type": "w",
+        "seat": "Stary Sambor"
+      },
+      {
+        "name": "strzyżowski",
+        "type": "w",
+        "seat": "Strzyżów"
+      },
+      {
+        "name": "tarnobrzeski",
+        "type": "w",
+        "seat": "Tarnobrzeg"
+      },
+      {
+        "name": "żółkiewski",
+        "type": "w",
+        "seat": "Żółkiew"
+      }
+    ],
+    "Łódzkie": [
+      {
+        "name": "brzeziński",
+        "type": "w",
+        "seat": "Brzeziny"
+      },
+      {
+        "name": "kaliski",
+        "type": "w",
+        "seat": "Kalisz"
+      },
+      {
+        "name": "kolski",
+        "type": "w",
+        "seat": "Koło"
+      },
+      {
+        "name": "koniński",
+        "type": "w",
+        "seat": "Konin"
+      },
+      {
+        "name": "łaski",
+        "type": "w",
+        "seat": "Łask"
+      },
+      {
+        "name": "łęczycki",
+        "type": "w",
+        "seat": "Łęczyca"
+      },
+      {
+        "name": "łódzki",
+        "type": "w",
+        "seat": "Łódź"
+      },
+      {
+        "name": "Łódź",
+        "type": "m",
+        "seat": "Łódź"
+      },
+      {
+        "name": "piotrkowski",
+        "type": "w",
+        "seat": "Piotrków"
+      },
+      {
+        "name": "radomszczański",
+        "type": "w",
+        "seat": "Radomsko"
+      },
+      {
+        "name": "sieradzki",
+        "type": "w",
+        "seat": "Sieradz"
+      },
+      {
+        "name": "słupecki",
+        "type": "w",
+        "seat": "Słupca"
+      },
+      {
+        "name": "turecki",
+        "type": "w",
+        "seat": "Turek"
+      },
+      {
+        "name": "wieluński",
+        "type": "w",
+        "seat": "Wieluń"
+      }
+    ],
+    "miasto stołeczne Warszawa": [
+      {
+        "name": "południowo-warszawski",
+        "type": "m",
+        "seat": "Warszawa"
+      },
+      {
+        "name": "północno-warszawski",
+        "type": "m",
+        "seat": "Warszawa"
+      },
+      {
+        "name": "prasko-warszawski",
+        "type": "m",
+        "seat": "Warszawa"
+      },
+      {
+        "name": "śródmiejsko-warszawski",
+        "type": "m",
+        "seat": "Warszawa"
+      }
+    ],
+    "Nowogródzkie": [
+      {
+        "name": "baranowicki",
+        "type": "w",
+        "seat": "Baranowicze"
+      },
+      {
+        "name": "duniłowicki",
+        "type": "w",
+        "seat": "Duniłowicze"
+      },
+      {
+        "name": "dziśnieński",
+        "type": "w",
+        "seat": "Głębokie"
+      },
+      {
+        "name": "lidzki",
+        "type": "w",
+        "seat": "Lida"
+      },
+      {
+        "name": "nieświeski",
+        "type": "w",
+        "seat": "Nieśwież"
+      },
+      {
+        "name": "nowogródzki",
+        "type": "w",
+        "seat": "Nowogródek"
+      },
+      {
+        "name": "słonimski",
+        "type": "w",
+        "seat": "Słonim"
+      },
+      {
+        "name": "stołpecki",
+        "type": "w",
+        "seat": "Stołpce"
+      },
+      {
+        "name": "wilejski",
+        "type": "w",
+        "seat": "Wilejka"
+      },
+      {
+        "name": "wołożyński",
+        "type": "w",
+        "seat": "Wołożyn"
+      }
+    ],
+    "Okr.adm.wileński": [],
+    "Poleskie": [
+      {
+        "name": "brzeski",
+        "type": "w",
+        "seat": "Brześć n.Bug."
+      },
+      {
+        "name": "drohicki",
+        "type": "w",
+        "seat": "Drohiczyn (Poleski)"
+      },
+      {
+        "name": "kobryński",
+        "type": "w",
+        "seat": "Kobryń"
+      },
+      {
+        "name": "kosowski",
+        "type": "iwacewicki",
+        "seat": "w"
+      },
+      {
+        "name": "koszyrski",
+        "type": "w",
+        "seat": "Kamień Koszyr"
+      },
+      {
+        "name": "łuniniecki",
+        "type": "w",
+        "seat": "Łuniniec"
+      },
+      {
+        "name": "piński",
+        "type": "w",
+        "seat": "Pińsk"
+      },
+      {
+        "name": "prużański",
+        "type": "w",
+        "seat": "Prużana"
+      },
+      {
+        "name": "sarneński",
+        "type": "w",
+        "seat": "Sarny"
+      }
+    ],
+    "Pomorskie": [
+      {
+        "name": "brodnicki",
+        "type": "w",
+        "seat": "Brodnica"
+      },
+      {
+        "name": "chełmiński",
+        "type": "w",
+        "seat": "Chełmno"
+      },
+      {
+        "name": "chojnicki",
+        "type": "w",
+        "seat": "Chojnice"
+      },
+      {
+        "name": "działdowski",
+        "type": "w",
+        "seat": "Działdowo"
+      },
+      {
+        "name": "gniewski",
+        "type": "w",
+        "seat": "Gniew"
+      },
+      {
+        "name": "Grudziądz",
+        "type": "m",
+        "seat": "Grudziądz"
+      },
+      {
+        "name": "grudziądzki",
+        "type": "w",
+        "seat": "Grudziądz"
+      },
+      {
+        "name": "kartuski",
+        "type": "w",
+        "seat": "Kartuzy"
+      },
+      {
+        "name": "kościerski",
+        "type": "w",
+        "seat": "Kościerzyna"
+      },
+      {
+        "name": "lubawski",
+        "type": "w",
+        "seat": "Nowe Miasto Lubawskie"
+      },
+      {
+        "name": "pucki",
+        "type": "w",
+        "seat": "Puck"
+      },
+      {
+        "name": "sępoleński",
+        "type": "w",
+        "seat": "Sępolno"
+      },
+      {
+        "name": "starogardzki",
+        "type": "w",
+        "seat": "Starogard"
+      },
+      {
+        "name": "świecki",
+        "type": "w",
+        "seat": "Świecie"
+      },
+      {
+        "name": "tczewski",
+        "type": "w",
+        "seat": "Tczew"
+      },
+      {
+        "name": "Toruń",
+        "type": "m",
+        "seat": "Toruń"
+      },
+      {
+        "name": "toruński",
+        "type": "w",
+        "seat": "Toruń"
+      },
+      {
+        "name": "tucholski",
+        "type": "w",
+        "seat": "Tuchola"
+      },
+      {
+        "name": "wąbrzeski",
+        "type": "w",
+        "seat": "Wąbrzeźno"
+      },
+      {
+        "name": "wejherowski",
+        "type": "w",
+        "seat": "Wejherowo"
+      }
+    ],
+    "Poznańskie": [
+      {
+        "name": "bydgoski",
+        "type": "w",
+        "seat": "Bydgoszcz"
+      },
+      {
+        "name": "Bydgoszcz",
+        "type": "m",
+        "seat": "Bydgoszcz"
+      },
+      {
+        "name": "chodzieski",
+        "type": "w",
+        "seat": "Chodzież"
+      },
+      {
+        "name": "czarnkowski",
+        "type": "w",
+        "seat": "Czarnków"
+      },
+      {
+        "name": "gnieźnieński",
+        "type": "w",
+        "seat": "Gniezno"
+      },
+      {
+        "name": "gostyński",
+        "type": "w",
+        "seat": "Gostyń"
+      },
+      {
+        "name": "grodziski",
+        "type": "w",
+        "seat": "Grodzisk"
+      },
+      {
+        "name": "inowrocławski",
+        "type": "w",
+        "seat": "Inowrocław"
+      },
+      {
+        "name": "jarociński",
+        "type": "w",
+        "seat": "Jarocin"
+      },
+      {
+        "name": "kępiński",
+        "type": "w",
+        "seat": "Kępno"
+      },
+      {
+        "name": "kościański",
+        "type": "w",
+        "seat": "Kościan"
+      },
+      {
+        "name": "koźmiński",
+        "type": "w",
+        "seat": "Koźmin"
+      },
+      {
+        "name": "krotoszyński",
+        "type": "w",
+        "seat": "Krotoszyn"
+      },
+      {
+        "name": "leszczyński",
+        "type": "w",
+        "seat": "Leszno"
+      },
+      {
+        "name": "międzychodzki",
+        "type": "w",
+        "seat": "Międzychód"
+      },
+      {
+        "name": "mogileński",
+        "type": "w",
+        "seat": "Mogilno"
+      },
+      {
+        "name": "nowotomyski",
+        "type": "w",
+        "seat": "Nowy Tomyśl"
+      },
+      {
+        "name": "obornicki",
+        "type": "w",
+        "seat": "Oborniki"
+      },
+      {
+        "name": "odolanowski",
+        "type": "w",
+        "seat": "Odolanów"
+      },
+      {
+        "name": "ostrowski",
+        "type": "w",
+        "seat": "Ostrów"
+      },
+      {
+        "name": "ostrzeszowski",
+        "type": "w",
+        "seat": "Ostrzeszów"
+      },
+      {
+        "name": "pleszewski",
+        "type": "w",
+        "seat": "Pleszew"
+      },
+      {
+        "name": "Poznań",
+        "type": "m",
+        "seat": "Poznań"
+      },
+      {
+        "name": "poznański wschodni",
+        "type": "w",
+        "seat": "Poznań Wsch."
+      },
+      {
+        "name": "poznański zachodni",
+        "type": "w",
+        "seat": "Poznań Zach."
+      },
+      {
+        "name": "rawicki",
+        "type": "w",
+        "seat": "Rawicz"
+      },
+      {
+        "name": "strzelneński",
+        "type": "strzeliński",
+        "seat": "w"
+      },
+      {
+        "name": "szamotulski",
+        "type": "w",
+        "seat": "Szamotuły"
+      },
+      {
+        "name": "szubiński",
+        "type": "w",
+        "seat": "Szubin"
+      },
+      {
+        "name": "śmigielski",
+        "type": "w",
+        "seat": "Śmigiel"
+      },
+      {
+        "name": "średzki",
+        "type": "w",
+        "seat": "Środa"
+      },
+      {
+        "name": "śremski",
+        "type": "w",
+        "seat": "Śrem"
+      },
+      {
+        "name": "wągrowiecki",
+        "type": "w",
+        "seat": "Wągrowiec"
+      },
+      {
+        "name": "witkowski",
+        "type": "w",
+        "seat": "Witkowo"
+      },
+      {
+        "name": "wolsztyński",
+        "type": "babimojski",
+        "seat": "w"
+      },
+      {
+        "name": "wrzesiński",
+        "type": "w",
+        "seat": "Września"
+      },
+      {
+        "name": "wyrzyski",
+        "type": "w",
+        "seat": "Wyrzysk"
+      },
+      {
+        "name": "żniński",
+        "type": "w",
+        "seat": "Żnin"
+      }
+    ],
+    "Stanisławowskie": [
+      {
+        "name": "bohorodczański",
+        "type": "w",
+        "seat": "Bohorodczany"
+      },
+      {
+        "name": "doliński",
+        "type": "w",
+        "seat": "Dolina"
+      },
+      {
+        "name": "horodeński",
+        "type": "w",
+        "seat": "Horodenka"
+      },
+      {
+        "name": "kałuski",
+        "type": "w",
+        "seat": "Kałusz"
+      },
+      {
+        "name": "kołomyjski",
+        "type": "w",
+        "seat": "Kołomyja"
+      },
+      {
+        "name": "kosowski",
+        "type": "w",
+        "seat": "Kosów"
+      },
+      {
+        "name": "nadwórniański",
+        "type": "w",
+        "seat": "Nadwórna"
+      },
+      {
+        "name": "peczeniżyński",
+        "type": "w",
+        "seat": "Peczeniżyn"
+      },
+      {
+        "name": "rohatyński",
+        "type": "w",
+        "seat": "Rohatyn"
+      },
+      {
+        "name": "skolski",
+        "type": "w",
+        "seat": "Skole"
+      },
+      {
+        "name": "stanisławowski",
+        "type": "w",
+        "seat": "Stanisławów"
+      },
+      {
+        "name": "stryjski",
+        "type": "w",
+        "seat": "Stryj"
+      },
+      {
+        "name": "śniatyński",
+        "type": "w",
+        "seat": "Śniatyń"
+      },
+      {
+        "name": "tłumacki",
+        "type": "w",
+        "seat": "Tłumacz"
+      },
+      {
+        "name": "turczański",
+        "type": "w",
+        "seat": "Turka"
+      },
+      {
+        "name": "żydaczowski",
+        "type": "w",
+        "seat": "Żydaczów"
+      }
+    ],
+    "Śląskie": [
+      {
+        "name": "bielski",
+        "type": "w",
+        "seat": "Bielsko"
+      },
+      {
+        "name": "Bielsko",
+        "type": "m",
+        "seat": "Bielsko"
+      },
+      {
+        "name": "cieszyński",
+        "type": "w",
+        "seat": "Cieszyn"
+      },
+      {
+        "name": "frysztacki",
+        "type": "w",
+        "seat": "Frysztat"
+      }
+    ],
+    "Tarnopolskie": [
+      {
+        "name": "borszczowski",
+        "type": "w",
+        "seat": "Borszczów"
+      },
+      {
+        "name": "brodzki",
+        "type": "w",
+        "seat": "Brody"
+      },
+      {
+        "name": "brzeżański",
+        "type": "w",
+        "seat": "Brzeżany"
+      },
+      {
+        "name": "buczacki",
+        "type": "w",
+        "seat": "Buczacz"
+      },
+      {
+        "name": "czortkowski",
+        "type": "w",
+        "seat": "Czortków"
+      },
+      {
+        "name": "husiatyński",
+        "type": "w",
+        "seat": "Husiatyn"
+      },
+      {
+        "name": "kamionecki",
+        "type": "w",
+        "seat": "Kamionka Strumiłowa"
+      },
+      {
+        "name": "podhajecki",
+        "type": "w",
+        "seat": "Podhajce"
+      },
+      {
+        "name": "przemyślański",
+        "type": "w",
+        "seat": "Przemyślany"
+      },
+      {
+        "name": "radziechowski",
+        "type": "w",
+        "seat": "Radziechów"
+      },
+      {
+        "name": "skałacki",
+        "type": "w",
+        "seat": "Skałat"
+      },
+      {
+        "name": "tarnopolski",
+        "type": "w",
+        "seat": "Tarnopol"
+      },
+      {
+        "name": "trembowelski",
+        "type": "w",
+        "seat": "Trembowla"
+      },
+      {
+        "name": "zaleszczycki",
+        "type": "w",
+        "seat": "Zaleszczyki"
+      },
+      {
+        "name": "zbaraski",
+        "type": "w",
+        "seat": "Zbaraż"
+      },
+      {
+        "name": "zborowski",
+        "type": "w",
+        "seat": "Zborów"
+      },
+      {
+        "name": "złoczowski",
+        "type": "w",
+        "seat": "Złoczów"
+      }
+    ],
+    "Warszawskie": [
+      {
+        "name": "błoński",
+        "type": "w",
+        "seat": "Błonie"
+      },
+      {
+        "name": "ciechanowski",
+        "type": "w",
+        "seat": "Ciechanów"
+      },
+      {
+        "name": "gostyniński",
+        "type": "w",
+        "seat": "Gostynin"
+      },
+      {
+        "name": "grójecki",
+        "type": "w",
+        "seat": "Grójec"
+      },
+      {
+        "name": "kutnowski",
+        "type": "w",
+        "seat": "Kutno"
+      },
+      {
+        "name": "lipnowski",
+        "type": "w",
+        "seat": "Lipno"
+      },
+      {
+        "name": "łowicki",
+        "type": "w",
+        "seat": "Łowicz"
+      },
+      {
+        "name": "makowski",
+        "type": "w",
+        "seat": "Maków"
+      },
+      {
+        "name": "miński",
+        "type": "w",
+        "seat": "Mińsk Mazow."
+      },
+      {
+        "name": "mławski",
+        "type": "w",
+        "seat": "Mława"
+      },
+      {
+        "name": "nieszawski",
+        "type": "w",
+        "seat": "Nieszawa"
+      },
+      {
+        "name": "płocki",
+        "type": "w",
+        "seat": "Płock"
+      },
+      {
+        "name": "płoński",
+        "type": "w",
+        "seat": "Płońsk"
+      },
+      {
+        "name": "przasnycki",
+        "type": "w",
+        "seat": "Przasnysz"
+      },
+      {
+        "name": "pułtuski",
+        "type": "w",
+        "seat": "Pułtusk"
+      },
+      {
+        "name": "radzymiński",
+        "type": "w",
+        "seat": "Radzymin"
+      },
+      {
+        "name": "rawski",
+        "type": "rawsko-mazowiecki",
+        "seat": "w"
+      },
+      {
+        "name": "rypiński",
+        "type": "w",
+        "seat": "Rypin"
+      },
+      {
+        "name": "sierpecki",
+        "type": "w",
+        "seat": "Sierpc"
+      },
+      {
+        "name": "skierniewicki",
+        "type": "w",
+        "seat": "Skierniewice"
+      },
+      {
+        "name": "sochaczewski",
+        "type": "w",
+        "seat": "Sochaczew"
+      },
+      {
+        "name": "warszawski",
+        "type": "w",
+        "seat": "Warszawa"
+      },
+      {
+        "name": "włocławski",
+        "type": "w",
+        "seat": "Włocławek"
+      }
+    ],
+    "Wołyń": [
+      {
+        "name": "dubieński",
+        "type": "w",
+        "seat": "Dubno"
+      },
+      {
+        "name": "horochowski",
+        "type": "w",
+        "seat": "Horochów"
+      },
+      {
+        "name": "kowelski",
+        "type": "w",
+        "seat": "Kowel"
+      },
+      {
+        "name": "krzemieniecki",
+        "type": "w",
+        "seat": "Krzemieniec"
+      },
+      {
+        "name": "lubomelski",
+        "type": "w",
+        "seat": "Luboml"
+      },
+      {
+        "name": "łucki",
+        "type": "w",
+        "seat": "Łuck"
+      },
+      {
+        "name": "ostrogski",
+        "type": "w",
+        "seat": "Ostróg"
+      },
+      {
+        "name": "rówieński",
+        "type": "w",
+        "seat": "Równe"
+      },
+      {
+        "name": "włodzimierski",
+        "type": "w",
+        "seat": "Włodzimierz"
+      }
+    ],
+    "Czechosłowacja": [
+      {
+        "name": "bardiowski",
+        "type": "w",
+        "seat": "X"
+      },
+      {
+        "name": "czadecki",
+        "type": "w",
+        "seat": "X"
+      },
+      {
+        "name": "czeskocieszyński",
+        "type": "w",
+        "seat": "X"
+      },
+      {
+        "name": "frydecki",
+        "type": "w",
+        "seat": "X"
+      },
+      {
+        "name": "kieżmarski",
+        "type": "w",
+        "seat": "X"
+      },
+      {
+        "name": "namiestowski",
+        "type": "w",
+        "seat": "X"
+      },
+      {
+        "name": "sniński",
+        "type": "w",
+        "seat": "X"
+      },
+      {
+        "name": "starolubowelski",
+        "type": "w",
+        "seat": "X"
+      },
+      {
+        "name": "starowiejski",
+        "type": "w",
+        "seat": "X"
+      },
+      {
+        "name": "trzciański",
+        "type": "w",
+        "seat": "X"
+      }
+    ],
+    "Niemcy": [
+      {
+        "name": "Bytom wieś",
+        "type": "w",
+        "seat": "Bytom"
+      },
+      {
+        "name": "Bytom miasto",
+        "type": "m",
+        "seat": "Bytom"
+      },
+      {
+        "name": "zabrski",
+        "type": "w",
+        "seat": "Zabrze"
+      },
+      {
+        "name": "Katowice",
+        "type": "m",
+        "seat": "Katowice"
+      },
+      {
+        "name": "katowicki",
+        "type": "w",
+        "seat": "Katowice"
+      },
+      {
+        "name": "Królewska Huta",
+        "type": "m",
+        "seat": "Królewska Huta"
+      },
+      {
+        "name": "lubliniecki",
+        "type": "w",
+        "seat": "Lubliniec"
+      },
+      {
+        "name": "pszczyński",
+        "type": "w",
+        "seat": "Pszczyna"
+      },
+      {
+        "name": "raciborski",
+        "type": "w",
+        "seat": "Racibórz"
+      },
+      {
+        "name": "rybnicki",
+        "type": "w",
+        "seat": "Rybnik"
+      },
+      {
+        "name": "tarnogórski",
+        "type": "w",
+        "seat": "Tarnowskie Góry"
+      },
+      {
+        "name": "zabrski",
+        "type": "w",
+        "seat": "Łuck"
+      }
+    ],
+    "Litwa": [
+      {
+        "name": "brasławski",
+        "type": "w",
+        "seat": "Brasław"
+      },
+      {
+        "name": "oszmiański",
+        "type": "w",
+        "seat": "Oszmiany"
+      },
+      {
+        "name": "święciański",
+        "type": "w",
+        "seat": "Święciany"
+      },
+      {
+        "name": "trocki",
+        "type": "w",
+        "seat": "Troki"
+      },
+      {
+        "name": "wileński",
+        "type": "w",
+        "seat": "Wilno"
+      },
+      {
+        "name": "Wilno",
+        "type": "m",
+        "seat": "Wilno"
+      },
+      {
+        "name": "ostrogski",
+        "type": "w",
+        "seat": "Ostróg"
+      },
+      {
+        "name": "rówieński",
+        "type": "w",
+        "seat": "Równe"
+      },
+      {
+        "name": "włodzimierski",
+        "type": "w",
+        "seat": "Włodzimierz"
+      }
+    ]
+  }
 }
