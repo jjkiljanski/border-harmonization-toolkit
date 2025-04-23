@@ -15,7 +15,7 @@ for change in json_changes:
     if change["type"] == "v_change":
         changes_list.append(vChange(change))
 
-summarize_changes(changes_list)
+summarize_by_date(changes_list)
 
 
  

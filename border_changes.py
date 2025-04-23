@@ -40,6 +40,10 @@ class Change(ABC):
         """Abstract method for printing or returning change description."""
         pass
 
+    @abstractmethod
+    def districts_involved(self):
+        """Abstract method for listing districts involved in the change."""
+
 class vChange(Change):
     # Class describing the change of voivodship for a district.
     def __init__(self, change_dict):
@@ -80,4 +84,7 @@ class vChange(Change):
         elif lang == "eng":
             print(f"{self.date} moved district {self.d_from} from voiv. \"{self.v_from}\" to voiv. \"{self.v_to}\" ({self.source}).")
         else:
-            raise ValueError("Wrong value for the lang parameter.") 
+            raise ValueError("Wrong value for the lang parameter.")
+        
+    def districts_involved(self):
+        return [(self.v_from, self.d_from), (self.v_to, self.d_from)]
