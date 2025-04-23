@@ -13,9 +13,9 @@ with open("district_changes.json", 'r', encoding='utf-8') as file:
 changes_list = []
 for change in json_changes:
     if change["type"] == "v_change":
-        changes_list.append(vChange(change))
+        changes_list.append(VChange(change))
     if change["type"] == "d_one_to_many":
-        changes_list.append(OneToManyChange(change))
+        changes_list.append(DOneToManyChange(change))
 
 summarize_by_date(changes_list)
 

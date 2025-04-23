@@ -44,7 +44,7 @@ class Change(ABC):
     def districts_involved(self):
         """Abstract method for listing districts involved in the change."""
 
-class vChange(Change):
+class VChange(Change):
     # Class describing the change of voivodship for a district.
     def __init__(self, change_dict):
         super().__init__(change_dict)  # Assign standard general Change description attributes
@@ -52,22 +52,22 @@ class vChange(Change):
         # Check if subclass-specific fields are present
         self.validate_matter_struct()
 
-        # Initiate vChange-specific attributes
+        # Initiate VChange-specific attributes
         self.v_from = self.matter['from']['voivodship']
         self.d_from = self.matter['from']['district']
         self.v_to = self.matter['to']
 
     def validate_matter_struct(self):
-        # Helper function to assure correct attributes for the vChange initiation.
+        # Helper function to assure correct attributes for the VChange initiation.
 
         ##### Check the dict structure #####
         exp_matter_keys = {"from", "to"} # Expected self.matter keys
         if set(self.matter.keys()) != exp_matter_keys:
-            raise ValueError (f"Wrong structure of the vChange.matter attribute: {self.matter}.")
+            raise ValueError (f"Wrong structure of the VChange.matter attribute: {self.matter}.")
         
         exp_from_keys = {"voivodship", "district"} # Expected self.matter["from"] keys
         if set(self.matter["from"].keys()) != exp_from_keys:
-            raise ValueError (f"Wrong structure of the vChange.matter[\"from\"] attribute: {self.matter}.")
+            raise ValueError (f"Wrong structure of the VChange.matter[\"from\"] attribute: {self.matter}.")
 
         ##### Check the keys' types #####
         if not isinstance(self.matter["from"]["voivodship"], str):
@@ -89,7 +89,7 @@ class vChange(Change):
     def districts_involved(self):
         return [(self.v_from, self.d_from), (self.v_to, self.d_from)]
     
-class OneToManyChange(Change):
+class DOneToManyChange(Change):
     # Class describing the change where the territory of one district is split between many.
     def __init__(self, change_dict):
         super().__init__(change_dict)  # Assign standard general Change description attributes
@@ -97,31 +97,31 @@ class OneToManyChange(Change):
         # Check if subclass-specific fields are present
         self.validate_matter_struct()
 
-        # Initiate vChange-specific attributes
+        # Initiate VChange-specific attributes
         self.v_from = self.matter['from']['voivodship']
         self.d_from = self.matter['from']['district']
         self.delete_district = self.matter['from']['delete_district']
         self.to = self.matter['to']
 
     def validate_matter_struct(self):
-        # Helper function to assure correct attributes for the vChange initiation.
+        # Helper function to assure correct attributes for the VChange initiation.
 
         ##### Check the dict structure #####
         exp_matter_keys = {"from", "to"} # Expected self.matter keys
         if set(self.matter.keys()) != exp_matter_keys:
-            raise ValueError (f"Wrong structure of the OneToManyChange.matter attribute: {self.matter}.")
+            raise ValueError (f"Wrong structure of the DOneToManyChange.matter attribute: {self.matter}.")
         
         exp_from_keys = {"voivodship", "district", "delete_district"} # Expected self.matter["from"] keys
         if set(self.matter["from"].keys()) != exp_from_keys:
-            raise ValueError (f"Wrong structure of the OneToManyChange.matter[\"from\"] attribute: {self.matter}.")
+            raise ValueError (f"Wrong structure of the DOneToManyChange.matter[\"from\"] attribute: {self.matter}.")
         
         if not isinstance(self.matter["to"], list):
-            raise ValueError (f"OneToManyChange.matter[\"to\"] attribute must be a list: {self.matter}.")
+            raise ValueError (f"DOneToManyChange.matter[\"to\"] attribute must be a list: {self.matter}.")
         
         exp_to_keys = {"voivodship", "district", "weight_from", "weight_to"} # Expected self.matter["from"] keys
         for destination in self.matter["to"]:
             if set(destination.keys()) != exp_to_keys:
-                raise ValueError (f"Wrong structure of the OneToManyChange.matter[\"to\"] attributes: {self.matter}.")
+                raise ValueError (f"Wrong structure of the DOneToManyChange.matter[\"to\"] attributes: {self.matter}.")
 
         ##### Check the keys' types #####
         if not isinstance(self.matter["from"]["voivodship"], str):
