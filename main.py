@@ -14,6 +14,8 @@ changes_list = []
 for change in json_changes:
     if change["type"] == "v_change":
         changes_list.append(vChange(change))
+    if change["type"] == "d_one_to_many":
+        changes_list.append(OneToManyChange(change))
 
 summarize_by_date(changes_list)
 

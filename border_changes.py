@@ -19,7 +19,7 @@ class Change(ABC):
     def validate_base_struct(self):
         # Raise value error if some attributes are missing
         missing_attributes = [att for att in self.required_attributes if att not in self.change_dict]
-        present_attributes = [self.change_dict[att] for att in self.required_attributes if att not in missing_attributes]
+        present_attributes = [att for att in self.required_attributes if att not in missing_attributes]
         if missing_attributes:
             present_attributes = [self.change_dict[att] for att in self.required_attributes if att not in missing_attributes]
             raise ValueError(f"Missing required change attributes: {', '.join(missing_attributes)} for change {', '.join(present_attributes)}")
@@ -75,7 +75,7 @@ class vChange(Change):
         if not isinstance(self.matter["from"]["district"], str):
             raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be string in {self.matter}.")
         if not isinstance(self.matter["to"], str):
-            raise ValueError (f"self.matter[\"to\"] attrib. is not string in {self.matter}.")
+            raise ValueError (f"self.matter[\"to\"] attrib. must be string in {self.matter}.")
 
 
     def echo(self, lang = "pol"):
@@ -88,3 +88,77 @@ class vChange(Change):
         
     def districts_involved(self):
         return [(self.v_from, self.d_from), (self.v_to, self.d_from)]
+    
+class OneToManyChange(Change):
+    # Class describing the change where the territory of one district is split between many.
+    def __init__(self, change_dict):
+        super().__init__(change_dict)  # Assign standard general Change description attributes
+
+        # Check if subclass-specific fields are present
+        self.validate_matter_struct()
+
+        # Initiate vChange-specific attributes
+        self.v_from = self.matter['from']['voivodship']
+        self.d_from = self.matter['from']['district']
+        self.delete_district = self.matter['from']['delete_district']
+        self.to = self.matter['to']
+
+    def validate_matter_struct(self):
+        # Helper function to assure correct attributes for the vChange initiation.
+
+        ##### Check the dict structure #####
+        exp_matter_keys = {"from", "to"} # Expected self.matter keys
+        if set(self.matter.keys()) != exp_matter_keys:
+            raise ValueError (f"Wrong structure of the OneToManyChange.matter attribute: {self.matter}.")
+        
+        exp_from_keys = {"voivodship", "district", "delete_district"} # Expected self.matter["from"] keys
+        if set(self.matter["from"].keys()) != exp_from_keys:
+            raise ValueError (f"Wrong structure of the OneToManyChange.matter[\"from\"] attribute: {self.matter}.")
+        
+        if not isinstance(self.matter["to"], list):
+            raise ValueError (f"OneToManyChange.matter[\"to\"] attribute must be a list: {self.matter}.")
+        
+        exp_to_keys = {"voivodship", "district", "weight_from", "weight_to"} # Expected self.matter["from"] keys
+        for destination in self.matter["to"]:
+            if set(destination.keys()) != exp_to_keys:
+                raise ValueError (f"Wrong structure of the OneToManyChange.matter[\"to\"] attributes: {self.matter}.")
+
+        ##### Check the keys' types #####
+        if not isinstance(self.matter["from"]["voivodship"], str):
+            raise ValueError (f"self.matter[\"from\"][\"voivodship\"] attrib. must be string in {self.matter}.")
+        if not isinstance(self.matter["from"]["district"], str):
+            raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be string in {self.matter}.")
+        if not isinstance(self.matter["from"]["delete_district"], bool):
+            raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be bool in {self.matter}.")
+        
+        for destination in self.matter["to"]:
+            if not isinstance(destination["voivodship"], str):
+                raise ValueError (f"\"voivodship\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
+            if not isinstance(destination["district"], str):
+                raise ValueError (f"\"district\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
+            if not (isinstance(destination["weight_from"], float) or destination["weight_from"] is None):
+                raise ValueError (f"\"weight_from\" attrib. for dicts in the self.matter[\"to\"] list must be float or None in {self.matter}.")
+            if not (isinstance(destination["weight_to"], float) or destination["weight_to"] is None):
+                raise ValueError (f"\"weight_to\" attrib. for dicts in the self.matter[\"to\"] list must be float or None in {self.matter}.")
+
+
+    def echo(self, lang = "pol"):
+        destination_districts = ", ".join([f"{destination['district']} ({destination['voivodship']})" for destination in self.to])
+        if lang == "pol":
+            if self.delete_district:
+                print(f"{self.date} zniesiono powiat {self.d_from} ({self.v_from}), a jego terytorium włączono do powiatów: {destination_districts} ({self.source}).")
+            else:
+                print(f"{self.date} fragment terytorium powiatu {self.d_from} ({self.v_from}) włączono do powiatów: {destination_districts} ({self.source}).")
+        elif lang == "eng":
+            if self.delete_district:
+                print(f"{self.date} the district {self.d_from} ({self.v_from}) was abolished and its territory was integrated into the districts: {destination_districts} ({self.source}).")
+            else:
+                print(f"{self.date} part of the territory of the district {self.d_from} ({self.v_from}) was integrated into the districts: {destination_districts} ({self.source}).")
+        else:
+            raise ValueError("Wrong value for the lang parameter.")
+        
+    def districts_involved(self):
+        all_districts_involved = [(self.v_from, self.d_from)]
+        all_districts_involved += [(destination['voivodship'], destination['district']) for destination in self.to]
+        return all_districts_involved
+
