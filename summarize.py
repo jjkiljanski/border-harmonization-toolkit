@@ -1,6 +1,6 @@
 def list_json_change_types(changes_json):
     # Takes the district changes read directly from json and print all different change "type" attributes.
-    types = [change["type"] for change in json_changes]
+    types = [change["type"] for change in changes_json]
     types = set(types)
     print(types)
 
