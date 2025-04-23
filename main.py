@@ -36,3 +36,13 @@ administrative_states.append(AdministrativeState(initial_state_dict))
 print(administrative_states[0])
 administrative_states[0].valid_to = '1921.08.01'
 administrative_states[0].to_csv()
+
+current_state = administrative_states[0]
+
+for change in changes_list:
+    if change.type == "v_change":
+        current_state = change.apply(current_state)
+        administrative_states.append(current_state)
+
+for state in administrative_states:
+    print(state)

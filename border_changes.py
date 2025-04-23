@@ -98,8 +98,15 @@ class VChange(Change):
         return [(self.v_from, self.d_from), (self.v_to, self.d_from)]
     
     def apply(self, administrative_state):
-        pass
-    
+        administrative_state.valid_to = self.date
+
+        new_administrative_state = administrative_state.copy()
+        new_administrative_state.valid_from = self.date
+        new_administrative_state.valid_to = None
+        district_to_move = new_administrative_state.pop_district(self.v_from, self.d_from)
+        new_administrative_state.add_district_if_absent(self.v_to, district_to_move)
+        return new_administrative_state
+
 class DOneToManyChange(Change):
     # Class describing the change where the territory of one district is split between many.
     def __init__(self, change_dict):

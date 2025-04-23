@@ -30,6 +30,56 @@ class AdministrativeState:
                 if district["name"] == searched_name or district["seat"]==searched_name:
                     return region, district
         return None, None
+    
+    def pop_district(self, region_name, district_name):
+        """
+        Removes and returns the district dict with the given name from the specified region.
+
+        Args:
+            region_name (str): The name of the region.
+            district_name (str): The name of the district to remove.
+
+        Returns:
+            dict: The removed district dictionary.
+
+        Raises:
+            ValueError: If the region does not exist or the district is not found in that region.
+        """
+        if region_name not in self.structure:
+            raise ValueError(f"Region '{region_name}' not found in structure.")
+
+        districts = self.structure[region_name]
+
+        for i, district in enumerate(districts):
+            if district["name"] == district_name:
+                return districts.pop(i)
+
+        raise ValueError(f"District '{district_name}' not found in region '{region_name}'.")
+    
+    def add_district_if_absent(self, region_name, district_dict):
+        """
+        Adds the given district dict to the specified region if it doesn't already exist.
+
+        Args:
+            region_name (str): The target region name.
+            district_dict (dict): A dict with at least a "name" key.
+
+        Raises:
+            ValueError: If the district already exists in the region.
+        """
+        if "name" not in district_dict:
+            raise ValueError("District dictionary must contain a 'name' key.")
+
+        if region_name not in self.structure:
+            raise ValueError(f"The region {region_name} doesn't exist for the current state.")
+
+        # Check for name collision
+        for existing in self.structure[region_name]:
+            if existing["name"] == district_dict["name"]:
+                raise ValueError(f"District '{district_dict['name']}' already exists in region '{region_name}'.")
+
+        self.structure[region_name].append(district_dict)
+        self.structure[region_name].sort(key=lambda district: district["name"])
 
     def to_dict(self):
         """Returns a dict version of the state (for saving/exporting)."""
@@ -69,7 +119,7 @@ class AdministrativeState:
 
     def copy(self):
         """Returns a deep copy of this state."""
-        return AdministrativeState(self.structure, date=self.date)
+        return deepcopy(self)
 
     def __repr__(self):
         regions = len(self.structure)
