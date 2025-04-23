@@ -20,7 +20,7 @@ def list_change_dates(changes_list, lang = "pol"):
 def summarize_by_date(change_list, lang = "pol"):
     # Prints all changes ordered by date.
     for change in change_list:
-        if change.type == "v_change" or change.type == "d_one_to_many" or change.type == "d_many_to_one":
+        if change.type == "VChange" or change.type == "DOneToMany" or change.type == "DManyToOne":
             change.echo(lang)
 
 def summarize_by_d(change_list, lang = "pol"):

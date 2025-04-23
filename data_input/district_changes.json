@@ -1,6 +1,6 @@
 [
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.08.1921",
     "source": "Dz.U. z 1922 r. nr 56, poz. 504",
     "description": "1.08.1921 włączono terytorium powiatu do powiatu bielskiego",
@@ -21,7 +21,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
@@ -34,7 +34,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
@@ -47,7 +47,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
@@ -60,7 +60,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
@@ -73,7 +73,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "do 13.04.1922 należał do woj. nowogródzkiego",
@@ -86,7 +86,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
@@ -99,7 +99,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
@@ -112,7 +112,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
@@ -125,7 +125,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
@@ -138,7 +138,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "do 13.04.1922 należał do woj. Nowogródzkiego",
@@ -151,7 +151,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
@@ -164,7 +164,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączone do Polski po buncie Żeligowskiego i aneksji Litwie",
@@ -177,7 +177,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat miejski Katowice pozyskany od Niemiec",
@@ -190,7 +190,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat katowicki pozyskany od Niemiec",
@@ -203,7 +203,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat Królewska Huta pozyskany od Niemiec",
@@ -216,7 +216,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat lubliniecki pozyskany od Niemiec",
@@ -229,7 +229,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat pszczyński pozyskany od Niemiec",
@@ -242,7 +242,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z części powiatów zabrskiego (siedziba powiatu Zabrze pozostała po stronie niemieckiej) i gliwickiego (oprócz gminy Mikoleska, siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej) pozyskanych od Niemiec",
@@ -268,7 +268,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z terytorium części powiatu rybnickiego (część powiatu pozostała po stronie niemieckiej) oraz części powiatu raciborskiego (siedziba powiatu Racibórz pozostała po stronie niemieckiej) pozyskanych od Niemiec",
@@ -294,7 +294,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z części powiatów Bytom wieś i Bytom miasto (Bytom pozostał po stronie niemieckiej) pozyskanych od Niemiec",
@@ -320,7 +320,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z powiatu tarnogórskiego pozyskanego od Niemiec oraz gminy Mikoleska powiatu gliwickiego (siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej)",
@@ -346,7 +346,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "26.07.1922",
     "source": "Dz.U. z 1922 r. nr 56, poz. 510",
     "description": "26.07.1922 roku powiat miejski Lublin został zniesiony",
@@ -367,7 +367,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "1.01.1923",
     "source": "M.P. z 1922 r. nr 282, poz. 204",
     "description": "1.01.1923 przeniesiono siedzibę urzędu starostwa powiatu cieszanowskiego do Lubaczowa i zmieniono nazwę powiatu na powiat lubaczowski",
@@ -388,7 +388,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.01.1923",
     "source": "Dz.U. z 1922 r. nr 116, poz. 1051",
     "description": "1.01.1923 utworzono powiat stoliński z części powiatów łuninieckiego, sarneńskiego i pińskiego",
@@ -420,7 +420,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "15.07.1923",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "X.X.1923 utworzono z terytoriów powiatów wileńskiego i trockiego powiat wileńsko-trocki",
@@ -446,7 +446,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.01.1924",
     "source": "Dz.U. z 1923 r. nr 122, poz. 992",
     "description": "zniesiono powiat podgórski, a jego terytorium włączono do powiatu krakowskiego",
@@ -467,7 +467,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.01.1924",
     "source": "Dz.U. z 1923 r. nr 122, poz. 991",
     "description": "utworzono powiat makowski z części terytoriów powiatu żywieckiego i myślenickiego",
@@ -493,7 +493,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.01.1924",
     "source": "Dz.U. z 1923 r. nr 122, poz. 991",
     "description": "utworzono powiat makowski z części terytoriów powiatu żywieckiego i myślenickiego",
@@ -520,7 +520,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.01.1924",
     "source": "Dz.U. z 1923 r. nr 122, poz. 992",
     "description": "zniesiono powiat podgórski, a jego terytorium włączono do powiatu krakowskiego",
@@ -541,7 +541,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "15.07.1924",
     "order": 1,
     "source": "X",
@@ -563,7 +563,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "15.07.1924",
     "order": 1,
     "source": "X",
@@ -585,7 +585,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 117, poz. 1052",
     "description": "1.01.1925 zniesiono powiat sejneński, a jego terytorium przyłączono do powiatu suwalskiego",
@@ -606,7 +606,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 117, poz. 1044",
     "description": "1.01.1925 zniesiono powiaty poznański wschodni i poznański zachodni i utworzono z ich terytorium powiat poznański",
@@ -632,7 +632,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 68, poz. 655",
     "description": "1.01.1925 utworzono powiat kostopolski z części powiatu rówieńskiego",
@@ -652,7 +652,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 68, poz. 655",
     "description": "1.01.1925 zniesiono powiat ostrogski, a na jego miejsce utworzono powiat zdołbunowski z siedzibą w Zdołbunowie",
@@ -673,7 +673,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.07.1925",
     "source": "Dz.U. z 1925 r. nr 63, poz. 441",
     "description": "zniesiono powiat spisko-orawski, a jego terytorium włączono do powiatu nowotarskiego",
@@ -694,7 +694,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.07.1925",
     "source": "Dz.U. z 1925 r. nr 63, poz. 441",
     "description": "zniesiono powiat spisko-orawski, a jego terytorium włączono do powiatu nowotarskiego",
@@ -715,7 +715,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.07.1925",
     "source": "Dz.U. z 1925 r. nr 59, poz. 416",
     "description": "1.07.1925 roku wyodrębniono z powiatu gnieźnieńskiego powiat miejski w Gnieźnie",
@@ -735,7 +735,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.07.1925",
     "source": "Dz.U. z 1925 r. nr 59, poz. 417",
     "description": "1.07.1925 roku z powiatu inowrocławskiego wyodrębniono Inowrocław i utworzono powiat miejski w Inowrocławiu",
@@ -755,7 +755,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.01.1926",
     "source": "Dz.U. z 1925 r. nr 67, poz. 472",
     "description": "1.01.1926 utworzono z powiatu duniłowickiego powiat postawski z siedzibą w Postawach",
@@ -776,7 +776,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.01.1926",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213; Dz.U. z 1925 r. nr 67, poz. 472",
     "description": "1.01.1926 utworzono z powiatu duniłowickiego powiat postawski z siedzibą w Postawach",
@@ -797,7 +797,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.01.1927",
     "order": 1,
     "source": "Dz.U. z 1926 r. nr 117, poz. 678; Dz.U. z 1926 r. nr 128, poz. 760",
@@ -824,7 +824,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.01.1927",
     "source": "Dz.U. z 1926 r. nr 125, poz. 727",
     "description": "utworzono powiat zawierciański z części powiatu będzińskiego",
@@ -844,7 +844,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.01.1927",
     "source": "Dz.U. z 1926 r. nr 125, poz. 727",
     "description": "utworzono powiat zawierciański z części powiatu będzińskiego",
@@ -864,7 +864,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.01.1927",
     "order": 2,
     "source": "Dz.U. z 1926 r. nr 117, poz. 678; Dz.U. z 1926 r. nr 128, poz. 760",
@@ -886,7 +886,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.04.1927",
     "source": "Dz.U. z 1927 r. nr 8, poz. 62",
     "description": "1.04.1927 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
@@ -912,7 +912,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "01.04.1927",
     "source": "Dz.U. z 1925 r. nr 67, poz. 472, zm. Dz.U. z 1926 r. nr 26, poz. 158, zm. Dz.U. z 1927 r. nr 8, poz. 62",
     "description": "1.04.1927 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
@@ -938,7 +938,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1927",
     "source": "Dz.U. z 1925 r. nr 59, poz. 416; Dz.U. z 1927 r. nr 17, poz. 130",
     "description": "1.04.1927 zniesiono powiat witkowski, a jego terytorium włączono do powiatu gnieźnieńskiego i wrzesińskiego",
@@ -965,7 +965,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1927",
     "source": "Dz.U. z 1927 r. nr 17, poz. 130",
     "description": "1.04.1927 zniesiono powiat witkowski, a jego terytorium włączono do powiatu gnieźnieńskiego i wrzesińskiego",
@@ -992,7 +992,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "12.04.1928",
     "source": "Dz.U. z 1928 r. nr 45, poz. 426",
     "description": "12.04.1928 roku utworzono powiat miejski w Białymstoku",
@@ -1013,7 +1013,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "12.04.1928",
     "source": "Dz.U. z 1928 r. nr 45, poz. 426",
     "description": "12.04.1928 roku utworzono powiat miejski w Częstochowie",
@@ -1034,7 +1034,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "12.04.1928",
     "source": "Dz.U. z 1928 r. nr 45, poz. 426",
     "description": "12.04.1928 roku utworzono powiat miejski w Sosnowcu",
@@ -1055,7 +1055,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "24.01.1929",
     "source": "Dz.U. z 1929 r. nr 4, poz. 35",
     "description": "24.01.1929 wyłączono z powiatu morskiego gminę miejską Gdynia i utworzono z niej odrębny powiat miejski",
@@ -1075,7 +1075,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1929",
     "source": "Dz.U. z 1929 r. nr 20, poz. 190",
     "description": "1.04.1929 zniesiono powiat peczeniżyński, a jego terytorium włączono do powiatu kołomyjskiego",
@@ -1096,7 +1096,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "21.05.1929",
     "source": "Dz.U. z 1929 r. nr 33, poz. 307",
     "description": "21.05.1929 utworzono powiat szczuczyński z części powiatu lidzkiego i grodzieńskiego",
@@ -1122,7 +1122,7 @@
     }
   },
   {
-    "type": "d_many_to_one",
+    "type": "DManyToOne",
     "date": "21.05.1929",
     "source": "Dz.U. z 1929 r. nr 33, poz. 307",
     "description": "21.05.1929 utworzono powiat szczuczyński z części powiatu lidzkiego i grodzieńskiego",
@@ -1148,7 +1148,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "16.12.1930",
     "source": "Dz.U. z 1930 r. nr 82, poz. 649",
     "description": "od 16.12.1930 należał do woj. wołyńskiego",
@@ -1161,7 +1161,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "16.12.1930",
     "source": "Dz.U. z 1930 r. nr 82, poz. 649",
     "description": "do 16.12.1930 należał do woj. poleskiego",
@@ -1174,7 +1174,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "17.04.1931",
     "source": "Dz.U. z 1931 r. nr 34, poz. 238",
     "description": "Powiat turczański, województwo lwowskie, do 17.04.1931 należał do województwa stanisławowskiego.",
@@ -1187,7 +1187,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "17.04.1931",
     "source": "Dz.U. z 1931 r. nr 34, poz. 238",
     "description": "od 17.04.1931 należał do województwa lwowskiego",
@@ -1200,7 +1200,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.01.1932",
     "source": "Dz.U. z 1929 r. nr 35, poz. 318, zm. Dz.U. z 1931 r. nr 111, poz. 867",
     "description": "1.01.1932 zniesiono powiat i z jego terytorium utworzono powiat iwacewicki z siedzibą w Iwacewiczach",
@@ -1221,7 +1221,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 3, poz. 18",
     "description": "1.04.1932 terytorium powiatu kolneńskiego przyłączono do powiatów łomżyńskiego i ostrołęckiego",
@@ -1248,7 +1248,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat oświęcimski, a jego terytorium włączono do powiatów bialskiego i wadowickiego",
@@ -1275,7 +1275,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat grybowski i włączono jego terytorium do powiatów nowosądeckiego, gorlickiego i tarnowskiego",
@@ -1308,7 +1308,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat pilzneński, a jego terytorium włączono do powiatów ropczyckiego i jasielskiego",
@@ -1335,7 +1335,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat wielicki, a jego terytorium rozdzielono między powiaty myślenicki i krakowski",
@@ -1362,7 +1362,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "powiat zniesiono, a jego terytorium włączono do powiatów wadowickiego, żywieckiego, myślenickiego i nowotarskiego",
@@ -1401,7 +1401,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat wielicki, a jego terytorium rozdzielono między powiaty myślenicki i krakowski",
@@ -1428,7 +1428,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat makowski, a jego terytorium włączono do powiatów wadowickiego, żywieckiego, myślenickiego i nowotarskiego",
@@ -1467,7 +1467,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat oświęcimski, a jego terytorium włączono do powiatów bialskiego i wadowickiego",
@@ -1494,7 +1494,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat pilzneński, a jego terytorium włączono do powiatów ropczyckiego i jasielskiego",
@@ -1521,7 +1521,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat wadowicki, a jego terytorium włączono do powiatów wadowickiego, żywieckiego, myślenickiego i nowotarskiego",
@@ -1548,7 +1548,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 34",
     "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium o powiatu konińskiego",
@@ -1569,7 +1569,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 33",
     "description": "Powiat konstantynowski został zniesiony, a jego terytorium włączono do powiatów bialskiego i siedleckiego.",
@@ -1596,7 +1596,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 36",
     "description": "Powiat strzyżowski został zniesiony, a jego terytorium włączono do powiatów rzeszowskiego i krośnieńskiego.",
@@ -1623,7 +1623,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 36",
     "description": "Powiat starosamborski został zniesiony, a jego terytorium włączono do powiatu samborskiego.",
@@ -1644,7 +1644,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 36",
     "description": "Powiat samborski został zniesiony, a jego terytorium włączono do powiatu samborskiego.",
@@ -1665,7 +1665,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 3, poz. 19",
     "description": "1.04.1932 zniesiono powiat gniewski, a jego terytorium rozdzielono między powiaty starogardzki, świecki i tczewski",
@@ -1698,7 +1698,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat grodziski i włączono jego terytorium do powiatu nowotomyskiego",
@@ -1719,7 +1719,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat ostrzeszowski, a jego terytorium włączono do powiatu kępińskiego",
@@ -1740,7 +1740,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium o powiatu konińskiego",
@@ -1761,7 +1761,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat śmigielski, a jego terytorium włączono do powiatu kościańskiego",
@@ -1782,7 +1782,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat koźmiński, a jego terytorium włączono do powiatu krotoszyńskiego",
@@ -1803,7 +1803,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat strzelneński, a jego terytorium włączono do powiatu mogileńskiego",
@@ -1824,7 +1824,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat odolanowski, a jego terytorium włączono do powiatu ostrowskiego",
@@ -1845,7 +1845,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat ostrzeszowski, a jego terytorium włączono do powiatu kępińskiego",
@@ -1866,7 +1866,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat śmigielski, a jego terytorium włączono do powiatu kościańskiego",
@@ -1887,7 +1887,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 37",
     "description": "1.04.1932 zniesiono powiat bohorodczański i jego obszar włączono do powiatów nadwórniańskiego i stanisławowskiego",
@@ -1914,7 +1914,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 37",
     "description": "1.04.1932 zniesiono powiat skolski, a jego obszar włączono do powiatu stryjskiego",
@@ -1935,7 +1935,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 3, poz. 18; Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "1.04.1932 przyłączono do niego część terytorium powiatu kolneńskiego (pozostałą część do powiatu łomżyńskiego); do 1.04.1939 należał do woj. białostockiego",
@@ -1962,7 +1962,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "18.05.1932",
     "source": "Dz.U. z 1932 r. nr 41, poz. 408",
     "description": "18.05.1932 utworzono powiat miejski w Radomiu",
@@ -1983,7 +1983,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "01.04.1937",
     "source": "Dz.U. z 1937 r. nr 18, poz. 119",
     "description": "zniesiono powiat ropczycki, a na jego terytorium powołano do życia powiat dębicki z siedzibą w Dębicy",
@@ -2004,7 +2004,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.01.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1938 należał do woj. Pomorskiego",
@@ -2017,7 +2017,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
@@ -2030,7 +2030,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
@@ -2043,7 +2043,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
@@ -2056,7 +2056,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
@@ -2069,7 +2069,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. poznańskiego",
@@ -2082,7 +2082,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "1.04.1938 przeniesiono powiat Bydgoszcz do województwa pomorskiego",
@@ -2095,7 +2095,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. warszawskiego",
@@ -2108,7 +2108,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. warszawskiego",
@@ -2121,7 +2121,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. warszawskiego",
@@ -2134,7 +2134,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. warszawskiego",
@@ -2147,7 +2147,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do województwa poznańskiego",
@@ -2160,7 +2160,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. warszawskiego",
@@ -2173,7 +2173,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. poznańskiego",
@@ -2186,7 +2186,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. Pomorskiego",
@@ -2199,7 +2199,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "1.04.1938 przeniesiono powiat Bydgoszcz do województwa pomorskiego",
@@ -2212,7 +2212,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
@@ -2225,7 +2225,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
@@ -2238,7 +2238,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. łódzkiego",
@@ -2251,7 +2251,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. łódzkiego",
@@ -2264,7 +2264,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. łódzkiego",
@@ -2277,7 +2277,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do województwa pomorskiego",
@@ -2290,7 +2290,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do województwa pomorskiego",
@@ -2303,7 +2303,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. łódzkiego",
@@ -2316,7 +2316,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. pomorskiego",
@@ -2329,7 +2329,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
@@ -2342,7 +2342,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
@@ -2355,7 +2355,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
@@ -2368,7 +2368,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "12.04.1938",
     "source": "Dz.U. z 1928 r. nr 45, poz. 426",
     "description": "powiat miejski Lublin został ponownie utworzony 12.04.1928 roku",
@@ -2389,7 +2389,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu bardiowskiego anektowanego Czechosłowacji",
@@ -2410,7 +2410,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu starolubowelskiego anektowanego Czechosłowacji",
@@ -2431,7 +2431,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu kieżmarskiego anektowanego Czechosłowacji",
@@ -2452,7 +2452,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu namiestowskiego anektowanego Czechosłowacji",
@@ -2473,7 +2473,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu starowiejskiego anektowanego Czechosłowacji",
@@ -2494,7 +2494,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu trzciańskiego anektowanego Czechosłowacji",
@@ -2515,7 +2515,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "16.11.1938 przyłączono do powiatu leskiego część terytorium powiatu snińskiego anektowanego Czechosłowacji.",
@@ -2536,7 +2536,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "16.11.1938 przyłączono do niego część powiatu czadeckiego, niewielką część powiatu frydeckiego oraz powiat czeskocieszyński anektowane Czechosłowacji",
@@ -2557,7 +2557,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "16.11.1938 przyłączono do niego część powiatu czadeckiego, niewielką część powiatu frydeckiego oraz powiat czeskocieszyński anektowane Czechosłowacji",
@@ -2578,7 +2578,7 @@
     }
   },
   {
-    "type": "d_one_to_many",
+    "type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "16.11.1938 przyłączono do niego część powiatu frydeckiego anektowanego Czechosłowacji",
@@ -2605,7 +2605,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. warszawskiego",
@@ -2618,7 +2618,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. warszawskiego",
@@ -2631,7 +2631,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. warszawskiego",
@@ -2644,7 +2644,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
@@ -2657,7 +2657,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. Łódzkiego",
@@ -2670,7 +2670,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. kieleckiego",
@@ -2683,7 +2683,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. warszawskiego",
@@ -2696,7 +2696,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. warszawskiego",
@@ -2709,7 +2709,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. kieleckiego",
@@ -2722,7 +2722,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. warszawskiego",
@@ -2735,7 +2735,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. warszawskiego",
@@ -2748,7 +2748,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "Powiat garwoliński, województwo lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
@@ -2761,7 +2761,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "Powiat sokołowski, województwo lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
@@ -2774,7 +2774,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "Powiat węgrowski, województwo lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
@@ -2787,7 +2787,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. lubelskiego",
@@ -2800,7 +2800,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
@@ -2813,7 +2813,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1932 r. nr 3, poz. 18; Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. białostockiego",
@@ -2826,7 +2826,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
@@ -2839,7 +2839,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. białostockiego",
@@ -2852,7 +2852,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
@@ -2865,7 +2865,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
@@ -2878,7 +2878,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. lubelskiego",
@@ -2891,7 +2891,7 @@
     }
   },
   {
-    "type": "v_change",
+    "type": "VChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. lubelskiego",

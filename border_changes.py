@@ -5,36 +5,16 @@ class Change(ABC):
     # Base Change class
     required_attributes = ["type", "date", "source", "description", "matter"]
 
-    def __init__(self, change_dict):
+    def __init__(self, change_entry):
         # Validate the structure of the change_dict for initiation
-        self.change_dict = change_dict
-        self.validate_base_struct()
+        self.change_dict = change_entry.dict()
 
         # Initiate Change class with the required attributes
         self.type = self.change_dict["type"]
         self.date = datetime.strptime(self.change_dict["date"], "%d.%m.%Y").date()
         self.source = self.change_dict["source"]
         self.description = self.change_dict["description"]
-        self.matter = self.change_dict["matter"]
-
-    def validate_base_struct(self):
-        # Raise value error if some attributes are missing
-        missing_attributes = [att for att in self.required_attributes if att not in self.change_dict]
-        present_attributes = [att for att in self.required_attributes if att not in missing_attributes]
-        if missing_attributes:
-            present_attributes = [self.change_dict[att] for att in self.required_attributes if att not in missing_attributes]
-            raise ValueError(f"Missing required change attributes: {', '.join(missing_attributes)} for change {', '.join(present_attributes)}")
-        
-        # Raise a warning if there are some unexpected attributes
-        extra_attributes = list(set(self.change_dict.keys())-set(self.required_attributes))
-        if extra_attributes:
-            print(f"Change {', '.join(present_attributes)} has unexpected attribute(s): {', '.join(extra_attributes)}.")
-        
-
-    @abstractmethod
-    def validate_matter_struct(self):
-        """Abstract method for validating change matter dict structure during class initiation."""
-        pass
+        self.matter = self.change_dict["matter"]        
 
     @abstractmethod
     def echo(self, lang = "pol"):
@@ -56,34 +36,10 @@ class VChange(Change):
     def __init__(self, change_dict):
         super().__init__(change_dict)  # Assign standard general Change description attributes
 
-        # Check if subclass-specific fields are present
-        self.validate_matter_struct()
-
         # Initiate subclass-specific attributes
-        self.v_from = self.matter['from']['region']
-        self.d_from = self.matter['from']['district']
+        self.v_from = self.matter['from_']['region']
+        self.d_from = self.matter['from_']['district']
         self.v_to = self.matter['to']
-
-    def validate_matter_struct(self):
-        # Helper function to assure correct attributes for the VChange initiation.
-
-        ##### Check the dict structure #####
-        exp_matter_keys = {"from", "to"} # Expected self.matter keys
-        if set(self.matter.keys()) != exp_matter_keys:
-            raise ValueError (f"Wrong structure of the VChange.matter attribute: {self.matter}.")
-        
-        exp_from_keys = {"region", "district"} # Expected self.matter["from"] keys
-        if set(self.matter["from"].keys()) != exp_from_keys:
-            raise ValueError (f"Wrong structure of the VChange.matter[\"from\"] attribute: {self.matter}.")
-
-        ##### Check the keys' types #####
-        if not isinstance(self.matter["from"]["region"], str):
-            raise ValueError (f"self.matter[\"from\"][\"region\"] attrib. must be string in {self.matter}.")
-        if not isinstance(self.matter["from"]["district"], str):
-            raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be string in {self.matter}.")
-        if not isinstance(self.matter["to"], str):
-            raise ValueError (f"self.matter[\"to\"] attrib. must be string in {self.matter}.")
-
 
     def echo(self, lang = "pol"):
         if lang == "pol":
@@ -112,53 +68,11 @@ class DOneToManyChange(Change):
     def __init__(self, change_dict):
         super().__init__(change_dict)  # Assign standard general Change description attributes
 
-        # Check if subclass-specific fields are present
-        self.validate_matter_struct()
-
         # Initiate subclass-specific attributes
-        self.v_from = self.matter['from']['region']
-        self.d_from = self.matter['from']['district']
-        self.delete_district = self.matter['from']['delete_district']
+        self.v_from = self.matter['from_']['region']
+        self.d_from = self.matter['from_']['district']
+        self.delete_district = self.matter['from_']['delete_district']
         self.many_to = self.matter['to']
-
-    def validate_matter_struct(self):
-        # Helper function to assure correct attributes for the VChange initiation.
-
-        ##### Check the dict structure #####
-        exp_matter_keys = {"from", "to"} # Expected self.matter keys
-        if set(self.matter.keys()) != exp_matter_keys:
-            raise ValueError (f"Wrong structure of the DOneToManyChange.matter attribute: {self.matter}.")
-        
-        exp_from_keys = {"region", "district", "delete_district"} # Expected self.matter["from"] keys
-        if set(self.matter["from"].keys()) != exp_from_keys:
-            raise ValueError (f"Wrong structure of the DOneToManyChange.matter[\"from\"] attribute: {self.matter}.")
-        
-        if not isinstance(self.matter["to"], list): # self.matter["to"] should be a list of dicts
-            raise ValueError (f"DOneToManyChange.matter[\"to\"] attribute must be a list: {self.matter}.")
-        
-        exp_to_keys = {"region", "district", "weight_from", "weight_to"} # Expected self.matter["from"] keys
-        for destination in self.matter["to"]:
-            if set(destination.keys()) != exp_to_keys:
-                raise ValueError (f"Wrong structure of the DOneToManyChange.matter[\"to\"] attributes: {self.matter}.")
-
-        ##### Check the keys' types #####
-        if not isinstance(self.matter["from"]["region"], str):
-            raise ValueError (f"self.matter[\"from\"][\"region\"] attrib. must be string in {self.matter}.")
-        if not isinstance(self.matter["from"]["district"], str):
-            raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be string in {self.matter}.")
-        if not isinstance(self.matter["from"]["delete_district"], bool):
-            raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be bool in {self.matter}.")
-        
-        for destination in self.matter["to"]:
-            if not isinstance(destination["region"], str):
-                raise ValueError (f"\"region\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
-            if not isinstance(destination["district"], str):
-                raise ValueError (f"\"district\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
-            if not (isinstance(destination["weight_from"], float) or destination["weight_from"] is None):
-                raise ValueError (f"\"weight_from\" attrib. for dicts in the self.matter[\"to\"] list must be float or None in {self.matter}.")
-            if not (isinstance(destination["weight_to"], float) or destination["weight_to"] is None):
-                raise ValueError (f"\"weight_to\" attrib. for dicts in the self.matter[\"to\"] list must be float or None in {self.matter}.")
-
 
     def echo(self, lang = "pol"):
         destination_districts = ", ".join([f"{destination['district']} ({destination['region']})" for destination in self.many_to])
@@ -189,52 +103,13 @@ class DManyToOneChange(Change):
     def __init__(self, change_dict):
         super().__init__(change_dict)  # Assign standard general Change description attributes
 
-        # Check if subclass-specific fields are present
-        self.validate_matter_struct()
-
         # Initiate subclass-specific attributes
-        self.many_from = self.matter['from']
+        self.many_from = self.matter['from_']
         self.v_to = self.matter['to']['region']
         self.d_to = self.matter['to']['district']
 
         # This variable is not defined in JSON. It is set only after the whole graph of border changes is created.
         self.create_district = None
-
-    def validate_matter_struct(self):
-        # Helper function to assure correct attributes for the VChange initiation.
-
-        ##### Check the dict structure #####
-        exp_matter_keys = {"from", "to"} # Expected self.matter keys
-        if set(self.matter.keys()) != exp_matter_keys:
-            raise ValueError (f"Wrong structure of the DOneToManyChange.matter attribute: {self.matter}.")
-        
-        if not isinstance(self.matter["from"], list): # self.matter["from"] should be a list of dicts
-            raise ValueError (f"DManyToOneChange.matter[\"from\"] attribute must be a list: {self.matter}.")
-        
-        exp_from_keys = {"region", "district", "weight_from", "weight_to"} # Expected self.matter["from"] keys
-        for origin in self.matter["from"]:
-            if set(origin.keys()) != exp_from_keys:
-                raise ValueError (f"Wrong structure of the DManyToOneChange.matter[\"from\"] attributes: {self.matter}.")
-        
-        exp_to_keys = {"region", "district"} # Expected self.matter["to"] keys
-        if set(self.matter["to"].keys()) != exp_to_keys:
-            raise ValueError (f"Wrong structure of the DManyToOneChange.matter[\"to\"] attribute: {self.matter}.")
-
-        ##### Check the keys' types #####
-        for origin in self.matter["from"]:
-            if not isinstance(origin["region"], str):
-                raise ValueError (f"\"region\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
-            if not isinstance(origin["district"], str):
-                raise ValueError (f"\"district\" attrib. for dicts in the self.matter[\"to\"] list must be string in {self.matter}.")
-            if not (isinstance(origin["weight_from"], float) or origin["weight_from"] is None):
-                raise ValueError (f"\"weight_from\" attrib. for dicts in the self.matter[\"to\"] list must be float or None in {self.matter}.")
-            if not (isinstance(origin["weight_to"], float) or origin["weight_to"] is None):
-                raise ValueError (f"\"weight_to\" attrib. for dicts in the self.matter[\"to\"] list must be float or None in {self.matter}.")
-
-        if not isinstance(self.matter["to"]["region"], str):
-            raise ValueError (f"self.matter[\"from\"][\"region\"] attrib. must be string in {self.matter}.")
-        if not isinstance(self.matter["to"]["district"], str):
-            raise ValueError (f"self.matter[\"from\"][\"district\"] attrib. must be string in {self.matter}.")
 
     def echo(self, lang = "pol"):
         origin_districts = ", ".join([f"{origin['district']} ({origin['region']})" for origin in self.many_from])
