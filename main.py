@@ -16,6 +16,8 @@ for change in json_changes:
         changes_list.append(VChange(change))
     if change["type"] == "d_one_to_many":
         changes_list.append(DOneToManyChange(change))
+    if change["type"] == "d_many_to_one":
+        changes_list.append(DManyToOneChange(change))
 
 summarize_by_date(changes_list)
 
