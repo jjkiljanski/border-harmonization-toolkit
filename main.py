@@ -18,5 +18,7 @@ for change in json_changes:
     if change["type"] == "d_many_to_one":
         changes_list.append(DManyToOneChange(change))
 
+changes_list.sort(key=lambda change: change.date)
+
 list_change_dates(changes_list)
 #summarize_by_date(changes_list)
