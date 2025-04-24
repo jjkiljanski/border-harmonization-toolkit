@@ -21,7 +21,7 @@ for change in json_changes:
 changes_list.sort(key=lambda change: change.date)
 
 list_change_dates(changes_list)
-#summarize_by_date(changes_list)
+summarize_by_date(changes_list)
 
 ########## Load and initiate the initial state of administrative division ##########
 

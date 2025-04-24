@@ -74,6 +74,7 @@
       },
       {
         "name": "wysokomazowiecki",
+        "alternative_names": ["wysoko-mazowiecki"],
         "district_type": "w",
         "seat": "Wysokie Mazowieckie"
       }
@@ -164,7 +165,8 @@
       {
         "name": "bialski",
         "district_type": "w",
-        "seat": "Biała"
+        "seat": "Biała",
+        "alternative_seat_names": ["Biała Krakowska"]
       },
       {
         "name": "bocheński",
@@ -243,6 +245,7 @@
       },
       {
         "name": "pilzneński",
+        "alternative_names": ["pilźnieński"],
         "district_type": "w",
         "seat": "Pilzno"
       },
@@ -286,7 +289,8 @@
       {
         "name": "bialski",
         "district_type": "w",
-        "seat": "Biała"
+        "seat": "Biała",
+        "alternative_seat_names": ["Biała Podlaska"]
       },
       {
         "name": "biłgorajski",
@@ -478,7 +482,8 @@
       {
         "name": "rawski",
         "district_type": "w",
-        "seat": "Rawa"
+        "seat": "Rawa",
+        "alternative_seat_names": ["Rawa Ruska"]
       },
       {
         "name": "rudecki",
@@ -628,6 +633,7 @@
       },
       {
         "name": "duniłowicki",
+        "alternative_names": ["duniłowiczowski"],
         "district_type": "w",
         "seat": "Duniłowicze"
       },
@@ -1242,10 +1248,10 @@
         "seat": "Łowicz"
       },
       {
-        "name": "makowski",
+        "name": "makowski (Maków Mazowiecki)",
         "district_type": "w",
-        "seat": "Maków"
-      },
+        "seat": "Maków Mazowiecki"
+      }
       {
         "name": "miński",
         "district_type": "w",
@@ -1288,6 +1294,7 @@
       },
       {
         "name": "rawski",
+        "alternative_names": ["rawsko-mazowiecki"],
         "district_type": "w",
         "seat": "Rawa Mazowiecka"
       },

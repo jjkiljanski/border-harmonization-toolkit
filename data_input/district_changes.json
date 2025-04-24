@@ -12,6 +12,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Białostockie",
           "district": "bielski",
           "weight_from": null,
@@ -252,18 +253,23 @@
           "region": "Niemcy",
           "district": "zabrski",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         },
         {
           "region": "Niemcy",
           "district": "gliwicki",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Śląskie",
-        "district": "rudzki"
+        "district": "rudzki",
+        "district_type": "w",
+        "seat": "Ruda"
       }
     }
   },
@@ -278,18 +284,23 @@
           "region": "Niemcy",
           "district": "rybnicki",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         },
         {
           "region": "Niemcy",
           "district": "raciborski",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Śląskie",
-        "district": "rybnicki"
+        "district": "rybnicki",
+        "district_type": "w",
+        "seat": "Rybnik"
       }
     }
   },
@@ -304,18 +315,23 @@
           "region": "Niemcy",
           "district": "Bytom wieś",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         },
         {
           "region": "Niemcy",
           "district": "Bytom miasto",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Śląskie",
-        "district": "świętochłowicki"
+        "district": "świętochłowicki",
+        "district_type": "w",
+        "seat": "Świętochłowice"
       }
     }
   },
@@ -330,18 +346,23 @@
           "region": "Niemcy",
           "district": "tarnogórski",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": true
         },
         {
           "region": "Niemcy",
           "district": "gliwicki",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Śląskie",
-        "district": "tarnogórski"
+        "district": "tarnogórski",
+        "district_type": "w",
+        "seat": "Tarnowskie Góry"
       }
     }
   },
@@ -358,6 +379,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Lubelskie",
           "district": "lubelski",
           "weight_from": null,
@@ -379,8 +401,11 @@
       },
       "to": [
         {
+          "create": true,
           "region": "Lwowskie",
           "district": "lubaczowski",
+          "district_type": "w",
+          "seat": "Lubaczów",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -398,24 +423,30 @@
           "region": "Poleskie",
           "district": "łuniniecki",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         },
         {
           "region": "Poleskie",
           "district": "sarneński",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         },
         {
           "region": "Poleskie",
           "district": "piński",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Poleskie",
-        "district": "stoliński"
+        "district": "stoliński",
+        "district_type": "w",
+        "seat": "Stolin"
       }
     }
   },
@@ -430,18 +461,23 @@
           "region": "wileńskie",
           "district": "wileński",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": true
         },
         {
           "region": "wileńskie",
           "district": "trocki",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": true
         }
       ],
       "to": {
+        "create": true,
         "region": "wileńskie",
-        "district": "wileńsko-trocki"
+        "district": "wileńsko-trocki",
+        "district_type": "w",
+        "seat": "Wilno"
       }
     }
   },
@@ -458,6 +494,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "krakowski",
           "weight_from": null,
@@ -470,72 +507,32 @@
     "type": "DManyToOne",
     "date": "01.01.1924",
     "source": "Dz.U. z 1923 r. nr 122, poz. 991",
-    "description": "utworzono powiat makowski z części terytoriów powiatu żywieckiego i myślenickiego",
+    "description": "utworzono powiat makowski (Maków Podhalański) z części terytoriów powiatu żywieckiego i myślenickiego",
     "matter": {
       "from": [
         {
-          "region": "Krakowskie",
-          "district": "żywiecki",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "Krakowskie",
-          "district": "myślenicki",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ],
-      "to": {
-        "region": "Krakowskie",
-        "district": "makowski"
-      }
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.01.1924",
-    "source": "Dz.U. z 1923 r. nr 122, poz. 991",
-    "description": "utworzono powiat makowski z części terytoriów powiatu żywieckiego i myślenickiego",
-    "matter": {
-      "from": {
         "region": "Krakowskie",
         "district": "myślenicki",
-        "delete_district": true
-      },
-      "to": [
-        {
-          "region": "Krakowskie",
-          "district": "makowski",
-          "weight_from": null,
-          "weight_to": null
+        "weight_from": null,
+        "weight_to": null,
+        "delete_district": false
         },
         {
           "region": "Krakowskie",
           "district": "żywiecki",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.01.1924",
-    "source": "Dz.U. z 1923 r. nr 122, poz. 992",
-    "description": "zniesiono powiat podgórski, a jego terytorium włączono do powiatu krakowskiego",
-    "matter": {
-      "from": {
-        "region": "Krakowskie",
-        "district": "podgórski",
-        "delete_district": true
-      },
+      ],
       "to": [
         {
+          "create": true,
           "region": "Krakowskie",
-          "district": "krakowski",
-          "weight_from": null,
-          "weight_to": null
+          "district": "makowski (Maków Podhalański)",
+          "district_type": "w",
+          "seat": "Maków",
+          "alternative_seat_names": ["Maków Podhalański"]
         }
       ]
     }
@@ -554,6 +551,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "spisko-orawski",
           "weight_from": 0.25,
@@ -576,6 +574,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Czechosłowacja",
           "district": "namiestowski",
           "weight_from": 0.25,
@@ -597,6 +596,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Białostockie",
           "district": "suwalski",
           "weight_from": null,
@@ -616,18 +616,23 @@
           "region": "Poznańskie",
           "district": "poznański wschodni",
           "weight_from": 1.0,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": true
         },
         {
           "region": "Poznańskie",
           "district": "poznański zachodni",
           "weight_from": 1.0,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": true
         }
       ],
       "to": {
+        "create": true,
         "region": "Poznańskie",
-        "district": "poznański"
+        "district": "poznański",
+        "district_type": "w",
+        "seat": "Poznań"
       }
     }
   },
@@ -642,12 +647,16 @@
           "region": "Wołyń",
           "district": "rówieński",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Wołyń",
-        "district": "kostopolski"
+        "district": "kostopolski",
+        "district_type": "w",
+        "seat": "Kostopol"
       }
     }
   },
@@ -666,6 +675,8 @@
         {
           "region": "Wołyń",
           "district": "zdołbunowski",
+          "district_type": "w",
+          "seat": "Zdołbunów",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -685,27 +696,7 @@
       },
       "to": [
         {
-          "region": "Krakowskie",
-          "district": "nowotarski",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.07.1925",
-    "source": "Dz.U. z 1925 r. nr 63, poz. 441",
-    "description": "zniesiono powiat spisko-orawski, a jego terytorium włączono do powiatu nowotarskiego",
-    "matter": {
-      "from": {
-        "region": "Krakowskie",
-        "district": "spisko-orawski",
-        "delete_district": true
-      },
-      "to": [
-        {
+          "create": false,
           "region": "Krakowskie",
           "district": "nowotarski",
           "weight_from": null,
@@ -725,12 +716,16 @@
           "region": "Poznańskie",
           "district": "gnieźnieński",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Poznańskie",
-        "district": "Gniezno"
+        "district": "Gniezno",
+        "district_type": "m",
+        "seat": "Gniezno"
       }
     }
   },
@@ -745,12 +740,16 @@
           "region": "Poznańskie",
           "district": "inowrocławski",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Poznańskie",
-        "district": "Inowrocław"
+        "district": "Inowrocław",
+        "district_type": "m",
+        "seat": "Inowrocław"
       }
     }
   },
@@ -769,27 +768,8 @@
         {
           "region": "Ziemia Wileńska",
           "district": "postawski",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.01.1926",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213; Dz.U. z 1925 r. nr 67, poz. 472",
-    "description": "1.01.1926 utworzono z powiatu duniłowickiego powiat postawski z siedzibą w Postawach",
-    "matter": {
-      "from": {
-        "region": "wileńskie",
-        "district": "duniłowicki",
-        "delete_district": true
-      },
-      "to": [
-        {
-          "region": "wileńskie",
-          "district": "postawski",
+          "district_type": "w",
+          "seat": "Postawy",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -808,18 +788,23 @@
           "region": "Pomorskie",
           "district": "pucki",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         },
         {
           "region": "Pomorskie",
           "district": "wejherowski",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Pomorskie",
-        "district": "morski"
+        "district": "morski",
+        "district_type": "w",
+        "seat": "Gdynia"
       }
     }
   },
@@ -834,32 +819,16 @@
           "region": "Kieleckie",
           "district": "będziński",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Kieleckie",
-        "district": "zawierciański"
-      }
-    }
-  },
-  {
-    "type": "DManyToOne",
-    "date": "01.01.1927",
-    "source": "Dz.U. z 1926 r. nr 125, poz. 727",
-    "description": "utworzono powiat zawierciański z części powiatu będzińskiego",
-    "matter": {
-      "from": [
-        {
-          "region": "Kieleckie",
-          "district": "będziński",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ],
-      "to": {
-        "region": "Kieleckie",
-        "district": "zawierciański"
+        "district": "zawierciański",
+        "district_type":"w",
+        "seat": "Zawiercie"
       }
     }
   },
@@ -896,44 +865,23 @@
           "region": "Ziemia Wileńska",
           "district": "wilejski",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         },
         {
           "region": "Ziemia Wileńska",
           "district": "oszmiański",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Ziemia Wileńska",
-        "district": "mołodeczański"
-      }
-    }
-  },
-  {
-    "type": "DManyToOne",
-    "date": "01.04.1927",
-    "source": "Dz.U. z 1925 r. nr 67, poz. 472, zm. Dz.U. z 1926 r. nr 26, poz. 158, zm. Dz.U. z 1927 r. nr 8, poz. 62",
-    "description": "1.04.1927 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
-    "matter": {
-      "from": [
-        {
-          "region": "wileńskie",
-          "district": "wilejski",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "wileńskie",
-          "district": "oszmiański",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ],
-      "to": {
-        "region": "wileńskie",
-        "district": "mołodeczański"
+        "district": "mołodeczański",
+        "district_type": "w",
+        "seat": "Mołodeczno"
       }
     }
   },
@@ -950,39 +898,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "gnieźnieński",
           "weight_from": null,
           "weight_to": null
         },
         {
-          "region": "Poznańskie",
-          "district": "wrzesiński",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.04.1927",
-    "source": "Dz.U. z 1927 r. nr 17, poz. 130",
-    "description": "1.04.1927 zniesiono powiat witkowski, a jego terytorium włączono do powiatu gnieźnieńskiego i wrzesińskiego",
-    "matter": {
-      "from": {
-        "region": "Poznańskie",
-        "district": "witkowski",
-        "delete_district": true
-      },
-      "to": [
-        {
-          "region": "Poznańskie",
-          "district": "gnieźnieński",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
+          "create": false,
           "region": "Poznańskie",
           "district": "wrzesiński",
           "weight_from": null,
@@ -1000,12 +923,15 @@
       "from": {
         "region": "Białostockie",
         "district": "białostocki",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": true,
           "region": "białostocki",
           "district": "Białystok",
+          "district_type": "m",
+          "seat": "Białystok",
           "weight_from": null,
           "weight_to": null
         }
@@ -1021,12 +947,15 @@
       "from": {
         "region": "Kieleckie",
         "district": "częstochowski",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": true,
           "region": "Kieleckie",
           "district": "Częstochowa",
+          "district_type": "m",
+          "seat": "Częstochowa",
           "weight_from": null,
           "weight_to": null
         }
@@ -1042,12 +971,15 @@
       "from": {
         "region": "Kieleckie",
         "district": "będziński",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": true,
           "region": "Kieleckie",
           "district": "Sosnowiec",
+          "district_type": "m",
+          "seat": "Sosnowiec",
           "weight_from": null,
           "weight_to": null
         }
@@ -1065,12 +997,16 @@
           "region": "Pomorskie",
           "district": "morski",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Pomorskie",
-        "district": "Gdynia"
+        "district": "Gdynia",
+        "district_type": "m",
+        "seat": "Gdynia"
       }
     }
   },
@@ -1087,6 +1023,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Stanisławowskie",
           "district": "kołomyjski",
           "weight_from": null,
@@ -1106,44 +1043,23 @@
           "region": "Nowogródzkie",
           "district": "lidzki",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         },
         {
           "region": "Białostockie",
           "district": "grodzieński",
           "weight_from": null,
-          "weight_to": null
+          "weight_to": null,
+          "delete_district": false
         }
       ],
       "to": {
+        "create": true,
         "region": "Białostockie",
-        "district": "szczuczyński"
-      }
-    }
-  },
-  {
-    "type": "DManyToOne",
-    "date": "21.05.1929",
-    "source": "Dz.U. z 1929 r. nr 33, poz. 307",
-    "description": "21.05.1929 utworzono powiat szczuczyński z części powiatu lidzkiego i grodzieńskiego",
-    "matter": {
-      "from": [
-        {
-          "region": "Nowogródzkie",
-          "district": "lidzki",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "Nowogródzkie",
-          "district": "grodzieński",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ],
-      "to": {
-        "region": "Nowogródzkie",
-        "district": "szczuczyński"
+        "district": "szczuczyński",
+        "district_type": "w",
+        "seat": "Szczuczyn"
       }
     }
   },
@@ -1171,6 +1087,30 @@
         "district": "sarneński"
       },
       "to": "Wołyń"
+    }
+  },
+  {
+    "type": "DOneToMany",
+    "date": "04.03.1931",
+    "source": "M.P. 1931 nr 51 poz. 86",
+    "description": "Zmieniono nazwę miasta Lisko na Lesko, a powiatu liski na leski",
+    "matter": {
+      "from": {
+        "region": "Lwowskie",
+        "district": "liski",
+        "delete_district": true
+      },
+      "to": [
+        {
+          "create": true,
+          "region": "Lwowskie",
+          "district": "leski",
+          "district_type": "w",
+          "seat": "Lesko",
+          "weight_from": 1.0,
+          "weight_to": 1.0
+        }
+      ]
     }
   },
   {
@@ -1212,8 +1152,11 @@
       },
       "to": [
         {
+          "create": true,
           "region": "Poleskie",
           "district": "iwacewicki",
+          "district_type": "m",
+          "seat": "Iwacewicze",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -1233,12 +1176,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Białostockie",
           "district": "łomżyński",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Białostockie",
           "district": "ostrołęcki",
           "weight_from": null,
@@ -1260,12 +1205,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "bialski",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "wadowicki",
           "weight_from": null,
@@ -1287,18 +1234,21 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "nowosądecki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "gorlicki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "tarnowski",
           "weight_from": null,
@@ -1320,12 +1270,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "ropczycki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "jasielski",
           "weight_from": null,
@@ -1347,12 +1299,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "myślenicki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "krakowski",
           "weight_from": null,
@@ -1365,128 +1319,39 @@
     "type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
-    "description": "powiat zniesiono, a jego terytorium włączono do powiatów wadowickiego, żywieckiego, myślenickiego i nowotarskiego",
+    "description": "zniesiono powiat makowski (Maków Podhalański), a jego terytorium włączono do powiatów wadowickiego, żywieckiego, myślenickiego i nowotarskiego",
     "matter": {
       "from": {
         "region": "Krakowskie",
-        "district": "makowski",
+        "district": "makowski (Maków Podhalański)",
         "delete_district": true
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "wadowicki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "żywiecki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "myślenicki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "nowotarski",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 1, poz. 3",
-    "description": "zniesiono powiat wielicki, a jego terytorium rozdzielono między powiaty myślenicki i krakowski",
-    "matter": {
-      "from": {
-        "region": "Krakowskie",
-        "district": "wielicki",
-        "delete_district": true
-      },
-      "to": [
-        {
-          "region": "Krakowskie",
-          "district": "myślenicki",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "Krakowskie",
-          "district": "krakowski",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 1, poz. 3",
-    "description": "zniesiono powiat makowski, a jego terytorium włączono do powiatów wadowickiego, żywieckiego, myślenickiego i nowotarskiego",
-    "matter": {
-      "from": {
-        "region": "Krakowskie",
-        "district": "makowski",
-        "delete_district": true
-      },
-      "to": [
-        {
-          "region": "Krakowskie",
-          "district": "wadowicki",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "Krakowskie",
-          "district": "żywiecki",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "Krakowskie",
-          "district": "myślenicki",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "Krakowskie",
-          "district": "nowotarski",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 1, poz. 3",
-    "description": "zniesiono powiat oświęcimski, a jego terytorium włączono do powiatów bialskiego i wadowickiego",
-    "matter": {
-      "from": {
-        "region": "Krakowskie",
-        "district": "oświęcimski",
-        "delete_district": true
-      },
-      "to": [
-        {
-          "region": "Krakowskie",
-          "district": "bialski",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "Krakowskie",
-          "district": "wadowicki",
           "weight_from": null,
           "weight_to": null
         }
@@ -1506,12 +1371,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "ropczycki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "jasielski",
           "weight_from": null,
@@ -1523,35 +1390,8 @@
   {
     "type": "DOneToMany",
     "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 1, poz. 3",
-    "description": "zniesiono powiat wadowicki, a jego terytorium włączono do powiatów wadowickiego, żywieckiego, myślenickiego i nowotarskiego",
-    "matter": {
-      "from": {
-        "region": "Krakowskie",
-        "district": "wadowicki",
-        "delete_district": true
-      },
-      "to": [
-        {
-          "region": "Krakowskie",
-          "district": "wadowicki",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "Krakowskie",
-          "district": "żywiecki",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 34",
-    "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium o powiatu konińskiego",
+    "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium do powiatu konińskiego",
     "matter": {
       "from": {
         "region": "Łódzkie",
@@ -1560,6 +1400,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Łódzkie",
           "district": "koniński",
           "weight_from": null,
@@ -1581,12 +1422,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Lubelskie",
           "district": "bialski",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Lubelskie",
           "district": "siedlecki",
           "weight_from": null,
@@ -1608,12 +1451,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Lwowskie",
           "district": "rzeszowski",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Lwowskie",
           "district": "krośnieński",
           "weight_from": null,
@@ -1635,27 +1480,7 @@
       },
       "to": [
         {
-          "region": "Lwowskie",
-          "district": "samborski",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 6, poz. 36",
-    "description": "Powiat samborski został zniesiony, a jego terytorium włączono do powiatu samborskiego.",
-    "matter": {
-      "from": {
-        "region": "Lwowskie",
-        "district": "samborski",
-        "delete_district": true
-      },
-      "to": [
-        {
+          "create": false,
           "region": "Lwowskie",
           "district": "samborski",
           "weight_from": null,
@@ -1677,18 +1502,21 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Pomorskie",
           "district": "starogardzki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Pomorskie",
           "district": "świecki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Pomorskie",
           "district": "tczewski",
           "weight_from": null,
@@ -1710,6 +1538,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "nowotomyski",
           "weight_from": null,
@@ -1731,6 +1560,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "kępiński",
           "weight_from": null,
@@ -1752,6 +1582,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "koniński",
           "weight_from": null,
@@ -1773,6 +1604,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "kościański",
           "weight_from": null,
@@ -1794,6 +1626,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "krotoszyński",
           "weight_from": null,
@@ -1815,6 +1648,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "mogileński",
           "weight_from": null,
@@ -1836,6 +1670,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "ostrowski",
           "weight_from": null,
@@ -1857,6 +1692,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "kępiński",
           "weight_from": null,
@@ -1878,6 +1714,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Poznańskie",
           "district": "kościański",
           "weight_from": null,
@@ -1899,12 +1736,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Stanisławowskie",
           "district": "nadwórniański",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Stanisławowskie",
           "district": "stanisławowski",
           "weight_from": null,
@@ -1926,35 +1765,9 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Stanisławowskie",
           "district": "stryjski",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "type": "DOneToMany",
-    "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 3, poz. 18; Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "1.04.1932 przyłączono do niego część terytorium powiatu kolneńskiego (pozostałą część do powiatu łomżyńskiego); do 1.04.1939 należał do woj. białostockiego",
-    "matter": {
-      "from": {
-        "region": "Białostockie",
-        "district": "kolneński",
-        "delete_district": true
-      },
-      "to": [
-        {
-          "region": "Warszawskie",
-          "district": "ostrołęcki",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "region": "Warszawskie",
-          "district": "łomżyński",
           "weight_from": null,
           "weight_to": null
         }
@@ -1970,12 +1783,15 @@
       "from": {
         "region": "Kieleckie",
         "district": "radomski",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": true,
           "region": "Kieleckie",
           "district": "Radom",
+          "district_type": "m",
+          "seat": "Radom",
           "weight_from": null,
           "weight_to": null
         }
@@ -1995,8 +1811,11 @@
       },
       "to": [
         {
+          "create": true,
           "region": "Krakowskie",
           "district": "dębicki",
+          "district_type": "w",
+          "seat": "Dębica",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -2376,12 +2195,14 @@
       "from": {
         "region": "Lubelskie",
         "district": "lubelski",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
           "region": "Lubelskie",
           "district": "Lublin",
+          "district_type": "m",
+          "seat": "Lublin",
           "weight_from": null,
           "weight_to": null
         }
@@ -2395,14 +2216,15 @@
     "description": "przyłączono do niego część powiatu bardiowskiego anektowanego Czechosłowacji",
     "matter": {
       "from": {
-        "region": "Krakowskie",
-        "district": "gorlicki",
-        "delete_district": true
+        "region": "Czechosłowacja",
+        "district": "bardiowski",
+        "delete_district": false
       },
       "to": [
         {
-          "region": "Czechosłowacja",
-          "district": "bardiowski",
+          "create": false,
+          "region": "Krakowskie",
+          "district": "gorlicki",
           "weight_from": null,
           "weight_to": null
         }
@@ -2418,10 +2240,11 @@
       "from": {
         "region": "Czechosłowacja",
         "district": "starolubowelski",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "nowosądecki",
           "weight_from": null,
@@ -2439,10 +2262,11 @@
       "from": {
         "region": "Czechosłowacja",
         "district": "kieżmarski",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "nowotarski",
           "weight_from": null,
@@ -2460,10 +2284,11 @@
       "from": {
         "region": "Czechosłowacja",
         "district": "namiestowski",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "nowotarski",
           "weight_from": null,
@@ -2480,11 +2305,12 @@
     "matter": {
       "from": {
         "region": "Czechosłowacja",
-        "district": "starowiejskie",
-        "delete_district": true
+        "district": "starowiejski",
+        "delete_district": false
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "nowotarski",
           "weight_from": null,
@@ -2502,10 +2328,11 @@
       "from": {
         "region": "Czechosłowacja",
         "district": "trzciany",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": false,
           "region": "Krakowskie",
           "district": "nowotarski",
           "weight_from": null,
@@ -2523,10 +2350,11 @@
       "from": {
         "region": "Czechosłowacja",
         "district": "sniński",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": false,
           "region": "Lwowskie",
           "district": "leski",
           "weight_from": null,
@@ -2544,10 +2372,11 @@
       "from": {
         "region": "Czechosłowacja",
         "district": "czadecki",
-        "delete_district": true
+        "delete_district": false
       },
       "to": [
         {
+          "create": false,
           "region": "Śląskie",
           "district": "cieszyński",
           "weight_from": null,
@@ -2569,6 +2398,7 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Śląskie",
           "district": "cieszyński",
           "weight_from": 1.0,
@@ -2590,12 +2420,14 @@
       },
       "to": [
         {
+          "create": false,
           "region": "Śląskie",
           "district": "frysztacki",
           "weight_from": null,
           "weight_to": null
         },
         {
+          "create": false,
           "region": "Śląskie",
           "district": "cieszyński",
           "weight_from": null,
