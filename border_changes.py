@@ -12,7 +12,7 @@ class Change(ABC):
         self.date = datetime.strptime(self.change_dict["date"], "%d.%m.%Y").date()
         self.source = self.change_dict["source"]
         self.description = self.change_dict["description"]
-        self.matter = self.change_dict["matter"]        
+        self.matter = self.change_dict["matter"]  
 
     @abstractmethod
     def echo(self, lang = "pol"):
@@ -51,14 +51,19 @@ class RChange(Change):
         # Returns the list of (district, its_region) for all districts involved in the change
         return [(self.r_from, self.d_from), (self.r_to, self.d_from)]
     
-    def apply(self, administrative_state):
-        administrative_state.valid_to = self.date
-        new_administrative_state = administrative_state.copy()
-        new_administrative_state.valid_from = self.date
-        new_administrative_state.valid_to = None
-        district_to_move = new_administrative_state.pop_district(self.r_from, self.d_from)
-        new_administrative_state.add_district_if_absent(self.r_to, district_to_move)
-        return new_administrative_state
+    def apply(self, state):
+        # Remove district from the old region
+        try:
+            district_to_move = state.pop_district(self.r_from, self.d_from)
+        except:
+            raise ValueError(f"District {self.d_from} doesn't exist in region {self.r_from}:\n{self.echo()}.")
+        
+        # Add district to the new region
+        try:
+            state.add_district_if_absent(self.r_to, district_to_move)
+        except:
+            raise ValueError(f"District {self.d_from} doesn't exist in region {self.r_from}:\n{self.echo()}.")
+        
 
 class DOneToManyChange(Change):
     # Class describing the change where the territory of one district is split between many.

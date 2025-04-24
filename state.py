@@ -58,7 +58,7 @@ class AdministrativeState:
     
     def add_district_if_absent(self, region_name, district_dict):
         """
-        Adds the given district dict to the specified region if it doesn't already exist.
+        Adds the given district dict to the specified region. Raises an error if it already exists in the region.
 
         Args:
             region_name (str): The target region name.
@@ -75,7 +75,7 @@ class AdministrativeState:
 
         # Check for name collision
         for existing in self.structure[region_name]:
-            if existing["name"] == district_dict["name"]:
+            if existing["name"] == district_dict["name"] or district_dict["name"] in existing.get("alternative_names", []):
                 raise ValueError(f"District '{district_dict['name']}' already exists in region '{region_name}'.")
 
         self.structure[region_name].append(district_dict)
@@ -120,6 +120,25 @@ class AdministrativeState:
     def copy(self):
         """Returns a deep copy of this state."""
         return deepcopy(self)
+    
+    def apply_changes(self, changes_list):
+        # Creates a copy of itself, applies all changes to the copy and returns it as a new state.
+        new_state = self.copy()
+
+        # Take the date of the change and ensure that all changes have the same date.
+        change_date = changes_list[0].date
+        for change in changes_list:
+            if change.date != change_date:
+                raise ValueError(f"Changes applied to the state {self} have different dates!")
+        
+        # Define the end and origin of states
+        self.valid_to = change_date
+        new_state.valid_from = change_date
+            
+        for change in changes_list:
+            change.apply(new_state)
+
+        return new_state
 
     def __repr__(self):
         regions = len(self.structure)
