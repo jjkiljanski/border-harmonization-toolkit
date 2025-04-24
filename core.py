@@ -127,17 +127,18 @@ class AdministrativeHistory():
         # Check if all changes are there
         assert set(self.changes_chron_dict.keys()) == set(self.changes_dates), f"Lists not equal!\nset(self.changes_chron_dict.keys()):\n {set(self.changes_chron_dict.keys())};\nset(self.changes_dates):\n{set(self.changes_dates)}."
 
-        for date, change_list in self.changes_chron_dict.items():
-            for change in change_list:
-                print(f"{date}: {change.change_type}, order: {change.order}")
-                #change.echo()
+        # Uncomment for debugging only
+        # for date, change_list in self.changes_chron_dict.items():
+        #     for change in change_list:
+        #         print(f"{date}: {change.change_type}, order: {change.order}")
+        #         change.echo()
 
     def _create_history(self):
         for date in self.changes_dates:
             changes_list = self.changes_chron_dict[date]
             old_state = self.states_list[-1]
             new_state = old_state.apply_changes(changes_list)
-            print(f"{date}: Changes applied, administrative state {new_state} created.")
+            #print(f"{date}: Changes applied, administrative state {new_state} created.")
             self.states_list.append(new_state)
 
     def list_change_dates(self, lang = "pol"):
@@ -154,6 +155,10 @@ class AdministrativeHistory():
         # Prints all changes ordered by date.
         for change in self.changes_list:
             change.echo(lang)
+
+    def print_all_states(self):
+        for state in self.states_list:
+            print(state)
 
         
 

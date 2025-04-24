@@ -16,9 +16,11 @@ administrative_history = AdministrativeHistory(changes_path, state_path, timespa
 
 ########## Load and initiate the initial state of administrative division ##########
 
-print(administrative_history.states_list[0])
-administrative_history.states_list[0].valid_to = '1921.08.01'
-administrative_history.states_list[0].to_csv()
+administrative_history.print_all_states()
+
+# print(administrative_history.states_list[0])
+# administrative_history.states_list[0].valid_to = '1921.08.01'
+# administrative_history.states_list[0].to_csv()
 
 # current_state = administrative_states[0]
 
