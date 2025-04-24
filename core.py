@@ -29,9 +29,11 @@ class AdministrativeHistory():
         self._create_initial_state()
 
         # Create chronological changes dict {[date]: List[Change]}
+        self._create_changes_dates_list()
         self._create_changes_chronology()
 
         # Create states for the whole timespan
+        self._create_history()
 
     def _load_changes_from_json(self):
         """
@@ -100,23 +102,10 @@ class AdministrativeHistory():
         del self._initial_state_dict
         print("✅ Successfully created AdministrativeState object for the initial state.")
 
-    def list_change_dates(self, lang = "pol"):
-        # Lists all the dates of border changes.
-        dates = [change.date for change in self.changes_list]
-        dates = list(set(dates))
-        dates.sort()
-        if lang == "pol":
-            print("Wszystkie daty zmian granic:")
-        elif lang == "eng":
-            print("All dates of border changes:")
-        else:
-            raise ValueError("Wrong value for the lang parameter.") 
-        for date in dates: print(date)
-
-    def summarize_by_date(self, lang = "pol"):
-        # Prints all changes ordered by date.
-        for change in self.changes_list:
-            change.echo(lang)
+    def _create_changes_dates_list(self):
+        self.changes_dates = [change.date for change in self.changes_list]
+        self.changes_dates = list(set(self.changes_dates))
+        self.changes_dates.sort()
 
     def _create_changes_chronology(self):
         self.changes_chron_dict = {}
@@ -131,11 +120,36 @@ class AdministrativeHistory():
             # change.order = None puts the changes at the end of the list.
             change_list.sort(key=lambda change: (change.order is None, change.order))
 
+        # Check if all changes are there
+        assert set(self.changes_chron_dict.keys()) == set(self.changes_dates), f"Lists not equal!\nset(self.changes_chron_dict.keys()):\n {set(self.changes_chron_dict.keys())};\nset(self.changes_dates):\n{set(self.changes_dates)}."
+
         for date, change_list in self.changes_chron_dict.items():
             for change in change_list:
                 #print(f"{date}: {change.change_type}, order: {change.order}")
                 change.echo()
-    
+
+    def _create_history(self):
+        for date in self.changes_dates:
+            changes_list = self.changes_chron_dict[date]
+            old_state = self.states_list[-1]
+            new_state = old_state.apply_changes(changes_list)
+            print(f"{date}: Changes applied, administrative state {new_state} created.")
+            self.states_list.append(new_state)
+
+    def list_change_dates(self, lang = "pol"):
+        # Lists all the dates of border changes.
+        if lang == "pol":
+            print("Wszystkie daty zmian granic:")
+        elif lang == "eng":
+            print("All dates of border changes:")
+        else:
+            raise ValueError("Wrong value for the lang parameter.") 
+        for date in self.changes_dates: print(date)
+
+    def summarize_by_date(self, lang = "pol"):
+        # Prints all changes ordered by date.
+        for change in self.changes_list:
+            change.echo(lang)
 
         
 
