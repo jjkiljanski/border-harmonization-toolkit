@@ -8,15 +8,14 @@ class AdministrativeState:
     Each region contains a list of districts, each with a name, type, and seat.
     """
 
-    def __init__(self, state_dict, valid_to=None):
+    def __init__(self, state_dict, timespan):
         """
         Args:
             region_to_districts (dict): A mapping from region name to a list of district dicts.
             date (str, optional): Date this state is valid for.
         """
-        self.structure = deepcopy(state_dict["regions"])  # deep copy to prevent mutation
-        self.valid_from = state_dict["valid_from"]
-        self.valid_to = valid_to
+        self.structure = deepcopy(state_dict)  # deep copy to prevent mutation
+        self.valid_from, self.valid_to = timespan
 
     def find_district(self, searched_name):
         """

@@ -8,9 +8,13 @@ from border_changes import *
 from state import *
 
 class AdministrativeHistory():
-    def __init__(self, border_changes_path, initial_state_path):
+    def __init__(self, border_changes_path, initial_state_path, timespan):
         self.border_changes_path = border_changes_path
         self.initial_state_path = initial_state_path
+
+        self.start_date, self.end_date = timespan
+        self.start_date = datetime.strptime(self.start_date, "%d.%m.%Y").date()
+        self.end_date = datetime.strptime(self.end_date, "%d.%m.%Y").date()
 
         # Create lists to store Change objects and Administrative State objects
         self.changes_list = []
@@ -26,6 +30,8 @@ class AdministrativeHistory():
 
         # Create chronological changes dict {[date]: List[Change]}
         self._create_changes_chronology()
+
+        # Create states for the whole timespan
 
     def _load_changes_from_json(self):
         """
@@ -85,10 +91,12 @@ class AdministrativeHistory():
     def _create_initial_state(self):
         # Create a dict out of pydantic model
         self._initial_state_dict = self._pydantic_initial_state.model_dump()
+        self._initial_state_dict = self._initial_state_dict["regions"]
         del self._pydantic_initial_state
 
         # Create an AdministrativeState object for the initial state
-        self.states_list.append(AdministrativeState(self._initial_state_dict))
+        timespan = (self.start_date, self.end_date)
+        self.states_list.append(AdministrativeState(self._initial_state_dict, timespan))
         del self._initial_state_dict
         print("✅ Successfully created AdministrativeState object for the initial state.")
 

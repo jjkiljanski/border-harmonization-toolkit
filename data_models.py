@@ -148,5 +148,4 @@ class District(BaseModel):
     alternative_seat_names: Optional[List[str]] = None
 
 class AdministrativeStateEntry(BaseModel):
-    valid_from: str
     regions: Dict[str, List[District]]

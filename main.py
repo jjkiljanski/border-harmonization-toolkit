@@ -8,7 +8,8 @@ from core import *
 
 changes_path = "data_input/district_changes.json"
 state_path = "data_input/initial_state.json"
-administrative_history = AdministrativeHistory(changes_path, state_path)
+timespan = ("19.02.1921", "01.09.1939")
+administrative_history = AdministrativeHistory(changes_path, state_path, timespan)
 
 administrative_history.list_change_dates()
 #administrative_history.summarize_by_date()
