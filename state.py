@@ -26,7 +26,7 @@ class AdministrativeState:
         """
         for region, districts in self.structure.items():
             for district in districts:
-                if district["name"] == searched_name or district["seat"]==searched_name:
+                if district["district_name"] == searched_name or district["seat"]==searched_name:
                     return region, district
         return None, None
     
@@ -50,7 +50,7 @@ class AdministrativeState:
         districts = self.structure[region_name]
 
         for i, district in enumerate(districts):
-            if district["name"] == district_name:
+            if district["district_name"] == district_name:
                 return districts.pop(i)
 
         raise ValueError(f"District '{district_name}' not found in region '{region_name}'.")
@@ -61,13 +61,13 @@ class AdministrativeState:
 
         Args:
             region_name (str): The target region name.
-            district_dict (dict): A dict with at least a "name" key.
+            district_dict (dict): A dict with at least a "district_name" key.
 
         Raises:
             ValueError: If the district already exists in the region.
         """
-        if "name" not in district_dict:
-            raise ValueError("District dictionary must contain a 'name' key.")
+        if "district_name" not in district_dict:
+            raise ValueError(f"District dictionary must contain a 'district_name' key: {district_dict}")
 
         if region_name not in self.structure:
             raise ValueError(f"The region {region_name} doesn't exist for the current state.")
@@ -75,11 +75,11 @@ class AdministrativeState:
         # Check for name collision
         for existing in self.structure[region_name]:
             alt_names = existing.get("alternative_names") or [] # Returns alternative_names list or empty list if existing['alternative_names'] is None
-            if existing["name"] == district_dict["name"] or district_dict["name"] in alt_names:
-                raise ValueError(f"District '{district_dict['name']}' already exists in region '{region_name}'.")
+            if existing["district_name"] == district_dict["district_name"] or district_dict["district_name"] in alt_names:
+                raise ValueError(f"District '{district_dict['district_name']}' already exists in region '{region_name}'.")
 
         self.structure[region_name].append(district_dict)
-        self.structure[region_name].sort(key=lambda district: district["name"])
+        self.structure[region_name].sort(key=lambda district: district["district_name"])
 
     def to_dict(self):
         """Returns a dict version of the state (for saving/exporting)."""
@@ -104,7 +104,7 @@ class AdministrativeState:
         rows = []
         for region, districts in self.structure.items():
             for district in districts:
-                rows.append((region, district["name"]))
+                rows.append((region, district["district_name"]))
 
         # Sort by region then district
         rows.sort()

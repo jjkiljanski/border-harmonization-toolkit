@@ -7,14 +7,14 @@
     "matter": {
       "take_from": {
         "region": "Białostockie",
-        "district": "białowieski",
+        "district_name": "białowieski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Białostockie",
-          "district": "bielski",
+          "district_name": "bielski",
           "weight_from": null,
           "weight_to": null
         }
@@ -30,7 +30,7 @@
     "matter": {
       "take_from": [],
       "take_to": {
-        "name": "Ziemia Wileńska"
+        "region_name": "Ziemia Wileńska"
       }
     }
   },
@@ -42,7 +42,7 @@
     "matter": {
       "take_from": {
         "region": "Nowogródzkie",
-        "district": "dziśnieński"
+        "district_name": "dziśnieński"
       },
       "take_to": "Ziemia Wileńska"
     }
@@ -55,7 +55,7 @@
     "matter": {
       "take_from": {
         "region": "Nowogródzkie",
-        "district": "duniłowicki"
+        "district_name": "duniłowicki"
       },
       "take_to": "Ziemia Wileńska"
     }
@@ -68,7 +68,7 @@
     "matter": {
       "take_from": {
         "region": "Nowogródzkie",
-        "district": "wilejski"
+        "district_name": "wilejski"
       },
       "take_to": "Ziemia Wileńska"
     }
@@ -81,9 +81,9 @@
     "matter": {
       "take_from": {
         "region": "Litwa",
-        "district": "brasławski"
+        "district_name": "brasławski"
       },
-      "take_to": "wileńskie"
+      "take_to": "Ziemia Wileńska"
     }
   },
   {
@@ -94,9 +94,9 @@
     "matter": {
       "take_from": {
         "region": "Litwa",
-        "district": "oszmiański"
+        "district_name": "oszmiański"
       },
-      "take_to": "wileńskie"
+      "take_to": "Ziemia Wileńska"
     }
   },
   {
@@ -107,9 +107,9 @@
     "matter": {
       "take_from": {
         "region": "Litwa",
-        "district": "święciański"
+        "district_name": "święciański"
       },
-      "take_to": "wileńskie"
+      "take_to": "Ziemia Wileńska"
     }
   },
   {
@@ -120,9 +120,9 @@
     "matter": {
       "take_from": {
         "region": "Litwa",
-        "district": "trocki"
+        "district_name": "trocki"
       },
-      "take_to": "wileńskie"
+      "take_to": "Ziemia Wileńska"
     }
   },
   {
@@ -133,9 +133,9 @@
     "matter": {
       "take_from": {
         "region": "Litwa",
-        "district": "wileński"
+        "district_name": "wileński"
       },
-      "take_to": "wileńskie"
+      "take_to": "Ziemia Wileńska"
     }
   },
   {
@@ -146,9 +146,9 @@
     "matter": {
       "take_from": {
         "region": "Litwa",
-        "district": "Wilno"
+        "district_name": "Wilno"
       },
-      "take_to": "wileńskie"
+      "take_to": "Ziemia Wileńska"
     }
   },
   {
@@ -159,7 +159,7 @@
     "matter": {
       "take_from": {
         "region": "Niemcy",
-        "district": "Katowice"
+        "district_name": "Katowice"
       },
       "take_to": "Śląskie"
     }
@@ -172,7 +172,7 @@
     "matter": {
       "take_from": {
         "region": "Niemcy",
-        "district": "katowicki"
+        "district_name": "katowicki"
       },
       "take_to": "Śląskie"
     }
@@ -185,7 +185,7 @@
     "matter": {
       "take_from": {
         "region": "Niemcy",
-        "district": "Królewska Huta"
+        "district_name": "Królewska Huta"
       },
       "take_to": "Śląskie"
     }
@@ -198,7 +198,7 @@
     "matter": {
       "take_from": {
         "region": "Niemcy",
-        "district": "lubliniecki"
+        "district_name": "lubliniecki"
       },
       "take_to": "Śląskie"
     }
@@ -211,7 +211,7 @@
     "matter": {
       "take_from": {
         "region": "Niemcy",
-        "district": "pszczyński"
+        "district_name": "pszczyński"
       },
       "take_to": "Śląskie"
     }
@@ -225,14 +225,14 @@
       "take_from": [
         {
           "region": "Niemcy",
-          "district": "zabrski",
+          "district_name": "zabrski",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
           "region": "Niemcy",
-          "district": "gliwicki",
+          "district_name": "gliwicki",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -241,7 +241,7 @@
       "take_to": {
         "create": true,
         "region": "Śląskie",
-        "district": "rudzki",
+        "district_name": "rudzki",
         "district_type": "w",
         "seat": "Ruda"
       }
@@ -256,14 +256,14 @@
       "take_from": [
         {
           "region": "Niemcy",
-          "district": "rybnicki",
+          "district_name": "rybnicki",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
           "region": "Niemcy",
-          "district": "raciborski",
+          "district_name": "raciborski",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -272,7 +272,7 @@
       "take_to": {
         "create": true,
         "region": "Śląskie",
-        "district": "rybnicki",
+        "district_name": "rybnicki",
         "district_type": "w",
         "seat": "Rybnik"
       }
@@ -287,14 +287,14 @@
       "take_from": [
         {
           "region": "Niemcy",
-          "district": "Bytom wieś",
+          "district_name": "Bytom wieś",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
           "region": "Niemcy",
-          "district": "Bytom miasto",
+          "district_name": "Bytom miasto",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -303,7 +303,7 @@
       "take_to": {
         "create": true,
         "region": "Śląskie",
-        "district": "świętochłowicki",
+        "district_name": "świętochłowicki",
         "district_type": "w",
         "seat": "Świętochłowice"
       }
@@ -318,14 +318,14 @@
       "take_from": [
         {
           "region": "Niemcy",
-          "district": "tarnogórski",
+          "district_name": "tarnogórski",
           "weight_from": null,
           "weight_to": null,
           "delete_district": true
         },
         {
           "region": "Niemcy",
-          "district": "gliwicki",
+          "district_name": "gliwicki",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -334,7 +334,7 @@
       "take_to": {
         "create": true,
         "region": "Śląskie",
-        "district": "tarnogórski",
+        "district_name": "tarnogórski",
         "district_type": "w",
         "seat": "Tarnowskie Góry"
       }
@@ -348,14 +348,14 @@
     "matter": {
       "take_from": {
         "region": "Lubelskie",
-        "district": "Lublin",
+        "district_name": "Lublin",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Lubelskie",
-          "district": "lubelski",
+          "district_name": "lubelski",
           "weight_from": null,
           "weight_to": null
         }
@@ -370,14 +370,14 @@
     "matter": {
       "take_from": {
         "region": "Lwowskie",
-        "district": "cieszanowski",
+        "district_name": "cieszanowski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
           "region": "Lwowskie",
-          "district": "lubaczowski",
+          "district_name": "lubaczowski",
           "district_type": "w",
           "seat": "Lubaczów",
           "weight_from": 1.0,
@@ -395,21 +395,21 @@
       "take_from": [
         {
           "region": "Poleskie",
-          "district": "łuniniecki",
+          "district_name": "łuniniecki",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
           "region": "Poleskie",
-          "district": "sarneński",
+          "district_name": "sarneński",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
           "region": "Poleskie",
-          "district": "piński",
+          "district_name": "piński",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -418,7 +418,7 @@
       "take_to": {
         "create": true,
         "region": "Poleskie",
-        "district": "stoliński",
+        "district_name": "stoliński",
         "district_type": "w",
         "seat": "Stolin"
       }
@@ -432,15 +432,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "wileńskie",
-          "district": "wileński",
+          "region": "Ziemia Wileńska",
+          "district_name": "wileński",
           "weight_from": null,
           "weight_to": null,
           "delete_district": true
         },
         {
-          "region": "wileńskie",
-          "district": "trocki",
+          "region": "Ziemia Wileńska",
+          "district_name": "trocki",
           "weight_from": null,
           "weight_to": null,
           "delete_district": true
@@ -448,8 +448,8 @@
       ],
       "take_to": {
         "create": true,
-        "region": "wileńskie",
-        "district": "wileńsko-trocki",
+        "region": "Ziemia Wileńska",
+        "district_name": "wileńsko-trocki",
         "district_type": "w",
         "seat": "Wilno"
       }
@@ -463,14 +463,14 @@
     "matter": {
       "take_from": {
         "region": "Krakowskie",
-        "district": "podgórski",
+        "district_name": "podgórski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "krakowski",
+          "district_name": "krakowski",
           "weight_from": null,
           "weight_to": null
         }
@@ -486,14 +486,14 @@
       "take_from": [
         {
         "region": "Krakowskie",
-        "district": "myślenicki",
+        "district_name": "myślenicki",
         "weight_from": null,
         "weight_to": null,
         "delete_district": false
         },
         {
           "region": "Krakowskie",
-          "district": "żywiecki",
+          "district_name": "żywiecki",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -502,7 +502,7 @@
       "take_to": {
           "create": true,
           "region": "Krakowskie",
-          "district": "makowski (Maków Podhalański)",
+          "district_name": "makowski (Maków Podhalański)",
           "district_type": "w",
           "seat": "Maków",
           "alternative_seat_names": ["Maków Podhalański"]
@@ -518,14 +518,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "namiestowski",
+        "district_name": "namiestowski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "spisko-orawski",
+          "district_name": "spisko-orawski",
           "weight_from": 0.25,
           "weight_to": 0.25
         }
@@ -541,14 +541,14 @@
     "matter": {
       "take_from": {
         "region": "Krakowskie",
-        "district": "spisko-orawski",
+        "district_name": "spisko-orawski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Czechosłowacja",
-          "district": "namiestowski",
+          "district_name": "namiestowski",
           "weight_from": 0.25,
           "weight_to": 0.25
         }
@@ -563,14 +563,14 @@
     "matter": {
       "take_from": {
         "region": "Białostockie",
-        "district": "sejneński",
+        "district_name": "sejneński",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Białostockie",
-          "district": "suwalski",
+          "district_name": "suwalski",
           "weight_from": null,
           "weight_to": null
         }
@@ -586,14 +586,14 @@
       "take_from": [
         {
           "region": "Poznańskie",
-          "district": "poznański wschodni",
+          "district_name": "poznański wschodni",
           "weight_from": 1.0,
           "weight_to": null,
           "delete_district": true
         },
         {
           "region": "Poznańskie",
-          "district": "poznański zachodni",
+          "district_name": "poznański zachodni",
           "weight_from": 1.0,
           "weight_to": null,
           "delete_district": true
@@ -602,7 +602,7 @@
       "take_to": {
         "create": true,
         "region": "Poznańskie",
-        "district": "poznański",
+        "district_name": "poznański",
         "district_type": "w",
         "seat": "Poznań"
       }
@@ -617,7 +617,7 @@
       "take_from": [
         {
           "region": "Wołyń",
-          "district": "rówieński",
+          "district_name": "rówieński",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -626,7 +626,7 @@
       "take_to": {
         "create": true,
         "region": "Wołyń",
-        "district": "kostopolski",
+        "district_name": "kostopolski",
         "district_type": "w",
         "seat": "Kostopol"
       }
@@ -640,14 +640,14 @@
     "matter": {
       "take_from": {
         "region": "Wołyń",
-        "district": "ostrogski",
+        "district_name": "ostrogski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
           "region": "Wołyń",
-          "district": "zdołbunowski",
+          "district_name": "zdołbunowski",
           "district_type": "w",
           "seat": "Zdołbunów",
           "weight_from": 1.0,
@@ -664,14 +664,14 @@
     "matter": {
       "take_from": {
         "region": "Krakowskie",
-        "district": "spisko-orawski",
+        "district_name": "spisko-orawski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "nowotarski",
+          "district_name": "nowotarski",
           "weight_from": null,
           "weight_to": null
         }
@@ -687,7 +687,7 @@
       "take_from": [
         {
           "region": "Poznańskie",
-          "district": "gnieźnieński",
+          "district_name": "gnieźnieński",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -696,7 +696,7 @@
       "take_to": {
         "create": true,
         "region": "Poznańskie",
-        "district": "Gniezno",
+        "district_name": "Gniezno",
         "district_type": "m",
         "seat": "Gniezno"
       }
@@ -711,7 +711,7 @@
       "take_from": [
         {
           "region": "Poznańskie",
-          "district": "inowrocławski",
+          "district_name": "inowrocławski",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -720,7 +720,7 @@
       "take_to": {
         "create": true,
         "region": "Poznańskie",
-        "district": "Inowrocław",
+        "district_name": "Inowrocław",
         "district_type": "m",
         "seat": "Inowrocław"
       }
@@ -734,14 +734,14 @@
     "matter": {
       "take_from": {
         "region": "Ziemia Wileńska",
-        "district": "duniłowicki",
+        "district_name": "duniłowicki",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
           "region": "Ziemia Wileńska",
-          "district": "postawski",
+          "district_name": "postawski",
           "district_type": "w",
           "seat": "Postawy",
           "weight_from": 1.0,
@@ -757,10 +757,10 @@
     "description": "20.01.1926 przekształcono Ziemię Wileńską w województwo wileńskie",
     "matter": {
       "to_reform": {
-        "name": "Ziemia Wileńska"
+        "region_name": "Ziemia Wileńska"
       },
       "after_reform": {
-        "name": "Wileńskie"
+        "region_name": "Wileńskie"
       }
     }
   },
@@ -774,14 +774,14 @@
       "take_from": [
         {
           "region": "Pomorskie",
-          "district": "pucki",
+          "district_name": "pucki",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
           "region": "Pomorskie",
-          "district": "wejherowski",
+          "district_name": "wejherowski",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -790,7 +790,7 @@
       "take_to": {
         "create": true,
         "region": "Pomorskie",
-        "district": "morski",
+        "district_name": "morski",
         "district_type": "w",
         "seat": "Gdynia"
       }
@@ -805,7 +805,7 @@
       "take_from": [
         {
           "region": "Kieleckie",
-          "district": "będziński",
+          "district_name": "będziński",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -814,7 +814,7 @@
       "take_to": {
         "create": true,
         "region": "Kieleckie",
-        "district": "zawierciański",
+        "district_name": "zawierciański",
         "district_type":"w",
         "seat": "Zawiercie"
       }
@@ -829,14 +829,14 @@
     "matter": {
       "take_from": {
         "region": "Pomorskie",
-        "district": "pucki",
+        "district_name": "pucki",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Pomorskie",
-          "district": "wejherowski",
+          "district_name": "wejherowski",
           "weight_from": null,
           "weight_to": null
         }
@@ -851,15 +851,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Ziemia Wileńska",
-          "district": "wilejski",
+          "region": "Wileńskie",
+          "district_name": "wilejski",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "Ziemia Wileńska",
-          "district": "oszmiański",
+          "region": "Wileńskie",
+          "district_name": "oszmiański",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -867,8 +867,8 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Ziemia Wileńska",
-        "district": "mołodeczański",
+        "region": "Wileńskie",
+        "district_name": "mołodeczański",
         "district_type": "w",
         "seat": "Mołodeczno"
       }
@@ -882,21 +882,21 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "witkowski",
+        "district_name": "witkowski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
-          "district": "gnieźnieński",
+          "district_name": "gnieźnieński",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Poznańskie",
-          "district": "wrzesiński",
+          "district_name": "wrzesiński",
           "weight_from": null,
           "weight_to": null
         }
@@ -911,14 +911,14 @@
     "matter": {
       "take_from": {
         "region": "Białostockie",
-        "district": "białostocki",
+        "district_name": "białostocki",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
           "region": "białostocki",
-          "district": "Białystok",
+          "district_name": "Białystok",
           "district_type": "m",
           "seat": "Białystok",
           "weight_from": null,
@@ -935,14 +935,14 @@
     "matter": {
       "take_from": {
         "region": "Kieleckie",
-        "district": "częstochowski",
+        "district_name": "częstochowski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
           "region": "Kieleckie",
-          "district": "Częstochowa",
+          "district_name": "Częstochowa",
           "district_type": "m",
           "seat": "Częstochowa",
           "weight_from": null,
@@ -959,14 +959,14 @@
     "matter": {
       "take_from": {
         "region": "Kieleckie",
-        "district": "będziński",
+        "district_name": "będziński",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
           "region": "Kieleckie",
-          "district": "Sosnowiec",
+          "district_name": "Sosnowiec",
           "district_type": "m",
           "seat": "Sosnowiec",
           "weight_from": null,
@@ -983,14 +983,14 @@
     "matter": {
       "take_from": {
         "region": "m. st. Warszawa",
-        "district": "m. st. Warszawa",
+        "district_name": "m. st. Warszawa",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
           "region": "m. st. Warszawa",
-          "district": "południowo-warszawski",
+          "district_name": "południowo-warszawski",
           "alternative_names": ["Warszawa-Południe"],
           "district_type": "m",
           "seat": "Warszawa",
@@ -1000,7 +1000,7 @@
         {
           "create": true,
           "region": "m. st. Warszawa",
-          "district": "północno-warszawski",
+          "district_name": "północno-warszawski",
           "alternative_names": ["Warszawa-Północ"],
           "district_type": "m",
           "seat": "Warszawa",
@@ -1010,7 +1010,7 @@
         {
           "create": true,
           "region": "m. st. Warszawa",
-          "district": "prasko-warszawski",
+          "district_name": "prasko-warszawski",
           "alternative_names": ["Warszawa-Praga"],
           "district_type": "m",
           "seat": "Warszawa",
@@ -1029,7 +1029,7 @@
       "take_from": [
         {
           "region": "Pomorskie",
-          "district": "morski",
+          "district_name": "morski",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -1038,7 +1038,7 @@
       "take_to": {
         "create": true,
         "region": "Pomorskie",
-        "district": "Gdynia",
+        "district_name": "Gdynia",
         "district_type": "m",
         "seat": "Gdynia"
       }
@@ -1052,14 +1052,14 @@
     "matter": {
       "take_from": {
         "region": "Stanisławowskie",
-        "district": "peczeniżyński",
+        "district_name": "peczeniżyński",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Stanisławowskie",
-          "district": "kołomyjski",
+          "district_name": "kołomyjski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1075,14 +1075,14 @@
       "take_from": [
         {
           "region": "Nowogródzkie",
-          "district": "lidzki",
+          "district_name": "lidzki",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
           "region": "Białostockie",
-          "district": "grodzieński",
+          "district_name": "grodzieński",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -1091,7 +1091,7 @@
       "take_to": {
         "create": true,
         "region": "Białostockie",
-        "district": "szczuczyński",
+        "district_name": "szczuczyński",
         "district_type": "w",
         "seat": "Szczuczyn"
       }
@@ -1105,7 +1105,7 @@
     "matter": {
       "take_from": {
         "region": "Poleskie",
-        "district": "sarneński"
+        "district_name": "sarneński"
       },
       "take_to": "Wołyń"
     }
@@ -1118,14 +1118,14 @@
     "matter": {
       "take_from": {
         "region": "Lwowskie",
-        "district": "liski",
+        "district_name": "liski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
           "region": "Lwowskie",
-          "district": "leski",
+          "district_name": "leski",
           "district_type": "w",
           "seat": "Lesko",
           "weight_from": 1.0,
@@ -1143,14 +1143,14 @@
       "take_from": [
         {
           "region": "m. st. Warszawa",
-          "district": "południowo-warszawski",
+          "district_name": "południowo-warszawski",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
           "region": "m. st. Warszawa",
-          "district": "północno-warszawski",
+          "district_name": "północno-warszawski",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -1159,7 +1159,7 @@
       "take_to": {
         "create": true,
         "region": "m. st. Warszawa",
-        "district": "śródmiejsko-warszawski",
+        "district_name": "śródmiejsko-warszawski",
         "alternative_names": ["Warszawa-Śródmieście"],
         "district_type": "m",
         "seat": "Warszawa"
@@ -1174,7 +1174,7 @@
     "matter": {
       "take_from": {
         "region": "Stanisławowskie",
-        "district": "turczański"
+        "district_name": "turczański"
       },
       "take_to": "Lwowskie"
     }
@@ -1187,14 +1187,14 @@
     "matter": {
       "take_from": {
         "region": "Poleskie",
-        "district": "kosowski",
+        "district_name": "kosowski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
           "region": "Poleskie",
-          "district": "iwacewicki",
+          "district_name": "iwacewicki",
           "district_type": "m",
           "seat": "Iwacewicze",
           "weight_from": 1.0,
@@ -1211,21 +1211,21 @@
     "matter": {
       "take_from": {
         "region": "Białostockie",
-        "district": "kolneński",
+        "district_name": "kolneński",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Białostockie",
-          "district": "łomżyński",
+          "district_name": "łomżyński",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Białostockie",
-          "district": "ostrołęcki",
+          "district_name": "ostrołęcki",
           "weight_from": null,
           "weight_to": null
         }
@@ -1240,21 +1240,21 @@
     "matter": {
       "take_from": {
         "region": "Krakowskie",
-        "district": "oświęcimski",
+        "district_name": "oświęcimski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "bialski",
+          "district_name": "bialski",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "wadowicki",
+          "district_name": "wadowicki",
           "weight_from": null,
           "weight_to": null
         }
@@ -1269,28 +1269,28 @@
     "matter": {
       "take_from": {
         "region": "Krakowskie",
-        "district": "grybowski",
+        "district_name": "grybowski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "nowosądecki",
+          "district_name": "nowosądecki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "gorlicki",
+          "district_name": "gorlicki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "tarnowski",
+          "district_name": "tarnowski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1305,21 +1305,21 @@
     "matter": {
       "take_from": {
         "region": "Krakowskie",
-        "district": "pilzneński",
+        "district_name": "pilzneński",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "ropczycki",
+          "district_name": "ropczycki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "jasielski",
+          "district_name": "jasielski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1334,21 +1334,21 @@
     "matter": {
       "take_from": {
         "region": "Krakowskie",
-        "district": "wielicki",
+        "district_name": "wielicki",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "myślenicki",
+          "district_name": "myślenicki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "krakowski",
+          "district_name": "krakowski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1363,35 +1363,35 @@
     "matter": {
       "take_from": {
         "region": "Krakowskie",
-        "district": "makowski (Maków Podhalański)",
+        "district_name": "makowski (Maków Podhalański)",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "wadowicki",
+          "district_name": "wadowicki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "żywiecki",
+          "district_name": "żywiecki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "myślenicki",
+          "district_name": "myślenicki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "nowotarski",
+          "district_name": "nowotarski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1406,14 +1406,14 @@
     "matter": {
       "take_from": {
         "region": "Łódzkie",
-        "district": "słupecki",
+        "district_name": "słupecki",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Łódzkie",
-          "district": "koniński",
+          "district_name": "koniński",
           "weight_from": null,
           "weight_to": null
         }
@@ -1428,21 +1428,21 @@
     "matter": {
       "take_from": {
         "region": "Lubelskie",
-        "district": "konstantynowski",
+        "district_name": "konstantynowski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Lubelskie",
-          "district": "bialski",
+          "district_name": "bialski",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Lubelskie",
-          "district": "siedlecki",
+          "district_name": "siedlecki",
           "weight_from": null,
           "weight_to": null
         }
@@ -1457,21 +1457,21 @@
     "matter": {
       "take_from": {
         "region": "Lwowskie",
-        "district": "strzyżowski",
+        "district_name": "strzyżowski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Lwowskie",
-          "district": "rzeszowski",
+          "district_name": "rzeszowski",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Lwowskie",
-          "district": "krośnieński",
+          "district_name": "krośnieński",
           "weight_from": null,
           "weight_to": null
         }
@@ -1486,14 +1486,14 @@
     "matter": {
       "take_from": {
         "region": "Lwowskie",
-        "district": "starosamborski",
+        "district_name": "starosamborski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Lwowskie",
-          "district": "samborski",
+          "district_name": "samborski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1508,28 +1508,28 @@
     "matter": {
       "take_from": {
         "region": "Pomorskie",
-        "district": "gniewski",
+        "district_name": "gniewski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Pomorskie",
-          "district": "starogardzki",
+          "district_name": "starogardzki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Pomorskie",
-          "district": "świecki",
+          "district_name": "świecki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Pomorskie",
-          "district": "tczewski",
+          "district_name": "tczewski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1544,14 +1544,14 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "grodziski",
+        "district_name": "grodziski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
-          "district": "nowotomyski",
+          "district_name": "nowotomyski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1566,14 +1566,14 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "ostrzeszowski",
+        "district_name": "ostrzeszowski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
-          "district": "kępiński",
+          "district_name": "kępiński",
           "weight_from": null,
           "weight_to": null
         }
@@ -1588,14 +1588,14 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "śmigielski",
+        "district_name": "śmigielski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
-          "district": "kościański",
+          "district_name": "kościański",
           "weight_from": null,
           "weight_to": null
         }
@@ -1610,14 +1610,14 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "koźmiński",
+        "district_name": "koźmiński",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
-          "district": "krotoszyński",
+          "district_name": "krotoszyński",
           "weight_from": null,
           "weight_to": null
         }
@@ -1632,14 +1632,14 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "strzelneński",
+        "district_name": "strzelneński",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
-          "district": "mogileński",
+          "district_name": "mogileński",
           "weight_from": null,
           "weight_to": null
         }
@@ -1654,14 +1654,14 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "odolanowski",
+        "district_name": "odolanowski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
-          "district": "ostrowski",
+          "district_name": "ostrowski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1676,21 +1676,21 @@
     "matter": {
       "take_from": {
         "region": "Stanisławowskie",
-        "district": "bohorodczański",
+        "district_name": "bohorodczański",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Stanisławowskie",
-          "district": "nadwórniański",
+          "district_name": "nadwórniański",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Stanisławowskie",
-          "district": "stanisławowski",
+          "district_name": "stanisławowski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1705,14 +1705,14 @@
     "matter": {
       "take_from": {
         "region": "Stanisławowskie",
-        "district": "skolski",
+        "district_name": "skolski",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Stanisławowskie",
-          "district": "stryjski",
+          "district_name": "stryjski",
           "weight_from": null,
           "weight_to": null
         }
@@ -1727,14 +1727,14 @@
     "matter": {
       "take_from": {
         "region": "Kieleckie",
-        "district": "radomski",
+        "district_name": "radomski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
           "region": "Kieleckie",
-          "district": "Radom",
+          "district_name": "Radom",
           "district_type": "m",
           "seat": "Radom",
           "weight_from": null,
@@ -1751,14 +1751,14 @@
     "matter": {
       "take_from": {
         "region": "Krakowskie",
-        "district": "ropczycki",
+        "district_name": "ropczycki",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
           "region": "Krakowskie",
-          "district": "dębicki",
+          "district_name": "dębicki",
           "district_type": "w",
           "seat": "Dębica",
           "weight_from": 1.0,
@@ -1775,7 +1775,7 @@
     "matter": {
       "take_from": {
         "region": "Łódzkie",
-        "district": "kaliski"
+        "district_name": "kaliski"
       },
       "take_to": "Poznańskie"
     }
@@ -1788,7 +1788,7 @@
     "matter": {
       "take_from": {
         "region": "Łódzkie",
-        "district": "kolski"
+        "district_name": "kolski"
       },
       "take_to": "Poznańskie"
     }
@@ -1801,7 +1801,7 @@
     "matter": {
       "take_from": {
         "region": "Łódzkie",
-        "district": "koniński"
+        "district_name": "koniński"
       },
       "take_to": "Poznańskie"
     }
@@ -1814,7 +1814,7 @@
     "matter": {
       "take_from": {
         "region": "Łódzkie",
-        "district": "turecki"
+        "district_name": "turecki"
       },
       "take_to": "Poznańskie"
     }
@@ -1827,7 +1827,7 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "Bydgoszcz"
+        "district_name": "Bydgoszcz"
       },
       "take_to": "Pomorskie"
     }
@@ -1840,7 +1840,7 @@
     "matter": {
       "take_from": {
         "region": "Pomorskie",
-        "district": "działdowski"
+        "district_name": "działdowski"
       },
       "take_to": "Warszawskie"
     }
@@ -1853,7 +1853,7 @@
     "matter": {
       "take_from": {
         "region": "Warszawskie",
-        "district": "lipnowski"
+        "district_name": "lipnowski"
       },
       "take_to": "Pomorskie"
     }
@@ -1866,7 +1866,7 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "bydgoski"
+        "district_name": "bydgoski"
       },
       "take_to": "Pomorskie"
     }
@@ -1879,7 +1879,7 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "Inowrocław"
+        "district_name": "Inowrocław"
       },
       "take_to": "Pomorskie"
     }
@@ -1892,7 +1892,7 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "inowrocławski"
+        "district_name": "inowrocławski"
       },
       "take_to": "Pomorskie"
     }
@@ -1905,7 +1905,7 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "szubiński"
+        "district_name": "szubiński"
       },
       "take_to": "Pomorskie"
     }
@@ -1918,7 +1918,7 @@
     "matter": {
       "take_from": {
         "region": "Poznańskie",
-        "district": "wyrzyski"
+        "district_name": "wyrzyski"
       },
       "take_to": "Pomorskie"
     }
@@ -1931,7 +1931,7 @@
     "matter": {
       "take_from": {
         "region": "Warszawskie",
-        "district": "nieszawski"
+        "district_name": "nieszawski"
       },
       "take_to": "Pomorskie"
     }
@@ -1944,7 +1944,7 @@
     "matter": {
       "take_from": {
         "region": "Warszawskie",
-        "district": "rypiński"
+        "district_name": "rypiński"
       },
       "take_to": "Pomorskie"
     }
@@ -1957,7 +1957,7 @@
     "matter": {
       "take_from": {
         "region": "Warszawskie",
-        "district": "włocławski"
+        "district_name": "włocławski"
       },
       "take_to": "Pomorskie"
     }
@@ -1970,14 +1970,14 @@
     "matter": {
       "take_from": {
         "region": "Lubelskie",
-        "district": "lubelski",
+        "district_name": "lubelski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
           "region": "Lubelskie",
-          "district": "Lublin",
+          "district_name": "Lublin",
           "district_type": "m",
           "seat": "Lublin",
           "weight_from": null,
@@ -1994,14 +1994,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "bardiowski",
+        "district_name": "bardiowski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "gorlicki",
+          "district_name": "gorlicki",
           "weight_from": null,
           "weight_to": null
         }
@@ -2016,14 +2016,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "starolubowelski",
+        "district_name": "starolubowelski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "nowosądecki",
+          "district_name": "nowosądecki",
           "weight_from": null,
           "weight_to": null
         }
@@ -2038,14 +2038,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "kieżmarski",
+        "district_name": "kieżmarski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "nowotarski",
+          "district_name": "nowotarski",
           "weight_from": null,
           "weight_to": null
         }
@@ -2060,14 +2060,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "namiestowski",
+        "district_name": "namiestowski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "nowotarski",
+          "district_name": "nowotarski",
           "weight_from": null,
           "weight_to": null
         }
@@ -2082,14 +2082,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "starowiejski",
+        "district_name": "starowiejski",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "nowotarski",
+          "district_name": "nowotarski",
           "weight_from": null,
           "weight_to": null
         }
@@ -2104,14 +2104,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "trzciany",
+        "district_name": "trzciany",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
-          "district": "nowotarski",
+          "district_name": "nowotarski",
           "weight_from": null,
           "weight_to": null
         }
@@ -2126,14 +2126,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "sniński",
+        "district_name": "sniński",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Lwowskie",
-          "district": "leski",
+          "district_name": "leski",
           "weight_from": null,
           "weight_to": null
         }
@@ -2148,14 +2148,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "czadecki",
+        "district_name": "czadecki",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
           "region": "Śląskie",
-          "district": "cieszyński",
+          "district_name": "cieszyński",
           "weight_from": null,
           "weight_to": null
         }
@@ -2170,14 +2170,14 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "czeskocieszyński",
+        "district_name": "czeskocieszyński",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Śląskie",
-          "district": "cieszyński",
+          "district_name": "cieszyński",
           "weight_from": 1.0,
           "weight_to": null
         }
@@ -2192,21 +2192,21 @@
     "matter": {
       "take_from": {
         "region": "Czechosłowacja",
-        "district": "frydecki",
+        "district_name": "frydecki",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
           "region": "Śląskie",
-          "district": "frysztacki",
+          "district_name": "frysztacki",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
           "region": "Śląskie",
-          "district": "cieszyński",
+          "district_name": "cieszyński",
           "weight_from": null,
           "weight_to": null
         }
@@ -2221,7 +2221,7 @@
     "matter": {
       "take_from": {
         "region": "Białostockie",
-        "district": "łomżyński"
+        "district_name": "łomżyński"
       },
       "take_to": "Warszawskie"
     }
@@ -2234,7 +2234,7 @@
     "matter": {
       "take_from": {
         "region": "Białostockie",
-        "district": "ostrołęcki"
+        "district_name": "ostrołęcki"
       },
       "take_to": "Warszawskie"
     }
@@ -2247,7 +2247,7 @@
     "matter": {
       "take_from": {
         "region": "Białostockie",
-        "district": "ostrowski"
+        "district_name": "ostrowski"
       },
       "take_to": "Warszawskie"
     }
@@ -2260,7 +2260,7 @@
     "matter": {
       "take_from": {
         "region": "Kieleckie",
-        "district": "konecki"
+        "district_name": "konecki"
       },
       "take_to": "Łódzkie"
     }
@@ -2273,7 +2273,7 @@
     "matter": {
       "take_from": {
         "region": "Kieleckie",
-        "district": "opoczyński"
+        "district_name": "opoczyński"
       },
       "take_to": "Łódzkie"
     }
@@ -2286,7 +2286,7 @@
     "matter": {
       "take_from": {
         "region": "Lubelskie",
-        "district": "garwoliński"
+        "district_name": "garwoliński"
       },
       "take_to": "Warszawskie"
     }
@@ -2299,7 +2299,7 @@
     "matter": {
       "take_from": {
         "region": "Lubelskie",
-        "district": "sokołowski"
+        "district_name": "sokołowski"
       },
       "take_to": "Warszawskie"
     }
@@ -2312,7 +2312,7 @@
     "matter": {
       "take_from": {
         "region": "Lubelskie",
-        "district": "węgrowski"
+        "district_name": "węgrowski"
       },
       "take_to": "Warszawskie"
     }
@@ -2325,7 +2325,7 @@
     "matter": {
       "take_from": {
         "region": "Warszawskie",
-        "district": "kutnowski"
+        "district_name": "kutnowski"
       },
       "take_to": "Łódzkie"
     }
@@ -2338,7 +2338,7 @@
     "matter": {
       "take_from": {
         "region": "Warszawskie",
-        "district": "łowicki"
+        "district_name": "łowicki"
       },
       "take_to": "Łódzkie"
     }
@@ -2351,7 +2351,7 @@
     "matter": {
       "take_from": {
         "region": "Warszawskie",
-        "district": "rawski (Rawa Mazowiecka)"
+        "district_name": "rawski (Rawa Mazowiecka)"
       },
       "take_to": "Łódzkie"
     }
@@ -2364,7 +2364,7 @@
     "matter": {
       "take_from": {
         "region": "Warszawskie",
-        "district": "skierniewicki"
+        "district_name": "skierniewicki"
       },
       "take_to": "Łódzkie"
     }

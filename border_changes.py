@@ -37,19 +37,19 @@ class RCreate(Change):
 
         # Initiate subclass-specific attributes
         self.take_from = self.matter['take_from']
-        self.r_to = self.matter['take_to']['name']
+        self.r_to = self.matter['take_to']['region_name']
 
     def echo(self, lang = "pol"):
         if lang == "pol":
             print(f"{self.date} utworzono jednostkę administracyjną na prawach województwa {self.r_to}. ({self.source}).")
         elif lang == "eng":
-            print(f"{self.date} the region {self.to_reform['name']} was created ({self.source}).")
+            print(f"{self.date} the region {self.r_to} was created ({self.source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
     def districts_involved(self):
         # Returns the list of (district, its_region) for all districts involved in the change
-        return [(unit["district"], unit["region"]) for unit in self.take_from]
+        return [(unit["district_name"], unit["region"]) for unit in self.take_from]
     
     def apply(self, state):
         if self.r_to not in state.structure.keys():
@@ -58,9 +58,9 @@ class RCreate(Change):
         for unit in self.take_from:
             # Remove district from the old region
             try:
-                district_to_move = state.pop_district(unit["region"], unit["district"])
+                district_to_move = state.pop_district(unit["region"], unit["district_name"])
             except:
-                raise ValueError(f"District {unit['district']} doesn't exist in the region {unit['region']}:\n{self.echo()}.")
+                raise ValueError(f"District {unit['district_name']} doesn't exist in the region {unit['region']}:\n{self.echo()}.")
             
             # Add district to the new region
             state.add_district_if_absent(self.r_to, district_to_move)
@@ -76,9 +76,9 @@ class RReform(Change):
 
     def echo(self, lang = "pol"):
         if lang == "pol":
-            print(f"{self.date} dokonano reformy województwa {self.to_reform['name']}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({self.source}).")
+            print(f"{self.date} dokonano reformy województwa {self.to_reform['district_name']}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({self.source}).")
         elif lang == "eng":
-            print(f"{self.date} the region {self.to_reform['name']} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({self.source}).")
+            print(f"{self.date} the region {self.to_reform['district_name']} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({self.source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
@@ -90,8 +90,8 @@ class RReform(Change):
         # Remove district from the old region
         # Only name change is implemented for now.
 
-        old_name = self.to_reform["name"]
-        new_name = self.after_reform["name"]
+        old_name = self.to_reform["region_name"]
+        new_name = self.after_reform["region_name"]
         if old_name != new_name:
             try:
                 new_region = state.structure.pop(old_name)
@@ -106,7 +106,7 @@ class RChange(Change):
 
         # Initiate subclass-specific attributes
         self.r_from = self.matter['take_from']['region']
-        self.d_from = self.matter['take_from']['district']
+        self.d_from = self.matter['take_from']['district_name']
         self.r_to = self.matter['take_to']
 
     def echo(self, lang = "pol"):
@@ -142,12 +142,12 @@ class DOneToManyChange(Change):
 
         # Initiate subclass-specific attributes
         self.r_from = self.matter['take_from']['region']
-        self.d_from = self.matter['take_from']['district']
+        self.d_from = self.matter['take_from']['district_name']
         self.delete_district = self.matter['take_from']['delete_district']
         self.many_to = self.matter['take_to']
 
     def echo(self, lang = "pol"):
-        destination_districts = ", ".join([f"{destination['district']} ({destination['region']})" for destination in self.many_to])
+        destination_districts = ", ".join([f"{destination['district_name']} ({destination['region']})" for destination in self.many_to])
         if lang == "pol":
             if self.delete_district:
                 print(f"{self.date} zniesiono powiat {self.d_from} ({self.r_from}), a jego terytorium włączono do powiatów: {destination_districts} ({self.source}).")
@@ -164,7 +164,7 @@ class DOneToManyChange(Change):
     def districts_involved(self):
         # Returns the list of (district, its_region) for all districts involved in the change
         all_districts_involved = [(self.r_from, self.d_from)]
-        all_districts_involved += [(destination['region'], destination['district']) for destination in self.many_to]
+        all_districts_involved += [(destination['region'], destination['district_name']) for destination in self.many_to]
         return all_districts_involved
     
     def apply(self, state):
@@ -184,7 +184,7 @@ class DOneToManyChange(Change):
                 try:
                     state.add_district_if_absent(region_name, new_district)
                 except:
-                    raise ValueError(f"District {new_district['name']} already exists in the region {region_name}:\n{self.echo()}.")  
+                    raise ValueError(f"District {new_district['district_name']} already exists in the region {region_name}:\n{self.echo()}.")  
             
 
 class DManyToOneChange(Change):
@@ -197,25 +197,25 @@ class DManyToOneChange(Change):
         self.take_to = self.matter['take_to']
 
     def echo(self, lang = "pol"):
-        origin_districts_partial = ", ".join([f"{origin['district']} ({origin['region']})" for origin in self.many_from if not origin["delete_district"]])
-        origin_districts_whole = ", ".join([f"{origin['district']} ({origin['region']})" for origin in self.many_from if origin["delete_district"]])
+        origin_districts_partial = ", ".join([f"{origin['district_name']} ({origin['region']})" for origin in self.many_from if not origin["delete_district"]])
+        origin_districts_whole = ", ".join([f"{origin['district_name']} ({origin['region']})" for origin in self.many_from if origin["delete_district"]])
         if lang == "pol":
             if self.take_to["create"]:
-                print(f"{self.date} utworzono powiat {self.take_to['district']} ({self.take_to['region']}) z części powiatów: {origin_districts_partial} oraz z całego terytorium powiatów: {origin_districts_whole} ({self.source}).")
+                print(f"{self.date} utworzono powiat {self.take_to['district_name']} ({self.take_to['region']}) z części powiatów: {origin_districts_partial} oraz z całego terytorium powiatów: {origin_districts_whole} ({self.source}).")
             else:
-                print(f"{self.date} do powiatu {self.take_to['district']} ({self.take_to['region']}) włączono części powiatów: {origin_districts_partial} oraz całe terytorium powiatów: {origin_districts_whole} ({self.source}).")
+                print(f"{self.date} do powiatu {self.take_to['district_name']} ({self.take_to['region']}) włączono części powiatów: {origin_districts_partial} oraz całe terytorium powiatów: {origin_districts_whole} ({self.source}).")
         elif lang == "eng":
             if self.take_to["create"]:
-                print(f"{self.date} the district {self.take_to['district']} ({self.take_to['region']}) was created out of the fragments of districts: {origin_districts_partial} and from the whole territories of the districts: {origin_districts_whole} ({self.source}).")
+                print(f"{self.date} the district {self.take_to['district_name']} ({self.take_to['region']}) was created out of the fragments of districts: {origin_districts_partial} and from the whole territories of the districts: {origin_districts_whole} ({self.source}).")
             else:
-                print(f"{self.date} the district {self.take_to['district']} ({self.take_to['region']}) was enlarged by the fragments of districts: {origin_districts_partial} and the whole territories of the districts: {origin_districts_whole} ({self.source}).")
+                print(f"{self.date} the district {self.take_to['district_name']} ({self.take_to['region']}) was enlarged by the fragments of districts: {origin_districts_partial} and the whole territories of the districts: {origin_districts_whole} ({self.source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
     def districts_involved(self):
         # Returns the list of (district, its_region) for all districts involved in the change
-        all_districts_involved = [(origin['region'], origin['district']) for origin in self.many_from]
-        all_districts_involved += [(self.take_to["region"], self.take_to["district"])]
+        all_districts_involved = [(origin['region'], origin['district_name']) for origin in self.many_from]
+        all_districts_involved += [(self.take_to["region"], self.take_to["district_name"])]
         return all_districts_involved
     
     def apply(self, state):
@@ -223,9 +223,9 @@ class DManyToOneChange(Change):
             if source_district["delete_district"]:
                 # Delete the old district
                 try:
-                    state.pop_district(source_district["region"], source_district["district"])
+                    state.pop_district(source_district["region"], source_district["district_name"])
                 except:
-                    raise ValueError(f"District {source_district['district']} doesn't exist in the region {source_district['region']}:\n{self.echo()}.")
+                    raise ValueError(f"District {source_district['district_name']} doesn't exist in the region {source_district['region']}:\n{self.echo()}.")
 
         if self.take_to["create"]:
             new_district = self.take_to
@@ -235,5 +235,5 @@ class DManyToOneChange(Change):
             try:
                 state.add_district_if_absent(region_name, new_district)
             except:
-                raise ValueError(f"District {new_district['name']} already exists in the region {region_name}:\n{self.echo()}.")
+                raise ValueError(f"District {new_district['district_name']} already exists in the region {region_name}:\n{self.echo()}.")
 

@@ -6,7 +6,7 @@ from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 
 class RCreateMatterTakeFrom(BaseModel):
     region: str
-    district: str
+    region_name: str
 
 class RCreateMatter(BaseModel):
     take_from: List[RCreateMatterTakeFrom]
@@ -16,8 +16,8 @@ class RCreateMatter(BaseModel):
     @classmethod
     def ensure_keys_and_name(cls, values):
         take_to = values.get("take_to", {})
-        if "name" not in take_to:
-            raise ValueError("`take_to` must contain a 'name' field.")
+        if "region_name" not in take_to:
+            raise ValueError("`take_to` must contain a 'region_name' field.")
 
         return values
 
@@ -50,8 +50,8 @@ class RReformMatter(BaseModel):
                 f"`to_reform` and `after_reform` must have the same keys. Got {set(to_reform.keys())} vs {set(after_reform.keys())}"
             )
 
-        if "name" not in to_reform:
-            raise ValueError("`to_reform` must contain a 'name' field.")
+        if "region_name" not in to_reform:
+            raise ValueError("`to_reform` must contain a 'region_name' field.")
 
         return values
 
@@ -67,7 +67,7 @@ class RReformEntry(BaseModel):
 
 class RChangeMatterFromInfo(BaseModel):
     region: str
-    district: str
+    district_name: str
 
 class RChangeMatter(BaseModel):
     take_from: RChangeMatterFromInfo
@@ -85,13 +85,13 @@ class RChangeEntry(BaseModel):
 
 class DOneToManyMatterTakeFrom(BaseModel):
     region: str
-    district: str
+    district_name: str
     delete_district: bool
 
 class DOneToManyMatterTakeTo(BaseModel):
     create: bool
     region: str
-    district: str
+    district_name: str
     weight_from: Optional[float] = None
     weight_to: Optional[float] = None
 
@@ -111,7 +111,7 @@ class DOneToManyEntry(BaseModel):
 
 class ManyToOneMatterTakeFrom(BaseModel):
     region: str
-    district: str
+    district_name: str
     weight_from: Optional[float] = None
     weight_to: Optional[float] = None
     delete_district: bool
@@ -120,7 +120,7 @@ class ManyToOneMatterTakeFrom(BaseModel):
 class ManyToOneMatterTakeTo(BaseModel):
     """
     Required:
-        create, region, and district
+        create, region, and district_name
     Required only if create = true:
         district_type and seat
     Optional:
@@ -128,7 +128,7 @@ class ManyToOneMatterTakeTo(BaseModel):
     """
     create: bool
     region: str
-    district: str
+    district_name: str
     district_type: Optional[str] = None
     seat: Optional[str] = None
     alternative_names: Optional[List[str]] = None
@@ -169,7 +169,7 @@ ChangeEntry = Annotated[
 ################# AdministrativeState model #################
 
 class District(BaseModel):
-    name: str
+    district_name: str
     alternative_names: Optional[List[str]] = None
     district_type: Literal["w", "m"]
     seat: str
