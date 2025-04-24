@@ -77,32 +77,6 @@
     "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
-    "description": "do 13.04.1922 należał do woj. nowogródzkiego",
-    "matter": {
-      "take_from": {
-        "region": "Nowogródzkie",
-        "district": "duniłowicki"
-      },
-      "take_to": "wileńskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "13.04.1922",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
-    "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
-    "matter": {
-      "take_from": {
-        "region": "Litwa",
-        "district": "dziśnieński"
-      },
-      "take_to": "wileńskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "13.04.1922",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
       "take_from": {
@@ -134,19 +108,6 @@
       "take_from": {
         "region": "Litwa",
         "district": "trocki"
-      },
-      "take_to": "wileńskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "13.04.1922",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
-    "description": "do 13.04.1922 należał do woj. Nowogródzkiego",
-    "matter": {
-      "take_from": {
-        "region": "Nowogródzkie",
-        "district": "wilejski"
       },
       "take_to": "wileńskie"
     }
@@ -1074,19 +1035,6 @@
         "region": "Poleskie",
         "district": "sarneński"
       },
-      "take_to": "wołyńskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "16.12.1930",
-    "source": "Dz.U. z 1930 r. nr 82, poz. 649",
-    "description": "do 16.12.1930 należał do woj. poleskiego",
-    "matter": {
-      "take_from": {
-        "region": "Polesie",
-        "district": "sarneński"
-      },
       "take_to": "Wołyń"
     }
   },
@@ -1118,20 +1066,7 @@
     "change_type": "RChange",
     "date": "17.04.1931",
     "source": "Dz.U. z 1931 r. nr 34, poz. 238",
-    "description": "Powiat turczański, województwo lwowskie, do 17.04.1931 należał do województwa stanisławowskiego.",
-    "matter": {
-      "take_from": {
-        "region": "Lwowskie",
-        "district": "turczański"
-      },
-      "take_to": "Stanisławowskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "17.04.1931",
-    "source": "Dz.U. z 1931 r. nr 34, poz. 238",
-    "description": "od 17.04.1931 należał do województwa lwowskiego",
+    "description": "Powiat turczański, woj. Stanisławowskie, od 17.04.1931 należał do województwa lwowskiego",
     "matter": {
       "take_from": {
         "region": "Stanisławowskie",
@@ -1362,35 +1297,6 @@
   {
     "change_type": "DOneToMany",
     "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 1, poz. 3",
-    "description": "zniesiono powiat pilzneński, a jego terytorium włączono do powiatów ropczyckiego i jasielskiego",
-    "matter": {
-      "take_from": {
-        "region": "Krakowskie",
-        "district": "pilzneński",
-        "delete_district": true
-      },
-      "take_to": [
-        {
-          "create": false,
-          "region": "Krakowskie",
-          "district": "ropczycki",
-          "weight_from": null,
-          "weight_to": null
-        },
-        {
-          "create": false,
-          "region": "Krakowskie",
-          "district": "jasielski",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "change_type": "DOneToMany",
-    "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 34",
     "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium do powiatu konińskiego",
     "matter": {
@@ -1574,28 +1480,6 @@
     "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
-    "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium o powiatu konińskiego",
-    "matter": {
-      "take_from": {
-        "region": "Poznańskie",
-        "district": "słupecki",
-        "delete_district": true
-      },
-      "take_to": [
-        {
-          "create": false,
-          "region": "Poznańskie",
-          "district": "koniński",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "change_type": "DOneToMany",
-    "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat śmigielski, a jego terytorium włączono do powiatu kościańskiego",
     "matter": {
       "take_from": {
@@ -1674,50 +1558,6 @@
           "create": false,
           "region": "Poznańskie",
           "district": "ostrowski",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "change_type": "DOneToMany",
-    "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 6, poz. 35",
-    "description": "1.04.1932 zniesiono powiat ostrzeszowski, a jego terytorium włączono do powiatu kępińskiego",
-    "matter": {
-      "take_from": {
-        "region": "Poznańskie",
-        "district": "ostrzeszowski",
-        "delete_district": true
-      },
-      "take_to": [
-        {
-          "create": false,
-          "region": "Poznańskie",
-          "district": "kępiński",
-          "weight_from": null,
-          "weight_to": null
-        }
-      ]
-    }
-  },
-  {
-    "change_type": "DOneToMany",
-    "date": "01.04.1932",
-    "source": "Dz.U. z 1932 r. nr 6, poz. 35",
-    "description": "1.04.1932 zniesiono powiat śmigielski, a jego terytorium włączono do powiatu kościańskiego",
-    "matter": {
-      "take_from": {
-        "region": "Poznańskie",
-        "district": "śmigielski",
-        "delete_district": true
-      },
-      "take_to": [
-        {
-          "create": false,
-          "region": "Poznańskie",
-          "district": "kościański",
           "weight_from": null,
           "weight_to": null
         }
@@ -1825,19 +1665,6 @@
   },
   {
     "change_type": "RChange",
-    "date": "01.01.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1938 należał do woj. Pomorskiego",
-    "matter": {
-      "take_from": {
-        "region": "Warszawskie",
-        "district": "lipnowski"
-      },
-      "take_to": "Pomorskie"
-    }
-  },
-  {
-    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
@@ -1853,7 +1680,7 @@
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do woj. poznańskiego",
+    "description": "powiat kolski, woj. Łódzkie, od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
       "take_from": {
         "region": "Łódzkie",
@@ -1866,7 +1693,7 @@
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do woj. poznańskiego",
+    "description": "powiat koniński, woj. łódzkie, od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
       "take_from": {
         "region": "Łódzkie",
@@ -1879,7 +1706,7 @@
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do woj. poznańskiego",
+    "description": "powiat turecki, woj. łódzkie, od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
       "take_from": {
         "region": "Łódzkie",
@@ -1892,20 +1719,7 @@
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. poznańskiego",
-    "matter": {
-      "take_from": {
-        "region": "Poznańskie",
-        "district": "bydgoski"
-      },
-      "take_to": "Pomorskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "1.04.1938 przeniesiono powiat Bydgoszcz do województwa pomorskiego",
+    "description": "1.04.1938 przeniesiono powiat Bydgoszcz z woj. poznańskiego do województwa pomorskiego",
     "matter": {
       "take_from": {
         "region": "Poznańskie",
@@ -1918,7 +1732,7 @@
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do woj. warszawskiego",
+    "description": "powiat działdowski, woj. Pomorskie, od 1.04.1938 należał do woj. warszawskiego",
     "matter": {
       "take_from": {
         "region": "Pomorskie",
@@ -1944,89 +1758,11 @@
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. warszawskiego",
-    "matter": {
-      "take_from": {
-        "region": "Warszawskie",
-        "district": "nieszawski"
-      },
-      "take_to": "Pomorskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. warszawskiego",
-    "matter": {
-      "take_from": {
-        "region": "Warszawskie",
-        "district": "rypiński"
-      },
-      "take_to": "Pomorskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do województwa poznańskiego",
-    "matter": {
-      "take_from": {
-        "region": "Poznańskie",
-        "district": "szubiński"
-      },
-      "take_to": "Pomorskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. warszawskiego",
-    "matter": {
-      "take_from": {
-        "region": "Warszawskie",
-        "district": "włocławski"
-      },
-      "take_to": "Pomorskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. poznańskiego",
-    "matter": {
-      "take_from": {
-        "region": "Poznańskie",
-        "district": "wyrzyski"
-      },
-      "take_to": "Pomorskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do woj. Pomorskiego",
+    "description": "powiat bydgoski, woj. poznańskie, od 1.04.1938 należał do woj. Pomorskiego",
     "matter": {
       "take_from": {
         "region": "Poznańskie",
         "district": "bydgoski"
-      },
-      "take_to": "Pomorskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "1.04.1938 przeniesiono powiat Bydgoszcz do województwa pomorskiego",
-    "matter": {
-      "take_from": {
-        "region": "Poznańskie",
-        "district": "Bydgoszcz"
       },
       "take_to": "Pomorskie"
     }
@@ -2061,46 +1797,7 @@
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. łódzkiego",
-    "matter": {
-      "take_from": {
-        "region": "Łódzkie",
-        "district": "kaliski"
-      },
-      "take_to": "Poznańskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. łódzkiego",
-    "matter": {
-      "take_from": {
-        "region": "Łódzkie",
-        "district": "kolski"
-      },
-      "take_to": "Poznańskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. łódzkiego",
-    "matter": {
-      "take_from": {
-        "region": "Łódzkie",
-        "district": "koniński"
-      },
-      "take_to": "Poznańskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do województwa pomorskiego",
+    "description": "powiat szubiński, woj. poznańskie, od 1.04.1938 należał do województwa pomorskiego",
     "matter": {
       "take_from": {
         "region": "Poznańskie",
@@ -2113,59 +1810,33 @@
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do województwa pomorskiego",
+    "description": "powiat wyrzyski, woj. poznańskie, od 1.04.1938 należał do województwa Pomorskiego",
     "matter": {
       "take_from": {
         "region": "Poznańskie",
         "district": "wyrzyski"
       },
-      "take_to": "pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. łódzkiego",
+    "description": "powiat nieszawski, woj. warszawskie, od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
       "take_from": {
-        "region": "łódzkie",
-        "district": "turecki"
-      },
-      "take_to": "Poznańskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "do 1.04.1938 należał do woj. pomorskiego",
-    "matter": {
-      "take_from": {
-        "region": "Pomorskie",
-        "district": "działdowski"
-      },
-      "take_to": "Warszawskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1938",
-    "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do woj. pomorskiego",
-    "matter": {
-      "take_from": {
-        "region": "Pomorskie",
+        "region": "Warszawskie",
         "district": "nieszawski"
       },
-      "take_to": "Warszawskie"
+      "take_to": "Pomorskie"
     }
   },
   {
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do woj. pomorskiego",
+    "description": "powiat rypiński, woj. warszawskie, od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
       "take_from": {
         "region": "Warszawskie",
@@ -2178,7 +1849,7 @@
     "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
-    "description": "od 1.04.1938 należał do woj. pomorskiego",
+    "description": "powiat włocławski, woj. warszawskie, od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
       "take_from": {
         "region": "Warszawskie",
@@ -2442,13 +2113,13 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "od 1.04.1939 należał do woj. warszawskiego",
+    "description": "powiat łomżyński, woj. białostockie, od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
       "take_from": {
         "region": "Białostockie",
         "district": "łomżyński"
       },
-      "take_to": "warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
@@ -2468,7 +2139,7 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "od 1.04.1939 należał do woj. warszawskiego",
+    "description": "powiat ostrowski, woj. białostockie, od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
       "take_from": {
         "region": "Białostockie",
@@ -2481,7 +2152,7 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "od 1.04.1939 należał do woj. łódzkiego",
+    "description": "powiat konecki, woj. kieleckie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
         "region": "Kieleckie",
@@ -2494,7 +2165,7 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "od 1.04.1939 należał do woj. Łódzkiego",
+    "description": "powiat opoczyński, woj. kieleckie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
         "region": "Kieleckie",
@@ -2507,85 +2178,7 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. kieleckiego",
-    "matter": {
-      "take_from": {
-        "region": "kieleckie",
-        "district": "konecki"
-      },
-      "take_to": "Łódzkie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. warszawskiego",
-    "matter": {
-      "take_from": {
-        "region": "warszawskie",
-        "district": "kutnowski"
-      },
-      "take_to": "Łódzkie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. warszawskiego",
-    "matter": {
-      "take_from": {
-        "region": "warszawskie",
-        "district": "łowicki"
-      },
-      "take_to": "Łódzkie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. kieleckiego",
-    "matter": {
-      "take_from": {
-        "region": "kieleckie",
-        "district": "opoczyński"
-      },
-      "take_to": "Łódzkie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. warszawskiego",
-    "matter": {
-      "take_from": {
-        "region": "warszawskie",
-        "district": "rawski"
-      },
-      "take_to": "Łódzkie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. warszawskiego",
-    "matter": {
-      "take_from": {
-        "region": "warszawskie",
-        "district": "skierniewicki"
-      },
-      "take_to": "Łódzkie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "Powiat garwoliński, województwo lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
+    "description": "Powiat garwoliński, woj. lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
       "take_from": {
         "region": "Lubelskie",
@@ -2598,7 +2191,7 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "Powiat sokołowski, województwo lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
+    "description": "Powiat sokołowski, woj. lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
       "take_from": {
         "region": "Lubelskie",
@@ -2611,7 +2204,7 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "Powiat węgrowski, województwo lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
+    "description": "Powiat węgrowski, woj. lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
       "take_from": {
         "region": "Lubelskie",
@@ -2624,20 +2217,7 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. lubelskiego",
-    "matter": {
-      "take_from": {
-        "region": "Lubelskie",
-        "district": "garwoliński"
-      },
-      "take_to": "Warszawskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "od 1.04.1939 należał do woj. łódzkiego",
+    "description": "powiat kutnowski, woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
         "region": "Warszawskie",
@@ -2649,21 +2229,8 @@
   {
     "change_type": "RChange",
     "date": "01.04.1939",
-    "source": "Dz.U. z 1932 r. nr 3, poz. 18; Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. białostockiego",
-    "matter": {
-      "take_from": {
-        "region": "Białostockie",
-        "district": "łomżyński"
-      },
-      "take_to": "Warszawskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "od 1.04.1939 należał do woj. łódzkiego",
+    "description": "powiat łowicki, woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
         "region": "Warszawskie",
@@ -2676,24 +2243,11 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. białostockiego",
-    "matter": {
-      "take_from": {
-        "region": "Białostockie",
-        "district": "ostrowski"
-      },
-      "take_to": "Warszawskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "od 1.04.1939 należał do woj. łódzkiego",
+    "description": "powiat rawski (Rawa Mazowiecka), woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
         "region": "Warszawskie",
-        "district": "rawski"
+        "district": "rawski (Rawa Mazowiecka)"
       },
       "take_to": "Łódzkie"
     }
@@ -2702,39 +2256,13 @@
     "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "od 1.04.1939 należał do woj. łódzkiego",
+    "description": "powiat skierniewicki, woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
         "region": "Warszawskie",
         "district": "skierniewicki"
       },
       "take_to": "Łódzkie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. lubelskiego",
-    "matter": {
-      "take_from": {
-        "region": "Lubelskie",
-        "district": "sokołowski"
-      },
-      "take_to": "Warszawskie"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "01.04.1939",
-    "source": "Dz.U. z 1938 r. nr 27, poz. 240",
-    "description": "do 1.04.1939 należał do woj. lubelskiego",
-    "matter": {
-      "take_from": {
-        "region": "Lubelskie",
-        "district": "węgrowski"
-      },
-      "take_to": "Warszawskie"
     }
   }
 ]

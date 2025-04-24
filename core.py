@@ -125,7 +125,8 @@ class AdministrativeHistory():
 
         for date, change_list in self.changes_chron_dict.items():
             for change in change_list:
-                print(f"{date}: {change.change_type}, order: {change.order}")
+                #print(f"{date}: {change.change_type}, order: {change.order}")
+                change.echo()
     
 
         

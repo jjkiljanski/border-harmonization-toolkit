@@ -480,7 +480,7 @@
         "seat": "Przeworsk"
       },
       {
-        "name": "rawski",
+        "name": "rawski (Rawa Ruska)",
         "district_type": "w",
         "seat": "Rawa",
         "alternative_seat_names": ["Rawa Ruska"]
@@ -1293,7 +1293,7 @@
         "seat": "Radzymin"
       },
       {
-        "name": "rawski",
+        "name": "rawski (Rawa Mazowiecka)",
         "alternative_names": ["rawsko-mazowiecki"],
         "district_type": "w",
         "seat": "Rawa Mazowiecka"
