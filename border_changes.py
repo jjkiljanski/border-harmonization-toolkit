@@ -10,6 +10,7 @@ class Change(ABC):
         # Initiate Change class with the required attributes
         self.change_type = self.change_dict["change_type"]
         self.date = datetime.strptime(self.change_dict["date"], "%d.%m.%Y").date()
+        self.order = self.change_dict["order"]
         self.source = self.change_dict["source"]
         self.description = self.change_dict["description"]
         self.matter = self.change_dict["matter"]  

@@ -11,7 +11,7 @@ state_path = "data_input/initial_state.json"
 administrative_history = AdministrativeHistory(changes_path, state_path)
 
 administrative_history.list_change_dates()
-administrative_history.summarize_by_date()
+#administrative_history.summarize_by_date()
 
 ########## Load and initiate the initial state of administrative division ##########
 

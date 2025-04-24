@@ -24,6 +24,9 @@ class AdministrativeHistory():
         self._load_state_from_json()
         self._create_initial_state()
 
+        # Create chronological changes dict {[date]: List[Change]}
+        self._create_changes_chronology()
+
     def _load_changes_from_json(self):
         """
         Load a list of changes from a JSON file and validate according to a Pydantic
@@ -106,6 +109,23 @@ class AdministrativeHistory():
         # Prints all changes ordered by date.
         for change in self.changes_list:
             change.echo(lang)
+
+    def _create_changes_chronology(self):
+        self.changes_chron_dict = {}
+        for change in self.changes_list:
+            if change.date in self.changes_chron_dict.keys():
+                self.changes_chron_dict[change.date].append(change)
+            else:
+                self.changes_chron_dict[change.date] = [change]
+
+        for date, change_list in self.changes_chron_dict.items():
+            # Sort changes for every date according to the order.
+            # change.order = None puts the changes at the end of the list.
+            change_list.sort(key=lambda change: (change.order is None, change.order))
+
+        for date, change_list in self.changes_chron_dict.items():
+            for change in change_list:
+                print(f"{date}: {change.change_type}, order: {change.order}")
     
 
         
