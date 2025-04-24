@@ -88,6 +88,24 @@ class AdministrativeHistory():
         self.states_list.append(AdministrativeState(self._initial_state_dict))
         del self._initial_state_dict
         print("✅ Successfully created AdministrativeState object for the initial state.")
+
+    def list_change_dates(self, lang = "pol"):
+        # Lists all the dates of border changes.
+        dates = [change.date for change in self.changes_list]
+        dates = list(set(dates))
+        dates.sort()
+        if lang == "pol":
+            print("Wszystkie daty zmian granic:")
+        elif lang == "eng":
+            print("All dates of border changes:")
+        else:
+            raise ValueError("Wrong value for the lang parameter.") 
+        for date in dates: print(date)
+
+    def summarize_by_date(self, lang = "pol"):
+        # Prints all changes ordered by date.
+        for change in self.changes_list:
+            change.echo(lang)
     
 
         

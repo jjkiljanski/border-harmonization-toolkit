@@ -1,5 +1,4 @@
 from border_changes import *
-from summarize import *
 from state import *
 from data_models import *
 from core import *
@@ -11,8 +10,8 @@ changes_path = "data_input/district_changes.json"
 state_path = "data_input/initial_state.json"
 administrative_history = AdministrativeHistory(changes_path, state_path)
 
-list_change_dates(administrative_history.changes_list)
-summarize_by_date(administrative_history.changes_list)
+administrative_history.list_change_dates()
+administrative_history.summarize_by_date()
 
 ########## Load and initiate the initial state of administrative division ##########
 
