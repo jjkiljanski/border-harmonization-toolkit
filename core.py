@@ -84,6 +84,10 @@ class AdministrativeHistory():
                 self.changes_list.append(DOneToManyChange(change))
             if isinstance(change, DManyToOneEntry):
                 self.changes_list.append(DManyToOneChange(change))
+            if isinstance(change, RReformEntry):
+                self.changes_list.append(RReform(change))
+            if isinstance(change, RCreateEntry):
+                self.changes_list.append(RCreate(change))
 
         self.changes_list.sort(key=lambda change: change.date)
 
@@ -125,8 +129,8 @@ class AdministrativeHistory():
 
         for date, change_list in self.changes_chron_dict.items():
             for change in change_list:
-                #print(f"{date}: {change.change_type}, order: {change.order}")
-                change.echo()
+                print(f"{date}: {change.change_type}, order: {change.order}")
+                #change.echo()
 
     def _create_history(self):
         for date in self.changes_dates:

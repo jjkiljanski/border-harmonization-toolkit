@@ -1,6 +1,34 @@
 from pydantic import BaseModel, model_validator, Field
 from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 
+# RCreate data model
+# RCreate represents the creation of a new administrative region.
+
+class RCreateMatterTakeFrom(BaseModel):
+    region: str
+    district: str
+
+class RCreateMatter(BaseModel):
+    take_from: List[RCreateMatterTakeFrom]
+    take_to: Dict[str, Any]
+
+    @model_validator(mode="before")
+    @classmethod
+    def ensure_keys_and_name(cls, values):
+        take_to = values.get("take_to", {})
+        if "name" not in take_to:
+            raise ValueError("`take_to` must contain a 'name' field.")
+
+        return values
+
+class RCreateEntry(BaseModel):
+    change_type: Literal["RCreate"]
+    date: str
+    order: Optional[int] = None
+    source: str
+    description: str
+    matter: RCreateMatter
+
 # RReform data model
 # RReform represents the change of region attributes.
 
@@ -134,7 +162,7 @@ class DManyToOneEntry(BaseModel):
 
 # Create combined change entry using a discriminated union.
 ChangeEntry = Annotated[
-    Union[RChangeEntry, DOneToManyEntry, DManyToOneEntry, RReformEntry],
+    Union[RChangeEntry, DOneToManyEntry, DManyToOneEntry, RReformEntry, RCreateEntry],
     Field(discriminator="change_type")
 ]
 

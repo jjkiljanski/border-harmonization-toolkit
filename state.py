@@ -74,7 +74,8 @@ class AdministrativeState:
 
         # Check for name collision
         for existing in self.structure[region_name]:
-            if existing["name"] == district_dict["name"] or district_dict["name"] in existing.get("alternative_names", []):
+            alt_names = existing.get("alternative_names") or [] # Returns alternative_names list or empty list if existing['alternative_names'] is None
+            if existing["name"] == district_dict["name"] or district_dict["name"] in alt_names:
                 raise ValueError(f"District '{district_dict['name']}' already exists in region '{region_name}'.")
 
         self.structure[region_name].append(district_dict)

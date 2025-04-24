@@ -22,6 +22,19 @@
     }
   },
   {
+    "change_type": "RCreate",
+    "date": "13.04.1922",
+    "order": 1,
+    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
+    "description": "13.04.1922 utworzono jednostkę administracyjną Ziemia Wileńska po buncie Żeligowskiego i aneksji części terytorium Litwy",
+    "matter": {
+      "take_from": [],
+      "take_to": {
+        "name": "Ziemia Wileńska"
+      }
+    }
+  },
+  {
     "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",

@@ -30,6 +30,41 @@ class Change(ABC):
         """Abstract method for applying the change to the currect administrative state"""
         pass
 
+class RCreate(Change):
+    # Class describing the Creation of a new region out of many districts.
+    def __init__(self, change_dict):
+        super().__init__(change_dict)  # Assign standard general Change description attributes
+
+        # Initiate subclass-specific attributes
+        self.take_from = self.matter['take_from']
+        self.r_to = self.matter['take_to']['name']
+
+    def echo(self, lang = "pol"):
+        if lang == "pol":
+            print(f"{self.date} utworzono jednostkę administracyjną na prawach województwa {self.r_to}. ({self.source}).")
+        elif lang == "eng":
+            print(f"{self.date} the region {self.to_reform['name']} was created ({self.source}).")
+        else:
+            raise ValueError("Wrong value for the lang parameter.")
+        
+    def districts_involved(self):
+        # Returns the list of (district, its_region) for all districts involved in the change
+        return [(unit["district"], unit["region"]) for unit in self.take_from]
+    
+    def apply(self, state):
+        if self.r_to not in state.structure.keys():
+            state.structure[self.r_to] = []
+
+        for unit in self.take_from:
+            # Remove district from the old region
+            try:
+                district_to_move = state.pop_district(unit["region"], unit["district"])
+            except:
+                raise ValueError(f"District {unit['district']} doesn't exist in the region {unit['region']}:\n{self.echo()}.")
+            
+            # Add district to the new region
+            state.add_district_if_absent(self.r_to, district_to_move)
+
 class RReform(Change):
     # Class describing the change of attributes for a region (e.g. region name).
     def __init__(self, change_dict):
