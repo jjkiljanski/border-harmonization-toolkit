@@ -738,6 +738,20 @@
     }
   },
   {
+    "change_type": "RReform",
+    "date": "20.01.1926",
+    "source": "Dz.U. z 1926 r. nr 6, poz. 29",
+    "description": "20.01.1926 przekształcono Ziemię Wileńską w województwo wileńskie",
+    "matter": {
+      "to_reform": {
+        "name": "Ziemia Wileńska"
+      },
+      "after_reform": {
+        "name": "Wileńskie"
+      }
+    }
+  },
+  {
     "change_type": "DManyToOne",
     "date": "01.01.1927",
     "order": 1,

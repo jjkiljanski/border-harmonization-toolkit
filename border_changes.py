@@ -30,6 +30,40 @@ class Change(ABC):
         """Abstract method for applying the change to the currect administrative state"""
         pass
 
+class RReform(Change):
+    # Class describing the change of attributes for a region (e.g. region name).
+    def __init__(self, change_dict):
+        super().__init__(change_dict)  # Assign standard general Change description attributes
+
+        # Initiate subclass-specific attributes
+        self.to_reform = self.matter['to_reform']
+        self.after_reform = self.matter['after_reform']
+
+    def echo(self, lang = "pol"):
+        if lang == "pol":
+            print(f"{self.date} dokonano reformy województwa {self.to_reform['name']}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({self.source}).")
+        elif lang == "eng":
+            print(f"{self.date} the region {self.to_reform['name']} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({self.source}).")
+        else:
+            raise ValueError("Wrong value for the lang parameter.")
+        
+    def districts_involved(self):
+        # Returns the list of (district, its_region) for all districts involved in the change
+        return []
+    
+    def apply(self, state):
+        # Remove district from the old region
+        # Only name change is implemented for now.
+
+        old_name = self.to_reform["name"]
+        new_name = self.after_reform["name"]
+        if old_name != new_name:
+            try:
+                new_region = state.structure.pop(old_name)
+                state.structure[new_name] = new_region
+            except:
+                raise ValueError(f"The region {old_name} doesn't exist in the administrative state:\n{self.echo()}.")
+
 class RChange(Change):
     # Class describing the change of region for a district.
     def __init__(self, change_dict):
@@ -42,9 +76,9 @@ class RChange(Change):
 
     def echo(self, lang = "pol"):
         if lang == "pol":
-            print(f"{self.date} przeniesiono powiat {self.d_from} z woj. \"{self.r_from}\" do woj. \"{self.r_to}\" ({self.source}).")
+            print(f"{self.date} przeniesiono powiat {self.d_from} z reg. \"{self.r_from}\" do reg. \"{self.r_to}\" ({self.source}).")
         elif lang == "eng":
-            print(f"{self.date} moved district {self.d_from} from voiv. \"{self.r_from}\" to voiv. \"{self.r_to}\" ({self.source}).")
+            print(f"{self.date} moved district {self.d_from} from region \"{self.r_from}\" to region \"{self.r_to}\" ({self.source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
