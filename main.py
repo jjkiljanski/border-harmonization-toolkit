@@ -2,37 +2,23 @@ from border_changes import *
 from summarize import *
 from state import *
 from data_models import *
-from loader import *
+from core import *
 
 ########## Load and initiate administrative changes list ###########
 # Load changes json
-json_changes = load_changes_from_json("data_input/district_changes.json")
-print(f"✅ Loaded {len(json_changes)} validated changes.")
 
-changes_list = []
-for change in json_changes:
-    if isinstance(change, RChangeEntry):
-        changes_list.append(RChange(change))
-    if isinstance(change, DOneToManyEntry):
-        changes_list.append(DOneToManyChange(change))
-    if isinstance(change, DManyToOneEntry):
-        changes_list.append(DManyToOneChange(change))
+changes_path = "data_input/district_changes.json"
+state_path = "data_input/initial_state.json"
+administrative_history = AdministrativeHistory(changes_path, state_path)
 
-changes_list.sort(key=lambda change: change.date)
-
-list_change_dates(changes_list)
-summarize_by_date(changes_list)
+list_change_dates(administrative_history.changes_list)
+summarize_by_date(administrative_history.changes_list)
 
 ########## Load and initiate the initial state of administrative division ##########
 
-initial_state = load_state_from_json("data_input/initial_state.json")
-initial_state_dict = initial_state.model_dump()
-
-administrative_states = []
-administrative_states.append(AdministrativeState(initial_state_dict))
-print(administrative_states[0])
-administrative_states[0].valid_to = '1921.08.01'
-administrative_states[0].to_csv()
+print(administrative_history.states_list[0])
+administrative_history.states_list[0].valid_to = '1921.08.01'
+administrative_history.states_list[0].to_csv()
 
 # current_state = administrative_states[0]
 
