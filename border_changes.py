@@ -53,7 +53,6 @@ class RChange(Change):
     
     def apply(self, administrative_state):
         administrative_state.valid_to = self.date
-
         new_administrative_state = administrative_state.copy()
         new_administrative_state.valid_from = self.date
         new_administrative_state.valid_to = None

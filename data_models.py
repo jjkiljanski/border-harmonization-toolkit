@@ -15,6 +15,7 @@ class RChangeMatter(BaseModel):
 class RChangeEntry(BaseModel):
     change_type: Literal["RChange"]
     date: str
+    order: Optional[int] = None
     source: str
     description: str
     matter: RChangeMatter
@@ -40,6 +41,7 @@ class DOneToManyMatter(BaseModel):
 class DOneToManyEntry(BaseModel):
     change_type: Literal["DOneToMany"]
     date: str
+    order: Optional[int] = None
     source: str
     description: str
     matter: DOneToManyMatter
@@ -92,6 +94,7 @@ class ManyToOneMatter(BaseModel):
 class DManyToOneEntry(BaseModel):
     change_type: Literal["DManyToOne"]
     date: str
+    order: Optional[int] = None
     source: str
     description: str
     matter: ManyToOneMatter
