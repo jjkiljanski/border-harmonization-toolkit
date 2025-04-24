@@ -963,6 +963,51 @@
     }
   },
   {
+    "change_type": "DOneToMany",
+    "date": "24.08.1928",
+    "source": "Dz.U. 1928 nr 72 poz. 647",
+    "description": "12.04.1928 roku m. st. Warszawę podzielono na powiaty Warszawa-Północ, Warszawa-Południe, Warszawa-Praga.",
+    "matter": {
+      "take_from": {
+        "region": "m. st. Warszawa",
+        "district": "m. st. Warszawa",
+        "delete_district": true
+      },
+      "take_to": [
+        {
+          "create": true,
+          "region": "m. st. Warszawa",
+          "district": "południowo-warszawski",
+          "alternative_names": ["Warszawa-Południe"],
+          "district_type": "m",
+          "seat": "Warszawa",
+          "weight_from": null,
+          "weight_to": null
+        },
+        {
+          "create": true,
+          "region": "m. st. Warszawa",
+          "district": "północno-warszawski",
+          "alternative_names": ["Warszawa-Północ"],
+          "district_type": "m",
+          "seat": "Warszawa",
+          "weight_from": null,
+          "weight_to": null
+        },
+        {
+          "create": true,
+          "region": "m. st. Warszawa",
+          "district": "prasko-warszawski",
+          "alternative_names": ["Warszawa-Praga"],
+          "district_type": "m",
+          "seat": "Warszawa",
+          "weight_from": null,
+          "weight_to": null
+        }
+      ]
+    }
+  },
+  {
     "change_type": "DManyToOne",
     "date": "24.01.1929",
     "source": "Dz.U. z 1929 r. nr 4, poz. 35",
@@ -1074,6 +1119,38 @@
           "weight_to": 1.0
         }
       ]
+    }
+  },
+  {
+    "change_type": "DManyToOne",
+    "date": "1.04.1931",
+    "source": "Dz.U. z 1931 r. nr 26, poz. 155",
+    "description": "1.04.1931 z części powiatów południowo-warszawskiego i północno-warszawskiego utworzono powiat śródmiejsko-warszawski",
+    "matter": {
+      "take_from": [
+        {
+          "region": "m. st. Warszawa",
+          "district": "południowo-warszawski",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_district": false
+        },
+        {
+          "region": "m. st. Warszawa",
+          "district": "północno-warszawski",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_district": false
+        }
+      ],
+      "take_to": {
+        "create": true,
+        "region": "m. st. Warszawa",
+        "district": "śródmiejsko-warszawski",
+        "alternative_names": ["Warszawa-Śródmieście"],
+        "district_type": "m",
+        "seat": "Warszawa"
+      }
     }
   },
   {

@@ -603,24 +603,9 @@
         "seat": "Wieluń"
       }
     ],
-    "miasto stołeczne Warszawa": [
+    "m. st. Warszawa": [
       {
-        "name": "południowo-warszawski",
-        "district_type": "m",
-        "seat": "Warszawa"
-      },
-      {
-        "name": "północno-warszawski",
-        "district_type": "m",
-        "seat": "Warszawa"
-      },
-      {
-        "name": "prasko-warszawski",
-        "district_type": "m",
-        "seat": "Warszawa"
-      },
-      {
-        "name": "śródmiejsko-warszawski",
+        "name": "m. st. Warszawa",
         "district_type": "m",
         "seat": "Warszawa"
       }

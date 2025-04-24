@@ -1,5 +1,5 @@
 from pydantic import BaseModel, model_validator, Field
-from typing import Union, Optional, Literal, List, Dict, Annotated
+from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 
 # RReform data model
 # RReform represents the change of region attributes.
@@ -8,18 +8,20 @@ class RReformMatter(BaseModel):
     to_reform: Dict[str, Any]
     after_reform: Dict[str, Any]
 
-    @model_validator
+    @model_validator(mode="before")
+    @classmethod
     def ensure_keys_and_name(cls, values):
         to_reform = values.get("to_reform", {})
         after_reform = values.get("after_reform", {})
 
-        # Check that keys match
+        if not isinstance(to_reform, dict) or not isinstance(after_reform, dict):
+            raise TypeError("Both 'to_reform' and 'after_reform' must be dictionaries")
+
         if set(to_reform.keys()) != set(after_reform.keys()):
             raise ValueError(
                 f"`to_reform` and `after_reform` must have the same keys. Got {set(to_reform.keys())} vs {set(after_reform.keys())}"
             )
 
-        # Check that "name" is present
         if "name" not in to_reform:
             raise ValueError("`to_reform` must contain a 'name' field.")
 
@@ -132,7 +134,7 @@ class DManyToOneEntry(BaseModel):
 
 # Create combined change entry using a discriminated union.
 ChangeEntry = Annotated[
-    Union[RChangeEntry, DOneToManyEntry, DManyToOneEntry],
+    Union[RChangeEntry, DOneToManyEntry, DManyToOneEntry, RReformEntry],
     Field(discriminator="change_type")
 ]
 
