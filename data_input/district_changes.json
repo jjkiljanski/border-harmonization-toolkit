@@ -1673,7 +1673,7 @@
         "region": "Łódzkie",
         "district": "kaliski"
       },
-      "take_to": "poznańskie"
+      "take_to": "Poznańskie"
     }
   },
   {
@@ -1686,7 +1686,7 @@
         "region": "Łódzkie",
         "district": "kolski"
       },
-      "take_to": "poznańskie"
+      "take_to": "Poznańskie"
     }
   },
   {
@@ -1699,7 +1699,7 @@
         "region": "Łódzkie",
         "district": "koniński"
       },
-      "take_to": "poznańskie"
+      "take_to": "Poznańskie"
     }
   },
   {
@@ -1712,7 +1712,7 @@
         "region": "Łódzkie",
         "district": "turecki"
       },
-      "take_to": "poznańskie"
+      "take_to": "Poznańskie"
     }
   },
   {
@@ -1803,7 +1803,7 @@
         "region": "Poznańskie",
         "district": "szubiński"
       },
-      "take_to": "pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
@@ -2132,7 +2132,7 @@
         "region": "Białostockie",
         "district": "ostrołęcki"
       },
-      "take_to": "warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
@@ -2145,7 +2145,7 @@
         "region": "Białostockie",
         "district": "ostrowski"
       },
-      "take_to": "warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
