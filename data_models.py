@@ -1,43 +1,44 @@
-from pydantic import BaseModel, Field
-from typing import Union, Optional, Literal, List, Dict
+from pydantic import BaseModel, model_validator, Field
+from typing import Union, Optional, Literal, List, Dict, Annotated
 
 
-# VChange data model
+# RChange data model
 
-class VChangeMatterFromInfo(BaseModel):
+class RChangeMatterFromInfo(BaseModel):
     region: str
     district: str
 
-class VChangeMatter(BaseModel):
-    from_: VChangeMatterFromInfo = Field(alias="from")
-    to: str
+class RChangeMatter(BaseModel):
+    take_from: RChangeMatterFromInfo
+    take_to: str
 
-class VChangeEntry(BaseModel):
-    type: Literal["VChange"]
+class RChangeEntry(BaseModel):
+    change_type: Literal["RChange"]
     date: str
     source: str
     description: str
-    matter: VChangeMatter
+    matter: RChangeMatter
 
 # OneToMany model
 
-class DOneToManyMatterFrom(BaseModel):
+class DOneToManyMatterTakeFrom(BaseModel):
     region: str
     district: str
     delete_district: bool
 
-class DOneToManyMatterTo(BaseModel):
+class DOneToManyMatterTakeTo(BaseModel):
+    create: bool
     region: str
     district: str
     weight_from: Optional[float] = None
     weight_to: Optional[float] = None
 
 class DOneToManyMatter(BaseModel):
-    from_: DOneToManyMatterFrom = Field(alias="from")
-    to: List[DOneToManyMatterTo]
+    take_from: DOneToManyMatterTakeFrom
+    take_to: List[DOneToManyMatterTakeTo]
 
 class DOneToManyEntry(BaseModel):
-    type: Literal["DOneToMany"]
+    change_type: Literal["DOneToMany"]
     date: str
     source: str
     description: str
@@ -45,39 +46,70 @@ class DOneToManyEntry(BaseModel):
 
 # DManyToOne model
 
-class ManyToOneMatterFrom(BaseModel):
+class ManyToOneMatterTakeFrom(BaseModel):
     region: str
     district: str
     weight_from: Optional[float] = None
     weight_to: Optional[float] = None
+    delete_district: bool
 
 
-class ManyToOneMatterTo(BaseModel):
+class ManyToOneMatterTakeTo(BaseModel):
+    """
+    Required:
+        create, region, and district
+    Required only if create = true:
+        district_type and seat
+    Optional:
+        alternative names and alternative_seat_names (lists of strings) (info on the created district)
+    """
+    create: bool
     region: str
     district: str
+    district_type: Optional[str] = None
+    seat: Optional[str] = None
+    alternative_names: Optional[List[str]] = None
+    alternative_seat_names: Optional[List[str]] = None
+
+    @model_validator(mode="after")
+    def validate_create_fields(self):
+        if self.create:
+            missing = []
+            if not self.district_type:
+                missing.append("district_type")
+            if not self.seat:
+                missing.append("seat")
+            if missing:
+                raise ValueError(f"Fields {', '.join(missing)} are required when 'create' is True.")
+        return self
 
 
 class ManyToOneMatter(BaseModel):
-    from_: List[ManyToOneMatterFrom] = Field(alias="from")
-    to: ManyToOneMatterTo
+    take_from: List[ManyToOneMatterTakeFrom]
+    take_to: ManyToOneMatterTakeTo
 
 
 class DManyToOneEntry(BaseModel):
-    type: Literal["DManyToOne"]
+    change_type: Literal["DManyToOne"]
     date: str
     source: str
     description: str
     matter: ManyToOneMatter
 
 # Create combined change entry using a discriminated union.
-ChangeEntry = Union[VChangeEntry, DOneToManyEntry, DManyToOneEntry]
+ChangeEntry = Annotated[
+    Union[RChangeEntry, DOneToManyEntry, DManyToOneEntry],
+    Field(discriminator="change_type")
+]
 
 ################# AdministrativeState model #################
 
 class District(BaseModel):
     name: str
+    alternative_names: Optional[List[str]] = None
     district_type: Literal["w", "m"]
     seat: str
+    alternative_seat_names: Optional[List[str]] = None
 
 class AdministrativeStateEntry(BaseModel):
     valid_from: str

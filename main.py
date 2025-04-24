@@ -11,8 +11,8 @@ print(f"✅ Loaded {len(json_changes)} validated changes.")
 
 changes_list = []
 for change in json_changes:
-    if isinstance(change, VChangeEntry):
-        changes_list.append(VChange(change))
+    if isinstance(change, RChangeEntry):
+        changes_list.append(RChange(change))
     if isinstance(change, DOneToManyEntry):
         changes_list.append(DOneToManyChange(change))
     if isinstance(change, DManyToOneEntry):
@@ -37,7 +37,7 @@ administrative_states[0].to_csv()
 # current_state = administrative_states[0]
 
 # for change in changes_list:
-#     if change.type == "VChange":
+#     if change.change_type == "RChange":
 #         current_state = change.apply(current_state)
 #         administrative_states.append(current_state)
 

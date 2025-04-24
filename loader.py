@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from pydantic import parse_obj_as
+from pydantic import parse_obj_as, ValidationError
 from typing import List
 from data_models import ChangeEntry, AdministrativeStateEntry
 
@@ -19,7 +19,10 @@ def load_changes_from_json(file_path: str) -> List[ChangeEntry]:
         raise ValueError("Expected a list of changes in the JSON file")
 
     # Use pydantic to parse and validate the list
-    return parse_obj_as(List[ChangeEntry], data)
+    try:
+        return parse_obj_as(List[ChangeEntry], data)
+    except ValidationError as e:
+        print(e.json(indent=2))
 
 def load_state_from_json(file_path: str) -> AdministrativeStateEntry:
     """

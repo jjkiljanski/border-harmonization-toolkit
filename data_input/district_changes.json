@@ -1,16 +1,16 @@
 [
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.08.1921",
     "source": "Dz.U. z 1922 r. nr 56, poz. 504",
     "description": "1.08.1921 włączono terytorium powiatu do powiatu bielskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Białostockie",
         "district": "białowieski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Białostockie",
@@ -22,233 +22,233 @@
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Nowogródzkie",
         "district": "dziśnieński"
       },
-      "to": "Ziemia Wileńska"
+      "take_to": "Ziemia Wileńska"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Nowogródzkie",
         "district": "duniłowicki"
       },
-      "to": "Ziemia Wileńska"
+      "take_to": "Ziemia Wileńska"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Nowogródzkie",
         "district": "wilejski"
       },
-      "to": "Ziemia Wileńska"
+      "take_to": "Ziemia Wileńska"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Litwa",
         "district": "brasławski"
       },
-      "to": "wileńskie"
+      "take_to": "wileńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "do 13.04.1922 należał do woj. nowogródzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Nowogródzkie",
         "district": "duniłowicki"
       },
-      "to": "wileńskie"
+      "take_to": "wileńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Litwa",
         "district": "dziśnieński"
       },
-      "to": "wileńskie"
+      "take_to": "wileńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Litwa",
         "district": "oszmiański"
       },
-      "to": "wileńskie"
+      "take_to": "wileńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Litwa",
         "district": "święciański"
       },
-      "to": "wileńskie"
+      "take_to": "wileńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Litwa",
         "district": "trocki"
       },
-      "to": "wileńskie"
+      "take_to": "wileńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "do 13.04.1922 należał do woj. Nowogródzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Nowogródzkie",
         "district": "wilejski"
       },
-      "to": "wileńskie"
+      "take_to": "wileńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Litwa",
         "district": "wileński"
       },
-      "to": "wileńskie"
+      "take_to": "wileńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "13.04.1922",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączone do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Litwa",
         "district": "Wilno"
       },
-      "to": "wileńskie"
+      "take_to": "wileńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat miejski Katowice pozyskany od Niemiec",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Niemcy",
         "district": "Katowice"
       },
-      "to": "Śląskie"
+      "take_to": "Śląskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat katowicki pozyskany od Niemiec",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Niemcy",
         "district": "katowicki"
       },
-      "to": "Śląskie"
+      "take_to": "Śląskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat Królewska Huta pozyskany od Niemiec",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Niemcy",
         "district": "Królewska Huta"
       },
-      "to": "Śląskie"
+      "take_to": "Śląskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat lubliniecki pozyskany od Niemiec",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Niemcy",
         "district": "lubliniecki"
       },
-      "to": "Śląskie"
+      "take_to": "Śląskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat pszczyński pozyskany od Niemiec",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Niemcy",
         "district": "pszczyński"
       },
-      "to": "Śląskie"
+      "take_to": "Śląskie"
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z części powiatów zabrskiego (siedziba powiatu Zabrze pozostała po stronie niemieckiej) i gliwickiego (oprócz gminy Mikoleska, siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej) pozyskanych od Niemiec",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Niemcy",
           "district": "zabrski",
@@ -264,7 +264,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Śląskie",
         "district": "rudzki",
@@ -274,12 +274,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z terytorium części powiatu rybnickiego (część powiatu pozostała po stronie niemieckiej) oraz części powiatu raciborskiego (siedziba powiatu Racibórz pozostała po stronie niemieckiej) pozyskanych od Niemiec",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Niemcy",
           "district": "rybnicki",
@@ -295,7 +295,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Śląskie",
         "district": "rybnicki",
@@ -305,12 +305,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z części powiatów Bytom wieś i Bytom miasto (Bytom pozostał po stronie niemieckiej) pozyskanych od Niemiec",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Niemcy",
           "district": "Bytom wieś",
@@ -326,7 +326,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Śląskie",
         "district": "świętochłowicki",
@@ -336,12 +336,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z powiatu tarnogórskiego pozyskanego od Niemiec oraz gminy Mikoleska powiatu gliwickiego (siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej)",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Niemcy",
           "district": "tarnogórski",
@@ -357,7 +357,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Śląskie",
         "district": "tarnogórski",
@@ -367,17 +367,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "26.07.1922",
     "source": "Dz.U. z 1922 r. nr 56, poz. 510",
     "description": "26.07.1922 roku powiat miejski Lublin został zniesiony",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lubelskie",
         "district": "Lublin",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Lubelskie",
@@ -389,17 +389,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "1.01.1923",
     "source": "M.P. z 1922 r. nr 282, poz. 204",
     "description": "1.01.1923 przeniesiono siedzibę urzędu starostwa powiatu cieszanowskiego do Lubaczowa i zmieniono nazwę powiatu na powiat lubaczowski",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lwowskie",
         "district": "cieszanowski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": true,
           "region": "Lwowskie",
@@ -413,12 +413,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "01.01.1923",
     "source": "Dz.U. z 1922 r. nr 116, poz. 1051",
     "description": "1.01.1923 utworzono powiat stoliński z części powiatów łuninieckiego, sarneńskiego i pińskiego",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Poleskie",
           "district": "łuniniecki",
@@ -441,7 +441,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Poleskie",
         "district": "stoliński",
@@ -451,12 +451,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "15.07.1923",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "X.X.1923 utworzono z terytoriów powiatów wileńskiego i trockiego powiat wileńsko-trocki",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "wileńskie",
           "district": "wileński",
@@ -472,7 +472,7 @@
           "delete_district": true
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "wileńskie",
         "district": "wileńsko-trocki",
@@ -482,17 +482,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.01.1924",
     "source": "Dz.U. z 1923 r. nr 122, poz. 992",
     "description": "zniesiono powiat podgórski, a jego terytorium włączono do powiatu krakowskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "podgórski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -504,12 +504,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "01.01.1924",
     "source": "Dz.U. z 1923 r. nr 122, poz. 991",
     "description": "utworzono powiat makowski (Maków Podhalański) z części terytoriów powiatu żywieckiego i myślenickiego",
     "matter": {
-      "from": [
+      "take_from": [
         {
         "region": "Krakowskie",
         "district": "myślenicki",
@@ -525,8 +525,7 @@
           "delete_district": false
         }
       ],
-      "to": [
-        {
+      "take_to": {
           "create": true,
           "region": "Krakowskie",
           "district": "makowski (Maków Podhalański)",
@@ -534,22 +533,21 @@
           "seat": "Maków",
           "alternative_seat_names": ["Maków Podhalański"]
         }
-      ]
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "15.07.1924",
     "order": 1,
     "source": "X",
     "description": "X.X.1924 dołączono do powiatu spisko-orawskiego część terytorium powiatu namiestowskiego w zamian za jego część oddaną Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "namiestowski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -561,18 +559,18 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "15.07.1924",
     "order": 1,
     "source": "X",
     "description": "X.X.1924 dołączono do powiatu spisko-orawskiego część terytorium powiatu namiestowskiego w zamian za jego część oddaną Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "spisko-orawski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Czechosłowacja",
@@ -584,17 +582,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 117, poz. 1052",
     "description": "1.01.1925 zniesiono powiat sejneński, a jego terytorium przyłączono do powiatu suwalskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Białostockie",
         "district": "sejneński",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Białostockie",
@@ -606,12 +604,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 117, poz. 1044",
     "description": "1.01.1925 zniesiono powiaty poznański wschodni i poznański zachodni i utworzono z ich terytorium powiat poznański",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Poznańskie",
           "district": "poznański wschodni",
@@ -627,7 +625,7 @@
           "delete_district": true
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Poznańskie",
         "district": "poznański",
@@ -637,12 +635,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 68, poz. 655",
     "description": "1.01.1925 utworzono powiat kostopolski z części powiatu rówieńskiego",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Wołyń",
           "district": "rówieński",
@@ -651,7 +649,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Wołyń",
         "district": "kostopolski",
@@ -661,18 +659,19 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 68, poz. 655",
     "description": "1.01.1925 zniesiono powiat ostrogski, a na jego miejsce utworzono powiat zdołbunowski z siedzibą w Zdołbunowie",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Wołyń",
         "district": "ostrogski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
+          "create": true,
           "region": "Wołyń",
           "district": "zdołbunowski",
           "district_type": "w",
@@ -684,17 +683,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.07.1925",
     "source": "Dz.U. z 1925 r. nr 63, poz. 441",
     "description": "zniesiono powiat spisko-orawski, a jego terytorium włączono do powiatu nowotarskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "spisko-orawski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -706,12 +705,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "01.07.1925",
     "source": "Dz.U. z 1925 r. nr 59, poz. 416",
     "description": "1.07.1925 roku wyodrębniono z powiatu gnieźnieńskiego powiat miejski w Gnieźnie",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Poznańskie",
           "district": "gnieźnieński",
@@ -720,7 +719,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Poznańskie",
         "district": "Gniezno",
@@ -730,12 +729,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "01.07.1925",
     "source": "Dz.U. z 1925 r. nr 59, poz. 417",
     "description": "1.07.1925 roku z powiatu inowrocławskiego wyodrębniono Inowrocław i utworzono powiat miejski w Inowrocławiu",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Poznańskie",
           "district": "inowrocławski",
@@ -744,7 +743,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Poznańskie",
         "district": "Inowrocław",
@@ -754,18 +753,19 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.01.1926",
     "source": "Dz.U. z 1925 r. nr 67, poz. 472",
     "description": "1.01.1926 utworzono z powiatu duniłowickiego powiat postawski z siedzibą w Postawach",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Ziemia Wileńska",
         "district": "duniłowicki",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
+          "create": true,
           "region": "Ziemia Wileńska",
           "district": "postawski",
           "district_type": "w",
@@ -777,13 +777,13 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "01.01.1927",
     "order": 1,
     "source": "Dz.U. z 1926 r. nr 117, poz. 678; Dz.U. z 1926 r. nr 128, poz. 760",
     "description": "27.12.1926 utworzono powiat morski z siedzibą w Gdyni z większości powiatu puckiego oraz części powiatu wejherowskiego (wraz z Gdynią)",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Pomorskie",
           "district": "pucki",
@@ -799,7 +799,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Pomorskie",
         "district": "morski",
@@ -809,12 +809,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "01.01.1927",
     "source": "Dz.U. z 1926 r. nr 125, poz. 727",
     "description": "utworzono powiat zawierciański z części powiatu będzińskiego",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Kieleckie",
           "district": "będziński",
@@ -823,7 +823,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Kieleckie",
         "district": "zawierciański",
@@ -833,19 +833,20 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.01.1927",
     "order": 2,
     "source": "Dz.U. z 1926 r. nr 117, poz. 678; Dz.U. z 1926 r. nr 128, poz. 760",
     "description": "reszta terytorium powiatu puckiego włączono 1.01.1927 do powiatu wejherowskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Pomorskie",
         "district": "pucki",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
+          "create": false,
           "region": "Pomorskie",
           "district": "wejherowski",
           "weight_from": null,
@@ -855,12 +856,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "01.04.1927",
     "source": "Dz.U. z 1927 r. nr 8, poz. 62",
     "description": "1.04.1927 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Ziemia Wileńska",
           "district": "wilejski",
@@ -876,7 +877,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Ziemia Wileńska",
         "district": "mołodeczański",
@@ -886,17 +887,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1927",
     "source": "Dz.U. z 1925 r. nr 59, poz. 416; Dz.U. z 1927 r. nr 17, poz. 130",
     "description": "1.04.1927 zniesiono powiat witkowski, a jego terytorium włączono do powiatu gnieźnieńskiego i wrzesińskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "witkowski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -915,17 +916,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "12.04.1928",
     "source": "Dz.U. z 1928 r. nr 45, poz. 426",
     "description": "12.04.1928 roku utworzono powiat miejski w Białymstoku",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Białostockie",
         "district": "białostocki",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": true,
           "region": "białostocki",
@@ -939,17 +940,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "12.04.1928",
     "source": "Dz.U. z 1928 r. nr 45, poz. 426",
     "description": "12.04.1928 roku utworzono powiat miejski w Częstochowie",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Kieleckie",
         "district": "częstochowski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": true,
           "region": "Kieleckie",
@@ -963,17 +964,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "12.04.1928",
     "source": "Dz.U. z 1928 r. nr 45, poz. 426",
     "description": "12.04.1928 roku utworzono powiat miejski w Sosnowcu",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Kieleckie",
         "district": "będziński",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": true,
           "region": "Kieleckie",
@@ -987,12 +988,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "24.01.1929",
     "source": "Dz.U. z 1929 r. nr 4, poz. 35",
     "description": "24.01.1929 wyłączono z powiatu morskiego gminę miejską Gdynia i utworzono z niej odrębny powiat miejski",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Pomorskie",
           "district": "morski",
@@ -1001,7 +1002,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Pomorskie",
         "district": "Gdynia",
@@ -1011,17 +1012,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1929",
     "source": "Dz.U. z 1929 r. nr 20, poz. 190",
     "description": "1.04.1929 zniesiono powiat peczeniżyński, a jego terytorium włączono do powiatu kołomyjskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Stanisławowskie",
         "district": "peczeniżyński",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Stanisławowskie",
@@ -1033,12 +1034,12 @@
     }
   },
   {
-    "type": "DManyToOne",
+    "change_type": "DManyToOne",
     "date": "21.05.1929",
     "source": "Dz.U. z 1929 r. nr 33, poz. 307",
     "description": "21.05.1929 utworzono powiat szczuczyński z części powiatu lidzkiego i grodzieńskiego",
     "matter": {
-      "from": [
+      "take_from": [
         {
           "region": "Nowogródzkie",
           "district": "lidzki",
@@ -1054,7 +1055,7 @@
           "delete_district": false
         }
       ],
-      "to": {
+      "take_to": {
         "create": true,
         "region": "Białostockie",
         "district": "szczuczyński",
@@ -1064,43 +1065,43 @@
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "16.12.1930",
     "source": "Dz.U. z 1930 r. nr 82, poz. 649",
     "description": "od 16.12.1930 należał do woj. wołyńskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poleskie",
         "district": "sarneński"
       },
-      "to": "wołyńskie"
+      "take_to": "wołyńskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "16.12.1930",
     "source": "Dz.U. z 1930 r. nr 82, poz. 649",
     "description": "do 16.12.1930 należał do woj. poleskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Polesie",
         "district": "sarneński"
       },
-      "to": "Wołyń"
+      "take_to": "Wołyń"
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "04.03.1931",
     "source": "M.P. 1931 nr 51 poz. 86",
     "description": "Zmieniono nazwę miasta Lisko na Lesko, a powiatu liski na leski",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lwowskie",
         "district": "liski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": true,
           "region": "Lwowskie",
@@ -1114,43 +1115,43 @@
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "17.04.1931",
     "source": "Dz.U. z 1931 r. nr 34, poz. 238",
     "description": "Powiat turczański, województwo lwowskie, do 17.04.1931 należał do województwa stanisławowskiego.",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lwowskie",
         "district": "turczański"
       },
-      "to": "Stanisławowskie"
+      "take_to": "Stanisławowskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "17.04.1931",
     "source": "Dz.U. z 1931 r. nr 34, poz. 238",
     "description": "od 17.04.1931 należał do województwa lwowskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Stanisławowskie",
         "district": "turczański"
       },
-      "to": "Lwowskie"
+      "take_to": "Lwowskie"
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.01.1932",
     "source": "Dz.U. z 1929 r. nr 35, poz. 318, zm. Dz.U. z 1931 r. nr 111, poz. 867",
     "description": "1.01.1932 zniesiono powiat i z jego terytorium utworzono powiat iwacewicki z siedzibą w Iwacewiczach",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poleskie",
         "district": "kosowski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": true,
           "region": "Poleskie",
@@ -1164,17 +1165,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 3, poz. 18",
     "description": "1.04.1932 terytorium powiatu kolneńskiego przyłączono do powiatów łomżyńskiego i ostrołęckiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Białostockie",
         "district": "kolneński",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Białostockie",
@@ -1193,17 +1194,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat oświęcimski, a jego terytorium włączono do powiatów bialskiego i wadowickiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "oświęcimski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -1222,17 +1223,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat grybowski i włączono jego terytorium do powiatów nowosądeckiego, gorlickiego i tarnowskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "grybowski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -1258,17 +1259,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat pilzneński, a jego terytorium włączono do powiatów ropczyckiego i jasielskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "pilzneński",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -1287,17 +1288,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat wielicki, a jego terytorium rozdzielono między powiaty myślenicki i krakowski",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "wielicki",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -1316,17 +1317,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat makowski (Maków Podhalański), a jego terytorium włączono do powiatów wadowickiego, żywieckiego, myślenickiego i nowotarskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "makowski (Maków Podhalański)",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -1359,17 +1360,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 1, poz. 3",
     "description": "zniesiono powiat pilzneński, a jego terytorium włączono do powiatów ropczyckiego i jasielskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "pilzneński",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -1388,17 +1389,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 34",
     "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium do powiatu konińskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Łódzkie",
         "district": "słupecki",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Łódzkie",
@@ -1410,17 +1411,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 33",
     "description": "Powiat konstantynowski został zniesiony, a jego terytorium włączono do powiatów bialskiego i siedleckiego.",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lubelskie",
         "district": "konstantynowski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Lubelskie",
@@ -1439,17 +1440,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 36",
     "description": "Powiat strzyżowski został zniesiony, a jego terytorium włączono do powiatów rzeszowskiego i krośnieńskiego.",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lwowskie",
         "district": "strzyżowski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Lwowskie",
@@ -1468,17 +1469,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 36",
     "description": "Powiat starosamborski został zniesiony, a jego terytorium włączono do powiatu samborskiego.",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lwowskie",
         "district": "starosamborski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Lwowskie",
@@ -1490,17 +1491,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 3, poz. 19",
     "description": "1.04.1932 zniesiono powiat gniewski, a jego terytorium rozdzielono między powiaty starogardzki, świecki i tczewski",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Pomorskie",
         "district": "gniewski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Pomorskie",
@@ -1526,17 +1527,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat grodziski i włączono jego terytorium do powiatu nowotomyskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "grodziski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -1548,17 +1549,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat ostrzeszowski, a jego terytorium włączono do powiatu kępińskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "ostrzeszowski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -1570,17 +1571,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium o powiatu konińskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "słupecki",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -1592,17 +1593,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat śmigielski, a jego terytorium włączono do powiatu kościańskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "śmigielski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -1614,17 +1615,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat koźmiński, a jego terytorium włączono do powiatu krotoszyńskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "koźmiński",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -1636,17 +1637,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat strzelneński, a jego terytorium włączono do powiatu mogileńskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "strzelneński",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -1658,17 +1659,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat odolanowski, a jego terytorium włączono do powiatu ostrowskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "odolanowski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -1680,17 +1681,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat ostrzeszowski, a jego terytorium włączono do powiatu kępińskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "ostrzeszowski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -1702,17 +1703,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 35",
     "description": "1.04.1932 zniesiono powiat śmigielski, a jego terytorium włączono do powiatu kościańskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "śmigielski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Poznańskie",
@@ -1724,17 +1725,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 37",
     "description": "1.04.1932 zniesiono powiat bohorodczański i jego obszar włączono do powiatów nadwórniańskiego i stanisławowskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Stanisławowskie",
         "district": "bohorodczański",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Stanisławowskie",
@@ -1753,17 +1754,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1932",
     "source": "Dz.U. z 1932 r. nr 6, poz. 37",
     "description": "1.04.1932 zniesiono powiat skolski, a jego obszar włączono do powiatu stryjskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Stanisławowskie",
         "district": "skolski",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Stanisławowskie",
@@ -1775,17 +1776,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "18.05.1932",
     "source": "Dz.U. z 1932 r. nr 41, poz. 408",
     "description": "18.05.1932 utworzono powiat miejski w Radomiu",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Kieleckie",
         "district": "radomski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": true,
           "region": "Kieleckie",
@@ -1799,17 +1800,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "01.04.1937",
     "source": "Dz.U. z 1937 r. nr 18, poz. 119",
     "description": "zniesiono powiat ropczycki, a na jego terytorium powołano do życia powiat dębicki z siedzibą w Dębicy",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Krakowskie",
         "district": "ropczycki",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": true,
           "region": "Krakowskie",
@@ -1823,382 +1824,383 @@
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.01.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1938 należał do woj. Pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "lipnowski"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Łódzkie",
         "district": "kaliski"
       },
-      "to": "poznańskie"
+      "take_to": "poznańskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Łódzkie",
         "district": "kolski"
       },
-      "to": "poznańskie"
+      "take_to": "poznańskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Łódzkie",
         "district": "koniński"
       },
-      "to": "poznańskie"
+      "take_to": "poznańskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Łódzkie",
         "district": "turecki"
       },
-      "to": "poznańskie"
+      "take_to": "poznańskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "bydgoski"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "1.04.1938 przeniesiono powiat Bydgoszcz do województwa pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "Bydgoszcz"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Pomorskie",
         "district": "działdowski"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "lipnowski"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "nieszawski"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "rypiński"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do województwa poznańskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "szubiński"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "włocławski"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "wyrzyski"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. Pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "bydgoski"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "1.04.1938 przeniesiono powiat Bydgoszcz do województwa pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "Bydgoszcz"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "Inowrocław"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "inowrocławski"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Łódzkie",
         "district": "kaliski"
       },
-      "to": "Poznańskie"
+      "take_to": "Poznańskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Łódzkie",
         "district": "kolski"
       },
-      "to": "Poznańskie"
+      "take_to": "Poznańskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Łódzkie",
         "district": "koniński"
       },
-      "to": "Poznańskie"
+      "take_to": "Poznańskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do województwa pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "szubiński"
       },
-      "to": "pomorskie"
+      "take_to": "pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do województwa pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Poznańskie",
         "district": "wyrzyski"
       },
-      "to": "pomorskie"
+      "take_to": "pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "łódzkie",
         "district": "turecki"
       },
-      "to": "Poznańskie"
+      "take_to": "Poznańskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Pomorskie",
         "district": "działdowski"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Pomorskie",
         "district": "nieszawski"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "rypiński"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1938",
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "włocławski"
       },
-      "to": "Pomorskie"
+      "take_to": "Pomorskie"
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "12.04.1938",
     "source": "Dz.U. z 1928 r. nr 45, poz. 426",
     "description": "powiat miejski Lublin został ponownie utworzony 12.04.1928 roku",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lubelskie",
         "district": "lubelski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
+          "create": true,
           "region": "Lubelskie",
           "district": "Lublin",
           "district_type": "m",
@@ -2210,17 +2212,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu bardiowskiego anektowanego Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "bardiowski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -2232,17 +2234,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu starolubowelskiego anektowanego Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "starolubowelski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -2254,17 +2256,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu kieżmarskiego anektowanego Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "kieżmarski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -2276,17 +2278,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu namiestowskiego anektowanego Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "namiestowski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -2298,17 +2300,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu starowiejskiego anektowanego Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "starowiejski",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -2320,17 +2322,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "przyłączono do niego część powiatu trzciańskiego anektowanego Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "trzciany",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Krakowskie",
@@ -2342,17 +2344,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "16.11.1938 przyłączono do powiatu leskiego część terytorium powiatu snińskiego anektowanego Czechosłowacji.",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "sniński",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Lwowskie",
@@ -2364,17 +2366,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "16.11.1938 przyłączono do niego część powiatu czadeckiego, niewielką część powiatu frydeckiego oraz powiat czeskocieszyński anektowane Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "czadecki",
         "delete_district": false
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Śląskie",
@@ -2386,17 +2388,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "16.11.1938 przyłączono do niego część powiatu czadeckiego, niewielką część powiatu frydeckiego oraz powiat czeskocieszyński anektowane Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "czeskocieszyński",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Śląskie",
@@ -2408,17 +2410,17 @@
     }
   },
   {
-    "type": "DOneToMany",
+    "change_type": "DOneToMany",
     "date": "16.11.1938",
     "source": "Dz.U. 1938 nr 87 poz. 585",
     "description": "16.11.1938 przyłączono do niego część powiatu frydeckiego anektowanego Czechosłowacji",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Czechosłowacja",
         "district": "frydecki",
         "delete_district": true
       },
-      "to": [
+      "take_to": [
         {
           "create": false,
           "region": "Śląskie",
@@ -2437,302 +2439,302 @@
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Białostockie",
         "district": "łomżyński"
       },
-      "to": "warszawskie"
+      "take_to": "warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Białostockie",
         "district": "ostrołęcki"
       },
-      "to": "warszawskie"
+      "take_to": "warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Białostockie",
         "district": "ostrowski"
       },
-      "to": "warszawskie"
+      "take_to": "warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Kieleckie",
         "district": "konecki"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. Łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Kieleckie",
         "district": "opoczyński"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. kieleckiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "kieleckie",
         "district": "konecki"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "warszawskie",
         "district": "kutnowski"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "warszawskie",
         "district": "łowicki"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. kieleckiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "kieleckie",
         "district": "opoczyński"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "warszawskie",
         "district": "rawski"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "warszawskie",
         "district": "skierniewicki"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "Powiat garwoliński, województwo lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lubelskie",
         "district": "garwoliński"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "Powiat sokołowski, województwo lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lubelskie",
         "district": "sokołowski"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "Powiat węgrowski, województwo lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lubelskie",
         "district": "węgrowski"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. lubelskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lubelskie",
         "district": "garwoliński"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "kutnowski"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1932 r. nr 3, poz. 18; Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. białostockiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Białostockie",
         "district": "łomżyński"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "łowicki"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. białostockiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Białostockie",
         "district": "ostrowski"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "rawski"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Warszawskie",
         "district": "skierniewicki"
       },
-      "to": "Łódzkie"
+      "take_to": "Łódzkie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. lubelskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lubelskie",
         "district": "sokołowski"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   },
   {
-    "type": "VChange",
+    "change_type": "RChange",
     "date": "01.04.1939",
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "do 1.04.1939 należał do woj. lubelskiego",
     "matter": {
-      "from": {
+      "take_from": {
         "region": "Lubelskie",
         "district": "węgrowski"
       },
-      "to": "Warszawskie"
+      "take_to": "Warszawskie"
     }
   }
 ]
