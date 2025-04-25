@@ -6,8 +6,8 @@ from core import *
 ########## Load and initiate administrative changes list ###########
 # Load changes json
 
-changes_path = "data_input/district_changes.json"
-state_path = "data_input/initial_state.json"
+changes_path = "input/district_changes.json"
+state_path = "input/initial_state.json"
 timespan = ("19.02.1921", "01.09.1939")
 administrative_history = AdministrativeHistory(changes_path, state_path, timespan)
 

@@ -670,6 +670,7 @@
       },
       {
         "district_name": "drohicki",
+        "alternative_names": ["drohiczyński"],
         "district_type": "w",
         "seat": "Drohiczyn (Poleski)"
       },
@@ -944,6 +945,7 @@
       },
       {
         "district_name": "strzelneński",
+        "alternative_names": ["strzeleński"],
         "district_type": "w",
         "seat": "Strzelno"
       },
@@ -1100,11 +1102,6 @@
         "district_name": "cieszyński",
         "district_type": "w",
         "seat": "Cieszyn"
-      },
-      {
-        "district_name": "frysztacki",
-        "district_type": "w",
-        "seat": "Frysztat"
       }
     ],
     "Tarnopolskie": [
@@ -1379,6 +1376,11 @@
         "district_name": "frydecki",
         "district_type": "w",
         "seat": "X"
+      },
+      {
+        "district_name": "frysztacki",
+        "district_type": "w",
+        "seat": "Frysztat"
       },
       {
         "district_name": "kieżmarski",
