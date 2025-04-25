@@ -60,8 +60,8 @@ class RCreate(Change):
     def log_district_history(self):
         logs = []
         for district_name, region in self.districts_involved():
-            single_log = {"date": self.date, "event_type": "r_change", "change_ref": self}
-            logs[district_name] = single_log
+            single_log = {"district_name": district_name, "date": self.date, "event_type": "r_change", "change_ref": self}
+            logs.append(single_log)
             # Try to create the log
             try:
                 # Use Pydantic to parse and validate the data

@@ -186,9 +186,10 @@ class AdministrativeStateEntry(BaseModel):
 
 class DistrictEvent(BaseModel):
     """ Represents the log of a change from the perspective of a district """
+    district_name: str
     date: datetime
     event_type: str  # e.g. "created", "abolished", "moved", etc.
     change_ref: Optional['Change'] = None  # optional reference to the actual change
 
 class DistrictEventLog(BaseModel):
-    log: Dict[str, List[DistrictEvent]]
+    log: List[DistrictEvent]
