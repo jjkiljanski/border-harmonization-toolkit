@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 
+from data_models import DistrictEventLog
+
 class Change(ABC):
     # Base Change class
     def __init__(self, change_entry):
@@ -30,6 +32,10 @@ class Change(ABC):
         """Abstract method for applying the change to the currect administrative state"""
         pass
 
+    @abstractmethod
+    def log_district_history(self):
+        """Abstract method for logging the change from the perspective of single districts"""
+
 class RCreate(Change):
     # Class describing the Creation of a new region out of many districts.
     def __init__(self, change_dict):
@@ -50,6 +56,20 @@ class RCreate(Change):
     def districts_involved(self):
         # Returns the list of (district, its_region) for all districts involved in the change
         return [(unit["district_name"], unit["region"]) for unit in self.take_from]
+    
+    def log_district_history(self):
+        logs = []
+        for district_name, region in self.districts_involved():
+            single_log = {"date": self.date, "event_type": "r_change", "change_ref": self}
+            logs[district_name] = single_log
+            # Try to create the log
+            try:
+                # Use Pydantic to parse and validate the data
+                validated_log = DistrictEventLog(log=logs)
+                print("Log is valid:", validated_log)
+            except Exception as e:
+                print("Validation failed:", e)
+        return logs
     
     def apply(self, state):
         if self.r_to not in state.structure.keys():
@@ -86,6 +106,9 @@ class RReform(Change):
         # Returns the list of (district, its_region) for all districts involved in the change
         return []
     
+    def log_district_history(self):
+        return super().log_district_history()
+    
     def apply(self, state):
         # Remove district from the old region
         # Only name change is implemented for now.
@@ -120,6 +143,9 @@ class RChange(Change):
     def districts_involved(self):
         # Returns the list of (district, its_region) for all districts involved in the change
         return [(self.r_from, self.d_from), (self.r_to, self.d_from)]
+    
+    def log_district_history(self):
+        return super().log_district_history()
     
     def apply(self, state):
         # Remove district from the old region
@@ -166,6 +192,9 @@ class DOneToManyChange(Change):
         all_districts_involved = [(self.r_from, self.d_from)]
         all_districts_involved += [(destination['region'], destination['district_name']) for destination in self.many_to]
         return all_districts_involved
+    
+    def log_district_history(self):
+        return super().log_district_history()
     
     def apply(self, state):
         if self.delete_district:
@@ -217,6 +246,9 @@ class DManyToOneChange(Change):
         all_districts_involved = [(origin['region'], origin['district_name']) for origin in self.many_from]
         all_districts_involved += [(self.take_to["region"], self.take_to["district_name"])]
         return all_districts_involved
+    
+    def log_district_history(self):
+        return super().log_district_history()
     
     def apply(self, state):
         for source_district in self.many_from:

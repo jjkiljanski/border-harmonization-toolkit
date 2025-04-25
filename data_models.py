@@ -1,6 +1,10 @@
 from pydantic import BaseModel, model_validator, Field
 from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 
+from datetime import datetime
+
+################################## Change models ##################################
+
 # RCreate data model
 # RCreate represents the creation of a new administrative region.
 
@@ -166,9 +170,9 @@ ChangeEntry = Annotated[
     Field(discriminator="change_type")
 ]
 
-################# AdministrativeState model #################
+################################## AdministrativeState model ##################################
 
-class District(BaseModel):
+class DistrictDict(BaseModel):
     district_name: str
     alternative_names: Optional[List[str]] = None
     district_type: Literal["w", "m"]
@@ -176,4 +180,15 @@ class District(BaseModel):
     alternative_seat_names: Optional[List[str]] = None
 
 class AdministrativeStateEntry(BaseModel):
-    regions: Dict[str, List[District]]
+    regions: Dict[str, List[DistrictDict]]
+
+################################## DistrictEventLog model ##################################
+
+class DistrictEvent(BaseModel):
+    """ Represents the log of a change from the perspective of a district """
+    date: datetime
+    event_type: str  # e.g. "created", "abolished", "moved", etc.
+    change_ref: Optional['Change'] = None  # optional reference to the actual change
+
+class DistrictEventLog(BaseModel):
+    log: Dict[str, List[DistrictEvent]]
