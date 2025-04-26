@@ -169,19 +169,6 @@ class AdministrativeHistory():
         for state in self.states_list:
             print(state)
 
-    def dist_name_list(self, is_poland = False, with_alt_names = False):
-        """
-        Returns the list of all names (and alternative names if with_alt_names = true) for all districts in history.
-        If is_poland = true, it returns only districts in Poland"""
-        dist_list = []
-        for state in self.states_list:
-            state_r_d_list = state.to_r_d_list(is_poland, with_alt_names)
-            dist_list += [dist for _, dist in state_r_d_list]
-        dist_list = list(set(dist_list))
-        dist_list.sort()
-        #print(f"dist_list created: {dist_list}")
-        return dist_list
-
     def identify_state(self, r_d_aim_list):
         """
         Takes sorted list of (region, district) pairs and identifies the administrative state that it represents.
