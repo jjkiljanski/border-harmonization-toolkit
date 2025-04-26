@@ -165,10 +165,10 @@ class AdministrativeState:
         for change in changes_list:
             # Apply change and store information on the affected districts
             d_created, d_abolished, d_b_changed, r_changed = change.apply(new_state)
-            all_d_created.append(d_created)
-            all_d_abolished.append(d_abolished)
-            all_d_b_changed.append(d_b_changed)
-            all_r_changed.append(r_changed)
+            all_d_created += d_created
+            all_d_abolished += d_abolished
+            all_d_b_changed += d_b_changed
+            all_r_changed += r_changed
         
         d_affected = (
             all_d_created,

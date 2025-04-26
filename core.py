@@ -20,8 +20,8 @@ class AdministrativeHistory():
         self.changes_list = []
         self.states_list = []
 
-        # Create attribute to store district registry
-        self.district_registry = DistrictRegistry()
+        # Create empty attribute to store district registry
+        self.district_registry = None
 
         # Create changes list
         self._load_changes_from_json()
@@ -110,7 +110,7 @@ class AdministrativeHistory():
         del self._initial_state_dict
         print("✅ Successfully created AdministrativeState object for the initial state.")
 
-        self.district_registry = [deepcopy(district) for district_list in initial_state.structure.values() for district in district_list]
+        self.district_registry = DistrictRegistry([deepcopy(district) for district_list in initial_state.structure.values() for district in district_list])
 
     def _create_changes_dates_list(self):
         self.changes_dates = [change.date for change in self.changes_list]
@@ -148,7 +148,7 @@ class AdministrativeHistory():
             self.states_list.append(new_state)
 
             all_d_created, all_d_abolished, all_d_b_changed, all_r_changed = d_affected
-            self.district_registry += all_d_created
+            self.district_registry.districts += all_d_created
 
     def list_change_dates(self, lang = "pol"):
         # Lists all the dates of border changes.
@@ -230,8 +230,8 @@ class DistrictRegistry():
     """
     Stores the information on all districts in administrative history.
     """
-    def __init__(self):
-        self.districts = []
+    def __init__(self, initial_list):
+        self.districts = initial_list
 
     def find_district(self, searched_name):
         """
@@ -247,11 +247,10 @@ class DistrictRegistry():
         return None
     
     def summary(self, with_alt_names = False):
+        self.districts.sort(key=lambda district: district["district_name"])
         print("All districts that historically existed:")
         for district in self.districts:
             to_print = district["district_name"]
-            if with_alt_names:
-                to_print += ", ".join(district["alternative_names"])
+            if with_alt_names and district.get("alternative_names"):
+                to_print += ", " + ", ".join(district["alternative_names"])
             print(to_print)
-        
-

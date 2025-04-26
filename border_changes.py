@@ -102,9 +102,9 @@ class RCreate(Change):
             r_changed (list of (name, (old_region, new_region)) pairs)
                                                 # districts that changed regions
         """
-        d_created = None
-        d_abolished = None
-        d_b_changed = None
+        d_created = []
+        d_abolished = []
+        d_b_changed = []
         r_changed = [(unit["district_name"], (unit["region"], self.r_to)) for unit in self.take_from]
         return (d_created, d_abolished, d_b_changed, r_changed)
     
@@ -164,10 +164,10 @@ class RReform(Change):
             r_changed (list of (name, (old_region, new_region)) pairs)
                                                 # districts that changed regions
         """
-        d_created = None
-        d_abolished = None
-        d_b_changed = None
-        r_changed = None
+        d_created = []
+        d_abolished = []
+        d_b_changed = []
+        r_changed = []
         return (d_created, d_abolished, d_b_changed, r_changed)
     
     def apply(self, state):
@@ -225,9 +225,9 @@ class RChange(Change):
             r_changed (list of (name, (old_region, new_region)) pairs)
                                                 # districts that changed regions
         """
-        d_created = None
-        d_abolished = None
-        d_b_changed = None
+        d_created = []
+        d_abolished = []
+        d_b_changed = []
         r_changed = [(self.d_from, (self.r_from, self.r_to))]
         return (d_created, d_abolished, d_b_changed, r_changed)
     
@@ -314,7 +314,7 @@ class DOneToManyChange(Change):
         d_b_changed.append(self.r_from)
         d_b_changed += [district["district_name"] for district in self.take_to]
 
-        r_changed = None
+        r_changed = []
 
         return (d_created, d_abolished, d_b_changed, r_changed)
     
@@ -408,7 +408,7 @@ class DManyToOneChange(Change):
         d_b_changed += [district["district_name"] for district in self.take_from]
         d_b_changed.append(self.take_to["district_name"])
 
-        r_changed = None
+        r_changed = []
         
         return (d_created, d_abolished, d_b_changed, r_changed)
     
