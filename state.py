@@ -156,10 +156,28 @@ class AdministrativeState:
         # Define the end and origin of states
         self.valid_to = change_date
         new_state.valid_from = change_date
+
+        all_d_created = []
+        all_d_abolished = []
+        all_d_b_changed = []
+        all_r_changed = []
             
         for change in changes_list:
-            change.apply(new_state)
-        return new_state
+            # Apply change and store information on the affected districts
+            d_created, d_abolished, d_b_changed, r_changed = change.apply(new_state)
+            all_d_created.append(d_created)
+            all_d_abolished.append(d_abolished)
+            all_d_b_changed.append(d_b_changed)
+            all_r_changed.append(r_changed)
+        
+        d_affected = (
+            all_d_created,
+            all_d_abolished,
+            all_d_b_changed,
+            all_r_changed
+        )
+
+        return (new_state, d_affected)
 
     def __repr__(self):
         regions = len(self.structure)

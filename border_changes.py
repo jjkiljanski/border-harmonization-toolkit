@@ -18,13 +18,6 @@ class Change(ABC):
         self.description = self.change_dict["description"]
         self.matter = self.change_dict["matter"]
 
-        # Parameters to be defined in subclass initiation
-        d_created, d_abolished, d_b_changed, d_r_changed = self._districts_affected()
-        self.d_created = d_created
-        self.d_abolished = d_abolished
-        self.d_b_changed = d_b_changed
-        self.d_r_changed = d_r_changed
-
     @abstractmethod
     def echo(self, lang = "pol"):
         """Abstract method for printing or returning change description."""
@@ -37,7 +30,10 @@ class Change(ABC):
     
     @abstractmethod
     def apply(self, administrative_state):
-        """Abstract method for applying the change to the currect administrative state"""
+        """
+        Abstract method for applying the change to the currect administrative state.
+        It should return (self.d_created, self.d_abolished, self.d_b_changed, self.r_changed) quadruple.
+        """
         pass
 
     @abstractmethod
@@ -61,6 +57,13 @@ class RCreate(Change):
         # Initiate subclass-specific attributes
         self.take_from = self.matter['take_from']
         self.r_to = self.matter['take_to']['region_name']
+
+        # Information on the districts affected
+        d_created, d_abolished, d_b_changed, d_r_changed = self._districts_affected()
+        self.d_created = d_created
+        self.d_abolished = d_abolished
+        self.d_b_changed = d_b_changed
+        self.d_r_changed = d_r_changed
 
     def echo(self, lang = "pol"):
         if lang == "pol":
@@ -119,6 +122,8 @@ class RCreate(Change):
             # Add district to the new region
             state.add_district_if_absent(self.r_to, district_to_move)
 
+        return (self.d_created, self.d_abolished, self.d_b_changed, self.d_r_changed)
+
 class RReform(Change):
     # Class describing the change of attributes for a region (e.g. region name).
     def __init__(self, change_dict):
@@ -127,6 +132,13 @@ class RReform(Change):
         # Initiate subclass-specific attributes
         self.to_reform = self.matter['to_reform']
         self.after_reform = self.matter['after_reform']
+
+        # Information on the districts affected
+        d_created, d_abolished, d_b_changed, d_r_changed = self._districts_affected()
+        self.d_created = d_created
+        self.d_abolished = d_abolished
+        self.d_b_changed = d_b_changed
+        self.d_r_changed = d_r_changed
 
     def echo(self, lang = "pol"):
         if lang == "pol":
@@ -169,6 +181,8 @@ class RReform(Change):
                 state.structure[new_name] = new_region
             except:
                 raise ValueError(f"The region {old_name} doesn't exist in the administrative state:\n{self.echo()}.")
+            
+        return (self.d_created, self.d_abolished, self.d_b_changed, self.d_r_changed)
 
 class RChange(Change):
     # Class describing the change of region for a district.
@@ -179,6 +193,13 @@ class RChange(Change):
         self.r_from = self.matter['take_from']['region']
         self.d_from = self.matter['take_from']['district_name']
         self.r_to = self.matter['take_to']
+
+        # Information on the districts affected
+        d_created, d_abolished, d_b_changed, d_r_changed = self._districts_affected()
+        self.d_created = d_created
+        self.d_abolished = d_abolished
+        self.d_b_changed = d_b_changed
+        self.d_r_changed = d_r_changed
 
     def echo(self, lang = "pol"):
         if lang == "pol":
@@ -223,6 +244,8 @@ class RChange(Change):
         except:
             raise ValueError(f"District {self.d_from} already exists in the region {self.r_to}:\n{self.echo()}.")
         
+        return (self.d_created, self.d_abolished, self.d_b_changed, self.d_r_changed)
+        
 
 class DOneToManyChange(Change):
     # Class describing the change where the territory of one district is split between many.
@@ -234,6 +257,13 @@ class DOneToManyChange(Change):
         self.d_from = self.matter['take_from']['district_name']
         self.delete_district = self.matter['take_from']['delete_district']
         self.take_to = self.matter['take_to']
+
+        # Information on the districts affected
+        d_created, d_abolished, d_b_changed, d_r_changed = self._districts_affected()
+        self.d_created = d_created
+        self.d_abolished = d_abolished
+        self.d_b_changed = d_b_changed
+        self.d_r_changed = d_r_changed
 
     def echo(self, lang = "pol"):
         destination_districts = ", ".join([f"{destination['district_name']} ({destination['region']})" for destination in self.take_to])
@@ -305,7 +335,9 @@ class DOneToManyChange(Change):
                 try:
                     state.add_district_if_absent(region_name, new_district)
                 except:
-                    raise ValueError(f"District {new_district['district_name']} already exists in the region {region_name}:\n{self.echo()}.")  
+                    raise ValueError(f"District {new_district['district_name']} already exists in the region {region_name}:\n{self.echo()}.")
+
+        return (self.d_created, self.d_abolished, self.d_b_changed, self.d_r_changed)  
             
 
 class DManyToOneChange(Change):
@@ -316,6 +348,13 @@ class DManyToOneChange(Change):
         # Initiate subclass-specific attributes
         self.take_from = self.matter['take_from']
         self.take_to = self.matter['take_to']
+
+        # Information on the districts affected
+        d_created, d_abolished, d_b_changed, d_r_changed = self._districts_affected()
+        self.d_created = d_created
+        self.d_abolished = d_abolished
+        self.d_b_changed = d_b_changed
+        self.d_r_changed = d_r_changed
 
     def echo(self, lang = "pol"):
         origin_districts_partial = ", ".join([f"{origin['district_name']} ({origin['region']})" for origin in self.take_from if not origin["delete_district"]])
@@ -355,7 +394,7 @@ class DManyToOneChange(Change):
         """
         d_created = []
         if self.take_to["create"]:
-            new_district = deepcopy(self.take_to["create"])
+            new_district = deepcopy(self.take_to)
             new_district.pop("create") # Remove the 'create' key
             new_district.pop("region") # Remove the 'region' key
             d_created = [new_district]
@@ -391,4 +430,8 @@ class DManyToOneChange(Change):
                 state.add_district_if_absent(region_name, new_district)
             except:
                 raise ValueError(f"District {new_district['district_name']} already exists in the region {region_name}:\n{self.echo()}.")
+            
+
+        return (self.d_created, self.d_abolished, self.d_b_changed, self.d_r_changed)
+
 

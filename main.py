@@ -32,21 +32,7 @@ for filename in os.listdir(folder_path):
 
         # Create list of (REGION, DISTRICT) pairs in uppercase
         r_d_pairs = [(region.upper(), district.upper()) for region, district in zip(df['region'], df['district'])]
-        
+
         print(f"Running {filename} identification.")
         #print(file_pairs)
         administrative_history.identify_state(r_d_pairs)
-
-# print(administrative_history.states_list[0])
-# administrative_history.states_list[0].valid_to = '1921.08.01'
-# administrative_history.states_list[0].to_csv()
-
-# current_state = administrative_states[0]
-
-# for change in changes_list:
-#     if change.change_type == "RChange":
-#         current_state = change.apply(current_state)
-#         administrative_states.append(current_state)
-
-# for state in administrative_states:
-#     print(state)

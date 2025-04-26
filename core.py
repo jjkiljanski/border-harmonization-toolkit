@@ -105,11 +105,12 @@ class AdministrativeHistory():
 
         # Create an AdministrativeState object for the initial state
         timespan = (self.start_date, self.end_date)
-        self.states_list.append(AdministrativeState(self._initial_state_dict, timespan))
+        initial_state = AdministrativeState(self._initial_state_dict, timespan)
+        self.states_list.append(initial_state)
         del self._initial_state_dict
         print("✅ Successfully created AdministrativeState object for the initial state.")
 
-        self.district_registry = 
+        self.district_registry = [deepcopy(district) for district_list in initial_state.structure.values() for district in district_list]
 
     def _create_changes_dates_list(self):
         self.changes_dates = [change.date for change in self.changes_list]
@@ -142,9 +143,12 @@ class AdministrativeHistory():
         for date in self.changes_dates:
             changes_list = self.changes_chron_dict[date]
             old_state = self.states_list[-1]
-            new_state = old_state.apply_changes(changes_list)
+            new_state, d_affected = old_state.apply_changes(changes_list)
             #print(f"{date}: Changes applied, administrative state {new_state} created.")
             self.states_list.append(new_state)
+
+            all_d_created, all_d_abolished, all_d_b_changed, all_r_changed = d_affected
+            self.district_registry += all_d_created
 
     def list_change_dates(self, lang = "pol"):
         # Lists all the dates of border changes.
@@ -241,5 +245,13 @@ class DistrictRegistry():
             if district["district_name"] == searched_name or searched_name in district["alternative_names"]:
                 return district["district_name"]
         return None
+    
+    def summary(self, with_alt_names = False):
+        print("All districts that historically existed:")
+        for district in self.districts:
+            to_print = district["district_name"]
+            if with_alt_names:
+                to_print += ", ".join(district["alternative_names"])
+            print(to_print)
         
 
