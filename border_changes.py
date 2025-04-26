@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
+from copy import deepcopy
 
 from data_models import DistrictEventLog
 
@@ -96,9 +97,9 @@ class RReform(Change):
 
     def echo(self, lang = "pol"):
         if lang == "pol":
-            print(f"{self.date} dokonano reformy województwa {self.to_reform['district_name']}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({self.source}).")
+            print(f"{self.date} dokonano reformy województwa {self.to_reform['region_name']}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({self.source}).")
         elif lang == "eng":
-            print(f"{self.date} the region {self.to_reform['district_name']} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({self.source}).")
+            print(f"{self.date} the region {self.to_reform['region_name']} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({self.source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
@@ -112,7 +113,6 @@ class RReform(Change):
     def apply(self, state):
         # Remove district from the old region
         # Only name change is implemented for now.
-
         old_name = self.to_reform["region_name"]
         new_name = self.after_reform["region_name"]
         if old_name != new_name:
@@ -206,7 +206,7 @@ class DOneToManyChange(Change):
             
         for target_district in self.many_to:
             if target_district["create"]:
-                new_district = target_district
+                new_district = deepcopy(target_district)
                 new_district.pop("create") # Remove the 'create' key
                 region_name = new_district.pop("region") # Remove the 'region' key
                 # Add the new district to the state
@@ -228,6 +228,8 @@ class DManyToOneChange(Change):
     def echo(self, lang = "pol"):
         origin_districts_partial = ", ".join([f"{origin['district_name']} ({origin['region']})" for origin in self.many_from if not origin["delete_district"]])
         origin_districts_whole = ", ".join([f"{origin['district_name']} ({origin['region']})" for origin in self.many_from if origin["delete_district"]])
+        if "create" not in self.take_to:
+            print(self.description)
         if lang == "pol":
             if self.take_to["create"]:
                 print(f"{self.date} utworzono powiat {self.take_to['district_name']} ({self.take_to['region']}) z części powiatów: {origin_districts_partial} oraz z całego terytorium powiatów: {origin_districts_whole} ({self.source}).")
@@ -260,7 +262,7 @@ class DManyToOneChange(Change):
                     raise ValueError(f"District {source_district['district_name']} doesn't exist in the region {source_district['region']}:\n{self.echo()}.")
 
         if self.take_to["create"]:
-            new_district = self.take_to
+            new_district = deepcopy(self.take_to)
             new_district.pop("create") # Remove the 'create' key
             region_name = new_district.pop("region") # Remove the 'region' key
             # Add the new district to the state

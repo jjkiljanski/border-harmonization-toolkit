@@ -20,6 +20,9 @@ class AdministrativeHistory():
         self.changes_list = []
         self.states_list = []
 
+        # Create attribute to store district registry
+        self.district_registry = DistrictRegistry()
+
         # Create changes list
         self._load_changes_from_json()
         self._create_changes_list()
@@ -71,7 +74,7 @@ class AdministrativeHistory():
         
         # Validate the data using Pydantic directly
         try:
-            self._pydantic_initial_state = AdministrativeStateEntry(**data)
+            self._pydantic_initial_state = AdministrativeStateEntry(regions = data)
             print("✅ Loaded initial state.")
         except ValidationError as e:
             print(e.json(indent=2))
@@ -105,6 +108,8 @@ class AdministrativeHistory():
         self.states_list.append(AdministrativeState(self._initial_state_dict, timespan))
         del self._initial_state_dict
         print("✅ Successfully created AdministrativeState object for the initial state.")
+
+        self.district_registry = 
 
     def _create_changes_dates_list(self):
         self.changes_dates = [change.date for change in self.changes_list]
@@ -160,5 +165,81 @@ class AdministrativeHistory():
         for state in self.states_list:
             print(state)
 
+    def dist_name_list(self, is_poland = False, with_alt_names = False):
+        """
+        Returns the list of all names (and alternative names if with_alt_names = true) for all districts in history.
+        If is_poland = true, it returns only districts in Poland"""
+        dist_list = []
+        for state in self.states_list:
+            state_r_d_list = state.to_r_d_list(is_poland, with_alt_names)
+            dist_list += [dist for _, dist in state_r_d_list]
+        dist_list = list(set(dist_list))
+        dist_list.sort()
+        #print(f"dist_list created: {dist_list}")
+        return dist_list
+
+    def identify_state(self, r_d_aim_list):
+        """
+        Takes sorted list of (region, district) pairs and identifies the administrative state that it represents.
+        """
+        # Check that all districts in the r_d_aim_list exist in the administrative history.
+        d_names_in_history = self.dist_name_list(is_poland = True, with_alt_names=False)
+        d_alt_names_in_history = self.dist_name_list(is_poland = True, with_alt_names=True) # names and alt names
+        d_not_in_names = []
+        d_not_in_alt_names = []
+        for reg, dist in r_d_aim_list:
+            if dist not in d_names_in_history: d_not_in_names.append(dist)
+            if dist not in d_alt_names_in_history: d_not_in_alt_names.append(dist)
+
+        assert len(set(d_not_in_alt_names)-set(d_not_in_names))==0
+
+        if d_not_in_alt_names:
+            raise ValueError(f"District names {d_not_in_alt_names} do not exist in administrative history.")
+        
+        if d_not_in_names:
+            print(f"Warning: names {d_not_in_names} are alternative district names.")
+            
+        # Find closest states
+        state_proximity = []
+        for state in self.states_list:
+            r_d_state_list = state.to_r_d_list(is_poland = True, with_alt_names = True)
+            r_d_state_set = set(r_d_state_list)
+            r_d_aim_set = set(r_d_aim_list)
+            difference_1 = list(r_d_state_set - r_d_aim_set)
+            difference_1.sort()
+            difference_2 = list(r_d_aim_set - r_d_state_set)
+            difference_2.sort()
+            differences = (difference_1, difference_2)
+            proximity = len(difference_1) + len(difference_2)
+            if proximity == 0:
+                print(f"The state identified as: {state}")
+                return
+            state_proximity.append((proximity, differences, str(state)))
+
+        state_proximity.sort()
+        print("No state identified. The closest states:")
+        for prox, diff, state in state_proximity[:3]:
+            diff_1, diff_2 = diff
+            print(f"1. State {state}.\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
+
+class DistrictRegistry():
+    """
+    Stores the information on all districts in administrative history.
+    """
+    def __init__(self):
+        self.districts = []
+
+    def find_district(self, searched_name):
+        """
+        Find and return the district name by district name or district alternative name.
+        Return None if the given district doesn't exist.
+        
+        Returns:
+            district["district_name"] or None if not found
+        """
+        for district in self.districts:
+            if district["district_name"] == searched_name or searched_name in district["alternative_names"]:
+                return district["district_name"]
+        return None
         
 

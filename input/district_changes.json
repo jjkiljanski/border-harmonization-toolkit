@@ -3,18 +3,18 @@
     "change_type": "DOneToMany",
     "date": "01.08.1921",
     "source": "Dz.U. z 1922 r. nr 56, poz. 504",
-    "description": "1.08.1921 włączono terytorium powiatu do powiatu bielskiego",
+    "description": "1.08.1921 włączono terytorium powiatu białowieskiego do powiatu bielskiego",
     "matter": {
       "take_from": {
-        "region": "Białostockie",
-        "district_name": "białowieski",
+        "region": "BIAŁOSTOCKIE",
+        "district_name": "BIAŁOWIESKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Białostockie",
-          "district_name": "bielski",
+          "region": "BIAŁOSTOCKIE",
+          "district_name": "BIELSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -30,7 +30,7 @@
     "matter": {
       "take_from": [],
       "take_to": {
-        "region_name": "Ziemia Wileńska"
+        "region_name": "ZIEMIA WILEŃSKA"
       }
     }
   },
@@ -41,10 +41,10 @@
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
       "take_from": {
-        "region": "Nowogródzkie",
-        "district_name": "dziśnieński"
+        "region": "NOWOGRÓDZKIE",
+        "district_name": "DZIŚNIEŃSKI"
       },
-      "take_to": "Ziemia Wileńska"
+      "take_to": "ZIEMIA WILEŃSKA"
     }
   },
   {
@@ -54,10 +54,10 @@
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
       "take_from": {
-        "region": "Nowogródzkie",
-        "district_name": "duniłowicki"
+        "region": "NOWOGRÓDZKIE",
+        "district_name": "DUNIŁOWICKI"
       },
-      "take_to": "Ziemia Wileńska"
+      "take_to": "ZIEMIA WILEŃSKA"
     }
   },
   {
@@ -67,10 +67,10 @@
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
       "take_from": {
-        "region": "Nowogródzkie",
-        "district_name": "wilejski"
+        "region": "NOWOGRÓDZKIE",
+        "district_name": "WILEJSKI"
       },
-      "take_to": "Ziemia Wileńska"
+      "take_to": "ZIEMIA WILEŃSKA"
     }
   },
   {
@@ -80,10 +80,10 @@
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
       "take_from": {
-        "region": "Litwa",
-        "district_name": "brasławski"
+        "region": "LITWA",
+        "district_name": "BRASŁAWSKI"
       },
-      "take_to": "Ziemia Wileńska"
+      "take_to": "ZIEMIA WILEŃSKA"
     }
   },
   {
@@ -93,10 +93,10 @@
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
       "take_from": {
-        "region": "Litwa",
-        "district_name": "oszmiański"
+        "region": "LITWA",
+        "district_name": "OSZMIAŃSKI"
       },
-      "take_to": "Ziemia Wileńska"
+      "take_to": "ZIEMIA WILEŃSKA"
     }
   },
   {
@@ -106,10 +106,10 @@
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
       "take_from": {
-        "region": "Litwa",
-        "district_name": "święciański"
+        "region": "LITWA",
+        "district_name": "ŚWIĘCIAŃSKI"
       },
-      "take_to": "Ziemia Wileńska"
+      "take_to": "ZIEMIA WILEŃSKA"
     }
   },
   {
@@ -119,10 +119,10 @@
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
       "take_from": {
-        "region": "Litwa",
-        "district_name": "trocki"
+        "region": "LITWA",
+        "district_name": "TROCKI"
       },
-      "take_to": "Ziemia Wileńska"
+      "take_to": "ZIEMIA WILEŃSKA"
     }
   },
   {
@@ -132,10 +132,10 @@
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
       "take_from": {
-        "region": "Litwa",
-        "district_name": "wileński"
+        "region": "LITWA",
+        "district_name": "WILEŃSKI"
       },
-      "take_to": "Ziemia Wileńska"
+      "take_to": "ZIEMIA WILEŃSKA"
     }
   },
   {
@@ -145,10 +145,10 @@
     "description": "13.04.1922 włączone do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
       "take_from": {
-        "region": "Litwa",
-        "district_name": "Wilno"
+        "region": "LITWA",
+        "district_name": "WILNO"
       },
-      "take_to": "Ziemia Wileńska"
+      "take_to": "ZIEMIA WILEŃSKA"
     }
   },
   {
@@ -158,10 +158,10 @@
     "description": "22.06.1922 przyłączono do Polski powiat miejski Katowice pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "Niemcy",
-        "district_name": "Katowice"
+        "region": "NIEMCY",
+        "district_name": "KATOWICE"
       },
-      "take_to": "Śląskie"
+      "take_to": "ŚLĄSKIE"
     }
   },
   {
@@ -171,10 +171,10 @@
     "description": "22.06.1922 przyłączono do Polski powiat katowicki pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "Niemcy",
-        "district_name": "katowicki"
+        "region": "NIEMCY",
+        "district_name": "KATOWICKI"
       },
-      "take_to": "Śląskie"
+      "take_to": "ŚLĄSKIE"
     }
   },
   {
@@ -184,10 +184,10 @@
     "description": "22.06.1922 przyłączono do Polski powiat Królewska Huta pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "Niemcy",
-        "district_name": "Królewska Huta"
+        "region": "NIEMCY",
+        "district_name": "KRÓLEWSKA HUTA"
       },
-      "take_to": "Śląskie"
+      "take_to": "ŚLĄSKIE"
     }
   },
   {
@@ -197,10 +197,10 @@
     "description": "22.06.1922 przyłączono do Polski powiat lubliniecki pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "Niemcy",
-        "district_name": "lubliniecki"
+        "region": "NIEMCY",
+        "district_name": "LUBLINIECKI"
       },
-      "take_to": "Śląskie"
+      "take_to": "ŚLĄSKIE"
     }
   },
   {
@@ -210,10 +210,10 @@
     "description": "22.06.1922 przyłączono do Polski powiat pszczyński pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "Niemcy",
-        "district_name": "pszczyński"
+        "region": "NIEMCY",
+        "district_name": "PSZCZYŃSKI"
       },
-      "take_to": "Śląskie"
+      "take_to": "ŚLĄSKIE"
     }
   },
   {
@@ -224,15 +224,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Niemcy",
-          "district_name": "zabrski",
+          "region": "NIEMCY",
+          "district_name": "ZABRSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "Niemcy",
-          "district_name": "gliwicki",
+          "region": "NIEMCY",
+          "district_name": "GLIWICKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -240,10 +240,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Śląskie",
-        "district_name": "rudzki",
+        "region": "ŚLĄSKIE",
+        "district_name": "RUDZKI",
         "district_type": "w",
-        "seat": "Ruda"
+        "seat": "RUDA"
       }
     }
   },
@@ -255,15 +255,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Niemcy",
-          "district_name": "rybnicki",
+          "region": "NIEMCY",
+          "district_name": "RYBNICKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "Niemcy",
-          "district_name": "raciborski",
+          "region": "NIEMCY",
+          "district_name": "RACIBORSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -271,10 +271,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Śląskie",
-        "district_name": "rybnicki",
+        "region": "ŚLĄSKIE",
+        "district_name": "RYBNICKI",
         "district_type": "w",
-        "seat": "Rybnik"
+        "seat": "RYBNIK"
       }
     }
   },
@@ -286,15 +286,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Niemcy",
-          "district_name": "Bytom wieś",
+          "region": "NIEMCY",
+          "district_name": "BYTOM WIEŚ",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "Niemcy",
-          "district_name": "Bytom miasto",
+          "region": "NIEMCY",
+          "district_name": "BYTOM MIASTO",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -302,10 +302,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Śląskie",
-        "district_name": "świętochłowicki",
+        "region": "ŚLĄSKIE",
+        "district_name": "ŚWIĘTOCHŁOWICKI",
         "district_type": "w",
-        "seat": "Świętochłowice"
+        "seat": "ŚWIĘTOCHŁOWICE"
       }
     }
   },
@@ -317,15 +317,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Niemcy",
-          "district_name": "tarnogórski",
+          "region": "NIEMCY",
+          "district_name": "TARNOGÓRSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": true
         },
         {
-          "region": "Niemcy",
-          "district_name": "gliwicki",
+          "region": "NIEMCY",
+          "district_name": "GLIWICKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -333,10 +333,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Śląskie",
-        "district_name": "tarnogórski",
+        "region": "ŚLĄSKIE",
+        "district_name": "TARNOGÓRSKI",
         "district_type": "w",
-        "seat": "Tarnowskie Góry"
+        "seat": "TARNOWSKIE GÓRY"
       }
     }
   },
@@ -347,15 +347,15 @@
     "description": "26.07.1922 roku powiat miejski Lublin został zniesiony",
     "matter": {
       "take_from": {
-        "region": "Lubelskie",
-        "district_name": "Lublin",
+        "region": "LUBELSKIE",
+        "district_name": "LUBLIN",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Lubelskie",
-          "district_name": "lubelski",
+          "region": "LUBELSKIE",
+          "district_name": "LUBELSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -369,17 +369,17 @@
     "description": "1.01.1923 przeniesiono siedzibę urzędu starostwa powiatu cieszanowskiego do Lubaczowa i zmieniono nazwę powiatu na powiat lubaczowski",
     "matter": {
       "take_from": {
-        "region": "Lwowskie",
-        "district_name": "cieszanowski",
+        "region": "LWOWSKIE",
+        "district_name": "CIESZANOWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
-          "region": "Lwowskie",
-          "district_name": "lubaczowski",
+          "region": "LWOWSKIE",
+          "district_name": "LUBACZOWSKI",
           "district_type": "w",
-          "seat": "Lubaczów",
+          "seat": "LUBACZÓW",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -394,22 +394,22 @@
     "matter": {
       "take_from": [
         {
-          "region": "Poleskie",
-          "district_name": "łuniniecki",
+          "region": "POLESKIE",
+          "district_name": "ŁUNINIECKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "Poleskie",
-          "district_name": "sarneński",
+          "region": "POLESKIE",
+          "district_name": "SARNEŃSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "Poleskie",
-          "district_name": "piński",
+          "region": "POLESKIE",
+          "district_name": "PIŃSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -417,10 +417,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Poleskie",
-        "district_name": "stoliński",
+        "region": "POLESKIE",
+        "district_name": "STOLIŃSKI",
         "district_type": "w",
-        "seat": "Stolin"
+        "seat": "STOLIN"
       }
     }
   },
@@ -432,15 +432,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Ziemia Wileńska",
-          "district_name": "wileński",
+          "region": "ZIEMIA WILEŃSKA",
+          "district_name": "WILEŃSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": true
         },
         {
-          "region": "Ziemia Wileńska",
-          "district_name": "trocki",
+          "region": "ZIEMIA WILEŃSKA",
+          "district_name": "TROCKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": true
@@ -448,10 +448,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Ziemia Wileńska",
-        "district_name": "wileńsko-trocki",
+        "region": "ZIEMIA WILEŃSKA",
+        "district_name": "WILEŃSKO-TROCKI",
         "district_type": "w",
-        "seat": "Wilno"
+        "seat": "WILNO"
       }
     }
   },
@@ -462,15 +462,15 @@
     "description": "zniesiono powiat podgórski, a jego terytorium włączono do powiatu krakowskiego",
     "matter": {
       "take_from": {
-        "region": "Krakowskie",
-        "district_name": "podgórski",
+        "region": "KRAKOWSKIE",
+        "district_name": "PODGÓRSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "krakowski",
+          "region": "KRAKOWSKIE",
+          "district_name": "KRAKOWSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -485,28 +485,30 @@
     "matter": {
       "take_from": [
         {
-        "region": "Krakowskie",
-        "district_name": "myślenicki",
-        "weight_from": null,
-        "weight_to": null,
-        "delete_district": false
+          "region": "KRAKOWSKIE",
+          "district_name": "MYŚLENICKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_district": false
         },
         {
-          "region": "Krakowskie",
-          "district_name": "żywiecki",
+          "region": "KRAKOWSKIE",
+          "district_name": "ŻYWIECKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         }
       ],
       "take_to": {
-          "create": true,
-          "region": "Krakowskie",
-          "district_name": "makowski (Maków Podhalański)",
-          "district_type": "w",
-          "seat": "Maków",
-          "alternative_seat_names": ["Maków Podhalański"]
-        }
+        "create": true,
+        "region": "KRAKOWSKIE",
+        "district_name": "MAKOWSKI (MAKÓW PODHALAŃSKI)",
+        "district_type": "w",
+        "seat": "MAKÓW",
+        "alternative_seat_names": [
+          "MAKÓW PODHALAŃSKI"
+        ]
+      }
     }
   },
   {
@@ -517,15 +519,15 @@
     "description": "X.X.1924 dołączono do powiatu spisko-orawskiego część terytorium powiatu namiestowskiego w zamian za jego część oddaną Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "namiestowski",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "NAMIESTOWSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "spisko-orawski",
+          "region": "KRAKOWSKIE",
+          "district_name": "SPISKO-ORAWSKI",
           "weight_from": 0.25,
           "weight_to": 0.25
         }
@@ -540,15 +542,15 @@
     "description": "X.X.1924 dołączono do powiatu spisko-orawskiego część terytorium powiatu namiestowskiego w zamian za jego część oddaną Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Krakowskie",
-        "district_name": "spisko-orawski",
+        "region": "KRAKOWSKIE",
+        "district_name": "SPISKO-ORAWSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Czechosłowacja",
-          "district_name": "namiestowski",
+          "region": "CZECHOSŁOWACJA",
+          "district_name": "NAMIESTOWSKI",
           "weight_from": 0.25,
           "weight_to": 0.25
         }
@@ -562,15 +564,15 @@
     "description": "1.01.1925 zniesiono powiat sejneński, a jego terytorium przyłączono do powiatu suwalskiego",
     "matter": {
       "take_from": {
-        "region": "Białostockie",
-        "district_name": "sejneński",
+        "region": "BIAŁOSTOCKIE",
+        "district_name": "SEJNEŃSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Białostockie",
-          "district_name": "suwalski",
+          "region": "BIAŁOSTOCKIE",
+          "district_name": "SUWALSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -585,15 +587,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Poznańskie",
-          "district_name": "poznański wschodni",
+          "region": "POZNAŃSKIE",
+          "district_name": "POZNAŃSKI WSCHODNI",
           "weight_from": 1.0,
           "weight_to": null,
           "delete_district": true
         },
         {
-          "region": "Poznańskie",
-          "district_name": "poznański zachodni",
+          "region": "POZNAŃSKIE",
+          "district_name": "POZNAŃSKI ZACHODNI",
           "weight_from": 1.0,
           "weight_to": null,
           "delete_district": true
@@ -601,10 +603,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Poznańskie",
-        "district_name": "poznański",
+        "region": "POZNAŃSKIE",
+        "district_name": "POZNAŃSKI",
         "district_type": "w",
-        "seat": "Poznań"
+        "seat": "POZNAŃ"
       }
     }
   },
@@ -616,8 +618,8 @@
     "matter": {
       "take_from": [
         {
-          "region": "Wołyń",
-          "district_name": "rówieński",
+          "region": "WOŁYŃ",
+          "district_name": "RÓWIEŃSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -625,10 +627,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Wołyń",
-        "district_name": "kostopolski",
+        "region": "WOŁYŃ",
+        "district_name": "KOSTOPOLSKI",
         "district_type": "w",
-        "seat": "Kostopol"
+        "seat": "KOSTOPOL"
       }
     }
   },
@@ -639,17 +641,41 @@
     "description": "1.01.1925 zniesiono powiat ostrogski, a na jego miejsce utworzono powiat zdołbunowski z siedzibą w Zdołbunowie",
     "matter": {
       "take_from": {
-        "region": "Wołyń",
-        "district_name": "ostrogski",
+        "region": "WOŁYŃ",
+        "district_name": "OSTROGSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
-          "region": "Wołyń",
-          "district_name": "zdołbunowski",
+          "region": "WOŁYŃ",
+          "district_name": "ZDOŁBUNOWSKI",
           "district_type": "w",
-          "seat": "Zdołbunów",
+          "seat": "ZDOŁBUNÓW",
+          "weight_from": 1.0,
+          "weight_to": 1.0
+        }
+      ]
+    }
+  },
+  {
+    "change_type": "DOneToMany",
+    "date": "26.06.1925",
+    "source": "M.P. z 1925 r. nr 160, poz. 717",
+    "description": "zniesiono powiat husiatyński, a na jego terytorium powołano do życia powiat kopyczyniecki z siedzibą w Kopyczyńcu",
+    "matter": {
+      "take_from": {
+        "region": "TARNOPOLSKIE",
+        "district_name": "HUSIATYŃSKI",
+        "delete_district": true
+      },
+      "take_to": [
+        {
+          "create": true,
+          "region": "TARNOPOLSKIE",
+          "district_name": "KOPYCZYNIECKI",
+          "district_type": "w",
+          "seat": "DĘBICA",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -663,15 +689,15 @@
     "description": "zniesiono powiat spisko-orawski, a jego terytorium włączono do powiatu nowotarskiego",
     "matter": {
       "take_from": {
-        "region": "Krakowskie",
-        "district_name": "spisko-orawski",
+        "region": "KRAKOWSKIE",
+        "district_name": "SPISKO-ORAWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "nowotarski",
+          "region": "KRAKOWSKIE",
+          "district_name": "NOWOTARSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -686,8 +712,8 @@
     "matter": {
       "take_from": [
         {
-          "region": "Poznańskie",
-          "district_name": "gnieźnieński",
+          "region": "POZNAŃSKIE",
+          "district_name": "GNIEŹNIEŃSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -695,10 +721,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Poznańskie",
-        "district_name": "Gniezno",
+        "region": "POZNAŃSKIE",
+        "district_name": "GNIEZNO",
         "district_type": "m",
-        "seat": "Gniezno"
+        "seat": "GNIEZNO"
       }
     }
   },
@@ -710,8 +736,8 @@
     "matter": {
       "take_from": [
         {
-          "region": "Poznańskie",
-          "district_name": "inowrocławski",
+          "region": "POZNAŃSKIE",
+          "district_name": "INOWROCŁAWSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -719,10 +745,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Poznańskie",
-        "district_name": "Inowrocław",
+        "region": "POZNAŃSKIE",
+        "district_name": "INOWROCŁAW",
         "district_type": "m",
-        "seat": "Inowrocław"
+        "seat": "INOWROCŁAW"
       }
     }
   },
@@ -733,17 +759,17 @@
     "description": "1.01.1926 utworzono z powiatu duniłowickiego powiat postawski z siedzibą w Postawach",
     "matter": {
       "take_from": {
-        "region": "Ziemia Wileńska",
-        "district_name": "duniłowicki",
+        "region": "ZIEMIA WILEŃSKA",
+        "district_name": "DUNIŁOWICKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
-          "region": "Ziemia Wileńska",
-          "district_name": "postawski",
+          "region": "ZIEMIA WILEŃSKA",
+          "district_name": "POSTAWSKI",
           "district_type": "w",
-          "seat": "Postawy",
+          "seat": "POSTAWY",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -757,10 +783,10 @@
     "description": "20.01.1926 przekształcono Ziemię Wileńską w województwo wileńskie",
     "matter": {
       "to_reform": {
-        "region_name": "Ziemia Wileńska"
+        "region_name": "ZIEMIA WILEŃSKA"
       },
       "after_reform": {
-        "region_name": "Wileńskie"
+        "region_name": "WILEŃSKIE"
       }
     }
   },
@@ -773,15 +799,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Pomorskie",
-          "district_name": "pucki",
+          "region": "POMORSKIE",
+          "district_name": "PUCKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "Pomorskie",
-          "district_name": "wejherowski",
+          "region": "POMORSKIE",
+          "district_name": "WEJHEROWSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -789,10 +815,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Pomorskie",
-        "district_name": "morski",
+        "region": "POMORSKIE",
+        "district_name": "MORSKI",
         "district_type": "w",
-        "seat": "Gdynia"
+        "seat": "GDYNIA"
       }
     }
   },
@@ -804,8 +830,8 @@
     "matter": {
       "take_from": [
         {
-          "region": "Kieleckie",
-          "district_name": "będziński",
+          "region": "KIELECKIE",
+          "district_name": "BĘDZIŃSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -813,10 +839,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Kieleckie",
-        "district_name": "zawierciański",
-        "district_type":"w",
-        "seat": "Zawiercie"
+        "region": "KIELECKIE",
+        "district_name": "ZAWIERCIAŃSKI",
+        "district_type": "w",
+        "seat": "ZAWIERCIE"
       }
     }
   },
@@ -828,15 +854,15 @@
     "description": "reszta terytorium powiatu puckiego włączono 1.01.1927 do powiatu wejherowskiego",
     "matter": {
       "take_from": {
-        "region": "Pomorskie",
-        "district_name": "pucki",
+        "region": "POMORSKIE",
+        "district_name": "PUCKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Pomorskie",
-          "district_name": "wejherowski",
+          "region": "POMORSKIE",
+          "district_name": "WEJHEROWSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -851,15 +877,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Wileńskie",
-          "district_name": "wilejski",
+          "region": "WILEŃSKIE",
+          "district_name": "WILEJSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "Wileńskie",
-          "district_name": "oszmiański",
+          "region": "WILEŃSKIE",
+          "district_name": "OSZMIAŃSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -867,10 +893,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Wileńskie",
-        "district_name": "mołodeczański",
+        "region": "WILEŃSKIE",
+        "district_name": "MOŁODECZAŃSKI",
         "district_type": "w",
-        "seat": "Mołodeczno"
+        "seat": "MOŁODECZNO"
       }
     }
   },
@@ -881,22 +907,22 @@
     "description": "1.04.1927 zniesiono powiat witkowski, a jego terytorium włączono do powiatu gnieźnieńskiego i wrzesińskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "witkowski",
+        "region": "POZNAŃSKIE",
+        "district_name": "WITKOWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Poznańskie",
-          "district_name": "gnieźnieński",
+          "region": "POZNAŃSKIE",
+          "district_name": "GNIEŹNIEŃSKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Poznańskie",
-          "district_name": "wrzesiński",
+          "region": "POZNAŃSKIE",
+          "district_name": "WRZESIŃSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -910,17 +936,17 @@
     "description": "12.04.1928 roku utworzono powiat miejski w Białymstoku",
     "matter": {
       "take_from": {
-        "region": "Białostockie",
-        "district_name": "białostocki",
+        "region": "BIAŁOSTOCKIE",
+        "district_name": "BIAŁOSTOCKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
-          "region": "Białostockie",
-          "district_name": "Białystok",
+          "region": "BIAŁOSTOCKIE",
+          "district_name": "BIAŁYSTOK",
           "district_type": "m",
-          "seat": "Białystok",
+          "seat": "BIAŁYSTOK",
           "weight_from": null,
           "weight_to": null
         }
@@ -934,17 +960,17 @@
     "description": "12.04.1928 roku utworzono powiat miejski w Częstochowie",
     "matter": {
       "take_from": {
-        "region": "Kieleckie",
-        "district_name": "częstochowski",
+        "region": "KIELECKIE",
+        "district_name": "CZĘSTOCHOWSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
-          "region": "Kieleckie",
-          "district_name": "Częstochowa",
+          "region": "KIELECKIE",
+          "district_name": "CZĘSTOCHOWA",
           "district_type": "m",
-          "seat": "Częstochowa",
+          "seat": "CZĘSTOCHOWA",
           "weight_from": null,
           "weight_to": null
         }
@@ -958,17 +984,17 @@
     "description": "12.04.1928 roku utworzono powiat miejski w Sosnowcu",
     "matter": {
       "take_from": {
-        "region": "Kieleckie",
-        "district_name": "będziński",
+        "region": "KIELECKIE",
+        "district_name": "BĘDZIŃSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
-          "region": "Kieleckie",
-          "district_name": "Sosnowiec",
+          "region": "KIELECKIE",
+          "district_name": "SOSNOWIEC",
           "district_type": "m",
-          "seat": "Sosnowiec",
+          "seat": "SOSNOWIEC",
           "weight_from": null,
           "weight_to": null
         }
@@ -982,38 +1008,44 @@
     "description": "12.04.1928 roku m. st. Warszawę podzielono na powiaty Warszawa-Północ, Warszawa-Południe, Warszawa-Praga.",
     "matter": {
       "take_from": {
-        "region": "m. st. Warszawa",
-        "district_name": "m. st. Warszawa",
+        "region": "M. ST. WARSZAWA",
+        "district_name": "M. ST. WARSZAWA",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
-          "region": "m. st. Warszawa",
-          "district_name": "południowo-warszawski",
-          "alternative_names": ["Warszawa-Południe"],
+          "region": "M. ST. WARSZAWA",
+          "district_name": "POŁUDNIOWO-WARSZAWSKI",
+          "alternative_names": [
+            "WARSZAWA-POŁUDNIE"
+          ],
           "district_type": "m",
-          "seat": "Warszawa",
+          "seat": "WARSZAWA",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": true,
-          "region": "m. st. Warszawa",
-          "district_name": "północno-warszawski",
-          "alternative_names": ["Warszawa-Północ"],
+          "region": "M. ST. WARSZAWA",
+          "district_name": "PÓŁNOCNO-WARSZAWSKI",
+          "alternative_names": [
+            "WARSZAWA-PÓŁNOC"
+          ],
           "district_type": "m",
-          "seat": "Warszawa",
+          "seat": "WARSZAWA",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": true,
-          "region": "m. st. Warszawa",
-          "district_name": "prasko-warszawski",
-          "alternative_names": ["Warszawa-Praga"],
+          "region": "M. ST. WARSZAWA",
+          "district_name": "PRASKO-WARSZAWSKI",
+          "alternative_names": [
+            "WARSZAWA-PRAGA"
+          ],
           "district_type": "m",
-          "seat": "Warszawa",
+          "seat": "WARSZAWA",
           "weight_from": null,
           "weight_to": null
         }
@@ -1028,8 +1060,8 @@
     "matter": {
       "take_from": [
         {
-          "region": "Pomorskie",
-          "district_name": "morski",
+          "region": "POMORSKIE",
+          "district_name": "MORSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -1037,10 +1069,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Pomorskie",
-        "district_name": "Gdynia",
+        "region": "POMORSKIE",
+        "district_name": "GDYNIA",
         "district_type": "m",
-        "seat": "Gdynia"
+        "seat": "GDYNIA"
       }
     }
   },
@@ -1051,15 +1083,15 @@
     "description": "1.04.1929 zniesiono powiat peczeniżyński, a jego terytorium włączono do powiatu kołomyjskiego",
     "matter": {
       "take_from": {
-        "region": "Stanisławowskie",
-        "district_name": "peczeniżyński",
+        "region": "STANISŁAWOWSKIE",
+        "district_name": "PECZENIŻYŃSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Stanisławowskie",
-          "district_name": "kołomyjski",
+          "region": "STANISŁAWOWSKIE",
+          "district_name": "KOŁOMYJSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1074,15 +1106,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "Nowogródzkie",
-          "district_name": "lidzki",
+          "region": "NOWOGRÓDZKIE",
+          "district_name": "LIDZKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "Białostockie",
-          "district_name": "grodzieński",
+          "region": "BIAŁOSTOCKIE",
+          "district_name": "GRODZIEŃSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -1090,10 +1122,10 @@
       ],
       "take_to": {
         "create": true,
-        "region": "Białostockie",
-        "district_name": "szczuczyński",
+        "region": "NOWOGRÓDZKIE",
+        "district_name": "SZCZUCZYŃSKI (WOJ. NOWOGRÓDZKIE)",
         "district_type": "w",
-        "seat": "Szczuczyn"
+        "seat": "SZCZUCZYN"
       }
     }
   },
@@ -1104,10 +1136,10 @@
     "description": "od 16.12.1930 należał do woj. wołyńskiego",
     "matter": {
       "take_from": {
-        "region": "Poleskie",
-        "district_name": "sarneński"
+        "region": "POLESKIE",
+        "district_name": "SARNEŃSKI"
       },
-      "take_to": "Wołyń"
+      "take_to": "WOŁYŃ"
     }
   },
   {
@@ -1117,17 +1149,17 @@
     "description": "Zmieniono nazwę miasta Lisko na Lesko, a powiatu liski na leski",
     "matter": {
       "take_from": {
-        "region": "Lwowskie",
-        "district_name": "liski",
+        "region": "LWOWSKIE",
+        "district_name": "LISKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
-          "region": "Lwowskie",
-          "district_name": "leski",
+          "region": "LWOWSKIE",
+          "district_name": "LESKI",
           "district_type": "w",
-          "seat": "Lesko",
+          "seat": "LESKO",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -1142,15 +1174,15 @@
     "matter": {
       "take_from": [
         {
-          "region": "m. st. Warszawa",
-          "district_name": "południowo-warszawski",
+          "region": "M. ST. WARSZAWA",
+          "district_name": "POŁUDNIOWO-WARSZAWSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "m. st. Warszawa",
-          "district_name": "północno-warszawski",
+          "region": "M. ST. WARSZAWA",
+          "district_name": "PÓŁNOCNO-WARSZAWSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
@@ -1158,11 +1190,13 @@
       ],
       "take_to": {
         "create": true,
-        "region": "m. st. Warszawa",
-        "district_name": "śródmiejsko-warszawski",
-        "alternative_names": ["Warszawa-Śródmieście"],
+        "region": "M. ST. WARSZAWA",
+        "district_name": "ŚRÓDMIEJSKO-WARSZAWSKI",
+        "alternative_names": [
+          "WARSZAWA-ŚRÓDMIEŚCIE"
+        ],
         "district_type": "m",
-        "seat": "Warszawa"
+        "seat": "WARSZAWA"
       }
     }
   },
@@ -1173,10 +1207,10 @@
     "description": "Powiat turczański, woj. Stanisławowskie, od 17.04.1931 należał do województwa lwowskiego",
     "matter": {
       "take_from": {
-        "region": "Stanisławowskie",
-        "district_name": "turczański"
+        "region": "STANISŁAWOWSKIE",
+        "district_name": "TURCZAŃSKI"
       },
-      "take_to": "Lwowskie"
+      "take_to": "LWOWSKIE"
     }
   },
   {
@@ -1186,17 +1220,17 @@
     "description": "1.01.1932 zniesiono powiat i z jego terytorium utworzono powiat iwacewicki z siedzibą w Iwacewiczach",
     "matter": {
       "take_from": {
-        "region": "Poleskie",
-        "district_name": "kosowski",
+        "region": "POLESKIE",
+        "district_name": "KOSOWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
-          "region": "Poleskie",
-          "district_name": "iwacewicki",
+          "region": "POLESKIE",
+          "district_name": "IWACEWICKI",
           "district_type": "m",
-          "seat": "Iwacewicze",
+          "seat": "IWACEWICZE",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -1210,22 +1244,22 @@
     "description": "1.04.1932 terytorium powiatu kolneńskiego przyłączono do powiatów łomżyńskiego i ostrołęckiego",
     "matter": {
       "take_from": {
-        "region": "Białostockie",
-        "district_name": "kolneński",
+        "region": "BIAŁOSTOCKIE",
+        "district_name": "KOLNEŃSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Białostockie",
-          "district_name": "łomżyński",
+          "region": "BIAŁOSTOCKIE",
+          "district_name": "ŁOMŻYŃSKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Białostockie",
-          "district_name": "ostrołęcki",
+          "region": "BIAŁOSTOCKIE",
+          "district_name": "OSTROŁĘCKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1239,22 +1273,22 @@
     "description": "zniesiono powiat oświęcimski, a jego terytorium włączono do powiatów bialskiego i wadowickiego",
     "matter": {
       "take_from": {
-        "region": "Krakowskie",
-        "district_name": "oświęcimski",
+        "region": "KRAKOWSKIE",
+        "district_name": "OŚWIĘCIMSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "bialski",
+          "region": "KRAKOWSKIE",
+          "district_name": "BIALSKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "wadowicki",
+          "region": "KRAKOWSKIE",
+          "district_name": "WADOWICKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1268,29 +1302,29 @@
     "description": "zniesiono powiat grybowski i włączono jego terytorium do powiatów nowosądeckiego, gorlickiego i tarnowskiego",
     "matter": {
       "take_from": {
-        "region": "Krakowskie",
-        "district_name": "grybowski",
+        "region": "KRAKOWSKIE",
+        "district_name": "GRYBOWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "nowosądecki",
+          "region": "KRAKOWSKIE",
+          "district_name": "NOWOSĄDECKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "gorlicki",
+          "region": "KRAKOWSKIE",
+          "district_name": "GORLICKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "tarnowski",
+          "region": "KRAKOWSKIE",
+          "district_name": "TARNOWSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1304,22 +1338,22 @@
     "description": "zniesiono powiat pilzneński, a jego terytorium włączono do powiatów ropczyckiego i jasielskiego",
     "matter": {
       "take_from": {
-        "region": "Krakowskie",
-        "district_name": "pilzneński",
+        "region": "KRAKOWSKIE",
+        "district_name": "PILZNEŃSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "ropczycki",
+          "region": "KRAKOWSKIE",
+          "district_name": "ROPCZYCKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "jasielski",
+          "region": "KRAKOWSKIE",
+          "district_name": "JASIELSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1333,22 +1367,22 @@
     "description": "zniesiono powiat wielicki, a jego terytorium rozdzielono między powiaty myślenicki i krakowski",
     "matter": {
       "take_from": {
-        "region": "Krakowskie",
-        "district_name": "wielicki",
+        "region": "KRAKOWSKIE",
+        "district_name": "WIELICKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "myślenicki",
+          "region": "KRAKOWSKIE",
+          "district_name": "MYŚLENICKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "krakowski",
+          "region": "KRAKOWSKIE",
+          "district_name": "KRAKOWSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1362,36 +1396,36 @@
     "description": "zniesiono powiat makowski (Maków Podhalański), a jego terytorium włączono do powiatów wadowickiego, żywieckiego, myślenickiego i nowotarskiego",
     "matter": {
       "take_from": {
-        "region": "Krakowskie",
-        "district_name": "makowski (Maków Podhalański)",
+        "region": "KRAKOWSKIE",
+        "district_name": "MAKOWSKI (MAKÓW PODHALAŃSKI)",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "wadowicki",
+          "region": "KRAKOWSKIE",
+          "district_name": "WADOWICKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "żywiecki",
+          "region": "KRAKOWSKIE",
+          "district_name": "ŻYWIECKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "myślenicki",
+          "region": "KRAKOWSKIE",
+          "district_name": "MYŚLENICKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "nowotarski",
+          "region": "KRAKOWSKIE",
+          "district_name": "NOWOTARSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1405,15 +1439,15 @@
     "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium do powiatu konińskiego",
     "matter": {
       "take_from": {
-        "region": "Łódzkie",
-        "district_name": "słupecki",
+        "region": "ŁÓDZKIE",
+        "district_name": "SŁUPECKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Łódzkie",
-          "district_name": "koniński",
+          "region": "ŁÓDZKIE",
+          "district_name": "KONIŃSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1427,22 +1461,22 @@
     "description": "Powiat konstantynowski został zniesiony, a jego terytorium włączono do powiatów bialskiego i siedleckiego.",
     "matter": {
       "take_from": {
-        "region": "Lubelskie",
-        "district_name": "konstantynowski",
+        "region": "LUBELSKIE",
+        "district_name": "KONSTANTYNOWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Lubelskie",
-          "district_name": "bialski",
+          "region": "LUBELSKIE",
+          "district_name": "BIALSKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Lubelskie",
-          "district_name": "siedlecki",
+          "region": "LUBELSKIE",
+          "district_name": "SIEDLECKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1456,22 +1490,22 @@
     "description": "Powiat strzyżowski został zniesiony, a jego terytorium włączono do powiatów rzeszowskiego i krośnieńskiego.",
     "matter": {
       "take_from": {
-        "region": "Lwowskie",
-        "district_name": "strzyżowski",
+        "region": "LWOWSKIE",
+        "district_name": "STRZYŻOWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Lwowskie",
-          "district_name": "rzeszowski",
+          "region": "LWOWSKIE",
+          "district_name": "RZESZOWSKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Lwowskie",
-          "district_name": "krośnieński",
+          "region": "LWOWSKIE",
+          "district_name": "KROŚNIEŃSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1485,15 +1519,15 @@
     "description": "Powiat starosamborski został zniesiony, a jego terytorium włączono do powiatu samborskiego.",
     "matter": {
       "take_from": {
-        "region": "Lwowskie",
-        "district_name": "starosamborski",
+        "region": "LWOWSKIE",
+        "district_name": "STAROSAMBORSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Lwowskie",
-          "district_name": "samborski",
+          "region": "LWOWSKIE",
+          "district_name": "SAMBORSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1507,29 +1541,29 @@
     "description": "1.04.1932 zniesiono powiat gniewski, a jego terytorium rozdzielono między powiaty starogardzki, świecki i tczewski",
     "matter": {
       "take_from": {
-        "region": "Pomorskie",
-        "district_name": "gniewski",
+        "region": "POMORSKIE",
+        "district_name": "GNIEWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Pomorskie",
-          "district_name": "starogardzki",
+          "region": "POMORSKIE",
+          "district_name": "STAROGARDZKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Pomorskie",
-          "district_name": "świecki",
+          "region": "POMORSKIE",
+          "district_name": "ŚWIECKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Pomorskie",
-          "district_name": "tczewski",
+          "region": "POMORSKIE",
+          "district_name": "TCZEWSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1543,15 +1577,15 @@
     "description": "1.04.1932 zniesiono powiat grodziski i włączono jego terytorium do powiatu nowotomyskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "grodziski",
+        "region": "POZNAŃSKIE",
+        "district_name": "GRODZISKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Poznańskie",
-          "district_name": "nowotomyski",
+          "region": "POZNAŃSKIE",
+          "district_name": "NOWOTOMYSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1565,15 +1599,15 @@
     "description": "1.04.1932 zniesiono powiat ostrzeszowski, a jego terytorium włączono do powiatu kępińskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "ostrzeszowski",
+        "region": "POZNAŃSKIE",
+        "district_name": "OSTRZESZOWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Poznańskie",
-          "district_name": "kępiński",
+          "region": "POZNAŃSKIE",
+          "district_name": "KĘPIŃSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1587,15 +1621,15 @@
     "description": "1.04.1932 zniesiono powiat śmigielski, a jego terytorium włączono do powiatu kościańskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "śmigielski",
+        "region": "POZNAŃSKIE",
+        "district_name": "ŚMIGIELSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Poznańskie",
-          "district_name": "kościański",
+          "region": "POZNAŃSKIE",
+          "district_name": "KOŚCIAŃSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1609,15 +1643,15 @@
     "description": "1.04.1932 zniesiono powiat koźmiński, a jego terytorium włączono do powiatu krotoszyńskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "koźmiński",
+        "region": "POZNAŃSKIE",
+        "district_name": "KOŹMIŃSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Poznańskie",
-          "district_name": "krotoszyński",
+          "region": "POZNAŃSKIE",
+          "district_name": "KROTOSZYŃSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1631,15 +1665,15 @@
     "description": "1.04.1932 zniesiono powiat strzelneński, a jego terytorium włączono do powiatu mogileńskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "strzelneński",
+        "region": "POZNAŃSKIE",
+        "district_name": "STRZELNEŃSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Poznańskie",
-          "district_name": "mogileński",
+          "region": "POZNAŃSKIE",
+          "district_name": "MOGILEŃSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1653,15 +1687,15 @@
     "description": "1.04.1932 zniesiono powiat odolanowski, a jego terytorium włączono do powiatu ostrowskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "odolanowski",
+        "region": "POZNAŃSKIE",
+        "district_name": "ODOLANOWSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Poznańskie",
-          "district_name": "ostrowski",
+          "region": "POZNAŃSKIE",
+          "district_name": "OSTROWSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1675,22 +1709,22 @@
     "description": "1.04.1932 zniesiono powiat bohorodczański i jego obszar włączono do powiatów nadwórniańskiego i stanisławowskiego",
     "matter": {
       "take_from": {
-        "region": "Stanisławowskie",
-        "district_name": "bohorodczański",
+        "region": "STANISŁAWOWSKIE",
+        "district_name": "BOHORODCZAŃSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Stanisławowskie",
-          "district_name": "nadwórniański",
+          "region": "STANISŁAWOWSKIE",
+          "district_name": "NADWÓRNIAŃSKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Stanisławowskie",
-          "district_name": "stanisławowski",
+          "region": "STANISŁAWOWSKIE",
+          "district_name": "STANISŁAWOWSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1704,15 +1738,15 @@
     "description": "1.04.1932 zniesiono powiat skolski, a jego obszar włączono do powiatu stryjskiego",
     "matter": {
       "take_from": {
-        "region": "Stanisławowskie",
-        "district_name": "skolski",
+        "region": "STANISŁAWOWSKIE",
+        "district_name": "SKOLSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Stanisławowskie",
-          "district_name": "stryjski",
+          "region": "STANISŁAWOWSKIE",
+          "district_name": "STRYJSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -1726,17 +1760,17 @@
     "description": "18.05.1932 utworzono powiat miejski w Radomiu",
     "matter": {
       "take_from": {
-        "region": "Kieleckie",
-        "district_name": "radomski",
+        "region": "KIELECKIE",
+        "district_name": "RADOMSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
-          "region": "Kieleckie",
-          "district_name": "Radom",
+          "region": "KIELECKIE",
+          "district_name": "RADOM",
           "district_type": "m",
-          "seat": "Radom",
+          "seat": "RADOM",
           "weight_from": null,
           "weight_to": null
         }
@@ -1750,17 +1784,17 @@
     "description": "zniesiono powiat ropczycki, a na jego terytorium powołano do życia powiat dębicki z siedzibą w Dębicy",
     "matter": {
       "take_from": {
-        "region": "Krakowskie",
-        "district_name": "ropczycki",
+        "region": "KRAKOWSKIE",
+        "district_name": "ROPCZYCKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": true,
-          "region": "Krakowskie",
-          "district_name": "dębicki",
+          "region": "KRAKOWSKIE",
+          "district_name": "DĘBICKI",
           "district_type": "w",
-          "seat": "Dębica",
+          "seat": "DĘBICA",
           "weight_from": 1.0,
           "weight_to": 1.0
         }
@@ -1774,10 +1808,10 @@
     "description": "od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
       "take_from": {
-        "region": "Łódzkie",
-        "district_name": "kaliski"
+        "region": "ŁÓDZKIE",
+        "district_name": "KALISKI"
       },
-      "take_to": "Poznańskie"
+      "take_to": "POZNAŃSKIE"
     }
   },
   {
@@ -1787,10 +1821,10 @@
     "description": "powiat kolski, woj. Łódzkie, od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
       "take_from": {
-        "region": "Łódzkie",
-        "district_name": "kolski"
+        "region": "ŁÓDZKIE",
+        "district_name": "KOLSKI"
       },
-      "take_to": "Poznańskie"
+      "take_to": "POZNAŃSKIE"
     }
   },
   {
@@ -1800,10 +1834,10 @@
     "description": "powiat koniński, woj. łódzkie, od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
       "take_from": {
-        "region": "Łódzkie",
-        "district_name": "koniński"
+        "region": "ŁÓDZKIE",
+        "district_name": "KONIŃSKI"
       },
-      "take_to": "Poznańskie"
+      "take_to": "POZNAŃSKIE"
     }
   },
   {
@@ -1813,10 +1847,10 @@
     "description": "powiat turecki, woj. łódzkie, od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
       "take_from": {
-        "region": "Łódzkie",
-        "district_name": "turecki"
+        "region": "ŁÓDZKIE",
+        "district_name": "TURECKI"
       },
-      "take_to": "Poznańskie"
+      "take_to": "POZNAŃSKIE"
     }
   },
   {
@@ -1826,10 +1860,10 @@
     "description": "1.04.1938 przeniesiono powiat Bydgoszcz z woj. poznańskiego do województwa pomorskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "Bydgoszcz"
+        "region": "POZNAŃSKIE",
+        "district_name": "BYDGOSZCZ"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1839,10 +1873,10 @@
     "description": "powiat działdowski, woj. Pomorskie, od 1.04.1938 należał do woj. warszawskiego",
     "matter": {
       "take_from": {
-        "region": "Pomorskie",
-        "district_name": "działdowski"
+        "region": "POMORSKIE",
+        "district_name": "DZIAŁDOWSKI"
       },
-      "take_to": "Warszawskie"
+      "take_to": "WARSZAWSKIE"
     }
   },
   {
@@ -1852,10 +1886,10 @@
     "description": "do 1.04.1938 należał do woj. warszawskiego",
     "matter": {
       "take_from": {
-        "region": "Warszawskie",
-        "district_name": "lipnowski"
+        "region": "WARSZAWSKIE",
+        "district_name": "LIPNOWSKI"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1865,10 +1899,10 @@
     "description": "powiat bydgoski, woj. poznańskie, od 1.04.1938 należał do woj. Pomorskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "bydgoski"
+        "region": "POZNAŃSKIE",
+        "district_name": "BYDGOSKI"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1878,10 +1912,10 @@
     "description": "od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "Inowrocław"
+        "region": "POZNAŃSKIE",
+        "district_name": "INOWROCŁAW"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1891,10 +1925,10 @@
     "description": "od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "inowrocławski"
+        "region": "POZNAŃSKIE",
+        "district_name": "INOWROCŁAWSKI"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1904,10 +1938,10 @@
     "description": "powiat szubiński, woj. poznańskie, od 1.04.1938 należał do województwa pomorskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "szubiński"
+        "region": "POZNAŃSKIE",
+        "district_name": "SZUBIŃSKI"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1917,10 +1951,10 @@
     "description": "powiat wyrzyski, woj. poznańskie, od 1.04.1938 należał do województwa Pomorskiego",
     "matter": {
       "take_from": {
-        "region": "Poznańskie",
-        "district_name": "wyrzyski"
+        "region": "POZNAŃSKIE",
+        "district_name": "WYRZYSKI"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1930,10 +1964,10 @@
     "description": "powiat nieszawski, woj. warszawskie, od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
       "take_from": {
-        "region": "Warszawskie",
-        "district_name": "nieszawski"
+        "region": "WARSZAWSKIE",
+        "district_name": "NIESZAWSKI"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1943,10 +1977,10 @@
     "description": "powiat rypiński, woj. warszawskie, od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
       "take_from": {
-        "region": "Warszawskie",
-        "district_name": "rypiński"
+        "region": "WARSZAWSKIE",
+        "district_name": "RYPIŃSKI"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1956,10 +1990,10 @@
     "description": "powiat włocławski, woj. warszawskie, od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
       "take_from": {
-        "region": "Warszawskie",
-        "district_name": "włocławski"
+        "region": "WARSZAWSKIE",
+        "district_name": "WŁOCŁAWSKI"
       },
-      "take_to": "Pomorskie"
+      "take_to": "POMORSKIE"
     }
   },
   {
@@ -1969,17 +2003,17 @@
     "description": "powiat miejski Lublin został ponownie utworzony 12.04.1928 roku",
     "matter": {
       "take_from": {
-        "region": "Lubelskie",
-        "district_name": "lubelski",
+        "region": "LUBELSKIE",
+        "district_name": "LUBELSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": true,
-          "region": "Lubelskie",
-          "district_name": "Lublin",
+          "region": "LUBELSKIE",
+          "district_name": "LUBLIN",
           "district_type": "m",
-          "seat": "Lublin",
+          "seat": "LUBLIN",
           "weight_from": null,
           "weight_to": null
         }
@@ -1993,15 +2027,15 @@
     "description": "przyłączono do niego część powiatu bardiowskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "bardiowski",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "BARDIOWSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "gorlicki",
+          "region": "KRAKOWSKIE",
+          "district_name": "GORLICKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -2015,15 +2049,15 @@
     "description": "przyłączono do niego część powiatu starolubowelskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "starolubowelski",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "STAROLUBOWELSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "nowosądecki",
+          "region": "KRAKOWSKIE",
+          "district_name": "NOWOSĄDECKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -2037,15 +2071,15 @@
     "description": "przyłączono do niego część powiatu kieżmarskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "kieżmarski",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "KIEŻMARSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "nowotarski",
+          "region": "KRAKOWSKIE",
+          "district_name": "NOWOTARSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -2059,15 +2093,15 @@
     "description": "przyłączono do niego część powiatu namiestowskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "namiestowski",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "NAMIESTOWSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "nowotarski",
+          "region": "KRAKOWSKIE",
+          "district_name": "NOWOTARSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -2081,15 +2115,15 @@
     "description": "przyłączono do niego część powiatu starowiejskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "starowiejski",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "STAROWIEJSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "nowotarski",
+          "region": "KRAKOWSKIE",
+          "district_name": "NOWOTARSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -2103,15 +2137,15 @@
     "description": "przyłączono do niego część powiatu trzciańskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "trzciany",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "TRZCIANY",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Krakowskie",
-          "district_name": "nowotarski",
+          "region": "KRAKOWSKIE",
+          "district_name": "NOWOTARSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -2125,15 +2159,15 @@
     "description": "16.11.1938 przyłączono do powiatu leskiego część terytorium powiatu snińskiego anektowanego Czechosłowacji.",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "sniński",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "SNIŃSKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Lwowskie",
-          "district_name": "leski",
+          "region": "LWOWSKIE",
+          "district_name": "LESKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -2147,15 +2181,15 @@
     "description": "16.11.1938 przyłączono do niego część powiatu czadeckiego, niewielką część powiatu frydeckiego oraz powiat czeskocieszyński anektowane Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "czadecki",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "CZADECKI",
         "delete_district": false
       },
       "take_to": [
         {
           "create": false,
-          "region": "Śląskie",
-          "district_name": "cieszyński",
+          "region": "ŚLĄSKIE",
+          "district_name": "CIESZYŃSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -2169,15 +2203,15 @@
     "description": "16.11.1938 przyłączono do niego część powiatu czadeckiego, niewielką część powiatu frydeckiego oraz powiat czeskocieszyński anektowane Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "czeskocieszyński",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "CZESKOCIESZYŃSKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Śląskie",
-          "district_name": "cieszyński",
+          "region": "ŚLĄSKIE",
+          "district_name": "CIESZYŃSKI",
           "weight_from": 1.0,
           "weight_to": null
         }
@@ -2191,22 +2225,22 @@
     "description": "16.11.1938 przyłączono do niego część powiatu frydeckiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "Czechosłowacja",
-        "district_name": "frydecki",
+        "region": "CZECHOSŁOWACJA",
+        "district_name": "FRYDECKI",
         "delete_district": true
       },
       "take_to": [
         {
           "create": false,
-          "region": "Śląskie",
-          "district_name": "frysztacki",
+          "region": "ŚLĄSKIE",
+          "district_name": "FRYSZTACKI",
           "weight_from": null,
           "weight_to": null
         },
         {
           "create": false,
-          "region": "Śląskie",
-          "district_name": "cieszyński",
+          "region": "ŚLĄSKIE",
+          "district_name": "CIESZYŃSKI",
           "weight_from": null,
           "weight_to": null
         }
@@ -2220,10 +2254,10 @@
     "description": "powiat łomżyński, woj. białostockie, od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
       "take_from": {
-        "region": "Białostockie",
-        "district_name": "łomżyński"
+        "region": "BIAŁOSTOCKIE",
+        "district_name": "ŁOMŻYŃSKI"
       },
-      "take_to": "Warszawskie"
+      "take_to": "WARSZAWSKIE"
     }
   },
   {
@@ -2233,10 +2267,10 @@
     "description": "od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
       "take_from": {
-        "region": "Białostockie",
-        "district_name": "ostrołęcki"
+        "region": "BIAŁOSTOCKIE",
+        "district_name": "OSTROŁĘCKI"
       },
-      "take_to": "Warszawskie"
+      "take_to": "WARSZAWSKIE"
     }
   },
   {
@@ -2246,10 +2280,10 @@
     "description": "powiat ostrowski, woj. białostockie, od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
       "take_from": {
-        "region": "Białostockie",
-        "district_name": "ostrowski"
+        "region": "BIAŁOSTOCKIE",
+        "district_name": "OSTROWSKI"
       },
-      "take_to": "Warszawskie"
+      "take_to": "WARSZAWSKIE"
     }
   },
   {
@@ -2259,10 +2293,10 @@
     "description": "powiat konecki, woj. kieleckie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
-        "region": "Kieleckie",
-        "district_name": "konecki"
+        "region": "KIELECKIE",
+        "district_name": "KONECKI"
       },
-      "take_to": "Łódzkie"
+      "take_to": "ŁÓDZKIE"
     }
   },
   {
@@ -2272,10 +2306,10 @@
     "description": "powiat opoczyński, woj. kieleckie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
-        "region": "Kieleckie",
-        "district_name": "opoczyński"
+        "region": "KIELECKIE",
+        "district_name": "OPOCZYŃSKI"
       },
-      "take_to": "Łódzkie"
+      "take_to": "ŁÓDZKIE"
     }
   },
   {
@@ -2285,10 +2319,10 @@
     "description": "Powiat garwoliński, woj. lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
       "take_from": {
-        "region": "Lubelskie",
-        "district_name": "garwoliński"
+        "region": "LUBELSKIE",
+        "district_name": "GARWOLIŃSKI"
       },
-      "take_to": "Warszawskie"
+      "take_to": "WARSZAWSKIE"
     }
   },
   {
@@ -2298,10 +2332,10 @@
     "description": "Powiat sokołowski, woj. lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
       "take_from": {
-        "region": "Lubelskie",
-        "district_name": "sokołowski"
+        "region": "LUBELSKIE",
+        "district_name": "SOKOŁOWSKI"
       },
-      "take_to": "Warszawskie"
+      "take_to": "WARSZAWSKIE"
     }
   },
   {
@@ -2311,10 +2345,10 @@
     "description": "Powiat węgrowski, woj. lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
       "take_from": {
-        "region": "Lubelskie",
-        "district_name": "węgrowski"
+        "region": "LUBELSKIE",
+        "district_name": "WĘGROWSKI"
       },
-      "take_to": "Warszawskie"
+      "take_to": "WARSZAWSKIE"
     }
   },
   {
@@ -2324,10 +2358,10 @@
     "description": "powiat kutnowski, woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
-        "region": "Warszawskie",
-        "district_name": "kutnowski"
+        "region": "WARSZAWSKIE",
+        "district_name": "KUTNOWSKI"
       },
-      "take_to": "Łódzkie"
+      "take_to": "ŁÓDZKIE"
     }
   },
   {
@@ -2337,10 +2371,10 @@
     "description": "powiat łowicki, woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
-        "region": "Warszawskie",
-        "district_name": "łowicki"
+        "region": "WARSZAWSKIE",
+        "district_name": "ŁOWICKI"
       },
-      "take_to": "Łódzkie"
+      "take_to": "ŁÓDZKIE"
     }
   },
   {
@@ -2350,10 +2384,10 @@
     "description": "powiat rawski (Rawa Mazowiecka), woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
-        "region": "Warszawskie",
-        "district_name": "rawski (Rawa Mazowiecka)"
+        "region": "WARSZAWSKIE",
+        "district_name": "RAWSKI (RAWA MAZOWIECKA)"
       },
-      "take_to": "Łódzkie"
+      "take_to": "ŁÓDZKIE"
     }
   },
   {
@@ -2363,10 +2397,10 @@
     "description": "powiat skierniewicki, woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
       "take_from": {
-        "region": "Warszawskie",
-        "district_name": "skierniewicki"
+        "region": "WARSZAWSKIE",
+        "district_name": "SKIERNIEWICKI"
       },
-      "take_to": "Łódzkie"
+      "take_to": "ŁÓDZKIE"
     }
   }
 ]

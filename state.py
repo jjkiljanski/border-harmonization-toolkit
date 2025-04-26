@@ -19,14 +19,14 @@ class AdministrativeState:
 
     def find_district(self, searched_name):
         """
-        Find and return the region and district dict by district name or district seat.
+        Find and return the region and district dict by district name or district alternative name.
         
         Returns:
             (region_name, district_dict) or (None, None) if not found
         """
         for region, districts in self.structure.items():
             for district in districts:
-                if district["district_name"] == searched_name or district["seat"]==searched_name:
+                if district["district_name"] == searched_name or searched_name in district["alternative_names"]:
                     return region, district
         return None, None
     
@@ -88,6 +88,34 @@ class AdministrativeState:
             "valid_to": self.valid_to,
             "regions": deepcopy(self.structure)
         }
+    
+    def to_r_d_list(self, is_poland = False, with_alt_names = False):
+        """
+        Returns a list of (region, district) pairs, sorted alphabetically.
+        If is_poland is true, the method doesn't return pairs from regions outside Poland.
+        If with_alt_names is true, pairs with alternative district names are also added.
+        """
+        r_d_list = []
+        for region, districts in self.structure.items():
+            if is_poland:
+                if region in ['CZECHOSŁOWACJA', 'NIEMCY', 'LITWA']:
+                    continue
+            for district in districts:
+                r_d_list.append((region, district["district_name"]))
+                if with_alt_names:
+                    if district.get("alternative_names"):
+                        for alt_name in district["alternative_names"]:
+                            r_d_list.append((region, alt_name))
+        r_d_list.sort()
+        return r_d_list
+    
+    # def compare_to_r_d_list(self, r_d_list):
+    #     diff_1
+    #     for r_d_pair in r_d_list:
+    #         reg, dist = r_d_pair
+    #         for dist in self.structure[reg]:
+
+
 
     def to_csv(self):
         """
@@ -101,13 +129,7 @@ class AdministrativeState:
 
         filepath = f"output/state_{self.valid_from}-{self.valid_to}.csv"
 
-        rows = []
-        for region, districts in self.structure.items():
-            for district in districts:
-                rows.append((region, district["district_name"]))
-
-        # Sort by region then district
-        rows.sort()
+        rows = self.to_r_d_list
 
         with open(filepath, mode='w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
@@ -137,7 +159,6 @@ class AdministrativeState:
             
         for change in changes_list:
             change.apply(new_state)
-
         return new_state
 
     def __repr__(self):
