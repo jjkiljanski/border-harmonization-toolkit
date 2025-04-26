@@ -109,13 +109,43 @@ class AdministrativeState:
         r_d_list.sort()
         return r_d_list
     
-    # def compare_to_r_d_list(self, r_d_list):
-    #     diff_1
-    #     for r_d_pair in r_d_list:
-    #         reg, dist = r_d_pair
-    #         for dist in self.structure[reg]:
+    def compare_to_r_d_list(self, r_d_list, verbose = False):
+        # Comparison of the dist lists
+        r_d_state_list = self.to_r_d_list(is_poland = True, with_alt_names = False)
+        d_state_list = [district for region, district in r_d_state_list]
+        d_state_set = set(d_state_list)
+        d_aim_list = [district for region, district in r_d_list]
+        d_aim_set = set(d_aim_list)
+        list_difference_1 = list(d_state_set - d_aim_set)
+        list_difference_1.sort()
+        list_difference_2 = list(d_aim_set - d_state_set)
+        list_difference_2.sort()
+        list_differences = (list_difference_1, list_difference_2)
+        list_proximity = len(list_difference_1) + len(list_difference_2)
+        list_comparison = list_proximity, list_differences
 
+        # Comparison of the region-district state
+        r_d_state_list = self.to_r_d_list(is_poland = True, with_alt_names = False)
+        r_d_state_set = set(r_d_state_list)
+        r_d_aim_set = set(r_d_list)
+        state_difference_1 = list(r_d_state_set - r_d_aim_set)
+        state_difference_1.sort()
+        state_difference_2 = list(r_d_aim_set - r_d_state_set)
+        state_difference_2.sort()
+        state_differences = (state_difference_1, state_difference_2)
+        state_proximity = len(state_difference_1) + len(state_difference_2)
+        state_comparison = state_proximity, state_differences
 
+        if verbose == True:
+            print(f"State {self}:")
+            print("District list comparison:")
+            print(f"\tDistance from the r_d_list: {list_proximity}")
+            print(f"\tAbsent in list to identify: {list_difference_1}.\n Absent in state: {list_difference_2}.")
+            print("(Region,district) pairs comparison:")
+            print(f"\tDistance from the r_d_list: {state_proximity}")
+            print(f"\tAbsent in list to identify: {state_difference_1}.\n Absent in state: {state_difference_2}.")
+
+        return list_comparison, state_comparison
 
     def to_csv(self):
         """

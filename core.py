@@ -173,45 +173,51 @@ class AdministrativeHistory():
         """
         Takes sorted list of (region, district) pairs and identifies the administrative state that it represents.
         """
-        # Check that all districts in the r_d_aim_list exist in the administrative history.
-        d_names_in_history = self.dist_name_list(is_poland = True, with_alt_names=False)
-        d_alt_names_in_history = self.dist_name_list(is_poland = True, with_alt_names=True) # names and alt names
-        d_not_in_names = []
-        d_not_in_alt_names = []
-        for reg, dist in r_d_aim_list:
-            if dist not in d_names_in_history: d_not_in_names.append(dist)
-            if dist not in d_alt_names_in_history: d_not_in_alt_names.append(dist)
+        # Check that all district names in r_d_aim_list exist
+        #   and change them to basic names if they are alternative district names.
 
-        assert len(set(d_not_in_alt_names)-set(d_not_in_names))==0
+        r_d_aim_new = []
+        d_not_in_registry = []
+        for region, dist_aim in r_d_aim_list:
+            dist_name = self.district_registry.find_district(dist_aim)
+            if dist_name is None:
+                d_not_in_registry.append(dist_aim)
+            elif dist_name != dist_aim:
+                print(f"Warning: name {dist_aim} is an alternative district name. Processing further as {dist_name}")
+            r_d_aim_new.append((region, dist_name))
 
-        if d_not_in_alt_names:
-            raise ValueError(f"District names {d_not_in_alt_names} do not exist in administrative history.")
-        
-        if d_not_in_names:
-            print(f"Warning: names {d_not_in_names} are alternative district names.")
+        #print(f"List to identify: {r_d_aim_new}")
+
+        if d_not_in_registry:
+            raise ValueError(f"District names {d_not_in_registry} do not exist in the district registry.")
             
-        # Find closest states
+        # Find the closest district list:
+        d_lists_proximity = []
         state_proximity = []
         for state in self.states_list:
-            r_d_state_list = state.to_r_d_list(is_poland = True, with_alt_names = True)
-            r_d_state_set = set(r_d_state_list)
-            r_d_aim_set = set(r_d_aim_list)
-            difference_1 = list(r_d_state_set - r_d_aim_set)
-            difference_1.sort()
-            difference_2 = list(r_d_aim_set - r_d_state_set)
-            difference_2.sort()
-            differences = (difference_1, difference_2)
-            proximity = len(difference_1) + len(difference_2)
-            if proximity == 0:
+            list_comparison, state_comparison = state.compare_to_r_d_list(r_d_aim_new)
+            list_proximity, list_differences = list_comparison
+            state_proximity, state_differences = state_comparison
+            d_lists_proximity.append((list_proximity, list_differences, str(state)))
+            state_proximity.append((proximity, differences, str(state)))
+            if state_proximity == 0:
                 print(f"The state identified as: {state}")
                 return
-            state_proximity.append((proximity, differences, str(state)))
 
+        d_lists_proximity.sort()
         state_proximity.sort()
-        print("No state identified. The closest states:")
-        for prox, diff, state in state_proximity[:3]:
+
+        print("No state identified.")
+        
+        print("The closest states in terms of district lists:")
+        for i, (prox, diff, state) in enumerate (d_lists_proximity[:3]):
             diff_1, diff_2 = diff
-            print(f"1. State {state}.\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
+            print(f"{i}. State {state} (proximity: {prox}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
+        
+        print("The closest states:")
+        for i, (prox, diff, state) in enumerate(state_proximity[:3]):
+            diff_1, diff_2 = diff
+            print(f"{i}. State {state} (proximity: {prox}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
 
 class DistrictRegistry():
     """
@@ -229,9 +235,17 @@ class DistrictRegistry():
             district["district_name"] or None if not found
         """
         for district in self.districts:
-            if district["district_name"] == searched_name or searched_name in district["alternative_names"]:
+            if district["district_name"] == searched_name:
                 return district["district_name"]
+            alt_names = district.get("alternative_names")
+            if alt_names:
+                if searched_name in alt_names:
+                    return district["district_name"]
         return None
+    
+    def names_list(self):
+        self.districts.sort(key=lambda district: district["district_name"])
+        return [district["district_name"] for district in self.districts]
     
     def summary(self, with_alt_names = False):
         self.districts.sort(key=lambda district: district["district_name"])

@@ -22,19 +22,21 @@ administrative_history = AdministrativeHistory(changes_path, state_path, timespa
 
 administrative_history.print_all_states()
 
-administrative_history.district_registry.summary(with_alt_names=True)
+#administrative_history.district_registry.summary(with_alt_names=True)
 
 # Loop through all files in the input/states_to_identify folder
-# folder_path = 'input/states_to_identify'
-# for filename in os.listdir(folder_path):
-#     if filename.endswith(".csv"):
-#         file_path = os.path.join(folder_path, filename)
-#         # Read the CSV
-#         df = pd.read_csv(file_path)
+folder_path = 'input/states_to_identify'
+for filename in os.listdir(folder_path):
+    if filename.endswith(".csv"):
+        file_path = os.path.join(folder_path, filename)
+        # Read the CSV
+        df = pd.read_csv(file_path)
 
-#         # Create list of (REGION, DISTRICT) pairs in uppercase
-#         r_d_pairs = [(region.upper(), district.upper()) for region, district in zip(df['region'], df['district'])]
-
-#         print(f"Running {filename} identification.")
-#         #print(file_pairs)
-#         administrative_history.identify_state(r_d_pairs)
+        # Create list of (REGION, DISTRICT) pairs in uppercase
+        r_d_pairs = [(region.upper(), district.upper()) for region, district in zip(df['region'], df['district'])]
+        
+        print(f"Running {filename} identification.")
+        #print(file_pairs)
+        #administrative_history.identify_state(r_d_pairs)
+        administrative_history.states_list[0].compare_to_r_d_list(r_d_pairs, verbose = True)
+    
