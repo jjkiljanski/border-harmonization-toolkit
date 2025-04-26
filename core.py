@@ -173,33 +173,15 @@ class AdministrativeHistory():
         """
         Takes sorted list of (region, district) pairs and identifies the administrative state that it represents.
         """
-        # Check that all district names in r_d_aim_list exist
-        #   and change them to basic names if they are alternative district names.
-
-        r_d_aim_new = []
-        d_not_in_registry = []
-        for region, dist_aim in r_d_aim_list:
-            dist_name = self.district_registry.find_district(dist_aim)
-            if dist_name is None:
-                d_not_in_registry.append(dist_aim)
-            elif dist_name != dist_aim:
-                print(f"Warning: name {dist_aim} is an alternative district name. Processing further as {dist_name}")
-            r_d_aim_new.append((region, dist_name))
-
-        #print(f"List to identify: {r_d_aim_new}")
-
-        if d_not_in_registry:
-            raise ValueError(f"District names {d_not_in_registry} do not exist in the district registry.")
-            
         # Find the closest district list:
         d_lists_proximity = []
         state_proximity = []
         for state in self.states_list:
-            list_comparison, state_comparison = state.compare_to_r_d_list(r_d_aim_new)
+            list_comparison, state_comparison = state.compare_to_r_d_list(r_d_aim_list)
             list_proximity, list_differences = list_comparison
             state_proximity, state_differences = state_comparison
             d_lists_proximity.append((list_proximity, list_differences, str(state)))
-            state_proximity.append((proximity, differences, str(state)))
+            state_proximity.append((state_proximity, state_differences, str(state)))
             if state_proximity == 0:
                 print(f"The state identified as: {state}")
                 return

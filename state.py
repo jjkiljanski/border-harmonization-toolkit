@@ -139,11 +139,11 @@ class AdministrativeState:
         if verbose == True:
             print(f"State {self}:")
             print("District list comparison:")
-            print(f"\tDistance from the r_d_list: {list_proximity}")
-            print(f"\tAbsent in list to identify: {list_difference_1}.\n Absent in state: {list_difference_2}.")
+            print(f"\tDistance from the d_list: {list_proximity}")
+            print(f"\tAbsent in d_list to identify: {list_difference_1}.\n Absent in state: {list_difference_2}.")
             print("(Region,district) pairs comparison:")
             print(f"\tDistance from the r_d_list: {state_proximity}")
-            print(f"\tAbsent in list to identify: {state_difference_1}.\n Absent in state: {state_difference_2}.")
+            print(f"\tAbsent in r_d_list to identify: {state_difference_1}.\n Absent in state: {state_difference_2}.")
 
         return list_comparison, state_comparison
 
