@@ -172,15 +172,41 @@ ChangeEntry = Annotated[
 
 ################################## AdministrativeState model ##################################
 
-class DistrictDict(BaseModel):
-    district_name: str
-    alternative_names: Optional[List[str]] = None
-    district_type: Literal["w", "m"]
-    seat: str
-    alternative_seat_names: Optional[List[str]] = None
+class DistStateDict(BaseModel):
+    dist_name: str
+    seat_name: str
+    dist_type: Literal["w", "m"]
 
-class AdministrativeStateEntry(BaseModel):
-    regions: Dict[str, List[DistrictDict]]
+class DistrictDict(BaseModel):
+    dist_name_id: str
+    dist_name_variants: List[str]
+    seat_name_variants: List[str]
+    state: DistStateDict
+
+    @model_validator(mode="after")
+    def check_dist_name_in_variants(self) -> "DistrictDict":
+        if self.dist_name_id not in self.dist_name_variants:
+            raise ValueError(f"dist_name_id '{self.dist_name_id}' must be in dist_name_variants {self.dist_name_variants}")
+        return self
+
+class InitialDistState(BaseModel):
+    dist_list: List[DistrictDict]
+
+class RegionDistricts(BaseModel):
+    region_name: str
+    districts: List[str]
+
+class InitialAdmState(BaseModel):
+    regions: List[RegionDistricts]
+
+class RegionStateDict(BaseModel):
+    region_name: str
+
+class RegionStateDict(BaseModel):
+    region_name_id: str
+    region_name_variants: List[str]
+    is_poland: bool
+    state: RegionStateDict
 
 ################################## DistrictEventLog model ##################################
 
