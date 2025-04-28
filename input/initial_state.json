@@ -16,9 +16,9 @@
       "seat": "BIAŁOWIEŻA"
     },
     {
-      "district_name": "BIELSKI",
+      "district_name": "BIELSKI (BIELSK PODLASKI)",
       "district_type": "w",
-      "seat": "BIELSK"
+      "seat": "BIELSK PODLASKI"
     },
     {
       "district_name": "GRODZIEŃSKI",
@@ -41,9 +41,9 @@
       "seat": "OSTROŁĘKA"
     },
     {
-      "district_name": "OSTROWSKI",
+      "district_name": "OSTROWSKI (OSTRÓW MAZOWIECKA)",
       "district_type": "w",
-      "seat": "OSTRÓW MAZOWIECKI"
+      "seat": "OSTRÓW MAZOWIECKA"
     },
     {
       "district_name": "SEJNEŃSKI",
@@ -163,9 +163,9 @@
   ],
   "KRAKOWSKIE": [
     {
-      "district_name": "BIALSKI",
+      "district_name": "BIALSKI (BIAŁA KRAKOWSKA)",
       "district_type": "w",
-      "seat": "BIAŁA",
+      "seat": "BIAŁA KRAKOWSKA",
       "alternative_seat_names": [
         "BIAŁA KRAKOWSKA"
       ]
@@ -176,7 +176,7 @@
       "seat": "BOCHNIA"
     },
     {
-      "district_name": "BRZESKI",
+      "district_name": "BRZESKI (BRZESKO)",
       "district_type": "w",
       "seat": "BRZESKO"
     },
@@ -291,9 +291,9 @@
   ],
   "LUBELSKIE": [
     {
-      "district_name": "BIALSKI",
+      "district_name": "BIALSKI (BIAŁA PODLASKA)",
       "district_type": "w",
-      "seat": "BIAŁA",
+      "seat": "BIAŁA PODLASKA",
       "alternative_seat_names": [
         "BIAŁA PODLASKA"
       ]
@@ -447,8 +447,10 @@
     },
     {
       "district_name": "LISKI",
+      "alternative_names": ["LESKI"],
       "district_type": "w",
-      "seat": "LISKO"
+      "seat": "LISKO",
+      "alternative_seat_names": ["LISKO"]
     },
     {
       "district_name": "LWOWSKI",
@@ -673,9 +675,10 @@
   ],
   "POLESKIE": [
     {
-      "district_name": "BRZESKI",
+      "district_name": "BRZESKI (BRZEŚĆ N.BUG.)",
       "district_type": "w",
-      "seat": "BRZEŚĆ N.BUG."
+      "seat": "BRZEŚĆ N.BUG.",
+      "alternative_seat_names": ["BRZEŚĆ N.BUGIEM", "BRZEŚĆ NAD BUGIEM"]
     },
     {
       "district_name": "DROHICKI",
@@ -691,7 +694,7 @@
       "seat": "KOBRYŃ"
     },
     {
-      "district_name": "KOSOWSKI",
+      "district_name": "KOSOWSKI (KOSÓW POLESKI)",
       "district_type": "w",
       "seat": "KOSÓW POLESKI"
     },
@@ -920,9 +923,9 @@
       "seat": "ODOLANÓW"
     },
     {
-      "district_name": "OSTROWSKI",
+      "district_name": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
       "district_type": "w",
-      "seat": "OSTRÓW"
+      "seat": "OSTRÓW WIELKOPOLSKI"
     },
     {
       "district_name": "OSTRZESZOWSKI",
@@ -1045,7 +1048,7 @@
       "seat": "KOŁOMYJA"
     },
     {
-      "district_name": "KOSOWSKI",
+      "district_name": "KOSOWSKI (KOSÓW HUCULSKI)",
       "district_type": "w",
       "seat": "KOSÓW"
     },
@@ -1102,9 +1105,9 @@
   ],
   "ŚLĄSKIE": [
     {
-      "district_name": "BIELSKI",
+      "district_name": "BIELSKI (BIELSKO)",
       "district_type": "w",
-      "seat": "BIELSKO"
+      "seat": "BIELSKO (BIELSKO)"
     },
     {
       "district_name": "BIELSKO",
@@ -1325,7 +1328,7 @@
       "seat": "WŁOCŁAWEK"
     }
   ],
-  "WOŁYŃ": [
+  "WOŁYŃSKIE": [
     {
       "district_name": "DUBIEŃSKI",
       "district_type": "w",
@@ -1484,11 +1487,6 @@
       "district_name": "TARNOGÓRSKI",
       "district_type": "w",
       "seat": "TARNOWSKIE GÓRY"
-    },
-    {
-      "district_name": "ZABRSKI",
-      "district_type": "w",
-      "seat": "ŁUCK"
     }
   ],
   "LITWA": [
@@ -1521,21 +1519,6 @@
       "district_name": "WILNO",
       "district_type": "m",
       "seat": "WILNO"
-    },
-    {
-      "district_name": "OSTROGSKI",
-      "district_type": "w",
-      "seat": "OSTRÓG"
-    },
-    {
-      "district_name": "RÓWIEŃSKI",
-      "district_type": "w",
-      "seat": "RÓWNE"
-    },
-    {
-      "district_name": "WŁODZIMIERSKI",
-      "district_type": "w",
-      "seat": "WŁODZIMIERZ"
     }
   ]
 }

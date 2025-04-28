@@ -34,8 +34,8 @@ for filename in os.listdir(folder_path):
         df = load_and_clean_csv(file_path, administrative_history.district_registry)
         # Create list of (REGION, DISTRICT) pairs in uppercase
         r_d_pairs = list(zip(df['region'], df['district']))
-        
+
         print(f"Running {filename} identification.")
         #print(file_pairs)
         #administrative_history.identify_state(r_d_pairs)
-        administrative_history.states_list[0].compare_to_r_d_list(r_d_pairs, verbose = True)
+        administrative_history.states_list[23].compare_to_r_d_list(r_d_pairs, verbose = True)

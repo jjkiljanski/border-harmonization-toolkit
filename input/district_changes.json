@@ -1143,30 +1143,6 @@
     }
   },
   {
-    "change_type": "DOneToMany",
-    "date": "04.03.1931",
-    "source": "M.P. 1931 nr 51 poz. 86",
-    "description": "Zmieniono nazwę miasta Lisko na Lesko, a powiatu liski na leski",
-    "matter": {
-      "take_from": {
-        "region": "LWOWSKIE",
-        "district_name": "LISKI",
-        "delete_district": true
-      },
-      "take_to": [
-        {
-          "create": true,
-          "region": "LWOWSKIE",
-          "district_name": "LESKI",
-          "district_type": "w",
-          "seat": "LESKO",
-          "weight_from": 1.0,
-          "weight_to": 1.0
-        }
-      ]
-    }
-  },
-  {
     "change_type": "DManyToOne",
     "date": "1.04.1931",
     "source": "Dz.U. z 1931 r. nr 26, poz. 155",
@@ -1193,7 +1169,8 @@
         "region": "M. ST. WARSZAWA",
         "district_name": "ŚRÓDMIEJSKO-WARSZAWSKI",
         "alternative_names": [
-          "WARSZAWA-ŚRÓDMIEŚCIE"
+          "WARSZAWA-ŚRÓDMIEŚCIE",
+          "ŚRÓDMIEJSKO-WARSZAWSKI"
         ],
         "district_type": "m",
         "seat": "WARSZAWA"
