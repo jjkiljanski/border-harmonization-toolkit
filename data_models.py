@@ -144,7 +144,7 @@ class BaseChangeMatter(BaseModel, ABC):
     change_type: str
 
     @abstractmethod
-    def echo(self) -> str:
+    def echo(self, date, source) -> str:
         pass
 
     @abstractmethod
@@ -160,7 +160,7 @@ class BaseChangeMatter(BaseModel, ABC):
 class UnitReform(BaseChangeMatter):
     change_type = Literal["UnitReform"]
     unit_type = Literal["Region", "District"]
-    unit_name_id = str
+    current_name = str
     to_reform: Dict[str, Any]
     after_reform: Dict[str, Any]
 
@@ -180,15 +180,25 @@ class UnitReform(BaseChangeMatter):
 
         return values
     
+    def echo(self, date, source, lang = "pol"):
+        if lang == "pol":
+            if self.unit_type == "Region": jednostka = "województwa"
+            else: jednostka = "powiatu"
+            print(f"{date} dokonano reformy {jednostka} {self.current_name}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({source}).")
+        elif lang == "eng":
+            print(f"{date} the {self.unit_type.lower()} {self.current_name} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({source}).")
+        else:
+            raise ValueError("Wrong value for the lang parameter.")
+    
 # Definition of the data model for the matter of OneToMany change.
     
 class OneToManyTakeFrom(BaseModel):
-    name_id: str
+    current_name: str
     delete_unit: bool
 
 class OneToManyTakeTo(BaseModel):
     create: bool
-    name_id: str
+    current_name: str
     weight_from: Optional[float] = None
     weight_to: Optional[float] = None
     
@@ -199,18 +209,40 @@ class OneToMany(BaseChangeMatter):
     take_from: OneToManyTakeFrom
     take_to: List[OneToManyTakeTo]
 
+    def echo(self, date, source, lang = "pol"):
+        destination_districts = ", ".join([f"{destination.current_name}" for destination in self.take_to])
+        if lang == "pol":
+            if self.take_from.delete_unit:
+                if self.unit_type == "District":
+                    if len(self.take_to)>1: z_jednostki = "powiatów:"
+                    else: z_jednostki = "powiatu"
+                    do_jednostki = "powiat"
+                else:
+                    raise ValueError("Method 'echo' of class 'OneToMany' is only implemented for self.unit_type='District'.")
+                print(f"{date} zniesiono {do_jednostki} {self.take_from.current_name}, a jego terytorium włączono do {z_jednostki} {destination_districts} ({source}).")
+            else:
+                print(f"{date} fragment terytorium {do_jednostki}u {self.takie_from.current_name} włączono do {z_jednostki} {destination_districts} ({source}).")
+        elif lang == "eng":
+            if self.take_from.delete_unit:
+                if len(self.take_to)>1: s = "s:"
+                else: s = ""
+                print(f"{date} the district {self.take_from.current_name} was abolished and its territory was integrated into the district{s} {destination_districts} ({source}).")
+            else:
+                print(f"{date} part of the territory of the district {self.take_from.current_name} was integrated into the district{s} {destination_districts} ({source}).")
+        else:
+            raise ValueError("Wrong value for the lang parameter.")
+
 # Definition of the data model for the matter of ManyToOne change.
 
 class ManyToOneTakeFrom(BaseModel):
-    name_id: str
+    current_name: str
     weight_from: Optional[float] = None
     weight_to: Optional[float] = None
     delete_unit: bool
 
-
 class ManyToOneTakeTo(BaseModel):
     create: bool
-    name_id: Optional[str] = None
+    current_name: Optional[str] = None
     district: Optional[District] = None
 
     @model_validator(mode="after")
@@ -230,9 +262,89 @@ class ManyToOne(BaseModel):
     take_from: List[ManyToOneTakeFrom]
     take_to: ManyToOneTakeTo
 
+    def echo(self, date, source, lang = "pol"):
+        origin_districts_partial = ", ".join([f"{origin.current_name}" for origin in self.take_from if not origin.delete_unit])
+        origin_districts_whole = ", ".join([f"{origin.current_name}" for origin in self.take_from if origin.delete_unit])
+        if lang == "pol":
+            if self.unit_type != "District":
+                raise ValueError("Method 'echo' of class 'ManyToOne' is only implemented for self.unit_type='District'.")
+            z_cz_jednostki = ""
+            z_calej_jednostki = ""
+            oraz = ""
+            if len(origin_districts_partial) >= 1:
+                if len(origin_districts_partial) >=2:
+                    if self.take_to.create:
+                        z_cz_jednostki = f"z części powiatów {origin_districts_partial} "
+                    else:
+                        z_cz_jednostki = f"części powiatów {origin_districts_partial} "
+                else:
+                    if self.take_to.create:
+                        z_cz_jednostki = f"z części powiatu {origin_districts_partial} "
+                    else:
+                        z_cz_jednostki = f"część powiatu {origin_districts_partial} "
+            if len(origin_districts_whole) >= 1:
+                if len(origin_districts_whole) >= 2:
+                    if self.take_to.create:
+                        z_calej_jednostki = f"z całego terytorium powiatów {origin_districts_whole} "
+                    else:
+                        z_calej_jednostki = f"całe terytorium powiatów {origin_districts_whole} "
+                else:
+                    if self.take_to.create:
+                        z_calej_jednostki = f"z całego terytorium powiatu {origin_districts_whole} "
+                    else:
+                        z_calej_jednostki = f"całe terytorium powiatu {origin_districts_whole} "
+            if len(origin_districts_whole)>0 and len(origin_districts_partial)>0:
+                oraz = "oraz "
+            if self.take_to.create:
+                print(f"{date} {z_cz_jednostki}{oraz}{z_calej_jednostki} utworzono powiat {self.take_to.current_name} ({source})")
+            else:
+                print(f"{date} {z_cz_jednostki}{oraz}{z_calej_jednostki} włączono do powiatu {self.take_to.current_name} ({source})")
+        elif lang == "eng":
+            if lang == "eng":
+                if self.unit_type != "District":
+                    raise ValueError("Method 'echo' of class 'ManyToOne' is only implemented for self.unit_type='District'.")
+                from_partial_unit = ""
+                from_whole_unit = ""
+                and_word = ""
+                were_or_was = "were"
+                if len(origin_districts_partial) >= 1:
+                    if len(origin_districts_partial) >= 2:
+                        if self.take_to.create:
+                            from_partial_unit = f"from parts of the districts {origin_districts_partial} "
+                        else:
+                            from_partial_unit = f"parts of the districts {origin_districts_partial} "
+                    else:
+                        if self.take_to.create:
+                            from_partial_unit = f"from part of the district {origin_districts_partial} "
+                        else:
+                            from_partial_unit = f"part of the district {origin_districts_partial} "
+                            if len(origin_districts_whole)==0:
+                                were_or_was = "was"
+                else:
+                    were_or_was = "was"
+                if len(origin_districts_whole) >= 1:
+                    if len(origin_districts_whole) >= 2:
+                        if self.take_to.create:
+                            from_whole_unit = f"from the entire territory of the districts {origin_districts_whole} "
+                        else:
+                            from_whole_unit = f"the entire territory of the districts {origin_districts_whole} "
+                    else:
+                        if self.take_to.create:
+                            from_whole_unit = f"from the entire territory of the district {origin_districts_whole} "
+                        else:
+                            from_whole_unit = f"the entire territory of the district {origin_districts_whole} "
+                if len(origin_districts_whole) > 0 and len(origin_districts_partial) > 0:
+                    and_word = "and "
+                if self.take_to.create:
+                    print(f"{date} {from_partial_unit}{and_word}{from_whole_unit}the district {self.take_to.current_name} was created ({source})")
+                else:
+                    print(f"{date} {from_partial_unit}{and_word}{from_whole_unit}{were_or_was} merged into the district {self.take_to.current_name} ({source})")
+        else:
+            raise ValueError("Wrong value for the lang parameter.")
+
 # Definition of the data model for the matter of ChangeAdmState change.
 
-DistAddress = Tuple[Literal["Poland", "Abroad"], str]              # For regions
+DistAddress = Tuple[Literal["Poland", "Abroad"], str]              # For regions"
 RegionAddress = Tuple[Literal["Poland", "Abroad"], str, str]         # For districts
 Address = Union[DistAddress, RegionAddress]
 
@@ -248,7 +360,7 @@ class ChangeAdmState(BaseChangeMatter):
     take_from: Address
     take_to: Address
 
-    @field_validator("take_to")
+    @model_validator("take_to")
     def validate_matching_address_type(cls, take_to, values):
         take_from = values.get("take_from")
         if take_from and len(take_from) != len(take_to):
@@ -257,6 +369,30 @@ class ChangeAdmState(BaseChangeMatter):
                 f"got {len(take_from)} and {len(take_to)}"
             )
         return take_to
+    
+    def echo(self, date, source, lang = "pol"):
+        if lang == "pol":
+            if len(self.take_from) == 2:
+                z_kraj, z_woj = self.take_from
+                z_adres = z_woj
+                if z_kraj=="Abroad":
+                    do_adres = "Polski"
+                    jednostka = "region"
+            else:
+                z_kraj, z_woj, z_powiat = self.take_from
+                do_kraj, do_woj, do_powiat = self.take_to
+                jednostka = "powiat"
+                if(z_kraj=="POLAND"):
+                    z_adres = z_powiat
+                    do_adres = f"województwa {do_woj}"
+                else:
+                    z_adres = f"{z_powiat} ({z_woj})"
+                    do_adres = f"Polski (woj. {do_woj})"
+            print(f"Od {date} {jednostka} {': '.join(self.take_from)} należał do {': '.join(self.take_to[:-1])}")
+        elif lang == "eng":
+            print(f"From {date} on, the district {self.take_from[-1]} belonged to {": ".join(self.take_to[:-1])} ({source}).")
+        else:
+            raise ValueError("Wrong value for the lang parameter.")
     
 ###############################################################
 # Definition of the base Change data model
@@ -275,7 +411,7 @@ class Change(BaseModel):
     matter: ChangeMatter
 
     def echo(self) -> str:
-        return self.matter.echo()
+        return self.matter.echo(self.date, self.source)
 
     def districts_involved(self) -> list[str]:
         return self.matter.districts_involved()
