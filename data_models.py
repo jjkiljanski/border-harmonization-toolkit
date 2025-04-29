@@ -183,6 +183,10 @@ class TimeSpan(BaseModel):
     start: datetime
     end: datetime
 
+    def contains(self, date: datetime) -> bool:
+        """Check if a date is within the timespan."""
+        return self.start <= date <= self.end
+
 class TimeSpanRegistry(BaseModel):
     """
     A model to store all periods between two sequential administrative changes.
@@ -190,55 +194,90 @@ class TimeSpanRegistry(BaseModel):
     registry = List[TimeSpan]
 
 #############################################################################################
-# Hierarchy of models to store district states: DistrictState ∈ District ∈ DistrictRegistry
+# Hierarchy of models to store information about administrative units:
+#       UnitState ∈ Unit (stores chronological sequence of its states) ∈ UnitRegistry
 
-class DistState(BaseModel):
-    current_dist_name: str
+class UnitState(BaseModel):
+    current_name: str
     current_seat_name: str
     current_dist_type: Literal["w", "m"]
 
     # timespan: Defined during initialization as the global timespan.
-    # Timespan end will be set to the date of application of the first administrative change for the district.
+    # Timespan end will be set to the date of application of the first administrative change for the unit.
     timespan: Optional[TimeSpan] = None
 
-class District(BaseModel):
+class Unit(BaseModel):
     """
     Represents one district. The attributes of this class describe district attributes that don't change through time (e.g. dist_name_variants).
     Attributes that do change through time (e.g. current_dist_name should be handled as DistStateDict attributes)"""
-    dist_name_id: str
-    dist_name_variants: List[str]
-    seat_name_variants: List[str]
-    states: List[DistState]
+    name_id: str
+    name_variants: List[str]
+    seat_name_variants: Optional[List[str]] = None # Optional
+    states: List[UnitState]
 
     @model_validator(mode="after")
-    def check_dist_name_in_variants(self) -> "District":
-        if self.dist_name_id not in self.dist_name_variants:
-            raise ValueError(f"dist_name_id '{self.dist_name_id}' must be in dist_name_variants {self.dist_name_variants}")
+    def check_unit_name_in_variants(self) -> "Unit":
+        if self.name_id not in self.name_variants:
+            raise ValueError(f"name_id '{self.name_id}' must be in name_variants {self.name_variants}")
         return self
+    
+    def find_state_by_date(self, date: datetime) -> Optional[UnitState]:
+        for unit_state in self.states:
+            if unit_state.timespan and unit_state.timespan.contains(date):
+                return unit_state
+        return None  # Return None if no match is found
+    
+    def find_state_by_timespan(self, timespan: TimeSpan) -> Optional[UnitState]:
+        for unit_state in self.states:
+            if unit_state.timespan:
+                # Compare start and end dates directly
+                if unit_state.timespan.start == timespan.start and unit_state.timespan.end == timespan.end:
+                    return unit_state
+        return None  # Return None if no matching timespan is found
 
-class DistrictRegistry(BaseModel):
-    dist_list: List[District]
+class UnitRegistry(BaseModel):
+    unit_list: List[Unit]
+
+    def find_unit(self, unit_name: str) -> Optional[Unit]:
+        for unit in self.unit_list:
+            if unit_name in unit.name_variants:
+                return unit
+        return None
+    
+#############################################################################################
+# Hierarchy of models to store districts states: DistrictState ∈ District ∈ DistrictRegistry
+
+class DistState(UnitState):
+    current_dist_type: Literal["w", "m"]
+    current_territory: None
+
+class District(Unit):
+    """
+    Represents one district. The attributes of this class describe district attributes that don't change through time (e.g. dist_name_variants).
+    Attributes that do change through time (e.g. current_dist_name should be handled as DistStateDict attributes)
+    """
+    states: List[DistState]
+            
+
+class DistrictRegistry(UnitRegistry):
+    """
+    Registry of districts.
+    """
+    unit_list: List[District]
 
 #############################################################################################
 # Hierarchy of models to store Region states: RegionState ∈ Region ∈ RegionRegistry
 
-class RegionState(BaseModel):
-    region_name: str
-    timespan: Optional[TimeSpan] = None
+class RegionState(UnitState):
+    """
+    State of a region.
+    """
 
-class Region(BaseModel):
-    region_name_id: str
-    region_name_variants: List[str]
+class Region(Unit):
     is_poland: bool
     states: List[RegionState]
 
-    @model_validator(mode="after")
-    def check_region_name_in_variants(self) -> "Region":
-        if self.region_name_id not in self.region_name_variants:
-            raise ValueError(f"region_name_id '{self.region_name_id}' must be in region_name_variants {self.region_name_variants}")
-        return self
-
-class RegionRegistry(BaseModel):
+class RegionRegistry(UnitRegistry):
     region_list: List[Region]
 
 #############################################################################################

@@ -1,247 +1,247 @@
 [
   {
-    "region_name_id": "BIAŁOSTOCKIE",
-    "region_name_variants": [
+    "name_id": "BIAŁOSTOCKIE",
+    "name_variants": [
       "BIAŁOSTOCKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "BIAŁOSTOCKIE",
+        "current_name": "BIAŁOSTOCKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "KIELECKIE",
-    "region_name_variants": [
+    "name_id": "KIELECKIE",
+    "name_variants": [
       "KIELECKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "KIELECKIE",
+        "current_name": "KIELECKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "KRAKOWSKIE",
-    "region_name_variants": [
+    "name_id": "KRAKOWSKIE",
+    "name_variants": [
       "KRAKOWSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "KRAKOWSKIE",
+        "current_name": "KRAKOWSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "LUBELSKIE",
-    "region_name_variants": [
+    "name_id": "LUBELSKIE",
+    "name_variants": [
       "LUBELSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "LUBELSKIE",
+        "current_name": "LUBELSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "LWOWSKIE",
-    "region_name_variants": [
+    "name_id": "LWOWSKIE",
+    "name_variants": [
       "LWOWSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "LWOWSKIE",
+        "current_name": "LWOWSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "ŁÓDZKIE",
-    "region_name_variants": [
+    "name_id": "ŁÓDZKIE",
+    "name_variants": [
       "ŁÓDZKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "ŁÓDZKIE",
+        "current_name": "ŁÓDZKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "M. ST. WARSZAWA",
-    "region_name_variants": [
+    "name_id": "M. ST. WARSZAWA",
+    "name_variants": [
       "M. ST. WARSZAWA"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "M. ST. WARSZAWA",
+        "current_name": "M. ST. WARSZAWA",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "NOWOGRÓDZKIE",
-    "region_name_variants": [
+    "name_id": "NOWOGRÓDZKIE",
+    "name_variants": [
       "NOWOGRÓDZKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "NOWOGRÓDZKIE",
+        "current_name": "NOWOGRÓDZKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "POLESKIE",
-    "region_name_variants": [
+    "name_id": "POLESKIE",
+    "name_variants": [
       "POLESKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "POLESKIE",
+        "current_name": "POLESKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "POMORSKIE",
-    "region_name_variants": [
+    "name_id": "POMORSKIE",
+    "name_variants": [
       "POMORSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "POMORSKIE",
+        "current_name": "POMORSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "POZNAŃSKIE",
-    "region_name_variants": [
+    "name_id": "POZNAŃSKIE",
+    "name_variants": [
       "POZNAŃSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "POZNAŃSKIE",
+        "current_name": "POZNAŃSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "STANISŁAWOWSKIE",
-    "region_name_variants": [
+    "name_id": "STANISŁAWOWSKIE",
+    "name_variants": [
       "STANISŁAWOWSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "STANISŁAWOWSKIE",
+        "current_name": "STANISŁAWOWSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "ŚLĄSKIE",
-    "region_name_variants": [
+    "name_id": "ŚLĄSKIE",
+    "name_variants": [
       "ŚLĄSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "ŚLĄSKIE",
+        "current_name": "ŚLĄSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "TARNOPOLSKIE",
-    "region_name_variants": [
+    "name_id": "TARNOPOLSKIE",
+    "name_variants": [
       "TARNOPOLSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "TARNOPOLSKIE",
+        "current_name": "TARNOPOLSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "WARSZAWSKIE",
-    "region_name_variants": [
+    "name_id": "WARSZAWSKIE",
+    "name_variants": [
       "WARSZAWSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "WARSZAWSKIE",
+        "current_name": "WARSZAWSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "WOŁYŃSKIE",
-    "region_name_variants": [
+    "name_id": "WOŁYŃSKIE",
+    "name_variants": [
       "WOŁYŃSKIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "WOŁYŃSKIE",
+        "current_name": "WOŁYŃSKIE",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "CZECHOSŁOWACJA",
-    "region_name_variants": [
+    "name_id": "CZECHOSŁOWACJA",
+    "name_variants": [
       "CZECHOSŁOWACJA"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "CZECHOSŁOWACJA",
+        "current_name": "CZECHOSŁOWACJA",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "NIEMCY",
-    "region_name_variants": [
+    "name_id": "NIEMCY",
+    "name_variants": [
       "NIEMCY"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "NIEMCY",
+        "current_name": "NIEMCY",
         "timespan": null
       }
     ]
   },
   {
-    "region_name_id": "LITWA",
-    "region_name_variants": [
+    "name_id": "LITWA",
+    "name_variants": [
       "LITWA"
     ],
     "is_poland": true,
     "states": [
       {
-        "region_name": "LITWA",
+        "current_name": "LITWA",
         "timespan": null
       }
     ]

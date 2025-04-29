@@ -1,7 +1,7 @@
 [
   {
-    "dist_name_id": "AUGUSTOWSKI",
-    "dist_name_variants": [
+    "name_id": "AUGUSTOWSKI",
+    "name_variants": [
       "AUGUSTOWSKI"
     ],
     "seat_name_variants": [
@@ -9,7 +9,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "AUGUSTOWSKI",
+        "current_name": "AUGUSTOWSKI",
         "current_seat_name": "AUGUSTÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -17,8 +17,8 @@
     ]
   },
   {
-    "dist_name_id": "BIAŁOSTOCKI",
-    "dist_name_variants": [
+    "name_id": "BIAŁOSTOCKI",
+    "name_variants": [
       "BIAŁOSTOCKI"
     ],
     "seat_name_variants": [
@@ -26,7 +26,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BIAŁOSTOCKI",
+        "current_name": "BIAŁOSTOCKI",
         "current_seat_name": "BIAŁYSTOK",
         "current_dist_type": "w",
         "timespan": null
@@ -34,8 +34,8 @@
     ]
   },
   {
-    "dist_name_id": "BIAŁOWIESKI",
-    "dist_name_variants": [
+    "name_id": "BIAŁOWIESKI",
+    "name_variants": [
       "BIAŁOWIESKI"
     ],
     "seat_name_variants": [
@@ -43,7 +43,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BIAŁOWIESKI",
+        "current_name": "BIAŁOWIESKI",
         "current_seat_name": "BIAŁOWIEŻA",
         "current_dist_type": "w",
         "timespan": null
@@ -51,8 +51,8 @@
     ]
   },
   {
-    "dist_name_id": "BIELSKI (BIELSK PODLASKI)",
-    "dist_name_variants": [
+    "name_id": "BIELSKI (BIELSK PODLASKI)",
+    "name_variants": [
       "BIELSKI (BIELSK PODLASKI)"
     ],
     "seat_name_variants": [
@@ -60,7 +60,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BIELSKI (BIELSK PODLASKI)",
+        "current_name": "BIELSKI (BIELSK PODLASKI)",
         "current_seat_name": "BIELSK PODLASKI",
         "current_dist_type": "w",
         "timespan": null
@@ -68,8 +68,8 @@
     ]
   },
   {
-    "dist_name_id": "GRODZIEŃSKI",
-    "dist_name_variants": [
+    "name_id": "GRODZIEŃSKI",
+    "name_variants": [
       "GRODZIEŃSKI"
     ],
     "seat_name_variants": [
@@ -77,7 +77,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GRODZIEŃSKI",
+        "current_name": "GRODZIEŃSKI",
         "current_seat_name": "GRODNO",
         "current_dist_type": "w",
         "timespan": null
@@ -85,8 +85,8 @@
     ]
   },
   {
-    "dist_name_id": "KOLNEŃSKI",
-    "dist_name_variants": [
+    "name_id": "KOLNEŃSKI",
+    "name_variants": [
       "KOLNEŃSKI"
     ],
     "seat_name_variants": [
@@ -94,7 +94,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOLNEŃSKI",
+        "current_name": "KOLNEŃSKI",
         "current_seat_name": "KOLNO",
         "current_dist_type": "w",
         "timespan": null
@@ -102,8 +102,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁOMŻYŃSKI",
-    "dist_name_variants": [
+    "name_id": "ŁOMŻYŃSKI",
+    "name_variants": [
       "ŁOMŻYŃSKI"
     ],
     "seat_name_variants": [
@@ -111,7 +111,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁOMŻYŃSKI",
+        "current_name": "ŁOMŻYŃSKI",
         "current_seat_name": "ŁOMŻA",
         "current_dist_type": "w",
         "timespan": null
@@ -119,8 +119,8 @@
     ]
   },
   {
-    "dist_name_id": "OSTROŁĘCKI",
-    "dist_name_variants": [
+    "name_id": "OSTROŁĘCKI",
+    "name_variants": [
       "OSTROŁĘCKI"
     ],
     "seat_name_variants": [
@@ -128,7 +128,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OSTROŁĘCKI",
+        "current_name": "OSTROŁĘCKI",
         "current_seat_name": "OSTROŁĘKA",
         "current_dist_type": "w",
         "timespan": null
@@ -136,8 +136,8 @@
     ]
   },
   {
-    "dist_name_id": "OSTROWSKI (OSTRÓW MAZOWIECKA)",
-    "dist_name_variants": [
+    "name_id": "OSTROWSKI (OSTRÓW MAZOWIECKA)",
+    "name_variants": [
       "OSTROWSKI (OSTRÓW MAZOWIECKA)"
     ],
     "seat_name_variants": [
@@ -145,7 +145,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OSTROWSKI (OSTRÓW MAZOWIECKA)",
+        "current_name": "OSTROWSKI (OSTRÓW MAZOWIECKA)",
         "current_seat_name": "OSTRÓW MAZOWIECKA",
         "current_dist_type": "w",
         "timespan": null
@@ -153,8 +153,8 @@
     ]
   },
   {
-    "dist_name_id": "SEJNEŃSKI",
-    "dist_name_variants": [
+    "name_id": "SEJNEŃSKI",
+    "name_variants": [
       "SEJNEŃSKI"
     ],
     "seat_name_variants": [
@@ -162,7 +162,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SEJNEŃSKI",
+        "current_name": "SEJNEŃSKI",
         "current_seat_name": "SEJNY",
         "current_dist_type": "w",
         "timespan": null
@@ -170,8 +170,8 @@
     ]
   },
   {
-    "dist_name_id": "SOKÓLSKI",
-    "dist_name_variants": [
+    "name_id": "SOKÓLSKI",
+    "name_variants": [
       "SOKÓLSKI"
     ],
     "seat_name_variants": [
@@ -179,7 +179,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SOKÓLSKI",
+        "current_name": "SOKÓLSKI",
         "current_seat_name": "SOKÓŁKA",
         "current_dist_type": "w",
         "timespan": null
@@ -187,8 +187,8 @@
     ]
   },
   {
-    "dist_name_id": "SUWALSKI",
-    "dist_name_variants": [
+    "name_id": "SUWALSKI",
+    "name_variants": [
       "SUWALSKI"
     ],
     "seat_name_variants": [
@@ -196,7 +196,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SUWALSKI",
+        "current_name": "SUWALSKI",
         "current_seat_name": "SUWAŁKI",
         "current_dist_type": "w",
         "timespan": null
@@ -204,8 +204,8 @@
     ]
   },
   {
-    "dist_name_id": "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)",
-    "dist_name_variants": [
+    "name_id": "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)",
+    "name_variants": [
       "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)"
     ],
     "seat_name_variants": [
@@ -213,7 +213,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)",
+        "current_name": "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)",
         "current_seat_name": "GRAJEWO",
         "current_dist_type": "w",
         "timespan": null
@@ -221,8 +221,8 @@
     ]
   },
   {
-    "dist_name_id": "WOŁKOWYSKI",
-    "dist_name_variants": [
+    "name_id": "WOŁKOWYSKI",
+    "name_variants": [
       "WOŁKOWYSKI"
     ],
     "seat_name_variants": [
@@ -230,7 +230,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WOŁKOWYSKI",
+        "current_name": "WOŁKOWYSKI",
         "current_seat_name": "WOŁKOWYSK",
         "current_dist_type": "w",
         "timespan": null
@@ -238,8 +238,8 @@
     ]
   },
   {
-    "dist_name_id": "WYSOKOMAZOWIECKI",
-    "dist_name_variants": [
+    "name_id": "WYSOKOMAZOWIECKI",
+    "name_variants": [
       "WYSOKOMAZOWIECKI",
       "WYSOKO-MAZOWIECKI"
     ],
@@ -248,7 +248,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WYSOKOMAZOWIECKI",
+        "current_name": "WYSOKOMAZOWIECKI",
         "current_seat_name": "WYSOKIE MAZOWIECKIE",
         "current_dist_type": "w",
         "timespan": null
@@ -256,8 +256,8 @@
     ]
   },
   {
-    "dist_name_id": "BĘDZIŃSKI",
-    "dist_name_variants": [
+    "name_id": "BĘDZIŃSKI",
+    "name_variants": [
       "BĘDZIŃSKI"
     ],
     "seat_name_variants": [
@@ -265,7 +265,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BĘDZIŃSKI",
+        "current_name": "BĘDZIŃSKI",
         "current_seat_name": "BĘDZIN",
         "current_dist_type": "w",
         "timespan": null
@@ -273,8 +273,8 @@
     ]
   },
   {
-    "dist_name_id": "CZĘSTOCHOWSKI",
-    "dist_name_variants": [
+    "name_id": "CZĘSTOCHOWSKI",
+    "name_variants": [
       "CZĘSTOCHOWSKI"
     ],
     "seat_name_variants": [
@@ -282,7 +282,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CZĘSTOCHOWSKI",
+        "current_name": "CZĘSTOCHOWSKI",
         "current_seat_name": "CZĘSTOCHOWA",
         "current_dist_type": "w",
         "timespan": null
@@ -290,8 +290,8 @@
     ]
   },
   {
-    "dist_name_id": "IŁŻECKI",
-    "dist_name_variants": [
+    "name_id": "IŁŻECKI",
+    "name_variants": [
       "IŁŻECKI"
     ],
     "seat_name_variants": [
@@ -299,7 +299,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "IŁŻECKI",
+        "current_name": "IŁŻECKI",
         "current_seat_name": "IŁŻA",
         "current_dist_type": "w",
         "timespan": null
@@ -307,8 +307,8 @@
     ]
   },
   {
-    "dist_name_id": "JĘDRZEJOWSKI",
-    "dist_name_variants": [
+    "name_id": "JĘDRZEJOWSKI",
+    "name_variants": [
       "JĘDRZEJOWSKI"
     ],
     "seat_name_variants": [
@@ -316,7 +316,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "JĘDRZEJOWSKI",
+        "current_name": "JĘDRZEJOWSKI",
         "current_seat_name": "JĘDRZEJÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -324,8 +324,8 @@
     ]
   },
   {
-    "dist_name_id": "KIELECKI",
-    "dist_name_variants": [
+    "name_id": "KIELECKI",
+    "name_variants": [
       "KIELECKI"
     ],
     "seat_name_variants": [
@@ -333,7 +333,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KIELECKI",
+        "current_name": "KIELECKI",
         "current_seat_name": "KIELCE",
         "current_dist_type": "w",
         "timespan": null
@@ -341,8 +341,8 @@
     ]
   },
   {
-    "dist_name_id": "KONECKI",
-    "dist_name_variants": [
+    "name_id": "KONECKI",
+    "name_variants": [
       "KONECKI"
     ],
     "seat_name_variants": [
@@ -350,7 +350,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KONECKI",
+        "current_name": "KONECKI",
         "current_seat_name": "KOŃSKIE",
         "current_dist_type": "w",
         "timespan": null
@@ -358,8 +358,8 @@
     ]
   },
   {
-    "dist_name_id": "KOZIENICKI",
-    "dist_name_variants": [
+    "name_id": "KOZIENICKI",
+    "name_variants": [
       "KOZIENICKI"
     ],
     "seat_name_variants": [
@@ -367,7 +367,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOZIENICKI",
+        "current_name": "KOZIENICKI",
         "current_seat_name": "KOZIENICE",
         "current_dist_type": "w",
         "timespan": null
@@ -375,8 +375,8 @@
     ]
   },
   {
-    "dist_name_id": "MIECHOWSKI",
-    "dist_name_variants": [
+    "name_id": "MIECHOWSKI",
+    "name_variants": [
       "MIECHOWSKI"
     ],
     "seat_name_variants": [
@@ -384,7 +384,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "MIECHOWSKI",
+        "current_name": "MIECHOWSKI",
         "current_seat_name": "MIECHÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -392,8 +392,8 @@
     ]
   },
   {
-    "dist_name_id": "OLKUSKI",
-    "dist_name_variants": [
+    "name_id": "OLKUSKI",
+    "name_variants": [
       "OLKUSKI"
     ],
     "seat_name_variants": [
@@ -401,7 +401,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OLKUSKI",
+        "current_name": "OLKUSKI",
         "current_seat_name": "OLKUSZ",
         "current_dist_type": "w",
         "timespan": null
@@ -409,8 +409,8 @@
     ]
   },
   {
-    "dist_name_id": "OPATOWSKI",
-    "dist_name_variants": [
+    "name_id": "OPATOWSKI",
+    "name_variants": [
       "OPATOWSKI"
     ],
     "seat_name_variants": [
@@ -418,7 +418,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OPATOWSKI",
+        "current_name": "OPATOWSKI",
         "current_seat_name": "OPATÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -426,8 +426,8 @@
     ]
   },
   {
-    "dist_name_id": "OPOCZYŃSKI",
-    "dist_name_variants": [
+    "name_id": "OPOCZYŃSKI",
+    "name_variants": [
       "OPOCZYŃSKI"
     ],
     "seat_name_variants": [
@@ -435,7 +435,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OPOCZYŃSKI",
+        "current_name": "OPOCZYŃSKI",
         "current_seat_name": "OPOCZNO",
         "current_dist_type": "w",
         "timespan": null
@@ -443,8 +443,8 @@
     ]
   },
   {
-    "dist_name_id": "PIŃCZOWSKI",
-    "dist_name_variants": [
+    "name_id": "PIŃCZOWSKI",
+    "name_variants": [
       "PIŃCZOWSKI"
     ],
     "seat_name_variants": [
@@ -452,7 +452,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PIŃCZOWSKI",
+        "current_name": "PIŃCZOWSKI",
         "current_seat_name": "PIŃCZÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -460,8 +460,8 @@
     ]
   },
   {
-    "dist_name_id": "RADOMSKI",
-    "dist_name_variants": [
+    "name_id": "RADOMSKI",
+    "name_variants": [
       "RADOMSKI"
     ],
     "seat_name_variants": [
@@ -469,7 +469,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RADOMSKI",
+        "current_name": "RADOMSKI",
         "current_seat_name": "RADOM",
         "current_dist_type": "w",
         "timespan": null
@@ -477,8 +477,8 @@
     ]
   },
   {
-    "dist_name_id": "SANDOMIERSKI",
-    "dist_name_variants": [
+    "name_id": "SANDOMIERSKI",
+    "name_variants": [
       "SANDOMIERSKI"
     ],
     "seat_name_variants": [
@@ -486,7 +486,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SANDOMIERSKI",
+        "current_name": "SANDOMIERSKI",
         "current_seat_name": "SANDOMIERZ",
         "current_dist_type": "w",
         "timespan": null
@@ -494,8 +494,8 @@
     ]
   },
   {
-    "dist_name_id": "STOPNICKI",
-    "dist_name_variants": [
+    "name_id": "STOPNICKI",
+    "name_variants": [
       "STOPNICKI"
     ],
     "seat_name_variants": [
@@ -503,7 +503,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STOPNICKI",
+        "current_name": "STOPNICKI",
         "current_seat_name": "STOPNICA",
         "current_dist_type": "w",
         "timespan": null
@@ -511,8 +511,8 @@
     ]
   },
   {
-    "dist_name_id": "WŁOSZCZOWSKI",
-    "dist_name_variants": [
+    "name_id": "WŁOSZCZOWSKI",
+    "name_variants": [
       "WŁOSZCZOWSKI"
     ],
     "seat_name_variants": [
@@ -520,7 +520,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WŁOSZCZOWSKI",
+        "current_name": "WŁOSZCZOWSKI",
         "current_seat_name": "WŁOSZCZOWA",
         "current_dist_type": "w",
         "timespan": null
@@ -528,8 +528,8 @@
     ]
   },
   {
-    "dist_name_id": "BIALSKI (BIAŁA KRAKOWSKA)",
-    "dist_name_variants": [
+    "name_id": "BIALSKI (BIAŁA KRAKOWSKA)",
+    "name_variants": [
       "BIALSKI (BIAŁA KRAKOWSKA)"
     ],
     "seat_name_variants": [
@@ -538,7 +538,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BIALSKI (BIAŁA KRAKOWSKA)",
+        "current_name": "BIALSKI (BIAŁA KRAKOWSKA)",
         "current_seat_name": "BIAŁA KRAKOWSKA",
         "current_dist_type": "w",
         "timespan": null
@@ -546,8 +546,8 @@
     ]
   },
   {
-    "dist_name_id": "BOCHEŃSKI",
-    "dist_name_variants": [
+    "name_id": "BOCHEŃSKI",
+    "name_variants": [
       "BOCHEŃSKI"
     ],
     "seat_name_variants": [
@@ -555,7 +555,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BOCHEŃSKI",
+        "current_name": "BOCHEŃSKI",
         "current_seat_name": "BOCHNIA",
         "current_dist_type": "w",
         "timespan": null
@@ -563,8 +563,8 @@
     ]
   },
   {
-    "dist_name_id": "BRZESKI (BRZESKO)",
-    "dist_name_variants": [
+    "name_id": "BRZESKI (BRZESKO)",
+    "name_variants": [
       "BRZESKI (BRZESKO)"
     ],
     "seat_name_variants": [
@@ -572,7 +572,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BRZESKI (BRZESKO)",
+        "current_name": "BRZESKI (BRZESKO)",
         "current_seat_name": "BRZESKO",
         "current_dist_type": "w",
         "timespan": null
@@ -580,8 +580,8 @@
     ]
   },
   {
-    "dist_name_id": "CHRZANOWSKI",
-    "dist_name_variants": [
+    "name_id": "CHRZANOWSKI",
+    "name_variants": [
       "CHRZANOWSKI"
     ],
     "seat_name_variants": [
@@ -589,7 +589,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CHRZANOWSKI",
+        "current_name": "CHRZANOWSKI",
         "current_seat_name": "CHRZANÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -597,8 +597,8 @@
     ]
   },
   {
-    "dist_name_id": "DĄBROWSKI",
-    "dist_name_variants": [
+    "name_id": "DĄBROWSKI",
+    "name_variants": [
       "DĄBROWSKI"
     ],
     "seat_name_variants": [
@@ -606,7 +606,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "DĄBROWSKI",
+        "current_name": "DĄBROWSKI",
         "current_seat_name": "DĄBROWA",
         "current_dist_type": "w",
         "timespan": null
@@ -614,8 +614,8 @@
     ]
   },
   {
-    "dist_name_id": "GORLICKI",
-    "dist_name_variants": [
+    "name_id": "GORLICKI",
+    "name_variants": [
       "GORLICKI"
     ],
     "seat_name_variants": [
@@ -623,7 +623,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GORLICKI",
+        "current_name": "GORLICKI",
         "current_seat_name": "GORLICE",
         "current_dist_type": "w",
         "timespan": null
@@ -631,8 +631,8 @@
     ]
   },
   {
-    "dist_name_id": "GRYBOWSKI",
-    "dist_name_variants": [
+    "name_id": "GRYBOWSKI",
+    "name_variants": [
       "GRYBOWSKI"
     ],
     "seat_name_variants": [
@@ -640,7 +640,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GRYBOWSKI",
+        "current_name": "GRYBOWSKI",
         "current_seat_name": "GRYBÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -648,8 +648,8 @@
     ]
   },
   {
-    "dist_name_id": "JASIELSKI",
-    "dist_name_variants": [
+    "name_id": "JASIELSKI",
+    "name_variants": [
       "JASIELSKI"
     ],
     "seat_name_variants": [
@@ -657,7 +657,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "JASIELSKI",
+        "current_name": "JASIELSKI",
         "current_seat_name": "JASŁO",
         "current_dist_type": "w",
         "timespan": null
@@ -665,8 +665,8 @@
     ]
   },
   {
-    "dist_name_id": "KRAKOWSKI",
-    "dist_name_variants": [
+    "name_id": "KRAKOWSKI",
+    "name_variants": [
       "KRAKOWSKI"
     ],
     "seat_name_variants": [
@@ -674,7 +674,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KRAKOWSKI",
+        "current_name": "KRAKOWSKI",
         "current_seat_name": "KRAKÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -682,8 +682,8 @@
     ]
   },
   {
-    "dist_name_id": "KRAKÓW",
-    "dist_name_variants": [
+    "name_id": "KRAKÓW",
+    "name_variants": [
       "KRAKÓW"
     ],
     "seat_name_variants": [
@@ -691,7 +691,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KRAKÓW",
+        "current_name": "KRAKÓW",
         "current_seat_name": "KRAKÓW",
         "current_dist_type": "m",
         "timespan": null
@@ -699,8 +699,8 @@
     ]
   },
   {
-    "dist_name_id": "LIMANOWSKI",
-    "dist_name_variants": [
+    "name_id": "LIMANOWSKI",
+    "name_variants": [
       "LIMANOWSKI"
     ],
     "seat_name_variants": [
@@ -708,7 +708,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LIMANOWSKI",
+        "current_name": "LIMANOWSKI",
         "current_seat_name": "LIMANOWA",
         "current_dist_type": "w",
         "timespan": null
@@ -716,8 +716,8 @@
     ]
   },
   {
-    "dist_name_id": "MIELECKI",
-    "dist_name_variants": [
+    "name_id": "MIELECKI",
+    "name_variants": [
       "MIELECKI"
     ],
     "seat_name_variants": [
@@ -725,7 +725,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "MIELECKI",
+        "current_name": "MIELECKI",
         "current_seat_name": "MIELEC",
         "current_dist_type": "w",
         "timespan": null
@@ -733,8 +733,8 @@
     ]
   },
   {
-    "dist_name_id": "MYŚLENICKI",
-    "dist_name_variants": [
+    "name_id": "MYŚLENICKI",
+    "name_variants": [
       "MYŚLENICKI"
     ],
     "seat_name_variants": [
@@ -742,7 +742,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "MYŚLENICKI",
+        "current_name": "MYŚLENICKI",
         "current_seat_name": "MYŚLENICE",
         "current_dist_type": "w",
         "timespan": null
@@ -750,8 +750,8 @@
     ]
   },
   {
-    "dist_name_id": "NOWOSĄDECKI",
-    "dist_name_variants": [
+    "name_id": "NOWOSĄDECKI",
+    "name_variants": [
       "NOWOSĄDECKI"
     ],
     "seat_name_variants": [
@@ -759,7 +759,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "NOWOSĄDECKI",
+        "current_name": "NOWOSĄDECKI",
         "current_seat_name": "NOWY SĄCZ",
         "current_dist_type": "w",
         "timespan": null
@@ -767,8 +767,8 @@
     ]
   },
   {
-    "dist_name_id": "NOWOTARSKI",
-    "dist_name_variants": [
+    "name_id": "NOWOTARSKI",
+    "name_variants": [
       "NOWOTARSKI"
     ],
     "seat_name_variants": [
@@ -776,7 +776,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "NOWOTARSKI",
+        "current_name": "NOWOTARSKI",
         "current_seat_name": "NOWY TARG",
         "current_dist_type": "w",
         "timespan": null
@@ -784,8 +784,8 @@
     ]
   },
   {
-    "dist_name_id": "OŚWIĘCIMSKI",
-    "dist_name_variants": [
+    "name_id": "OŚWIĘCIMSKI",
+    "name_variants": [
       "OŚWIĘCIMSKI"
     ],
     "seat_name_variants": [
@@ -793,7 +793,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OŚWIĘCIMSKI",
+        "current_name": "OŚWIĘCIMSKI",
         "current_seat_name": "OŚWIĘCIM",
         "current_dist_type": "w",
         "timespan": null
@@ -801,8 +801,8 @@
     ]
   },
   {
-    "dist_name_id": "PILZNEŃSKI",
-    "dist_name_variants": [
+    "name_id": "PILZNEŃSKI",
+    "name_variants": [
       "PILZNEŃSKI",
       "PILŹNIEŃSKI"
     ],
@@ -811,7 +811,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PILZNEŃSKI",
+        "current_name": "PILZNEŃSKI",
         "current_seat_name": "PILZNO",
         "current_dist_type": "w",
         "timespan": null
@@ -819,8 +819,8 @@
     ]
   },
   {
-    "dist_name_id": "PODGÓRSKI",
-    "dist_name_variants": [
+    "name_id": "PODGÓRSKI",
+    "name_variants": [
       "PODGÓRSKI"
     ],
     "seat_name_variants": [
@@ -828,7 +828,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PODGÓRSKI",
+        "current_name": "PODGÓRSKI",
         "current_seat_name": "PODGÓRZE",
         "current_dist_type": "w",
         "timespan": null
@@ -836,8 +836,8 @@
     ]
   },
   {
-    "dist_name_id": "ROPCZYCKI",
-    "dist_name_variants": [
+    "name_id": "ROPCZYCKI",
+    "name_variants": [
       "ROPCZYCKI"
     ],
     "seat_name_variants": [
@@ -845,7 +845,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ROPCZYCKI",
+        "current_name": "ROPCZYCKI",
         "current_seat_name": "ROPCZYCE",
         "current_dist_type": "w",
         "timespan": null
@@ -853,8 +853,8 @@
     ]
   },
   {
-    "dist_name_id": "SPISKO-ORAWSKI",
-    "dist_name_variants": [
+    "name_id": "SPISKO-ORAWSKI",
+    "name_variants": [
       "SPISKO-ORAWSKI"
     ],
     "seat_name_variants": [
@@ -862,7 +862,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SPISKO-ORAWSKI",
+        "current_name": "SPISKO-ORAWSKI",
         "current_seat_name": "SPISZ-ORAWA",
         "current_dist_type": "w",
         "timespan": null
@@ -870,8 +870,8 @@
     ]
   },
   {
-    "dist_name_id": "TARNOWSKI",
-    "dist_name_variants": [
+    "name_id": "TARNOWSKI",
+    "name_variants": [
       "TARNOWSKI"
     ],
     "seat_name_variants": [
@@ -879,7 +879,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TARNOWSKI",
+        "current_name": "TARNOWSKI",
         "current_seat_name": "TARNÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -887,8 +887,8 @@
     ]
   },
   {
-    "dist_name_id": "WADOWICKI",
-    "dist_name_variants": [
+    "name_id": "WADOWICKI",
+    "name_variants": [
       "WADOWICKI"
     ],
     "seat_name_variants": [
@@ -896,7 +896,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WADOWICKI",
+        "current_name": "WADOWICKI",
         "current_seat_name": "WADOWICE",
         "current_dist_type": "w",
         "timespan": null
@@ -904,8 +904,8 @@
     ]
   },
   {
-    "dist_name_id": "WIELICKI",
-    "dist_name_variants": [
+    "name_id": "WIELICKI",
+    "name_variants": [
       "WIELICKI"
     ],
     "seat_name_variants": [
@@ -913,7 +913,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WIELICKI",
+        "current_name": "WIELICKI",
         "current_seat_name": "WIELICZKA",
         "current_dist_type": "w",
         "timespan": null
@@ -921,8 +921,8 @@
     ]
   },
   {
-    "dist_name_id": "ŻYWIECKI",
-    "dist_name_variants": [
+    "name_id": "ŻYWIECKI",
+    "name_variants": [
       "ŻYWIECKI"
     ],
     "seat_name_variants": [
@@ -930,7 +930,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŻYWIECKI",
+        "current_name": "ŻYWIECKI",
         "current_seat_name": "ŻYWIEC",
         "current_dist_type": "w",
         "timespan": null
@@ -938,8 +938,8 @@
     ]
   },
   {
-    "dist_name_id": "BIALSKI (BIAŁA PODLASKA)",
-    "dist_name_variants": [
+    "name_id": "BIALSKI (BIAŁA PODLASKA)",
+    "name_variants": [
       "BIALSKI (BIAŁA PODLASKA)"
     ],
     "seat_name_variants": [
@@ -948,7 +948,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BIALSKI (BIAŁA PODLASKA)",
+        "current_name": "BIALSKI (BIAŁA PODLASKA)",
         "current_seat_name": "BIAŁA PODLASKA",
         "current_dist_type": "w",
         "timespan": null
@@ -956,8 +956,8 @@
     ]
   },
   {
-    "dist_name_id": "BIŁGORAJSKI",
-    "dist_name_variants": [
+    "name_id": "BIŁGORAJSKI",
+    "name_variants": [
       "BIŁGORAJSKI"
     ],
     "seat_name_variants": [
@@ -965,7 +965,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BIŁGORAJSKI",
+        "current_name": "BIŁGORAJSKI",
         "current_seat_name": "BIŁGORAJ",
         "current_dist_type": "w",
         "timespan": null
@@ -973,8 +973,8 @@
     ]
   },
   {
-    "dist_name_id": "CHEŁMSKI",
-    "dist_name_variants": [
+    "name_id": "CHEŁMSKI",
+    "name_variants": [
       "CHEŁMSKI"
     ],
     "seat_name_variants": [
@@ -982,7 +982,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CHEŁMSKI",
+        "current_name": "CHEŁMSKI",
         "current_seat_name": "CHEŁM",
         "current_dist_type": "w",
         "timespan": null
@@ -990,8 +990,8 @@
     ]
   },
   {
-    "dist_name_id": "GARWOLIŃSKI",
-    "dist_name_variants": [
+    "name_id": "GARWOLIŃSKI",
+    "name_variants": [
       "GARWOLIŃSKI"
     ],
     "seat_name_variants": [
@@ -999,7 +999,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GARWOLIŃSKI",
+        "current_name": "GARWOLIŃSKI",
         "current_seat_name": "GARWOLIN",
         "current_dist_type": "w",
         "timespan": null
@@ -1007,8 +1007,8 @@
     ]
   },
   {
-    "dist_name_id": "HRUBIESZOWSKI",
-    "dist_name_variants": [
+    "name_id": "HRUBIESZOWSKI",
+    "name_variants": [
       "HRUBIESZOWSKI"
     ],
     "seat_name_variants": [
@@ -1016,7 +1016,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "HRUBIESZOWSKI",
+        "current_name": "HRUBIESZOWSKI",
         "current_seat_name": "HRUBIESZÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1024,8 +1024,8 @@
     ]
   },
   {
-    "dist_name_id": "JANOWSKI",
-    "dist_name_variants": [
+    "name_id": "JANOWSKI",
+    "name_variants": [
       "JANOWSKI"
     ],
     "seat_name_variants": [
@@ -1033,7 +1033,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "JANOWSKI",
+        "current_name": "JANOWSKI",
         "current_seat_name": "JANÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1041,8 +1041,8 @@
     ]
   },
   {
-    "dist_name_id": "KONSTANTYNOWSKI",
-    "dist_name_variants": [
+    "name_id": "KONSTANTYNOWSKI",
+    "name_variants": [
       "KONSTANTYNOWSKI"
     ],
     "seat_name_variants": [
@@ -1050,7 +1050,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KONSTANTYNOWSKI",
+        "current_name": "KONSTANTYNOWSKI",
         "current_seat_name": "KONSTANTYNÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1058,8 +1058,8 @@
     ]
   },
   {
-    "dist_name_id": "KRASNOSTAWSKI",
-    "dist_name_variants": [
+    "name_id": "KRASNOSTAWSKI",
+    "name_variants": [
       "KRASNOSTAWSKI"
     ],
     "seat_name_variants": [
@@ -1067,7 +1067,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KRASNOSTAWSKI",
+        "current_name": "KRASNOSTAWSKI",
         "current_seat_name": "KRASNYSTAW",
         "current_dist_type": "w",
         "timespan": null
@@ -1075,8 +1075,8 @@
     ]
   },
   {
-    "dist_name_id": "LUBARTOWSKI",
-    "dist_name_variants": [
+    "name_id": "LUBARTOWSKI",
+    "name_variants": [
       "LUBARTOWSKI"
     ],
     "seat_name_variants": [
@@ -1084,7 +1084,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LUBARTOWSKI",
+        "current_name": "LUBARTOWSKI",
         "current_seat_name": "LUBARTÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1092,8 +1092,8 @@
     ]
   },
   {
-    "dist_name_id": "LUBELSKI",
-    "dist_name_variants": [
+    "name_id": "LUBELSKI",
+    "name_variants": [
       "LUBELSKI"
     ],
     "seat_name_variants": [
@@ -1101,7 +1101,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LUBELSKI",
+        "current_name": "LUBELSKI",
         "current_seat_name": "LUBLIN",
         "current_dist_type": "w",
         "timespan": null
@@ -1109,8 +1109,8 @@
     ]
   },
   {
-    "dist_name_id": "LUBLIN",
-    "dist_name_variants": [
+    "name_id": "LUBLIN",
+    "name_variants": [
       "LUBLIN"
     ],
     "seat_name_variants": [
@@ -1118,7 +1118,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LUBLIN",
+        "current_name": "LUBLIN",
         "current_seat_name": "LUBLIN",
         "current_dist_type": "m",
         "timespan": null
@@ -1126,8 +1126,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁUKOWSKI",
-    "dist_name_variants": [
+    "name_id": "ŁUKOWSKI",
+    "name_variants": [
       "ŁUKOWSKI"
     ],
     "seat_name_variants": [
@@ -1135,7 +1135,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁUKOWSKI",
+        "current_name": "ŁUKOWSKI",
         "current_seat_name": "ŁUKÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1143,8 +1143,8 @@
     ]
   },
   {
-    "dist_name_id": "PUŁAWSKI",
-    "dist_name_variants": [
+    "name_id": "PUŁAWSKI",
+    "name_variants": [
       "PUŁAWSKI"
     ],
     "seat_name_variants": [
@@ -1152,7 +1152,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PUŁAWSKI",
+        "current_name": "PUŁAWSKI",
         "current_seat_name": "PUŁAWY",
         "current_dist_type": "w",
         "timespan": null
@@ -1160,8 +1160,8 @@
     ]
   },
   {
-    "dist_name_id": "RADZYŃSKI",
-    "dist_name_variants": [
+    "name_id": "RADZYŃSKI",
+    "name_variants": [
       "RADZYŃSKI"
     ],
     "seat_name_variants": [
@@ -1169,7 +1169,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RADZYŃSKI",
+        "current_name": "RADZYŃSKI",
         "current_seat_name": "RADZYN",
         "current_dist_type": "w",
         "timespan": null
@@ -1177,8 +1177,8 @@
     ]
   },
   {
-    "dist_name_id": "SIEDLECKI",
-    "dist_name_variants": [
+    "name_id": "SIEDLECKI",
+    "name_variants": [
       "SIEDLECKI"
     ],
     "seat_name_variants": [
@@ -1186,7 +1186,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SIEDLECKI",
+        "current_name": "SIEDLECKI",
         "current_seat_name": "SIEDLCE",
         "current_dist_type": "w",
         "timespan": null
@@ -1194,8 +1194,8 @@
     ]
   },
   {
-    "dist_name_id": "SOKOŁOWSKI",
-    "dist_name_variants": [
+    "name_id": "SOKOŁOWSKI",
+    "name_variants": [
       "SOKOŁOWSKI"
     ],
     "seat_name_variants": [
@@ -1203,7 +1203,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SOKOŁOWSKI",
+        "current_name": "SOKOŁOWSKI",
         "current_seat_name": "SOKOŁÓW PODLASKI",
         "current_dist_type": "w",
         "timespan": null
@@ -1211,8 +1211,8 @@
     ]
   },
   {
-    "dist_name_id": "TOMASZOWSKI",
-    "dist_name_variants": [
+    "name_id": "TOMASZOWSKI",
+    "name_variants": [
       "TOMASZOWSKI"
     ],
     "seat_name_variants": [
@@ -1220,7 +1220,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TOMASZOWSKI",
+        "current_name": "TOMASZOWSKI",
         "current_seat_name": "TOMASZÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1228,8 +1228,8 @@
     ]
   },
   {
-    "dist_name_id": "WĘGROWSKI",
-    "dist_name_variants": [
+    "name_id": "WĘGROWSKI",
+    "name_variants": [
       "WĘGROWSKI"
     ],
     "seat_name_variants": [
@@ -1237,7 +1237,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WĘGROWSKI",
+        "current_name": "WĘGROWSKI",
         "current_seat_name": "WĘGRÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1245,8 +1245,8 @@
     ]
   },
   {
-    "dist_name_id": "WŁODAWSKI",
-    "dist_name_variants": [
+    "name_id": "WŁODAWSKI",
+    "name_variants": [
       "WŁODAWSKI"
     ],
     "seat_name_variants": [
@@ -1254,7 +1254,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WŁODAWSKI",
+        "current_name": "WŁODAWSKI",
         "current_seat_name": "WŁODAWA",
         "current_dist_type": "w",
         "timespan": null
@@ -1262,8 +1262,8 @@
     ]
   },
   {
-    "dist_name_id": "ZAMOJSKI",
-    "dist_name_variants": [
+    "name_id": "ZAMOJSKI",
+    "name_variants": [
       "ZAMOJSKI"
     ],
     "seat_name_variants": [
@@ -1271,7 +1271,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ZAMOJSKI",
+        "current_name": "ZAMOJSKI",
         "current_seat_name": "ZAMOŚĆ",
         "current_dist_type": "w",
         "timespan": null
@@ -1279,8 +1279,8 @@
     ]
   },
   {
-    "dist_name_id": "BÓBRECKI",
-    "dist_name_variants": [
+    "name_id": "BÓBRECKI",
+    "name_variants": [
       "BÓBRECKI"
     ],
     "seat_name_variants": [
@@ -1288,7 +1288,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BÓBRECKI",
+        "current_name": "BÓBRECKI",
         "current_seat_name": "BÓBRKA",
         "current_dist_type": "w",
         "timespan": null
@@ -1296,8 +1296,8 @@
     ]
   },
   {
-    "dist_name_id": "BRZOZOWSKI",
-    "dist_name_variants": [
+    "name_id": "BRZOZOWSKI",
+    "name_variants": [
       "BRZOZOWSKI"
     ],
     "seat_name_variants": [
@@ -1305,7 +1305,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BRZOZOWSKI",
+        "current_name": "BRZOZOWSKI",
         "current_seat_name": "BRZOZÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1313,8 +1313,8 @@
     ]
   },
   {
-    "dist_name_id": "CIESZANOWSKI",
-    "dist_name_variants": [
+    "name_id": "CIESZANOWSKI",
+    "name_variants": [
       "CIESZANOWSKI"
     ],
     "seat_name_variants": [
@@ -1322,7 +1322,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CIESZANOWSKI",
+        "current_name": "CIESZANOWSKI",
         "current_seat_name": "CIESZANÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1330,8 +1330,8 @@
     ]
   },
   {
-    "dist_name_id": "DOBROMILSKI",
-    "dist_name_variants": [
+    "name_id": "DOBROMILSKI",
+    "name_variants": [
       "DOBROMILSKI"
     ],
     "seat_name_variants": [
@@ -1339,7 +1339,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "DOBROMILSKI",
+        "current_name": "DOBROMILSKI",
         "current_seat_name": "DOBROMIL",
         "current_dist_type": "w",
         "timespan": null
@@ -1347,8 +1347,8 @@
     ]
   },
   {
-    "dist_name_id": "DROHOBYCKI",
-    "dist_name_variants": [
+    "name_id": "DROHOBYCKI",
+    "name_variants": [
       "DROHOBYCKI"
     ],
     "seat_name_variants": [
@@ -1356,7 +1356,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "DROHOBYCKI",
+        "current_name": "DROHOBYCKI",
         "current_seat_name": "DROHOBYCZ",
         "current_dist_type": "w",
         "timespan": null
@@ -1364,8 +1364,8 @@
     ]
   },
   {
-    "dist_name_id": "GRÓDECKI",
-    "dist_name_variants": [
+    "name_id": "GRÓDECKI",
+    "name_variants": [
       "GRÓDECKI"
     ],
     "seat_name_variants": [
@@ -1373,7 +1373,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GRÓDECKI",
+        "current_name": "GRÓDECKI",
         "current_seat_name": "GRÓDEK JAGIEL.",
         "current_dist_type": "w",
         "timespan": null
@@ -1381,8 +1381,8 @@
     ]
   },
   {
-    "dist_name_id": "JAROSŁAWSKI",
-    "dist_name_variants": [
+    "name_id": "JAROSŁAWSKI",
+    "name_variants": [
       "JAROSŁAWSKI"
     ],
     "seat_name_variants": [
@@ -1390,7 +1390,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "JAROSŁAWSKI",
+        "current_name": "JAROSŁAWSKI",
         "current_seat_name": "JAROSŁAW",
         "current_dist_type": "w",
         "timespan": null
@@ -1398,8 +1398,8 @@
     ]
   },
   {
-    "dist_name_id": "JAWOROWSKI",
-    "dist_name_variants": [
+    "name_id": "JAWOROWSKI",
+    "name_variants": [
       "JAWOROWSKI"
     ],
     "seat_name_variants": [
@@ -1407,7 +1407,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "JAWOROWSKI",
+        "current_name": "JAWOROWSKI",
         "current_seat_name": "JAWORÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1415,8 +1415,8 @@
     ]
   },
   {
-    "dist_name_id": "KOLBUSZOWSKI",
-    "dist_name_variants": [
+    "name_id": "KOLBUSZOWSKI",
+    "name_variants": [
       "KOLBUSZOWSKI"
     ],
     "seat_name_variants": [
@@ -1424,7 +1424,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOLBUSZOWSKI",
+        "current_name": "KOLBUSZOWSKI",
         "current_seat_name": "KOLBUSZOWA",
         "current_dist_type": "w",
         "timespan": null
@@ -1432,8 +1432,8 @@
     ]
   },
   {
-    "dist_name_id": "KROŚNIEŃSKI",
-    "dist_name_variants": [
+    "name_id": "KROŚNIEŃSKI",
+    "name_variants": [
       "KROŚNIEŃSKI"
     ],
     "seat_name_variants": [
@@ -1441,7 +1441,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KROŚNIEŃSKI",
+        "current_name": "KROŚNIEŃSKI",
         "current_seat_name": "KROSNO",
         "current_dist_type": "w",
         "timespan": null
@@ -1449,8 +1449,8 @@
     ]
   },
   {
-    "dist_name_id": "LISKI",
-    "dist_name_variants": [
+    "name_id": "LISKI",
+    "name_variants": [
       "LISKI",
       "LESKI"
     ],
@@ -1460,7 +1460,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LISKI",
+        "current_name": "LISKI",
         "current_seat_name": "LISKO",
         "current_dist_type": "w",
         "timespan": null
@@ -1468,8 +1468,8 @@
     ]
   },
   {
-    "dist_name_id": "LWOWSKI",
-    "dist_name_variants": [
+    "name_id": "LWOWSKI",
+    "name_variants": [
       "LWOWSKI"
     ],
     "seat_name_variants": [
@@ -1477,7 +1477,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LWOWSKI",
+        "current_name": "LWOWSKI",
         "current_seat_name": "LWÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1485,8 +1485,8 @@
     ]
   },
   {
-    "dist_name_id": "LWÓW",
-    "dist_name_variants": [
+    "name_id": "LWÓW",
+    "name_variants": [
       "LWÓW"
     ],
     "seat_name_variants": [
@@ -1494,7 +1494,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LWÓW",
+        "current_name": "LWÓW",
         "current_seat_name": "LWÓW",
         "current_dist_type": "m",
         "timespan": null
@@ -1502,8 +1502,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁAŃCUCKI",
-    "dist_name_variants": [
+    "name_id": "ŁAŃCUCKI",
+    "name_variants": [
       "ŁAŃCUCKI"
     ],
     "seat_name_variants": [
@@ -1511,7 +1511,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁAŃCUCKI",
+        "current_name": "ŁAŃCUCKI",
         "current_seat_name": "ŁAŃCUT",
         "current_dist_type": "w",
         "timespan": null
@@ -1519,8 +1519,8 @@
     ]
   },
   {
-    "dist_name_id": "MOŚCISKI",
-    "dist_name_variants": [
+    "name_id": "MOŚCISKI",
+    "name_variants": [
       "MOŚCISKI"
     ],
     "seat_name_variants": [
@@ -1528,7 +1528,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "MOŚCISKI",
+        "current_name": "MOŚCISKI",
         "current_seat_name": "MOŚCISKA",
         "current_dist_type": "w",
         "timespan": null
@@ -1536,8 +1536,8 @@
     ]
   },
   {
-    "dist_name_id": "NIŻAŃSKI",
-    "dist_name_variants": [
+    "name_id": "NIŻAŃSKI",
+    "name_variants": [
       "NIŻAŃSKI"
     ],
     "seat_name_variants": [
@@ -1545,7 +1545,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "NIŻAŃSKI",
+        "current_name": "NIŻAŃSKI",
         "current_seat_name": "NISKO",
         "current_dist_type": "w",
         "timespan": null
@@ -1553,8 +1553,8 @@
     ]
   },
   {
-    "dist_name_id": "PRZEMYSKI",
-    "dist_name_variants": [
+    "name_id": "PRZEMYSKI",
+    "name_variants": [
       "PRZEMYSKI"
     ],
     "seat_name_variants": [
@@ -1562,7 +1562,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PRZEMYSKI",
+        "current_name": "PRZEMYSKI",
         "current_seat_name": "PRZEMYŚL",
         "current_dist_type": "w",
         "timespan": null
@@ -1570,8 +1570,8 @@
     ]
   },
   {
-    "dist_name_id": "PRZEWORSKI",
-    "dist_name_variants": [
+    "name_id": "PRZEWORSKI",
+    "name_variants": [
       "PRZEWORSKI"
     ],
     "seat_name_variants": [
@@ -1579,7 +1579,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PRZEWORSKI",
+        "current_name": "PRZEWORSKI",
         "current_seat_name": "PRZEWORSK",
         "current_dist_type": "w",
         "timespan": null
@@ -1587,8 +1587,8 @@
     ]
   },
   {
-    "dist_name_id": "RAWSKI (RAWA RUSKA)",
-    "dist_name_variants": [
+    "name_id": "RAWSKI (RAWA RUSKA)",
+    "name_variants": [
       "RAWSKI (RAWA RUSKA)"
     ],
     "seat_name_variants": [
@@ -1596,7 +1596,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RAWSKI (RAWA RUSKA)",
+        "current_name": "RAWSKI (RAWA RUSKA)",
         "current_seat_name": "RAWA RUSKA",
         "current_dist_type": "w",
         "timespan": null
@@ -1604,8 +1604,8 @@
     ]
   },
   {
-    "dist_name_id": "RUDECKI",
-    "dist_name_variants": [
+    "name_id": "RUDECKI",
+    "name_variants": [
       "RUDECKI"
     ],
     "seat_name_variants": [
@@ -1613,7 +1613,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RUDECKI",
+        "current_name": "RUDECKI",
         "current_seat_name": "RUDKI",
         "current_dist_type": "w",
         "timespan": null
@@ -1621,8 +1621,8 @@
     ]
   },
   {
-    "dist_name_id": "RZESZOWSKI",
-    "dist_name_variants": [
+    "name_id": "RZESZOWSKI",
+    "name_variants": [
       "RZESZOWSKI"
     ],
     "seat_name_variants": [
@@ -1630,7 +1630,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RZESZOWSKI",
+        "current_name": "RZESZOWSKI",
         "current_seat_name": "RZESZÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1638,8 +1638,8 @@
     ]
   },
   {
-    "dist_name_id": "SAMBORSKI",
-    "dist_name_variants": [
+    "name_id": "SAMBORSKI",
+    "name_variants": [
       "SAMBORSKI"
     ],
     "seat_name_variants": [
@@ -1647,7 +1647,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SAMBORSKI",
+        "current_name": "SAMBORSKI",
         "current_seat_name": "SAMBOR",
         "current_dist_type": "w",
         "timespan": null
@@ -1655,8 +1655,8 @@
     ]
   },
   {
-    "dist_name_id": "SANOCKI",
-    "dist_name_variants": [
+    "name_id": "SANOCKI",
+    "name_variants": [
       "SANOCKI"
     ],
     "seat_name_variants": [
@@ -1664,7 +1664,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SANOCKI",
+        "current_name": "SANOCKI",
         "current_seat_name": "SANOK",
         "current_dist_type": "w",
         "timespan": null
@@ -1672,8 +1672,8 @@
     ]
   },
   {
-    "dist_name_id": "SOKALSKI",
-    "dist_name_variants": [
+    "name_id": "SOKALSKI",
+    "name_variants": [
       "SOKALSKI"
     ],
     "seat_name_variants": [
@@ -1681,7 +1681,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SOKALSKI",
+        "current_name": "SOKALSKI",
         "current_seat_name": "SOKAL",
         "current_dist_type": "w",
         "timespan": null
@@ -1689,8 +1689,8 @@
     ]
   },
   {
-    "dist_name_id": "STAROSAMBORSKI",
-    "dist_name_variants": [
+    "name_id": "STAROSAMBORSKI",
+    "name_variants": [
       "STAROSAMBORSKI"
     ],
     "seat_name_variants": [
@@ -1698,7 +1698,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STAROSAMBORSKI",
+        "current_name": "STAROSAMBORSKI",
         "current_seat_name": "STARY SAMBOR",
         "current_dist_type": "w",
         "timespan": null
@@ -1706,8 +1706,8 @@
     ]
   },
   {
-    "dist_name_id": "STRZYŻOWSKI",
-    "dist_name_variants": [
+    "name_id": "STRZYŻOWSKI",
+    "name_variants": [
       "STRZYŻOWSKI"
     ],
     "seat_name_variants": [
@@ -1715,7 +1715,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STRZYŻOWSKI",
+        "current_name": "STRZYŻOWSKI",
         "current_seat_name": "STRZYŻÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1723,8 +1723,8 @@
     ]
   },
   {
-    "dist_name_id": "TARNOBRZESKI",
-    "dist_name_variants": [
+    "name_id": "TARNOBRZESKI",
+    "name_variants": [
       "TARNOBRZESKI"
     ],
     "seat_name_variants": [
@@ -1732,7 +1732,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TARNOBRZESKI",
+        "current_name": "TARNOBRZESKI",
         "current_seat_name": "TARNOBRZEG",
         "current_dist_type": "w",
         "timespan": null
@@ -1740,8 +1740,8 @@
     ]
   },
   {
-    "dist_name_id": "ŻÓŁKIEWSKI",
-    "dist_name_variants": [
+    "name_id": "ŻÓŁKIEWSKI",
+    "name_variants": [
       "ŻÓŁKIEWSKI"
     ],
     "seat_name_variants": [
@@ -1749,7 +1749,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŻÓŁKIEWSKI",
+        "current_name": "ŻÓŁKIEWSKI",
         "current_seat_name": "ŻÓŁKIEW",
         "current_dist_type": "w",
         "timespan": null
@@ -1757,8 +1757,8 @@
     ]
   },
   {
-    "dist_name_id": "BRZEZIŃSKI",
-    "dist_name_variants": [
+    "name_id": "BRZEZIŃSKI",
+    "name_variants": [
       "BRZEZIŃSKI"
     ],
     "seat_name_variants": [
@@ -1766,7 +1766,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BRZEZIŃSKI",
+        "current_name": "BRZEZIŃSKI",
         "current_seat_name": "BRZEZINY",
         "current_dist_type": "w",
         "timespan": null
@@ -1774,8 +1774,8 @@
     ]
   },
   {
-    "dist_name_id": "KALISKI",
-    "dist_name_variants": [
+    "name_id": "KALISKI",
+    "name_variants": [
       "KALISKI"
     ],
     "seat_name_variants": [
@@ -1783,7 +1783,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KALISKI",
+        "current_name": "KALISKI",
         "current_seat_name": "KALISZ",
         "current_dist_type": "w",
         "timespan": null
@@ -1791,8 +1791,8 @@
     ]
   },
   {
-    "dist_name_id": "KOLSKI",
-    "dist_name_variants": [
+    "name_id": "KOLSKI",
+    "name_variants": [
       "KOLSKI"
     ],
     "seat_name_variants": [
@@ -1800,7 +1800,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOLSKI",
+        "current_name": "KOLSKI",
         "current_seat_name": "KOŁO",
         "current_dist_type": "w",
         "timespan": null
@@ -1808,8 +1808,8 @@
     ]
   },
   {
-    "dist_name_id": "KONIŃSKI",
-    "dist_name_variants": [
+    "name_id": "KONIŃSKI",
+    "name_variants": [
       "KONIŃSKI"
     ],
     "seat_name_variants": [
@@ -1817,7 +1817,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KONIŃSKI",
+        "current_name": "KONIŃSKI",
         "current_seat_name": "KONIN",
         "current_dist_type": "w",
         "timespan": null
@@ -1825,8 +1825,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁASKI",
-    "dist_name_variants": [
+    "name_id": "ŁASKI",
+    "name_variants": [
       "ŁASKI"
     ],
     "seat_name_variants": [
@@ -1834,7 +1834,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁASKI",
+        "current_name": "ŁASKI",
         "current_seat_name": "ŁASK",
         "current_dist_type": "w",
         "timespan": null
@@ -1842,8 +1842,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁĘCZYCKI",
-    "dist_name_variants": [
+    "name_id": "ŁĘCZYCKI",
+    "name_variants": [
       "ŁĘCZYCKI"
     ],
     "seat_name_variants": [
@@ -1851,7 +1851,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁĘCZYCKI",
+        "current_name": "ŁĘCZYCKI",
         "current_seat_name": "ŁĘCZYCA",
         "current_dist_type": "w",
         "timespan": null
@@ -1859,8 +1859,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁÓDZKI",
-    "dist_name_variants": [
+    "name_id": "ŁÓDZKI",
+    "name_variants": [
       "ŁÓDZKI"
     ],
     "seat_name_variants": [
@@ -1868,7 +1868,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁÓDZKI",
+        "current_name": "ŁÓDZKI",
         "current_seat_name": "ŁÓDŹ",
         "current_dist_type": "w",
         "timespan": null
@@ -1876,8 +1876,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁÓDŹ",
-    "dist_name_variants": [
+    "name_id": "ŁÓDŹ",
+    "name_variants": [
       "ŁÓDŹ"
     ],
     "seat_name_variants": [
@@ -1885,7 +1885,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁÓDŹ",
+        "current_name": "ŁÓDŹ",
         "current_seat_name": "ŁÓDŹ",
         "current_dist_type": "m",
         "timespan": null
@@ -1893,8 +1893,8 @@
     ]
   },
   {
-    "dist_name_id": "PIOTRKOWSKI",
-    "dist_name_variants": [
+    "name_id": "PIOTRKOWSKI",
+    "name_variants": [
       "PIOTRKOWSKI"
     ],
     "seat_name_variants": [
@@ -1902,7 +1902,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PIOTRKOWSKI",
+        "current_name": "PIOTRKOWSKI",
         "current_seat_name": "PIOTRKÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -1910,8 +1910,8 @@
     ]
   },
   {
-    "dist_name_id": "RADOMSZCZAŃSKI",
-    "dist_name_variants": [
+    "name_id": "RADOMSZCZAŃSKI",
+    "name_variants": [
       "RADOMSZCZAŃSKI"
     ],
     "seat_name_variants": [
@@ -1919,7 +1919,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RADOMSZCZAŃSKI",
+        "current_name": "RADOMSZCZAŃSKI",
         "current_seat_name": "RADOMSKO",
         "current_dist_type": "w",
         "timespan": null
@@ -1927,8 +1927,8 @@
     ]
   },
   {
-    "dist_name_id": "SIERADZKI",
-    "dist_name_variants": [
+    "name_id": "SIERADZKI",
+    "name_variants": [
       "SIERADZKI"
     ],
     "seat_name_variants": [
@@ -1936,7 +1936,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SIERADZKI",
+        "current_name": "SIERADZKI",
         "current_seat_name": "SIERADZ",
         "current_dist_type": "w",
         "timespan": null
@@ -1944,8 +1944,8 @@
     ]
   },
   {
-    "dist_name_id": "SŁUPECKI",
-    "dist_name_variants": [
+    "name_id": "SŁUPECKI",
+    "name_variants": [
       "SŁUPECKI"
     ],
     "seat_name_variants": [
@@ -1953,7 +1953,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SŁUPECKI",
+        "current_name": "SŁUPECKI",
         "current_seat_name": "SŁUPCA",
         "current_dist_type": "w",
         "timespan": null
@@ -1961,8 +1961,8 @@
     ]
   },
   {
-    "dist_name_id": "TURECKI",
-    "dist_name_variants": [
+    "name_id": "TURECKI",
+    "name_variants": [
       "TURECKI"
     ],
     "seat_name_variants": [
@@ -1970,7 +1970,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TURECKI",
+        "current_name": "TURECKI",
         "current_seat_name": "TUREK",
         "current_dist_type": "w",
         "timespan": null
@@ -1978,8 +1978,8 @@
     ]
   },
   {
-    "dist_name_id": "WIELUŃSKI",
-    "dist_name_variants": [
+    "name_id": "WIELUŃSKI",
+    "name_variants": [
       "WIELUŃSKI"
     ],
     "seat_name_variants": [
@@ -1987,7 +1987,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WIELUŃSKI",
+        "current_name": "WIELUŃSKI",
         "current_seat_name": "WIELUŃ",
         "current_dist_type": "w",
         "timespan": null
@@ -1995,8 +1995,8 @@
     ]
   },
   {
-    "dist_name_id": "M. ST. WARSZAWA",
-    "dist_name_variants": [
+    "name_id": "M. ST. WARSZAWA",
+    "name_variants": [
       "M. ST. WARSZAWA",
       "WARSZAWA"
     ],
@@ -2005,7 +2005,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "M. ST. WARSZAWA",
+        "current_name": "M. ST. WARSZAWA",
         "current_seat_name": "WARSZAWA",
         "current_dist_type": "m",
         "timespan": null
@@ -2013,8 +2013,8 @@
     ]
   },
   {
-    "dist_name_id": "BARANOWICKI",
-    "dist_name_variants": [
+    "name_id": "BARANOWICKI",
+    "name_variants": [
       "BARANOWICKI"
     ],
     "seat_name_variants": [
@@ -2022,7 +2022,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BARANOWICKI",
+        "current_name": "BARANOWICKI",
         "current_seat_name": "BARANOWICZE",
         "current_dist_type": "w",
         "timespan": null
@@ -2030,8 +2030,8 @@
     ]
   },
   {
-    "dist_name_id": "DUNIŁOWICKI",
-    "dist_name_variants": [
+    "name_id": "DUNIŁOWICKI",
+    "name_variants": [
       "DUNIŁOWICKI",
       "DUNIŁOWICZOWSKI"
     ],
@@ -2040,7 +2040,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "DUNIŁOWICKI",
+        "current_name": "DUNIŁOWICKI",
         "current_seat_name": "DUNIŁOWICZE",
         "current_dist_type": "w",
         "timespan": null
@@ -2048,8 +2048,8 @@
     ]
   },
   {
-    "dist_name_id": "DZIŚNIEŃSKI",
-    "dist_name_variants": [
+    "name_id": "DZIŚNIEŃSKI",
+    "name_variants": [
       "DZIŚNIEŃSKI"
     ],
     "seat_name_variants": [
@@ -2057,7 +2057,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "DZIŚNIEŃSKI",
+        "current_name": "DZIŚNIEŃSKI",
         "current_seat_name": "GŁĘBOKIE",
         "current_dist_type": "w",
         "timespan": null
@@ -2065,8 +2065,8 @@
     ]
   },
   {
-    "dist_name_id": "LIDZKI",
-    "dist_name_variants": [
+    "name_id": "LIDZKI",
+    "name_variants": [
       "LIDZKI"
     ],
     "seat_name_variants": [
@@ -2074,7 +2074,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LIDZKI",
+        "current_name": "LIDZKI",
         "current_seat_name": "LIDA",
         "current_dist_type": "w",
         "timespan": null
@@ -2082,8 +2082,8 @@
     ]
   },
   {
-    "dist_name_id": "NIEŚWIESKI",
-    "dist_name_variants": [
+    "name_id": "NIEŚWIESKI",
+    "name_variants": [
       "NIEŚWIESKI"
     ],
     "seat_name_variants": [
@@ -2091,7 +2091,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "NIEŚWIESKI",
+        "current_name": "NIEŚWIESKI",
         "current_seat_name": "NIEŚWIEŻ",
         "current_dist_type": "w",
         "timespan": null
@@ -2099,8 +2099,8 @@
     ]
   },
   {
-    "dist_name_id": "NOWOGRÓDZKI",
-    "dist_name_variants": [
+    "name_id": "NOWOGRÓDZKI",
+    "name_variants": [
       "NOWOGRÓDZKI"
     ],
     "seat_name_variants": [
@@ -2108,7 +2108,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "NOWOGRÓDZKI",
+        "current_name": "NOWOGRÓDZKI",
         "current_seat_name": "NOWOGRÓDEK",
         "current_dist_type": "w",
         "timespan": null
@@ -2116,8 +2116,8 @@
     ]
   },
   {
-    "dist_name_id": "SŁONIMSKI",
-    "dist_name_variants": [
+    "name_id": "SŁONIMSKI",
+    "name_variants": [
       "SŁONIMSKI"
     ],
     "seat_name_variants": [
@@ -2125,7 +2125,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SŁONIMSKI",
+        "current_name": "SŁONIMSKI",
         "current_seat_name": "SŁONIM",
         "current_dist_type": "w",
         "timespan": null
@@ -2133,8 +2133,8 @@
     ]
   },
   {
-    "dist_name_id": "STOŁPECKI",
-    "dist_name_variants": [
+    "name_id": "STOŁPECKI",
+    "name_variants": [
       "STOŁPECKI"
     ],
     "seat_name_variants": [
@@ -2142,7 +2142,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STOŁPECKI",
+        "current_name": "STOŁPECKI",
         "current_seat_name": "STOŁPCE",
         "current_dist_type": "w",
         "timespan": null
@@ -2150,8 +2150,8 @@
     ]
   },
   {
-    "dist_name_id": "WILEJSKI",
-    "dist_name_variants": [
+    "name_id": "WILEJSKI",
+    "name_variants": [
       "WILEJSKI"
     ],
     "seat_name_variants": [
@@ -2159,7 +2159,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WILEJSKI",
+        "current_name": "WILEJSKI",
         "current_seat_name": "WILEJKA",
         "current_dist_type": "w",
         "timespan": null
@@ -2167,8 +2167,8 @@
     ]
   },
   {
-    "dist_name_id": "WOŁOŻYŃSKI",
-    "dist_name_variants": [
+    "name_id": "WOŁOŻYŃSKI",
+    "name_variants": [
       "WOŁOŻYŃSKI"
     ],
     "seat_name_variants": [
@@ -2176,7 +2176,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WOŁOŻYŃSKI",
+        "current_name": "WOŁOŻYŃSKI",
         "current_seat_name": "WOŁOŻYN",
         "current_dist_type": "w",
         "timespan": null
@@ -2184,8 +2184,8 @@
     ]
   },
   {
-    "dist_name_id": "BRZESKI (BRZEŚĆ N.BUG.)",
-    "dist_name_variants": [
+    "name_id": "BRZESKI (BRZEŚĆ N.BUG.)",
+    "name_variants": [
       "BRZESKI (BRZEŚĆ N.BUG.)"
     ],
     "seat_name_variants": [
@@ -2195,7 +2195,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BRZESKI (BRZEŚĆ N.BUG.)",
+        "current_name": "BRZESKI (BRZEŚĆ N.BUG.)",
         "current_seat_name": "BRZEŚĆ N.BUG.",
         "current_dist_type": "w",
         "timespan": null
@@ -2203,8 +2203,8 @@
     ]
   },
   {
-    "dist_name_id": "DROHICKI",
-    "dist_name_variants": [
+    "name_id": "DROHICKI",
+    "name_variants": [
       "DROHICKI",
       "DROHICZYŃSKI"
     ],
@@ -2213,7 +2213,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "DROHICKI",
+        "current_name": "DROHICKI",
         "current_seat_name": "DROHICZYN (POLESKI)",
         "current_dist_type": "w",
         "timespan": null
@@ -2221,8 +2221,8 @@
     ]
   },
   {
-    "dist_name_id": "KOBRYŃSKI",
-    "dist_name_variants": [
+    "name_id": "KOBRYŃSKI",
+    "name_variants": [
       "KOBRYŃSKI"
     ],
     "seat_name_variants": [
@@ -2230,7 +2230,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOBRYŃSKI",
+        "current_name": "KOBRYŃSKI",
         "current_seat_name": "KOBRYŃ",
         "current_dist_type": "w",
         "timespan": null
@@ -2238,8 +2238,8 @@
     ]
   },
   {
-    "dist_name_id": "KOSOWSKI (KOSÓW POLESKI)",
-    "dist_name_variants": [
+    "name_id": "KOSOWSKI (KOSÓW POLESKI)",
+    "name_variants": [
       "KOSOWSKI (KOSÓW POLESKI)"
     ],
     "seat_name_variants": [
@@ -2247,7 +2247,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOSOWSKI (KOSÓW POLESKI)",
+        "current_name": "KOSOWSKI (KOSÓW POLESKI)",
         "current_seat_name": "KOSÓW POLESKI",
         "current_dist_type": "w",
         "timespan": null
@@ -2255,8 +2255,8 @@
     ]
   },
   {
-    "dist_name_id": "KOSZYRSKI",
-    "dist_name_variants": [
+    "name_id": "KOSZYRSKI",
+    "name_variants": [
       "KOSZYRSKI"
     ],
     "seat_name_variants": [
@@ -2264,7 +2264,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOSZYRSKI",
+        "current_name": "KOSZYRSKI",
         "current_seat_name": "KAMIEŃ KOSZYR",
         "current_dist_type": "w",
         "timespan": null
@@ -2272,8 +2272,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁUNINIECKI",
-    "dist_name_variants": [
+    "name_id": "ŁUNINIECKI",
+    "name_variants": [
       "ŁUNINIECKI"
     ],
     "seat_name_variants": [
@@ -2281,7 +2281,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁUNINIECKI",
+        "current_name": "ŁUNINIECKI",
         "current_seat_name": "ŁUNINIEC",
         "current_dist_type": "w",
         "timespan": null
@@ -2289,8 +2289,8 @@
     ]
   },
   {
-    "dist_name_id": "PIŃSKI",
-    "dist_name_variants": [
+    "name_id": "PIŃSKI",
+    "name_variants": [
       "PIŃSKI"
     ],
     "seat_name_variants": [
@@ -2298,7 +2298,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PIŃSKI",
+        "current_name": "PIŃSKI",
         "current_seat_name": "PIŃSK",
         "current_dist_type": "w",
         "timespan": null
@@ -2306,8 +2306,8 @@
     ]
   },
   {
-    "dist_name_id": "PRUŻAŃSKI",
-    "dist_name_variants": [
+    "name_id": "PRUŻAŃSKI",
+    "name_variants": [
       "PRUŻAŃSKI"
     ],
     "seat_name_variants": [
@@ -2315,7 +2315,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PRUŻAŃSKI",
+        "current_name": "PRUŻAŃSKI",
         "current_seat_name": "PRUŻANA",
         "current_dist_type": "w",
         "timespan": null
@@ -2323,8 +2323,8 @@
     ]
   },
   {
-    "dist_name_id": "SARNEŃSKI",
-    "dist_name_variants": [
+    "name_id": "SARNEŃSKI",
+    "name_variants": [
       "SARNEŃSKI"
     ],
     "seat_name_variants": [
@@ -2332,7 +2332,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SARNEŃSKI",
+        "current_name": "SARNEŃSKI",
         "current_seat_name": "SARNY",
         "current_dist_type": "w",
         "timespan": null
@@ -2340,8 +2340,8 @@
     ]
   },
   {
-    "dist_name_id": "BRODNICKI",
-    "dist_name_variants": [
+    "name_id": "BRODNICKI",
+    "name_variants": [
       "BRODNICKI"
     ],
     "seat_name_variants": [
@@ -2349,7 +2349,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BRODNICKI",
+        "current_name": "BRODNICKI",
         "current_seat_name": "BRODNICA",
         "current_dist_type": "w",
         "timespan": null
@@ -2357,8 +2357,8 @@
     ]
   },
   {
-    "dist_name_id": "CHEŁMIŃSKI",
-    "dist_name_variants": [
+    "name_id": "CHEŁMIŃSKI",
+    "name_variants": [
       "CHEŁMIŃSKI"
     ],
     "seat_name_variants": [
@@ -2366,7 +2366,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CHEŁMIŃSKI",
+        "current_name": "CHEŁMIŃSKI",
         "current_seat_name": "CHEŁMNO",
         "current_dist_type": "w",
         "timespan": null
@@ -2374,8 +2374,8 @@
     ]
   },
   {
-    "dist_name_id": "CHOJNICKI",
-    "dist_name_variants": [
+    "name_id": "CHOJNICKI",
+    "name_variants": [
       "CHOJNICKI"
     ],
     "seat_name_variants": [
@@ -2383,7 +2383,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CHOJNICKI",
+        "current_name": "CHOJNICKI",
         "current_seat_name": "CHOJNICE",
         "current_dist_type": "w",
         "timespan": null
@@ -2391,8 +2391,8 @@
     ]
   },
   {
-    "dist_name_id": "DZIAŁDOWSKI",
-    "dist_name_variants": [
+    "name_id": "DZIAŁDOWSKI",
+    "name_variants": [
       "DZIAŁDOWSKI"
     ],
     "seat_name_variants": [
@@ -2400,7 +2400,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "DZIAŁDOWSKI",
+        "current_name": "DZIAŁDOWSKI",
         "current_seat_name": "DZIAŁDOWO",
         "current_dist_type": "w",
         "timespan": null
@@ -2408,8 +2408,8 @@
     ]
   },
   {
-    "dist_name_id": "GNIEWSKI",
-    "dist_name_variants": [
+    "name_id": "GNIEWSKI",
+    "name_variants": [
       "GNIEWSKI"
     ],
     "seat_name_variants": [
@@ -2417,7 +2417,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GNIEWSKI",
+        "current_name": "GNIEWSKI",
         "current_seat_name": "GNIEW",
         "current_dist_type": "w",
         "timespan": null
@@ -2425,8 +2425,8 @@
     ]
   },
   {
-    "dist_name_id": "GRUDZIĄDZ",
-    "dist_name_variants": [
+    "name_id": "GRUDZIĄDZ",
+    "name_variants": [
       "GRUDZIĄDZ"
     ],
     "seat_name_variants": [
@@ -2434,7 +2434,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GRUDZIĄDZ",
+        "current_name": "GRUDZIĄDZ",
         "current_seat_name": "GRUDZIĄDZ",
         "current_dist_type": "m",
         "timespan": null
@@ -2442,8 +2442,8 @@
     ]
   },
   {
-    "dist_name_id": "GRUDZIĄDZKI",
-    "dist_name_variants": [
+    "name_id": "GRUDZIĄDZKI",
+    "name_variants": [
       "GRUDZIĄDZKI"
     ],
     "seat_name_variants": [
@@ -2451,7 +2451,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GRUDZIĄDZKI",
+        "current_name": "GRUDZIĄDZKI",
         "current_seat_name": "GRUDZIĄDZ",
         "current_dist_type": "w",
         "timespan": null
@@ -2459,8 +2459,8 @@
     ]
   },
   {
-    "dist_name_id": "KARTUSKI",
-    "dist_name_variants": [
+    "name_id": "KARTUSKI",
+    "name_variants": [
       "KARTUSKI"
     ],
     "seat_name_variants": [
@@ -2468,7 +2468,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KARTUSKI",
+        "current_name": "KARTUSKI",
         "current_seat_name": "KARTUZY",
         "current_dist_type": "w",
         "timespan": null
@@ -2476,8 +2476,8 @@
     ]
   },
   {
-    "dist_name_id": "KOŚCIERSKI",
-    "dist_name_variants": [
+    "name_id": "KOŚCIERSKI",
+    "name_variants": [
       "KOŚCIERSKI"
     ],
     "seat_name_variants": [
@@ -2485,7 +2485,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOŚCIERSKI",
+        "current_name": "KOŚCIERSKI",
         "current_seat_name": "KOŚCIERZYNA",
         "current_dist_type": "w",
         "timespan": null
@@ -2493,8 +2493,8 @@
     ]
   },
   {
-    "dist_name_id": "LUBAWSKI",
-    "dist_name_variants": [
+    "name_id": "LUBAWSKI",
+    "name_variants": [
       "LUBAWSKI"
     ],
     "seat_name_variants": [
@@ -2502,7 +2502,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LUBAWSKI",
+        "current_name": "LUBAWSKI",
         "current_seat_name": "NOWE MIASTO LUBAWSKIE",
         "current_dist_type": "w",
         "timespan": null
@@ -2510,8 +2510,8 @@
     ]
   },
   {
-    "dist_name_id": "PUCKI",
-    "dist_name_variants": [
+    "name_id": "PUCKI",
+    "name_variants": [
       "PUCKI"
     ],
     "seat_name_variants": [
@@ -2519,7 +2519,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PUCKI",
+        "current_name": "PUCKI",
         "current_seat_name": "PUCK",
         "current_dist_type": "w",
         "timespan": null
@@ -2527,8 +2527,8 @@
     ]
   },
   {
-    "dist_name_id": "SĘPOLEŃSKI",
-    "dist_name_variants": [
+    "name_id": "SĘPOLEŃSKI",
+    "name_variants": [
       "SĘPOLEŃSKI"
     ],
     "seat_name_variants": [
@@ -2536,7 +2536,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SĘPOLEŃSKI",
+        "current_name": "SĘPOLEŃSKI",
         "current_seat_name": "SĘPOLNO",
         "current_dist_type": "w",
         "timespan": null
@@ -2544,8 +2544,8 @@
     ]
   },
   {
-    "dist_name_id": "STAROGARDZKI",
-    "dist_name_variants": [
+    "name_id": "STAROGARDZKI",
+    "name_variants": [
       "STAROGARDZKI"
     ],
     "seat_name_variants": [
@@ -2553,7 +2553,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STAROGARDZKI",
+        "current_name": "STAROGARDZKI",
         "current_seat_name": "STAROGARD",
         "current_dist_type": "w",
         "timespan": null
@@ -2561,8 +2561,8 @@
     ]
   },
   {
-    "dist_name_id": "ŚWIECKI",
-    "dist_name_variants": [
+    "name_id": "ŚWIECKI",
+    "name_variants": [
       "ŚWIECKI"
     ],
     "seat_name_variants": [
@@ -2570,7 +2570,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŚWIECKI",
+        "current_name": "ŚWIECKI",
         "current_seat_name": "ŚWIECIE",
         "current_dist_type": "w",
         "timespan": null
@@ -2578,8 +2578,8 @@
     ]
   },
   {
-    "dist_name_id": "TCZEWSKI",
-    "dist_name_variants": [
+    "name_id": "TCZEWSKI",
+    "name_variants": [
       "TCZEWSKI"
     ],
     "seat_name_variants": [
@@ -2587,7 +2587,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TCZEWSKI",
+        "current_name": "TCZEWSKI",
         "current_seat_name": "TCZEW",
         "current_dist_type": "w",
         "timespan": null
@@ -2595,8 +2595,8 @@
     ]
   },
   {
-    "dist_name_id": "TORUŃ",
-    "dist_name_variants": [
+    "name_id": "TORUŃ",
+    "name_variants": [
       "TORUŃ"
     ],
     "seat_name_variants": [
@@ -2604,7 +2604,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TORUŃ",
+        "current_name": "TORUŃ",
         "current_seat_name": "TORUŃ",
         "current_dist_type": "m",
         "timespan": null
@@ -2612,8 +2612,8 @@
     ]
   },
   {
-    "dist_name_id": "TORUŃSKI",
-    "dist_name_variants": [
+    "name_id": "TORUŃSKI",
+    "name_variants": [
       "TORUŃSKI"
     ],
     "seat_name_variants": [
@@ -2621,7 +2621,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TORUŃSKI",
+        "current_name": "TORUŃSKI",
         "current_seat_name": "TORUŃ",
         "current_dist_type": "w",
         "timespan": null
@@ -2629,8 +2629,8 @@
     ]
   },
   {
-    "dist_name_id": "TUCHOLSKI",
-    "dist_name_variants": [
+    "name_id": "TUCHOLSKI",
+    "name_variants": [
       "TUCHOLSKI"
     ],
     "seat_name_variants": [
@@ -2638,7 +2638,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TUCHOLSKI",
+        "current_name": "TUCHOLSKI",
         "current_seat_name": "TUCHOLA",
         "current_dist_type": "w",
         "timespan": null
@@ -2646,8 +2646,8 @@
     ]
   },
   {
-    "dist_name_id": "WĄBRZESKI",
-    "dist_name_variants": [
+    "name_id": "WĄBRZESKI",
+    "name_variants": [
       "WĄBRZESKI"
     ],
     "seat_name_variants": [
@@ -2655,7 +2655,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WĄBRZESKI",
+        "current_name": "WĄBRZESKI",
         "current_seat_name": "WĄBRZEŹNO",
         "current_dist_type": "w",
         "timespan": null
@@ -2663,8 +2663,8 @@
     ]
   },
   {
-    "dist_name_id": "WEJHEROWSKI",
-    "dist_name_variants": [
+    "name_id": "WEJHEROWSKI",
+    "name_variants": [
       "WEJHEROWSKI"
     ],
     "seat_name_variants": [
@@ -2672,7 +2672,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WEJHEROWSKI",
+        "current_name": "WEJHEROWSKI",
         "current_seat_name": "WEJHEROWO",
         "current_dist_type": "w",
         "timespan": null
@@ -2680,8 +2680,8 @@
     ]
   },
   {
-    "dist_name_id": "BYDGOSKI",
-    "dist_name_variants": [
+    "name_id": "BYDGOSKI",
+    "name_variants": [
       "BYDGOSKI"
     ],
     "seat_name_variants": [
@@ -2689,7 +2689,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BYDGOSKI",
+        "current_name": "BYDGOSKI",
         "current_seat_name": "BYDGOSZCZ",
         "current_dist_type": "w",
         "timespan": null
@@ -2697,8 +2697,8 @@
     ]
   },
   {
-    "dist_name_id": "BYDGOSZCZ",
-    "dist_name_variants": [
+    "name_id": "BYDGOSZCZ",
+    "name_variants": [
       "BYDGOSZCZ"
     ],
     "seat_name_variants": [
@@ -2706,7 +2706,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BYDGOSZCZ",
+        "current_name": "BYDGOSZCZ",
         "current_seat_name": "BYDGOSZCZ",
         "current_dist_type": "m",
         "timespan": null
@@ -2714,8 +2714,8 @@
     ]
   },
   {
-    "dist_name_id": "CHODZIESKI",
-    "dist_name_variants": [
+    "name_id": "CHODZIESKI",
+    "name_variants": [
       "CHODZIESKI"
     ],
     "seat_name_variants": [
@@ -2723,7 +2723,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CHODZIESKI",
+        "current_name": "CHODZIESKI",
         "current_seat_name": "CHODZIEŻ",
         "current_dist_type": "w",
         "timespan": null
@@ -2731,8 +2731,8 @@
     ]
   },
   {
-    "dist_name_id": "CZARNKOWSKI",
-    "dist_name_variants": [
+    "name_id": "CZARNKOWSKI",
+    "name_variants": [
       "CZARNKOWSKI"
     ],
     "seat_name_variants": [
@@ -2740,7 +2740,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CZARNKOWSKI",
+        "current_name": "CZARNKOWSKI",
         "current_seat_name": "CZARNKÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -2748,8 +2748,8 @@
     ]
   },
   {
-    "dist_name_id": "GNIEŹNIEŃSKI",
-    "dist_name_variants": [
+    "name_id": "GNIEŹNIEŃSKI",
+    "name_variants": [
       "GNIEŹNIEŃSKI"
     ],
     "seat_name_variants": [
@@ -2757,7 +2757,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GNIEŹNIEŃSKI",
+        "current_name": "GNIEŹNIEŃSKI",
         "current_seat_name": "GNIEZNO",
         "current_dist_type": "w",
         "timespan": null
@@ -2765,8 +2765,8 @@
     ]
   },
   {
-    "dist_name_id": "GOSTYŃSKI",
-    "dist_name_variants": [
+    "name_id": "GOSTYŃSKI",
+    "name_variants": [
       "GOSTYŃSKI"
     ],
     "seat_name_variants": [
@@ -2774,7 +2774,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GOSTYŃSKI",
+        "current_name": "GOSTYŃSKI",
         "current_seat_name": "GOSTYŃ",
         "current_dist_type": "w",
         "timespan": null
@@ -2782,8 +2782,8 @@
     ]
   },
   {
-    "dist_name_id": "GRODZISKI",
-    "dist_name_variants": [
+    "name_id": "GRODZISKI",
+    "name_variants": [
       "GRODZISKI"
     ],
     "seat_name_variants": [
@@ -2791,7 +2791,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GRODZISKI",
+        "current_name": "GRODZISKI",
         "current_seat_name": "GRODZISK",
         "current_dist_type": "w",
         "timespan": null
@@ -2799,8 +2799,8 @@
     ]
   },
   {
-    "dist_name_id": "INOWROCŁAWSKI",
-    "dist_name_variants": [
+    "name_id": "INOWROCŁAWSKI",
+    "name_variants": [
       "INOWROCŁAWSKI"
     ],
     "seat_name_variants": [
@@ -2808,7 +2808,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "INOWROCŁAWSKI",
+        "current_name": "INOWROCŁAWSKI",
         "current_seat_name": "INOWROCŁAW",
         "current_dist_type": "w",
         "timespan": null
@@ -2816,8 +2816,8 @@
     ]
   },
   {
-    "dist_name_id": "JAROCIŃSKI",
-    "dist_name_variants": [
+    "name_id": "JAROCIŃSKI",
+    "name_variants": [
       "JAROCIŃSKI"
     ],
     "seat_name_variants": [
@@ -2825,7 +2825,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "JAROCIŃSKI",
+        "current_name": "JAROCIŃSKI",
         "current_seat_name": "JAROCIN",
         "current_dist_type": "w",
         "timespan": null
@@ -2833,8 +2833,8 @@
     ]
   },
   {
-    "dist_name_id": "KĘPIŃSKI",
-    "dist_name_variants": [
+    "name_id": "KĘPIŃSKI",
+    "name_variants": [
       "KĘPIŃSKI"
     ],
     "seat_name_variants": [
@@ -2842,7 +2842,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KĘPIŃSKI",
+        "current_name": "KĘPIŃSKI",
         "current_seat_name": "KĘPNO",
         "current_dist_type": "w",
         "timespan": null
@@ -2850,8 +2850,8 @@
     ]
   },
   {
-    "dist_name_id": "KOŚCIAŃSKI",
-    "dist_name_variants": [
+    "name_id": "KOŚCIAŃSKI",
+    "name_variants": [
       "KOŚCIAŃSKI"
     ],
     "seat_name_variants": [
@@ -2859,7 +2859,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOŚCIAŃSKI",
+        "current_name": "KOŚCIAŃSKI",
         "current_seat_name": "KOŚCIAN",
         "current_dist_type": "w",
         "timespan": null
@@ -2867,8 +2867,8 @@
     ]
   },
   {
-    "dist_name_id": "KOŹMIŃSKI",
-    "dist_name_variants": [
+    "name_id": "KOŹMIŃSKI",
+    "name_variants": [
       "KOŹMIŃSKI"
     ],
     "seat_name_variants": [
@@ -2876,7 +2876,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOŹMIŃSKI",
+        "current_name": "KOŹMIŃSKI",
         "current_seat_name": "KOŹMIN",
         "current_dist_type": "w",
         "timespan": null
@@ -2884,8 +2884,8 @@
     ]
   },
   {
-    "dist_name_id": "KROTOSZYŃSKI",
-    "dist_name_variants": [
+    "name_id": "KROTOSZYŃSKI",
+    "name_variants": [
       "KROTOSZYŃSKI"
     ],
     "seat_name_variants": [
@@ -2893,7 +2893,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KROTOSZYŃSKI",
+        "current_name": "KROTOSZYŃSKI",
         "current_seat_name": "KROTOSZYN",
         "current_dist_type": "w",
         "timespan": null
@@ -2901,8 +2901,8 @@
     ]
   },
   {
-    "dist_name_id": "LESZCZYŃSKI",
-    "dist_name_variants": [
+    "name_id": "LESZCZYŃSKI",
+    "name_variants": [
       "LESZCZYŃSKI"
     ],
     "seat_name_variants": [
@@ -2910,7 +2910,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LESZCZYŃSKI",
+        "current_name": "LESZCZYŃSKI",
         "current_seat_name": "LESZNO",
         "current_dist_type": "w",
         "timespan": null
@@ -2918,8 +2918,8 @@
     ]
   },
   {
-    "dist_name_id": "MIĘDZYCHODZKI",
-    "dist_name_variants": [
+    "name_id": "MIĘDZYCHODZKI",
+    "name_variants": [
       "MIĘDZYCHODZKI"
     ],
     "seat_name_variants": [
@@ -2927,7 +2927,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "MIĘDZYCHODZKI",
+        "current_name": "MIĘDZYCHODZKI",
         "current_seat_name": "MIĘDZYCHÓD",
         "current_dist_type": "w",
         "timespan": null
@@ -2935,8 +2935,8 @@
     ]
   },
   {
-    "dist_name_id": "MOGILEŃSKI",
-    "dist_name_variants": [
+    "name_id": "MOGILEŃSKI",
+    "name_variants": [
       "MOGILEŃSKI"
     ],
     "seat_name_variants": [
@@ -2944,7 +2944,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "MOGILEŃSKI",
+        "current_name": "MOGILEŃSKI",
         "current_seat_name": "MOGILNO",
         "current_dist_type": "w",
         "timespan": null
@@ -2952,8 +2952,8 @@
     ]
   },
   {
-    "dist_name_id": "NOWOTOMYSKI",
-    "dist_name_variants": [
+    "name_id": "NOWOTOMYSKI",
+    "name_variants": [
       "NOWOTOMYSKI"
     ],
     "seat_name_variants": [
@@ -2961,7 +2961,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "NOWOTOMYSKI",
+        "current_name": "NOWOTOMYSKI",
         "current_seat_name": "NOWY TOMYŚL",
         "current_dist_type": "w",
         "timespan": null
@@ -2969,8 +2969,8 @@
     ]
   },
   {
-    "dist_name_id": "OBORNICKI",
-    "dist_name_variants": [
+    "name_id": "OBORNICKI",
+    "name_variants": [
       "OBORNICKI"
     ],
     "seat_name_variants": [
@@ -2978,7 +2978,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OBORNICKI",
+        "current_name": "OBORNICKI",
         "current_seat_name": "OBORNIKI",
         "current_dist_type": "w",
         "timespan": null
@@ -2986,8 +2986,8 @@
     ]
   },
   {
-    "dist_name_id": "ODOLANOWSKI",
-    "dist_name_variants": [
+    "name_id": "ODOLANOWSKI",
+    "name_variants": [
       "ODOLANOWSKI"
     ],
     "seat_name_variants": [
@@ -2995,7 +2995,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ODOLANOWSKI",
+        "current_name": "ODOLANOWSKI",
         "current_seat_name": "ODOLANÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3003,8 +3003,8 @@
     ]
   },
   {
-    "dist_name_id": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
-    "dist_name_variants": [
+    "name_id": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
+    "name_variants": [
       "OSTROWSKI (OSTRÓW WIELKOPOLSKI)"
     ],
     "seat_name_variants": [
@@ -3012,7 +3012,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
+        "current_name": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
         "current_seat_name": "OSTRÓW WIELKOPOLSKI",
         "current_dist_type": "w",
         "timespan": null
@@ -3020,8 +3020,8 @@
     ]
   },
   {
-    "dist_name_id": "OSTRZESZOWSKI",
-    "dist_name_variants": [
+    "name_id": "OSTRZESZOWSKI",
+    "name_variants": [
       "OSTRZESZOWSKI"
     ],
     "seat_name_variants": [
@@ -3029,7 +3029,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OSTRZESZOWSKI",
+        "current_name": "OSTRZESZOWSKI",
         "current_seat_name": "OSTRZESZÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3037,8 +3037,8 @@
     ]
   },
   {
-    "dist_name_id": "PLESZEWSKI",
-    "dist_name_variants": [
+    "name_id": "PLESZEWSKI",
+    "name_variants": [
       "PLESZEWSKI"
     ],
     "seat_name_variants": [
@@ -3046,7 +3046,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PLESZEWSKI",
+        "current_name": "PLESZEWSKI",
         "current_seat_name": "PLESZEW",
         "current_dist_type": "w",
         "timespan": null
@@ -3054,8 +3054,8 @@
     ]
   },
   {
-    "dist_name_id": "POZNAŃ",
-    "dist_name_variants": [
+    "name_id": "POZNAŃ",
+    "name_variants": [
       "POZNAŃ"
     ],
     "seat_name_variants": [
@@ -3063,7 +3063,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "POZNAŃ",
+        "current_name": "POZNAŃ",
         "current_seat_name": "POZNAŃ",
         "current_dist_type": "m",
         "timespan": null
@@ -3071,8 +3071,8 @@
     ]
   },
   {
-    "dist_name_id": "POZNAŃSKI WSCHODNI",
-    "dist_name_variants": [
+    "name_id": "POZNAŃSKI WSCHODNI",
+    "name_variants": [
       "POZNAŃSKI WSCHODNI"
     ],
     "seat_name_variants": [
@@ -3080,7 +3080,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "POZNAŃSKI WSCHODNI",
+        "current_name": "POZNAŃSKI WSCHODNI",
         "current_seat_name": "POZNAŃ WSCH.",
         "current_dist_type": "w",
         "timespan": null
@@ -3088,8 +3088,8 @@
     ]
   },
   {
-    "dist_name_id": "POZNAŃSKI ZACHODNI",
-    "dist_name_variants": [
+    "name_id": "POZNAŃSKI ZACHODNI",
+    "name_variants": [
       "POZNAŃSKI ZACHODNI"
     ],
     "seat_name_variants": [
@@ -3097,7 +3097,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "POZNAŃSKI ZACHODNI",
+        "current_name": "POZNAŃSKI ZACHODNI",
         "current_seat_name": "POZNAŃ ZACH.",
         "current_dist_type": "w",
         "timespan": null
@@ -3105,8 +3105,8 @@
     ]
   },
   {
-    "dist_name_id": "RAWICKI",
-    "dist_name_variants": [
+    "name_id": "RAWICKI",
+    "name_variants": [
       "RAWICKI"
     ],
     "seat_name_variants": [
@@ -3114,7 +3114,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RAWICKI",
+        "current_name": "RAWICKI",
         "current_seat_name": "RAWICZ",
         "current_dist_type": "w",
         "timespan": null
@@ -3122,8 +3122,8 @@
     ]
   },
   {
-    "dist_name_id": "STRZELNEŃSKI",
-    "dist_name_variants": [
+    "name_id": "STRZELNEŃSKI",
+    "name_variants": [
       "STRZELNEŃSKI",
       "STRZELEŃSKI"
     ],
@@ -3132,7 +3132,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STRZELNEŃSKI",
+        "current_name": "STRZELNEŃSKI",
         "current_seat_name": "STRZELNO",
         "current_dist_type": "w",
         "timespan": null
@@ -3140,8 +3140,8 @@
     ]
   },
   {
-    "dist_name_id": "SZAMOTULSKI",
-    "dist_name_variants": [
+    "name_id": "SZAMOTULSKI",
+    "name_variants": [
       "SZAMOTULSKI"
     ],
     "seat_name_variants": [
@@ -3149,7 +3149,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SZAMOTULSKI",
+        "current_name": "SZAMOTULSKI",
         "current_seat_name": "SZAMOTUŁY",
         "current_dist_type": "w",
         "timespan": null
@@ -3157,8 +3157,8 @@
     ]
   },
   {
-    "dist_name_id": "SZUBIŃSKI",
-    "dist_name_variants": [
+    "name_id": "SZUBIŃSKI",
+    "name_variants": [
       "SZUBIŃSKI"
     ],
     "seat_name_variants": [
@@ -3166,7 +3166,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SZUBIŃSKI",
+        "current_name": "SZUBIŃSKI",
         "current_seat_name": "SZUBIN",
         "current_dist_type": "w",
         "timespan": null
@@ -3174,8 +3174,8 @@
     ]
   },
   {
-    "dist_name_id": "ŚMIGIELSKI",
-    "dist_name_variants": [
+    "name_id": "ŚMIGIELSKI",
+    "name_variants": [
       "ŚMIGIELSKI"
     ],
     "seat_name_variants": [
@@ -3183,7 +3183,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŚMIGIELSKI",
+        "current_name": "ŚMIGIELSKI",
         "current_seat_name": "ŚMIGIEL",
         "current_dist_type": "w",
         "timespan": null
@@ -3191,8 +3191,8 @@
     ]
   },
   {
-    "dist_name_id": "ŚREDZKI",
-    "dist_name_variants": [
+    "name_id": "ŚREDZKI",
+    "name_variants": [
       "ŚREDZKI"
     ],
     "seat_name_variants": [
@@ -3200,7 +3200,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŚREDZKI",
+        "current_name": "ŚREDZKI",
         "current_seat_name": "ŚRODA",
         "current_dist_type": "w",
         "timespan": null
@@ -3208,8 +3208,8 @@
     ]
   },
   {
-    "dist_name_id": "ŚREMSKI",
-    "dist_name_variants": [
+    "name_id": "ŚREMSKI",
+    "name_variants": [
       "ŚREMSKI"
     ],
     "seat_name_variants": [
@@ -3217,7 +3217,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŚREMSKI",
+        "current_name": "ŚREMSKI",
         "current_seat_name": "ŚREM",
         "current_dist_type": "w",
         "timespan": null
@@ -3225,8 +3225,8 @@
     ]
   },
   {
-    "dist_name_id": "WĄGROWIECKI",
-    "dist_name_variants": [
+    "name_id": "WĄGROWIECKI",
+    "name_variants": [
       "WĄGROWIECKI"
     ],
     "seat_name_variants": [
@@ -3234,7 +3234,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WĄGROWIECKI",
+        "current_name": "WĄGROWIECKI",
         "current_seat_name": "WĄGROWIEC",
         "current_dist_type": "w",
         "timespan": null
@@ -3242,8 +3242,8 @@
     ]
   },
   {
-    "dist_name_id": "WITKOWSKI",
-    "dist_name_variants": [
+    "name_id": "WITKOWSKI",
+    "name_variants": [
       "WITKOWSKI"
     ],
     "seat_name_variants": [
@@ -3251,7 +3251,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WITKOWSKI",
+        "current_name": "WITKOWSKI",
         "current_seat_name": "WITKOWO",
         "current_dist_type": "w",
         "timespan": null
@@ -3259,8 +3259,8 @@
     ]
   },
   {
-    "dist_name_id": "WOLSZTYŃSKI",
-    "dist_name_variants": [
+    "name_id": "WOLSZTYŃSKI",
+    "name_variants": [
       "WOLSZTYŃSKI"
     ],
     "seat_name_variants": [
@@ -3268,7 +3268,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WOLSZTYŃSKI",
+        "current_name": "WOLSZTYŃSKI",
         "current_seat_name": "WOLSZTYN",
         "current_dist_type": "w",
         "timespan": null
@@ -3276,8 +3276,8 @@
     ]
   },
   {
-    "dist_name_id": "WRZESIŃSKI",
-    "dist_name_variants": [
+    "name_id": "WRZESIŃSKI",
+    "name_variants": [
       "WRZESIŃSKI"
     ],
     "seat_name_variants": [
@@ -3285,7 +3285,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WRZESIŃSKI",
+        "current_name": "WRZESIŃSKI",
         "current_seat_name": "WRZEŚNIA",
         "current_dist_type": "w",
         "timespan": null
@@ -3293,8 +3293,8 @@
     ]
   },
   {
-    "dist_name_id": "WYRZYSKI",
-    "dist_name_variants": [
+    "name_id": "WYRZYSKI",
+    "name_variants": [
       "WYRZYSKI"
     ],
     "seat_name_variants": [
@@ -3302,7 +3302,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WYRZYSKI",
+        "current_name": "WYRZYSKI",
         "current_seat_name": "WYRZYSK",
         "current_dist_type": "w",
         "timespan": null
@@ -3310,8 +3310,8 @@
     ]
   },
   {
-    "dist_name_id": "ŻNIŃSKI",
-    "dist_name_variants": [
+    "name_id": "ŻNIŃSKI",
+    "name_variants": [
       "ŻNIŃSKI"
     ],
     "seat_name_variants": [
@@ -3319,7 +3319,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŻNIŃSKI",
+        "current_name": "ŻNIŃSKI",
         "current_seat_name": "ŻNIN",
         "current_dist_type": "w",
         "timespan": null
@@ -3327,8 +3327,8 @@
     ]
   },
   {
-    "dist_name_id": "BOHORODCZAŃSKI",
-    "dist_name_variants": [
+    "name_id": "BOHORODCZAŃSKI",
+    "name_variants": [
       "BOHORODCZAŃSKI"
     ],
     "seat_name_variants": [
@@ -3336,7 +3336,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BOHORODCZAŃSKI",
+        "current_name": "BOHORODCZAŃSKI",
         "current_seat_name": "BOHORODCZANY",
         "current_dist_type": "w",
         "timespan": null
@@ -3344,8 +3344,8 @@
     ]
   },
   {
-    "dist_name_id": "DOLIŃSKI",
-    "dist_name_variants": [
+    "name_id": "DOLIŃSKI",
+    "name_variants": [
       "DOLIŃSKI"
     ],
     "seat_name_variants": [
@@ -3353,7 +3353,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "DOLIŃSKI",
+        "current_name": "DOLIŃSKI",
         "current_seat_name": "DOLINA",
         "current_dist_type": "w",
         "timespan": null
@@ -3361,8 +3361,8 @@
     ]
   },
   {
-    "dist_name_id": "HORODEŃSKI",
-    "dist_name_variants": [
+    "name_id": "HORODEŃSKI",
+    "name_variants": [
       "HORODEŃSKI"
     ],
     "seat_name_variants": [
@@ -3370,7 +3370,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "HORODEŃSKI",
+        "current_name": "HORODEŃSKI",
         "current_seat_name": "HORODENKA",
         "current_dist_type": "w",
         "timespan": null
@@ -3378,8 +3378,8 @@
     ]
   },
   {
-    "dist_name_id": "KAŁUSKI",
-    "dist_name_variants": [
+    "name_id": "KAŁUSKI",
+    "name_variants": [
       "KAŁUSKI"
     ],
     "seat_name_variants": [
@@ -3387,7 +3387,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KAŁUSKI",
+        "current_name": "KAŁUSKI",
         "current_seat_name": "KAŁUSZ",
         "current_dist_type": "w",
         "timespan": null
@@ -3395,8 +3395,8 @@
     ]
   },
   {
-    "dist_name_id": "KOŁOMYJSKI",
-    "dist_name_variants": [
+    "name_id": "KOŁOMYJSKI",
+    "name_variants": [
       "KOŁOMYJSKI"
     ],
     "seat_name_variants": [
@@ -3404,7 +3404,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOŁOMYJSKI",
+        "current_name": "KOŁOMYJSKI",
         "current_seat_name": "KOŁOMYJA",
         "current_dist_type": "w",
         "timespan": null
@@ -3412,8 +3412,8 @@
     ]
   },
   {
-    "dist_name_id": "KOSOWSKI (KOSÓW HUCULSKI)",
-    "dist_name_variants": [
+    "name_id": "KOSOWSKI (KOSÓW HUCULSKI)",
+    "name_variants": [
       "KOSOWSKI (KOSÓW HUCULSKI)"
     ],
     "seat_name_variants": [
@@ -3421,7 +3421,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOSOWSKI (KOSÓW HUCULSKI)",
+        "current_name": "KOSOWSKI (KOSÓW HUCULSKI)",
         "current_seat_name": "KOSÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3429,8 +3429,8 @@
     ]
   },
   {
-    "dist_name_id": "NADWÓRNIAŃSKI",
-    "dist_name_variants": [
+    "name_id": "NADWÓRNIAŃSKI",
+    "name_variants": [
       "NADWÓRNIAŃSKI"
     ],
     "seat_name_variants": [
@@ -3438,7 +3438,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "NADWÓRNIAŃSKI",
+        "current_name": "NADWÓRNIAŃSKI",
         "current_seat_name": "NADWÓRNA",
         "current_dist_type": "w",
         "timespan": null
@@ -3446,8 +3446,8 @@
     ]
   },
   {
-    "dist_name_id": "PECZENIŻYŃSKI",
-    "dist_name_variants": [
+    "name_id": "PECZENIŻYŃSKI",
+    "name_variants": [
       "PECZENIŻYŃSKI"
     ],
     "seat_name_variants": [
@@ -3455,7 +3455,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PECZENIŻYŃSKI",
+        "current_name": "PECZENIŻYŃSKI",
         "current_seat_name": "PECZENIŻYN",
         "current_dist_type": "w",
         "timespan": null
@@ -3463,8 +3463,8 @@
     ]
   },
   {
-    "dist_name_id": "ROHATYŃSKI",
-    "dist_name_variants": [
+    "name_id": "ROHATYŃSKI",
+    "name_variants": [
       "ROHATYŃSKI"
     ],
     "seat_name_variants": [
@@ -3472,7 +3472,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ROHATYŃSKI",
+        "current_name": "ROHATYŃSKI",
         "current_seat_name": "ROHATYN",
         "current_dist_type": "w",
         "timespan": null
@@ -3480,8 +3480,8 @@
     ]
   },
   {
-    "dist_name_id": "SKOLSKI",
-    "dist_name_variants": [
+    "name_id": "SKOLSKI",
+    "name_variants": [
       "SKOLSKI"
     ],
     "seat_name_variants": [
@@ -3489,7 +3489,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SKOLSKI",
+        "current_name": "SKOLSKI",
         "current_seat_name": "SKOLE",
         "current_dist_type": "w",
         "timespan": null
@@ -3497,8 +3497,8 @@
     ]
   },
   {
-    "dist_name_id": "STANISŁAWOWSKI",
-    "dist_name_variants": [
+    "name_id": "STANISŁAWOWSKI",
+    "name_variants": [
       "STANISŁAWOWSKI"
     ],
     "seat_name_variants": [
@@ -3506,7 +3506,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STANISŁAWOWSKI",
+        "current_name": "STANISŁAWOWSKI",
         "current_seat_name": "STANISŁAWÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3514,8 +3514,8 @@
     ]
   },
   {
-    "dist_name_id": "STRYJSKI",
-    "dist_name_variants": [
+    "name_id": "STRYJSKI",
+    "name_variants": [
       "STRYJSKI"
     ],
     "seat_name_variants": [
@@ -3523,7 +3523,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STRYJSKI",
+        "current_name": "STRYJSKI",
         "current_seat_name": "STRYJ",
         "current_dist_type": "w",
         "timespan": null
@@ -3531,8 +3531,8 @@
     ]
   },
   {
-    "dist_name_id": "ŚNIATYŃSKI",
-    "dist_name_variants": [
+    "name_id": "ŚNIATYŃSKI",
+    "name_variants": [
       "ŚNIATYŃSKI"
     ],
     "seat_name_variants": [
@@ -3540,7 +3540,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŚNIATYŃSKI",
+        "current_name": "ŚNIATYŃSKI",
         "current_seat_name": "ŚNIATYŃ",
         "current_dist_type": "w",
         "timespan": null
@@ -3548,8 +3548,8 @@
     ]
   },
   {
-    "dist_name_id": "TŁUMACKI",
-    "dist_name_variants": [
+    "name_id": "TŁUMACKI",
+    "name_variants": [
       "TŁUMACKI"
     ],
     "seat_name_variants": [
@@ -3557,7 +3557,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TŁUMACKI",
+        "current_name": "TŁUMACKI",
         "current_seat_name": "TŁUMACZ",
         "current_dist_type": "w",
         "timespan": null
@@ -3565,8 +3565,8 @@
     ]
   },
   {
-    "dist_name_id": "TURCZAŃSKI",
-    "dist_name_variants": [
+    "name_id": "TURCZAŃSKI",
+    "name_variants": [
       "TURCZAŃSKI"
     ],
     "seat_name_variants": [
@@ -3574,7 +3574,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TURCZAŃSKI",
+        "current_name": "TURCZAŃSKI",
         "current_seat_name": "TURKA",
         "current_dist_type": "w",
         "timespan": null
@@ -3582,8 +3582,8 @@
     ]
   },
   {
-    "dist_name_id": "ŻYDACZOWSKI",
-    "dist_name_variants": [
+    "name_id": "ŻYDACZOWSKI",
+    "name_variants": [
       "ŻYDACZOWSKI"
     ],
     "seat_name_variants": [
@@ -3591,7 +3591,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŻYDACZOWSKI",
+        "current_name": "ŻYDACZOWSKI",
         "current_seat_name": "ŻYDACZÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3599,8 +3599,8 @@
     ]
   },
   {
-    "dist_name_id": "BIELSKI (BIELSKO)",
-    "dist_name_variants": [
+    "name_id": "BIELSKI (BIELSKO)",
+    "name_variants": [
       "BIELSKI (BIELSKO)"
     ],
     "seat_name_variants": [
@@ -3608,7 +3608,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BIELSKI (BIELSKO)",
+        "current_name": "BIELSKI (BIELSKO)",
         "current_seat_name": "BIELSKO (BIELSKO)",
         "current_dist_type": "w",
         "timespan": null
@@ -3616,8 +3616,8 @@
     ]
   },
   {
-    "dist_name_id": "BIELSKO",
-    "dist_name_variants": [
+    "name_id": "BIELSKO",
+    "name_variants": [
       "BIELSKO"
     ],
     "seat_name_variants": [
@@ -3625,7 +3625,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BIELSKO",
+        "current_name": "BIELSKO",
         "current_seat_name": "BIELSKO",
         "current_dist_type": "m",
         "timespan": null
@@ -3633,8 +3633,8 @@
     ]
   },
   {
-    "dist_name_id": "CIESZYŃSKI",
-    "dist_name_variants": [
+    "name_id": "CIESZYŃSKI",
+    "name_variants": [
       "CIESZYŃSKI"
     ],
     "seat_name_variants": [
@@ -3642,7 +3642,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CIESZYŃSKI",
+        "current_name": "CIESZYŃSKI",
         "current_seat_name": "CIESZYN",
         "current_dist_type": "w",
         "timespan": null
@@ -3650,8 +3650,8 @@
     ]
   },
   {
-    "dist_name_id": "BORSZCZOWSKI",
-    "dist_name_variants": [
+    "name_id": "BORSZCZOWSKI",
+    "name_variants": [
       "BORSZCZOWSKI"
     ],
     "seat_name_variants": [
@@ -3659,7 +3659,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BORSZCZOWSKI",
+        "current_name": "BORSZCZOWSKI",
         "current_seat_name": "BORSZCZÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3667,8 +3667,8 @@
     ]
   },
   {
-    "dist_name_id": "BRODZKI",
-    "dist_name_variants": [
+    "name_id": "BRODZKI",
+    "name_variants": [
       "BRODZKI"
     ],
     "seat_name_variants": [
@@ -3676,7 +3676,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BRODZKI",
+        "current_name": "BRODZKI",
         "current_seat_name": "BRODY",
         "current_dist_type": "w",
         "timespan": null
@@ -3684,8 +3684,8 @@
     ]
   },
   {
-    "dist_name_id": "BRZEŻAŃSKI",
-    "dist_name_variants": [
+    "name_id": "BRZEŻAŃSKI",
+    "name_variants": [
       "BRZEŻAŃSKI"
     ],
     "seat_name_variants": [
@@ -3693,7 +3693,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BRZEŻAŃSKI",
+        "current_name": "BRZEŻAŃSKI",
         "current_seat_name": "BRZEŻANY",
         "current_dist_type": "w",
         "timespan": null
@@ -3701,8 +3701,8 @@
     ]
   },
   {
-    "dist_name_id": "BUCZACKI",
-    "dist_name_variants": [
+    "name_id": "BUCZACKI",
+    "name_variants": [
       "BUCZACKI"
     ],
     "seat_name_variants": [
@@ -3710,7 +3710,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BUCZACKI",
+        "current_name": "BUCZACKI",
         "current_seat_name": "BUCZACZ",
         "current_dist_type": "w",
         "timespan": null
@@ -3718,8 +3718,8 @@
     ]
   },
   {
-    "dist_name_id": "CZORTKOWSKI",
-    "dist_name_variants": [
+    "name_id": "CZORTKOWSKI",
+    "name_variants": [
       "CZORTKOWSKI"
     ],
     "seat_name_variants": [
@@ -3727,7 +3727,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CZORTKOWSKI",
+        "current_name": "CZORTKOWSKI",
         "current_seat_name": "CZORTKÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3735,8 +3735,8 @@
     ]
   },
   {
-    "dist_name_id": "HUSIATYŃSKI",
-    "dist_name_variants": [
+    "name_id": "HUSIATYŃSKI",
+    "name_variants": [
       "HUSIATYŃSKI"
     ],
     "seat_name_variants": [
@@ -3744,7 +3744,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "HUSIATYŃSKI",
+        "current_name": "HUSIATYŃSKI",
         "current_seat_name": "HUSIATYN",
         "current_dist_type": "w",
         "timespan": null
@@ -3752,8 +3752,8 @@
     ]
   },
   {
-    "dist_name_id": "KAMIONECKI",
-    "dist_name_variants": [
+    "name_id": "KAMIONECKI",
+    "name_variants": [
       "KAMIONECKI"
     ],
     "seat_name_variants": [
@@ -3761,7 +3761,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KAMIONECKI",
+        "current_name": "KAMIONECKI",
         "current_seat_name": "KAMIONKA STRUMIŁOWA",
         "current_dist_type": "w",
         "timespan": null
@@ -3769,8 +3769,8 @@
     ]
   },
   {
-    "dist_name_id": "PODHAJECKI",
-    "dist_name_variants": [
+    "name_id": "PODHAJECKI",
+    "name_variants": [
       "PODHAJECKI"
     ],
     "seat_name_variants": [
@@ -3778,7 +3778,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PODHAJECKI",
+        "current_name": "PODHAJECKI",
         "current_seat_name": "PODHAJCE",
         "current_dist_type": "w",
         "timespan": null
@@ -3786,8 +3786,8 @@
     ]
   },
   {
-    "dist_name_id": "PRZEMYŚLAŃSKI",
-    "dist_name_variants": [
+    "name_id": "PRZEMYŚLAŃSKI",
+    "name_variants": [
       "PRZEMYŚLAŃSKI"
     ],
     "seat_name_variants": [
@@ -3795,7 +3795,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PRZEMYŚLAŃSKI",
+        "current_name": "PRZEMYŚLAŃSKI",
         "current_seat_name": "PRZEMYŚLANY",
         "current_dist_type": "w",
         "timespan": null
@@ -3803,8 +3803,8 @@
     ]
   },
   {
-    "dist_name_id": "RADZIECHOWSKI",
-    "dist_name_variants": [
+    "name_id": "RADZIECHOWSKI",
+    "name_variants": [
       "RADZIECHOWSKI"
     ],
     "seat_name_variants": [
@@ -3812,7 +3812,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RADZIECHOWSKI",
+        "current_name": "RADZIECHOWSKI",
         "current_seat_name": "RADZIECHÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3820,8 +3820,8 @@
     ]
   },
   {
-    "dist_name_id": "SKAŁACKI",
-    "dist_name_variants": [
+    "name_id": "SKAŁACKI",
+    "name_variants": [
       "SKAŁACKI"
     ],
     "seat_name_variants": [
@@ -3829,7 +3829,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SKAŁACKI",
+        "current_name": "SKAŁACKI",
         "current_seat_name": "SKAŁAT",
         "current_dist_type": "w",
         "timespan": null
@@ -3837,8 +3837,8 @@
     ]
   },
   {
-    "dist_name_id": "TARNOPOLSKI",
-    "dist_name_variants": [
+    "name_id": "TARNOPOLSKI",
+    "name_variants": [
       "TARNOPOLSKI"
     ],
     "seat_name_variants": [
@@ -3846,7 +3846,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TARNOPOLSKI",
+        "current_name": "TARNOPOLSKI",
         "current_seat_name": "TARNOPOL",
         "current_dist_type": "w",
         "timespan": null
@@ -3854,8 +3854,8 @@
     ]
   },
   {
-    "dist_name_id": "TREMBOWELSKI",
-    "dist_name_variants": [
+    "name_id": "TREMBOWELSKI",
+    "name_variants": [
       "TREMBOWELSKI"
     ],
     "seat_name_variants": [
@@ -3863,7 +3863,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TREMBOWELSKI",
+        "current_name": "TREMBOWELSKI",
         "current_seat_name": "TREMBOWLA",
         "current_dist_type": "w",
         "timespan": null
@@ -3871,8 +3871,8 @@
     ]
   },
   {
-    "dist_name_id": "ZALESZCZYCKI",
-    "dist_name_variants": [
+    "name_id": "ZALESZCZYCKI",
+    "name_variants": [
       "ZALESZCZYCKI"
     ],
     "seat_name_variants": [
@@ -3880,7 +3880,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ZALESZCZYCKI",
+        "current_name": "ZALESZCZYCKI",
         "current_seat_name": "ZALESZCZYKI",
         "current_dist_type": "w",
         "timespan": null
@@ -3888,8 +3888,8 @@
     ]
   },
   {
-    "dist_name_id": "ZBARASKI",
-    "dist_name_variants": [
+    "name_id": "ZBARASKI",
+    "name_variants": [
       "ZBARASKI"
     ],
     "seat_name_variants": [
@@ -3897,7 +3897,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ZBARASKI",
+        "current_name": "ZBARASKI",
         "current_seat_name": "ZBARAŻ",
         "current_dist_type": "w",
         "timespan": null
@@ -3905,8 +3905,8 @@
     ]
   },
   {
-    "dist_name_id": "ZBOROWSKI",
-    "dist_name_variants": [
+    "name_id": "ZBOROWSKI",
+    "name_variants": [
       "ZBOROWSKI"
     ],
     "seat_name_variants": [
@@ -3914,7 +3914,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ZBOROWSKI",
+        "current_name": "ZBOROWSKI",
         "current_seat_name": "ZBORÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3922,8 +3922,8 @@
     ]
   },
   {
-    "dist_name_id": "ZŁOCZOWSKI",
-    "dist_name_variants": [
+    "name_id": "ZŁOCZOWSKI",
+    "name_variants": [
       "ZŁOCZOWSKI"
     ],
     "seat_name_variants": [
@@ -3931,7 +3931,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ZŁOCZOWSKI",
+        "current_name": "ZŁOCZOWSKI",
         "current_seat_name": "ZŁOCZÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3939,8 +3939,8 @@
     ]
   },
   {
-    "dist_name_id": "BŁOŃSKI",
-    "dist_name_variants": [
+    "name_id": "BŁOŃSKI",
+    "name_variants": [
       "BŁOŃSKI"
     ],
     "seat_name_variants": [
@@ -3948,7 +3948,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BŁOŃSKI",
+        "current_name": "BŁOŃSKI",
         "current_seat_name": "BŁONIE",
         "current_dist_type": "w",
         "timespan": null
@@ -3956,8 +3956,8 @@
     ]
   },
   {
-    "dist_name_id": "CIECHANOWSKI",
-    "dist_name_variants": [
+    "name_id": "CIECHANOWSKI",
+    "name_variants": [
       "CIECHANOWSKI"
     ],
     "seat_name_variants": [
@@ -3965,7 +3965,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CIECHANOWSKI",
+        "current_name": "CIECHANOWSKI",
         "current_seat_name": "CIECHANÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -3973,8 +3973,8 @@
     ]
   },
   {
-    "dist_name_id": "GOSTYNIŃSKI",
-    "dist_name_variants": [
+    "name_id": "GOSTYNIŃSKI",
+    "name_variants": [
       "GOSTYNIŃSKI"
     ],
     "seat_name_variants": [
@@ -3982,7 +3982,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GOSTYNIŃSKI",
+        "current_name": "GOSTYNIŃSKI",
         "current_seat_name": "GOSTYNIN",
         "current_dist_type": "w",
         "timespan": null
@@ -3990,8 +3990,8 @@
     ]
   },
   {
-    "dist_name_id": "GRÓJECKI",
-    "dist_name_variants": [
+    "name_id": "GRÓJECKI",
+    "name_variants": [
       "GRÓJECKI"
     ],
     "seat_name_variants": [
@@ -3999,7 +3999,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "GRÓJECKI",
+        "current_name": "GRÓJECKI",
         "current_seat_name": "GRÓJEC",
         "current_dist_type": "w",
         "timespan": null
@@ -4007,8 +4007,8 @@
     ]
   },
   {
-    "dist_name_id": "KUTNOWSKI",
-    "dist_name_variants": [
+    "name_id": "KUTNOWSKI",
+    "name_variants": [
       "KUTNOWSKI"
     ],
     "seat_name_variants": [
@@ -4016,7 +4016,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KUTNOWSKI",
+        "current_name": "KUTNOWSKI",
         "current_seat_name": "KUTNO",
         "current_dist_type": "w",
         "timespan": null
@@ -4024,8 +4024,8 @@
     ]
   },
   {
-    "dist_name_id": "LIPNOWSKI",
-    "dist_name_variants": [
+    "name_id": "LIPNOWSKI",
+    "name_variants": [
       "LIPNOWSKI"
     ],
     "seat_name_variants": [
@@ -4033,7 +4033,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LIPNOWSKI",
+        "current_name": "LIPNOWSKI",
         "current_seat_name": "LIPNO",
         "current_dist_type": "w",
         "timespan": null
@@ -4041,8 +4041,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁOWICKI",
-    "dist_name_variants": [
+    "name_id": "ŁOWICKI",
+    "name_variants": [
       "ŁOWICKI"
     ],
     "seat_name_variants": [
@@ -4050,7 +4050,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁOWICKI",
+        "current_name": "ŁOWICKI",
         "current_seat_name": "ŁOWICZ",
         "current_dist_type": "w",
         "timespan": null
@@ -4058,8 +4058,8 @@
     ]
   },
   {
-    "dist_name_id": "MAKOWSKI (MAKÓW MAZOWIECKI)",
-    "dist_name_variants": [
+    "name_id": "MAKOWSKI (MAKÓW MAZOWIECKI)",
+    "name_variants": [
       "MAKOWSKI (MAKÓW MAZOWIECKI)"
     ],
     "seat_name_variants": [
@@ -4067,7 +4067,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "MAKOWSKI (MAKÓW MAZOWIECKI)",
+        "current_name": "MAKOWSKI (MAKÓW MAZOWIECKI)",
         "current_seat_name": "MAKÓW MAZOWIECKI",
         "current_dist_type": "w",
         "timespan": null
@@ -4075,8 +4075,8 @@
     ]
   },
   {
-    "dist_name_id": "MIŃSKI",
-    "dist_name_variants": [
+    "name_id": "MIŃSKI",
+    "name_variants": [
       "MIŃSKI"
     ],
     "seat_name_variants": [
@@ -4084,7 +4084,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "MIŃSKI",
+        "current_name": "MIŃSKI",
         "current_seat_name": "MIŃSK MAZOW.",
         "current_dist_type": "w",
         "timespan": null
@@ -4092,8 +4092,8 @@
     ]
   },
   {
-    "dist_name_id": "MŁAWSKI",
-    "dist_name_variants": [
+    "name_id": "MŁAWSKI",
+    "name_variants": [
       "MŁAWSKI"
     ],
     "seat_name_variants": [
@@ -4101,7 +4101,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "MŁAWSKI",
+        "current_name": "MŁAWSKI",
         "current_seat_name": "MŁAWA",
         "current_dist_type": "w",
         "timespan": null
@@ -4109,8 +4109,8 @@
     ]
   },
   {
-    "dist_name_id": "NIESZAWSKI",
-    "dist_name_variants": [
+    "name_id": "NIESZAWSKI",
+    "name_variants": [
       "NIESZAWSKI"
     ],
     "seat_name_variants": [
@@ -4118,7 +4118,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "NIESZAWSKI",
+        "current_name": "NIESZAWSKI",
         "current_seat_name": "NIESZAWA",
         "current_dist_type": "w",
         "timespan": null
@@ -4126,8 +4126,8 @@
     ]
   },
   {
-    "dist_name_id": "PŁOCKI",
-    "dist_name_variants": [
+    "name_id": "PŁOCKI",
+    "name_variants": [
       "PŁOCKI"
     ],
     "seat_name_variants": [
@@ -4135,7 +4135,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PŁOCKI",
+        "current_name": "PŁOCKI",
         "current_seat_name": "PŁOCK",
         "current_dist_type": "w",
         "timespan": null
@@ -4143,8 +4143,8 @@
     ]
   },
   {
-    "dist_name_id": "PŁOŃSKI",
-    "dist_name_variants": [
+    "name_id": "PŁOŃSKI",
+    "name_variants": [
       "PŁOŃSKI"
     ],
     "seat_name_variants": [
@@ -4152,7 +4152,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PŁOŃSKI",
+        "current_name": "PŁOŃSKI",
         "current_seat_name": "PŁOŃSK",
         "current_dist_type": "w",
         "timespan": null
@@ -4160,8 +4160,8 @@
     ]
   },
   {
-    "dist_name_id": "PRZASNYCKI",
-    "dist_name_variants": [
+    "name_id": "PRZASNYCKI",
+    "name_variants": [
       "PRZASNYCKI",
       "PRZASNYSKI"
     ],
@@ -4170,7 +4170,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PRZASNYCKI",
+        "current_name": "PRZASNYCKI",
         "current_seat_name": "PRZASNYSZ",
         "current_dist_type": "w",
         "timespan": null
@@ -4178,8 +4178,8 @@
     ]
   },
   {
-    "dist_name_id": "PUŁTUSKI",
-    "dist_name_variants": [
+    "name_id": "PUŁTUSKI",
+    "name_variants": [
       "PUŁTUSKI"
     ],
     "seat_name_variants": [
@@ -4187,7 +4187,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PUŁTUSKI",
+        "current_name": "PUŁTUSKI",
         "current_seat_name": "PUŁTUSK",
         "current_dist_type": "w",
         "timespan": null
@@ -4195,8 +4195,8 @@
     ]
   },
   {
-    "dist_name_id": "RADZYMIŃSKI",
-    "dist_name_variants": [
+    "name_id": "RADZYMIŃSKI",
+    "name_variants": [
       "RADZYMIŃSKI"
     ],
     "seat_name_variants": [
@@ -4204,7 +4204,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RADZYMIŃSKI",
+        "current_name": "RADZYMIŃSKI",
         "current_seat_name": "RADZYMIN",
         "current_dist_type": "w",
         "timespan": null
@@ -4212,8 +4212,8 @@
     ]
   },
   {
-    "dist_name_id": "RAWSKI (RAWA MAZOWIECKA)",
-    "dist_name_variants": [
+    "name_id": "RAWSKI (RAWA MAZOWIECKA)",
+    "name_variants": [
       "RAWSKI (RAWA MAZOWIECKA)",
       "RAWSKO-MAZOWIECKI"
     ],
@@ -4222,7 +4222,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RAWSKI (RAWA MAZOWIECKA)",
+        "current_name": "RAWSKI (RAWA MAZOWIECKA)",
         "current_seat_name": "RAWA MAZOWIECKA",
         "current_dist_type": "w",
         "timespan": null
@@ -4230,8 +4230,8 @@
     ]
   },
   {
-    "dist_name_id": "RYPIŃSKI",
-    "dist_name_variants": [
+    "name_id": "RYPIŃSKI",
+    "name_variants": [
       "RYPIŃSKI"
     ],
     "seat_name_variants": [
@@ -4239,7 +4239,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RYPIŃSKI",
+        "current_name": "RYPIŃSKI",
         "current_seat_name": "RYPIN",
         "current_dist_type": "w",
         "timespan": null
@@ -4247,8 +4247,8 @@
     ]
   },
   {
-    "dist_name_id": "SIERPECKI",
-    "dist_name_variants": [
+    "name_id": "SIERPECKI",
+    "name_variants": [
       "SIERPECKI"
     ],
     "seat_name_variants": [
@@ -4256,7 +4256,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SIERPECKI",
+        "current_name": "SIERPECKI",
         "current_seat_name": "SIERPC",
         "current_dist_type": "w",
         "timespan": null
@@ -4264,8 +4264,8 @@
     ]
   },
   {
-    "dist_name_id": "SKIERNIEWICKI",
-    "dist_name_variants": [
+    "name_id": "SKIERNIEWICKI",
+    "name_variants": [
       "SKIERNIEWICKI"
     ],
     "seat_name_variants": [
@@ -4273,7 +4273,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SKIERNIEWICKI",
+        "current_name": "SKIERNIEWICKI",
         "current_seat_name": "SKIERNIEWICE",
         "current_dist_type": "w",
         "timespan": null
@@ -4281,8 +4281,8 @@
     ]
   },
   {
-    "dist_name_id": "SOCHACZEWSKI",
-    "dist_name_variants": [
+    "name_id": "SOCHACZEWSKI",
+    "name_variants": [
       "SOCHACZEWSKI"
     ],
     "seat_name_variants": [
@@ -4290,7 +4290,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SOCHACZEWSKI",
+        "current_name": "SOCHACZEWSKI",
         "current_seat_name": "SOCHACZEW",
         "current_dist_type": "w",
         "timespan": null
@@ -4298,8 +4298,8 @@
     ]
   },
   {
-    "dist_name_id": "WARSZAWSKI",
-    "dist_name_variants": [
+    "name_id": "WARSZAWSKI",
+    "name_variants": [
       "WARSZAWSKI"
     ],
     "seat_name_variants": [
@@ -4307,7 +4307,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WARSZAWSKI",
+        "current_name": "WARSZAWSKI",
         "current_seat_name": "WARSZAWA",
         "current_dist_type": "w",
         "timespan": null
@@ -4315,8 +4315,8 @@
     ]
   },
   {
-    "dist_name_id": "WŁOCŁAWSKI",
-    "dist_name_variants": [
+    "name_id": "WŁOCŁAWSKI",
+    "name_variants": [
       "WŁOCŁAWSKI"
     ],
     "seat_name_variants": [
@@ -4324,7 +4324,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WŁOCŁAWSKI",
+        "current_name": "WŁOCŁAWSKI",
         "current_seat_name": "WŁOCŁAWEK",
         "current_dist_type": "w",
         "timespan": null
@@ -4332,8 +4332,8 @@
     ]
   },
   {
-    "dist_name_id": "DUBIEŃSKI",
-    "dist_name_variants": [
+    "name_id": "DUBIEŃSKI",
+    "name_variants": [
       "DUBIEŃSKI"
     ],
     "seat_name_variants": [
@@ -4341,7 +4341,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "DUBIEŃSKI",
+        "current_name": "DUBIEŃSKI",
         "current_seat_name": "DUBNO",
         "current_dist_type": "w",
         "timespan": null
@@ -4349,8 +4349,8 @@
     ]
   },
   {
-    "dist_name_id": "HOROCHOWSKI",
-    "dist_name_variants": [
+    "name_id": "HOROCHOWSKI",
+    "name_variants": [
       "HOROCHOWSKI"
     ],
     "seat_name_variants": [
@@ -4358,7 +4358,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "HOROCHOWSKI",
+        "current_name": "HOROCHOWSKI",
         "current_seat_name": "HOROCHÓW",
         "current_dist_type": "w",
         "timespan": null
@@ -4366,8 +4366,8 @@
     ]
   },
   {
-    "dist_name_id": "KOWELSKI",
-    "dist_name_variants": [
+    "name_id": "KOWELSKI",
+    "name_variants": [
       "KOWELSKI"
     ],
     "seat_name_variants": [
@@ -4375,7 +4375,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KOWELSKI",
+        "current_name": "KOWELSKI",
         "current_seat_name": "KOWEL",
         "current_dist_type": "w",
         "timespan": null
@@ -4383,8 +4383,8 @@
     ]
   },
   {
-    "dist_name_id": "KRZEMIENIECKI",
-    "dist_name_variants": [
+    "name_id": "KRZEMIENIECKI",
+    "name_variants": [
       "KRZEMIENIECKI"
     ],
     "seat_name_variants": [
@@ -4392,7 +4392,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KRZEMIENIECKI",
+        "current_name": "KRZEMIENIECKI",
         "current_seat_name": "KRZEMIENIEC",
         "current_dist_type": "w",
         "timespan": null
@@ -4400,8 +4400,8 @@
     ]
   },
   {
-    "dist_name_id": "LUBOMELSKI",
-    "dist_name_variants": [
+    "name_id": "LUBOMELSKI",
+    "name_variants": [
       "LUBOMELSKI"
     ],
     "seat_name_variants": [
@@ -4409,7 +4409,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LUBOMELSKI",
+        "current_name": "LUBOMELSKI",
         "current_seat_name": "LUBOML",
         "current_dist_type": "w",
         "timespan": null
@@ -4417,8 +4417,8 @@
     ]
   },
   {
-    "dist_name_id": "ŁUCKI",
-    "dist_name_variants": [
+    "name_id": "ŁUCKI",
+    "name_variants": [
       "ŁUCKI"
     ],
     "seat_name_variants": [
@@ -4426,7 +4426,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŁUCKI",
+        "current_name": "ŁUCKI",
         "current_seat_name": "ŁUCK",
         "current_dist_type": "w",
         "timespan": null
@@ -4434,8 +4434,8 @@
     ]
   },
   {
-    "dist_name_id": "OSTROGSKI",
-    "dist_name_variants": [
+    "name_id": "OSTROGSKI",
+    "name_variants": [
       "OSTROGSKI"
     ],
     "seat_name_variants": [
@@ -4443,7 +4443,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OSTROGSKI",
+        "current_name": "OSTROGSKI",
         "current_seat_name": "OSTRÓG",
         "current_dist_type": "w",
         "timespan": null
@@ -4451,8 +4451,8 @@
     ]
   },
   {
-    "dist_name_id": "RÓWIEŃSKI",
-    "dist_name_variants": [
+    "name_id": "RÓWIEŃSKI",
+    "name_variants": [
       "RÓWIEŃSKI"
     ],
     "seat_name_variants": [
@@ -4460,7 +4460,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RÓWIEŃSKI",
+        "current_name": "RÓWIEŃSKI",
         "current_seat_name": "RÓWNE",
         "current_dist_type": "w",
         "timespan": null
@@ -4468,8 +4468,8 @@
     ]
   },
   {
-    "dist_name_id": "WŁODZIMIERSKI",
-    "dist_name_variants": [
+    "name_id": "WŁODZIMIERSKI",
+    "name_variants": [
       "WŁODZIMIERSKI"
     ],
     "seat_name_variants": [
@@ -4477,7 +4477,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WŁODZIMIERSKI",
+        "current_name": "WŁODZIMIERSKI",
         "current_seat_name": "WŁODZIMIERZ",
         "current_dist_type": "w",
         "timespan": null
@@ -4485,8 +4485,8 @@
     ]
   },
   {
-    "dist_name_id": "BARDIOWSKI",
-    "dist_name_variants": [
+    "name_id": "BARDIOWSKI",
+    "name_variants": [
       "BARDIOWSKI"
     ],
     "seat_name_variants": [
@@ -4494,7 +4494,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BARDIOWSKI",
+        "current_name": "BARDIOWSKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4502,8 +4502,8 @@
     ]
   },
   {
-    "dist_name_id": "CZADECKI",
-    "dist_name_variants": [
+    "name_id": "CZADECKI",
+    "name_variants": [
       "CZADECKI"
     ],
     "seat_name_variants": [
@@ -4511,7 +4511,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CZADECKI",
+        "current_name": "CZADECKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4519,8 +4519,8 @@
     ]
   },
   {
-    "dist_name_id": "CZESKOCIESZYŃSKI",
-    "dist_name_variants": [
+    "name_id": "CZESKOCIESZYŃSKI",
+    "name_variants": [
       "CZESKOCIESZYŃSKI"
     ],
     "seat_name_variants": [
@@ -4528,7 +4528,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "CZESKOCIESZYŃSKI",
+        "current_name": "CZESKOCIESZYŃSKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4536,8 +4536,8 @@
     ]
   },
   {
-    "dist_name_id": "FRYDECKI",
-    "dist_name_variants": [
+    "name_id": "FRYDECKI",
+    "name_variants": [
       "FRYDECKI"
     ],
     "seat_name_variants": [
@@ -4545,7 +4545,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "FRYDECKI",
+        "current_name": "FRYDECKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4553,8 +4553,8 @@
     ]
   },
   {
-    "dist_name_id": "FRYSZTACKI",
-    "dist_name_variants": [
+    "name_id": "FRYSZTACKI",
+    "name_variants": [
       "FRYSZTACKI"
     ],
     "seat_name_variants": [
@@ -4562,7 +4562,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "FRYSZTACKI",
+        "current_name": "FRYSZTACKI",
         "current_seat_name": "FRYSZTAT",
         "current_dist_type": "w",
         "timespan": null
@@ -4570,8 +4570,8 @@
     ]
   },
   {
-    "dist_name_id": "KIEŻMARSKI",
-    "dist_name_variants": [
+    "name_id": "KIEŻMARSKI",
+    "name_variants": [
       "KIEŻMARSKI"
     ],
     "seat_name_variants": [
@@ -4579,7 +4579,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KIEŻMARSKI",
+        "current_name": "KIEŻMARSKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4587,8 +4587,8 @@
     ]
   },
   {
-    "dist_name_id": "NAMIESTOWSKI",
-    "dist_name_variants": [
+    "name_id": "NAMIESTOWSKI",
+    "name_variants": [
       "NAMIESTOWSKI"
     ],
     "seat_name_variants": [
@@ -4596,7 +4596,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "NAMIESTOWSKI",
+        "current_name": "NAMIESTOWSKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4604,8 +4604,8 @@
     ]
   },
   {
-    "dist_name_id": "SNIŃSKI",
-    "dist_name_variants": [
+    "name_id": "SNIŃSKI",
+    "name_variants": [
       "SNIŃSKI"
     ],
     "seat_name_variants": [
@@ -4613,7 +4613,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "SNIŃSKI",
+        "current_name": "SNIŃSKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4621,8 +4621,8 @@
     ]
   },
   {
-    "dist_name_id": "STAROLUBOWELSKI",
-    "dist_name_variants": [
+    "name_id": "STAROLUBOWELSKI",
+    "name_variants": [
       "STAROLUBOWELSKI"
     ],
     "seat_name_variants": [
@@ -4630,7 +4630,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STAROLUBOWELSKI",
+        "current_name": "STAROLUBOWELSKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4638,8 +4638,8 @@
     ]
   },
   {
-    "dist_name_id": "STAROWIEJSKI",
-    "dist_name_variants": [
+    "name_id": "STAROWIEJSKI",
+    "name_variants": [
       "STAROWIEJSKI"
     ],
     "seat_name_variants": [
@@ -4647,7 +4647,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "STAROWIEJSKI",
+        "current_name": "STAROWIEJSKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4655,8 +4655,8 @@
     ]
   },
   {
-    "dist_name_id": "TRZCIAŃSKI",
-    "dist_name_variants": [
+    "name_id": "TRZCIAŃSKI",
+    "name_variants": [
       "TRZCIAŃSKI"
     ],
     "seat_name_variants": [
@@ -4664,7 +4664,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TRZCIAŃSKI",
+        "current_name": "TRZCIAŃSKI",
         "current_seat_name": "X",
         "current_dist_type": "w",
         "timespan": null
@@ -4672,8 +4672,8 @@
     ]
   },
   {
-    "dist_name_id": "BYTOM WIEŚ",
-    "dist_name_variants": [
+    "name_id": "BYTOM WIEŚ",
+    "name_variants": [
       "BYTOM WIEŚ"
     ],
     "seat_name_variants": [
@@ -4681,7 +4681,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BYTOM WIEŚ",
+        "current_name": "BYTOM WIEŚ",
         "current_seat_name": "BYTOM",
         "current_dist_type": "w",
         "timespan": null
@@ -4689,8 +4689,8 @@
     ]
   },
   {
-    "dist_name_id": "BYTOM MIASTO",
-    "dist_name_variants": [
+    "name_id": "BYTOM MIASTO",
+    "name_variants": [
       "BYTOM MIASTO"
     ],
     "seat_name_variants": [
@@ -4698,7 +4698,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BYTOM MIASTO",
+        "current_name": "BYTOM MIASTO",
         "current_seat_name": "BYTOM",
         "current_dist_type": "m",
         "timespan": null
@@ -4706,8 +4706,8 @@
     ]
   },
   {
-    "dist_name_id": "ZABRSKI",
-    "dist_name_variants": [
+    "name_id": "ZABRSKI",
+    "name_variants": [
       "ZABRSKI"
     ],
     "seat_name_variants": [
@@ -4715,7 +4715,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ZABRSKI",
+        "current_name": "ZABRSKI",
         "current_seat_name": "ZABRZE",
         "current_dist_type": "w",
         "timespan": null
@@ -4723,8 +4723,8 @@
     ]
   },
   {
-    "dist_name_id": "KATOWICE",
-    "dist_name_variants": [
+    "name_id": "KATOWICE",
+    "name_variants": [
       "KATOWICE"
     ],
     "seat_name_variants": [
@@ -4732,7 +4732,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KATOWICE",
+        "current_name": "KATOWICE",
         "current_seat_name": "KATOWICE",
         "current_dist_type": "m",
         "timespan": null
@@ -4740,8 +4740,8 @@
     ]
   },
   {
-    "dist_name_id": "KATOWICKI",
-    "dist_name_variants": [
+    "name_id": "KATOWICKI",
+    "name_variants": [
       "KATOWICKI"
     ],
     "seat_name_variants": [
@@ -4749,7 +4749,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KATOWICKI",
+        "current_name": "KATOWICKI",
         "current_seat_name": "KATOWICE",
         "current_dist_type": "w",
         "timespan": null
@@ -4757,8 +4757,8 @@
     ]
   },
   {
-    "dist_name_id": "KRÓLEWSKA HUTA",
-    "dist_name_variants": [
+    "name_id": "KRÓLEWSKA HUTA",
+    "name_variants": [
       "KRÓLEWSKA HUTA"
     ],
     "seat_name_variants": [
@@ -4766,7 +4766,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "KRÓLEWSKA HUTA",
+        "current_name": "KRÓLEWSKA HUTA",
         "current_seat_name": "KRÓLEWSKA HUTA",
         "current_dist_type": "m",
         "timespan": null
@@ -4774,8 +4774,8 @@
     ]
   },
   {
-    "dist_name_id": "LUBLINIECKI",
-    "dist_name_variants": [
+    "name_id": "LUBLINIECKI",
+    "name_variants": [
       "LUBLINIECKI"
     ],
     "seat_name_variants": [
@@ -4783,7 +4783,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "LUBLINIECKI",
+        "current_name": "LUBLINIECKI",
         "current_seat_name": "LUBLINIEC",
         "current_dist_type": "w",
         "timespan": null
@@ -4791,8 +4791,8 @@
     ]
   },
   {
-    "dist_name_id": "PSZCZYŃSKI",
-    "dist_name_variants": [
+    "name_id": "PSZCZYŃSKI",
+    "name_variants": [
       "PSZCZYŃSKI"
     ],
     "seat_name_variants": [
@@ -4800,7 +4800,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "PSZCZYŃSKI",
+        "current_name": "PSZCZYŃSKI",
         "current_seat_name": "PSZCZYNA",
         "current_dist_type": "w",
         "timespan": null
@@ -4808,8 +4808,8 @@
     ]
   },
   {
-    "dist_name_id": "RACIBORSKI",
-    "dist_name_variants": [
+    "name_id": "RACIBORSKI",
+    "name_variants": [
       "RACIBORSKI"
     ],
     "seat_name_variants": [
@@ -4817,7 +4817,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RACIBORSKI",
+        "current_name": "RACIBORSKI",
         "current_seat_name": "RACIBÓRZ",
         "current_dist_type": "w",
         "timespan": null
@@ -4825,8 +4825,8 @@
     ]
   },
   {
-    "dist_name_id": "RYBNICKI",
-    "dist_name_variants": [
+    "name_id": "RYBNICKI",
+    "name_variants": [
       "RYBNICKI"
     ],
     "seat_name_variants": [
@@ -4834,7 +4834,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "RYBNICKI",
+        "current_name": "RYBNICKI",
         "current_seat_name": "RYBNIK",
         "current_dist_type": "w",
         "timespan": null
@@ -4842,8 +4842,8 @@
     ]
   },
   {
-    "dist_name_id": "TARNOGÓRSKI",
-    "dist_name_variants": [
+    "name_id": "TARNOGÓRSKI",
+    "name_variants": [
       "TARNOGÓRSKI"
     ],
     "seat_name_variants": [
@@ -4851,7 +4851,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TARNOGÓRSKI",
+        "current_name": "TARNOGÓRSKI",
         "current_seat_name": "TARNOWSKIE GÓRY",
         "current_dist_type": "w",
         "timespan": null
@@ -4859,8 +4859,8 @@
     ]
   },
   {
-    "dist_name_id": "BRASŁAWSKI",
-    "dist_name_variants": [
+    "name_id": "BRASŁAWSKI",
+    "name_variants": [
       "BRASŁAWSKI"
     ],
     "seat_name_variants": [
@@ -4868,7 +4868,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "BRASŁAWSKI",
+        "current_name": "BRASŁAWSKI",
         "current_seat_name": "BRASŁAW",
         "current_dist_type": "w",
         "timespan": null
@@ -4876,8 +4876,8 @@
     ]
   },
   {
-    "dist_name_id": "OSZMIAŃSKI",
-    "dist_name_variants": [
+    "name_id": "OSZMIAŃSKI",
+    "name_variants": [
       "OSZMIAŃSKI"
     ],
     "seat_name_variants": [
@@ -4885,7 +4885,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "OSZMIAŃSKI",
+        "current_name": "OSZMIAŃSKI",
         "current_seat_name": "OSZMIANY",
         "current_dist_type": "w",
         "timespan": null
@@ -4893,8 +4893,8 @@
     ]
   },
   {
-    "dist_name_id": "ŚWIĘCIAŃSKI",
-    "dist_name_variants": [
+    "name_id": "ŚWIĘCIAŃSKI",
+    "name_variants": [
       "ŚWIĘCIAŃSKI"
     ],
     "seat_name_variants": [
@@ -4902,7 +4902,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "ŚWIĘCIAŃSKI",
+        "current_name": "ŚWIĘCIAŃSKI",
         "current_seat_name": "ŚWIĘCIANY",
         "current_dist_type": "w",
         "timespan": null
@@ -4910,8 +4910,8 @@
     ]
   },
   {
-    "dist_name_id": "TROCKI",
-    "dist_name_variants": [
+    "name_id": "TROCKI",
+    "name_variants": [
       "TROCKI"
     ],
     "seat_name_variants": [
@@ -4919,7 +4919,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "TROCKI",
+        "current_name": "TROCKI",
         "current_seat_name": "TROKI",
         "current_dist_type": "w",
         "timespan": null
@@ -4927,8 +4927,8 @@
     ]
   },
   {
-    "dist_name_id": "WILEŃSKI",
-    "dist_name_variants": [
+    "name_id": "WILEŃSKI",
+    "name_variants": [
       "WILEŃSKI"
     ],
     "seat_name_variants": [
@@ -4936,7 +4936,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WILEŃSKI",
+        "current_name": "WILEŃSKI",
         "current_seat_name": "WILNO",
         "current_dist_type": "w",
         "timespan": null
@@ -4944,8 +4944,8 @@
     ]
   },
   {
-    "dist_name_id": "WILNO",
-    "dist_name_variants": [
+    "name_id": "WILNO",
+    "name_variants": [
       "WILNO"
     ],
     "seat_name_variants": [
@@ -4953,7 +4953,7 @@
     ],
     "states": [
       {
-        "current_dist_name": "WILNO",
+        "current_name": "WILNO",
         "current_seat_name": "WILNO",
         "current_dist_type": "m",
         "timespan": null

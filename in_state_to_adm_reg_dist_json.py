@@ -16,17 +16,17 @@ for region_name, dist_list in initial_state.items():
     all_d_r_list += [district['district_name'] for district in dist_list] # For check that the names don't double
     region_dist_list = []
     for dist in dist_list:
-        dist_dict = {"dist_name_id": dist["district_name"]}
+        dist_dict = {"name_id": dist["district_name"]}
         dist_name_variants = [dist["district_name"]] + dist.get("alternative_names", [])
-        dist_dict["dist_name_variants"] = dist_name_variants
+        dist_dict["name_variants"] = dist_name_variants
         all_names_list += dist_name_variants
         dist_seat_name_variants = [dist["seat"]] + dist.get("alternative_seat_names", [])
         dist_dict["seat_name_variants"] = dist_seat_name_variants
-        dist_state_dict = {"current_dist_name": dist["district_name"], "current_seat_name": dist["seat"], "current_dist_type": dist["district_type"], "timespan": None}
+        dist_state_dict = {"current_name": dist["district_name"], "current_seat_name": dist["seat"], "current_dist_type": dist["district_type"], "timespan": None}
         dist_dict["states"] = [dist_state_dict]
         region_dist_list.append(dist_dict)
     dist_state_list += region_dist_list
-    region_state_list.append({"region_name_id": region_name, "region_name_variants": [region_name], "is_poland": True, "states": [{"region_name": region_name, "timespan": None}]})
+    region_state_list.append({"name_id": region_name, "name_variants": [region_name], "is_poland": True, "states": [{"current_name": region_name, "timespan": None}]})
 
 # Verify that there are no double district names
 counts = Counter(all_names_list)
