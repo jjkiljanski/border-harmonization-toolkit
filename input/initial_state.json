@@ -1375,7 +1375,7 @@
       "seat": "WŁODZIMIERZ"
     }
   ],
-  "CZECHOSŁOWACJA": [
+  "ZAOLZIE": [
     {
       "district_name": "BARDIOWSKI",
       "district_type": "w",
@@ -1432,7 +1432,7 @@
       "seat": "X"
     }
   ],
-  "NIEMCY": [
+  "ŚLĄSK NIEMIECKI": [
     {
       "district_name": "BYTOM WIEŚ",
       "district_type": "w",
@@ -1489,7 +1489,7 @@
       "seat": "TARNOWSKIE GÓRY"
     }
   ],
-  "LITWA": [
+  "ZIEMIA WILEŃSKA": [
     {
       "district_name": "BRASŁAWSKI",
       "district_type": "w",

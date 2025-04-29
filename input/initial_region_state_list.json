@@ -208,40 +208,40 @@
     ]
   },
   {
-    "name_id": "CZECHOSŁOWACJA",
+    "name_id": "ZAOLZIE",
     "name_variants": [
-      "CZECHOSŁOWACJA"
+      "ZAOLZIE"
     ],
     "is_poland": true,
     "states": [
       {
-        "current_name": "CZECHOSŁOWACJA",
+        "current_name": "ZAOLZIE",
         "timespan": null
       }
     ]
   },
   {
-    "name_id": "NIEMCY",
+    "name_id": "ŚLĄSK NIEMIECKI",
     "name_variants": [
-      "NIEMCY"
+      "ŚLĄSK NIEMIECKI"
     ],
     "is_poland": true,
     "states": [
       {
-        "current_name": "NIEMCY",
+        "current_name": "ŚLĄSK NIEMIECKI",
         "timespan": null
       }
     ]
   },
   {
-    "name_id": "LITWA",
+    "name_id": "ZIEMIA WILEŃSKA",
     "name_variants": [
-      "LITWA"
+      "ZIEMIA WILEŃSKA"
     ],
     "is_poland": true,
     "states": [
       {
-        "current_name": "LITWA",
+        "current_name": "ZIEMIA WILEŃSKA",
         "timespan": null
       }
     ]

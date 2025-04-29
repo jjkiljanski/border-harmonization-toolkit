@@ -5,6 +5,7 @@ with open('input/initial_state.json', 'r', encoding='utf-8') as f:
     initial_state = json.load(f)
 
 adm_state_dict = []
+adm_state_dict = {"POLAND": [], "ABROAD": []}
 dist_state_list = []
 region_state_list = []
 
@@ -12,7 +13,11 @@ all_names_list = [] # List with all names to check if some names repeat
 all_d_r_list = [] # List with all names of districts in regions to verify that they are not double
 
 for region_name, dist_list in initial_state.items():
-    adm_state_dict.append({"region_name": region_name, "districts": [district['district_name'] for district in dist_list]})
+    if region_name in ["ZIEMIA WILEŃSKA", "ŚLĄSK NIEMIECKI", "ZAOLZIE"]:
+        country_name = "ABROAD"
+    else:
+        country_name = "POLAND"
+    adm_state_dict[country_name].append({region_name: [district['district_name'] for district in dist_list]}) # Administrative state
     all_d_r_list += [district['district_name'] for district in dist_list] # For check that the names don't double
     region_dist_list = []
     for dist in dist_list:
@@ -45,9 +50,9 @@ for item, count in counts.items():
 
 
 
-# # Dump to JSON
-# with open("input/initial_adm_state.json", "w", encoding="utf-8") as f:
-#     json.dump(adm_state_dict, f, ensure_ascii=False, indent=2)
+# Dump to JSON
+with open("input/initial_adm_state.json", "w", encoding="utf-8") as f:
+    json.dump({"unit_hierarchy": adm_state_dict}, f, ensure_ascii=False, indent=2)
 
 # Dump to JSON
 with open("input/initial_dist_state_list.json", "w", encoding="utf-8") as f:

@@ -1,388 +1,375 @@
-[
-  {
-    "region_name": "BIAŁOSTOCKIE",
-    "districts": [
-      "AUGUSTOWSKI",
-      "BIAŁOSTOCKI",
-      "BIAŁOWIESKI",
-      "BIELSKI (BIELSK PODLASKI)",
-      "GRODZIEŃSKI",
-      "KOLNEŃSKI",
-      "ŁOMŻYŃSKI",
-      "OSTROŁĘCKI",
-      "OSTROWSKI (OSTRÓW MAZOWIECKA)",
-      "SEJNEŃSKI",
-      "SOKÓLSKI",
-      "SUWALSKI",
-      "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)",
-      "WOŁKOWYSKI",
-      "WYSOKOMAZOWIECKI"
-    ]
-  },
-  {
-    "region_name": "KIELECKIE",
-    "districts": [
-      "BĘDZIŃSKI",
-      "CZĘSTOCHOWSKI",
-      "IŁŻECKI",
-      "JĘDRZEJOWSKI",
-      "KIELECKI",
-      "KONECKI",
-      "KOZIENICKI",
-      "MIECHOWSKI",
-      "OLKUSKI",
-      "OPATOWSKI",
-      "OPOCZYŃSKI",
-      "PIŃCZOWSKI",
-      "RADOMSKI",
-      "SANDOMIERSKI",
-      "STOPNICKI",
-      "WŁOSZCZOWSKI"
-    ]
-  },
-  {
-    "region_name": "KRAKOWSKIE",
-    "districts": [
-      "BIALSKI (BIAŁA KRAKOWSKA)",
-      "BOCHEŃSKI",
-      "BRZESKI (BRZESKO)",
-      "CHRZANOWSKI",
-      "DĄBROWSKI",
-      "GORLICKI",
-      "GRYBOWSKI",
-      "JASIELSKI",
-      "KRAKOWSKI",
-      "KRAKÓW",
-      "LIMANOWSKI",
-      "MIELECKI",
-      "MYŚLENICKI",
-      "NOWOSĄDECKI",
-      "NOWOTARSKI",
-      "OŚWIĘCIMSKI",
-      "PILZNEŃSKI",
-      "PODGÓRSKI",
-      "ROPCZYCKI",
-      "SPISKO-ORAWSKI",
-      "TARNOWSKI",
-      "WADOWICKI",
-      "WIELICKI",
-      "ŻYWIECKI"
-    ]
-  },
-  {
-    "region_name": "LUBELSKIE",
-    "districts": [
-      "BIALSKI (BIAŁA PODLASKA)",
-      "BIŁGORAJSKI",
-      "CHEŁMSKI",
-      "GARWOLIŃSKI",
-      "HRUBIESZOWSKI",
-      "JANOWSKI",
-      "KONSTANTYNOWSKI",
-      "KRASNOSTAWSKI",
-      "LUBARTOWSKI",
-      "LUBELSKI",
-      "LUBLIN",
-      "ŁUKOWSKI",
-      "PUŁAWSKI",
-      "RADZYŃSKI",
-      "SIEDLECKI",
-      "SOKOŁOWSKI",
-      "TOMASZOWSKI",
-      "WĘGROWSKI",
-      "WŁODAWSKI",
-      "ZAMOJSKI"
-    ]
-  },
-  {
-    "region_name": "LWOWSKIE",
-    "districts": [
-      "BÓBRECKI",
-      "BRZOZOWSKI",
-      "CIESZANOWSKI",
-      "DOBROMILSKI",
-      "DROHOBYCKI",
-      "GRÓDECKI",
-      "JAROSŁAWSKI",
-      "JAWOROWSKI",
-      "KOLBUSZOWSKI",
-      "KROŚNIEŃSKI",
-      "LISKI",
-      "LWOWSKI",
-      "LWÓW",
-      "ŁAŃCUCKI",
-      "MOŚCISKI",
-      "NIŻAŃSKI",
-      "PRZEMYSKI",
-      "PRZEWORSKI",
-      "RAWSKI (RAWA RUSKA)",
-      "RUDECKI",
-      "RZESZOWSKI",
-      "SAMBORSKI",
-      "SANOCKI",
-      "SOKALSKI",
-      "STAROSAMBORSKI",
-      "STRZYŻOWSKI",
-      "TARNOBRZESKI",
-      "ŻÓŁKIEWSKI"
-    ]
-  },
-  {
-    "region_name": "ŁÓDZKIE",
-    "districts": [
-      "BRZEZIŃSKI",
-      "KALISKI",
-      "KOLSKI",
-      "KONIŃSKI",
-      "ŁASKI",
-      "ŁĘCZYCKI",
-      "ŁÓDZKI",
-      "ŁÓDŹ",
-      "PIOTRKOWSKI",
-      "RADOMSZCZAŃSKI",
-      "SIERADZKI",
-      "SŁUPECKI",
-      "TURECKI",
-      "WIELUŃSKI"
-    ]
-  },
-  {
-    "region_name": "M. ST. WARSZAWA",
-    "districts": [
-      "M. ST. WARSZAWA"
-    ]
-  },
-  {
-    "region_name": "NOWOGRÓDZKIE",
-    "districts": [
-      "BARANOWICKI",
-      "DUNIŁOWICKI",
-      "DZIŚNIEŃSKI",
-      "LIDZKI",
-      "NIEŚWIESKI",
-      "NOWOGRÓDZKI",
-      "SŁONIMSKI",
-      "STOŁPECKI",
-      "WILEJSKI",
-      "WOŁOŻYŃSKI"
-    ]
-  },
-  {
-    "region_name": "POLESKIE",
-    "districts": [
-      "BRZESKI (BRZEŚĆ N.BUG.)",
-      "DROHICKI",
-      "KOBRYŃSKI",
-      "KOSOWSKI (KOSÓW POLESKI)",
-      "KOSZYRSKI",
-      "ŁUNINIECKI",
-      "PIŃSKI",
-      "PRUŻAŃSKI",
-      "SARNEŃSKI"
-    ]
-  },
-  {
-    "region_name": "POMORSKIE",
-    "districts": [
-      "BRODNICKI",
-      "CHEŁMIŃSKI",
-      "CHOJNICKI",
-      "DZIAŁDOWSKI",
-      "GNIEWSKI",
-      "GRUDZIĄDZ",
-      "GRUDZIĄDZKI",
-      "KARTUSKI",
-      "KOŚCIERSKI",
-      "LUBAWSKI",
-      "PUCKI",
-      "SĘPOLEŃSKI",
-      "STAROGARDZKI",
-      "ŚWIECKI",
-      "TCZEWSKI",
-      "TORUŃ",
-      "TORUŃSKI",
-      "TUCHOLSKI",
-      "WĄBRZESKI",
-      "WEJHEROWSKI"
-    ]
-  },
-  {
-    "region_name": "POZNAŃSKIE",
-    "districts": [
-      "BYDGOSKI",
-      "BYDGOSZCZ",
-      "CHODZIESKI",
-      "CZARNKOWSKI",
-      "GNIEŹNIEŃSKI",
-      "GOSTYŃSKI",
-      "GRODZISKI",
-      "INOWROCŁAWSKI",
-      "JAROCIŃSKI",
-      "KĘPIŃSKI",
-      "KOŚCIAŃSKI",
-      "KOŹMIŃSKI",
-      "KROTOSZYŃSKI",
-      "LESZCZYŃSKI",
-      "MIĘDZYCHODZKI",
-      "MOGILEŃSKI",
-      "NOWOTOMYSKI",
-      "OBORNICKI",
-      "ODOLANOWSKI",
-      "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
-      "OSTRZESZOWSKI",
-      "PLESZEWSKI",
-      "POZNAŃ",
-      "POZNAŃSKI WSCHODNI",
-      "POZNAŃSKI ZACHODNI",
-      "RAWICKI",
-      "STRZELNEŃSKI",
-      "SZAMOTULSKI",
-      "SZUBIŃSKI",
-      "ŚMIGIELSKI",
-      "ŚREDZKI",
-      "ŚREMSKI",
-      "WĄGROWIECKI",
-      "WITKOWSKI",
-      "WOLSZTYŃSKI",
-      "WRZESIŃSKI",
-      "WYRZYSKI",
-      "ŻNIŃSKI"
-    ]
-  },
-  {
-    "region_name": "STANISŁAWOWSKIE",
-    "districts": [
-      "BOHORODCZAŃSKI",
-      "DOLIŃSKI",
-      "HORODEŃSKI",
-      "KAŁUSKI",
-      "KOŁOMYJSKI",
-      "KOSOWSKI (KOSÓW HUCULSKI)",
-      "NADWÓRNIAŃSKI",
-      "PECZENIŻYŃSKI",
-      "ROHATYŃSKI",
-      "SKOLSKI",
-      "STANISŁAWOWSKI",
-      "STRYJSKI",
-      "ŚNIATYŃSKI",
-      "TŁUMACKI",
-      "TURCZAŃSKI",
-      "ŻYDACZOWSKI"
-    ]
-  },
-  {
-    "region_name": "ŚLĄSKIE",
-    "districts": [
-      "BIELSKI (BIELSKO)",
-      "BIELSKO",
-      "CIESZYŃSKI"
-    ]
-  },
-  {
-    "region_name": "TARNOPOLSKIE",
-    "districts": [
-      "BORSZCZOWSKI",
-      "BRODZKI",
-      "BRZEŻAŃSKI",
-      "BUCZACKI",
-      "CZORTKOWSKI",
-      "HUSIATYŃSKI",
-      "KAMIONECKI",
-      "PODHAJECKI",
-      "PRZEMYŚLAŃSKI",
-      "RADZIECHOWSKI",
-      "SKAŁACKI",
-      "TARNOPOLSKI",
-      "TREMBOWELSKI",
-      "ZALESZCZYCKI",
-      "ZBARASKI",
-      "ZBOROWSKI",
-      "ZŁOCZOWSKI"
-    ]
-  },
-  {
-    "region_name": "WARSZAWSKIE",
-    "districts": [
-      "BŁOŃSKI",
-      "CIECHANOWSKI",
-      "GOSTYNIŃSKI",
-      "GRÓJECKI",
-      "KUTNOWSKI",
-      "LIPNOWSKI",
-      "ŁOWICKI",
-      "MAKOWSKI (MAKÓW MAZOWIECKI)",
-      "MIŃSKI",
-      "MŁAWSKI",
-      "NIESZAWSKI",
-      "PŁOCKI",
-      "PŁOŃSKI",
-      "PRZASNYCKI",
-      "PUŁTUSKI",
-      "RADZYMIŃSKI",
-      "RAWSKI (RAWA MAZOWIECKA)",
-      "RYPIŃSKI",
-      "SIERPECKI",
-      "SKIERNIEWICKI",
-      "SOCHACZEWSKI",
-      "WARSZAWSKI",
-      "WŁOCŁAWSKI"
-    ]
-  },
-  {
-    "region_name": "WOŁYŃSKIE",
-    "districts": [
-      "DUBIEŃSKI",
-      "HOROCHOWSKI",
-      "KOWELSKI",
-      "KRZEMIENIECKI",
-      "LUBOMELSKI",
-      "ŁUCKI",
-      "OSTROGSKI",
-      "RÓWIEŃSKI",
-      "WŁODZIMIERSKI"
-    ]
-  },
-  {
-    "region_name": "CZECHOSŁOWACJA",
-    "districts": [
-      "BARDIOWSKI",
-      "CZADECKI",
-      "CZESKOCIESZYŃSKI",
-      "FRYDECKI",
-      "FRYSZTACKI",
-      "KIEŻMARSKI",
-      "NAMIESTOWSKI",
-      "SNIŃSKI",
-      "STAROLUBOWELSKI",
-      "STAROWIEJSKI",
-      "TRZCIAŃSKI"
-    ]
-  },
-  {
-    "region_name": "NIEMCY",
-    "districts": [
-      "BYTOM WIEŚ",
-      "BYTOM MIASTO",
-      "ZABRSKI",
-      "KATOWICE",
-      "KATOWICKI",
-      "KRÓLEWSKA HUTA",
-      "LUBLINIECKI",
-      "PSZCZYŃSKI",
-      "RACIBORSKI",
-      "RYBNICKI",
-      "TARNOGÓRSKI"
-    ]
-  },
-  {
-    "region_name": "LITWA",
-    "districts": [
-      "BRASŁAWSKI",
-      "OSZMIAŃSKI",
-      "ŚWIĘCIAŃSKI",
-      "TROCKI",
-      "WILEŃSKI",
-      "WILNO"
+{
+  "unit_hierarchy": {
+    "POLAND": [
+      {
+        "BIAŁOSTOCKIE": [
+          "AUGUSTOWSKI",
+          "BIAŁOSTOCKI",
+          "BIAŁOWIESKI",
+          "BIELSKI (BIELSK PODLASKI)",
+          "GRODZIEŃSKI",
+          "KOLNEŃSKI",
+          "ŁOMŻYŃSKI",
+          "OSTROŁĘCKI",
+          "OSTROWSKI (OSTRÓW MAZOWIECKA)",
+          "SEJNEŃSKI",
+          "SOKÓLSKI",
+          "SUWALSKI",
+          "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)",
+          "WOŁKOWYSKI",
+          "WYSOKOMAZOWIECKI"
+        ]
+      },
+      {
+        "KIELECKIE": [
+          "BĘDZIŃSKI",
+          "CZĘSTOCHOWSKI",
+          "IŁŻECKI",
+          "JĘDRZEJOWSKI",
+          "KIELECKI",
+          "KONECKI",
+          "KOZIENICKI",
+          "MIECHOWSKI",
+          "OLKUSKI",
+          "OPATOWSKI",
+          "OPOCZYŃSKI",
+          "PIŃCZOWSKI",
+          "RADOMSKI",
+          "SANDOMIERSKI",
+          "STOPNICKI",
+          "WŁOSZCZOWSKI"
+        ]
+      },
+      {
+        "KRAKOWSKIE": [
+          "BIALSKI (BIAŁA KRAKOWSKA)",
+          "BOCHEŃSKI",
+          "BRZESKI (BRZESKO)",
+          "CHRZANOWSKI",
+          "DĄBROWSKI",
+          "GORLICKI",
+          "GRYBOWSKI",
+          "JASIELSKI",
+          "KRAKOWSKI",
+          "KRAKÓW",
+          "LIMANOWSKI",
+          "MIELECKI",
+          "MYŚLENICKI",
+          "NOWOSĄDECKI",
+          "NOWOTARSKI",
+          "OŚWIĘCIMSKI",
+          "PILZNEŃSKI",
+          "PODGÓRSKI",
+          "ROPCZYCKI",
+          "SPISKO-ORAWSKI",
+          "TARNOWSKI",
+          "WADOWICKI",
+          "WIELICKI",
+          "ŻYWIECKI"
+        ]
+      },
+      {
+        "LUBELSKIE": [
+          "BIALSKI (BIAŁA PODLASKA)",
+          "BIŁGORAJSKI",
+          "CHEŁMSKI",
+          "GARWOLIŃSKI",
+          "HRUBIESZOWSKI",
+          "JANOWSKI",
+          "KONSTANTYNOWSKI",
+          "KRASNOSTAWSKI",
+          "LUBARTOWSKI",
+          "LUBELSKI",
+          "LUBLIN",
+          "ŁUKOWSKI",
+          "PUŁAWSKI",
+          "RADZYŃSKI",
+          "SIEDLECKI",
+          "SOKOŁOWSKI",
+          "TOMASZOWSKI",
+          "WĘGROWSKI",
+          "WŁODAWSKI",
+          "ZAMOJSKI"
+        ]
+      },
+      {
+        "LWOWSKIE": [
+          "BÓBRECKI",
+          "BRZOZOWSKI",
+          "CIESZANOWSKI",
+          "DOBROMILSKI",
+          "DROHOBYCKI",
+          "GRÓDECKI",
+          "JAROSŁAWSKI",
+          "JAWOROWSKI",
+          "KOLBUSZOWSKI",
+          "KROŚNIEŃSKI",
+          "LISKI",
+          "LWOWSKI",
+          "LWÓW",
+          "ŁAŃCUCKI",
+          "MOŚCISKI",
+          "NIŻAŃSKI",
+          "PRZEMYSKI",
+          "PRZEWORSKI",
+          "RAWSKI (RAWA RUSKA)",
+          "RUDECKI",
+          "RZESZOWSKI",
+          "SAMBORSKI",
+          "SANOCKI",
+          "SOKALSKI",
+          "STAROSAMBORSKI",
+          "STRZYŻOWSKI",
+          "TARNOBRZESKI",
+          "ŻÓŁKIEWSKI"
+        ]
+      },
+      {
+        "ŁÓDZKIE": [
+          "BRZEZIŃSKI",
+          "KALISKI",
+          "KOLSKI",
+          "KONIŃSKI",
+          "ŁASKI",
+          "ŁĘCZYCKI",
+          "ŁÓDZKI",
+          "ŁÓDŹ",
+          "PIOTRKOWSKI",
+          "RADOMSZCZAŃSKI",
+          "SIERADZKI",
+          "SŁUPECKI",
+          "TURECKI",
+          "WIELUŃSKI"
+        ]
+      },
+      {
+        "M. ST. WARSZAWA": [
+          "M. ST. WARSZAWA"
+        ]
+      },
+      {
+        "NOWOGRÓDZKIE": [
+          "BARANOWICKI",
+          "DUNIŁOWICKI",
+          "DZIŚNIEŃSKI",
+          "LIDZKI",
+          "NIEŚWIESKI",
+          "NOWOGRÓDZKI",
+          "SŁONIMSKI",
+          "STOŁPECKI",
+          "WILEJSKI",
+          "WOŁOŻYŃSKI"
+        ]
+      },
+      {
+        "POLESKIE": [
+          "BRZESKI (BRZEŚĆ N.BUG.)",
+          "DROHICKI",
+          "KOBRYŃSKI",
+          "KOSOWSKI (KOSÓW POLESKI)",
+          "KOSZYRSKI",
+          "ŁUNINIECKI",
+          "PIŃSKI",
+          "PRUŻAŃSKI",
+          "SARNEŃSKI"
+        ]
+      },
+      {
+        "POMORSKIE": [
+          "BRODNICKI",
+          "CHEŁMIŃSKI",
+          "CHOJNICKI",
+          "DZIAŁDOWSKI",
+          "GNIEWSKI",
+          "GRUDZIĄDZ",
+          "GRUDZIĄDZKI",
+          "KARTUSKI",
+          "KOŚCIERSKI",
+          "LUBAWSKI",
+          "PUCKI",
+          "SĘPOLEŃSKI",
+          "STAROGARDZKI",
+          "ŚWIECKI",
+          "TCZEWSKI",
+          "TORUŃ",
+          "TORUŃSKI",
+          "TUCHOLSKI",
+          "WĄBRZESKI",
+          "WEJHEROWSKI"
+        ]
+      },
+      {
+        "POZNAŃSKIE": [
+          "BYDGOSKI",
+          "BYDGOSZCZ",
+          "CHODZIESKI",
+          "CZARNKOWSKI",
+          "GNIEŹNIEŃSKI",
+          "GOSTYŃSKI",
+          "GRODZISKI",
+          "INOWROCŁAWSKI",
+          "JAROCIŃSKI",
+          "KĘPIŃSKI",
+          "KOŚCIAŃSKI",
+          "KOŹMIŃSKI",
+          "KROTOSZYŃSKI",
+          "LESZCZYŃSKI",
+          "MIĘDZYCHODZKI",
+          "MOGILEŃSKI",
+          "NOWOTOMYSKI",
+          "OBORNICKI",
+          "ODOLANOWSKI",
+          "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
+          "OSTRZESZOWSKI",
+          "PLESZEWSKI",
+          "POZNAŃ",
+          "POZNAŃSKI WSCHODNI",
+          "POZNAŃSKI ZACHODNI",
+          "RAWICKI",
+          "STRZELNEŃSKI",
+          "SZAMOTULSKI",
+          "SZUBIŃSKI",
+          "ŚMIGIELSKI",
+          "ŚREDZKI",
+          "ŚREMSKI",
+          "WĄGROWIECKI",
+          "WITKOWSKI",
+          "WOLSZTYŃSKI",
+          "WRZESIŃSKI",
+          "WYRZYSKI",
+          "ŻNIŃSKI"
+        ]
+      },
+      {
+        "STANISŁAWOWSKIE": [
+          "BOHORODCZAŃSKI",
+          "DOLIŃSKI",
+          "HORODEŃSKI",
+          "KAŁUSKI",
+          "KOŁOMYJSKI",
+          "KOSOWSKI (KOSÓW HUCULSKI)",
+          "NADWÓRNIAŃSKI",
+          "PECZENIŻYŃSKI",
+          "ROHATYŃSKI",
+          "SKOLSKI",
+          "STANISŁAWOWSKI",
+          "STRYJSKI",
+          "ŚNIATYŃSKI",
+          "TŁUMACKI",
+          "TURCZAŃSKI",
+          "ŻYDACZOWSKI"
+        ]
+      },
+      {
+        "ŚLĄSKIE": [
+          "BIELSKI (BIELSKO)",
+          "BIELSKO",
+          "CIESZYŃSKI"
+        ]
+      },
+      {
+        "TARNOPOLSKIE": [
+          "BORSZCZOWSKI",
+          "BRODZKI",
+          "BRZEŻAŃSKI",
+          "BUCZACKI",
+          "CZORTKOWSKI",
+          "HUSIATYŃSKI",
+          "KAMIONECKI",
+          "PODHAJECKI",
+          "PRZEMYŚLAŃSKI",
+          "RADZIECHOWSKI",
+          "SKAŁACKI",
+          "TARNOPOLSKI",
+          "TREMBOWELSKI",
+          "ZALESZCZYCKI",
+          "ZBARASKI",
+          "ZBOROWSKI",
+          "ZŁOCZOWSKI"
+        ]
+      },
+      {
+        "WARSZAWSKIE": [
+          "BŁOŃSKI",
+          "CIECHANOWSKI",
+          "GOSTYNIŃSKI",
+          "GRÓJECKI",
+          "KUTNOWSKI",
+          "LIPNOWSKI",
+          "ŁOWICKI",
+          "MAKOWSKI (MAKÓW MAZOWIECKI)",
+          "MIŃSKI",
+          "MŁAWSKI",
+          "NIESZAWSKI",
+          "PŁOCKI",
+          "PŁOŃSKI",
+          "PRZASNYCKI",
+          "PUŁTUSKI",
+          "RADZYMIŃSKI",
+          "RAWSKI (RAWA MAZOWIECKA)",
+          "RYPIŃSKI",
+          "SIERPECKI",
+          "SKIERNIEWICKI",
+          "SOCHACZEWSKI",
+          "WARSZAWSKI",
+          "WŁOCŁAWSKI"
+        ]
+      },
+      {
+        "WOŁYŃSKIE": [
+          "DUBIEŃSKI",
+          "HOROCHOWSKI",
+          "KOWELSKI",
+          "KRZEMIENIECKI",
+          "LUBOMELSKI",
+          "ŁUCKI",
+          "OSTROGSKI",
+          "RÓWIEŃSKI",
+          "WŁODZIMIERSKI"
+        ]
+      }
+    ],
+    "ABROAD": [
+      {
+        "ZAOLZIE": [
+          "BARDIOWSKI",
+          "CZADECKI",
+          "CZESKOCIESZYŃSKI",
+          "FRYDECKI",
+          "FRYSZTACKI",
+          "KIEŻMARSKI",
+          "NAMIESTOWSKI",
+          "SNIŃSKI",
+          "STAROLUBOWELSKI",
+          "STAROWIEJSKI",
+          "TRZCIAŃSKI"
+        ]
+      },
+      {
+        "ŚLĄSK NIEMIECKI": [
+          "BYTOM WIEŚ",
+          "BYTOM MIASTO",
+          "ZABRSKI",
+          "KATOWICE",
+          "KATOWICKI",
+          "KRÓLEWSKA HUTA",
+          "LUBLINIECKI",
+          "PSZCZYŃSKI",
+          "RACIBORSKI",
+          "RYBNICKI",
+          "TARNOGÓRSKI"
+        ]
+      },
+      {
+        "ZIEMIA WILEŃSKA": [
+          "BRASŁAWSKI",
+          "OSZMIAŃSKI",
+          "ŚWIĘCIAŃSKI",
+          "TROCKI",
+          "WILEŃSKI",
+          "WILNO"
+        ]
+      }
     ]
   }
-]
+}
