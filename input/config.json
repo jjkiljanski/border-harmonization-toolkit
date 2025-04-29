@@ -1,5 +1,5 @@
 {
-    "initial_timespan": {
+    "global_timespan": {
         "start": "1921-02-19",
         "end": "1938-11-16"
     },

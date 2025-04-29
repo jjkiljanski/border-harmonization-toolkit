@@ -69,6 +69,31 @@ class Unit(BaseModel):
                 if unit_state.timespan.start == timespan.start and unit_state.timespan.end == timespan.end:
                     return unit_state
         return None  # Return None if no matching timespan is found
+    
+    def create_next_state(self, date):
+        """
+        Copies the state with a timespan encompassing the date passed in 'date' argument,
+        sets the state end to date and the new state start to 'date', appends the new state
+        to the states list, sorts it according to timespan, and returns a copy of the state
+        with timespan starting with 'date'.
+        """
+        last_state = self.find_state_by_date(date)
+        new_state = deepcopy(last_state)
+        last_state.timespan.end = date
+        new_state.timespan.start = date
+        self.states.append(new_state)
+        self.states.sort(key=lambda state: state.timespan.start)
+        return new_state
+    
+    def abolish(self, date):
+        """
+        Finds a timespan encompassing the date passed as argument and sets its end to the passed date.
+        It is possible that there are states with timespans starting after the abolishment - if the unit
+        was reestablished.
+        """
+        last_state = self.find_state_by_date(date)
+        last_state.timespan.end = date
+
 
 class UnitRegistry(BaseModel):
     unit_list: List[Unit]
@@ -78,6 +103,19 @@ class UnitRegistry(BaseModel):
             if unit_name in unit.name_variants:
                 return unit
         return None
+    
+    def find_unit_state_by_date(self, unit_name: str, date: datetime) -> Tuple[Unit, TimeSpan]:
+        """
+        Returns Unit, UnitState and (unitstate) TimeSpan objects for the given unit name and date.
+        """
+        unit = self.find_unit(unit_name)
+        unit_state = unit.find_state_by_date(date)
+        timespan = unit_state.timespan
+        return unit, unit_state, timespan
+    
+    def create_next_unit_state(self, unit_name: str, date: datetime) -> UnitState:
+        unit = self.find_unit_state_by_date(unit_name, date)
+        return unit.create_next_state(date)
     
 #############################################################################################
 # Hierarchy of models to store districts states: DistrictState ∈ District ∈ DistrictRegistry
@@ -100,6 +138,13 @@ class DistrictRegistry(UnitRegistry):
     """
     unit_list: List[District]
 
+    def add_unit(self, district_data: dict):
+        district = District(**district_data)
+        if not isinstance(district, District):
+            raise TypeError("Only District instances can be added.")
+        self.unit_list.append(district)
+        return district
+
 #############################################################################################
 # Hierarchy of models to store Region states: RegionState ∈ Region ∈ RegionRegistry
 
@@ -113,7 +158,14 @@ class Region(Unit):
     states: List[RegionState]
 
 class RegionRegistry(UnitRegistry):
-    region_list: List[Region]
+    unit_list: List[Region]
+
+    def add_unit(self, region_data: dict):
+        region = Region(**region_data)
+        if not isinstance(region, Region):
+            raise TypeError("Only Region instances can be added.")
+        self.unit_list.append(region)
+        return region
 
 #############################################################################################
 # Models to store information about current region-districts relations.
@@ -191,30 +243,27 @@ class UnitReform(BaseChangeMatter):
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
-    def apply(self, date, adm_state, region_registry, dist_registry):
+    def apply(self, change, adm_state, region_registry, dist_registry):
         if(self.unit_type=="Region"):
             unit = region_registry.find_unit(self.current_name)
-            unit_state = unit.find_state_by_date(date)
-            new_unit_state = deepcopy(unit_state)
-            old_timespan = unit_state.timespan
-            new_timespan = old_timespan
-            old_timespan.end = date
-            new_timespan.start = date
-            new_unit_state.timespan = new_timespan
-            for key, value in self.to_reform:
-                if not hasattr(new_unit_state, key):
-                    raise ValueError(f"Change ({date}, {self}) applied to {self.unit_type.lower()} attribute that doesn't exist.")
-                if new_unit_state.key != value:
-                    raise ValueError(
-                        f"Change on {date} ({self}) expects the {self.unit_type.lower()} to have key '{value}', "
-                        f"but found '{new_unit_state.key}' instead."
-                    )
-                new_unit_state.key = self.after_reform.key
-            unit.states.append(new_unit_state)
+        else:
+            unit = dist_registry.find_unit(self.current_name)
+        new_state = region_registry.create_next_unit_state(change.date)
+        for key, value in self.to_reform:
+            if not hasattr(new_state, key):
+                raise ValueError(f"Change ({change.date}, {self}) applied to {self.unit_type.lower()} attribute that doesn't exist.")
+            if new_state.key != value:
+                raise ValueError(
+                    f"Change on {change.date} ({self}) expects the {self.unit_type.lower()} to have key '{value}', "
+                    f"but found '{new_state.key}' instead."
+                )
+            new_state.key = self.after_reform.key
+        unit.changes.append(("reform", change))
+        change.units_affected.append(("reform", unit))
         return
     
     def __repr__(self):
-        return f"<UnitReform: {self.unit_type} {self.current_name}: attributes {', '.join(self.to_reform.keys())}"
+        return f"<UnitReform ({self.unit_type}:{self.current_name}) attributes {', '.join(self.to_reform.keys())}>"
     
 # Definition of the data model for the matter of OneToMany change.
     
@@ -227,6 +276,17 @@ class OneToManyTakeTo(BaseModel):
     current_name: str
     weight_from: Optional[float] = None
     weight_to: Optional[float] = None
+    district: Optional[District] = None
+
+    @model_validator(mode="after")
+    def validate_create_fields(self):
+        if self.create:
+            if not self.district:
+                raise ValueError(f"A dict coherent with District data model must be passed as 'district' attribute when 'create' is True.")
+        else:
+            if not self.current_name:
+                raise ValueError(f"A string must be passed as 'name_id' attribute when 'create' is False.")
+        return self
     
 class OneToMany(BaseChangeMatter):
     change_type = Literal["OneToMany"]
@@ -257,6 +317,49 @@ class OneToMany(BaseChangeMatter):
                 print(f"{date} part of the territory of the district {self.take_from.current_name} was integrated into the district{s} {destination_districts} ({source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
+        
+    def apply(self, change, adm_state, region_registry, dist_registry):
+        # In the current version of the toolkit it is assumed that the OneToMany change
+        # describes ONLY exchange of territories between administrative units.
+        # It is however very easy to extend the toolkit to work with exchange of other
+        # administrative unit stock variables - above all this method has to be rewritten.
+        units_to = []
+        units_to_names = [unit.current_name for unit in self.take_to]
+        units_to_new_states = []
+        if(self.unit_type=="Region"):
+            raise ValueError(f"Method OneToMany not implemented for regions.")
+        unit_from = dist_registry.find_unit(self.take_from.current_name)
+        if self.take_from.delete_unit:
+            unit_from.abolish(change.date)
+            unit_from.changes.append(("abolished", change))
+            change.units_affected.append(("abolished", unit_from))
+        else:
+            units_to_new_states.append(unit_from.create_next_state(change.date))
+            unit_from.changes.append(("territory", change))
+            change.units_affected.append(("territory", unit_from))
+        for take_to_dict in units_to_names:
+            if take_to_dict.create:
+                unit = dist_registry.add_unit(take_to_dict.district)
+                unit_state = unit.states[0]
+                unit_state.timespan = TimeSpan(**{"start": change.date, "end": config.global_timespan.end})
+                units_to_new_states.append(unit_state)
+                unit.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
+                change.units_affected.append(("created", unit))
+            else:
+                unit = dist_registry.find_unit(take_to_dict.current_name)
+                units_to_new_states.append(unit.create_next_state(change.date))
+                unit.changes.append(("territory", change))
+                change.units_affected.append(("territory", unit))
+        for state in units_to_new_states:
+            state.territory = None # Territorial change to implement later
+        return
+    
+    def __repr__(self):
+        names_to = ', '.join(
+                                d.current_name if hasattr(d, 'current_name') else d.district.states[0].current_name
+                                for d in self.take_to
+                            )
+        return f"<OneToMany: {self.take_from.current_name} → {names_to}>"
 
 # Definition of the data model for the matter of ManyToOne change.
 
@@ -277,7 +380,7 @@ class ManyToOneTakeTo(BaseModel):
             if not self.district:
                 raise ValueError(f"A dict coherent with District data model must be passed as 'district' attribute when 'create' is True.")
         else:
-            if not self.name_id:
+            if not self.current_name:
                 raise ValueError(f"A string must be passed as 'name_id' attribute when 'create' is False.")
         return self
 
@@ -367,6 +470,9 @@ class ManyToOne(BaseModel):
                     print(f"{date} {from_partial_unit}{and_word}{from_whole_unit}{were_or_was} merged into the district {self.take_to.current_name} ({source})")
         else:
             raise ValueError("Wrong value for the lang parameter.")
+        
+    def __repr__(self):
+        return f"<ManyToOne: {', '.join(d.current_name for d in self.take_from)} → {self.take_to.current_name}>"
 
 # Definition of the data model for the matter of ChangeAdmState change.
 
@@ -435,6 +541,7 @@ class Change(BaseModel):
     description: str
     order: int
     matter: ChangeMatter
+    units_affected: Optional[List[Unit]] = None
 
     def echo(self) -> str:
         return self.matter.echo(self.date, self.source)
@@ -443,4 +550,4 @@ class Change(BaseModel):
         return self.matter.districts_involved()
 
     def apply(self, adm_state: AdminitrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
-        self.matter.apply(self.date, adm_state, region_registry, dist_registry)
+        self.matter.apply(self, adm_state, region_registry, dist_registry)
