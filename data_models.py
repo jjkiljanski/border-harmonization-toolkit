@@ -1,6 +1,7 @@
 from pydantic import BaseModel, model_validator, Field
 from typing import Union, Optional, Literal, List, Dict, Annotated, Any, Tuple
 from abc import ABC, abstractmethod
+from copy import deepcopy
 
 from datetime import datetime
 
@@ -189,6 +190,31 @@ class UnitReform(BaseChangeMatter):
             print(f"{date} the {self.unit_type.lower()} {self.current_name} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
+        
+    def apply(self, date, adm_state, region_registry, dist_registry):
+        if(self.unit_type=="Region"):
+            unit = region_registry.find_unit(self.current_name)
+            unit_state = unit.find_state_by_date(date)
+            new_unit_state = deepcopy(unit_state)
+            old_timespan = unit_state.timespan
+            new_timespan = old_timespan
+            old_timespan.end = date
+            new_timespan.start = date
+            new_unit_state.timespan = new_timespan
+            for key, value in self.to_reform:
+                if not hasattr(new_unit_state, key):
+                    raise ValueError(f"Change ({date}, {self}) applied to {self.unit_type.lower()} attribute that doesn't exist.")
+                if new_unit_state.key != value:
+                    raise ValueError(
+                        f"Change on {date} ({self}) expects the {self.unit_type.lower()} to have key '{value}', "
+                        f"but found '{new_unit_state.key}' instead."
+                    )
+                new_unit_state.key = self.after_reform.key
+            unit.states.append(new_unit_state)
+        return
+    
+    def __repr__(self):
+        return f"<UnitReform: {self.unit_type} {self.current_name}: attributes {', '.join(self.to_reform.keys())}"
     
 # Definition of the data model for the matter of OneToMany change.
     
@@ -417,4 +443,4 @@ class Change(BaseModel):
         return self.matter.districts_involved()
 
     def apply(self, adm_state: AdminitrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
-        self.matter.apply(adm_state, region_registry, dist_registry)
+        self.matter.apply(self.date, adm_state, region_registry, dist_registry)
