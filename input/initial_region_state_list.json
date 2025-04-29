@@ -5,9 +5,12 @@
       "BIAŁOSTOCKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "BIAŁOSTOCKIE"
-    }
+    "states": [
+      {
+        "region_name": "BIAŁOSTOCKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "KIELECKIE",
@@ -15,9 +18,12 @@
       "KIELECKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "KIELECKIE"
-    }
+    "states": [
+      {
+        "region_name": "KIELECKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "KRAKOWSKIE",
@@ -25,9 +31,12 @@
       "KRAKOWSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "KRAKOWSKIE"
-    }
+    "states": [
+      {
+        "region_name": "KRAKOWSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "LUBELSKIE",
@@ -35,9 +44,12 @@
       "LUBELSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "LUBELSKIE"
-    }
+    "states": [
+      {
+        "region_name": "LUBELSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "LWOWSKIE",
@@ -45,9 +57,12 @@
       "LWOWSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "LWOWSKIE"
-    }
+    "states": [
+      {
+        "region_name": "LWOWSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "ŁÓDZKIE",
@@ -55,19 +70,25 @@
       "ŁÓDZKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "ŁÓDZKIE"
-    }
+    "states": [
+      {
+        "region_name": "ŁÓDZKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "M. ST. WARSZAWA",
     "region_name_variants": [
-      "M. ST. WARSZAWA", "WARSZAWA"
+      "M. ST. WARSZAWA"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "M. ST. WARSZAWA"
-    }
+    "states": [
+      {
+        "region_name": "M. ST. WARSZAWA",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "NOWOGRÓDZKIE",
@@ -75,29 +96,38 @@
       "NOWOGRÓDZKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "NOWOGRÓDZKIE"
-    }
+    "states": [
+      {
+        "region_name": "NOWOGRÓDZKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "POLESKIE",
     "region_name_variants": [
-      "POLESKIE", "POLESIE"
+      "POLESKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "POLESKIE"
-    }
+    "states": [
+      {
+        "region_name": "POLESKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "POMORSKIE",
     "region_name_variants": [
-      "POMORSKIE", "POMORZE"
+      "POMORSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "POMORSKIE"
-    }
+    "states": [
+      {
+        "region_name": "POMORSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "POZNAŃSKIE",
@@ -105,9 +135,12 @@
       "POZNAŃSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "POZNAŃSKIE"
-    }
+    "states": [
+      {
+        "region_name": "POZNAŃSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "STANISŁAWOWSKIE",
@@ -115,19 +148,25 @@
       "STANISŁAWOWSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "STANISŁAWOWSKIE"
-    }
+    "states": [
+      {
+        "region_name": "STANISŁAWOWSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "ŚLĄSKIE",
     "region_name_variants": [
-      "ŚLĄSKIE", "ŚLĄSK"
+      "ŚLĄSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "ŚLĄSKIE"
-    }
+    "states": [
+      {
+        "region_name": "ŚLĄSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "TARNOPOLSKIE",
@@ -135,9 +174,12 @@
       "TARNOPOLSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "TARNOPOLSKIE"
-    }
+    "states": [
+      {
+        "region_name": "TARNOPOLSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "WARSZAWSKIE",
@@ -145,48 +187,63 @@
       "WARSZAWSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "WARSZAWSKIE"
-    }
+    "states": [
+      {
+        "region_name": "WARSZAWSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "WOŁYŃSKIE",
     "region_name_variants": [
-      "WOŁYŃ", "WOŁYŃSKIE"
+      "WOŁYŃSKIE"
     ],
     "is_poland": true,
-    "state": {
-      "region_name": "WOŁYŃSKIE"
-    }
+    "states": [
+      {
+        "region_name": "WOŁYŃSKIE",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "CZECHOSŁOWACJA",
     "region_name_variants": [
       "CZECHOSŁOWACJA"
     ],
-    "is_poland": false,
-    "state": {
-      "region_name": "CZECHOSŁOWACJA"
-    }
+    "is_poland": true,
+    "states": [
+      {
+        "region_name": "CZECHOSŁOWACJA",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "NIEMCY",
     "region_name_variants": [
       "NIEMCY"
     ],
-    "is_poland": false,
-    "state": {
-      "region_name": "NIEMCY"
-    }
+    "is_poland": true,
+    "states": [
+      {
+        "region_name": "NIEMCY",
+        "timespan": null
+      }
+    ]
   },
   {
     "region_name_id": "LITWA",
     "region_name_variants": [
       "LITWA"
     ],
-    "is_poland": false,
-    "state": {
-      "region_name": "LITWA"
-    }
+    "is_poland": true,
+    "states": [
+      {
+        "region_name": "LITWA",
+        "timespan": null
+      }
+    ]
   }
 ]

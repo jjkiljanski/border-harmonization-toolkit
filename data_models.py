@@ -170,43 +170,88 @@ ChangeEntry = Annotated[
     Field(discriminator="change_type")
 ]
 
-################################## AdministrativeState model ##################################
 
-class DistStateDict(BaseModel):
-    dist_name: str
-    seat_name: str
-    dist_type: Literal["w", "m"]
+#####################################################################################
+# Data models for states of administrative units and their current mutual relations #
+#####################################################################################
 
-class DistrictDict(BaseModel):
+
+#############################
+# Models to store timespans #
+
+class TimeSpan(BaseModel):
+    start: datetime
+    end: datetime
+
+class TimeSpanRegistry(BaseModel):
+    """
+    A model to store all periods between two sequential administrative changes.
+    """
+    registry = List[TimeSpan]
+
+#############################################################################################
+# Hierarchy of models to store district states: DistrictState ∈ District ∈ DistrictRegistry
+
+class DistState(BaseModel):
+    current_dist_name: str
+    current_seat_name: str
+    current_dist_type: Literal["w", "m"]
+
+    # timespan: Defined during initialization as the global timespan.
+    # Timespan end will be set to the date of application of the first administrative change for the district.
+    timespan: Optional[TimeSpan] = None
+
+class District(BaseModel):
+    """
+    Represents one district. The attributes of this class describe district attributes that don't change through time (e.g. dist_name_variants).
+    Attributes that do change through time (e.g. current_dist_name should be handled as DistStateDict attributes)"""
     dist_name_id: str
     dist_name_variants: List[str]
     seat_name_variants: List[str]
-    state: DistStateDict
+    states: List[DistState]
 
     @model_validator(mode="after")
-    def check_dist_name_in_variants(self) -> "DistrictDict":
+    def check_dist_name_in_variants(self) -> "District":
         if self.dist_name_id not in self.dist_name_variants:
             raise ValueError(f"dist_name_id '{self.dist_name_id}' must be in dist_name_variants {self.dist_name_variants}")
         return self
 
-class InitialDistState(BaseModel):
-    dist_list: List[DistrictDict]
+class DistrictRegistry(BaseModel):
+    dist_list: List[District]
+
+#############################################################################################
+# Hierarchy of models to store Region states: RegionState ∈ Region ∈ RegionRegistry
+
+class RegionState(BaseModel):
+    region_name: str
+    timespan: Optional[TimeSpan] = None
+
+class Region(BaseModel):
+    region_name_id: str
+    region_name_variants: List[str]
+    is_poland: bool
+    states: List[RegionState]
+
+    @model_validator(mode="after")
+    def check_region_name_in_variants(self) -> "Region":
+        if self.region_name_id not in self.region_name_variants:
+            raise ValueError(f"region_name_id '{self.region_name_id}' must be in region_name_variants {self.region_name_variants}")
+        return self
+
+class RegionRegistry(BaseModel):
+    region_list: List[Region]
+
+#############################################################################################
+# Models to store information about current region-districts relations.
+# AdministrativeState is a list of (region name, list of districts) pairs.
 
 class RegionDistricts(BaseModel):
     region_name: str
     districts: List[str]
 
-class InitialAdmState(BaseModel):
+class AdminitrativeState(BaseModel):
+    timespan = Optional[TimeSpan] = None
     regions: List[RegionDistricts]
-
-class RegionStateDict(BaseModel):
-    region_name: str
-
-class RegionStateDict(BaseModel):
-    region_name_id: str
-    region_name_variants: List[str]
-    is_poland: bool
-    state: RegionStateDict
 
 ################################## DistrictEventLog model ##################################
 
