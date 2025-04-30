@@ -325,7 +325,7 @@ class OneToMany(BaseChangeMatter):
         # administrative unit stock variables - above all this method has to be rewritten.
         units_to = []
         units_to_names = [unit.current_name for unit in self.take_to]
-        units_to_new_states = []
+        units_new_states = []
         if(self.unit_type=="Region"):
             raise ValueError(f"Method OneToMany not implemented for regions.")
         unit_from = dist_registry.find_unit(self.take_from.current_name)
@@ -334,7 +334,7 @@ class OneToMany(BaseChangeMatter):
             unit_from.changes.append(("abolished", change))
             change.units_affected.append(("abolished", unit_from))
         else:
-            units_to_new_states.append(unit_from.create_next_state(change.date))
+            units_new_states.append(unit_from.create_next_state(change.date))
             unit_from.changes.append(("territory", change))
             change.units_affected.append(("territory", unit_from))
         for take_to_dict in units_to_names:
@@ -342,15 +342,15 @@ class OneToMany(BaseChangeMatter):
                 unit = dist_registry.add_unit(take_to_dict.district)
                 unit_state = unit.states[0]
                 unit_state.timespan = TimeSpan(**{"start": change.date, "end": config.global_timespan.end})
-                units_to_new_states.append(unit_state)
+                units_new_states.append(unit_state)
                 unit.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
                 change.units_affected.append(("created", unit))
             else:
                 unit = dist_registry.find_unit(take_to_dict.current_name)
-                units_to_new_states.append(unit.create_next_state(change.date))
+                units_new_states.append(unit.create_next_state(change.date))
                 unit.changes.append(("territory", change))
                 change.units_affected.append(("territory", unit))
-        for state in units_to_new_states:
+        for state in units_new_states:
             state.territory = None # Territorial change to implement later
         return
     
@@ -470,6 +470,44 @@ class ManyToOne(BaseModel):
                     print(f"{date} {from_partial_unit}{and_word}{from_whole_unit}{were_or_was} merged into the district {self.take_to.current_name} ({source})")
         else:
             raise ValueError("Wrong value for the lang parameter.")
+
+    def apply(self, change, adm_state, region_registry, dist_registry):
+        # In the current version of the toolkit it is assumed that the OneToMany change
+        # describes ONLY exchange of territories between administrative units.
+        # It is however very easy to extend the toolkit to work with exchange of other
+        # administrative unit stock variables - above all this method has to be rewritten.
+        units_from = []
+        units_from_names = [unit.current_name for unit in self.take_from]
+        units_new_states = []
+        if(self.unit_type=="Region"):
+            raise ValueError(f"Method OneToMany not implemented for regions.")
+        for unit_dict in self.take_from:
+            unit = dist_registry.find_unit(unit_dict.current_name)
+            if unit_dict.delete_unit:
+                unit.abolish(change.date)
+                unit.changes.append(("abolished", change))
+                change.units_affected.append(("abolished", unit))
+            else:
+                units_new_states.append(unit)
+                unit.changes.append(("territory", change))
+                change.units_affected.append(("territory", unit))
+
+        if self.take_to.create:
+            unit_to = dist_registry.add_unit(self.take_to.district)
+            unit_to_state = unit_to.states[0]
+            unit_to_state.timespan = TimeSpan(**{"start": change.date, "end": config.global_timespan.end})
+            units_new_states.append(unit_to_state)
+            unit_to.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
+            change.units_affected.append(("created", unit_to))
+        else:
+            unit_to = dist_registry.find_unit(self.take_to.current_name)
+            units_new_states.append(unit_to.create_next_state(change.date))
+            unit_to.changes.append(("territory", change))
+            change.units_affected.append(("territory", unit_to))
+
+        for state in units_new_states:
+            state.territory = None # Territorial change to implement later
+        return
         
     def __repr__(self):
         return f"<ManyToOne: {', '.join(d.current_name for d in self.take_from)} → {self.take_to.current_name}>"
