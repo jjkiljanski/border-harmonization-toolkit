@@ -4,7 +4,7 @@ from copy import deepcopy
 
 from datetime import datetime
 
-from adm_timespan import *
+from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan
     
 #####################################################################################
 #                   Data models for states of administrative units                  #
@@ -15,18 +15,21 @@ from adm_timespan import *
 #       UnitState ∈ Unit (stores chronological sequence of its states) ∈ UnitRegistry
 
 class UnitState(BaseModel):
+    """
+    Represents the state of an administrative unit (e.g., district, region) at a specific time.
+    """
     current_name: str
     current_seat_name: str
     current_dist_type: Literal["w", "m"]
 
-    # timespan: Defined during initialization as the global timespan.
-    # Timespan end will be set to the date of application of the first administrative change for the unit.
+    # The timespan during which this state is valid.
     timespan: Optional[TimeSpan] = None
 
 class Unit(BaseModel):
     """
-    Represents one district. The attributes of this class describe district attributes that don't change through time (e.g. dist_name_variants).
-    Attributes that do change through time (e.g. current_dist_name should be handled as DistStateDict attributes)"""
+    Represents one administrative unit (district or region for the current version).
+    The class's attributes describe unit attributes that don't change through time (e.g. name_variants).
+    Attributes that do change through time (e.g. current_name should be handled as UnitState attributes)"""
     name_id: str
     name_variants: List[str]
     seat_name_variants: Optional[List[str]] = None # Optional
@@ -35,17 +38,22 @@ class Unit(BaseModel):
 
     @model_validator(mode="after")
     def check_unit_name_in_variants(self) -> "Unit":
+        """
+        Ensures that name_id in the name_variants list.
+        """
         if self.name_id not in self.name_variants:
             raise ValueError(f"name_id '{self.name_id}' must be in name_variants {self.name_variants}")
         return self
     
     def find_state_by_date(self, date: datetime) -> Optional[UnitState]:
+        """Returns the state for the unit at a specific date, or None if no match is found."""
         for unit_state in self.states:
             if unit_state.timespan and unit_state.timespan.contains(date):
                 return unit_state
         return None  # Return None if no match is found
     
     def find_state_by_timespan(self, timespan: TimeSpan) -> Optional[UnitState]:
+        """Returns the state for the unit within a specific timespan, or None if no match is found."""
         for unit_state in self.states:
             if unit_state.timespan:
                 # Compare start and end dates directly
@@ -55,12 +63,13 @@ class Unit(BaseModel):
     
     def create_next_state(self, date):
         """
-        Copies the state with a timespan encompassing the date passed in 'date' argument,
-        sets the state end to date and the new state start to 'date', appends the new state
-        to the states list, sorts it according to timespan, and returns a copy of the state
-        with timespan starting with 'date'.
+        Creates a new state starting at the given date, ending the previous state, 
+        and sorting the states list. The date must fall within an existing state's timespan.
         """
         last_state = self.find_state_by_date(date)
+        if last_state is None:
+            raise ValueError(f"Invalid date: {date.date()}. No state covers this date.")
+            
         new_state = deepcopy(last_state)
         last_state.timespan.end = date
         new_state.timespan.start = date
@@ -69,36 +78,72 @@ class Unit(BaseModel):
         return new_state
     
     def abolish(self, date):
-        """
-        Finds a timespan encompassing the date passed as argument and sets its end to the passed date.
-        It is possible that there are states with timespans starting after the abolishment - if the unit
-        was reestablished.
-        """
+        """Sets the end of the timespan covering the given date to the passed date, marking the unit's abolition."""
         last_state = self.find_state_by_date(date)
         last_state.timespan.end = date
 
 
 class UnitRegistry(BaseModel):
+    """
+    A registry to manage a list of one type of units (districts/regions) and handle unit state transitions.
+    """
     unit_list: List[Unit]
 
     def find_unit(self, unit_name: str) -> Optional[Unit]:
+        """
+        Finds a unit by its name or variant.
+
+        Args:
+            unit_name: The name to search for.
+
+        Returns:
+            Optional[Unit]: The unit if found, or None.
+        """
         for unit in self.unit_list:
             if unit_name in unit.name_variants:
                 return unit
         return None
     
-    def find_unit_state_by_date(self, unit_name: str, date: datetime) -> Tuple[Unit, TimeSpan]:
+    def find_unit_state_by_date(self, unit_name: str, date: datetime) -> Tuple[Unit, UnitState, TimeSpan]:
         """
-        Returns Unit, UnitState and (unitstate) TimeSpan objects for the given unit name and date.
+        Finds the unit, its state, and timespan for a given date.
+
+        Args:
+            unit_name: The unit's name.
+            date: The date for the state.
+
+        Returns:
+            Tuple: Unit, UnitState, and its TimeSpan.
         """
         unit = self.find_unit(unit_name)
-        unit_state = unit.find_state_by_date(date)
-        timespan = unit_state.timespan
-        return unit, unit_state, timespan
+        if unit is None:
+            return None, None, None
+        else:
+            unit_state = unit.find_state_by_date(date)
+            if unit_state is None:
+                return unit, None, None
+            else:
+                timespan = unit_state.timespan
+                return unit, unit_state, timespan
     
     def create_next_unit_state(self, unit_name: str, date: datetime) -> UnitState:
-        unit = self.find_unit_state_by_date(unit_name, date)
-        return unit.create_next_state(date)
+        """
+        Creates the next state for a unit at a given date.
+
+        Args:
+            unit_name: The unit's name.
+            date: The date for the next state.
+
+        Returns:
+            UnitState: The newly created unit state.
+        """
+        unit, unit_state, timespan = self.find_unit_state_by_date(unit_name, date)
+        if unit is None:
+            raise ValueError(f"Invalid unit_name: {unit_name}. This unit is not in the registry.")
+        elif unit_state is None:
+            raise ValueError(f"Invalid date: {date.date()}. No state covers this date.")
+        else:
+            return unit.create_next_state(date)
     
 #############################################################################################
 # Hierarchy of models to store districts states: DistrictState ∈ District ∈ DistrictRegistry
