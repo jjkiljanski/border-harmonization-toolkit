@@ -1,18 +1,17 @@
-from pydantic import BaseModel, model_validator, Field
+from pydantic import BaseModel, model_validator, field_validator, Field
 from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 from abc import ABC, abstractmethod
 from datetime import datetime
 
-from adm_timespan import *
-from adm_unit import *
-from adm_state import *
+from border_harmonization_toolkit.data_models.adm_timespan import *
+from border_harmonization_toolkit.data_models.adm_unit import *
+from border_harmonization_toolkit.data_models.adm_state import *
 
 #####################################################################################
 #                            Data models for changes                                #
 #####################################################################################
 
 class BaseChangeMatter(BaseModel, ABC):
-    change_type: str
 
     @abstractmethod
     def echo(self, date, source) -> str:
@@ -23,15 +22,15 @@ class BaseChangeMatter(BaseModel, ABC):
         pass
 
     @abstractmethod
-    def apply(self, adm_state: AdminitrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
+    def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
         pass
 
 # Definition of the data model for the matter of UnitReform change.
 
 class UnitReform(BaseChangeMatter):
-    change_type = Literal["UnitReform"]
-    unit_type = Literal["Region", "District"]
-    current_name = str
+    change_type: Literal["UnitReform"]
+    unit_type: Literal["Region", "District"]
+    current_name: str
     to_reform: Dict[str, Any]
     after_reform: Dict[str, Any]
 
@@ -55,9 +54,9 @@ class UnitReform(BaseChangeMatter):
         if lang == "pol":
             if self.unit_type == "Region": jednostka = "województwa"
             else: jednostka = "powiatu"
-            print(f"{date} dokonano reformy {jednostka} {self.current_name}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({source}).")
+            print(f"{date.date()} dokonano reformy {jednostka} {self.current_name}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({source}).")
         elif lang == "eng":
-            print(f"{date} the {self.unit_type.lower()} {self.current_name} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({source}).")
+            print(f"{date.date()} {self.unit_type.lower()} {self.current_name} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
@@ -83,6 +82,9 @@ class UnitReform(BaseChangeMatter):
     def __repr__(self):
         return f"<UnitReform ({self.unit_type}:{self.current_name}) attributes {', '.join(self.to_reform.keys())}>"
     
+    def districts_involved(self) -> list[str]:
+        pass
+    
 # Definition of the data model for the matter of OneToMany change.
     
 class OneToManyTakeFrom(BaseModel):
@@ -107,9 +109,9 @@ class OneToManyTakeTo(BaseModel):
         return self
     
 class OneToMany(BaseChangeMatter):
-    change_type = Literal["OneToMany"]
-    unit_attribute = str # Defines what is transfered between units. In the toolkit, only "territory" on the district level is implemented.
-    unit_type = Literal["Region", "District"] # The change happens on one "level" i.e. can be only an exchange between regions OR between districts, not between regions AND districts.
+    change_type: Literal["OneToMany"]
+    unit_attribute: str # Defines what is transfered between units. In the toolkit, only "territory" on the district level is implemented.
+    unit_type: Literal["Region", "District"] # The change happens on one "level" i.e. can be only an exchange between regions OR between districts, not between regions AND districts.
     take_from: OneToManyTakeFrom
     take_to: List[OneToManyTakeTo]
 
@@ -172,6 +174,9 @@ class OneToMany(BaseChangeMatter):
             state.territory = None # Territorial change to implement later
         return
     
+    def districts_involved(self) -> list[str]:
+        pass
+    
     def __repr__(self):
         names_to = ', '.join(
                                 d.current_name if hasattr(d, 'current_name') else d.district.states[0].current_name
@@ -204,8 +209,8 @@ class ManyToOneTakeTo(BaseModel):
 
 class ManyToOne(BaseModel):
     change_type: Literal["ManyToOne"]
-    unit_attribute = str # Defines what is transfered between units. In the toolkit, only "territory" on the district level is implemented.
-    unit_type = Literal["Region", "District"]
+    unit_attribute: str # Defines what is transfered between units. In the toolkit, only "territory" on the district level is implemented.
+    unit_type: Literal["Region", "District"]
     take_from: List[ManyToOneTakeFrom]
     take_to: ManyToOneTakeTo
 
@@ -326,6 +331,9 @@ class ManyToOne(BaseModel):
         for state in units_new_states:
             state.territory = None # Territorial change to implement later
         return
+    
+    def districts_involved(self) -> list[str]:
+        pass
         
     def __repr__(self):
         return f"<ManyToOne: {', '.join(d.current_name for d in self.take_from)} → {self.take_to.current_name}>"
@@ -335,8 +343,8 @@ class ManyToOne(BaseModel):
 class ChangeAdmState(BaseChangeMatter):
     """
     Represents a change in administrative structure involving movement of either:
-    - a **region** (described by a 2-tuple address: (Poland/Abroad, region_name_id)), or
-    - a **district** (described by a 3-tuple address: (Poland/Abroad, region_name_id, district_name_id)).
+    - a **region** (described by a 2-tuple address: (HOMELAND/ABROAD, region_name_id)), or
+    - a **district** (described by a 3-tuple address: (HOMELAND/ABROAD, region_name_id, district_name_id)).
 
     Both `take_from` and `take_to` must be of the same structure (i.e., both 2-tuples or both 3-tuples).
     """
@@ -344,7 +352,7 @@ class ChangeAdmState(BaseChangeMatter):
     take_from: Address
     take_to: Address
 
-    @model_validator("take_to")
+    @field_validator("take_to")
     def validate_matching_address_type(cls, take_to, values):
         take_from = values.get("take_from")
         if take_from and len(take_from) != len(take_to):
@@ -359,14 +367,14 @@ class ChangeAdmState(BaseChangeMatter):
             if len(self.take_from) == 2:
                 z_kraj, z_woj = self.take_from
                 z_adres = z_woj
-                if z_kraj=="Abroad":
+                if z_kraj=="ABROAD":
                     do_adres = "Polski"
                     jednostka = "region"
             else:
                 z_kraj, z_woj, z_powiat = self.take_from
                 do_kraj, do_woj, do_powiat = self.take_to
                 jednostka = "powiat"
-                if(z_kraj=="POLAND"):
+                if(z_kraj=="HOMELAND"):
                     z_adres = z_powiat
                     do_adres = f"województwa {do_woj}"
                 else:
@@ -374,7 +382,7 @@ class ChangeAdmState(BaseChangeMatter):
                     do_adres = f"Polski (woj. {do_woj})"
             print(f"Od {date} {jednostka} {': '.join(self.take_from)} należał do {': '.join(self.take_to[:-1])}")
         elif lang == "eng":
-            print(f"From {date} on, the district {self.take_from[-1]} belonged to {": ".join(self.take_to[:-1])} ({source}).")
+            print(f"From {date} on, the district {self.take_from[-1]} belonged to {': '.join(self.take_to[:-1])} ({source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
@@ -395,6 +403,9 @@ class ChangeAdmState(BaseChangeMatter):
         unit.changes.append(("adm_affiliation", change))
         change.unit_affected.append(("adm_affiliation", unit))
         return
+    
+    def districts_involved(self) -> list[str]:
+        pass
     
 ###############################################################
 # Definition of the base Change data model
@@ -419,5 +430,5 @@ class Change(BaseModel):
     def districts_involved(self) -> list[str]:
         return self.matter.districts_involved()
 
-    def apply(self, adm_state: AdminitrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
+    def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
         self.matter.apply(self, adm_state, region_registry, dist_registry) 

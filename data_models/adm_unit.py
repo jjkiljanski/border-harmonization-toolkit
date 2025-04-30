@@ -20,7 +20,6 @@ class UnitState(BaseModel):
     """
     current_name: str
     current_seat_name: str
-    current_dist_type: Literal["w", "m"]
 
     # The timespan during which this state is valid.
     timespan: Optional[TimeSpan] = None
@@ -182,7 +181,7 @@ class RegionState(UnitState):
     """
 
 class Region(Unit):
-    is_poland: bool
+    is_homeland: bool
     states: List[RegionState]
 
 class RegionRegistry(UnitRegistry):

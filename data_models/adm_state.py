@@ -8,8 +8,8 @@ from border_harmonization_toolkit.data_models.adm_unit import *
 # Models to store information about current region-districts relations.
 # AdministrativeState is a list of (region name, list of districts) pairs.
 
-RegionAddress = Tuple[Literal["Poland", "Abroad"], str]              # For regions"
-DistAddress = Tuple[Literal["Poland", "Abroad"], str, str]         # For districts
+RegionAddress = Tuple[Literal["HOMELAND", "ABROAD"], str]              # For regions"
+DistAddress = Tuple[Literal["HOMELAND", "ABROAD"], str, str]         # For districts
 Address = Union[DistAddress, RegionAddress]
 
 class AdministrativeState(BaseModel):

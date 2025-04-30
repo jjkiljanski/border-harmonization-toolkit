@@ -4,7 +4,7 @@
     "name_variants": [
       "BIAŁOSTOCKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "BIAŁOSTOCKIE",
@@ -17,7 +17,7 @@
     "name_variants": [
       "KIELECKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "KIELECKIE",
@@ -30,7 +30,7 @@
     "name_variants": [
       "KRAKOWSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "KRAKOWSKIE",
@@ -43,7 +43,7 @@
     "name_variants": [
       "LUBELSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "LUBELSKIE",
@@ -56,7 +56,7 @@
     "name_variants": [
       "LWOWSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "LWOWSKIE",
@@ -69,7 +69,7 @@
     "name_variants": [
       "ŁÓDZKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "ŁÓDZKIE",
@@ -82,7 +82,7 @@
     "name_variants": [
       "M. ST. WARSZAWA"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "M. ST. WARSZAWA",
@@ -95,7 +95,7 @@
     "name_variants": [
       "NOWOGRÓDZKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "NOWOGRÓDZKIE",
@@ -108,7 +108,7 @@
     "name_variants": [
       "POLESKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "POLESKIE",
@@ -121,7 +121,7 @@
     "name_variants": [
       "POMORSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "POMORSKIE",
@@ -134,7 +134,7 @@
     "name_variants": [
       "POZNAŃSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "POZNAŃSKIE",
@@ -147,7 +147,7 @@
     "name_variants": [
       "STANISŁAWOWSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "STANISŁAWOWSKIE",
@@ -160,7 +160,7 @@
     "name_variants": [
       "ŚLĄSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "ŚLĄSKIE",
@@ -173,7 +173,7 @@
     "name_variants": [
       "TARNOPOLSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "TARNOPOLSKIE",
@@ -186,7 +186,7 @@
     "name_variants": [
       "WARSZAWSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "WARSZAWSKIE",
@@ -199,7 +199,7 @@
     "name_variants": [
       "WOŁYŃSKIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "WOŁYŃSKIE",
@@ -212,7 +212,7 @@
     "name_variants": [
       "ZAOLZIE"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "ZAOLZIE",
@@ -225,7 +225,7 @@
     "name_variants": [
       "ŚLĄSK NIEMIECKI"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "ŚLĄSK NIEMIECKI",
@@ -238,7 +238,7 @@
     "name_variants": [
       "ZIEMIA WILEŃSKA"
     ],
-    "is_poland": true,
+    "is_homeland": true,
     "states": [
       {
         "current_name": "ZIEMIA WILEŃSKA",
