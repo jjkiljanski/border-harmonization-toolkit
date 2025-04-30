@@ -1,4 +1,4 @@
-from pydantic import BaseModel, model_validator, field_validator, Field
+from pydantic import BaseModel, model_validator, Field
 from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 from abc import ABC, abstractmethod
 from datetime import datetime
@@ -352,15 +352,14 @@ class ChangeAdmState(BaseChangeMatter):
     take_from: Address
     take_to: Address
 
-    @field_validator("take_to")
-    def validate_matching_address_type(cls, take_to, values):
-        take_from = values.get("take_from")
-        if take_from and len(take_from) != len(take_to):
+    @model_validator(mode="after")
+    def validate_matching_address_type(self):
+        if len(self.take_from) != len(self.take_to):
             raise ValueError(
                 f"'take_from' and 'take_to' must be the same length: "
-                f"got {len(take_from)} and {len(take_to)}"
+                f"got {len(self.take_from)} and {len(self.take_to)}"
             )
-        return take_to
+        return self
     
     def echo(self, date, source, lang = "pol"):
         if lang == "pol":
