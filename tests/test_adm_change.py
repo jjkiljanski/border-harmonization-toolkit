@@ -356,7 +356,7 @@ def test_take_to_create_false_missing_name():
 # ─── VALID FIXTURES ─────────────────────────────────────────────────────────────
 
 @pytest.fixture
-def many_to_one_create_new_district_fixture(change_test_setup):
+def create_many_to_one_matter_fixture(change_test_setup):
     district_x = change_test_setup["district_x"]
     return ManyToOne(
         change_type="ManyToOne",
@@ -374,7 +374,7 @@ def many_to_one_create_new_district_fixture(change_test_setup):
     )
 
 @pytest.fixture
-def many_to_one_reuse_existing_district_fixture():
+def reuse_many_to_one_matter_fixture():
     return ManyToOne(
         change_type="ManyToOne",
         unit_attribute="territory",
@@ -391,16 +391,16 @@ def many_to_one_reuse_existing_district_fixture():
 
 # ─── VALIDATION TESTS FOR CONSTRUCTION ─────────────────────────────────────────
 
-def test_many_to_one_create_fixture_valid(many_to_one_create_new_district_fixture):
-    change = many_to_one_create_new_district_fixture
+def test_many_to_one_create_fixture_valid(create_many_to_one_matter_fixture):
+    change = create_many_to_one_matter_fixture
     assert change.change_type == "ManyToOne"
     assert change.take_to.create is True
     assert change.take_to.district.name_id == "district_x"
     assert len(change.take_from) == 2
     assert all(isinstance(f, ManyToOneTakeFrom) for f in change.take_from)
 
-def test_many_to_one_reuse_fixture_valid(many_to_one_reuse_existing_district_fixture):
-    change = many_to_one_reuse_existing_district_fixture
+def test_many_to_one_reuse_fixture_valid(reuse_many_to_one_matter_fixture):
+    change = reuse_many_to_one_matter_fixture
     assert change.take_to.create is False
     assert change.take_to.current_name == "district_e"
     assert all(isinstance(f, ManyToOneTakeFrom) for f in change.take_from)
@@ -433,7 +433,7 @@ def test_many_to_one_missing_name_on_reuse():
 # ─── VALID FIXTURES ─────────────────────────────────────────────────────────────
 
 @pytest.fixture
-def region_change_fixture():
+def region_change_matter_fixture():
     return ChangeAdmState(
         change_type="ChangeAdmState",
         take_from=("HOMELAND", "region_a"),
@@ -441,7 +441,7 @@ def region_change_fixture():
     )
 
 @pytest.fixture
-def district_change_fixture():
+def district_change_matter_fixture():
     return ChangeAdmState(
         change_type="ChangeAdmState",
         take_from=("HOMELAND", "region_a", "district_a"),
@@ -450,15 +450,15 @@ def district_change_fixture():
 
 # ─── VALIDATION TESTS FOR CONSTRUCTION ─────────────────────────────────────────
 
-def test_region_change_fixture_structure(region_change_fixture):
-    assert region_change_fixture.take_from == ("HOMELAND", "region_a")
-    assert region_change_fixture.take_to == ("HOMELAND", "region_b")
-    assert len(region_change_fixture.take_from) == len(region_change_fixture.take_to) == 2
+def test_region_change_matter_fixture_structure(region_change_matter_fixture):
+    assert region_change_matter_fixture.take_from == ("HOMELAND", "region_a")
+    assert region_change_matter_fixture.take_to == ("HOMELAND", "region_b")
+    assert len(region_change_matter_fixture.take_from) == len(region_change_matter_fixture.take_to) == 2
 
-def test_district_change_fixture_structure(district_change_fixture):
-    assert district_change_fixture.take_from[2] == "district_a"
-    assert district_change_fixture.take_to[2] == "district_c"
-    assert len(district_change_fixture.take_from) == len(district_change_fixture.take_to) == 3
+def test_district_change_matter_fixture_structure(district_change_matter_fixture):
+    assert district_change_matter_fixture.take_from[2] == "district_a"
+    assert district_change_matter_fixture.take_to[2] == "district_c"
+    assert len(district_change_matter_fixture.take_from) == len(district_change_matter_fixture.take_to) == 3
 
 # ─── INVALID CONSTRUCTION TESTS ────────────────────────────────────────────────
 
@@ -478,4 +478,30 @@ def test_invalid_changeadmstate_mismatched_address_lengths():
 
 # Test cases related to the Change class.
 
+@pytest.mark.parametrize(
+    "fixture_name",
+    [
+        "region_reform_matter_fixture",
+        "district_reform_matter_fixture",
+        "one_to_many_matter_fixture",
+        "create_many_to_one_matter_fixture",
+        "reuse_many_to_one_matter_fixture",
+        "region_change_matter_fixture",
+        "district_change_matter_fixture",
+    ]
+)
+def test_change_construction_from_matter_fixtures(request, fixture_name):
+    matter = request.getfixturevalue(fixture_name)
 
+    change = Change(
+        date=datetime(1930, 5, 1),
+        source="Gov Gazette",
+        description="Test change",
+        order=1,
+        matter=matter
+    )
+
+    assert isinstance(change, Change)
+    assert change.date.year == 1930
+    assert change.description == "Test change"
+    assert change.matter == matter
