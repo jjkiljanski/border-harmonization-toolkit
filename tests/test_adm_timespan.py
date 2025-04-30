@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
 from pydantic import ValidationError
-from border-harmonization-toolkit.data_models import TimeSpan, TimeSpanRegistry 
+from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan, TimeSpanRegistry 
 
 # Test data for the TimeSpan class
 def test_timespan_contains():
@@ -46,8 +46,6 @@ def test_invalid_timespan():
         # TimeSpan with 'end' earlier than 'start'
         TimeSpan(start=datetime(1931, 1, 1), end=datetime(1923, 1, 1))
 
-# Test case where a timespan is empty
-def test_empty_timespan():
-    # Create an empty timespan
-    timespan = TimeSpan(start=datetime(1930, 1, 1), end=datetime(1930, 1, 1))
-    assert timespan.contains(datetime(1930, 1, 1))  # The date should still be inside since it's inclusive 
+    with pytest.raises(ValidationError):
+        # TimeSpan with 'end' same as 'start'
+        TimeSpan(start=datetime(1931, 1, 1), end=datetime(1931, 1, 1))
