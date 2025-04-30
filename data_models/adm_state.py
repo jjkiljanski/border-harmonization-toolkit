@@ -1,21 +1,19 @@
-from pydantic import BaseModel, model_validator, Field
-from typing import Union, Optional, Literal, List, Dict, Annotated, Any
-from abc import ABC, abstractmethod
-from datetime import datetime
+from pydantic import BaseModel
+from typing import Union, Optional, Literal, Dict, Any, Tuple
 
-from adm_timespan import *
-from adm_unit import *
+from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan
+from border_harmonization_toolkit.data_models.adm_unit import *
 
 #############################################################################################
 # Models to store information about current region-districts relations.
 # AdministrativeState is a list of (region name, list of districts) pairs.
 
-DistAddress = Tuple[Literal["Poland", "Abroad"], str]              # For regions"
-RegionAddress = Tuple[Literal["Poland", "Abroad"], str, str]         # For districts
+RegionAddress = Tuple[Literal["Poland", "Abroad"], str]              # For regions"
+DistAddress = Tuple[Literal["Poland", "Abroad"], str, str]         # For districts
 Address = Union[DistAddress, RegionAddress]
 
-class AdminitrativeState(BaseModel):
-    timespan = Optional[TimeSpan] = None
+class AdministrativeState(BaseModel):
+    timespan: Optional[TimeSpan] = None
     unit_hierarchy: Dict[str, Dict[str, Dict[str, Any]]]
 
     def pop_address(self, address):
@@ -37,11 +35,9 @@ class AdminitrativeState(BaseModel):
         Adds address[n]:content key:value pair at the address adm_state[address[0]][address[1]]...[address[n-1]].
         """
         current = self.unit_hierarchy
-        current_parent = None
-        for i, attr in enumerate(address):
-            current_parent = current
+        for i, attr in enumerate(address[:-1]):
             if attr not in current.keys():
                 raise ValueError(f"Unit '{attr}' does not belong to {address[:i]}")
             current = current[attr]
-        current_parent[address[-1]] = content
-        return 
+        current[address[-1]] = content
+        return
