@@ -3,6 +3,7 @@ from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 from abc import ABC, abstractmethod
 from datetime import datetime
 
+from adm_timespan import *
 from adm_unit import *
 from adm_state import *
 
