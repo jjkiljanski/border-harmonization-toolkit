@@ -76,10 +76,27 @@ def change_test_setup():
         unit_hierarchy=unit_hierarchy
     )
 
+    def district_x_to_create():
+        return District(
+            name_id="district_x",
+            name_variants=["district_x", "DISTRICT_X"],
+            seat_name_variants=["seat_x", "SEAT_X"],
+            states=[
+                DistState(
+                    current_name="district_x",
+                    current_seat_name="seat_x",
+                    current_dist_type="w",
+                    current_territory=None,
+                    timespan=TimeSpan(start=datetime(1921, 2, 19), end=datetime(1938, 11, 16))
+                )
+            ]
+        )
+
     return {
         "district_registry": district_registry,
         "region_registry": region_registry,
-        "administrative_state": administrative_state
+        "administrative_state": administrative_state,
+        "district_x": district_x_to_create()
     }
 
 ############################################################################
@@ -286,6 +303,65 @@ def test_echo_eng_district(district_reform_matter):
 ############################################################################
 #                           OneToMany class tests                        #
 ############################################################################
+
+import pytest
+from pydantic import ValidationError
+from datetime import datetime
+
+# Assuming all required classes are imported:
+# OneToManyTakeFrom, OneToManyTakeTo, OneToMany, District, DistState, TimeSpan
+
+def test_take_to_create_true_valid(change_test_setup):
+    district_x_to_create = change_test_setup["district_x"]
+    take_to = OneToManyTakeTo(
+        create=True,
+        current_name="district_x",
+        district=district_x_to_create
+    )
+    assert take_to.create is True
+    assert take_to.district.name_id == "district_x"
+
+def test_take_to_create_true_missing_district():
+    with pytest.raises(ValidationError) as exc_info:
+        OneToManyTakeTo(
+            create=True,
+            current_name="district_x"
+            # missing district
+        )
+    assert "must be passed as 'district' attribute" in str(exc_info.value)
+
+def test_take_to_create_false_valid():
+    take_to = OneToManyTakeTo(
+        create=False,
+        current_name="district_b"
+    )
+    assert take_to.create is False
+    assert take_to.current_name == "district_b"
+
+def test_take_to_create_false_missing_name():
+    with pytest.raises(ValidationError) as exc_info:
+        OneToManyTakeTo(
+            create=False,
+            current_name="",
+        )
+    assert "must be passed as 'name_id' attribute" in str(exc_info.value)
+
+def test_valid_one_to_many_change(change_test_setup):
+    district_x_to_create = change_test_setup["district_x"]
+    change = OneToMany(
+        change_type="OneToMany",
+        unit_attribute="territory",
+        unit_type="District",
+        take_from=OneToManyTakeFrom(current_name="district_a", delete_unit=True),
+        take_to=[
+            OneToManyTakeTo(create=False, current_name="district_b", weight_from=0.3),
+            OneToManyTakeTo(create=True, current_name="district_x", district=district_x_to_create, weight_from=0.7)
+        ]
+    )
+    assert change.change_type == "OneToMany"
+    assert change.unit_attribute == "territory"
+    assert change.take_from.current_name == "district_a"
+    assert len(change.take_to) == 2
 
 # Test cases related to the OneToMany class.
 
