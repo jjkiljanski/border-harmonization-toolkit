@@ -375,6 +375,97 @@ def one_to_many_change_fixture(change_test_setup):
 #                           ManyToOne class tests                        #
 ############################################################################
 
+def test_many_to_one_create_new_district(change_test_setup):
+    district_x = change_test_setup["district_x"]
+
+    change = ManyToOne(
+        change_type="ManyToOne",
+        unit_attribute="territory",
+        unit_type="District",
+        take_from=[
+            ManyToOneTakeFrom(current_name="district_a", weight_from=0.6, delete_unit=True),
+            ManyToOneTakeFrom(current_name="district_b", weight_from=0.4, delete_unit=False)
+        ],
+        take_to=ManyToOneTakeTo(
+            create=True,
+            current_name="district_x",
+            district=district_x
+        )
+    )
+
+    assert change.change_type == "ManyToOne"
+    assert change.take_to.district.name_id == "district_x"
+    assert len(change.take_from) == 2
+
+def test_many_to_one_reuse_existing_district():
+    change = ManyToOne(
+        change_type="ManyToOne",
+        unit_attribute="territory",
+        unit_type="District",
+        take_from=[
+            ManyToOneTakeFrom(current_name="district_c", weight_from=0.5, delete_unit=False),
+            ManyToOneTakeFrom(current_name="district_d", weight_from=0.5, delete_unit=True)
+        ],
+        take_to=ManyToOneTakeTo(
+            create=False,
+            current_name="district_e"
+        )
+    )
+
+    assert change.take_to.create is False
+    assert change.take_to.current_name == "district_e"
+    assert all(isinstance(f, ManyToOneTakeFrom) for f in change.take_from)
+
+def test_many_to_one_missing_district_on_create():
+    with pytest.raises(ValueError, match="must be passed as 'district' attribute when 'create' is True"):
+        ManyToOneTakeTo(
+            create=True,
+            current_name="district_x",
+            district=None
+        )
+
+def test_many_to_one_missing_name_on_reuse():
+    with pytest.raises(ValueError, match="must be passed as 'name_id' attribute when 'create' is False"):
+        ManyToOneTakeTo(
+            create=False,
+            current_name=None
+        )
+
+@pytest.fixture
+def many_to_one_create_new_district(change_test_setup):
+    district_x = change_test_setup["district_x"]
+
+    return ManyToOne(
+        change_type="ManyToOne",
+        unit_attribute="territory",
+        unit_type="District",
+        take_from=[
+            ManyToOneTakeFrom(current_name="district_a", weight_from=0.6, delete_unit=True),
+            ManyToOneTakeFrom(current_name="district_b", weight_from=0.4, delete_unit=False),
+        ],
+        take_to=ManyToOneTakeTo(
+            create=True,
+            current_name="district_x",
+            district=district_x,
+        ),
+    )
+
+@pytest.fixture
+def many_to_one_reuse_existing_district():
+    return ManyToOne(
+        change_type="ManyToOne",
+        unit_attribute="territory",
+        unit_type="District",
+        take_from=[
+            ManyToOneTakeFrom(current_name="district_c", weight_from=0.5, delete_unit=False),
+            ManyToOneTakeFrom(current_name="district_d", weight_from=0.5, delete_unit=True),
+        ],
+        take_to=ManyToOneTakeTo(
+            create=False,
+            current_name="district_e",
+        ),
+    )
+
 # Test cases related to the ManyToOne class.
 
 ############################################################################
