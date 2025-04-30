@@ -304,13 +304,6 @@ def test_echo_eng_district(district_reform_matter):
 #                           OneToMany class tests                        #
 ############################################################################
 
-import pytest
-from pydantic import ValidationError
-from datetime import datetime
-
-# Assuming all required classes are imported:
-# OneToManyTakeFrom, OneToManyTakeTo, OneToMany, District, DistState, TimeSpan
-
 def test_take_to_create_true_valid(change_test_setup):
     district_x_to_create = change_test_setup["district_x"]
     take_to = OneToManyTakeTo(
@@ -362,6 +355,19 @@ def test_valid_one_to_many_change(change_test_setup):
     assert change.unit_attribute == "territory"
     assert change.take_from.current_name == "district_a"
     assert len(change.take_to) == 2
+
+@pytest.fixture
+def one_to_many_change_fixture(change_test_setup):
+    return OneToMany(
+        change_type="OneToMany",
+        unit_attribute="territory",
+        unit_type="District",
+        take_from=OneToManyTakeFrom(current_name="district_a", delete_unit=True),
+        take_to=[
+            OneToManyTakeTo(create=False, current_name="district_b", weight_from=0.5),
+            OneToManyTakeTo(create=True, current_name="district_x", district=change_test_setup["district_x"], weight_from=0.5)
+        ]
+    )
 
 # Test cases related to the OneToMany class.
 
