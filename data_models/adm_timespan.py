@@ -19,4 +19,4 @@ class TimeSpanRegistry(BaseModel):
     """
     A model to store all periods between two sequential administrative changes.
     """
-    registry = List[TimeSpan] 
+    registry: List[TimeSpan] 
