@@ -1,375 +1,919 @@
 {
   "unit_hierarchy": {
-    "POLAND": [
-      {
-        "BIAŁOSTOCKIE": [
-          "AUGUSTOWSKI",
-          "BIAŁOSTOCKI",
-          "BIAŁOWIESKI",
-          "BIELSKI (BIELSK PODLASKI)",
-          "GRODZIEŃSKI",
-          "KOLNEŃSKI",
-          "ŁOMŻYŃSKI",
-          "OSTROŁĘCKI",
-          "OSTROWSKI (OSTRÓW MAZOWIECKA)",
-          "SEJNEŃSKI",
-          "SOKÓLSKI",
-          "SUWALSKI",
-          "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)",
-          "WOŁKOWYSKI",
-          "WYSOKOMAZOWIECKI"
-        ]
-      },
-      {
-        "KIELECKIE": [
-          "BĘDZIŃSKI",
-          "CZĘSTOCHOWSKI",
-          "IŁŻECKI",
-          "JĘDRZEJOWSKI",
-          "KIELECKI",
-          "KONECKI",
-          "KOZIENICKI",
-          "MIECHOWSKI",
-          "OLKUSKI",
-          "OPATOWSKI",
-          "OPOCZYŃSKI",
-          "PIŃCZOWSKI",
-          "RADOMSKI",
-          "SANDOMIERSKI",
-          "STOPNICKI",
-          "WŁOSZCZOWSKI"
-        ]
-      },
-      {
-        "KRAKOWSKIE": [
-          "BIALSKI (BIAŁA KRAKOWSKA)",
-          "BOCHEŃSKI",
-          "BRZESKI (BRZESKO)",
-          "CHRZANOWSKI",
-          "DĄBROWSKI",
-          "GORLICKI",
-          "GRYBOWSKI",
-          "JASIELSKI",
-          "KRAKOWSKI",
-          "KRAKÓW",
-          "LIMANOWSKI",
-          "MIELECKI",
-          "MYŚLENICKI",
-          "NOWOSĄDECKI",
-          "NOWOTARSKI",
-          "OŚWIĘCIMSKI",
-          "PILZNEŃSKI",
-          "PODGÓRSKI",
-          "ROPCZYCKI",
-          "SPISKO-ORAWSKI",
-          "TARNOWSKI",
-          "WADOWICKI",
-          "WIELICKI",
-          "ŻYWIECKI"
-        ]
-      },
-      {
-        "LUBELSKIE": [
-          "BIALSKI (BIAŁA PODLASKA)",
-          "BIŁGORAJSKI",
-          "CHEŁMSKI",
-          "GARWOLIŃSKI",
-          "HRUBIESZOWSKI",
-          "JANOWSKI",
-          "KONSTANTYNOWSKI",
-          "KRASNOSTAWSKI",
-          "LUBARTOWSKI",
-          "LUBELSKI",
-          "LUBLIN",
-          "ŁUKOWSKI",
-          "PUŁAWSKI",
-          "RADZYŃSKI",
-          "SIEDLECKI",
-          "SOKOŁOWSKI",
-          "TOMASZOWSKI",
-          "WĘGROWSKI",
-          "WŁODAWSKI",
-          "ZAMOJSKI"
-        ]
-      },
-      {
-        "LWOWSKIE": [
-          "BÓBRECKI",
-          "BRZOZOWSKI",
-          "CIESZANOWSKI",
-          "DOBROMILSKI",
-          "DROHOBYCKI",
-          "GRÓDECKI",
-          "JAROSŁAWSKI",
-          "JAWOROWSKI",
-          "KOLBUSZOWSKI",
-          "KROŚNIEŃSKI",
-          "LISKI",
-          "LWOWSKI",
-          "LWÓW",
-          "ŁAŃCUCKI",
-          "MOŚCISKI",
-          "NIŻAŃSKI",
-          "PRZEMYSKI",
-          "PRZEWORSKI",
-          "RAWSKI (RAWA RUSKA)",
-          "RUDECKI",
-          "RZESZOWSKI",
-          "SAMBORSKI",
-          "SANOCKI",
-          "SOKALSKI",
-          "STAROSAMBORSKI",
-          "STRZYŻOWSKI",
-          "TARNOBRZESKI",
-          "ŻÓŁKIEWSKI"
-        ]
-      },
-      {
-        "ŁÓDZKIE": [
-          "BRZEZIŃSKI",
-          "KALISKI",
-          "KOLSKI",
-          "KONIŃSKI",
-          "ŁASKI",
-          "ŁĘCZYCKI",
-          "ŁÓDZKI",
-          "ŁÓDŹ",
-          "PIOTRKOWSKI",
-          "RADOMSZCZAŃSKI",
-          "SIERADZKI",
-          "SŁUPECKI",
-          "TURECKI",
-          "WIELUŃSKI"
-        ]
-      },
-      {
-        "M. ST. WARSZAWA": [
-          "M. ST. WARSZAWA"
-        ]
-      },
-      {
-        "NOWOGRÓDZKIE": [
-          "BARANOWICKI",
-          "DUNIŁOWICKI",
-          "DZIŚNIEŃSKI",
-          "LIDZKI",
-          "NIEŚWIESKI",
-          "NOWOGRÓDZKI",
-          "SŁONIMSKI",
-          "STOŁPECKI",
-          "WILEJSKI",
-          "WOŁOŻYŃSKI"
-        ]
-      },
-      {
-        "POLESKIE": [
-          "BRZESKI (BRZEŚĆ N.BUG.)",
-          "DROHICKI",
-          "KOBRYŃSKI",
-          "KOSOWSKI (KOSÓW POLESKI)",
-          "KOSZYRSKI",
-          "ŁUNINIECKI",
-          "PIŃSKI",
-          "PRUŻAŃSKI",
-          "SARNEŃSKI"
-        ]
-      },
-      {
-        "POMORSKIE": [
-          "BRODNICKI",
-          "CHEŁMIŃSKI",
-          "CHOJNICKI",
-          "DZIAŁDOWSKI",
-          "GNIEWSKI",
-          "GRUDZIĄDZ",
-          "GRUDZIĄDZKI",
-          "KARTUSKI",
-          "KOŚCIERSKI",
-          "LUBAWSKI",
-          "PUCKI",
-          "SĘPOLEŃSKI",
-          "STAROGARDZKI",
-          "ŚWIECKI",
-          "TCZEWSKI",
-          "TORUŃ",
-          "TORUŃSKI",
-          "TUCHOLSKI",
-          "WĄBRZESKI",
-          "WEJHEROWSKI"
-        ]
-      },
-      {
-        "POZNAŃSKIE": [
-          "BYDGOSKI",
-          "BYDGOSZCZ",
-          "CHODZIESKI",
-          "CZARNKOWSKI",
-          "GNIEŹNIEŃSKI",
-          "GOSTYŃSKI",
-          "GRODZISKI",
-          "INOWROCŁAWSKI",
-          "JAROCIŃSKI",
-          "KĘPIŃSKI",
-          "KOŚCIAŃSKI",
-          "KOŹMIŃSKI",
-          "KROTOSZYŃSKI",
-          "LESZCZYŃSKI",
-          "MIĘDZYCHODZKI",
-          "MOGILEŃSKI",
-          "NOWOTOMYSKI",
-          "OBORNICKI",
-          "ODOLANOWSKI",
-          "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
-          "OSTRZESZOWSKI",
-          "PLESZEWSKI",
-          "POZNAŃ",
-          "POZNAŃSKI WSCHODNI",
-          "POZNAŃSKI ZACHODNI",
-          "RAWICKI",
-          "STRZELNEŃSKI",
-          "SZAMOTULSKI",
-          "SZUBIŃSKI",
-          "ŚMIGIELSKI",
-          "ŚREDZKI",
-          "ŚREMSKI",
-          "WĄGROWIECKI",
-          "WITKOWSKI",
-          "WOLSZTYŃSKI",
-          "WRZESIŃSKI",
-          "WYRZYSKI",
-          "ŻNIŃSKI"
-        ]
-      },
-      {
-        "STANISŁAWOWSKIE": [
-          "BOHORODCZAŃSKI",
-          "DOLIŃSKI",
-          "HORODEŃSKI",
-          "KAŁUSKI",
-          "KOŁOMYJSKI",
-          "KOSOWSKI (KOSÓW HUCULSKI)",
-          "NADWÓRNIAŃSKI",
-          "PECZENIŻYŃSKI",
-          "ROHATYŃSKI",
-          "SKOLSKI",
-          "STANISŁAWOWSKI",
-          "STRYJSKI",
-          "ŚNIATYŃSKI",
-          "TŁUMACKI",
-          "TURCZAŃSKI",
-          "ŻYDACZOWSKI"
-        ]
-      },
-      {
-        "ŚLĄSKIE": [
-          "BIELSKI (BIELSKO)",
-          "BIELSKO",
-          "CIESZYŃSKI"
-        ]
-      },
-      {
-        "TARNOPOLSKIE": [
-          "BORSZCZOWSKI",
-          "BRODZKI",
-          "BRZEŻAŃSKI",
-          "BUCZACKI",
-          "CZORTKOWSKI",
-          "HUSIATYŃSKI",
-          "KAMIONECKI",
-          "PODHAJECKI",
-          "PRZEMYŚLAŃSKI",
-          "RADZIECHOWSKI",
-          "SKAŁACKI",
-          "TARNOPOLSKI",
-          "TREMBOWELSKI",
-          "ZALESZCZYCKI",
-          "ZBARASKI",
-          "ZBOROWSKI",
-          "ZŁOCZOWSKI"
-        ]
-      },
-      {
-        "WARSZAWSKIE": [
-          "BŁOŃSKI",
-          "CIECHANOWSKI",
-          "GOSTYNIŃSKI",
-          "GRÓJECKI",
-          "KUTNOWSKI",
-          "LIPNOWSKI",
-          "ŁOWICKI",
-          "MAKOWSKI (MAKÓW MAZOWIECKI)",
-          "MIŃSKI",
-          "MŁAWSKI",
-          "NIESZAWSKI",
-          "PŁOCKI",
-          "PŁOŃSKI",
-          "PRZASNYCKI",
-          "PUŁTUSKI",
-          "RADZYMIŃSKI",
-          "RAWSKI (RAWA MAZOWIECKA)",
-          "RYPIŃSKI",
-          "SIERPECKI",
-          "SKIERNIEWICKI",
-          "SOCHACZEWSKI",
-          "WARSZAWSKI",
-          "WŁOCŁAWSKI"
-        ]
-      },
-      {
-        "WOŁYŃSKIE": [
-          "DUBIEŃSKI",
-          "HOROCHOWSKI",
-          "KOWELSKI",
-          "KRZEMIENIECKI",
-          "LUBOMELSKI",
-          "ŁUCKI",
-          "OSTROGSKI",
-          "RÓWIEŃSKI",
-          "WŁODZIMIERSKI"
-        ]
-      }
-    ],
-    "ABROAD": [
-      {
-        "ZAOLZIE": [
-          "BARDIOWSKI",
-          "CZADECKI",
-          "CZESKOCIESZYŃSKI",
-          "FRYDECKI",
-          "FRYSZTACKI",
-          "KIEŻMARSKI",
-          "NAMIESTOWSKI",
-          "SNIŃSKI",
-          "STAROLUBOWELSKI",
-          "STAROWIEJSKI",
-          "TRZCIAŃSKI"
-        ]
-      },
-      {
-        "ŚLĄSK NIEMIECKI": [
-          "BYTOM WIEŚ",
-          "BYTOM MIASTO",
-          "ZABRSKI",
-          "KATOWICE",
-          "KATOWICKI",
-          "KRÓLEWSKA HUTA",
-          "LUBLINIECKI",
-          "PSZCZYŃSKI",
-          "RACIBORSKI",
-          "RYBNICKI",
-          "TARNOGÓRSKI"
-        ]
-      },
-      {
-        "ZIEMIA WILEŃSKA": [
-          "BRASŁAWSKI",
-          "OSZMIAŃSKI",
-          "ŚWIĘCIAŃSKI",
-          "TROCKI",
-          "WILEŃSKI",
-          "WILNO"
-        ]
-      }
-    ]
+    "POLAND": {
+      "BIAŁOSTOCKIE": [
+        {
+          "AUGUSTOWSKI": null
+        },
+        {
+          "BIAŁOSTOCKI": null
+        },
+        {
+          "BIAŁOWIESKI": null
+        },
+        {
+          "BIELSKI (BIELSK PODLASKI)": null
+        },
+        {
+          "GRODZIEŃSKI": null
+        },
+        {
+          "KOLNEŃSKI": null
+        },
+        {
+          "ŁOMŻYŃSKI": null
+        },
+        {
+          "OSTROŁĘCKI": null
+        },
+        {
+          "OSTROWSKI (OSTRÓW MAZOWIECKA)": null
+        },
+        {
+          "SEJNEŃSKI": null
+        },
+        {
+          "SOKÓLSKI": null
+        },
+        {
+          "SUWALSKI": null
+        },
+        {
+          "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)": null
+        },
+        {
+          "WOŁKOWYSKI": null
+        },
+        {
+          "WYSOKOMAZOWIECKI": null
+        }
+      ],
+      "KIELECKIE": [
+        {
+          "BĘDZIŃSKI": null
+        },
+        {
+          "CZĘSTOCHOWSKI": null
+        },
+        {
+          "IŁŻECKI": null
+        },
+        {
+          "JĘDRZEJOWSKI": null
+        },
+        {
+          "KIELECKI": null
+        },
+        {
+          "KONECKI": null
+        },
+        {
+          "KOZIENICKI": null
+        },
+        {
+          "MIECHOWSKI": null
+        },
+        {
+          "OLKUSKI": null
+        },
+        {
+          "OPATOWSKI": null
+        },
+        {
+          "OPOCZYŃSKI": null
+        },
+        {
+          "PIŃCZOWSKI": null
+        },
+        {
+          "RADOMSKI": null
+        },
+        {
+          "SANDOMIERSKI": null
+        },
+        {
+          "STOPNICKI": null
+        },
+        {
+          "WŁOSZCZOWSKI": null
+        }
+      ],
+      "KRAKOWSKIE": [
+        {
+          "BIALSKI (BIAŁA KRAKOWSKA)": null
+        },
+        {
+          "BOCHEŃSKI": null
+        },
+        {
+          "BRZESKI (BRZESKO)": null
+        },
+        {
+          "CHRZANOWSKI": null
+        },
+        {
+          "DĄBROWSKI": null
+        },
+        {
+          "GORLICKI": null
+        },
+        {
+          "GRYBOWSKI": null
+        },
+        {
+          "JASIELSKI": null
+        },
+        {
+          "KRAKOWSKI": null
+        },
+        {
+          "KRAKÓW": null
+        },
+        {
+          "LIMANOWSKI": null
+        },
+        {
+          "MIELECKI": null
+        },
+        {
+          "MYŚLENICKI": null
+        },
+        {
+          "NOWOSĄDECKI": null
+        },
+        {
+          "NOWOTARSKI": null
+        },
+        {
+          "OŚWIĘCIMSKI": null
+        },
+        {
+          "PILZNEŃSKI": null
+        },
+        {
+          "PODGÓRSKI": null
+        },
+        {
+          "ROPCZYCKI": null
+        },
+        {
+          "SPISKO-ORAWSKI": null
+        },
+        {
+          "TARNOWSKI": null
+        },
+        {
+          "WADOWICKI": null
+        },
+        {
+          "WIELICKI": null
+        },
+        {
+          "ŻYWIECKI": null
+        }
+      ],
+      "LUBELSKIE": [
+        {
+          "BIALSKI (BIAŁA PODLASKA)": null
+        },
+        {
+          "BIŁGORAJSKI": null
+        },
+        {
+          "CHEŁMSKI": null
+        },
+        {
+          "GARWOLIŃSKI": null
+        },
+        {
+          "HRUBIESZOWSKI": null
+        },
+        {
+          "JANOWSKI": null
+        },
+        {
+          "KONSTANTYNOWSKI": null
+        },
+        {
+          "KRASNOSTAWSKI": null
+        },
+        {
+          "LUBARTOWSKI": null
+        },
+        {
+          "LUBELSKI": null
+        },
+        {
+          "LUBLIN": null
+        },
+        {
+          "ŁUKOWSKI": null
+        },
+        {
+          "PUŁAWSKI": null
+        },
+        {
+          "RADZYŃSKI": null
+        },
+        {
+          "SIEDLECKI": null
+        },
+        {
+          "SOKOŁOWSKI": null
+        },
+        {
+          "TOMASZOWSKI": null
+        },
+        {
+          "WĘGROWSKI": null
+        },
+        {
+          "WŁODAWSKI": null
+        },
+        {
+          "ZAMOJSKI": null
+        }
+      ],
+      "LWOWSKIE": [
+        {
+          "BÓBRECKI": null
+        },
+        {
+          "BRZOZOWSKI": null
+        },
+        {
+          "CIESZANOWSKI": null
+        },
+        {
+          "DOBROMILSKI": null
+        },
+        {
+          "DROHOBYCKI": null
+        },
+        {
+          "GRÓDECKI": null
+        },
+        {
+          "JAROSŁAWSKI": null
+        },
+        {
+          "JAWOROWSKI": null
+        },
+        {
+          "KOLBUSZOWSKI": null
+        },
+        {
+          "KROŚNIEŃSKI": null
+        },
+        {
+          "LISKI": null
+        },
+        {
+          "LWOWSKI": null
+        },
+        {
+          "LWÓW": null
+        },
+        {
+          "ŁAŃCUCKI": null
+        },
+        {
+          "MOŚCISKI": null
+        },
+        {
+          "NIŻAŃSKI": null
+        },
+        {
+          "PRZEMYSKI": null
+        },
+        {
+          "PRZEWORSKI": null
+        },
+        {
+          "RAWSKI (RAWA RUSKA)": null
+        },
+        {
+          "RUDECKI": null
+        },
+        {
+          "RZESZOWSKI": null
+        },
+        {
+          "SAMBORSKI": null
+        },
+        {
+          "SANOCKI": null
+        },
+        {
+          "SOKALSKI": null
+        },
+        {
+          "STAROSAMBORSKI": null
+        },
+        {
+          "STRZYŻOWSKI": null
+        },
+        {
+          "TARNOBRZESKI": null
+        },
+        {
+          "ŻÓŁKIEWSKI": null
+        }
+      ],
+      "ŁÓDZKIE": [
+        {
+          "BRZEZIŃSKI": null
+        },
+        {
+          "KALISKI": null
+        },
+        {
+          "KOLSKI": null
+        },
+        {
+          "KONIŃSKI": null
+        },
+        {
+          "ŁASKI": null
+        },
+        {
+          "ŁĘCZYCKI": null
+        },
+        {
+          "ŁÓDZKI": null
+        },
+        {
+          "ŁÓDŹ": null
+        },
+        {
+          "PIOTRKOWSKI": null
+        },
+        {
+          "RADOMSZCZAŃSKI": null
+        },
+        {
+          "SIERADZKI": null
+        },
+        {
+          "SŁUPECKI": null
+        },
+        {
+          "TURECKI": null
+        },
+        {
+          "WIELUŃSKI": null
+        }
+      ],
+      "M. ST. WARSZAWA": [
+        {
+          "M. ST. WARSZAWA": null
+        }
+      ],
+      "NOWOGRÓDZKIE": [
+        {
+          "BARANOWICKI": null
+        },
+        {
+          "DUNIŁOWICKI": null
+        },
+        {
+          "DZIŚNIEŃSKI": null
+        },
+        {
+          "LIDZKI": null
+        },
+        {
+          "NIEŚWIESKI": null
+        },
+        {
+          "NOWOGRÓDZKI": null
+        },
+        {
+          "SŁONIMSKI": null
+        },
+        {
+          "STOŁPECKI": null
+        },
+        {
+          "WILEJSKI": null
+        },
+        {
+          "WOŁOŻYŃSKI": null
+        }
+      ],
+      "POLESKIE": [
+        {
+          "BRZESKI (BRZEŚĆ N.BUG.)": null
+        },
+        {
+          "DROHICKI": null
+        },
+        {
+          "KOBRYŃSKI": null
+        },
+        {
+          "KOSOWSKI (KOSÓW POLESKI)": null
+        },
+        {
+          "KOSZYRSKI": null
+        },
+        {
+          "ŁUNINIECKI": null
+        },
+        {
+          "PIŃSKI": null
+        },
+        {
+          "PRUŻAŃSKI": null
+        },
+        {
+          "SARNEŃSKI": null
+        }
+      ],
+      "POMORSKIE": [
+        {
+          "BRODNICKI": null
+        },
+        {
+          "CHEŁMIŃSKI": null
+        },
+        {
+          "CHOJNICKI": null
+        },
+        {
+          "DZIAŁDOWSKI": null
+        },
+        {
+          "GNIEWSKI": null
+        },
+        {
+          "GRUDZIĄDZ": null
+        },
+        {
+          "GRUDZIĄDZKI": null
+        },
+        {
+          "KARTUSKI": null
+        },
+        {
+          "KOŚCIERSKI": null
+        },
+        {
+          "LUBAWSKI": null
+        },
+        {
+          "PUCKI": null
+        },
+        {
+          "SĘPOLEŃSKI": null
+        },
+        {
+          "STAROGARDZKI": null
+        },
+        {
+          "ŚWIECKI": null
+        },
+        {
+          "TCZEWSKI": null
+        },
+        {
+          "TORUŃ": null
+        },
+        {
+          "TORUŃSKI": null
+        },
+        {
+          "TUCHOLSKI": null
+        },
+        {
+          "WĄBRZESKI": null
+        },
+        {
+          "WEJHEROWSKI": null
+        }
+      ],
+      "POZNAŃSKIE": [
+        {
+          "BYDGOSKI": null
+        },
+        {
+          "BYDGOSZCZ": null
+        },
+        {
+          "CHODZIESKI": null
+        },
+        {
+          "CZARNKOWSKI": null
+        },
+        {
+          "GNIEŹNIEŃSKI": null
+        },
+        {
+          "GOSTYŃSKI": null
+        },
+        {
+          "GRODZISKI": null
+        },
+        {
+          "INOWROCŁAWSKI": null
+        },
+        {
+          "JAROCIŃSKI": null
+        },
+        {
+          "KĘPIŃSKI": null
+        },
+        {
+          "KOŚCIAŃSKI": null
+        },
+        {
+          "KOŹMIŃSKI": null
+        },
+        {
+          "KROTOSZYŃSKI": null
+        },
+        {
+          "LESZCZYŃSKI": null
+        },
+        {
+          "MIĘDZYCHODZKI": null
+        },
+        {
+          "MOGILEŃSKI": null
+        },
+        {
+          "NOWOTOMYSKI": null
+        },
+        {
+          "OBORNICKI": null
+        },
+        {
+          "ODOLANOWSKI": null
+        },
+        {
+          "OSTROWSKI (OSTRÓW WIELKOPOLSKI)": null
+        },
+        {
+          "OSTRZESZOWSKI": null
+        },
+        {
+          "PLESZEWSKI": null
+        },
+        {
+          "POZNAŃ": null
+        },
+        {
+          "POZNAŃSKI WSCHODNI": null
+        },
+        {
+          "POZNAŃSKI ZACHODNI": null
+        },
+        {
+          "RAWICKI": null
+        },
+        {
+          "STRZELNEŃSKI": null
+        },
+        {
+          "SZAMOTULSKI": null
+        },
+        {
+          "SZUBIŃSKI": null
+        },
+        {
+          "ŚMIGIELSKI": null
+        },
+        {
+          "ŚREDZKI": null
+        },
+        {
+          "ŚREMSKI": null
+        },
+        {
+          "WĄGROWIECKI": null
+        },
+        {
+          "WITKOWSKI": null
+        },
+        {
+          "WOLSZTYŃSKI": null
+        },
+        {
+          "WRZESIŃSKI": null
+        },
+        {
+          "WYRZYSKI": null
+        },
+        {
+          "ŻNIŃSKI": null
+        }
+      ],
+      "STANISŁAWOWSKIE": [
+        {
+          "BOHORODCZAŃSKI": null
+        },
+        {
+          "DOLIŃSKI": null
+        },
+        {
+          "HORODEŃSKI": null
+        },
+        {
+          "KAŁUSKI": null
+        },
+        {
+          "KOŁOMYJSKI": null
+        },
+        {
+          "KOSOWSKI (KOSÓW HUCULSKI)": null
+        },
+        {
+          "NADWÓRNIAŃSKI": null
+        },
+        {
+          "PECZENIŻYŃSKI": null
+        },
+        {
+          "ROHATYŃSKI": null
+        },
+        {
+          "SKOLSKI": null
+        },
+        {
+          "STANISŁAWOWSKI": null
+        },
+        {
+          "STRYJSKI": null
+        },
+        {
+          "ŚNIATYŃSKI": null
+        },
+        {
+          "TŁUMACKI": null
+        },
+        {
+          "TURCZAŃSKI": null
+        },
+        {
+          "ŻYDACZOWSKI": null
+        }
+      ],
+      "ŚLĄSKIE": [
+        {
+          "BIELSKI (BIELSKO)": null
+        },
+        {
+          "BIELSKO": null
+        },
+        {
+          "CIESZYŃSKI": null
+        }
+      ],
+      "TARNOPOLSKIE": [
+        {
+          "BORSZCZOWSKI": null
+        },
+        {
+          "BRODZKI": null
+        },
+        {
+          "BRZEŻAŃSKI": null
+        },
+        {
+          "BUCZACKI": null
+        },
+        {
+          "CZORTKOWSKI": null
+        },
+        {
+          "HUSIATYŃSKI": null
+        },
+        {
+          "KAMIONECKI": null
+        },
+        {
+          "PODHAJECKI": null
+        },
+        {
+          "PRZEMYŚLAŃSKI": null
+        },
+        {
+          "RADZIECHOWSKI": null
+        },
+        {
+          "SKAŁACKI": null
+        },
+        {
+          "TARNOPOLSKI": null
+        },
+        {
+          "TREMBOWELSKI": null
+        },
+        {
+          "ZALESZCZYCKI": null
+        },
+        {
+          "ZBARASKI": null
+        },
+        {
+          "ZBOROWSKI": null
+        },
+        {
+          "ZŁOCZOWSKI": null
+        }
+      ],
+      "WARSZAWSKIE": [
+        {
+          "BŁOŃSKI": null
+        },
+        {
+          "CIECHANOWSKI": null
+        },
+        {
+          "GOSTYNIŃSKI": null
+        },
+        {
+          "GRÓJECKI": null
+        },
+        {
+          "KUTNOWSKI": null
+        },
+        {
+          "LIPNOWSKI": null
+        },
+        {
+          "ŁOWICKI": null
+        },
+        {
+          "MAKOWSKI (MAKÓW MAZOWIECKI)": null
+        },
+        {
+          "MIŃSKI": null
+        },
+        {
+          "MŁAWSKI": null
+        },
+        {
+          "NIESZAWSKI": null
+        },
+        {
+          "PŁOCKI": null
+        },
+        {
+          "PŁOŃSKI": null
+        },
+        {
+          "PRZASNYCKI": null
+        },
+        {
+          "PUŁTUSKI": null
+        },
+        {
+          "RADZYMIŃSKI": null
+        },
+        {
+          "RAWSKI (RAWA MAZOWIECKA)": null
+        },
+        {
+          "RYPIŃSKI": null
+        },
+        {
+          "SIERPECKI": null
+        },
+        {
+          "SKIERNIEWICKI": null
+        },
+        {
+          "SOCHACZEWSKI": null
+        },
+        {
+          "WARSZAWSKI": null
+        },
+        {
+          "WŁOCŁAWSKI": null
+        }
+      ],
+      "WOŁYŃSKIE": [
+        {
+          "DUBIEŃSKI": null
+        },
+        {
+          "HOROCHOWSKI": null
+        },
+        {
+          "KOWELSKI": null
+        },
+        {
+          "KRZEMIENIECKI": null
+        },
+        {
+          "LUBOMELSKI": null
+        },
+        {
+          "ŁUCKI": null
+        },
+        {
+          "OSTROGSKI": null
+        },
+        {
+          "RÓWIEŃSKI": null
+        },
+        {
+          "WŁODZIMIERSKI": null
+        }
+      ]
+    },
+    "ABROAD": {
+      "ZAOLZIE": [
+        {
+          "BARDIOWSKI": null
+        },
+        {
+          "CZADECKI": null
+        },
+        {
+          "CZESKOCIESZYŃSKI": null
+        },
+        {
+          "FRYDECKI": null
+        },
+        {
+          "FRYSZTACKI": null
+        },
+        {
+          "KIEŻMARSKI": null
+        },
+        {
+          "NAMIESTOWSKI": null
+        },
+        {
+          "SNIŃSKI": null
+        },
+        {
+          "STAROLUBOWELSKI": null
+        },
+        {
+          "STAROWIEJSKI": null
+        },
+        {
+          "TRZCIAŃSKI": null
+        }
+      ],
+      "ŚLĄSK NIEMIECKI": [
+        {
+          "BYTOM WIEŚ": null
+        },
+        {
+          "BYTOM MIASTO": null
+        },
+        {
+          "ZABRSKI": null
+        },
+        {
+          "KATOWICE": null
+        },
+        {
+          "KATOWICKI": null
+        },
+        {
+          "KRÓLEWSKA HUTA": null
+        },
+        {
+          "LUBLINIECKI": null
+        },
+        {
+          "PSZCZYŃSKI": null
+        },
+        {
+          "RACIBORSKI": null
+        },
+        {
+          "RYBNICKI": null
+        },
+        {
+          "TARNOGÓRSKI": null
+        }
+      ],
+      "ZIEMIA WILEŃSKA": [
+        {
+          "BRASŁAWSKI": null
+        },
+        {
+          "OSZMIAŃSKI": null
+        },
+        {
+          "ŚWIĘCIAŃSKI": null
+        },
+        {
+          "TROCKI": null
+        },
+        {
+          "WILEŃSKI": null
+        },
+        {
+          "WILNO": null
+        }
+      ]
+    }
   }
 }

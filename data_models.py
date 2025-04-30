@@ -171,9 +171,43 @@ class RegionRegistry(UnitRegistry):
 # Models to store information about current region-districts relations.
 # AdministrativeState is a list of (region name, list of districts) pairs.
 
+DistAddress = Tuple[Literal["Poland", "Abroad"], str]              # For regions"
+RegionAddress = Tuple[Literal["Poland", "Abroad"], str, str]         # For districts
+Address = Union[DistAddress, RegionAddress]
+
 class AdminitrativeState(BaseModel):
     timespan = Optional[TimeSpan] = None
-    unit_hierarchy: List[Dict[List]]
+    unit_hierarchy: Dict[str, Dict[str, Dict[str, Any]]]
+
+    def pop_address(self, address):
+        """
+        Pops adm_state[address[0]][address[1]]...[address[n]].
+        """
+        current = self.unit_hierarchy
+        current_parent = None
+        for i, attr in enumerate(address):
+            current_parent = current
+            if attr not in current.keys():
+                raise ValueError(f"Unit '{attr}' does not belong to {address[:i]}")
+            current = current[attr]
+        
+        return current_parent.pop(address[-1])
+        
+    def add_address(self, address, content):
+        """
+        Adds address[n]:content key:value pair at the address adm_state[address[0]][address[1]]...[address[n-1]].
+        """
+        current = self.unit_hierarchy
+        current_parent = None
+        for i, attr in enumerate(address):
+            current_parent = current
+            if attr not in current.keys():
+                raise ValueError(f"Unit '{attr}' does not belong to {address[:i]}")
+            current = current[attr]
+        current_parent[address[-1]] = content
+        return
+
+
 
 ################################## DistrictEventLog model ##################################
 
@@ -514,10 +548,6 @@ class ManyToOne(BaseModel):
 
 # Definition of the data model for the matter of ChangeAdmState change.
 
-DistAddress = Tuple[Literal["Poland", "Abroad"], str]              # For regions"
-RegionAddress = Tuple[Literal["Poland", "Abroad"], str, str]         # For districts
-Address = Union[DistAddress, RegionAddress]
-
 class ChangeAdmState(BaseChangeMatter):
     """
     Represents a change in administrative structure involving movement of either:
@@ -563,6 +593,24 @@ class ChangeAdmState(BaseChangeMatter):
             print(f"From {date} on, the district {self.take_from[-1]} belonged to {": ".join(self.take_to[:-1])} ({source}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
+        
+    def apply(self, change, adm_state, region_registry, dist_registry):
+        # In the current version of the toolkit it is assumed that the OneToMany change
+        # describes ONLY exchange of territories between administrative units.
+        # It is however very easy to extend the toolkit to work with exchange of other
+        # administrative unit stock variables - above all this method has to be rewritten.
+        
+        address_from = self.take_from
+        address_to = self.take_to
+        address_content = adm_state.pop_address(address_from)
+        adm_state.add_address(address_to, address_content)
+        if len(self.take_from)==2:
+            unit = region_registry.find_unit(address_from[1])
+        else:
+            unit = dist_registry.find_unit(address_from[2])
+        unit.changes.append(("adm_affiliation", change))
+        change.unit_affected.append(("adm_affiliation", unit))
+        return
     
 ###############################################################
 # Definition of the base Change data model
