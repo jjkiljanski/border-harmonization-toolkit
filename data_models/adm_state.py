@@ -53,10 +53,10 @@ class AdministrativeState(BaseModel):
             current = current[attr]
         return True
     
-    def to_address_list(self, is_homeland = False, with_variants = False, current_not_id = False, region_registry = None, district_registry = None):
+    def to_address_list(self, only_homeland = False, with_variants = False, current_not_id = False, region_registry = None, district_registry = None):
         """
         Returns a list of (country, region, district) tuples, sorted alphabetically.
-        If is_homeland is true, the method doesn't return pairs from regions outside Poland.
+        If only_homeland is true, the method returns only pairs of regions in homeland.
         If with_variants is True, the method returns the list with all region and district name variants.
         If current_not_id is True, the method returns the list with region and district current names and not id names.
         If with_variants or current_not_id is True, region_registry and district_registry must be passed
@@ -72,7 +72,7 @@ class AdministrativeState(BaseModel):
 
         address_list = []
         for country_name, region_dict in self.unit_hierarchy.items():
-            if is_homeland:
+            if only_homeland:
                 if country_name!='HOMELAND':
                     continue # Skip if not interested in addresses from abroad.
             region_names_to_store = []
@@ -112,6 +112,9 @@ class AdministrativeState(BaseModel):
             # Append the addresses with all wanted region and dist name variants.
             for region_name in region_names_to_store:
                 for dist_name in dist_names_to_store:
-                    address_list.append((country_name, region_name, dist_name))                    
+                    if only_homeland:
+                        address_list.append((region_name, dist_name))
+                    else:
+                        address_list.append((country_name, region_name, dist_name))                    
         address_list.sort()
         return address_list
