@@ -21,20 +21,6 @@ class AdministrativeState(BaseModel):
     timespan: Optional[TimeSpan] = None
     unit_hierarchy: Dict[str, Dict[str, Dict[str, Any]]]
 
-    def pop_address(self, address):
-        """
-        Pops adm_state[address[0]][address[1]]...[address[n]].
-        """
-        current = self.unit_hierarchy
-        current_parent = None
-        for i, attr in enumerate(address):
-            current_parent = current
-            if attr not in current.keys():
-                raise ValueError(f"Unit '{attr}' does not belong to {address[:i]}")
-            current = current[attr]
-        
-        return current_parent.pop(address[-1])
-    
     def all_region_names(self):
         all_region_names = [
             region
@@ -51,6 +37,20 @@ class AdministrativeState(BaseModel):
             for district in region_dict.keys()
         ]
         return all_district_names
+    
+    def pop_address(self, address):
+        """
+        Pops adm_state[address[0]][address[1]]...[address[n]].
+        """
+        current = self.unit_hierarchy
+        current_parent = None
+        for i, attr in enumerate(address):
+            current_parent = current
+            if attr not in current.keys():
+                raise ValueError(f"Unit '{attr}' does not belong to {address[:i]}")
+            current = current[attr]
+        
+        return current_parent.pop(address[-1])
         
     def add_address(self, address, content):
         """
@@ -127,7 +127,7 @@ class AdministrativeState(BaseModel):
         If with_variants or current_not_id is True, region_registry and district_registry must be passed
         
         """
-        if with_variants:
+        if with_variants or current_not_id:
             if not (isinstance(region_registry, RegionRegistry) and isinstance(district_registry, DistrictRegistry)):
                 raise ValueError(
                     f"'with_variants=True' requires region_registry and district_registry to be RegionRegistry and DistrictRegistry. "
@@ -137,36 +137,41 @@ class AdministrativeState(BaseModel):
             self.verify_consistency(region_registry=region_registry, district_registry=district_registry)
 
         address_list = []
-        for country_name, region_dict in self.unit_hierarchy.items():
+        for country_name, country_dict in self.unit_hierarchy.items():
             if only_homeland:
                 if country_name!='HOMELAND':
                     continue # Skip if not interested in addresses from abroad.
-            region_names_to_store = []
-            dist_names_to_store = []
-            for region_name_id, district_dict in region_dict.items():
+            for region_name_id, region_dict in country_dict.items():
+                # Reset lists for the current region
+                region_names_to_store = [] # All region name variants
+                dist_names_to_store = [] # All district name variants for districts in the region
+                
                 # Create a list with all wanted name variants for the current region.
-                if with_variants:
-                        region_names_to_store = region.name_variants
-                else:
-                    if current_not_id:
-                        region_names_to_store = [region_state.current_name]
-                    else:
-                        region_names_to_store = [region_name_id]
-                for district_name_id in district_dict.keys():
-                    # Create a list with all wanted name variants for the current district.
+                if with_variants or current_not_id:
+                    region, region_state, _ = region_registry.find_unit_state_by_date(region_name_id, self.timespan.middle)
                     if with_variants:
-                        dist_names_to_store = district.name_variants
+                        region_names_to_store = region.name_variants
                     else:
-                        if current_not_id:
-                            dist_names_to_store = [district_state.current_name]
+                        region_names_to_store = [region_state.current_name]
+                else:
+                    region_names_to_store = [region_name_id]
+                # Iterate through the whole region_names_to_store list and add districts:
+                for dist_name_id in region_dict.keys():
+                    # Create a list with all wanted name variants for the current district.
+                    if with_variants or current_not_id:
+                        district, dist_state, _ = district_registry.find_unit_state_by_date(dist_name_id, self.timespan.middle)
+                        if with_variants:
+                            dist_names_to_store += district.name_variants
                         else:
-                            dist_names_to_store = [district_name_id]
-            # Append the addresses with all wanted region and dist name variants.
-            for region_name in region_names_to_store:
-                for dist_name in dist_names_to_store:
-                    if only_homeland:
-                        address_list.append((region_name, dist_name))
+                            dist_names_to_store += [dist_state.current_name]
                     else:
-                        address_list.append((country_name, region_name, dist_name))                    
+                        dist_names_to_store += [dist_name_id]
+                # For every region, append all combinations of (region_name, district_name) stored in the created lists.
+                for region_name in region_names_to_store:
+                    for dist_name in dist_names_to_store:
+                        if only_homeland:
+                            address_list.append((region_name, dist_name))
+                        else:
+                            address_list.append((country_name, region_name, dist_name))                    
         address_list.sort()
         return address_list

@@ -151,3 +151,92 @@ def test_pop_district_address(change_test_setup):
     with pytest.raises(ValueError, match=r"District .* is not contained in its timespan .*"):
         valid_admin_state.verify_consistency(valid_region_registry, invalid_district_registry_2)
 
+def test_to_address_list(change_test_setup):
+    valid_admin_state = change_test_setup["administrative_state"]
+    district_registry = change_test_setup["district_registry"]
+    region_registry = change_test_setup["region_registry"]
+
+    default_list = valid_admin_state.to_address_list()
+    correct_default_list = [
+        ("ABROAD", "region_c", "district_e"),
+        ("ABROAD", "region_c", "district_f"),
+        ("HOMELAND", "region_a", "district_a"),
+        ("HOMELAND", "region_a", "district_b"),
+        ("HOMELAND", "region_b", "district_c"),
+        ("HOMELAND", "region_b", "district_d"),
+    ]
+    assert default_list == correct_default_list
+
+    only_homeland_list = valid_admin_state.to_address_list(only_homeland = True, region_registry = region_registry, district_registry = district_registry)
+    correct_only_homeland_list = [
+        ("region_a", "district_a"),
+        ("region_a", "district_b"),
+        ("region_b", "district_c"),
+        ("region_b", "district_d"),
+    ]
+    assert only_homeland_list == correct_only_homeland_list
+
+    with_variants_list = valid_admin_state.to_address_list(with_variants = True, region_registry = region_registry, district_registry = district_registry)
+    correct_with_variants_list = [
+        ('ABROAD', 'region_c', 'district_e'),
+        ('ABROAD', 'region_c', 'DISTRICT_E'),
+        ('ABROAD', 'REGION_C', 'district_e'),
+        ('ABROAD', 'REGION_C', 'DISTRICT_E'),
+
+        ('ABROAD', 'region_c', 'district_f'),
+        ('ABROAD', 'region_c', 'DISTRICT_F'),
+        ('ABROAD', 'REGION_C', 'district_f'),
+        ('ABROAD', 'REGION_C', 'DISTRICT_F'),
+
+        ('HOMELAND', 'region_a', 'district_a'),
+        ('HOMELAND', 'region_a', 'DISTRICT_A'),
+        ('HOMELAND', 'REGION_A', 'district_a'),
+        ('HOMELAND', 'REGION_A', 'DISTRICT_A'),
+
+        ('HOMELAND', 'region_a', 'district_b'),
+        ('HOMELAND', 'region_a', 'DISTRICT_B'),
+        ('HOMELAND', 'REGION_A', 'district_b'),
+        ('HOMELAND', 'REGION_A', 'DISTRICT_B'),
+
+        ('HOMELAND', 'region_b', 'district_c'),
+        ('HOMELAND', 'region_b', 'DISTRICT_C'),
+        ('HOMELAND', 'REGION_B', 'district_c'),
+        ('HOMELAND', 'REGION_B', 'DISTRICT_C'),
+
+        ('HOMELAND', 'region_b', 'district_d'),
+        ('HOMELAND', 'region_b', 'DISTRICT_D'),
+        ('HOMELAND', 'REGION_B', 'district_d'),
+        ('HOMELAND', 'REGION_B', 'DISTRICT_D'),
+    ]
+    correct_with_variants_list.sort()
+
+    assert with_variants_list == correct_with_variants_list
+
+    region_a, region_a_state, _ = region_registry.find_unit_state_by_date('region_a', datetime(1930,1,1))
+    region_a_state.current_name = 'REGION_A'
+    district_a, district_a_state, _ = district_registry.find_unit_state_by_date('district_c', datetime(1930,1,1))
+    district_a_state.current_name = 'DISTRICT_C'
+
+    normal_names_id_list = valid_admin_state.to_address_list()
+    correct_normal_names_id_list = [
+        ("ABROAD", "region_c", "district_e"),
+        ("ABROAD", "region_c", "district_f"),
+        ("HOMELAND", "region_a", "district_a"),
+        ("HOMELAND", "region_a", "district_b"),
+        ("HOMELAND", "region_b", "district_c"),
+        ("HOMELAND", "region_b", "district_d"),
+    ]
+    assert normal_names_id_list == correct_normal_names_id_list
+
+    current_names_list = valid_admin_state.to_address_list(current_not_id = True, region_registry = region_registry, district_registry = district_registry)
+    correct_current_names_list = [
+        ("ABROAD", "region_c", "district_e"),
+        ("ABROAD", "region_c", "district_f"),
+        ("HOMELAND", "REGION_A", "district_a"),
+        ("HOMELAND", "REGION_A", "district_b"),
+        ("HOMELAND", "region_b", "DISTRICT_C"),
+        ("HOMELAND", "region_b", "district_d"),
+    ]
+    assert current_names_list == correct_current_names_list
+
+
