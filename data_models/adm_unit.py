@@ -47,7 +47,7 @@ class Unit(BaseModel):
     def find_state_by_date(self, date: datetime) -> Optional[UnitState]:
         """Returns the state for the unit at a specific date, or None if no match is found."""
         for unit_state in self.states:
-            if unit_state.timespan and unit_state.timespan.contains(date):
+            if unit_state.timespan and date in unit_state.timespan:
                 return unit_state
         return None  # Return None if no match is found
     
@@ -151,6 +151,13 @@ class UnitRegistry(BaseModel):
             raise ValueError(f"Invalid date: {date.date()}. No state covers this date.")
         else:
             return unit.create_next_state(date)
+        
+    def all_unit_states_by_date(self, date):
+        all_existent = []
+        for unit in self.unit_list:
+            if unit.exists(date):
+                all_existent.append((unit, unit.find_state_by_date(date)))
+        return all_existent
     
 #############################################################################################
 # Hierarchy of models to store districts states: DistrictState ∈ District ∈ DistrictRegistry
@@ -183,6 +190,7 @@ class DistrictRegistry(UnitRegistry):
 
         self.unit_list.append(district)
         return district
+
 
 
 #############################################################################################

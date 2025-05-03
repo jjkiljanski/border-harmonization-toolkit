@@ -1,5 +1,5 @@
 from pydantic import BaseModel, model_validator
-from typing import List
+from typing import List, Union, Optional
 
 from datetime import datetime, timedelta
 
@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 class TimeSpan(BaseModel):
     start: datetime
     end: datetime
-    middle: datetime | None = None  # Will be set in validator
+    middle: Optional[datetime] = None  # Middle will be calculated during validation
 
     @model_validator(mode='before')
     def check_end_after_start(cls, values):
@@ -41,10 +41,23 @@ class TimeSpan(BaseModel):
 
         model.middle = middle
         return model
+    
+    # Magic method for "in" operator
+    def __contains__(self, to_compare: Union[datetime, "TimeSpan"]) -> bool:
+        """
+        Checks whether a date or another TimeSpan is fully contained within this TimeSpan.
 
-    def contains(self, date: datetime) -> bool:
-        """Check if a date is within the timespan."""
-        return self.start <= date <= self.end
+        Parameters:
+            other (datetime | TimeSpan): A single date or another timespan to check.
+
+        Returns:
+            bool: True if the date or entire timespan is within this one.
+        """
+        if isinstance(to_compare, datetime):
+            return self.start <= to_compare <= self.end # If argument to compare is a datetime
+        elif isinstance(to_compare, TimeSpan):
+            return to_compare.start in self and to_compare.end in self # If argument to compare is a timestamp, split it to 2 __contains__ comparisons for timestamp start and end.
+        return to_compare in self.interval
     
     def __str__(self):
         return f"({self.start.date()}, {self.end.date()})"

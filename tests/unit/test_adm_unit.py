@@ -151,7 +151,7 @@ def test_abolish():
 
     assert state1.timespan.end == datetime(1930, 12, 31)  # The end date should be set to 1930-12-31
 
-# Test for abolish method
+# Test for exists method
 def test_exists():
     state1 = UnitState(
         current_name="District A",
@@ -169,6 +169,7 @@ def test_exists():
     # Test: check that the unit exists on 1929-12-31 and that it doesn't on 1931-12-31.
     assert unit.exists(datetime(1929,12,31))
     assert not unit.exists(datetime(1931, 12, 31))
+
 
 ############################################################################
 #                         UnitRegistry class tests                         #
@@ -267,6 +268,44 @@ def test_create_next_unit_state():
     # Test: Appropriate error is raised if no state exists that covers the given date
     with pytest.raises(ValueError, match="Invalid date: 1922-01-01"):
         registry.create_next_unit_state("unitA", datetime(1922, 1, 1))
+
+# Test for all_unit_states_by_date method
+def test_all_unit_states_by_date():
+    state1 = UnitState(
+        current_name="District A",
+        current_seat_name="Seat A",
+        current_dist_type="w",
+        timespan=TimeSpan(start=datetime(1923, 1, 1), end=datetime(1930, 1, 1))
+    )
+    state2 = UnitState(
+        current_name="District A",
+        current_seat_name="Seat A",
+        current_dist_type="w",
+        timespan=TimeSpan(start=datetime(1930, 1, 1), end=datetime(1938, 1, 1))
+    )
+    unit1 = Unit(
+        name_id="unit1",
+        name_variants=["unit1", "unitA", "unitB"],
+        seat_name_variants=["seatA", "seatB"],
+        states=[state1, state2],
+    )
+    state3 = UnitState(
+        current_name="District B",
+        current_seat_name="Seat B",
+        current_dist_type="w",
+        timespan=TimeSpan(start=datetime(1923, 1, 1), end=datetime(1930, 1, 1))
+    )
+    unit2 = Unit(
+        name_id="unit2",
+        name_variants=["unit2", "unitC", "unitD"],
+        seat_name_variants=["seatC", "seatD"],
+        states=[state3],
+    )
+
+    registry = UnitRegistry(unit_list=[unit1, unit2])
+    assert registry.all_unit_states_by_date(datetime(1927,1,1)) == [(unit1, state1), (unit2, state3)]
+    assert registry.all_unit_states_by_date(datetime(1933,1,1)) == [(unit1, state2)]
+
 
 ############################################################################
 #                            Region class tests                            #
