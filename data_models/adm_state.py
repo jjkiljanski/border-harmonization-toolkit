@@ -74,16 +74,18 @@ class AdministrativeState(BaseModel):
         for country_name, region_dict in self.unit_hierarchy.items():
             if is_homeland:
                 if country_name!='HOMELAND':
-                    continue
+                    continue # Skip if not interested in addresses from abroad.
             region_names_to_store = []
             dist_names_to_store = []
             for region_name_id, district_dict in region_dict.items():
                 if current_not_id or with_variants:
+                    # Check if Region registry correctly passed and contains info coherent with the info in adm. state.
                     region, region_state, _ = region_registry.find_unit_state_by_date(region_name_id, self.timespan.middle)
                     if region is None:
                         raise ValueError(f"Region {region_name_id} exists in the administrative state, but doesn't exist in the RegionRegistry.")
                     if region_state is None:
                         raise ValueError(f"Region {region_name_id} exists in the administrative state with timespan {str(self.timespan)}, but the the region's state for the date {self.timespan.middle.date()} doesn't exist in the region registry.")
+                # Create a list with all wanted name variants for the current region.
                 if with_variants:
                         region_names_to_store = region.name_variants
                 else:
@@ -93,11 +95,13 @@ class AdministrativeState(BaseModel):
                         region_names_to_store = [region_name_id]
                 for district_name_id in district_dict.keys():
                     if current_not_id or with_variants:
+                        # Check if District registry correctly passed and contains info coherent with the info in adm. state.
                         district, district_state, _ = district_registry.find_unit_state_by_date(district_name_id, self.timespan.middle)
                         if district is None:
                             raise ValueError(f"District {district_name_id} exists in the administrative state, but doesn't exist in the DistrictRegistry.")
                         if district_state is None:
                             raise ValueError(f"District {district_name_id} exists in the administrative state with timespan {str(self.timespan)}, but the the district's state for the date {self.timespan.middle.date()} doesn't exist in the district registry.")
+                    # Create a list with all wanted name variants for the current district.
                     if with_variants:
                         dist_names_to_store = district.name_variants
                     else:
@@ -105,6 +109,7 @@ class AdministrativeState(BaseModel):
                             dist_names_to_store = [district_state.current_name]
                         else:
                             dist_names_to_store = [district_name_id]
+            # Append the addresses with all wanted region and dist name variants.
             for region_name in region_names_to_store:
                 for dist_name in dist_names_to_store:
                     address_list.append((country_name, region_name, dist_name))                    
