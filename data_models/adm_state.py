@@ -53,3 +53,60 @@ class AdministrativeState(BaseModel):
             current = current[attr]
         return True
     
+    def to_address_list(self, is_homeland = False, with_variants = False, current_not_id = False, region_registry = None, district_registry = None):
+        """
+        Returns a list of (country, region, district) tuples, sorted alphabetically.
+        If is_homeland is true, the method doesn't return pairs from regions outside Poland.
+        If with_variants is True, the method returns the list with all region and district name variants.
+        If current_not_id is True, the method returns the list with region and district current names and not id names.
+        If with_variants or current_not_id is True, region_registry and district_registry must be passed
+        
+        """
+        if with_variants:
+            if not (isinstance(region_registry, RegionRegistry) and isinstance(district_registry, DistrictRegistry)):
+                raise ValueError(
+                    f"'with_variants=True' requires region_registry and district_registry to be RegionRegistry and DistrictRegistry. "
+                    f"Got types: region_registry={type(region_registry).__name__}, "
+                    f"district_registry={type(district_registry).__name__}."
+                )
+
+        address_list = []
+        for country_name, region_dict in self.unit_hierarchy.items():
+            if is_homeland:
+                if country_name!='HOMELAND':
+                    continue
+            region_names_to_store = []
+            dist_names_to_store = []
+            for region_name_id, district_dict in region_dict.items():
+                if current_not_id or with_variants:
+                    region, region_state, _ = region_registry.find_unit_state_by_date(region_name_id, self.timespan.middle)
+                    if region is None:
+                        raise ValueError(f"Region {region_name_id} exists in the administrative state, but doesn't exist in the RegionRegistry.")
+                    if region_state is None:
+                        raise ValueError(f"Region {region_name_id} exists in the administrative state with timespan {str(self.timespan)}, but the the region's state for the date {self.timespan.middle.date()} doesn't exist in the region registry.")
+                if with_variants:
+                        region_names_to_store = region.name_variants
+                else:
+                    if current_not_id:
+                        region_names_to_store = [region_state.current_name]
+                    else:
+                        region_names_to_store = [region_name_id]
+                for district_name_id in district_dict.keys():
+                    if current_not_id or with_variants:
+                        district, district_state, _ = district_registry.find_unit_state_by_date(district_name_id, self.timespan.middle)
+                        if district is None:
+                            raise ValueError(f"District {district_name_id} exists in the administrative state, but doesn't exist in the DistrictRegistry.")
+                        if district_state is None:
+                            raise ValueError(f"District {district_name_id} exists in the administrative state with timespan {str(self.timespan)}, but the the district's state for the date {self.timespan.middle.date()} doesn't exist in the district registry.")
+                    if with_variants:
+                        dist_names_to_store = district.name_variants
+                    else:
+                        if current_not_id:
+                            dist_names_to_store = [district_state.current_name]
+                        else:
+                            dist_names_to_store = [district_name_id]
+            for region_name in region_names_to_store:
+                for dist_name in dist_names_to_store:
+                    address_list.append((country_name, region_name, dist_name))                    
+        address_list.sort()
+        return address_list
