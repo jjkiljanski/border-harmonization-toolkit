@@ -1,13 +1,17 @@
 import pytest
 from datetime import datetime
 from pydantic import ValidationError
-from ...data_models.adm_timespan import TimeSpan, TimeSpanRegistry 
+from ...data_models.adm_timespan import TimeSpan, TimeSpanRegistry
 
 # Test data for the TimeSpan class
-def test_timespan_contains():
+def test_timespan():
     # Create time spans for testing
     timespan1 = TimeSpan(start=datetime(1923, 1, 1), end=datetime(1930, 12, 31))
     timespan2 = TimeSpan(start=datetime(1931, 1, 1), end=datetime(1938, 12, 31))
+
+    # Test that both timespans have a correctly initialized 'middle' attribute
+    assert (timespan1.start < timespan1.middle < timespan2.end) or (timespan1.start == timespan1.middle == timespan2.end)
+    assert (timespan2.start < timespan2.middle < timespan2.end) or (timespan2.start == timespan2.middle == timespan2.end)
 
     # Test for a date within the timespan
     assert timespan1.contains(datetime(1925, 5, 15))  # Date inside the span

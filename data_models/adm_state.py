@@ -52,3 +52,4 @@ class AdministrativeState(BaseModel):
                 return False
             current = current[attr]
         return True
+    
