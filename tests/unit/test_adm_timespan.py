@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
 from pydantic import ValidationError
-from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan, TimeSpanRegistry 
+from ...data_models.adm_timespan import TimeSpan, TimeSpanRegistry 
 
 # Test data for the TimeSpan class
 def test_timespan_contains():

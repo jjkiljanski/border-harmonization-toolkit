@@ -81,6 +81,14 @@ class Unit(BaseModel):
         last_state = self.find_state_by_date(date)
         last_state.timespan.end = date
 
+    def exists(self, date):
+        """Returns True if the state exists for a given date or False if it doesn't."""
+        searched_state = self.find_state_by_date(date)
+        if searched_state is None:
+            return False
+        else:
+            return True
+
 
 class UnitRegistry(BaseModel):
     """
@@ -165,12 +173,17 @@ class DistrictRegistry(UnitRegistry):
     """
     unit_list: List[District]
 
-    def add_unit(self, district_data: dict):
-        district = District(**district_data)
-        if not isinstance(district, District):
-            raise TypeError("Only District instances can be added.")
+    def add_unit(self, district_data):
+        if isinstance(district_data, District):
+            district = district_data
+        elif isinstance(district_data, dict):
+            district = District(**district_data)
+        else:
+            raise TypeError("add_unit expects a District instance or a dictionary of District parameters.")
+
         self.unit_list.append(district)
         return district
+
 
 #############################################################################################
 # Hierarchy of models to store Region states: RegionState ∈ Region ∈ RegionRegistry
@@ -187,10 +200,14 @@ class Region(Unit):
 class RegionRegistry(UnitRegistry):
     unit_list: List[Region]
 
-    def add_unit(self, region_data: dict):
-        region = Region(**region_data)
-        if not isinstance(region, Region):
-            raise TypeError("Only Region instances can be added.")
+    def add_unit(self, region_data):
+        if isinstance(region_data, Region):
+            region = region_data
+        elif isinstance(region_data, dict):
+            region = Region(**region_data)
+        else:
+            raise TypeError("add_unit expects a Region instance or a dictionary of Region parameters.")
+
         self.unit_list.append(region)
         return region
 

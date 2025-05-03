@@ -6,6 +6,10 @@ from datetime import datetime
 from border_harmonization_toolkit.data_models.adm_timespan import *
 from border_harmonization_toolkit.data_models.adm_unit import *
 from border_harmonization_toolkit.data_models.adm_state import *
+from helper_functions import load_config
+
+# Load the configuration
+config = load_config("config.json")
 
 #####################################################################################
 #                            Data models for changes                                #
@@ -65,16 +69,18 @@ class UnitReform(BaseChangeMatter):
             unit = region_registry.find_unit(self.current_name)
         else:
             unit = dist_registry.find_unit(self.current_name)
-        new_state = region_registry.create_next_unit_state(change.date)
-        for key, value in self.to_reform:
+        if unit is None:
+            raise ValueError(f"Change ({change.date.date()}, {str(self)}) applied to the unit {self.current_name} that doesn't exist in the registry")
+        new_state = unit.create_next_state(change.date)
+        for key, value in self.to_reform.items():
             if not hasattr(new_state, key):
-                raise ValueError(f"Change ({change.date}, {self}) applied to {self.unit_type.lower()} attribute that doesn't exist.")
-            if new_state.key != value:
+                raise ValueError(f"Change ({change.date}, {str(self)}) applied to {self.unit_type.lower()} attribute that doesn't exist.")
+            if getattr(new_state, key) != value:
                 raise ValueError(
                     f"Change on {change.date} ({self}) expects the {self.unit_type.lower()} to have key '{value}', "
-                    f"but found '{new_state.key}' instead."
+                    f"but found '{getattr(new_state, key)}' instead."
                 )
-            new_state.key = self.after_reform.key
+            setattr(new_state, key, self.after_reform[key])
         unit.changes.append(("reform", change))
         change.units_affected.append(("reform", unit))
         return
@@ -143,8 +149,6 @@ class OneToMany(BaseChangeMatter):
         # describes ONLY exchange of territories between administrative units.
         # It is however very easy to extend the toolkit to work with exchange of other
         # administrative unit stock variables - above all this method has to be rewritten.
-        units_to = []
-        units_to_names = [unit.current_name for unit in self.take_to]
         units_new_states = []
         if(self.unit_type=="Region"):
             raise ValueError(f"Method OneToMany not implemented for regions.")
@@ -157,11 +161,11 @@ class OneToMany(BaseChangeMatter):
             units_new_states.append(unit_from.create_next_state(change.date))
             unit_from.changes.append(("territory", change))
             change.units_affected.append(("territory", unit_from))
-        for take_to_dict in units_to_names:
+        for take_to_dict in self.take_to:
             if take_to_dict.create:
                 unit = dist_registry.add_unit(take_to_dict.district)
                 unit_state = unit.states[0]
-                unit_state.timespan = TimeSpan(**{"start": change.date, "end": config.global_timespan.end})
+                unit_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
                 units_new_states.append(unit_state)
                 unit.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
                 change.units_affected.append(("created", unit))
@@ -171,7 +175,7 @@ class OneToMany(BaseChangeMatter):
                 unit.changes.append(("territory", change))
                 change.units_affected.append(("territory", unit))
         for state in units_new_states:
-            state.territory = None # Territorial change to implement later
+            state.current_territory = None # Territorial change to implement later
         return
     
     def districts_involved(self) -> list[str]:
@@ -311,14 +315,14 @@ class ManyToOne(BaseModel):
                 unit.changes.append(("abolished", change))
                 change.units_affected.append(("abolished", unit))
             else:
-                units_new_states.append(unit)
+                units_new_states.append(unit.create_next_state(change.date))
                 unit.changes.append(("territory", change))
                 change.units_affected.append(("territory", unit))
 
         if self.take_to.create:
             unit_to = dist_registry.add_unit(self.take_to.district)
             unit_to_state = unit_to.states[0]
-            unit_to_state.timespan = TimeSpan(**{"start": change.date, "end": config.global_timespan.end})
+            unit_to_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
             units_new_states.append(unit_to_state)
             unit_to.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
             change.units_affected.append(("created", unit_to))
@@ -329,7 +333,7 @@ class ManyToOne(BaseModel):
             change.units_affected.append(("territory", unit_to))
 
         for state in units_new_states:
-            state.territory = None # Territorial change to implement later
+            state.current_territory = None # Territorial change to implement later
         return
     
     def districts_involved(self) -> list[str]:
@@ -396,12 +400,12 @@ class ChangeAdmState(BaseChangeMatter):
         address_content = adm_state.pop_address(address_from)
         adm_state.add_address(address_to, address_content)
         if len(self.take_from)==2:
-            unit = region_registry.find_unit(address_from[1])
+            unit = region_registry.find_unit(address_to[1])
         else:
-            unit = dist_registry.find_unit(address_from[2])
+            unit = dist_registry.find_unit(address_to[2])
         unit.changes.append(("adm_affiliation", change))
-        change.unit_affected.append(("adm_affiliation", unit))
-        return
+        change.units_affected.append(("adm_affiliation", unit))
+        return unit
     
     def districts_involved(self) -> list[str]:
         pass
@@ -430,4 +434,4 @@ class Change(BaseModel):
         return self.matter.districts_involved()
 
     def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
-        self.matter.apply(self, adm_state, region_registry, dist_registry) 
+        return self.matter.apply(self, adm_state, region_registry, dist_registry) 

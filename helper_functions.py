@@ -1,4 +1,7 @@
 import pandas as pd
+import json
+import os
+from datetime import datetime
 
 def load_and_clean_csv(file_path, district_registry):
     # Read the CSV
@@ -24,3 +27,19 @@ def load_and_clean_csv(file_path, district_registry):
             raise ValueError(f"District names {d_not_in_registry} do not exist in the district registry.")
 
     return df
+
+def load_config(config_path="config.json"):
+    if not os.path.exists(config_path):
+        raise FileNotFoundError(f"Configuration file {config_path} not found.")
+    
+    with open(config_path, "r") as config_file:
+        config_data = json.load(config_file)
+    
+    # Convert global_timespan start and end dates to datetime objects
+    global_timespan = config_data.get("global_timespan", {})
+    if "start" in global_timespan:
+        global_timespan["start"] = datetime.strptime(global_timespan["start"], "%Y-%m-%d")
+    if "end" in global_timespan:
+        global_timespan["end"] = datetime.strptime(global_timespan["end"], "%Y-%m-%d")
+    
+    return config_data

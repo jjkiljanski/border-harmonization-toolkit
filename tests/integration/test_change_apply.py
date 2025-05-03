@@ -1,0 +1,154 @@
+import pytest
+from datetime import datetime
+from ...data_models.adm_change import *
+
+############################################################################
+#                  apply method tests for UnitReform                       #
+############################################################################
+
+@pytest.mark.parametrize(
+    "unit_type, current_name, to_reform_seat_name, should_raise",
+    [
+        ("Region", "region_a", "seat_region_a", False),            # Valid
+        ("Region","wrong_region", "seat_region_a", True),         # Wrong region name
+        ("Region","region_a", "wrong_seat", True),                # Wrong seat name
+        ("Region","wrong_region", "wrong_seat", True),            # Both wrong
+        ("District", "district_a", "seat_a", False),            # Valid
+        ("District","wrong_district", "seat_a", True),         # Wrong region name
+        ("District","district_a", "wrong_seat", True),                # Wrong seat name
+        ("District","wrong_district", "wrong_seat", True),            # Both wrong
+    ]
+)
+def test_parametrized_region_change_application(
+    unit_type, current_name, to_reform_seat_name, should_raise,
+    parametrized_region_change,
+    change_test_setup
+):
+    change = parametrized_region_change(unit_type, current_name, to_reform_seat_name)
+    adm_state = change_test_setup["administrative_state"]
+    region_registry = change_test_setup["region_registry"]
+    dist_registry = change_test_setup["district_registry"]
+
+    if should_raise:
+        with pytest.raises(ValueError):
+            change.apply(adm_state, region_registry, dist_registry)
+    else:
+        change.apply(adm_state, region_registry, dist_registry)
+
+def test_apply_one_to_many(change_test_setup, one_to_many_matter_fixture):
+    # This change should refer to existing attributes and be valid.
+
+    # Arrange
+    adm_state = change_test_setup["administrative_state"]
+    region_registry = change_test_setup["region_registry"]
+    district_registry = change_test_setup["district_registry"]
+    
+    change = Change(
+        date=datetime(1923, 1, 2),
+        source="Test Source",
+        description="Legal Act X",
+        order=1,
+        matter=one_to_many_matter_fixture,
+        units_affected=[]
+    )
+    
+    # Act
+    change.apply(adm_state, region_registry, district_registry)
+
+    # Assert
+    # Check that district_a was abolished
+    district_a = district_registry.find_unit("district_a")
+    assert district_a.find_state_by_date(datetime(1923, 1, 1)).timespan.end == datetime(1923, 1, 2)
+    assert ("abolished", change) in district_a.changes
+    assert ("abolished", district_a) in change.units_affected
+
+    # Check that district_b received a new state and has territory change
+    district_b = district_registry.find_unit("district_b")
+    assert len(district_b.states) > 1
+    assert district_b.changes[-1] == ("territory", change)
+    assert ("territory", district_b) in change.units_affected
+
+    # Check that district_x was created with proper state
+    district_x = district_registry.find_unit("district_x")
+    assert district_x is not None
+    assert district_x.states[0].timespan.start == datetime(1923, 1, 2)
+    assert ("created", change) in district_x.changes
+    assert ("created", district_x) in change.units_affected
+
+    # Check that the territory attribute was nulled (as placeholder)
+    for unit in [district_b, district_x]:
+        assert unit.states[-1].current_territory is None
+
+def test_apply_many_to_one(change_test_setup, create_many_to_one_matter_fixture):
+    # This change should refer to existing attributes and be valid.
+
+    # Arrange
+    adm_state = change_test_setup["administrative_state"]
+    region_registry = change_test_setup["region_registry"]
+    district_registry = change_test_setup["district_registry"]
+    
+    change = Change(
+        date=datetime(1924, 1, 2),
+        source="Test Source",
+        description="Legal Act X",
+        order=1,
+        matter=create_many_to_one_matter_fixture,
+        units_affected=[]
+    )
+    
+    # Act
+    change.apply(adm_state, region_registry, district_registry)
+
+    # Assert
+    # Check that district_a was abolished
+    district_a = district_registry.find_unit("district_a")
+    assert district_a.exists(datetime(1924, 1, 1)) and not district_a.exists(datetime(1924, 1, 3))
+    assert ("abolished", change) in district_a.changes
+    assert ("abolished", district_a) in change.units_affected
+
+    # Check that district_b's state is updated, but it is not deleted
+    district_b = district_registry.find_unit("district_b")
+    assert len(district_b.states) > 1
+    assert district_b.changes[-1] == ("territory", change)
+    assert ("territory", district_b) in change.units_affected
+
+    # Check that district_x was created with the correct state and timespan
+    district_x = district_registry.find_unit("district_x")
+    assert district_x is not None
+    assert not district_x.exists(datetime(1924, 1, 1)) and district_x.exists(datetime(1924, 1, 3))
+    assert ("created", change) in district_x.changes
+    assert ("created", district_x) in change.units_affected
+
+    # Check that the territory attribute was nulled (as placeholder)
+    assert district_x.states[-1].current_territory is None
+    assert district_b.states[-1].current_territory is None
+
+def test_apply_change_adm_state(change_test_setup, region_change_adm_state_matter_fixture):
+    # This change should refer to existing attributes and be valid.
+
+    # Arrange
+    adm_state = change_test_setup["administrative_state"]
+    region_registry = change_test_setup["region_registry"]
+    district_registry = change_test_setup["district_registry"]
+    
+    change = Change(
+        date=datetime(1924, 1, 2),
+        source="Test Source",
+        description="Legal Act X",
+        order=1,
+        matter=region_change_adm_state_matter_fixture,
+        units_affected=[]
+    )
+    
+    # Act
+    unit = change.apply(adm_state, region_registry, district_registry)
+
+    # Assert that the address was moved in the administrative state
+    assert adm_state.get_address(("HOMELAND", "region_c")) is True
+    assert adm_state.get_address(("ABROAD", "region_c")) is False
+
+    # Assert that the region unit was affected
+    region_unit = region_registry.find_unit("region_c")
+    assert region_unit == unit
+    assert ("adm_affiliation", change) in region_unit.changes
+    assert ("adm_affiliation", region_unit) in change.units_affected

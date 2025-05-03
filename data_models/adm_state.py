@@ -41,3 +41,14 @@ class AdministrativeState(BaseModel):
             current = current[attr]
         current[address[-1]] = content
         return
+    
+    def get_address(self, address):
+        """
+        Returns True if the address exists or False otherwise.
+        """
+        current = self.unit_hierarchy
+        for i, attr in enumerate(address):
+            if attr not in current.keys():
+                return False
+            current = current[attr]
+        return True

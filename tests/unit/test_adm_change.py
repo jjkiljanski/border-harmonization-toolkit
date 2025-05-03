@@ -4,104 +4,14 @@ from pydantic import ValidationError
 from io import StringIO
 from unittest.mock import patch
 
-from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan
-from border_harmonization_toolkit.data_models.adm_state import AdministrativeState
-from border_harmonization_toolkit.data_models.adm_unit import *
-from border_harmonization_toolkit.data_models.adm_change import *
+from ...data_models.adm_timespan import TimeSpan
+from ...data_models.adm_state import AdministrativeState
+from ...data_models.adm_unit import *
+from ...data_models.adm_change import *
 
 # ---------------------------------------------------------------------------- #
 #                       Fixtures for Change class testing                      #
 # ---------------------------------------------------------------------------- #
-
-@pytest.fixture
-def change_test_setup():
-    # Common timespan
-    timespan = TimeSpan(start=datetime(1921, 2, 19), end=datetime(1938, 11, 16))
-
-    # Create districts
-    district_registry = DistrictRegistry(unit_list=[])
-    for suffix in ['a', 'b', 'c', 'd', 'e', 'f']:
-        name_id = f"district_{suffix}"
-        district_registry.add_unit({
-            "name_id": name_id,
-            "name_variants": [name_id, name_id.upper()],
-            "seat_name_variants": [f"seat_{suffix}", f"SEAT_{suffix}"],
-            "states": [
-                DistState(
-                    current_name=name_id,
-                    current_seat_name=f"seat_{suffix}",
-                    current_dist_type="w",
-                    timespan=timespan,
-                    current_territory=None
-                )
-            ]
-        })
-
-    # Create regions
-    region_registry = RegionRegistry(unit_list=[])
-    for suffix in ['A', 'B', 'C']:
-        region_registry.add_unit({
-            "name_id": f"region_{suffix.lower()}",
-            "name_variants": [f"region_{suffix.lower()}", f"REGION_{suffix}"],
-            "seat_name_variants": [f"seat_region_{suffix.lower()}"],
-            "states": [
-                RegionState(
-                    current_name=f"region_{suffix.lower()}",
-                    current_seat_name=f"seat_region_{suffix.lower()}",
-                    current_dist_type="m",
-                    timespan=timespan
-                )
-            ],
-            "is_homeland": suffix in ['A', 'B']
-        })
-
-    # Create administrative state
-    unit_hierarchy = {
-        "HOMELAND": {
-            "region_a": {
-                "district_a": {},
-                "district_b": {}
-            },
-            "region_b": {
-                "district_c": {},
-                "district_d": {}
-            }
-        },
-        "ABROAD": {
-            "region_c": {
-                "district_e": {},
-                "district_f": {}
-            }
-        }
-    }
-
-    administrative_state = AdministrativeState(
-        timespan=timespan,
-        unit_hierarchy=unit_hierarchy
-    )
-
-    def district_x_to_create():
-        return District(
-            name_id="district_x",
-            name_variants=["district_x", "DISTRICT_X"],
-            seat_name_variants=["seat_x", "SEAT_X"],
-            states=[
-                DistState(
-                    current_name="district_x",
-                    current_seat_name="seat_x",
-                    current_dist_type="w",
-                    current_territory=None,
-                    timespan=TimeSpan(start=datetime(1921, 2, 19), end=datetime(1938, 11, 16))
-                )
-            ]
-        )
-
-    return {
-        "district_registry": district_registry,
-        "region_registry": region_registry,
-        "administrative_state": administrative_state,
-        "district_x": district_x_to_create()
-    }
 
 ############################################################################
 #                           UnitReform class tests                        #
@@ -111,47 +21,42 @@ def change_test_setup():
 
 # ─── FIXTURES FOR VALID CASES ──────────────────────────────────────────────────
 
-@pytest.fixture
-def region_reform_matter_fixture():
-    # Setup a UnitReform instance for Region reform
-    return UnitReform(
-        change_type = "UnitReform",
-        unit_type="Region",
-        current_name="region_a",
-        to_reform={"current_name": "region_a", "current_seat_name": "seat_a"},
-        after_reform={"current_name": "region_a_Reformed", "current_seat_name": "seat_a_Reformed"}
-    )
-
-@pytest.fixture
-def district_reform_matter_fixture():
-    # Setup a UnitReform instance for District reform
-    return UnitReform(
-        change_type = "UnitReform",
-        unit_type="District",
-        current_name="district_a",
-        to_reform={"current_dist_type": "w", "current_name": "district_a", "current_seat_name": "seat_a"},
-        after_reform={"current_dist_type": "m", "current_name": "district_a_Reformed", "current_seat_name": "seat_a_Reformed"}
-    )
+# Fixtures region_reform_matter_fixture and district_reform_matter_fixture are defined in the conftest.py file.
 
 # ─── TESTS USING FIXTURES ──────────────────────────────────────────────────────
 
-def test_unit_reform_valid(region_reform_matter_fixture):
-    # Valid UnitReform
-    reform = region_reform_matter_fixture
+@pytest.mark.parametrize(
+    "unit_type, current_name, to_reform_seat_name, should_raise",
+    [
+        ("Region", "region_a", "seat_region_a", False),
+        ("Region", "wrong_region", "seat_region_a", False),
+        ("Region", "region_a", "wrong_seat", False),
+        ("Region", "wrong_region", "wrong_seat", False),
+        ("District", "district_a", "seat_a", False),
+        ("District", "wrong_district", "seat_a", False),
+        ("District", "district_a", "wrong_seat", False),
+        ("District", "wrong_district", "wrong_seat", False),
+    ]
+)
+def test_unit_reform_construction_valid(
+    unit_type,
+    current_name,
+    to_reform_seat_name,
+    should_raise,
+    parametrized_region_reform_matter
+):
+    reform = parametrized_region_reform_matter(unit_type, current_name, to_reform_seat_name)
 
-    assert reform.unit_type == "Region"
-    assert reform.current_name == "region_a"
-    assert reform.to_reform == {"current_name": "region_a", "current_seat_name": "seat_a"}
-    assert reform.after_reform == {"current_name": "region_a_Reformed", "current_seat_name": "seat_a_Reformed"}
-
-def test_district_reform_valid(district_reform_matter_fixture):
-    # Test for valid district reform
-    reform = district_reform_matter_fixture
-    
-    assert reform.unit_type == "District"
-    assert reform.current_name == "district_a"
-    assert reform.to_reform == {"current_dist_type": "w", "current_name": "district_a", "current_seat_name": "seat_a"}
-    assert reform.after_reform == {"current_dist_type": "m", "current_name": "district_a_Reformed", "current_seat_name": "seat_a_Reformed"}
+    assert reform.unit_type == unit_type
+    assert reform.current_name == current_name
+    assert reform.to_reform == {
+        "current_name": unit_type.lower() + "_a",
+        "current_seat_name": to_reform_seat_name
+    }
+    assert reform.after_reform == {
+        "current_name": f"{unit_type.lower()}_a_Reformed",
+        "current_seat_name": "seat_a_Reformed"
+    }
 
 # ─── INVALID CONSTRUCTION TESTS ────────────────────────────────────────────────
 
@@ -230,7 +135,7 @@ def test_echo_pol_region(region_reform_matter_fixture):
         printed_output = mock_stdout.getvalue().strip()
         expected_output = (
             "1927-04-30 dokonano reformy województwa region_a. "
-            "Przed reformą: dict_items([('current_name', 'region_a'), ('current_seat_name', 'seat_a')]) "
+            "Przed reformą: dict_items([('current_name', 'region_a'), ('current_seat_name', 'seat_region_a')]) "
             "vs po reformie: dict_items([('current_name', 'region_a_Reformed'), ('current_seat_name', 'seat_a_Reformed')]) "
             "(Test Source).")
         # Assert that the captured output is exactly what we expect.
@@ -243,7 +148,7 @@ def test_echo_eng_region(region_reform_matter_fixture):
         printed_output = mock_stdout.getvalue().strip()
         expected_output = (
             "1927-04-30 region region_a was reformed. "
-            "Before the reform: dict_items([('current_name', 'region_a'), ('current_seat_name', 'seat_a')]) "
+            "Before the reform: dict_items([('current_name', 'region_a'), ('current_seat_name', 'seat_region_a')]) "
             "vs after the reform: dict_items([('current_name', 'region_a_Reformed'), ('current_seat_name', 'seat_a_Reformed')]) "
             "(Test Source).")
         assert printed_output == expected_output
@@ -273,38 +178,13 @@ def test_echo_eng_district(district_reform_matter_fixture):
         assert printed_output == expected_output
 
 ############################################################################
-#                           OneToMany class tests                        #
+#                           OneToMany class tests                          #
 ############################################################################
 
 # ─── FIXTURES FOR VALID CASES ──────────────────────────────────────────────────
 
-@pytest.fixture
-def one_to_many_take_to_create_true_fixture(change_test_setup):
-    return OneToManyTakeTo(
-        create=True,
-        current_name="district_x",
-        district=change_test_setup["district_x"],
-    )
-
-@pytest.fixture
-def one_to_many_take_to_create_false_fixture():
-    return OneToManyTakeTo(
-        create=False,
-        current_name="district_b"
-    )
-
-@pytest.fixture
-def one_to_many_matter_fixture(change_test_setup):
-    return OneToMany(
-        change_type="OneToMany",
-        unit_attribute="territory",
-        unit_type="District",
-        take_from=OneToManyTakeFrom(current_name="district_a", delete_unit=True),
-        take_to=[
-            OneToManyTakeTo(create=False, current_name="district_b", weight_from=0.5),
-            OneToManyTakeTo(create=True, current_name="district_x", district=change_test_setup["district_x"], weight_from=0.5),
-        ]
-    )
+# Fixtures one_to_many_take_to_create_true_fixture, one_to_many_take_to_create_false_fixture,
+# and one_to_many_matter_fixture are defined in the conftest.py file.
 
 # ─── TESTS USING FIXTURES ──────────────────────────────────────────────────────
 
@@ -355,39 +235,7 @@ def test_take_to_create_false_missing_name():
 
 # ─── VALID FIXTURES ─────────────────────────────────────────────────────────────
 
-@pytest.fixture
-def create_many_to_one_matter_fixture(change_test_setup):
-    district_x = change_test_setup["district_x"]
-    return ManyToOne(
-        change_type="ManyToOne",
-        unit_attribute="territory",
-        unit_type="District",
-        take_from=[
-            ManyToOneTakeFrom(current_name="district_a", weight_from=0.6, delete_unit=True),
-            ManyToOneTakeFrom(current_name="district_b", weight_from=0.4, delete_unit=False),
-        ],
-        take_to=ManyToOneTakeTo(
-            create=True,
-            current_name="district_x",
-            district=district_x,
-        ),
-    )
-
-@pytest.fixture
-def reuse_many_to_one_matter_fixture():
-    return ManyToOne(
-        change_type="ManyToOne",
-        unit_attribute="territory",
-        unit_type="District",
-        take_from=[
-            ManyToOneTakeFrom(current_name="district_c", weight_from=0.5, delete_unit=False),
-            ManyToOneTakeFrom(current_name="district_d", weight_from=0.5, delete_unit=True),
-        ],
-        take_to=ManyToOneTakeTo(
-            create=False,
-            current_name="district_e",
-        ),
-    )
+# Fixtures create_many_to_one_matter_fixture and reuse_many_to_one_matter_fixture are defined in the conftest.py file.
 
 # ─── VALIDATION TESTS FOR CONSTRUCTION ─────────────────────────────────────────
 
@@ -432,33 +280,20 @@ def test_many_to_one_missing_name_on_reuse():
 
 # ─── VALID FIXTURES ─────────────────────────────────────────────────────────────
 
-@pytest.fixture
-def region_change_matter_fixture():
-    return ChangeAdmState(
-        change_type="ChangeAdmState",
-        take_from=("HOMELAND", "region_a"),
-        take_to=("HOMELAND", "region_b"),
-    )
-
-@pytest.fixture
-def district_change_matter_fixture():
-    return ChangeAdmState(
-        change_type="ChangeAdmState",
-        take_from=("HOMELAND", "region_a", "district_a"),
-        take_to=("HOMELAND", "region_b", "district_c"),
-    )
+# Fixtures region_change_adm_state_matter_fixture and district_change_adm_state_matter_fixture
+# are defined in the conftest.py file.
 
 # ─── VALIDATION TESTS FOR CONSTRUCTION ─────────────────────────────────────────
 
-def test_region_change_matter_fixture_structure(region_change_matter_fixture):
-    assert region_change_matter_fixture.take_from == ("HOMELAND", "region_a")
-    assert region_change_matter_fixture.take_to == ("HOMELAND", "region_b")
-    assert len(region_change_matter_fixture.take_from) == len(region_change_matter_fixture.take_to) == 2
+def test_region_change_adm_state_matter_fixture_structure(region_change_adm_state_matter_fixture):
+    assert region_change_adm_state_matter_fixture.take_from == ("ABROAD", "region_c")
+    assert region_change_adm_state_matter_fixture.take_to == ("HOMELAND", "region_c")
+    assert len(region_change_adm_state_matter_fixture.take_from) == len(region_change_adm_state_matter_fixture.take_to) == 2
 
-def test_district_change_matter_fixture_structure(district_change_matter_fixture):
-    assert district_change_matter_fixture.take_from[2] == "district_a"
-    assert district_change_matter_fixture.take_to[2] == "district_c"
-    assert len(district_change_matter_fixture.take_from) == len(district_change_matter_fixture.take_to) == 3
+def test_district_change_adm_state_matter_fixture_structure(district_change_adm_state_matter_fixture):
+    assert district_change_adm_state_matter_fixture.take_from[2] == "district_a"
+    assert district_change_adm_state_matter_fixture.take_to[2] == "district_a"
+    assert len(district_change_adm_state_matter_fixture.take_from) == len(district_change_adm_state_matter_fixture.take_to) == 3
 
 # ─── INVALID CONSTRUCTION TESTS ────────────────────────────────────────────────
 
@@ -486,8 +321,8 @@ def test_invalid_changeadmstate_mismatched_address_lengths():
         "one_to_many_matter_fixture",
         "create_many_to_one_matter_fixture",
         "reuse_many_to_one_matter_fixture",
-        "region_change_matter_fixture",
-        "district_change_matter_fixture",
+        "region_change_adm_state_matter_fixture",
+        "district_change_adm_state_matter_fixture",
     ]
 )
 def test_change_construction_from_matter_fixtures(request, fixture_name):
