@@ -45,6 +45,9 @@ class TimeSpan(BaseModel):
     def contains(self, date: datetime) -> bool:
         """Check if a date is within the timespan."""
         return self.start <= date <= self.end
+    
+    def __str__(self):
+        return f"({self.start.date()}, {self.end.date()})"
 
 class TimeSpanRegistry(BaseModel):
     """

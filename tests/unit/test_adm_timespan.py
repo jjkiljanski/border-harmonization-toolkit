@@ -9,6 +9,10 @@ def test_timespan():
     timespan1 = TimeSpan(start=datetime(1923, 1, 1), end=datetime(1930, 12, 31))
     timespan2 = TimeSpan(start=datetime(1931, 1, 1), end=datetime(1938, 12, 31))
 
+    # Verify the correctness of the string representation
+    assert str(timespan1) == "(1923-01-01, 1930-12-31)"
+    assert str(timespan2) == "(1931-01-01, 1938-12-31)"
+
     # Test that both timespans have a correctly initialized 'middle' attribute
     assert (timespan1.start < timespan1.middle < timespan2.end) or (timespan1.start == timespan1.middle == timespan2.end)
     assert (timespan2.start < timespan2.middle < timespan2.end) or (timespan2.start == timespan2.middle == timespan2.end)
