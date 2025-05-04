@@ -1,0 +1,67 @@
+{
+    "unit_list": [
+        {
+            "name_id": "region_a",
+            "name_variants": [
+                "region_a",
+                "REGION_A"
+            ],
+            "seat_name_variants": [
+                "seat_region_a"
+            ],
+            "states": [
+                {
+                    "current_name": "region_a",
+                    "current_seat_name": "seat_region_a",
+                    "timespan": {
+                        "start": "1921-02-19T00:00:00",
+                        "end": "1938-11-16T00:00:00"
+                    }
+                }
+            ],
+            "is_homeland": true
+        },
+        {
+            "name_id": "region_b",
+            "name_variants": [
+                "region_b",
+                "REGION_B"
+            ],
+            "seat_name_variants": [
+                "seat_region_b"
+            ],
+            "states": [
+                {
+                    "current_name": "region_b",
+                    "current_seat_name": "seat_region_b",
+                    "timespan": {
+                        "start": "1921-02-19T00:00:00",
+                        "end": "1938-11-16T00:00:00"
+                    }
+                }
+            ],
+            "is_homeland": true
+        },
+        {
+            "name_id": "region_c",
+            "name_variants": [
+                "region_c",
+                "REGION_C"
+            ],
+            "seat_name_variants": [
+                "seat_region_c"
+            ],
+            "states": [
+                {
+                    "current_name": "region_c",
+                    "current_seat_name": "seat_region_c",
+                    "timespan": {
+                        "start": "1921-02-19T00:00:00",
+                        "end": "1938-11-16T00:00:00"
+                    }
+                }
+            ],
+            "is_homeland": false
+        }
+    ]
+}

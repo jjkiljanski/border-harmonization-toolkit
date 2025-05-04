@@ -1,0 +1,53 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": { "name": "district_a" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[0,1], [1,1], [1,2], [0,2], [0,1]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "district_b" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[1,1], [2,1], [2,2], [1,2], [1,1]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "district_c" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[0,0], [1,0], [1,1], [0,1], [0,0]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "district_d" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[1,0], [2,0], [2,1], [1,1], [1,0]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "district_e" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[2.5,1], [3.5,1], [3.5,2], [2.5,2], [2.5,1]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": { "name": "district_f" },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[2.5,0], [3.5,0], [3.5,1], [2.5,1], [2.5,0]]]
+        }
+      }
+    ]
+  }  

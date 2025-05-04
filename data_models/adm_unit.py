@@ -1,8 +1,13 @@
 from pydantic import BaseModel, model_validator
-from typing import Optional, Literal, List, Tuple
-from copy import deepcopy
+from typing import Optional, Literal, List, Tuple, Any
 
+from copy import deepcopy
 from datetime import datetime
+
+import matplotlib.pyplot as plt
+import geopandas as gpd
+import io
+import base64
 
 from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan
     
@@ -164,7 +169,7 @@ class UnitRegistry(BaseModel):
 
 class DistState(UnitState):
     current_dist_type: Literal["w", "m"]
-    current_territory: None
+    current_territory: Optional[Any] = None
 
 class District(Unit):
     """
@@ -190,6 +195,59 @@ class DistrictRegistry(UnitRegistry):
 
         self.unit_list.append(district)
         return district
+
+    def plot(self, html_file_path):
+
+        # Create a GeoDataFrame to hold all the district geometries
+        geometries = [district.states[0].current_territory for district in self.unit_list]
+        gdf = gpd.GeoDataFrame({'geometry': geometries})
+
+        # Plot the GeoDataFrame
+        fig, ax = plt.subplots(figsize=(10, 10))
+        gdf.plot(ax=ax, color="lightgrey", edgecolor="black", linewidth=1)
+
+        # Formatting: no axes, bold title, centered
+        ax.set_title("Districts Plot", fontsize=16, fontweight="bold", ha="center")
+        ax.set_axis_off()
+
+        # Save plot to base64 image
+        buffer = io.BytesIO()
+        fig.savefig(buffer, format="png", bbox_inches="tight")
+        buffer.seek(0)
+        img_base64 = base64.b64encode(buffer.read()).decode("utf-8")
+        plt.close(fig)
+
+        # HTML content with consistent layout
+        html_content = f"""
+        <html>
+        <body style="text-align:center; font-family:sans-serif;">
+            <h1>Districts Plot</h1>
+            <p>This plot shows the borders and geometry of all registered districts.</p>
+            <img src="data:image/png;base64,{img_base64}" />
+        </body>
+        </html>
+        """
+        
+        with open(html_file_path, "w") as f:
+            f.write(html_content)
+
+        print(f"Plot saved to {html_file_path}")
+
+
+    def _save_plot_to_base64(self, fig):
+        """Convert a Matplotlib figure to a base64-encoded PNG image."""
+        import io
+        import base64
+
+        # Save the plot to a BytesIO object
+        img_buffer = io.BytesIO()
+        fig.savefig(img_buffer, format="png")
+        img_buffer.seek(0)
+
+        # Encode the image to base64
+        img_base64 = base64.b64encode(img_buffer.read()).decode("utf-8")
+
+        return img_base64
 
 
 

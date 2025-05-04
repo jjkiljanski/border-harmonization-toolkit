@@ -1,0 +1,20 @@
+{
+    "unit_hierarchy": {
+        "HOMELAND": {
+            "region_a": {
+                "district_a": {},
+                "district_b": {}
+            },
+            "region_b": {
+                "district_c": {},
+                "district_d": {}
+            }
+        },
+        "ABROAD": {
+            "region_c": {
+                "district_e": {},
+                "district_f": {}
+            }
+        }
+    } 
+}

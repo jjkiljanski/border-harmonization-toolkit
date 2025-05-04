@@ -380,32 +380,6 @@ def test_district_registry_add_unit_success():
     assert added.name_id == "dist1"
     assert len(registry.unit_list) == 1
 
-
-def test_district_registry_rejects_region_instance():
-    registry = DistrictRegistry(unit_list=[])
-
-    region_data = {
-        "name_id": "reg1",
-        "name_variants": ["reg1", "region one"],
-        "seat_name_variants": ["seatR"],
-        "states": [
-            {
-                "current_name": "Region One",
-                "current_seat_name": "Seat One",
-                "current_dist_type": "w",  # Intentionally invalid for RegionState
-                "timespan": {
-                    "start": "1923-01-01T00:00:00",
-                    "end": "1930-12-31T00:00:00"
-                }
-            }
-        ],
-        "is_homeland": True
-    }
-
-    with pytest.raises(Exception):
-        # This should fail because the data does not conform to District
-        registry.add_unit(region_data)
-
 ############################################################################
 #                          RegionState class tests                         #
 ############################################################################

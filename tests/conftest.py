@@ -1,8 +1,6 @@
 import pytest
 from datetime import datetime
-from pydantic import ValidationError
-from io import StringIO
-from unittest.mock import patch
+import geopandas as gpd
 
 from ..data_models.adm_timespan import TimeSpan
 from ..data_models.adm_state import AdministrativeState
@@ -18,10 +16,33 @@ def change_test_setup():
     # Common timespan
     timespan = TimeSpan(start=datetime(1921, 2, 19), end=datetime(1938, 11, 16))
 
+    # Manually define the GeoJSON-like data as a Python dictionary
+    geojson_data = {
+        "type": "FeatureCollection",
+        "features": [
+            {"type": "Feature", "properties": {"name": "district_a"}, "geometry": {"type": "Polygon", "coordinates": [[(0, 0), (1, 0), (1, 1), (0, 1), (0, 0)]]}},
+            {"type": "Feature", "properties": {"name": "district_b"}, "geometry": {"type": "Polygon", "coordinates": [[(1, 0), (2, 0), (2, 1), (1, 1), (1, 0)]]}},
+            {"type": "Feature", "properties": {"name": "district_c"}, "geometry": {"type": "Polygon", "coordinates": [[(0, 1), (1, 1), (1, 2), (0, 2), (0, 1)]]}},
+            {"type": "Feature", "properties": {"name": "district_d"}, "geometry": {"type": "Polygon", "coordinates": [[(1, 1), (2, 1), (2, 2), (1, 2), (1, 1)]]}},
+            {"type": "Feature", "properties": {"name": "district_e"}, "geometry": {"type": "Polygon", "coordinates": [[(2, 0), (3, 0), (3, 1), (2, 1), (2, 0)]]}},
+            {"type": "Feature", "properties": {"name": "district_f"}, "geometry": {"type": "Polygon", "coordinates": [[(2, 1), (3, 1), (3, 2), (2, 2), (2, 1)]]}}
+        ]
+    }
+
+    # Convert the dictionary to a GeoDataFrame using GeoPandas
+    gdf = gpd.GeoDataFrame.from_features(geojson_data["features"])
+
     # Create districts
     district_registry = DistrictRegistry(unit_list=[])
     for suffix in ['a', 'b', 'c', 'd', 'e', 'f']:
         name_id = f"district_{suffix}"
+
+        # Find the row in the GeoDataFrame for the current district (based on name_id)
+        district_row = gdf[gdf['name'] == name_id]
+
+        # Extract the geometry for the current district
+        current_territory = district_row.geometry.iloc[0]
+
         district_registry.add_unit({
             "name_id": name_id,
             "name_variants": [name_id, name_id.upper()],
@@ -32,7 +53,7 @@ def change_test_setup():
                     current_seat_name=f"seat_{suffix}",
                     current_dist_type="w",
                     timespan=timespan,
-                    current_territory=None
+                    current_territory=current_territory
                 )
             ]
         })

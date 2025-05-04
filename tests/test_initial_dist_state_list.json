@@ -1,0 +1,148 @@
+{
+    "unit_list": [
+        {
+            "name_id": "district_a",
+            "name_variants": [
+                "district_a",
+                "DISTRICT_A"
+            ],
+            "seat_name_variants": [
+                "seat_a",
+                "SEAT_a"
+            ],
+            "states": [
+                {
+                    "current_name": "district_a",
+                    "current_seat_name": "seat_a",
+                    "current_dist_type": "w",
+                    "timespan": {
+                        "start": "1921-02-19T00:00:00",
+                        "end": "1938-11-16T00:00:00"
+                    },
+                    "current_territory": null
+                }
+            ],
+            "changes": []
+        },
+        {
+            "name_id": "district_b",
+            "name_variants": [
+                "district_b",
+                "DISTRICT_B"
+            ],
+            "seat_name_variants": [
+                "seat_b",
+                "SEAT_b"
+            ],
+            "states": [
+                {
+                    "current_name": "district_b",
+                    "current_seat_name": "seat_b",
+                    "current_dist_type": "w",
+                    "timespan": {
+                        "start": "1921-02-19T00:00:00",
+                        "end": "1938-11-16T00:00:00"
+                    },
+                    "current_territory": null
+                }
+            ],
+            "changes": []
+        },
+        {
+            "name_id": "district_c",
+            "name_variants": [
+                "district_c",
+                "DISTRICT_C"
+            ],
+            "seat_name_variants": [
+                "seat_c",
+                "SEAT_c"
+            ],
+            "states": [
+                {
+                    "current_name": "district_c",
+                    "current_seat_name": "seat_c",
+                    "current_dist_type": "w",
+                    "timespan": {
+                        "start": "1921-02-19T00:00:00",
+                        "end": "1938-11-16T00:00:00"
+                    },
+                    "current_territory": null
+                }
+            ],
+            "changes": []
+        },
+        {
+            "name_id": "district_d",
+            "name_variants": [
+                "district_d",
+                "DISTRICT_D"
+            ],
+            "seat_name_variants": [
+                "seat_d",
+                "SEAT_d"
+            ],
+            "states": [
+                {
+                    "current_name": "district_d",
+                    "current_seat_name": "seat_d",
+                    "current_dist_type": "w",
+                    "timespan": {
+                        "start": "1921-02-19T00:00:00",
+                        "end": "1938-11-16T00:00:00"
+                    },
+                    "current_territory": null
+                }
+            ],
+            "changes": []
+        },
+        {
+            "name_id": "district_e",
+            "name_variants": [
+                "district_e",
+                "DISTRICT_E"
+            ],
+            "seat_name_variants": [
+                "seat_e",
+                "SEAT_e"
+            ],
+            "states": [
+                {
+                    "current_name": "district_e",
+                    "current_seat_name": "seat_e",
+                    "current_dist_type": "w",
+                    "timespan": {
+                        "start": "1921-02-19T00:00:00",
+                        "end": "1938-11-16T00:00:00"
+                    },
+                    "current_territory": null
+                }
+            ],
+            "changes": []
+        },
+        {
+            "name_id": "district_f",
+            "name_variants": [
+                "district_f",
+                "DISTRICT_F"
+            ],
+            "seat_name_variants": [
+                "seat_f",
+                "SEAT_f"
+            ],
+            "states": [
+                {
+                    "current_name": "district_f",
+                    "current_seat_name": "seat_f",
+                    "current_dist_type": "w",
+                    "timespan": {
+                        "start": "1921-02-19T00:00:00",
+                        "end": "1938-11-16T00:00:00"
+                    },
+                    "current_territory": null
+                }
+            ],
+            "changes": []
+        }
+    ]
+}
