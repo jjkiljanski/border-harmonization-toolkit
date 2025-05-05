@@ -49,7 +49,7 @@ def test_apply_one_to_many(change_test_setup, one_to_many_matter_fixture):
         description="Legal Act X",
         order=1,
         matter=one_to_many_matter_fixture,
-        units_affected=[]
+        units_affected = {"Region": [], "District": []}
     )
     
     # Act
@@ -60,20 +60,20 @@ def test_apply_one_to_many(change_test_setup, one_to_many_matter_fixture):
     district_a = district_registry.find_unit("district_a")
     assert district_a.find_state_by_date(datetime(1923, 1, 1)).timespan.end == datetime(1923, 1, 2)
     assert ("abolished", change) in district_a.changes
-    assert ("abolished", district_a) in change.units_affected
+    assert ("abolished", district_a) in change.units_affected["District"]
 
     # Check that district_b received a new state and has territory change
     district_b = district_registry.find_unit("district_b")
     assert len(district_b.states) > 1
     assert district_b.changes[-1] == ("territory", change)
-    assert ("territory", district_b) in change.units_affected
+    assert ("territory", district_b) in change.units_affected["District"]
 
     # Check that district_x was created with proper state
     district_x = district_registry.find_unit("district_x")
     assert district_x is not None
     assert district_x.states[0].timespan.start == datetime(1923, 1, 2)
     assert ("created", change) in district_x.changes
-    assert ("created", district_x) in change.units_affected
+    assert ("created", district_x) in change.units_affected["District"]
 
     # Check that the territory attribute was nulled (as placeholder)
     for unit in [district_b, district_x]:
@@ -93,7 +93,7 @@ def test_apply_many_to_one(change_test_setup, create_many_to_one_matter_fixture)
         description="Legal Act X",
         order=1,
         matter=create_many_to_one_matter_fixture,
-        units_affected=[]
+        units_affected={"Region": [], "District": []}
     )
     
     # Act
@@ -104,20 +104,20 @@ def test_apply_many_to_one(change_test_setup, create_many_to_one_matter_fixture)
     district_a = district_registry.find_unit("district_a")
     assert district_a.exists(datetime(1924, 1, 1)) and not district_a.exists(datetime(1924, 1, 3))
     assert ("abolished", change) in district_a.changes
-    assert ("abolished", district_a) in change.units_affected
+    assert ("abolished", district_a) in change.units_affected["District"]
 
     # Check that district_b's state is updated, but it is not deleted
     district_b = district_registry.find_unit("district_b")
     assert len(district_b.states) > 1
     assert district_b.changes[-1] == ("territory", change)
-    assert ("territory", district_b) in change.units_affected
+    assert ("territory", district_b) in change.units_affected["District"]
 
     # Check that district_x was created with the correct state and timespan
     district_x = district_registry.find_unit("district_x")
     assert district_x is not None
     assert not district_x.exists(datetime(1924, 1, 1)) and district_x.exists(datetime(1924, 1, 3))
     assert ("created", change) in district_x.changes
-    assert ("created", district_x) in change.units_affected
+    assert ("created", district_x) in change.units_affected["District"]
 
     # Check that the territory attribute was nulled (as placeholder)
     assert district_x.states[-1].current_territory is None
@@ -137,11 +137,11 @@ def test_apply_change_adm_state(change_test_setup, region_change_adm_state_matte
         description="Legal Act X",
         order=1,
         matter=region_change_adm_state_matter_fixture,
-        units_affected=[]
+        units_affected={"Region": [], "District": []}
     )
     
     # Act
-    unit = change.apply(adm_state, region_registry, district_registry)
+    change.apply(adm_state, region_registry, district_registry)
 
     # Assert that the address was moved in the administrative state
     assert adm_state.get_address(("HOMELAND", "region_c")) is True
@@ -149,6 +149,5 @@ def test_apply_change_adm_state(change_test_setup, region_change_adm_state_matte
 
     # Assert that the region unit was affected
     region_unit = region_registry.find_unit("region_c")
-    assert region_unit == unit
     assert ("adm_affiliation", change) in region_unit.changes
-    assert ("adm_affiliation", region_unit) in change.units_affected
+    assert ("adm_affiliation", region_unit) in change.units_affected["Region"]

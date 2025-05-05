@@ -11,6 +11,13 @@ from ..data_models.adm_change import *
 #                           Definitions of fixtures                        #
 ############################################################################
 
+# Use non-interactive matplotlib backend suitable for tests
+import matplotlib
+@pytest.fixture(autouse=True)
+def set_matplotlib_backend():
+    # Set the non-interactive Agg backend before any test
+    matplotlib.use("Agg")
+
 @pytest.fixture
 def change_test_setup():
     # Common timespan
@@ -159,7 +166,7 @@ def parametrized_region_change(parametrized_region_reform_matter):
             description="Test region reform",
             order=1,
             matter=matter,
-            units_affected=[]
+            units_affected={"Region": [], "District": []}
         )
     return _make
 

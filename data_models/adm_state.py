@@ -4,6 +4,8 @@ from typing import Union, Optional, Literal, Dict, Any, Tuple
 from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan
 from border_harmonization_toolkit.data_models.adm_unit import *
 
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import geopandas as gpd
 from shapely.ops import unary_union

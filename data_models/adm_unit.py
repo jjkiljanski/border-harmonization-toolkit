@@ -4,6 +4,8 @@ from typing import Optional, Literal, List, Tuple, Any
 from copy import deepcopy
 from datetime import datetime
 
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import geopandas as gpd
 import io

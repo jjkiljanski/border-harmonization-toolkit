@@ -29,6 +29,10 @@ class BaseChangeMatter(BaseModel, ABC):
     def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
         pass
 
+    @abstractmethod
+    def fill_units_affected_ids(self):
+        pass
+
 # Definition of the data model for the matter of UnitReform change.
 
 class UnitReform(BaseChangeMatter):
@@ -53,6 +57,18 @@ class UnitReform(BaseChangeMatter):
             )
 
         return values
+    
+    def fill_units_affected_ids(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
+        if "current_name" in self.after_reform.keys():
+            after = self.after_reform["current_name"]
+        else:
+            after = self.current_name
+        return {
+            self.unit_type: {
+                "before": [self.current_name],
+                "after": [after]
+            }
+        }
     
     def echo(self, date, source, lang = "pol"):
         if lang == "pol":
@@ -82,7 +98,7 @@ class UnitReform(BaseChangeMatter):
                 )
             setattr(new_state, key, self.after_reform[key])
         unit.changes.append(("reform", change))
-        change.units_affected.append(("reform", unit))
+        change.units_affected[self.unit_type].append(("reform", unit))
         return
     
     def __repr__(self):
@@ -112,6 +128,7 @@ class OneToManyTakeTo(BaseModel):
         else:
             if not self.current_name:
                 raise ValueError(f"A string must be passed as 'name_id' attribute when 'create' is False.")
+        
         return self
     
 class OneToMany(BaseChangeMatter):
@@ -120,6 +137,25 @@ class OneToMany(BaseChangeMatter):
     unit_type: Literal["Region", "District"] # The change happens on one "level" i.e. can be only an exchange between regions OR between districts, not between regions AND districts.
     take_from: OneToManyTakeFrom
     take_to: List[OneToManyTakeTo]
+
+    def fill_units_affected_ids(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
+        unit_type = self.unit_type  # "District" or "Region"
+        before_ids = [self.take_from.current_name]
+        after_ids = []
+        if not self.take_from.delete_unit:
+            after_ids.append(self.take_from.current_name)
+        
+        for take_to_dict in self.take_to:
+            after_ids.append(take_to_dict.current_name)
+            if not take_to_dict.create:
+                before_ids.append(take_to_dict.current_name)
+
+        return {
+            unit_type: {
+                "before": before_ids,
+                "after": after_ids
+            }
+        }
 
     def echo(self, date, source, lang = "pol"):
         destination_districts = ", ".join([f"{destination.current_name}" for destination in self.take_to])
@@ -156,11 +192,11 @@ class OneToMany(BaseChangeMatter):
         if self.take_from.delete_unit:
             unit_from.abolish(change.date)
             unit_from.changes.append(("abolished", change))
-            change.units_affected.append(("abolished", unit_from))
+            change.units_affected[self.unit_type].append(("abolished", unit_from))
         else:
             units_new_states.append(unit_from.create_next_state(change.date))
             unit_from.changes.append(("territory", change))
-            change.units_affected.append(("territory", unit_from))
+            change.units_affected[self.unit_type].append(("territory", unit_from))
         for take_to_dict in self.take_to:
             if take_to_dict.create:
                 unit = dist_registry.add_unit(take_to_dict.district)
@@ -168,12 +204,12 @@ class OneToMany(BaseChangeMatter):
                 unit_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
                 units_new_states.append(unit_state)
                 unit.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
-                change.units_affected.append(("created", unit))
+                change.units_affected[self.unit_type].append(("created", unit))
             else:
                 unit = dist_registry.find_unit(take_to_dict.current_name)
                 units_new_states.append(unit.create_next_state(change.date))
                 unit.changes.append(("territory", change))
-                change.units_affected.append(("territory", unit))
+                change.units_affected[self.unit_type].append(("territory", unit))
         for state in units_new_states:
             state.current_territory = None # Territorial change to implement later
         return
@@ -217,6 +253,24 @@ class ManyToOne(BaseModel):
     unit_type: Literal["Region", "District"]
     take_from: List[ManyToOneTakeFrom]
     take_to: ManyToOneTakeTo
+
+    def fill_units_affected_ids(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
+        unit_type = self.unit_type  # Should be "District" or "Region"
+        before_ids = [take_from_dict.current_name for take_from_dict in self.take_from]
+        if not self.take_to.create:
+            before_ids.append(self.take_to.current_name)
+        
+        after_ids = [self.take_to.current_name]
+        for take_from_dict in self.take_from:
+            if not take_from_dict.delete_unit:
+                after_ids.append(take_from_dict.current_name)
+
+        return {
+            unit_type: {
+                "before": before_ids,
+                "after": after_ids
+            }
+        }
 
     def echo(self, date, source, lang = "pol"):
         origin_districts_partial = ", ".join([f"{origin.current_name}" for origin in self.take_from if not origin.delete_unit])
@@ -313,11 +367,11 @@ class ManyToOne(BaseModel):
             if unit_dict.delete_unit:
                 unit.abolish(change.date)
                 unit.changes.append(("abolished", change))
-                change.units_affected.append(("abolished", unit))
+                change.units_affected[self.unit_type].append(("abolished", unit))
             else:
                 units_new_states.append(unit.create_next_state(change.date))
                 unit.changes.append(("territory", change))
-                change.units_affected.append(("territory", unit))
+                change.units_affected[self.unit_type].append(("territory", unit))
 
         if self.take_to.create:
             unit_to = dist_registry.add_unit(self.take_to.district)
@@ -325,12 +379,12 @@ class ManyToOne(BaseModel):
             unit_to_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
             units_new_states.append(unit_to_state)
             unit_to.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
-            change.units_affected.append(("created", unit_to))
+            change.units_affected[self.unit_type].append(("created", unit_to))
         else:
             unit_to = dist_registry.find_unit(self.take_to.current_name)
             units_new_states.append(unit_to.create_next_state(change.date))
             unit_to.changes.append(("territory", change))
-            change.units_affected.append(("territory", unit_to))
+            change.units_affected[self.unit_type].append(("territory", unit_to))
 
         for state in units_new_states:
             state.current_territory = None # Territorial change to implement later
@@ -364,6 +418,23 @@ class ChangeAdmState(BaseChangeMatter):
                 f"got {len(self.take_from)} and {len(self.take_to)}"
             )
         return self
+
+    def fill_units_affected_ids(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
+        affected: Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]] = {
+            "Region": {
+                "before": [self.take_from[1]],
+                "after": [self.take_to[1]],
+            }
+        }
+
+        # If address is a district-level address (i.e., 3-tuple), include District-level info
+        if len(self.take_from) == 3:
+            affected["District"] = {
+                "before": [self.take_from[2]],
+                "after": [self.take_to[2]],
+            }
+        return affected
+
     
     def echo(self, date, source, lang = "pol"):
         if lang == "pol":
@@ -399,13 +470,14 @@ class ChangeAdmState(BaseChangeMatter):
         address_to = self.take_to
         address_content = adm_state.pop_address(address_from)
         adm_state.add_address(address_to, address_content)
-        if len(self.take_from)==2:
-            unit = region_registry.find_unit(address_to[1])
-        else:
-            unit = dist_registry.find_unit(address_to[2])
-        unit.changes.append(("adm_affiliation", change))
-        change.units_affected.append(("adm_affiliation", unit))
-        return unit
+        region_affected = region_registry.find_unit(address_to[1])
+        region_affected.changes.append(("adm_affiliation", change))
+        change.units_affected["Region"].append(("adm_affiliation", region_affected))
+        if len(self.take_from)==3:
+            district_affected = dist_registry.find_unit(address_to[2])
+            district_affected.changes.append(("adm_affiliation", change))
+            change.units_affected["District"].append(("adm_affiliation", district_affected))
+        return
     
     def districts_involved(self) -> list[str]:
         pass
@@ -425,7 +497,8 @@ class Change(BaseModel):
     description: str
     order: int
     matter: ChangeMatter
-    units_affected: Optional[List[Unit]] = None
+    units_affected: Optional[Dict[Literal["Region", "District"], List[Unit]]] = {"Region": [], "District": []}
+    units_affected_ids: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}} # Dict with values: "District" or "Region", the value is dict with values: "before" or "after", its values are lists of affected units.
 
     def echo(self) -> str:
         return self.matter.echo(self.date, self.source)
@@ -434,4 +507,25 @@ class Change(BaseModel):
         return self.matter.districts_involved()
 
     def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
-        return self.matter.apply(self, adm_state, region_registry, dist_registry) 
+        return self.matter.apply(self, adm_state, region_registry, dist_registry)
+
+    @model_validator(mode="after")
+    def ensure_complete_units_affected_ids(self):
+        # Start with what's already provided (if any)
+        affected_ids = self.matter.fill_units_affected_ids()
+
+        # Ensure top-level keys exist
+        for unit_type in ("Region", "District"):
+            if unit_type not in affected_ids:
+                affected_ids[unit_type] = {}
+
+            # Ensure both 'before' and 'after' lists exist
+            for when in ("before", "after"):
+                if when not in affected_ids[unit_type]:
+                    affected_ids[unit_type][when] = []
+
+        # Update the internal state of the model instance directly
+        self.units_affected_ids = affected_ids
+        
+        # Return `self` (the model instance itself)
+        return self

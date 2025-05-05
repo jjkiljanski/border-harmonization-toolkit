@@ -247,6 +247,7 @@ def test_many_to_one_create_fixture_valid(create_many_to_one_matter_fixture):
     assert len(change.take_from) == 2
     assert all(isinstance(f, ManyToOneTakeFrom) for f in change.take_from)
 
+
 def test_many_to_one_reuse_fixture_valid(reuse_many_to_one_matter_fixture):
     change = reuse_many_to_one_matter_fixture
     assert change.take_to.create is False
@@ -286,14 +287,17 @@ def test_many_to_one_missing_name_on_reuse():
 # ─── VALIDATION TESTS FOR CONSTRUCTION ─────────────────────────────────────────
 
 def test_region_change_adm_state_matter_fixture_structure(region_change_adm_state_matter_fixture):
-    assert region_change_adm_state_matter_fixture.take_from == ("ABROAD", "region_c")
-    assert region_change_adm_state_matter_fixture.take_to == ("HOMELAND", "region_c")
-    assert len(region_change_adm_state_matter_fixture.take_from) == len(region_change_adm_state_matter_fixture.take_to) == 2
+    change = region_change_adm_state_matter_fixture
+    assert change.take_from == ("ABROAD", "region_c")
+    assert change.take_to == ("HOMELAND", "region_c")
+    assert len(change.take_from) == len(change.take_to) == 2
+ 
 
 def test_district_change_adm_state_matter_fixture_structure(district_change_adm_state_matter_fixture):
-    assert district_change_adm_state_matter_fixture.take_from[2] == "district_a"
-    assert district_change_adm_state_matter_fixture.take_to[2] == "district_a"
-    assert len(district_change_adm_state_matter_fixture.take_from) == len(district_change_adm_state_matter_fixture.take_to) == 3
+    change = district_change_adm_state_matter_fixture
+    assert change.take_from[2] == "district_a"
+    assert change.take_to[2] == "district_a"
+    assert len(change.take_from) == len(change.take_to) == 3
 
 # ─── INVALID CONSTRUCTION TESTS ────────────────────────────────────────────────
 
@@ -314,18 +318,26 @@ def test_invalid_changeadmstate_mismatched_address_lengths():
 # Test cases related to the Change class.
 
 @pytest.mark.parametrize(
-    "fixture_name",
+    ("fixture_name", "region_before", "region_after", "district_before", "district_after"),
     [
-        "region_reform_matter_fixture",
-        "district_reform_matter_fixture",
-        "one_to_many_matter_fixture",
-        "create_many_to_one_matter_fixture",
-        "reuse_many_to_one_matter_fixture",
-        "region_change_adm_state_matter_fixture",
-        "district_change_adm_state_matter_fixture",
+        ("region_reform_matter_fixture", ["region_a"], ["region_a_Reformed"], [], []),
+        ("district_reform_matter_fixture", [], [], ["district_a"], ["district_a_Reformed"]),
+        ("one_to_many_matter_fixture", [], [], ["district_a", "district_b"], ["district_b", "district_x"]),
+        ("create_many_to_one_matter_fixture", [], [], ["district_a", "district_b"], ["district_b", "district_x"]),
+        ("reuse_many_to_one_matter_fixture", [], [], ["district_c", "district_d", "district_e"], ["district_c", "district_e"]),
+        ("region_change_adm_state_matter_fixture", ["region_c"], ["region_c"], [], []),
+        ("district_change_adm_state_matter_fixture", ["region_a"], ["region_b"], ["district_a"], ["district_a"]),
     ]
 )
-def test_change_construction_from_matter_fixtures(request, fixture_name):
+
+def test_change_construction_from_matter_fixtures(
+    request,
+    fixture_name,
+    region_before,
+    region_after,
+    district_before,
+    district_after
+):
     matter = request.getfixturevalue(fixture_name)
 
     change = Change(
@@ -340,3 +352,11 @@ def test_change_construction_from_matter_fixtures(request, fixture_name):
     assert change.date.year == 1930
     assert change.description == "Test change"
     assert change.matter == matter
+
+    #assert change.units_affected_ids["District"] == 2
+
+    # Check the correctness of the 'units_affected' attribute definition.
+    assert set(change.units_affected_ids["Region"]["before"]) == set(region_before)
+    assert set(change.units_affected_ids["Region"]["after"]) == set(region_after)
+    assert set(change.units_affected_ids["District"]["before"]) == set(district_before)
+    assert set(change.units_affected_ids["District"]["after"]) == set(district_after)
