@@ -2,6 +2,9 @@ import pandas as pd
 import json
 import os
 from datetime import datetime
+import matplotlib.pyplot as plt
+import base64
+import io
 
 def load_and_clean_csv(file_path, district_registry):
     # Read the CSV
@@ -43,3 +46,41 @@ def load_config(config_path="config.json"):
         global_timespan["end"] = datetime.strptime(global_timespan["end"], "%Y-%m-%d")
     
     return config_data
+
+def build_plot_from_layers(*layers):
+    fig, ax = plt.subplots(figsize=(10, 10))
+    for layer in layers:
+        # Group and plot by shared plotting attributes to decrease computation time
+        group_cols = ["color", "edgecolor", "linewidth"]
+        grouped = layer.groupby(group_cols)
+        for (color, edgecolor, linewidth), group in grouped:
+            group.plot(
+                ax=ax,
+                color=color,
+                edgecolor=edgecolor,
+                linewidth=linewidth
+            )
+    ax.set_axis_off()
+    return fig
+
+
+def save_plot_to_html(fig, html_path, title, description, append=False):
+    buffer = io.BytesIO()
+    fig.savefig(buffer, format="png", bbox_inches="tight")
+    buffer.seek(0)
+    img_base64 = base64.b64encode(buffer.read()).decode("utf-8")
+    plt.close(fig)
+
+    html_content = f"""
+    <div style="text-align:center; font-family:sans-serif; margin-top:2em;">
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <img src="data:image/png;base64,{img_base64}" />
+    </div>
+    """
+
+    write_mode = "a" if append and os.path.exists(html_path) else "w"
+    with open(html_path, write_mode, encoding="utf-8") as f:
+        f.write(html_content)
+
+    print(f"Plot {'appended to' if append else 'saved to'} {html_path}")

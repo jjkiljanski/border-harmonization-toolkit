@@ -434,7 +434,6 @@ class ChangeAdmState(BaseChangeMatter):
                 "after": [self.take_to[2]],
             }
         return affected
-
     
     def echo(self, date, source, lang = "pol"):
         if lang == "pol":
@@ -506,8 +505,14 @@ class Change(BaseModel):
     def districts_involved(self) -> list[str]:
         return self.matter.districts_involved()
 
-    def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry) -> None:
-        return self.matter.apply(self, adm_state, region_registry, dist_registry)
+    def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry, plot_change = False) -> None:
+        if plot_change:
+            before_layer = self._plot_layer_before()
+        self.matter.apply(self, adm_state, region_registry, dist_registry)
+        if plot_change:
+            after_layer = self._plot_layer_after()
+            self._plot()
+            return 
 
     @model_validator(mode="after")
     def ensure_complete_units_affected_ids(self):
@@ -529,3 +534,20 @@ class Change(BaseModel):
         
         # Return `self` (the model instance itself)
         return self
+    
+    def _plot(self):
+        """
+        This method is PRIVATE as it makes sense to call it only in connection with
+        'apply' method to verify the consistency of the change with existing administrative
+        state and unit registries and use the newly created states and registries through
+        the change application.
+        
+        The method should be called only through using the 'apply' method with the 'plot'
+        argument set to 'True'. """
+        return
+    
+    def _plot_layer_before(self):
+        return
+    
+    def _plot_layer_after(self):
+        return

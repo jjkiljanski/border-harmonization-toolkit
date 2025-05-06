@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Union, Optional, Literal, Dict, Any, Tuple
+from datetime import datetime
 
 from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan
 from border_harmonization_toolkit.data_models.adm_unit import *
@@ -185,68 +186,67 @@ class AdministrativeState(BaseModel):
                             address_list.append((country_name, region_name, dist_name))                    
         address_list.sort()
         return address_list
-
-    def plot(self, district_registry, html_file_path: str, append: bool = False):
-        homeland_districts = []
-        abroad_districts = []
-        district_geometries = []
-        district_borders = []
-        region_borders = []
-
-        # Step 1: Accumulate all district geometries and categorize them
-        for scope, regions in self.unit_hierarchy.items():
+    
+    def _district_plot_layer(self, district_registry: DistrictRegistry, date: datetime):
+        gdf = district_registry._plot_layer(date)
+        gdf["color"] = "none"
+        gdf["edgecolor"] = "black"
+        gdf["linewidth"] = 1
+        return gdf
+    
+    def _region_plot_layer(self, district_registry: DistrictRegistry, date: datetime):
+        records = []
+        for area_type, regions in self.unit_hierarchy.items():
             for region, districts in regions.items():
-                region_geometries = []
-
+                district_geoms = []
                 for district_name in districts:
-                    district, district_state, _ = district_registry.find_unit_state_by_date(
-                        district_name, self.timespan.middle
-                    )
-                    geom = district_state.current_territory
-                    district_geometries.append((geom, scope))
-                    district_borders.append(geom)
-                    region_geometries.append(geom)
+                    d, d_state, _ = district_registry.find_unit_state_by_date(district_name, date)
+                    if d_state.current_territory is not None:
+                        district_geoms.append(d_state.current_territory)
+                if district_geoms:  # Only proceed if there is at least one valid geometry
+                    region_shape = unary_union(district_geoms)
+                    records.append({
+                        "geometry": region_shape,
+                        "color": "none",
+                        "edgecolor": "black",
+                        "linewidth": 10
+                    })
+        return gpd.GeoDataFrame(records)
+    
+    def _country_plot_layer(self, district_registry: DistrictRegistry, date: datetime):
+        country_geoms = {}
+        for country_name in self.unit_hierarchy.keys():
+            country_geoms[country_name] = []
+            for region_name, districts in self.unit_hierarchy[country_name].items():
+                for district_name in districts:
+                    district, dist_state, _ = district_registry.find_unit_state_by_date(district_name, date)
+                    if dist_state.current_territory:
+                        country_geoms[country_name].append(dist_state.current_territory)
+        records = []
+        if country_geoms.get("HOMELAND", None):
+            records.append({
+                "geometry": unary_union(country_geoms["HOMELAND"]),
+                "color": "green",
+                "edgecolor": "black",
+                "linewidth": 0.5
+            })
+        if country_geoms.get("ABROAD", None):
+            records.append({
+                "geometry": unary_union(country_geoms["ABROAD"]),
+                "color": "blue",
+                "edgecolor": "black",
+                "linewidth": 0.5
+            })
+        return gpd.GeoDataFrame(records)
+    
+    def plot(self, district_registry, date):
+        from helper_functions import build_plot_from_layers
 
-                region_union = unary_union(region_geometries)
-                region_borders.append(region_union)
+        # Prepare the layers
+        country_layer = self._country_plot_layer(district_registry, date)
+        region_layer = self._region_plot_layer(district_registry, date)
+        district_layer = self._district_plot_layer(district_registry, date)
 
-        # Step 1: Plot country-level territories (HOMELAND in green, ABROAD in blue)
-        fig, ax = plt.subplots(figsize=(10, 10))
-        for geom, scope in district_geometries:
-            color = "green" if scope == "HOMELAND" else "blue"
-            gpd.GeoSeries([geom]).plot(ax=ax, color=color, edgecolor="none", alpha=0.5)
-
-        # Step 2: Plot district borders
-        gpd.GeoSeries(district_borders).plot(ax=ax, facecolor="none", edgecolor="black", linewidth=1)
-
-        # Step 3: Plot bold region borders
-        gpd.GeoSeries(region_borders).plot(ax=ax, facecolor="none", edgecolor="black", linewidth=10)
-
-        # Final plot formatting
-        ax.set_title("Administrative State: Homeland and Abroad", fontsize=16, fontweight="bold", ha="center")
-        ax.set_axis_off()
-
-        # Save figure to base64
-        buffer = io.BytesIO()
-        fig.savefig(buffer, format="png", bbox_inches="tight")
-        buffer.seek(0)
-        img_base64 = base64.b64encode(buffer.read()).decode("utf-8")
-        plt.close(fig)
-
-        # Prepare HTML content
-        html_block = f"""
-        <div style="text-align: center; margin-top: 30px;">
-            <h1>Administrative State Plot</h1>
-            <p>This plot shows the district territories colored by country (green = HOMELAND, blue = ABROAD), 
-            with region and district boundaries overlaid.</p>
-            <img src="data:image/png;base64,{img_base64}" />
-        </div>
-        """
-
-        # Write to file
-        if append and os.path.exists(html_file_path):
-            with open(html_file_path, "a") as f:
-                f.write(html_block)
-        else:
-            with open(html_file_path, "w") as f:
-                f.write(f"<html><body>{html_block}</body></html>")
+        # Build the figure
+        fig = build_plot_from_layers(country_layer, district_layer, region_layer)
+        return fig

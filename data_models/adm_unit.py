@@ -165,6 +165,7 @@ class UnitRegistry(BaseModel):
             if unit.exists(date):
                 all_existent.append((unit, unit.find_state_by_date(date)))
         return all_existent
+
     
 #############################################################################################
 # Hierarchy of models to store districts states: DistrictState ∈ District ∈ DistrictRegistry
@@ -197,43 +198,22 @@ class DistrictRegistry(UnitRegistry):
 
         self.unit_list.append(district)
         return district
+    
+    def _plot_layer(self, date: datetime):
+        states = [district.find_state_by_date(date) for district in self.unit_list if district.exists(date)]
+        geometries = [state.current_territory for state in states if state.current_territory is not None]
+        return gpd.GeoDataFrame({'geometry': geometries})
+    
+    def plot(self, html_file_path, date):
+        from helper_functions import build_plot_from_layers
 
-    def plot(self, html_file_path):
+        layer = self._plot_layer(date)
+        layer["color"] = "none"
+        layer["edgecolor"] = "black"
+        layer["linewidth"] = 1
 
-        # Create a GeoDataFrame to hold all the district geometries
-        geometries = [district.states[0].current_territory for district in self.unit_list]
-        gdf = gpd.GeoDataFrame({'geometry': geometries})
-
-        # Plot the GeoDataFrame
-        fig, ax = plt.subplots(figsize=(10, 10))
-        gdf.plot(ax=ax, color="lightgrey", edgecolor="black", linewidth=1)
-
-        # Formatting: no axes, bold title, centered
-        ax.set_title("Districts Plot", fontsize=16, fontweight="bold", ha="center")
-        ax.set_axis_off()
-
-        # Save plot to base64 image
-        buffer = io.BytesIO()
-        fig.savefig(buffer, format="png", bbox_inches="tight")
-        buffer.seek(0)
-        img_base64 = base64.b64encode(buffer.read()).decode("utf-8")
-        plt.close(fig)
-
-        # HTML content with consistent layout
-        html_content = f"""
-        <html>
-        <body style="text-align:center; font-family:sans-serif;">
-            <h1>Districts Plot</h1>
-            <p>This plot shows the borders and geometry of all registered districts.</p>
-            <img src="data:image/png;base64,{img_base64}" />
-        </body>
-        </html>
-        """
-        
-        with open(html_file_path, "w") as f:
-            f.write(html_content)
-
-        print(f"Plot saved to {html_file_path}")
+        fig = build_plot_from_layers(layer)
+        return fig
 
 
     def _save_plot_to_base64(self, fig):
