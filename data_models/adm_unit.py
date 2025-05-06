@@ -200,9 +200,16 @@ class DistrictRegistry(UnitRegistry):
         return district
     
     def _plot_layer(self, date: datetime):
-        states = [district.find_state_by_date(date) for district in self.unit_list if district.exists(date)]
-        geometries = [state.current_territory for state in states if state.current_territory is not None]
-        return gpd.GeoDataFrame({'geometry': geometries})
+    # Collect district states and names for districts that exist on the given date
+        states_and_names = [(district.find_state_by_date(date), district.name_id) for district in self.unit_list if district.exists(date)]
+        
+        # Extract geometries and district names
+        geometries = [state.current_territory for state, _ in states_and_names if state.current_territory is not None]
+        dist_name_id = [name for state, name in states_and_names if state.current_territory is not None]  # Extract names for each district
+        
+        # Return a GeoDataFrame with district names and corresponding geometries
+        return gpd.GeoDataFrame({'dist_name_id': dist_name_id, 'geometry': geometries})
+
     
     def plot(self, html_file_path, date):
         from helper_functions import build_plot_from_layers

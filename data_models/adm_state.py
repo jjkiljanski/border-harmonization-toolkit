@@ -194,10 +194,11 @@ class AdministrativeState(BaseModel):
         gdf["linewidth"] = 1
         return gdf
     
-    def _region_plot_layer(self, district_registry: DistrictRegistry, date: datetime):
+    def _region_plot_layer(self, region_registry, district_registry: DistrictRegistry, date: datetime):
         records = []
         for area_type, regions in self.unit_hierarchy.items():
-            for region, districts in regions.items():
+            for region_name, districts in regions.items():
+                region_name_id = region_registry.find_unit(region_name).name_id
                 district_geoms = []
                 for district_name in districts:
                     d, d_state, _ = district_registry.find_unit_state_by_date(district_name, date)
@@ -206,6 +207,7 @@ class AdministrativeState(BaseModel):
                 if district_geoms:  # Only proceed if there is at least one valid geometry
                     region_shape = unary_union(district_geoms)
                     records.append({
+                        "region_name_id": region_name_id,
                         "geometry": region_shape,
                         "color": "none",
                         "edgecolor": "black",
@@ -225,6 +227,7 @@ class AdministrativeState(BaseModel):
         records = []
         if country_geoms.get("HOMELAND", None):
             records.append({
+                "country_name_id": "HOMELAND",
                 "geometry": unary_union(country_geoms["HOMELAND"]),
                 "color": "green",
                 "edgecolor": "black",
@@ -232,6 +235,7 @@ class AdministrativeState(BaseModel):
             })
         if country_geoms.get("ABROAD", None):
             records.append({
+                "country_name_id": "HOMELAND",
                 "geometry": unary_union(country_geoms["ABROAD"]),
                 "color": "blue",
                 "edgecolor": "black",
@@ -239,12 +243,12 @@ class AdministrativeState(BaseModel):
             })
         return gpd.GeoDataFrame(records)
     
-    def plot(self, district_registry, date):
+    def plot(self, region_registry, district_registry, date):
         from helper_functions import build_plot_from_layers
 
         # Prepare the layers
         country_layer = self._country_plot_layer(district_registry, date)
-        region_layer = self._region_plot_layer(district_registry, date)
+        region_layer = self._region_plot_layer(region_registry, district_registry, date)
         district_layer = self._district_plot_layer(district_registry, date)
 
         # Build the figure

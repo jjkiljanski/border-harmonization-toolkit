@@ -342,7 +342,7 @@ def test_change_construction_from_matter_fixtures(
 
     change = Change(
         date=datetime(1930, 5, 1),
-        source="Gov Gazette",
+        source="Legal Act XYZ",
         description="Test change",
         order=1,
         matter=matter

@@ -3,6 +3,8 @@ import json
 import os
 from datetime import datetime
 import matplotlib.pyplot as plt
+from matplotlib.image import imread
+from io import BytesIO
 import base64
 import io
 
@@ -50,6 +52,9 @@ def load_config(config_path="config.json"):
 def build_plot_from_layers(*layers):
     fig, ax = plt.subplots(figsize=(10, 10))
     for layer in layers:
+        # For debugging, uncomment:
+        # print(layer.to_string())
+
         # Group and plot by shared plotting attributes to decrease computation time
         group_cols = ["color", "edgecolor", "linewidth"]
         grouped = layer.groupby(group_cols)
@@ -63,6 +68,30 @@ def build_plot_from_layers(*layers):
     ax.set_axis_off()
     return fig
 
+def combine_figures(fig1, fig2):
+    # Save both figures to image buffers
+    buf1 = BytesIO()
+    buf2 = BytesIO()
+    fig1.savefig(buf1, format='png', bbox_inches='tight')
+    fig2.savefig(buf2, format='png', bbox_inches='tight')
+    buf1.seek(0)
+    buf2.seek(0)
+
+    # Read them back as images
+    img1 = imread(buf1)
+    img2 = imread(buf2)
+
+    # Create a new figure with two subplots
+    fig, axes = plt.subplots(1, 2, figsize=(20, 10))
+    axes[0].imshow(img1)
+    axes[1].imshow(img2)
+
+    # Hide axes
+    for ax in axes:
+        ax.axis('off')
+
+    plt.tight_layout()
+    return fig
 
 def save_plot_to_html(fig, html_path, title, description, append=False):
     buffer = io.BytesIO()

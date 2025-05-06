@@ -21,7 +21,7 @@ def test_district_registry_plot(change_test_setup):
     district_plot = district_registry.plot(output_html_path, test_date)
 
     title="District Borders"
-    description=f"Borders of all districts ({test_date})"
+    description=f"Borders of all districts ({test_date.date()})"
     append=False
     save_plot_to_html(district_plot, output_html_path, title, description, append=False)
 
@@ -30,6 +30,7 @@ def test_district_registry_plot(change_test_setup):
 
 def test_administrative_state_plot_appends(change_test_setup):
 
+    region_registry = change_test_setup["region_registry"]
     district_registry = change_test_setup["district_registry"]
     administrative_state = change_test_setup["administrative_state"]
     output_html_path = "./tests/display/initial_state_plot_test.html"
@@ -43,10 +44,10 @@ def test_administrative_state_plot_appends(change_test_setup):
 
     test_date = datetime(1931,1,1)
 
-    adm_state_plot = administrative_state.plot(district_registry, test_date)
+    adm_state_plot = administrative_state.plot(region_registry, district_registry, test_date)
 
     title="Administrative State"
-    description=f"Territorial division into countries, regions, and districts ({test_date})."
+    description=f"Territorial division into countries, regions, and districts ({test_date.date()})."
     save_plot_to_html(adm_state_plot, output_html_path, title, description, append=True)
     
 

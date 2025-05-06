@@ -507,12 +507,15 @@ class Change(BaseModel):
 
     def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry, plot_change = False) -> None:
         if plot_change:
-            before_layer = self._plot_layer_before()
+            plot_before = self._plot(adm_state, region_registry, dist_registry, before_or_after="before")
+            print(f"Change {self.matter.change_type} before plot created.")
         self.matter.apply(self, adm_state, region_registry, dist_registry)
         if plot_change:
-            after_layer = self._plot_layer_after()
-            self._plot()
-            return 
+            plot_after = self._plot(adm_state, region_registry, dist_registry, before_or_after="after")
+            print(f"Change {self.matter.change_type} after plot created.")
+            from helper_functions import combine_figures
+            return combine_figures(plot_before, plot_after)
+        return 
 
     @model_validator(mode="after")
     def ensure_complete_units_affected_ids(self):
@@ -535,7 +538,7 @@ class Change(BaseModel):
         # Return `self` (the model instance itself)
         return self
     
-    def _plot(self):
+    def _plot(self, adm_state, region_registry, district_registry, before_or_after):
         """
         This method is PRIVATE as it makes sense to call it only in connection with
         'apply' method to verify the consistency of the change with existing administrative
@@ -544,10 +547,27 @@ class Change(BaseModel):
         
         The method should be called only through using the 'apply' method with the 'plot'
         argument set to 'True'. """
-        return
-    
-    def _plot_layer_before(self):
-        return
-    
-    def _plot_layer_after(self):
-        return
+
+        from helper_functions import build_plot_from_layers
+
+        # Prepare the layers
+        country_layer = adm_state._country_plot_layer(district_registry, self.date)
+        region_layer = adm_state._region_plot_layer(region_registry, district_registry, self.date)
+        district_layer = adm_state._district_plot_layer(district_registry, self.date)
+        # Extract all rows where 'region_name_id' is in the list of regions affected
+        change_region_layer = region_layer[region_layer['region_name_id'].isin(self.units_affected_ids["Region"][before_or_after])].copy()
+        change_region_layer['edgecolor'] = 'red'
+        change_region_layer['color'] = 'red'
+        change_district_layer = district_layer[district_layer['dist_name_id'].isin(self.units_affected_ids["District"][before_or_after])].copy()
+        change_district_layer['edgecolor'] = 'red'
+        change_district_layer['color'] = 'darkred'
+
+        # For debugging, uncomment:
+        print(f"self.units_affected_ids['Region'][before_or_after]: {self.units_affected_ids['Region'][before_or_after]}")
+        print(f"region_layer: {region_layer.to_string()}")
+        print(f"change_region_layer: {change_region_layer.to_string()}")
+        print(f"change_district_layer: {change_district_layer.to_string()}")
+
+        # Build the figure
+        fig = build_plot_from_layers(country_layer, change_region_layer, change_district_layer, district_layer, region_layer)
+        return fig
