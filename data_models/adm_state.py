@@ -65,7 +65,7 @@ class AdministrativeState(BaseModel):
         
     def add_address(self, address, content):
         """
-        Adds address[n]:content key:value pair at the address adm_state[address[0]][address[1]]...[address[n-1]].
+        Adds address[n]:content (a key:value pair) at the address adm_state[address[0]][address[1]]...[address[n-1]].
         """
         current = self.unit_hierarchy
         for i, attr in enumerate(address[:-1]):
@@ -85,6 +85,34 @@ class AdministrativeState(BaseModel):
                 return False
             current = current[attr]
         return True
+    
+    def find_address(self, unit_name_id, unit_type):
+        """
+        Returns the address of a unit, given its name (unit_name_id) and type ('District' or 'Region') 
+        """
+        if unit_type not in ['District', 'Region']:
+            raise ValueError(f"Argument 'unit_type' of method 'AdministrativeState.find_address' must be 'District' or 'Region'. Passed: {unit_type}.")
+        for country_name, country_dict in self.unit_hierarchy.items():
+            for region_name, region_dict in country_dict.items():
+                if unit_type=='Region':
+                    if unit_name_id==region_name:
+                        return (country_name, region_name)
+                else:
+                    for district_name, district_dict in region_dict.items():
+                        if unit_type == 'District':
+                            print(f"district_name vs unit_name_id: {district_name} vs {unit_name_id}.")
+                            if unit_name_id == district_name:
+                                return (country_name, region_name, district_name)
+        return None
+    
+    def find_and_pop(self, unit_name_id, unit_type):
+        """
+        Pops a unit, given its name (unit_name_id) and type ('District' or 'Region').
+        """
+        address = self.find_address(unit_name_id, unit_type)
+        if address is None:
+            raise ValueError(f"{unit_type} {unit_name_id} doesn't exist in the AdministrativeState.unit_hierarchy.")
+        return self.pop_address(address)
 
     def verify_consistency(self, region_registry, district_registry, timespan_registry = None):
         """

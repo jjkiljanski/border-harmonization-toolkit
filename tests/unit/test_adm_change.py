@@ -192,6 +192,7 @@ def test_take_to_create_true_valid(one_to_many_take_to_create_true_fixture):
     take_to = one_to_many_take_to_create_true_fixture
     assert take_to.create is True
     assert take_to.district.name_id == "district_x"
+    assert take_to.new_district_address is not None
 
 def test_take_to_create_false_valid(one_to_many_take_to_create_false_fixture):
     take_to = one_to_many_take_to_create_false_fixture
@@ -213,10 +214,20 @@ def test_take_to_create_true_missing_district():
     with pytest.raises(ValidationError) as exc_info:
         OneToManyTakeTo(
             create=True,
-            current_name="district_x"
+            current_name="district_x",
             # missing district
+            new_district_address = ('HOMELAND', 'region_a', 'district_x')
         )
     assert "must be passed as 'district' attribute" in str(exc_info.value)
+
+def test_take_to_create_true_missing_address(change_test_setup):
+    with pytest.raises(ValidationError) as exc_info:
+        OneToManyTakeTo(
+            create=True,
+            current_name="district_x",
+            district=change_test_setup["district_x"],
+        )
+    assert "must be passed as 'new_district_address' attribute" in str(exc_info.value)
 
 def test_take_to_create_false_missing_name():
     with pytest.raises(ValidationError) as exc_info:
@@ -262,7 +273,17 @@ def test_many_to_one_missing_district_on_create():
         ManyToOneTakeTo(
             create=True,
             current_name="district_x",
-            district=None
+            district=None,
+            new_district_address = ('HOMELAND', 'region_a', 'district_x')
+        )
+    
+def test_many_to_one_missing_address_on_create(change_test_setup):
+    with pytest.raises(ValueError, match="must be passed as 'new_district_address' attribute"):
+        ManyToOneTakeTo(
+            create=True,
+            current_name="district_x",
+            district=change_test_setup["district_x"]
+            # Missing address
         )
 
 def test_many_to_one_missing_name_on_reuse():

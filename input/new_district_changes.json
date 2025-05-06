@@ -27,11 +27,16 @@
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
-      "take_from": {
-        "region": "NOWOGRÓDZKIE",
-        "district_name": "DZIŚNIEŃSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
+      "take_from": [
+        "HOMELAND",
+        "NOWOGRÓDZKIE",
+        "DZIŚNIEŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ZIEMIA WILEŃSKA",
+        "DZIŚNIEŃSKI"
+      ]
     }
   },
   {
@@ -40,11 +45,16 @@
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
-      "take_from": {
-        "region": "NOWOGRÓDZKIE",
-        "district_name": "DUNIŁOWICKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
+      "take_from": [
+        "HOMELAND",
+        "NOWOGRÓDZKIE",
+        "DUNIŁOWICKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ZIEMIA WILEŃSKA",
+        "DUNIŁOWICKI"
+      ]
     }
   },
   {
@@ -53,11 +63,16 @@
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
-      "take_from": {
-        "region": "NOWOGRÓDZKIE",
-        "district_name": "WILEJSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
+      "take_from": [
+        "HOMELAND",
+        "NOWOGRÓDZKIE",
+        "WILEJSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ZIEMIA WILEŃSKA",
+        "WILEJSKI"
+      ]
     }
   },
   {
@@ -66,11 +81,16 @@
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "BRASŁAWSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
+      "take_from": [
+        "ABROAD",
+        "LITWA",
+        "BRASŁAWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ZIEMIA WILEŃSKA",
+        "BRASŁAWSKI"
+      ]
     }
   },
   {
@@ -79,11 +99,16 @@
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "OSZMIAŃSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
+      "take_from": [
+        "ABROAD",
+        "LITWA",
+        "OSZMIAŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ZIEMIA WILEŃSKA",
+        "OSZMIAŃSKI"
+      ]
     }
   },
   {
@@ -92,11 +117,16 @@
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "ŚWIĘCIAŃSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
+      "take_from": [
+        "ABROAD",
+        "LITWA",
+        "ŚWIĘCIAŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ZIEMIA WILEŃSKA",
+        "ŚWIĘCIAŃSKI"
+      ]
     }
   },
   {
@@ -105,11 +135,16 @@
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "TROCKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
+      "take_from": [
+        "ABROAD",
+        "LITWA",
+        "TROCKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ZIEMIA WILEŃSKA",
+        "TROCKI"
+      ]
     }
   },
   {
@@ -118,11 +153,16 @@
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "WILEŃSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
+      "take_from": [
+        "ABROAD",
+        "LITWA",
+        "WILEŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ZIEMIA WILEŃSKA",
+        "WILEŃSKI"
+      ]
     }
   },
   {
@@ -131,11 +171,16 @@
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "13.04.1922 włączone do Polski po buncie Żeligowskiego i aneksji Litwie",
     "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "WILNO"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
+      "take_from": [
+        "ABROAD",
+        "LITWA",
+        "WILNO"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ZIEMIA WILEŃSKA",
+        "WILNO"
+      ]
     }
   },
   {
@@ -144,11 +189,16 @@
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat miejski Katowice pozyskany od Niemiec",
     "matter": {
-      "take_from": {
-        "region": "NIEMCY",
-        "district_name": "KATOWICE"
-      },
-      "take_to": "ŚLĄSKIE"
+      "take_from": [
+        "ABROAD",
+        "NIEMCY",
+        "KATOWICE"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŚLĄSKIE",
+        "KATOWICE"
+      ]
     }
   },
   {
@@ -157,11 +207,16 @@
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat katowicki pozyskany od Niemiec",
     "matter": {
-      "take_from": {
-        "region": "NIEMCY",
-        "district_name": "KATOWICKI"
-      },
-      "take_to": "ŚLĄSKIE"
+      "take_from": [
+        "ABROAD",
+        "NIEMCY",
+        "KATOWICKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŚLĄSKIE",
+        "KATOWICKI"
+      ]
     }
   },
   {
@@ -170,11 +225,16 @@
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat Królewska Huta pozyskany od Niemiec",
     "matter": {
-      "take_from": {
-        "region": "NIEMCY",
-        "district_name": "KRÓLEWSKA HUTA"
-      },
-      "take_to": "ŚLĄSKIE"
+      "take_from": [
+        "ABROAD",
+        "NIEMCY",
+        "KRÓLEWSKA HUTA"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŚLĄSKIE",
+        "KRÓLEWSKA HUTA"
+      ]
     }
   },
   {
@@ -183,11 +243,16 @@
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat lubliniecki pozyskany od Niemiec",
     "matter": {
-      "take_from": {
-        "region": "NIEMCY",
-        "district_name": "LUBLINIECKI"
-      },
-      "take_to": "ŚLĄSKIE"
+      "take_from": [
+        "ABROAD",
+        "NIEMCY",
+        "LUBLINIECKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŚLĄSKIE",
+        "LUBLINIECKI"
+      ]
     }
   },
   {
@@ -196,11 +261,16 @@
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski powiat pszczyński pozyskany od Niemiec",
     "matter": {
-      "take_from": {
-        "region": "NIEMCY",
-        "district_name": "PSZCZYŃSKI"
-      },
-      "take_to": "ŚLĄSKIE"
+      "take_from": [
+        "ABROAD",
+        "NIEMCY",
+        "PSZCZYŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŚLĄSKIE",
+        "PSZCZYŃSKI"
+      ]
     }
   },
   {
@@ -764,7 +834,7 @@
     }
   },
   {
-    "change_type": "UnitReform",
+    "change_type": "RReform",
     "date": "20.01.1926",
     "source": "Dz.U. z 1926 r. nr 6, poz. 29",
     "description": "20.01.1926 przekształcono Ziemię Wileńską w województwo wileńskie",
@@ -1122,11 +1192,16 @@
     "source": "Dz.U. z 1930 r. nr 82, poz. 649",
     "description": "od 16.12.1930 należał do woj. wołyńskiego",
     "matter": {
-      "take_from": {
-        "region": "POLESKIE",
-        "district_name": "SARNEŃSKI"
-      },
-      "take_to": "WOŁYŃ"
+      "take_from": [
+        "HOMELAND",
+        "POLESKIE",
+        "SARNEŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "WOŁYŃ",
+        "SARNEŃSKI"
+      ]
     }
   },
   {
@@ -1170,11 +1245,16 @@
     "source": "Dz.U. z 1931 r. nr 34, poz. 238",
     "description": "Powiat turczański, woj. Stanisławowskie, od 17.04.1931 należał do województwa lwowskiego",
     "matter": {
-      "take_from": {
-        "region": "STANISŁAWOWSKIE",
-        "district_name": "TURCZAŃSKI"
-      },
-      "take_to": "LWOWSKIE"
+      "take_from": [
+        "HOMELAND",
+        "STANISŁAWOWSKIE",
+        "TURCZAŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "LWOWSKIE",
+        "TURCZAŃSKI"
+      ]
     }
   },
   {
@@ -1771,11 +1851,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "take_from": {
-        "region": "ŁÓDZKIE",
-        "district_name": "KALISKI"
-      },
-      "take_to": "POZNAŃSKIE"
+      "take_from": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "KALISKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "KALISKI"
+      ]
     }
   },
   {
@@ -1784,11 +1869,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat kolski, woj. Łódzkie, od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "take_from": {
-        "region": "ŁÓDZKIE",
-        "district_name": "KOLSKI"
-      },
-      "take_to": "POZNAŃSKIE"
+      "take_from": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "KOLSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "KOLSKI"
+      ]
     }
   },
   {
@@ -1797,11 +1887,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat koniński, woj. łódzkie, od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "take_from": {
-        "region": "ŁÓDZKIE",
-        "district_name": "KONIŃSKI"
-      },
-      "take_to": "POZNAŃSKIE"
+      "take_from": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "KONIŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "KONIŃSKI"
+      ]
     }
   },
   {
@@ -1810,11 +1905,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat turecki, woj. łódzkie, od 1.04.1938 należał do woj. poznańskiego",
     "matter": {
-      "take_from": {
-        "region": "ŁÓDZKIE",
-        "district_name": "TURECKI"
-      },
-      "take_to": "POZNAŃSKIE"
+      "take_from": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "TURECKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "TURECKI"
+      ]
     }
   },
   {
@@ -1823,11 +1923,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "1.04.1938 przeniesiono powiat Bydgoszcz z woj. poznańskiego do województwa pomorskiego",
     "matter": {
-      "take_from": {
-        "region": "POZNAŃSKIE",
-        "district_name": "BYDGOSZCZ"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "BYDGOSZCZ"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "BYDGOSZCZ"
+      ]
     }
   },
   {
@@ -1836,11 +1941,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat działdowski, woj. Pomorskie, od 1.04.1938 należał do woj. warszawskiego",
     "matter": {
-      "take_from": {
-        "region": "POMORSKIE",
-        "district_name": "DZIAŁDOWSKI"
-      },
-      "take_to": "WARSZAWSKIE"
+      "take_from": [
+        "HOMELAND",
+        "POMORSKIE",
+        "DZIAŁDOWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "DZIAŁDOWSKI"
+      ]
     }
   },
   {
@@ -1849,11 +1959,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "do 1.04.1938 należał do woj. warszawskiego",
     "matter": {
-      "take_from": {
-        "region": "WARSZAWSKIE",
-        "district_name": "LIPNOWSKI"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "LIPNOWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "LIPNOWSKI"
+      ]
     }
   },
   {
@@ -1862,11 +1977,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat bydgoski, woj. poznańskie, od 1.04.1938 należał do woj. Pomorskiego",
     "matter": {
-      "take_from": {
-        "region": "POZNAŃSKIE",
-        "district_name": "BYDGOSKI"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "BYDGOSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "BYDGOSKI"
+      ]
     }
   },
   {
@@ -1875,11 +1995,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "take_from": {
-        "region": "POZNAŃSKIE",
-        "district_name": "INOWROCŁAW"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "INOWROCŁAW"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "INOWROCŁAW"
+      ]
     }
   },
   {
@@ -1888,11 +2013,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "take_from": {
-        "region": "POZNAŃSKIE",
-        "district_name": "INOWROCŁAWSKI"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "INOWROCŁAWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "INOWROCŁAWSKI"
+      ]
     }
   },
   {
@@ -1901,11 +2031,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat szubiński, woj. poznańskie, od 1.04.1938 należał do województwa pomorskiego",
     "matter": {
-      "take_from": {
-        "region": "POZNAŃSKIE",
-        "district_name": "SZUBIŃSKI"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "SZUBIŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "SZUBIŃSKI"
+      ]
     }
   },
   {
@@ -1914,11 +2049,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat wyrzyski, woj. poznańskie, od 1.04.1938 należał do województwa Pomorskiego",
     "matter": {
-      "take_from": {
-        "region": "POZNAŃSKIE",
-        "district_name": "WYRZYSKI"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "POZNAŃSKIE",
+        "WYRZYSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "WYRZYSKI"
+      ]
     }
   },
   {
@@ -1927,11 +2067,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat nieszawski, woj. warszawskie, od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "take_from": {
-        "region": "WARSZAWSKIE",
-        "district_name": "NIESZAWSKI"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "NIESZAWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "NIESZAWSKI"
+      ]
     }
   },
   {
@@ -1940,11 +2085,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat rypiński, woj. warszawskie, od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "take_from": {
-        "region": "WARSZAWSKIE",
-        "district_name": "RYPIŃSKI"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "RYPIŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "RYPIŃSKI"
+      ]
     }
   },
   {
@@ -1953,11 +2103,16 @@
     "source": "Dz.U. z 1937 r. nr 46, poz. 350",
     "description": "powiat włocławski, woj. warszawskie, od 1.04.1938 należał do woj. pomorskiego",
     "matter": {
-      "take_from": {
-        "region": "WARSZAWSKIE",
-        "district_name": "WŁOCŁAWSKI"
-      },
-      "take_to": "POMORSKIE"
+      "take_from": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "WŁOCŁAWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "POMORSKIE",
+        "WŁOCŁAWSKI"
+      ]
     }
   },
   {
@@ -2217,11 +2372,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "powiat łomżyński, woj. białostockie, od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "take_from": {
-        "region": "BIAŁOSTOCKIE",
-        "district_name": "ŁOMŻYŃSKI"
-      },
-      "take_to": "WARSZAWSKIE"
+      "take_from": [
+        "HOMELAND",
+        "BIAŁOSTOCKIE",
+        "ŁOMŻYŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "ŁOMŻYŃSKI"
+      ]
     }
   },
   {
@@ -2230,11 +2390,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "take_from": {
-        "region": "BIAŁOSTOCKIE",
-        "district_name": "OSTROŁĘCKI"
-      },
-      "take_to": "WARSZAWSKIE"
+      "take_from": [
+        "HOMELAND",
+        "BIAŁOSTOCKIE",
+        "OSTROŁĘCKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "OSTROŁĘCKI"
+      ]
     }
   },
   {
@@ -2243,11 +2408,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "powiat ostrowski, woj. białostockie, od 1.04.1939 należał do woj. warszawskiego",
     "matter": {
-      "take_from": {
-        "region": "BIAŁOSTOCKIE",
-        "district_name": "OSTROWSKI"
-      },
-      "take_to": "WARSZAWSKIE"
+      "take_from": [
+        "HOMELAND",
+        "BIAŁOSTOCKIE",
+        "OSTROWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "OSTROWSKI"
+      ]
     }
   },
   {
@@ -2256,11 +2426,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "powiat konecki, woj. kieleckie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "take_from": {
-        "region": "KIELECKIE",
-        "district_name": "KONECKI"
-      },
-      "take_to": "ŁÓDZKIE"
+      "take_from": [
+        "HOMELAND",
+        "KIELECKIE",
+        "KONECKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "KONECKI"
+      ]
     }
   },
   {
@@ -2269,11 +2444,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "powiat opoczyński, woj. kieleckie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "take_from": {
-        "region": "KIELECKIE",
-        "district_name": "OPOCZYŃSKI"
-      },
-      "take_to": "ŁÓDZKIE"
+      "take_from": [
+        "HOMELAND",
+        "KIELECKIE",
+        "OPOCZYŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "OPOCZYŃSKI"
+      ]
     }
   },
   {
@@ -2282,11 +2462,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "Powiat garwoliński, woj. lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
-      "take_from": {
-        "region": "LUBELSKIE",
-        "district_name": "GARWOLIŃSKI"
-      },
-      "take_to": "WARSZAWSKIE"
+      "take_from": [
+        "HOMELAND",
+        "LUBELSKIE",
+        "GARWOLIŃSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "GARWOLIŃSKI"
+      ]
     }
   },
   {
@@ -2295,11 +2480,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "Powiat sokołowski, woj. lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
-      "take_from": {
-        "region": "LUBELSKIE",
-        "district_name": "SOKOŁOWSKI"
-      },
-      "take_to": "WARSZAWSKIE"
+      "take_from": [
+        "HOMELAND",
+        "LUBELSKIE",
+        "SOKOŁOWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "SOKOŁOWSKI"
+      ]
     }
   },
   {
@@ -2308,11 +2498,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "Powiat węgrowski, woj. lubelskie, od 1.04.1939 należał do województwa warszawskiego.",
     "matter": {
-      "take_from": {
-        "region": "LUBELSKIE",
-        "district_name": "WĘGROWSKI"
-      },
-      "take_to": "WARSZAWSKIE"
+      "take_from": [
+        "HOMELAND",
+        "LUBELSKIE",
+        "WĘGROWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "WĘGROWSKI"
+      ]
     }
   },
   {
@@ -2321,11 +2516,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "powiat kutnowski, woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "take_from": {
-        "region": "WARSZAWSKIE",
-        "district_name": "KUTNOWSKI"
-      },
-      "take_to": "ŁÓDZKIE"
+      "take_from": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "KUTNOWSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "KUTNOWSKI"
+      ]
     }
   },
   {
@@ -2334,11 +2534,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "powiat łowicki, woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "take_from": {
-        "region": "WARSZAWSKIE",
-        "district_name": "ŁOWICKI"
-      },
-      "take_to": "ŁÓDZKIE"
+      "take_from": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "ŁOWICKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "ŁOWICKI"
+      ]
     }
   },
   {
@@ -2347,11 +2552,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "powiat rawski (Rawa Mazowiecka), woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "take_from": {
-        "region": "WARSZAWSKIE",
-        "district_name": "RAWSKI (RAWA MAZOWIECKA)"
-      },
-      "take_to": "ŁÓDZKIE"
+      "take_from": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "RAWSKI (RAWA MAZOWIECKA)"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "RAWSKI (RAWA MAZOWIECKA)"
+      ]
     }
   },
   {
@@ -2360,11 +2570,16 @@
     "source": "Dz.U. z 1938 r. nr 27, poz. 240",
     "description": "powiat skierniewicki, woj. warszawskie, od 1.04.1939 należał do woj. łódzkiego",
     "matter": {
-      "take_from": {
-        "region": "WARSZAWSKIE",
-        "district_name": "SKIERNIEWICKI"
-      },
-      "take_to": "ŁÓDZKIE"
+      "take_from": [
+        "HOMELAND",
+        "WARSZAWSKIE",
+        "SKIERNIEWICKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŁÓDZKIE",
+        "SKIERNIEWICKI"
+      ]
     }
   }
 ]

@@ -186,7 +186,6 @@ def test_change_plot_from_matter_fixtures(request, change_test_setup):
     all_units_affected = administrative_state.apply_changes(changes_list, region_registry, dist_registry)
     
     assert [change_type for (change_type, _) in all_units_affected["Region"]] == ['reform', 'adm_affiliation', 'adm_affiliation']
-    print(all_units_affected["District"])
     district_a = dist_registry.find_unit('district_a')
     assert [change_type for (change_type, _) in district_a.changes] == ['adm_affiliation']
     district_b = dist_registry.find_unit('district_b')

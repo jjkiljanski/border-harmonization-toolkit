@@ -119,12 +119,15 @@ class OneToManyTakeTo(BaseModel):
     weight_from: Optional[float] = None
     weight_to: Optional[float] = None
     district: Optional[District] = None
+    new_district_address: Optional[DistAddress] = None
 
     @model_validator(mode="after")
     def validate_create_fields(self):
         if self.create:
             if not self.district:
                 raise ValueError(f"A dict coherent with District data model must be passed as 'district' attribute when 'create' is True.")
+            if not self.new_district_address:
+                raise ValueError(f"The address of the new district must be passed as 'new_district_address' attribute when 'create' is True.")
         else:
             if not self.current_name:
                 raise ValueError(f"A string must be passed as 'name_id' attribute when 'create' is False.")
@@ -200,6 +203,7 @@ class OneToMany(BaseChangeMatter):
         for take_to_dict in self.take_to:
             if take_to_dict.create:
                 unit = dist_registry.add_unit(take_to_dict.district)
+                adm_state.add_address(take_to_dict.new_district_address, {})
                 unit_state = unit.states[0]
                 unit_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
                 units_new_states.append(unit_state)
@@ -236,12 +240,15 @@ class ManyToOneTakeTo(BaseModel):
     create: bool
     current_name: Optional[str] = None
     district: Optional[District] = None
+    new_district_address: Optional[DistAddress] = None
 
     @model_validator(mode="after")
     def validate_create_fields(self):
         if self.create:
             if not self.district:
                 raise ValueError(f"A dict coherent with District data model must be passed as 'district' attribute when 'create' is True.")
+            if not self.new_district_address:
+                raise ValueError(f"The address of the new district must be passed as 'new_district_address' attribute when 'create' is True.")
         else:
             if not self.current_name:
                 raise ValueError(f"A string must be passed as 'name_id' attribute when 'create' is False.")
@@ -368,6 +375,7 @@ class ManyToOne(BaseModel):
                 unit.abolish(change.date)
                 unit.changes.append(("abolished", change))
                 change.units_affected[self.unit_type].append(("abolished", unit))
+                adm_state.pop_address
             else:
                 units_new_states.append(unit.create_next_state(change.date))
                 unit.changes.append(("territory", change))
@@ -375,6 +383,7 @@ class ManyToOne(BaseModel):
 
         if self.take_to.create:
             unit_to = dist_registry.add_unit(self.take_to.district)
+            adm_state.add_address(self.take_to.new_district_address, {})
             unit_to_state = unit_to.states[0]
             unit_to_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
             units_new_states.append(unit_to_state)

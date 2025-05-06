@@ -41,6 +41,23 @@ def test_get_region_address(change_test_setup):
     assert sample_admin_state.get_address(address_1)
     assert not sample_admin_state.get_address(address_2)
 
+def test_find_region_address(change_test_setup):
+    sample_admin_state = change_test_setup["administrative_state"]
+    
+    assert sample_admin_state.find_address("region_a", "Region") == ('HOMELAND', 'region_a')
+    assert sample_admin_state.find_address("region_x", "Region") is None
+
+def test_find_and_pop_region_address(change_test_setup):
+    sample_admin_state = change_test_setup["administrative_state"]
+    
+    removed = sample_admin_state.find_and_pop("region_a", "Region")
+    assert "HOMELAND" in sample_admin_state.unit_hierarchy
+    assert "region_a" not in sample_admin_state.unit_hierarchy["HOMELAND"]
+    assert "district_a" in removed  # Confirm content was returned
+
+    with pytest.raises(ValueError, match=r"doesn't exist"):
+        sample_admin_state.find_and_pop("region_x", "Region")
+
 # --- TEST DISTRICT ADDRESS --- #
 
 def test_pop_district_address(change_test_setup):
@@ -70,6 +87,22 @@ def test_get_district_address(change_test_setup):
 
     assert sample_admin_state.get_address(address_1)
     assert not sample_admin_state.get_address(address_2)
+
+def test_find_district_address(change_test_setup):
+    sample_admin_state = change_test_setup["administrative_state"]
+    
+    assert sample_admin_state.find_address("district_b", "District") == ("HOMELAND","region_a", "district_b")
+    assert sample_admin_state.find_address("district_z", "District") is None
+
+def test_find_and_pop_district_address(change_test_setup):
+    sample_admin_state = change_test_setup["administrative_state"]
+    
+    removed = sample_admin_state.find_and_pop("district_b", "District")
+    assert removed == {}
+    assert "district_b" not in sample_admin_state.unit_hierarchy["HOMELAND"]["region_a"]
+
+    with pytest.raises(ValueError, match=r"doesn't exist"):
+        sample_admin_state.find_and_pop("district_z", "District")
 
 # --- ERROR HANDLING --- #
 

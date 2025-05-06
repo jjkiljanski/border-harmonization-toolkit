@@ -198,6 +198,7 @@ def one_to_many_take_to_create_true_fixture(change_test_setup):
         create=True,
         current_name="district_x",
         district=change_test_setup["district_x"],
+        new_district_address=('HOMELAND', 'region_a', 'district_x')
     )
 
 @pytest.fixture
@@ -216,7 +217,13 @@ def one_to_many_matter_fixture(change_test_setup):
         take_from=OneToManyTakeFrom(current_name="district_a", delete_unit=True),
         take_to=[
             OneToManyTakeTo(create=False, current_name="district_b", weight_from=0.5),
-            OneToManyTakeTo(create=True, current_name="district_x", district=change_test_setup["district_x"], weight_from=0.5),
+            OneToManyTakeTo(
+                create=True,
+                current_name="district_x",
+                district=change_test_setup["district_x"],
+                new_district_address=('HOMELAND', 'region_a', 'district_x'),
+                weight_from=0.5
+                ),
         ]
     )
 
@@ -237,6 +244,7 @@ def create_many_to_one_matter_fixture(change_test_setup):
             create=True,
             current_name="district_x",
             district=district_x,
+            new_district_address=('HOMELAND', 'region_a', 'district_x')
         ),
     )
 
