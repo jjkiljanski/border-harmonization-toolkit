@@ -42,6 +42,13 @@ class TimeSpan(BaseModel):
         model.middle = middle
         return model
     
+    def update_middle(self):
+        # Updated middle to be in half between self.start and self.end
+        delta = self.end - self.start
+        half = delta / 2
+        self.middle = self.start + half
+        return
+    
     # Magic method for "in" operator
     def __contains__(self, to_compare: Union[datetime, "TimeSpan"]) -> bool:
         """

@@ -1,9 +1,11 @@
 import pytest
 from datetime import datetime
+import copy
+
 from ...data_models.adm_change import *
 
 ############################################################################
-#                  apply method tests for UnitReform                       #
+#                       UnitReform.apply method tests                      #
 ############################################################################
 
 @pytest.mark.parametrize(
@@ -151,3 +153,51 @@ def test_apply_change_adm_state(change_test_setup, region_change_adm_state_matte
     region_unit = region_registry.find_unit("region_c")
     assert ("adm_affiliation", change) in region_unit.changes
     assert ("adm_affiliation", region_unit) in change.units_affected["Region"]
+
+
+############################################################################
+#             AdministrativeState.apply_changes method tests               #
+############################################################################
+
+def test_change_plot_from_matter_fixtures(request, change_test_setup):
+
+    # Deepcopy to reset state for each fixture
+    region_registry = copy.deepcopy(change_test_setup["region_registry"])
+    dist_registry = copy.deepcopy(change_test_setup["district_registry"])
+    administrative_state = copy.deepcopy(change_test_setup["administrative_state"])
+    
+    changes_list = []
+    
+    # 2. Add the plots for every fixture
+    for i, fixture_name in enumerate(["district_change_adm_state_matter_fixture", "region_reform_matter_fixture",
+                         "reuse_many_to_one_matter_fixture"]):
+        
+        matter = request.getfixturevalue(fixture_name)
+        change = Change(
+            date=datetime(1930, 5, 1),
+            source="Legal Act XYZ",
+            description="Test change",
+            order=3-i,
+            matter=matter
+        )
+
+        changes_list.append(change)
+
+    all_units_affected = administrative_state.apply_changes(changes_list, region_registry, dist_registry)
+    
+    assert [change_type for (change_type, _) in all_units_affected["Region"]] == ['reform', 'adm_affiliation', 'adm_affiliation']
+    print(all_units_affected["District"])
+    district_a = dist_registry.find_unit('district_a')
+    assert [change_type for (change_type, _) in district_a.changes] == ['adm_affiliation']
+    district_b = dist_registry.find_unit('district_b')
+    assert [change_type for (change_type, _) in district_b.changes] == []
+    district_c = dist_registry.find_unit('district_c')
+    assert [change_type for (change_type, _) in district_c.changes] == ['territory']
+    district_d = dist_registry.find_unit('district_d')
+    assert [change_type for (change_type, _) in district_d.changes] == ['abolished']
+    district_e = dist_registry.find_unit('district_e')
+    assert [change_type for (change_type, _) in district_e.changes] == ['territory']
+    region_a = region_registry.find_unit('region_a')
+    assert [change_type for (change_type, _) in region_a.changes] == ['reform', 'adm_affiliation']  
+    region_b = region_registry.find_unit('region_b')
+    assert [change_type for (change_type, _) in region_b.changes] == ['adm_affiliation']  

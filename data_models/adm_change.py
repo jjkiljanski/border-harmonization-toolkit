@@ -1,7 +1,7 @@
 from pydantic import BaseModel, model_validator, Field
 from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 from abc import ABC, abstractmethod
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from border_harmonization_toolkit.data_models.adm_timespan import *
 from border_harmonization_toolkit.data_models.adm_unit import *
@@ -466,12 +466,16 @@ class ChangeAdmState(BaseChangeMatter):
         # administrative unit stock variables - above all this method has to be rewritten.
         
         address_from = self.take_from
+        print(address_from)
         address_to = self.take_to
         address_content = adm_state.pop_address(address_from)
         adm_state.add_address(address_to, address_content)
-        region_affected = region_registry.find_unit(address_to[1])
-        region_affected.changes.append(("adm_affiliation", change))
-        change.units_affected["Region"].append(("adm_affiliation", region_affected))
+        region_from_affected = region_registry.find_unit(address_from[1])
+        region_from_affected.changes.append(("adm_affiliation", change))
+        change.units_affected["Region"].append(("adm_affiliation", region_from_affected))
+        region_to_affected = region_registry.find_unit(address_to[1])
+        region_to_affected.changes.append(("adm_affiliation", change))
+        change.units_affected["Region"].append(("adm_affiliation", region_to_affected))
         if len(self.take_from)==3:
             district_affected = dist_registry.find_unit(address_to[2])
             district_affected.changes.append(("adm_affiliation", change))
@@ -550,23 +554,31 @@ class Change(BaseModel):
 
         from helper_functions import build_plot_from_layers
 
+        if before_or_after=="before":
+            time_shift = -timedelta(hours=12)
+        else:
+            time_shift = timedelta(hours=12)
+
         # Prepare the layers
-        country_layer = adm_state._country_plot_layer(district_registry, self.date)
-        region_layer = adm_state._region_plot_layer(region_registry, district_registry, self.date)
-        district_layer = adm_state._district_plot_layer(district_registry, self.date)
+        country_layer = adm_state._country_plot_layer(district_registry, self.date + time_shift)
+        region_layer = adm_state._region_plot_layer(region_registry, district_registry, self.date + time_shift)
+        district_layer = adm_state._district_plot_layer(district_registry, self.date + time_shift)
+        
         # Extract all rows where 'region_name_id' is in the list of regions affected
-        change_region_layer = region_layer[region_layer['region_name_id'].isin(self.units_affected_ids["Region"][before_or_after])].copy()
+        change_region_layer = region_layer[region_layer['name_id'].isin(self.units_affected_ids["Region"][before_or_after])].copy()
         change_region_layer['edgecolor'] = 'red'
         change_region_layer['color'] = 'red'
-        change_district_layer = district_layer[district_layer['dist_name_id'].isin(self.units_affected_ids["District"][before_or_after])].copy()
+        change_district_layer = district_layer[district_layer['name_id'].isin(self.units_affected_ids["District"][before_or_after])].copy()
         change_district_layer['edgecolor'] = 'red'
         change_district_layer['color'] = 'darkred'
 
         # For debugging, uncomment:
-        print(f"self.units_affected_ids['Region'][before_or_after]: {self.units_affected_ids['Region'][before_or_after]}")
-        print(f"region_layer: {region_layer.to_string()}")
-        print(f"change_region_layer: {change_region_layer.to_string()}")
-        print(f"change_district_layer: {change_district_layer.to_string()}")
+        # if before_or_after == "after":
+            # print(f"country_layer ({before_or_after}): {country_layer.to_string()}")
+            # print(f"change_region_layer ({before_or_after}): {change_region_layer.to_string()}")
+            # print(f"change_district_layer ({before_or_after}): {change_district_layer.to_string()}")
+            #print(f"district_layer ({before_or_after}): {district_layer.to_string()}")
+            # print(f"region_layer ({before_or_after}): {region_layer.to_string()}")
 
         # Build the figure
         fig = build_plot_from_layers(country_layer, change_region_layer, change_district_layer, district_layer, region_layer)

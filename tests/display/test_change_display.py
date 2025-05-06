@@ -8,19 +8,8 @@ import pytest
 import os
 import re
 from datetime import datetime
+import copy
 
-# @pytest.mark.parametrize(
-#     "fixture_name",  # Parametrize only the fixture_name
-#     [
-#         ("region_reform_matter_fixture"),
-#         ("district_reform_matter_fixture"),
-#         ("one_to_many_matter_fixture"),
-#         ("create_many_to_one_matter_fixture"),
-#         ("reuse_many_to_one_matter_fixture"),
-#         ("region_change_adm_state_matter_fixture"),
-#         ("district_change_adm_state_matter_fixture"),
-#     ]
-# )
 def test_change_plot_from_matter_fixtures(request, change_test_setup):
 
     # Define the output HTML path
@@ -34,16 +23,16 @@ def test_change_plot_from_matter_fixtures(request, change_test_setup):
     with open(output_html_path, "w", encoding="utf-8") as f:
         f.write("<html><head><title>Test Change Plots</title></head><body></body></html>")
 
-    # 2. Add the plots for every fixture
-    for fixture_name in ["region_reform_matter_fixture", "district_reform_matter_fixture",
+    # # 2. Add the plots for every fixture
+    for fixture_name in ["district_change_adm_state_matter_fixture", "region_reform_matter_fixture", "district_reform_matter_fixture",
                          "one_to_many_matter_fixture", "create_many_to_one_matter_fixture",
-                         "reuse_many_to_one_matter_fixture", "region_change_adm_state_matter_fixture",
-                         "district_change_adm_state_matter_fixture"]:
+                         "reuse_many_to_one_matter_fixture", "region_change_adm_state_matter_fixture"]:
         
-        # Retrieve the relevant registries and states from the setup
-        region_registry = change_test_setup["region_registry"]
-        dist_registry = change_test_setup["district_registry"]
-        administrative_state = change_test_setup["administrative_state"]
+        print(f"TESTING FIXTURE {fixture_name}")
+        # Deepcopy to reset state for each fixture
+        region_registry = copy.deepcopy(change_test_setup["region_registry"])
+        dist_registry = copy.deepcopy(change_test_setup["district_registry"])
+        administrative_state = copy.deepcopy(change_test_setup["administrative_state"])
         
         matter = request.getfixturevalue(fixture_name)
         change = Change(
@@ -70,10 +59,9 @@ def test_change_plot_from_matter_fixtures(request, change_test_setup):
     assert html_content_after.count("<img src=") == 7, "Expected 7 plots in the HTML file"
 
     # Optionally, check for specific titles or other content to ensure each plot was appended correctly
-    for fixture_name in ["region_reform_matter_fixture", "district_reform_matter_fixture",
+    for fixture_name in ["district_change_adm_state_matter_fixture", "region_reform_matter_fixture", "district_reform_matter_fixture",
                          "one_to_many_matter_fixture", "create_many_to_one_matter_fixture",
-                         "reuse_many_to_one_matter_fixture", "region_change_adm_state_matter_fixture",
-                         "district_change_adm_state_matter_fixture"]:
+                         "reuse_many_to_one_matter_fixture", "region_change_adm_state_matter_fixture"]:
         assert re.search(f"<h2>{re.escape(f'Change Plot for {fixture_name}')}</h2>", html_content_after), \
             f"Plot title for {fixture_name} not found in the HTML content"
 

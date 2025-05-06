@@ -65,6 +65,16 @@ def build_plot_from_layers(*layers):
                 edgecolor=edgecolor,
                 linewidth=linewidth
             )
+
+        # If shownames is enabled, plot the names
+        if "shownames" in layer.columns and layer["shownames"].any():
+            name_col = "name_id" if "name_id" in layer.columns else "name"
+
+            for idx, row in layer.iterrows():
+                if pd.notnull(row.get(name_col)) and pd.notnull(row.geometry):
+                    x, y = row.geometry.centroid.coords[0]
+                    ax.text(x, y, str(row[name_col]), ha="center", va="center", fontsize=20, color="black")
+
     ax.set_axis_off()
     return fig
 

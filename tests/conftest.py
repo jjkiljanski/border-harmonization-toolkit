@@ -20,8 +20,6 @@ def set_matplotlib_backend():
 
 @pytest.fixture
 def change_test_setup():
-    # Common timespan
-    timespan = TimeSpan(start=datetime(1921, 2, 19), end=datetime(1938, 11, 16))
 
     # Manually define the GeoJSON-like data as a Python dictionary
     geojson_data = {
@@ -59,7 +57,7 @@ def change_test_setup():
                     current_name=name_id,
                     current_seat_name=f"seat_{suffix}",
                     current_dist_type="w",
-                    timespan=timespan,
+                    timespan=TimeSpan(start=datetime(1921, 2, 19), end=datetime(1938, 11, 16)),
                     current_territory=current_territory
                 )
             ]
@@ -77,7 +75,7 @@ def change_test_setup():
                     current_name=f"region_{suffix.lower()}",
                     current_seat_name=f"seat_region_{suffix.lower()}",
                     current_dist_type="m",
-                    timespan=timespan
+                    timespan=TimeSpan(start=datetime(1921, 2, 19), end=datetime(1938, 11, 16))
                 )
             ],
             "is_homeland": suffix in ['A', 'B']
@@ -104,7 +102,7 @@ def change_test_setup():
     }
 
     administrative_state = AdministrativeState(
-        timespan=timespan,
+        timespan=TimeSpan(start=datetime(1921, 2, 19), end=datetime(1938, 11, 16)),
         unit_hierarchy=unit_hierarchy
     )
 

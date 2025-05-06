@@ -78,7 +78,9 @@ class Unit(BaseModel):
             
         new_state = deepcopy(last_state)
         last_state.timespan.end = date
+        last_state.timespan.update_middle()
         new_state.timespan.start = date
+        new_state.timespan.update_middle()
         self.states.append(new_state)
         self.states.sort(key=lambda state: state.timespan.start)
         return new_state
@@ -202,13 +204,12 @@ class DistrictRegistry(UnitRegistry):
     def _plot_layer(self, date: datetime):
     # Collect district states and names for districts that exist on the given date
         states_and_names = [(district.find_state_by_date(date), district.name_id) for district in self.unit_list if district.exists(date)]
-        
         # Extract geometries and district names
         geometries = [state.current_territory for state, _ in states_and_names if state.current_territory is not None]
         dist_name_id = [name for state, name in states_and_names if state.current_territory is not None]  # Extract names for each district
         
         # Return a GeoDataFrame with district names and corresponding geometries
-        return gpd.GeoDataFrame({'dist_name_id': dist_name_id, 'geometry': geometries})
+        return gpd.GeoDataFrame({'name_id': dist_name_id, 'geometry': geometries})
 
     
     def plot(self, html_file_path, date):
@@ -218,27 +219,10 @@ class DistrictRegistry(UnitRegistry):
         layer["color"] = "none"
         layer["edgecolor"] = "black"
         layer["linewidth"] = 1
+        layer["shownames"] = True
 
         fig = build_plot_from_layers(layer)
         return fig
-
-
-    def _save_plot_to_base64(self, fig):
-        """Convert a Matplotlib figure to a base64-encoded PNG image."""
-        import io
-        import base64
-
-        # Save the plot to a BytesIO object
-        img_buffer = io.BytesIO()
-        fig.savefig(img_buffer, format="png")
-        img_buffer.seek(0)
-
-        # Encode the image to base64
-        img_base64 = base64.b64encode(img_buffer.read()).decode("utf-8")
-
-        return img_base64
-
-
 
 #############################################################################################
 # Hierarchy of models to store Region states: RegionState ∈ Region ∈ RegionRegistry

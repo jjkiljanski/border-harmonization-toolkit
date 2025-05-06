@@ -192,6 +192,7 @@ class AdministrativeState(BaseModel):
         gdf["color"] = "none"
         gdf["edgecolor"] = "black"
         gdf["linewidth"] = 1
+        gdf["shownames"] = True
         return gdf
     
     def _region_plot_layer(self, region_registry, district_registry: DistrictRegistry, date: datetime):
@@ -202,18 +203,23 @@ class AdministrativeState(BaseModel):
                 district_geoms = []
                 for district_name in districts:
                     d, d_state, _ = district_registry.find_unit_state_by_date(district_name, date)
-                    if d_state.current_territory is not None:
-                        district_geoms.append(d_state.current_territory)
+                    if(d.exists(date)):
+                        if d_state.current_territory is not None:
+                            district_geoms.append(d_state.current_territory)
                 if district_geoms:  # Only proceed if there is at least one valid geometry
                     region_shape = unary_union(district_geoms)
                     records.append({
-                        "region_name_id": region_name_id,
+                        "name_id": region_name_id,
                         "geometry": region_shape,
                         "color": "none",
                         "edgecolor": "black",
-                        "linewidth": 10
+                        "linewidth": 10,
+                        "shownames": False
                     })
-        return gpd.GeoDataFrame(records)
+        return gpd.GeoDataFrame(
+            records,
+            columns=["name_id", "geometry", "color", "edgecolor", "linewidth", "shownames"]
+        )
     
     def _country_plot_layer(self, district_registry: DistrictRegistry, date: datetime):
         country_geoms = {}
@@ -222,26 +228,32 @@ class AdministrativeState(BaseModel):
             for region_name, districts in self.unit_hierarchy[country_name].items():
                 for district_name in districts:
                     district, dist_state, _ = district_registry.find_unit_state_by_date(district_name, date)
-                    if dist_state.current_territory:
-                        country_geoms[country_name].append(dist_state.current_territory)
+                    if district.exists(date):
+                        if dist_state.current_territory:
+                            country_geoms[country_name].append(dist_state.current_territory)
         records = []
         if country_geoms.get("HOMELAND", None):
             records.append({
-                "country_name_id": "HOMELAND",
+                "name_id": "HOMELAND",
                 "geometry": unary_union(country_geoms["HOMELAND"]),
                 "color": "green",
                 "edgecolor": "black",
-                "linewidth": 0.5
+                "linewidth": 0.5,
+                "shownames": False
             })
         if country_geoms.get("ABROAD", None):
             records.append({
-                "country_name_id": "HOMELAND",
+                "name_id": "HOMELAND",
                 "geometry": unary_union(country_geoms["ABROAD"]),
                 "color": "blue",
                 "edgecolor": "black",
-                "linewidth": 0.5
+                "linewidth": 0.5,
+                "shownames": False
             })
-        return gpd.GeoDataFrame(records)
+        return gpd.GeoDataFrame(
+            records,
+            columns=["name_id", "geometry", "color", "edgecolor", "linewidth", "shownames"]
+        )
     
     def plot(self, region_registry, district_registry, date):
         from helper_functions import build_plot_from_layers
@@ -254,3 +266,30 @@ class AdministrativeState(BaseModel):
         # Build the figure
         fig = build_plot_from_layers(country_layer, district_layer, region_layer)
         return fig
+    
+    def apply_changes(self, changes_list, region_registry, dist_registry):
+        # Creates a copy of itself, applies all changes to the copy and returns it as a new state.
+        new_state = self.copy()
+
+        # Take the date of the change and ensure that all changes have the same date.
+        change_date = changes_list[0].date
+        for change in changes_list:
+            if change.date != change_date:
+                raise ValueError(f"Changes applied to the state {self} have different dates!")
+        
+        changes_list.sort(key=lambda change: change.order)
+        
+        # Define the end and origin of states
+        self.timespan.start = change_date
+        new_state.timespan.end = change_date
+
+        all_units_affected = {"Region": [], "District": []}
+            
+        for change in changes_list:
+            # Apply change and store information on the affected districts
+            change.apply(new_state, region_registry, dist_registry, plot_change = False)
+            all_units_affected["Region"] += change.units_affected["Region"]
+            all_units_affected["District"] += change.units_affected["District"]
+            
+
+        return all_units_affected
