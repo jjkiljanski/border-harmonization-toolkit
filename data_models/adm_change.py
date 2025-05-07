@@ -1,11 +1,11 @@
-from pydantic import BaseModel, model_validator, Field
+from pydantic import BaseModel, model_validator, field_validator, Field
 from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 from abc import ABC, abstractmethod
 from datetime import datetime, timedelta
 
-from border_harmonization_toolkit.data_models.adm_timespan import *
-from border_harmonization_toolkit.data_models.adm_unit import *
-from border_harmonization_toolkit.data_models.adm_state import *
+from data_models.adm_timespan import *
+from data_models.adm_unit import *
+from data_models.adm_state import *
 from helper_functions import load_config
 
 # Load the configuration
@@ -115,7 +115,7 @@ class OneToManyTakeFrom(BaseModel):
 
 class OneToManyTakeTo(BaseModel):
     create: bool
-    current_name: str
+    current_name: Optional[str] = None
     weight_from: Optional[float] = None
     weight_to: Optional[float] = None
     district: Optional[District] = None
@@ -211,6 +211,8 @@ class OneToMany(BaseChangeMatter):
                 change.units_affected[self.unit_type].append(("created", unit))
             else:
                 unit = dist_registry.find_unit(take_to_dict.current_name)
+                if(unit is None):
+                    raise ValueError(f"OneToMany change applied to district {take_to_dict.current_name} that doesn't exist in the registry with 'create'=False.")
                 units_new_states.append(unit.create_next_state(change.date))
                 unit.changes.append(("territory", change))
                 change.units_affected[self.unit_type].append(("territory", unit))
@@ -507,7 +509,7 @@ class Change(BaseModel):
     date: datetime
     source: str
     description: str
-    order: int
+    order: Optional[int] = None
     matter: ChangeMatter
     units_affected: Optional[Dict[Literal["Region", "District"], List[Unit]]] = {"Region": [], "District": []}
     units_affected_ids: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}} # Dict with values: "District" or "Region", the value is dict with values: "before" or "after", its values are lists of affected units.
@@ -528,7 +530,17 @@ class Change(BaseModel):
             print(f"Change {self.matter.change_type} after plot created.")
             from helper_functions import combine_figures
             return combine_figures(plot_before, plot_after)
-        return 
+        return
+    
+    @field_validator("date", mode="before")
+    @classmethod
+    def parse_non_iso_date(cls, value):
+        if isinstance(value, str):
+            try:
+                return datetime.strptime(value, "%d.%m.%Y")
+            except ValueError:
+                raise ValueError(f"Date format must be DD.MM.YYYY, got: {value}")
+        return value
 
     @model_validator(mode="after")
     def ensure_complete_units_affected_ids(self):
@@ -592,3 +604,6 @@ class Change(BaseModel):
         # Build the figure
         fig = build_plot_from_layers(country_layer, change_region_layer, change_district_layer, district_layer, region_layer)
         return fig
+    
+    def __str__(self):
+        return f"<Change type={self.matter.change_type}, date={self.date.date()}>"

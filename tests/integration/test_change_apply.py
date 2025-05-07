@@ -159,7 +159,7 @@ def test_apply_change_adm_state(change_test_setup, region_change_adm_state_matte
 #             AdministrativeState.apply_changes method tests               #
 ############################################################################
 
-def test_change_plot_from_matter_fixtures(request, change_test_setup):
+def test_administrative_state_apply(request, change_test_setup):
 
     # Deepcopy to reset state for each fixture
     region_registry = copy.deepcopy(change_test_setup["region_registry"])
@@ -183,7 +183,7 @@ def test_change_plot_from_matter_fixtures(request, change_test_setup):
 
         changes_list.append(change)
 
-    all_units_affected = administrative_state.apply_changes(changes_list, region_registry, dist_registry)
+    _, all_units_affected = administrative_state.apply_changes(changes_list, region_registry, dist_registry)
     
     assert [change_type for (change_type, _) in all_units_affected["Region"]] == ['reform', 'adm_affiliation', 'adm_affiliation']
     district_a = dist_registry.find_unit('district_a')

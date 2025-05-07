@@ -2,8 +2,8 @@ from pydantic import BaseModel
 from typing import Union, Optional, Literal, Dict, Any, Tuple
 from datetime import datetime
 
-from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan
-from border_harmonization_toolkit.data_models.adm_unit import *
+from data_models.adm_timespan import TimeSpan
+from data_models.adm_unit import *
 
 import matplotlib
 matplotlib.use("Agg")
@@ -305,8 +305,6 @@ class AdministrativeState(BaseModel):
             if change.date != change_date:
                 raise ValueError(f"Changes applied to the state {self} have different dates!")
         
-        changes_list.sort(key=lambda change: change.order)
-        
         # Define the end and origin of states
         self.timespan.start = change_date
         new_state.timespan.end = change_date
@@ -314,10 +312,18 @@ class AdministrativeState(BaseModel):
         all_units_affected = {"Region": [], "District": []}
             
         for change in changes_list:
-            # Apply change and store information on the affected districts
-            change.apply(new_state, region_registry, dist_registry, plot_change = False)
-            all_units_affected["Region"] += change.units_affected["Region"]
-            all_units_affected["District"] += change.units_affected["District"]
+            try:
+                # Apply change and store information on the affected districts
+                change.apply(new_state, region_registry, dist_registry, plot_change = False)
+                all_units_affected["Region"] += change.units_affected["Region"]
+                all_units_affected["District"] += change.units_affected["District"]
+            except Exception as e:
+                raise RuntimeError(f"Error during the application of change {str(change)}: {str(e)}") from e
             
 
-        return all_units_affected
+        return new_state, all_units_affected
+    
+    def __repr__(self):
+        regions_len = len(self.all_region_names())
+        districts_len = len(self.all_district_names())
+        return f"<AdministrativeState timespan=({self.timespan}), regions={regions_len}, districts={districts_len}>"

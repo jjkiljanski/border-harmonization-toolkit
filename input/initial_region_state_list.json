@@ -8,6 +8,7 @@
     "states": [
       {
         "current_name": "BIAŁOSTOCKIE",
+        "current_seat_name": "BIAŁYSTOK",
         "timespan": null
       }
     ]
@@ -21,6 +22,7 @@
     "states": [
       {
         "current_name": "KIELECKIE",
+        "current_seat_name": "KIELCE",
         "timespan": null
       }
     ]
@@ -34,6 +36,7 @@
     "states": [
       {
         "current_name": "KRAKOWSKIE",
+        "current_seat_name": "KRAKÓW",
         "timespan": null
       }
     ]
@@ -47,6 +50,7 @@
     "states": [
       {
         "current_name": "LUBELSKIE",
+        "current_seat_name": "LUBLIN",
         "timespan": null
       }
     ]
@@ -60,6 +64,7 @@
     "states": [
       {
         "current_name": "LWOWSKIE",
+        "current_seat_name": "LWÓW",
         "timespan": null
       }
     ]
@@ -73,6 +78,7 @@
     "states": [
       {
         "current_name": "ŁÓDZKIE",
+        "current_seat_name": "ŁÓDŹ",
         "timespan": null
       }
     ]
@@ -86,6 +92,7 @@
     "states": [
       {
         "current_name": "M. ST. WARSZAWA",
+        "current_seat_name": "WARSZAWA",
         "timespan": null
       }
     ]
@@ -99,6 +106,7 @@
     "states": [
       {
         "current_name": "NOWOGRÓDZKIE",
+        "current_seat_name": "NOWOGRÓDEK",
         "timespan": null
       }
     ]
@@ -108,10 +116,12 @@
     "name_variants": [
       "POLESKIE"
     ],
+    "seat_name_variants": ["PIŃSK", "BRZEŚĆ LITEWSKI", "BRZEŚĆ NAD BUGIEM"],
     "is_homeland": true,
     "states": [
       {
         "current_name": "POLESKIE",
+        "current_seat_name": "PIŃSK",
         "timespan": null
       }
     ]
@@ -125,6 +135,7 @@
     "states": [
       {
         "current_name": "POMORSKIE",
+        "current_seat_name": "TORUŃ",
         "timespan": null
       }
     ]
@@ -138,6 +149,7 @@
     "states": [
       {
         "current_name": "POZNAŃSKIE",
+        "current_seat_name": "POZNAŃ",
         "timespan": null
       }
     ]
@@ -151,6 +163,7 @@
     "states": [
       {
         "current_name": "STANISŁAWOWSKIE",
+        "current_seat_name": "STANISŁAWÓW",
         "timespan": null
       }
     ]
@@ -164,6 +177,7 @@
     "states": [
       {
         "current_name": "ŚLĄSKIE",
+        "current_seat_name": "KATOWICE",
         "timespan": null
       }
     ]
@@ -177,6 +191,7 @@
     "states": [
       {
         "current_name": "TARNOPOLSKIE",
+        "current_seat_name": "TARNOPOL",
         "timespan": null
       }
     ]
@@ -190,6 +205,7 @@
     "states": [
       {
         "current_name": "WARSZAWSKIE",
+        "current_seat_name": "WARSZAWA",
         "timespan": null
       }
     ]
@@ -203,6 +219,7 @@
     "states": [
       {
         "current_name": "WOŁYŃSKIE",
+        "current_seat_name": "ŁUCK",
         "timespan": null
       }
     ]
@@ -216,6 +233,7 @@
     "states": [
       {
         "current_name": "ZAOLZIE",
+        "current_seat_name": "-",
         "timespan": null
       }
     ]
@@ -229,6 +247,7 @@
     "states": [
       {
         "current_name": "ŚLĄSK NIEMIECKI",
+        "current_seat_name": "-",
         "timespan": null
       }
     ]
@@ -242,6 +261,7 @@
     "states": [
       {
         "current_name": "ZIEMIA WILEŃSKA",
+        "current_seat_name": "WILNO",
         "timespan": null
       }
     ]

@@ -14,11 +14,22 @@
         {
           "create": false,
           "region": "BIAŁOSTOCKIE",
-          "district_name": "BIELSKI",
+          "district_name": "BIELSKI (BIELSK PODLASKI)",
           "weight_from": null,
           "weight_to": null
         }
       ]
+    }
+  },
+  {
+    "date": "13.04.1922",
+    "change_type": "ChangeAdmState",
+    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
+    "description": "Ziemia Wileńska włączona do Polski po buncie Żeligowskiego i aneksji Litwie",
+    "order": 1,
+    "matter": {
+      "take_from": ["ABROAD", "ZIEMIA WILEŃSKA"],
+      "take_to": ["HOMELAND", "ZIEMIA WILEŃSKA"]
     }
   },
   {
@@ -56,84 +67,6 @@
       "take_from": {
         "region": "NOWOGRÓDZKIE",
         "district_name": "WILEJSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "13.04.1922",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
-    "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
-    "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "BRASŁAWSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "13.04.1922",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
-    "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
-    "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "OSZMIAŃSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "13.04.1922",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
-    "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
-    "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "ŚWIĘCIAŃSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "13.04.1922",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
-    "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
-    "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "TROCKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "13.04.1922",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
-    "description": "13.04.1922 włączony do Polski po buncie Żeligowskiego i aneksji Litwie",
-    "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "WILEŃSKI"
-      },
-      "take_to": "ZIEMIA WILEŃSKA"
-    }
-  },
-  {
-    "change_type": "RChange",
-    "date": "13.04.1922",
-    "source": "Dz.U. z 1922 r. nr 26, poz. 213",
-    "description": "13.04.1922 włączone do Polski po buncie Żeligowskiego i aneksji Litwie",
-    "matter": {
-      "take_from": {
-        "region": "LITWA",
-        "district_name": "WILNO"
       },
       "take_to": "ZIEMIA WILEŃSKA"
     }
@@ -204,7 +137,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z części powiatów zabrskiego (siedziba powiatu Zabrze pozostała po stronie niemieckiej) i gliwickiego (oprócz gminy Mikoleska, siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej) pozyskanych od Niemiec",
@@ -235,7 +168,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z terytorium części powiatu rybnickiego (część powiatu pozostała po stronie niemieckiej) oraz części powiatu raciborskiego (siedziba powiatu Racibórz pozostała po stronie niemieckiej) pozyskanych od Niemiec",
@@ -266,7 +199,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z części powiatów Bytom wieś i Bytom miasto (Bytom pozostał po stronie niemieckiej) pozyskanych od Niemiec",
@@ -297,7 +230,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 powstał z powiatu tarnogórskiego pozyskanego od Niemiec oraz gminy Mikoleska powiatu gliwickiego (siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej)",
@@ -374,7 +307,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "01.01.1923",
     "source": "Dz.U. z 1922 r. nr 116, poz. 1051",
     "description": "1.01.1923 utworzono powiat stoliński z części powiatów łuninieckiego, sarneńskiego i pińskiego",
@@ -412,7 +345,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "15.07.1923",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "X.X.1923 utworzono z terytoriów powiatów wileńskiego i trockiego powiat wileńsko-trocki",
@@ -465,7 +398,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "01.01.1924",
     "source": "Dz.U. z 1923 r. nr 122, poz. 991",
     "description": "utworzono powiat makowski (Maków Podhalański) z części terytoriów powiatu żywieckiego i myślenickiego",
@@ -567,7 +500,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 117, poz. 1044",
     "description": "1.01.1925 zniesiono powiaty poznański wschodni i poznański zachodni i utworzono z ich terytorium powiat poznański",
@@ -598,7 +531,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "01.01.1925",
     "source": "Dz.U. z 1924 r. nr 68, poz. 655",
     "description": "1.01.1925 utworzono powiat kostopolski z części powiatu rówieńskiego",
@@ -692,7 +625,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "01.07.1925",
     "source": "Dz.U. z 1925 r. nr 59, poz. 416",
     "description": "1.07.1925 roku wyodrębniono z powiatu gnieźnieńskiego powiat miejski w Gnieźnie",
@@ -716,7 +649,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "01.07.1925",
     "source": "Dz.U. z 1925 r. nr 59, poz. 417",
     "description": "1.07.1925 roku z powiatu inowrocławskiego wyodrębniono Inowrocław i utworzono powiat miejski w Inowrocławiu",
@@ -765,20 +698,22 @@
   },
   {
     "change_type": "UnitReform",
+    "unit_type": "Region",
+    "current_name": "ZIEMIA WILEŃSKA",
     "date": "20.01.1926",
     "source": "Dz.U. z 1926 r. nr 6, poz. 29",
     "description": "20.01.1926 przekształcono Ziemię Wileńską w województwo wileńskie",
     "matter": {
       "to_reform": {
-        "region_name": "ZIEMIA WILEŃSKA"
+        "current_name": "ZIEMIA WILEŃSKA"
       },
       "after_reform": {
-        "region_name": "WILEŃSKIE"
+        "current_name": "WILEŃSKIE"
       }
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "01.01.1927",
     "order": 1,
     "source": "Dz.U. z 1926 r. nr 117, poz. 678; Dz.U. z 1926 r. nr 128, poz. 760",
@@ -810,7 +745,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "01.01.1927",
     "source": "Dz.U. z 1926 r. nr 125, poz. 727",
     "description": "utworzono powiat zawierciański z części powiatu będzińskiego",
@@ -857,7 +792,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "01.04.1927",
     "source": "Dz.U. z 1927 r. nr 8, poz. 62",
     "description": "1.04.1927 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
@@ -1040,7 +975,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "24.01.1929",
     "source": "Dz.U. z 1929 r. nr 4, poz. 35",
     "description": "24.01.1929 wyłączono z powiatu morskiego gminę miejską Gdynia i utworzono z niej odrębny powiat miejski",
@@ -1086,7 +1021,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "21.05.1929",
     "source": "Dz.U. z 1929 r. nr 33, poz. 307",
     "description": "21.05.1929 utworzono powiat szczuczyński z części powiatu lidzkiego i grodzieńskiego",
@@ -1130,7 +1065,7 @@
     }
   },
   {
-    "change_type": "DManyToOne",
+    "change_type": "ManyToOne",
     "date": "1.04.1931",
     "source": "Dz.U. z 1931 r. nr 26, poz. 155",
     "description": "1.04.1931 z części powiatów południowo-warszawskiego i północno-warszawskiego utworzono powiat śródmiejsko-warszawski",

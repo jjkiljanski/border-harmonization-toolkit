@@ -11,7 +11,7 @@ import geopandas as gpd
 import io
 import base64
 
-from border_harmonization_toolkit.data_models.adm_timespan import TimeSpan
+from data_models.adm_timespan import TimeSpan
     
 #####################################################################################
 #                   Data models for states of administrative units                  #
