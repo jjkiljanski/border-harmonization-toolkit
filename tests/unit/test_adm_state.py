@@ -309,5 +309,59 @@ def test_to_csv_outputs_correct_data(change_test_setup, tmp_path):
         if csv_file.exists():
             csv_file.unlink()
 
+def test_compare_to_r_d_list(change_test_setup):
+    adm_state = change_test_setup["administrative_state"]
+
+    valid_r_d_list = [
+        ('region_a', 'district_a'),
+        ('region_a', 'district_b'),
+        ('region_b', 'district_c'),
+        ('region_b', 'district_d')
+    ]
+
+    (r_list_distance, r_list_differences), (d_list_distance, d_list_differences), (state_distance, state_differences) = adm_state.compare_to_r_d_list(valid_r_d_list)
+    assert r_list_distance == 0
+    assert r_list_differences == ([], [])
+    assert d_list_distance == 0
+    assert d_list_differences == ([], [])
+    assert state_distance == 0
+    assert state_differences == ([], [])
+
+    # 'district_a' in the valid list replaced by 'district_x'
+    dist_x_r_d_list = [
+        ('region_a', 'district_x'),
+        ('region_a', 'district_b'),
+        ('region_b', 'district_c'),
+        ('region_b', 'district_d')
+    ]
+
+    (r_list_distance, r_list_differences), (d_list_distance, d_list_differences), (state_distance, state_differences) = adm_state.compare_to_r_d_list(dist_x_r_d_list)
+    assert r_list_distance == 0
+    assert r_list_differences == ([], [])
+    assert d_list_distance == 2
+    assert d_list_differences == (['district_a'], ['district_x'])
+    assert state_distance == 2
+    assert state_differences == ([('region_a', 'district_a')], [('region_a', 'district_x')])
+
+    # 'region_a' in the valid list replaced by 'region_x'
+    dist_x_r_d_list = [
+        ('region_x', 'district_a'),
+        ('region_a', 'district_b'),
+        ('region_b', 'district_c'),
+        ('region_b', 'district_d')
+    ]
+
+    (r_list_distance, r_list_differences), (d_list_distance, d_list_differences), (state_distance, state_differences) = adm_state.compare_to_r_d_list(dist_x_r_d_list)
+    assert r_list_distance == 1
+    assert r_list_differences == ([], ['region_x'])
+    assert d_list_distance == 0
+    assert d_list_differences == ([], [])
+    assert state_distance == 2
+    assert state_differences == ([('region_a', 'district_a')], [('region_x', 'district_a')])
+
+    
+
+
+
 
 

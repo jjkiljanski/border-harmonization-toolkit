@@ -206,29 +206,38 @@ class AdministrativeHistory():
         Takes sorted list of (region, district) pairs and identifies the HOMELAND administrative state that it represents.
         """
         # Find the closest district list:
-        d_lists_proximity = []
-        state_proximity = []
+        r_lists_distance = []
+        d_lists_distance = []
+        state_distance = []
         for state in self.states_list:
-            list_comparison, state_comparison = state.compare_to_r_d_list(r_d_aim_list)
-            list_proximity, list_differences = list_comparison
-            state_proximity, state_differences = state_comparison
-            d_lists_proximity.append((list_proximity, list_differences, str(state)))
-            state_proximity.append((state_proximity, state_differences, str(state)))
-            if state_proximity == 0:
+            r_list_comparison, d_list_comparison, state_comparison = state.compare_to_r_d_list(r_d_aim_list)
+            r_list_distance, r_list_differences = r_list_comparison
+            d_list_distance, d_list_differences = d_list_comparison
+            state_distance, state_differences = state_comparison
+            r_lists_distance.append((r_list_distance, r_list_differences, str(state)))
+            d_lists_distance.append((d_list_distance, d_list_differences, str(state)))
+            state_distance.append((state_distance, state_differences, str(state)))
+            if state_distance == 0:
                 print(f"The state identified as: {state}")
                 return
 
-        d_lists_proximity.sort()
-        state_proximity.sort()
+        r_lists_distance.sort()
+        d_lists_distance.sort()
+        state_distance.sort()
 
         print("No state identified.")
+
+        print("The closest states in terms of region lists:")
+        for i, (distance, diff, state) in enumerate (r_lists_distance[:3]):
+            diff_1, diff_2 = diff
+            print(f"{i}. State {state} (distance: {distance}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
         
         print("The closest states in terms of district lists:")
-        for i, (prox, diff, state) in enumerate (d_lists_proximity[:3]):
+        for i, (distance, diff, state) in enumerate (d_lists_distance[:3]):
             diff_1, diff_2 = diff
-            print(f"{i}. State {state} (proximity: {prox}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
+            print(f"{i}. State {state} (distance: {distance}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
         
         print("The closest states:")
-        for i, (prox, diff, state) in enumerate(state_proximity[:3]):
+        for i, (distance, diff, state) in enumerate(state_distance[:3]):
             diff_1, diff_2 = diff
-            print(f"{i}. State {state} (proximity: {prox}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
+            print(f"{i}. State {state} (distance: {distance}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")

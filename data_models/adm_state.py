@@ -308,7 +308,7 @@ class AdministrativeState(BaseModel):
     def compare_to_r_d_list(self, r_d_list, verbose = False):
         """
         Takes a list of (region_name_id, dist_name_id) HOMELAND address pairs, estimates its own
-        proximity to the address list and returns proximity measures.
+        distance to the address list and returns distance measures.
         """
         # Comparison of the dist lists
         r_d_adm_state_list = self.to_address_list(only_homeland=True)
@@ -316,13 +316,27 @@ class AdministrativeState(BaseModel):
         d_adm_state_set = set(d_adm_state_list)
         d_aim_list = [district for region, district in r_d_list]
         d_aim_set = set(d_aim_list)
-        list_difference_1 = list(d_adm_state_set - d_aim_set)
-        list_difference_1.sort()
-        list_difference_2 = list(d_aim_set - d_adm_state_set)
-        list_difference_2.sort()
-        list_differences = (list_difference_1, list_difference_2)
-        list_proximity = len(list_difference_1) + len(list_difference_2)
-        list_comparison = list_proximity, list_differences
+        d_list_difference_1 = list(d_adm_state_set - d_aim_set)
+        d_list_difference_1.sort()
+        d_list_difference_2 = list(d_aim_set - d_adm_state_set)
+        d_list_difference_2.sort()
+        d_list_differences = (d_list_difference_1, d_list_difference_2)
+        d_list_distance = len(d_list_difference_1) + len(d_list_difference_2)
+        d_list_comparison = d_list_distance, d_list_differences
+
+        # Comparison of the region lists
+        r_d_adm_state_list = self.to_address_list(only_homeland=True)
+        r_adm_state_list = [region for region, district in r_d_adm_state_list]
+        r_adm_state_set = set(r_adm_state_list)
+        r_aim_list = [region for region, district in r_d_list]
+        r_aim_set = set(r_aim_list)
+        r_list_difference_1 = list(r_adm_state_set - r_aim_set)
+        r_list_difference_1.sort()
+        r_list_difference_2 = list(r_aim_set - r_adm_state_set)
+        r_list_difference_2.sort()
+        r_list_differences = (r_list_difference_1, r_list_difference_2)
+        r_list_distance = len(r_list_difference_1) + len(r_list_difference_2)
+        r_list_comparison = r_list_distance, r_list_differences
 
         # Comparison of the region-district state
         r_d_adm_state_list = self.to_address_list(only_homeland=True)
@@ -333,19 +347,19 @@ class AdministrativeState(BaseModel):
         state_difference_2 = list(r_d_aim_set - r_d_adm_state_set)
         state_difference_2.sort()
         state_differences = (state_difference_1, state_difference_2)
-        state_proximity = len(state_difference_1) + len(state_difference_2)
-        state_comparison = state_proximity, state_differences
+        state_distance = len(state_difference_1) + len(state_difference_2)
+        state_comparison = state_distance, state_differences
 
         if verbose == True:
             print(f"State {self}:")
             print("District list comparison:")
-            print(f"\tDistance from the d_list: {list_proximity}")
+            print(f"\tDistance from the d_list: {list_distance}")
             print(f"\tAbsent in d_list to identify: {list_difference_1}.\n Absent in state: {list_difference_2}.")
             print("(Region,district) pairs comparison:")
-            print(f"\tDistance from the r_d_list: {state_proximity}")
+            print(f"\tDistance from the r_d_list: {state_distance}")
             print(f"\tAbsent in r_d_list to identify: {state_difference_1}.\n Absent in state: {state_difference_2}.")
 
-        return list_comparison, state_comparison
+        return r_list_comparison, d_list_comparison, state_comparison
     
     def _district_plot_layer(self, dist_registry: DistrictRegistry, date: datetime):
         gdf = dist_registry._plot_layer(date)
