@@ -203,7 +203,7 @@ class AdministrativeHistory():
 
     def identify_state(self, r_d_aim_list):
         """
-        Takes sorted list of (region, district) pairs and identifies the administrative state that it represents.
+        Takes sorted list of (region, district) pairs and identifies the HOMELAND administrative state that it represents.
         """
         # Find the closest district list:
         d_lists_proximity = []
