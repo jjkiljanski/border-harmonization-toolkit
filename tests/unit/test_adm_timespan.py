@@ -28,7 +28,7 @@ def test_timespan_contains():
 
     # Test for a date exactly at the boundaries
     assert datetime(1923, 1, 1) in timespan1  # Start date should be inclusive
-    assert datetime(1930, 12, 31) in timespan1  # End date should be inclusive
+    assert datetime(1930, 12, 31) not in timespan1  # End date should not be inclusive
 
     # Test for a date outside the timespan
     assert datetime(1931, 1, 1) not in timespan1  # Date after timespan1

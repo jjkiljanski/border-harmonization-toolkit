@@ -98,7 +98,7 @@
       "change_type": "ChangeAdmState",
       "take_from": [
         "ABROAD",
-        "NIEMCY",
+        "ŚLĄSK NIEMIECKI",
         "KATOWICE"
       ],
       "take_to": [
@@ -116,7 +116,7 @@
       "change_type": "ChangeAdmState",
       "take_from": [
         "ABROAD",
-        "NIEMCY",
+        "ŚLĄSK NIEMIECKI",
         "KATOWICKI"
       ],
       "take_to": [
@@ -134,7 +134,7 @@
       "change_type": "ChangeAdmState",
       "take_from": [
         "ABROAD",
-        "NIEMCY",
+        "ŚLĄSK NIEMIECKI",
         "KRÓLEWSKA HUTA"
       ],
       "take_to": [
@@ -152,7 +152,7 @@
       "change_type": "ChangeAdmState",
       "take_from": [
         "ABROAD",
-        "NIEMCY",
+        "ŚLĄSK NIEMIECKI",
         "LUBLINIECKI"
       ],
       "take_to": [
@@ -170,7 +170,7 @@
       "change_type": "ChangeAdmState",
       "take_from": [
         "ABROAD",
-        "NIEMCY",
+        "ŚLĄSK NIEMIECKI",
         "PSZCZYŃSKI"
       ],
       "take_to": [
@@ -327,7 +327,27 @@
   {
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
-    "description": "22.06.1922 powstał z powiatu tarnogórskiego pozyskanego od Niemiec oraz gminy Mikoleska powiatu gliwickiego (siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej)",
+    "description": "22.06.1922 przyłączono do Polski część powiatu tarnogórskiego pozyskanego od Niemiec",
+    "order": 0,
+    "matter": {
+      "change_type": "ChangeAdmState",
+      "take_from": [
+        "ABROAD",
+        "ŚLĄSK NIEMIECKI",
+        "TARNOGÓRSKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŚLĄSKIE",
+        "TARNOGÓRSKI"
+      ]
+    }
+  },
+  {
+    "date": "22.06.1922",
+    "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
+    "description": "22.06.1922 po przyłączeniu części powiatu tarnogórskiego z Niemiec do Polski, przyłączono do niego gminę Mikoleska powiatu gliwickiego (siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej)",
+    "order": 1,
     "matter": {
       "change_type": "ManyToOne",
       "take_from": [
@@ -335,7 +355,7 @@
           "current_name": "TARNOGÓRSKI",
           "weight_from": null,
           "weight_to": null,
-          "delete_unit": true
+          "delete_unit": false
         },
         {
           "current_name": "GLIWICKI",
@@ -345,28 +365,8 @@
         }
       ],
       "take_to": {
-        "create": true,
-        "district": {
-          "name_id": "TARNOGÓRSKI",
-          "name_variants": [
-            "TARNOGÓRSKI"
-          ],
-          "seat_name_variants": [
-            "TARNOWSKIE GÓRY"
-          ],
-          "states": [
-            {
-              "current_name": "TARNOGÓRSKI",
-              "current_seat_name": "TARNOWSKIE GÓRY",
-              "current_dist_type": "w"
-            }
-          ]
-        },
-        "new_district_address": [
-          "HOMELAND",
-          "ŚLĄSKIE",
-          "TARNOGÓRSKI"
-        ]
+        "create": false,
+        "current_name": "TARNOGÓRSKI"
       },
       "unit_attribute": "territory",
       "unit_type": "District"
@@ -1315,6 +1315,48 @@
     }
   },
   {
+    "date": "12.04.1928",
+    "source": "Dz.U. z 1928 r. nr 45, poz. 426",
+    "description": "12.04.1928 roku utworzono powiat miejski w Lublinie",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": false,
+        "current_name": "LUBELSKI"
+      },
+      "take_to": [
+        {
+          "create": true,
+          "weight_from": null,
+          "weight_to": null,
+          "district": {
+            "name_id": "LUBLIN",
+            "name_variants": [
+              "LUBLIN"
+            ],
+            "seat_name_variants": [
+              "LUBLIN"
+            ],
+            "states": [
+              {
+                "current_name": "LUBLIN",
+                "current_seat_name": "LUBLIN",
+                "current_dist_type": "m"
+              }
+            ]
+          },
+          "new_district_address": [
+            "HOMELAND",
+            "LUBELSKIE",
+            "LUBLIN"
+          ]
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
     "date": "24.08.1928",
     "source": "Dz.U. 1928 nr 72 poz. 647",
     "description": "12.04.1928 roku m. st. Warszawę podzielono na powiaty Warszawa-Północ, Warszawa-Południe, Warszawa-Praga.",
@@ -1615,7 +1657,7 @@
       "change_type": "OneToMany",
       "take_from": {
         "delete_unit": true,
-        "current_name": "KOSOWSKI"
+        "current_name": "KOSOWSKI (KOSÓW POLESKI)"
       },
       "take_to": [
         {
@@ -1686,7 +1728,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "BIALSKI"
+          "current_name": "BIALSKI (BIAŁA KRAKOWSKA)"
         },
         {
           "create": false,
@@ -1838,7 +1880,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "BIALSKI"
+          "current_name": "BIALSKI (BIAŁA PODLASKA)"
         },
         {
           "create": false,
@@ -2034,7 +2076,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "OSTROWSKI"
+          "current_name": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)"
         }
       ],
       "unit_attribute": "territory",
@@ -2589,7 +2631,7 @@
       "change_type": "OneToMany",
       "take_from": {
         "delete_unit": false,
-        "current_name": "TRZCIANY"
+        "current_name": "TRZCIAŃSKI"
       },
       "take_to": [
         {
@@ -2730,12 +2772,12 @@
       "take_from": [
         "HOMELAND",
         "BIAŁOSTOCKIE",
-        "OSTROWSKI"
+        "OSTROWSKI (OSTRÓW MAZOWIECKA)"
       ],
       "take_to": [
         "HOMELAND",
         "WARSZAWSKIE",
-        "OSTROWSKI"
+        "OSTROWSKI (OSTRÓW MAZOWIECKA)"
       ]
     }
   },

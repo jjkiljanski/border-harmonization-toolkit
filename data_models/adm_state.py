@@ -4,6 +4,7 @@ from datetime import datetime
 
 from data_models.adm_timespan import TimeSpan
 from data_models.adm_unit import *
+from utils.exceptions import ConsistencyError
 
 import matplotlib
 matplotlib.use("Agg")
@@ -14,6 +15,7 @@ from shapely.geometry import Polygon
 import base64
 import io
 import os
+import csv
 
 #############################################################################################
 # Models to store information about current region-districts relations.
@@ -32,6 +34,18 @@ class AdministrativeState(BaseModel):
     timespan: Optional[TimeSpan] = None
     unit_hierarchy: Dict[Literal["HOMELAND", "ABROAD"], Dict[str, Dict[str, Any]]]
 
+    def create_new(self, date):
+        # Create a deep copy of itself
+        new_state = self.model_copy(deep=True)
+        # Define the end and origin of states
+        self.timespan.end = date
+        new_state.timespan.start = date
+
+        # Correct the timespan 'middle' attribute:
+        self.timespan.update_middle()
+        new_state.timespan.update_middle()
+        return new_state
+    
     def all_region_names(self):
         all_region_names = [
             region
@@ -100,7 +114,6 @@ class AdministrativeState(BaseModel):
                 else:
                     for district_name, district_dict in region_dict.items():
                         if unit_type == 'District':
-                            print(f"district_name vs unit_name_id: {district_name} vs {unit_name_id}.")
                             if unit_name_id == district_name:
                                 return (country_name, region_name, district_name)
         return None
@@ -113,14 +126,63 @@ class AdministrativeState(BaseModel):
         if address is None:
             raise ValueError(f"{unit_type} {unit_name_id} doesn't exist in the AdministrativeState.unit_hierarchy.")
         return self.pop_address(address)
+    
+    def verify_and_standardize_address(self, address, region_registry, dist_registry, check_date = None):
+        """
+        1. Checks that all units in the address exist in their registry,
+        2. Substitutes current unit names in the address to unit name_ids,
+        3. Verifies that such standardized address exists.
 
-    def verify_consistency(self, region_registry, district_registry, timespan_registry = None):
+        If check_date passed, uses check_date for checks. If not, uses check_date = self.timespan.middle.
+        """
+        if check_date is None:
+            check_date = self.timespan.middle # Set check_date if not passed
+        
+        # Verify and standardize region address
+        region_current_name = address[1]
+        region, region_state, _ = region_registry.find_unit_state_by_date(region_current_name, check_date)
+        if region is None:
+            raise ConsistencyError(
+                f"Change {str(self)} applied to {address} address, but no region with name variant '{region_current_name}' exists in the region registry."
+            )
+        if region_state is None:
+            raise ConsistencyError(
+                f"Change {str(self)} applied to {address} address, but no region state for region '{region_current_name}' exists in the region registry."
+            )
+
+        if len(address) == 2:
+            address = (address[0], region.name_id)
+        else:
+            address = (address[0], region.name_id, address[2])
+
+        # Verify and standardize district if exists in address
+        if len(address) == 3:  # If district
+            dist_current_name = address[2]
+            dist, dist_state, _ = dist_registry.find_unit_state_by_date(dist_current_name, check_date)
+            if dist is None:
+                raise ConsistencyError(
+                    f"Change {str(self)} applied to {address} address, but no district with name variant '{dist_current_name}' exists in the district registry."
+                )
+            if dist_state is None:
+                raise ConsistencyError(
+                    f"Change {str(self)} applied to {address} address, but no district state for district '{dist_current_name}' exists in the district registry."
+                )
+
+            address = (address[0], address[1], dist.name_id)  # Modify district name_id
+
+        # Check if the address exists:
+        if not self.get_address(address):
+            raise ConsistencyError(f"Address {address} doesn't exist in the administrative state {str(self)}.")
+        return address
+
+    def verify_consistency(self, region_registry, dist_registry, check_date = None, timespan_registry = None):
         """
         Verifies the consistency of the current administrative state.
 
         Parameters:
             region_registry (RegionRegistry)
-            district_registry (DistrictRegistry)
+            dist_registry (DistrictRegistry)
+            check_date (Optional[datetime]): Optional
             timespan_registry (Optional[TimeSpanRegistry]): Optional
 
         Raises:
@@ -128,52 +190,60 @@ class AdministrativeState(BaseModel):
                 1) any region or district listed in self.hierarchy doesn't exist in the registry,
                 2) a region or districts exists in the hierarchy, but doesn't have a state defined at the self.timespan.middle timepoint,
                 3) the timespan of any of a the state existant doesn't contain the self.timespan wholly.
+
+        If check_date is passed as argument, check_date instead of self.timespan.middle is used as date for verification.
         """
+        if check_date:
+            if check_date not in self.timespan:
+                raise ValueError(f"Wrong 'checkdate' argument: {check_date.date()}, 'checkdate' must be contained in self.timespan: {self.timespan}.")
+        else:
+            check_date = self.timespan.middle
+                
         for country_name, region_dict in self.unit_hierarchy.items():
             for region_name_id, district_dict in region_dict.items():
                 # Check if Region registry correctly passed and contains info coherent with the info in adm. state.
-                region, region_state, region_timespan = region_registry.find_unit_state_by_date(region_name_id, self.timespan.middle)
+                region, region_state, region_timespan = region_registry.find_unit_state_by_date(region_name_id, check_date)
                 if region is None:
-                    raise ValueError(f"Region {region_name_id} exists in the administrative state, but doesn't exist in the RegionRegistry.")
+                    raise ConsistencyError(f" Region {region_name_id} exists in the administrative state, but doesn't exist in the RegionRegistry.")
                 if region_state is None:
-                    raise ValueError(f"Region {region_name_id} exists in the administrative state with timespan {str(self.timespan)}, but the the region's state for the date {self.timespan.middle.date()} doesn't exist in the region registry.")
+                    raise ConsistencyError(f"Region {region_name_id} exists in the administrative state with timespan {str(self.timespan)}, but the the region's state for the date {check_date.date()} doesn't exist in the region registry.")
                 if self.timespan not in region_timespan:
-                    raise ValueError(f"Region {region_name_id} exists in the administrative state, but the administrative state's timespan ({self.timespan}) is not contained in its timespan ({region_timespan}).")
+                    raise ConsistencyError(f"Region {region_name_id} exists in the administrative state, but the administrative state's timespan ({self.timespan}) is not contained in its timespan ({region_timespan}).")
                 for district_name_id in district_dict.keys():
                     # Check if District registry correctly passed and contains info coherent with the info in adm. state.
-                    district, district_state, district_timespan = district_registry.find_unit_state_by_date(district_name_id, self.timespan.middle)
+                    district, district_state, district_timespan = dist_registry.find_unit_state_by_date(district_name_id, check_date)
                     if district is None:
-                        raise ValueError(f"District {district_name_id} exists in the administrative state, but doesn't exist in the DistrictRegistry.")
+                        raise ConsistencyError(f"District {district_name_id} exists in the administrative state, but doesn't exist in the DistrictRegistry.")
                     if district_state is None:
-                        raise ValueError(f"District {district_name_id} exists in the administrative state with timespan {str(self.timespan)}, but the the district's state for the date {self.timespan.middle.date()} doesn't exist in the district registry.")
+                        raise ConsistencyError(f"District {district_name_id} exists in the administrative state with timespan {str(self.timespan)}, but the the district's state for the date {check_date.date()} doesn't exist in the district registry. District states: {district.states}")
                     if self.timespan not in district_timespan:
-                        raise ValueError(f"District {district_name_id} exists in the administrative state, but the administrative state's timespan ({self.timespan}) is not contained in its timespan ({district_timespan}).")
+                        raise ConsistencyError(f"District {district_name_id} exists in the administrative state, but the administrative state's timespan ({self.timespan}) is not contained in its timespan ({district_timespan}).")
                     
-        for region, region_state in region_registry.all_unit_states_by_date(self.timespan.middle):
+        for region, region_state in region_registry.all_unit_states_by_date(check_date):
             if region.name_id not in self.all_region_names():
-                raise ValueError(f"Region {region.name_id} exists on {self.timespan.middle.date()}, but doesn't belong to the current administrative state hierarchy.")
-        for district, district_state in district_registry.all_unit_states_by_date(self.timespan.middle):
+                raise ConsistencyError(f"Region {region.name_id} exists on {check_date.date()}, but doesn't belong to the current administrative state hierarchy.")
+        for district, district_state in dist_registry.all_unit_states_by_date(check_date):
             if district.name_id not in self.all_district_names():
-                raise ValueError(f"District {district.name_id} exists on {self.timespan.middle.date()}, but doesn't belong to the current administrative state hierarchy.")
+                raise ConsistencyError(f"District {district.name_id} exists on {check_date.date()}, but doesn't belong to the current administrative state hierarchy.")
 
     
-    def to_address_list(self, only_homeland = False, with_variants = False, current_not_id = False, region_registry = None, district_registry = None):
+    def to_address_list(self, only_homeland = False, with_variants = False, current_not_id = False, region_registry = None, dist_registry = None):
         """
         Returns a list of (country, region, district) tuples, sorted alphabetically.
         If only_homeland is true, the method returns only pairs of regions in homeland.
         If with_variants is True, the method returns the list with all region and district name variants.
         If current_not_id is True, the method returns the list with region and district current names and not id names.
-        If with_variants or current_not_id is True, region_registry and district_registry must be passed
+        If with_variants or current_not_id is True, region_registry and dist_registry must be passed
         
         """
         if with_variants or current_not_id:
-            if not (isinstance(region_registry, RegionRegistry) and isinstance(district_registry, DistrictRegistry)):
+            if not (isinstance(region_registry, RegionRegistry) and isinstance(dist_registry, DistrictRegistry)):
                 raise ValueError(
-                    f"'with_variants=True' requires region_registry and district_registry to be RegionRegistry and DistrictRegistry. "
+                    f"'with_variants=True' requires region_registry and dist_registry to be RegionRegistry and DistrictRegistry. "
                     f"Got types: region_registry={type(region_registry).__name__}, "
-                    f"district_registry={type(district_registry).__name__}."
+                    f"dist_registry={type(dist_registry).__name__}."
                 )
-            self.verify_consistency(region_registry=region_registry, district_registry=district_registry)
+            self.verify_consistency(region_registry=region_registry, dist_registry=dist_registry)
 
         address_list = []
         for country_name, country_dict in self.unit_hierarchy.items():
@@ -198,7 +268,7 @@ class AdministrativeState(BaseModel):
                 for dist_name_id in region_dict.keys():
                     # Create a list with all wanted name variants for the current district.
                     if with_variants or current_not_id:
-                        district, dist_state, _ = district_registry.find_unit_state_by_date(dist_name_id, self.timespan.middle)
+                        district, dist_state, _ = dist_registry.find_unit_state_by_date(dist_name_id, self.timespan.middle)
                         if with_variants:
                             dist_names_to_store += district.name_variants
                         else:
@@ -214,23 +284,43 @@ class AdministrativeState(BaseModel):
                             address_list.append((country_name, region_name, dist_name))                    
         address_list.sort()
         return address_list
+
+    def to_csv(self, csv_filepath, only_homeland = True):
+        """
+        Write the list returned by self.to_address_list(only_homeland=True)
+        to a CSV file at the specified path.
+
+        Args:
+            csv_filepath (str): The file path to write the CSV to.
+        """
+        address_list = self.to_address_list(only_homeland)
+
+        if not address_list:
+            raise ValueError("Address list is empty; nothing to write.")
+
+        with open(csv_filepath, mode='w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["Location Type", "Region", "District"])  # Adjust header as needed
+
+            for address in address_list:
+                writer.writerow(address)
     
-    def _district_plot_layer(self, district_registry: DistrictRegistry, date: datetime):
-        gdf = district_registry._plot_layer(date)
+    def _district_plot_layer(self, dist_registry: DistrictRegistry, date: datetime):
+        gdf = dist_registry._plot_layer(date)
         gdf["color"] = "none"
         gdf["edgecolor"] = "black"
         gdf["linewidth"] = 1
         gdf["shownames"] = True
         return gdf
     
-    def _region_plot_layer(self, region_registry, district_registry: DistrictRegistry, date: datetime):
+    def _region_plot_layer(self, region_registry, dist_registry: DistrictRegistry, date: datetime):
         records = []
         for area_type, regions in self.unit_hierarchy.items():
             for region_name, districts in regions.items():
                 region_name_id = region_registry.find_unit(region_name).name_id
                 district_geoms = []
                 for district_name in districts:
-                    d, d_state, _ = district_registry.find_unit_state_by_date(district_name, date)
+                    d, d_state, _ = dist_registry.find_unit_state_by_date(district_name, date)
                     if(d.exists(date)):
                         if d_state.current_territory is not None:
                             district_geoms.append(d_state.current_territory)
@@ -249,13 +339,13 @@ class AdministrativeState(BaseModel):
             columns=["name_id", "geometry", "color", "edgecolor", "linewidth", "shownames"]
         )
     
-    def _country_plot_layer(self, district_registry: DistrictRegistry, date: datetime):
+    def _country_plot_layer(self, dist_registry: DistrictRegistry, date: datetime):
         country_geoms = {}
         for country_name in self.unit_hierarchy.keys():
             country_geoms[country_name] = []
             for region_name, districts in self.unit_hierarchy[country_name].items():
                 for district_name in districts:
-                    district, dist_state, _ = district_registry.find_unit_state_by_date(district_name, date)
+                    district, dist_state, _ = dist_registry.find_unit_state_by_date(district_name, date)
                     if district.exists(date):
                         if dist_state.current_territory:
                             country_geoms[country_name].append(dist_state.current_territory)
@@ -283,13 +373,13 @@ class AdministrativeState(BaseModel):
             columns=["name_id", "geometry", "color", "edgecolor", "linewidth", "shownames"]
         )
     
-    def plot(self, region_registry, district_registry, date):
-        from helper_functions import build_plot_from_layers
+    def plot(self, region_registry, dist_registry, date):
+        from utils.helper_functions import build_plot_from_layers
 
         # Prepare the layers
-        country_layer = self._country_plot_layer(district_registry, date)
-        region_layer = self._region_plot_layer(region_registry, district_registry, date)
-        district_layer = self._district_plot_layer(district_registry, date)
+        country_layer = self._country_plot_layer(dist_registry, date)
+        region_layer = self._region_plot_layer(region_registry, dist_registry, date)
+        district_layer = self._district_plot_layer(dist_registry, date)
 
         # Build the figure
         fig = build_plot_from_layers(country_layer, district_layer, region_layer)
@@ -297,18 +387,18 @@ class AdministrativeState(BaseModel):
     
     def apply_changes(self, changes_list, region_registry, dist_registry):
         # Creates a copy of itself, applies all changes to the copy and returns it as a new state.
-        new_state = self.copy()
 
         # Take the date of the change and ensure that all changes have the same date.
         change_date = changes_list[0].date
         for change in changes_list:
             if change.date != change_date:
                 raise ValueError(f"Changes applied to the state {self} have different dates!")
-        
-        # Define the end and origin of states
-        self.timespan.start = change_date
-        new_state.timespan.end = change_date
+            
+        changes_list.sort(key=lambda change: (change.order is None, change.order))
 
+        # Create a new state such that change_date marks the transition between the old and the new one.
+        new_state = self.create_new(change_date)
+        
         all_units_affected = {"Region": [], "District": []}
             
         for change in changes_list:
@@ -319,11 +409,12 @@ class AdministrativeState(BaseModel):
                 all_units_affected["District"] += change.units_affected["District"]
             except Exception as e:
                 raise RuntimeError(f"Error during the application of change {str(change)}: {str(e)}") from e
-            
-
+        
+        new_state.verify_consistency(region_registry, dist_registry)
+        
         return new_state, all_units_affected
     
-    def __repr__(self):
+    def __str__(self):
         regions_len = len(self.all_region_names())
         districts_len = len(self.all_district_names())
-        return f"<AdministrativeState timespan=({self.timespan}), regions={regions_len}, districts={districts_len}>"
+        return f"<AdministrativeState timespan={self.timespan}, regions={regions_len}, districts={districts_len}>"

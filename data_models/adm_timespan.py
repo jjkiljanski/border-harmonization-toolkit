@@ -61,9 +61,13 @@ class TimeSpan(BaseModel):
             bool: True if the date or entire timespan is within this one.
         """
         if isinstance(to_compare, datetime):
-            return self.start <= to_compare <= self.end # If argument to compare is a datetime
+            # The timespan is implemented as a semi-closed interval: [start, end)
+            # It has a consequence for downstream classes and functions,
+            # e.g. out of states state1 and state2 with timespans (date_a, date_b), (date_b, date_c),
+            # only state2 is assumed to "exist" at the moment date_b.
+            return self.start <= to_compare < self.end # If argument to compare is a datetime
         elif isinstance(to_compare, TimeSpan):
-            return to_compare.start in self and to_compare.end in self # If argument to compare is a timestamp, split it to 2 __contains__ comparisons for timestamp start and end.
+            return self.start <= to_compare.start <= self.end and self.start <= to_compare.end <= self.end # If argument to compare is a timestamp, split it to 2 __contains__ comparisons for timestamp start and end.
         return to_compare in self.interval
     
     def __str__(self):

@@ -29,10 +29,10 @@ def test_parametrized_region_change_application(
     change = parametrized_region_change(unit_type, current_name, to_reform_seat_name)
     adm_state = change_test_setup["administrative_state"]
     region_registry = change_test_setup["region_registry"]
-    dist_registry = change_test_setup["district_registry"]
+    dist_registry = change_test_setup["dist_registry"]
 
     if should_raise:
-        with pytest.raises(ValueError):
+        with pytest.raises(ConsistencyError):
             change.apply(adm_state, region_registry, dist_registry)
     else:
         change.apply(adm_state, region_registry, dist_registry)
@@ -43,7 +43,7 @@ def test_apply_one_to_many(change_test_setup, one_to_many_matter_fixture):
     # Arrange
     adm_state = change_test_setup["administrative_state"]
     region_registry = change_test_setup["region_registry"]
-    district_registry = change_test_setup["district_registry"]
+    dist_registry = change_test_setup["dist_registry"]
     
     change = Change(
         date=datetime(1923, 1, 2),
@@ -55,23 +55,23 @@ def test_apply_one_to_many(change_test_setup, one_to_many_matter_fixture):
     )
     
     # Act
-    change.apply(adm_state, region_registry, district_registry)
+    change.apply(adm_state, region_registry, dist_registry)
 
     # Assert
     # Check that district_a was abolished
-    district_a = district_registry.find_unit("district_a")
+    district_a = dist_registry.find_unit("district_a")
     assert district_a.find_state_by_date(datetime(1923, 1, 1)).timespan.end == datetime(1923, 1, 2)
     assert ("abolished", change) in district_a.changes
     assert ("abolished", district_a) in change.units_affected["District"]
 
     # Check that district_b received a new state and has territory change
-    district_b = district_registry.find_unit("district_b")
+    district_b = dist_registry.find_unit("district_b")
     assert len(district_b.states) > 1
     assert district_b.changes[-1] == ("territory", change)
     assert ("territory", district_b) in change.units_affected["District"]
 
     # Check that district_x was created with proper state
-    district_x = district_registry.find_unit("district_x")
+    district_x = dist_registry.find_unit("district_x")
     assert district_x is not None
     assert district_x.states[0].timespan.start == datetime(1923, 1, 2)
     assert ("created", change) in district_x.changes
@@ -87,7 +87,7 @@ def test_apply_many_to_one(change_test_setup, create_many_to_one_matter_fixture)
     # Arrange
     adm_state = change_test_setup["administrative_state"]
     region_registry = change_test_setup["region_registry"]
-    district_registry = change_test_setup["district_registry"]
+    dist_registry = change_test_setup["dist_registry"]
     
     change = Change(
         date=datetime(1924, 1, 2),
@@ -99,23 +99,23 @@ def test_apply_many_to_one(change_test_setup, create_many_to_one_matter_fixture)
     )
     
     # Act
-    change.apply(adm_state, region_registry, district_registry)
+    change.apply(adm_state, region_registry, dist_registry)
 
     # Assert
     # Check that district_a was abolished
-    district_a = district_registry.find_unit("district_a")
+    district_a = dist_registry.find_unit("district_a")
     assert district_a.exists(datetime(1924, 1, 1)) and not district_a.exists(datetime(1924, 1, 3))
     assert ("abolished", change) in district_a.changes
     assert ("abolished", district_a) in change.units_affected["District"]
 
     # Check that district_b's state is updated, but it is not deleted
-    district_b = district_registry.find_unit("district_b")
+    district_b = dist_registry.find_unit("district_b")
     assert len(district_b.states) > 1
     assert district_b.changes[-1] == ("territory", change)
     assert ("territory", district_b) in change.units_affected["District"]
 
     # Check that district_x was created with the correct state and timespan
-    district_x = district_registry.find_unit("district_x")
+    district_x = dist_registry.find_unit("district_x")
     assert district_x is not None
     assert not district_x.exists(datetime(1924, 1, 1)) and district_x.exists(datetime(1924, 1, 3))
     assert ("created", change) in district_x.changes
@@ -131,7 +131,7 @@ def test_apply_change_adm_state(change_test_setup, region_change_adm_state_matte
     # Arrange
     adm_state = change_test_setup["administrative_state"]
     region_registry = change_test_setup["region_registry"]
-    district_registry = change_test_setup["district_registry"]
+    dist_registry = change_test_setup["dist_registry"]
     
     change = Change(
         date=datetime(1924, 1, 2),
@@ -143,7 +143,7 @@ def test_apply_change_adm_state(change_test_setup, region_change_adm_state_matte
     )
     
     # Act
-    change.apply(adm_state, region_registry, district_registry)
+    change.apply(adm_state, region_registry, dist_registry)
 
     # Assert that the address was moved in the administrative state
     assert adm_state.get_address(("HOMELAND", "region_c")) is True
@@ -163,7 +163,7 @@ def test_administrative_state_apply(request, change_test_setup):
 
     # Deepcopy to reset state for each fixture
     region_registry = copy.deepcopy(change_test_setup["region_registry"])
-    dist_registry = copy.deepcopy(change_test_setup["district_registry"])
+    dist_registry = copy.deepcopy(change_test_setup["dist_registry"])
     administrative_state = copy.deepcopy(change_test_setup["administrative_state"])
     
     changes_list = []

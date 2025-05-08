@@ -147,9 +147,10 @@ def test_abolish():
     )
 
     # Test: abolish the unit on 1930-12-31
-    unit.abolish(datetime(1930, 12, 31))
+    unit.abolish(datetime(1928, 12, 31))
 
-    assert state1.timespan.end == datetime(1930, 12, 31)  # The end date should be set to 1930-12-31
+    assert state1.timespan.end == datetime(1928, 12, 31)  # The end date should be set to 1930-12-31
+    assert state1.timespan.start <= state1.timespan.middle <= state1.timespan.end # The middle was updated
 
 # Test for exists method
 def test_exists():
@@ -354,7 +355,7 @@ def test_district_creation_and_state_validation():
 #                        DistrictRegistry class tests                      #
 ############################################################################
 
-def test_district_registry_add_unit_success():
+def test_dist_registry_add_unit_success():
     registry = DistrictRegistry(unit_list=[])
 
     district_data = {

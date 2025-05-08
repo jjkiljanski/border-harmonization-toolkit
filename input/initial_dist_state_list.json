@@ -4706,6 +4706,23 @@
     ]
   },
   {
+    "name_id": "GLIWICKI",
+    "name_variants": [
+      "GLIWICKI"
+    ],
+    "seat_name_variants": [
+      "GLIWICE"
+    ],
+    "states": [
+      {
+        "current_name": "GLIWICKI",
+        "current_seat_name": "GLIWICE",
+        "current_dist_type": "w",
+        "timespan": null
+      }
+    ]
+  },
+  {
     "name_id": "ZABRSKI",
     "name_variants": [
       "ZABRSKI"

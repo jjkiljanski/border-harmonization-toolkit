@@ -1,15 +1,11 @@
 from pydantic import BaseModel, model_validator
 from typing import Optional, Literal, List, Tuple, Any
 
-from copy import deepcopy
 from datetime import datetime
 
 import matplotlib
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import geopandas as gpd
-import io
-import base64
 
 from data_models.adm_timespan import TimeSpan
     
@@ -76,7 +72,7 @@ class Unit(BaseModel):
         if last_state is None:
             raise ValueError(f"Invalid date: {date.date()}. No state covers this date.")
             
-        new_state = deepcopy(last_state)
+        new_state = last_state.model_copy(deep=True)
         last_state.timespan.end = date
         last_state.timespan.update_middle()
         new_state.timespan.start = date
@@ -89,6 +85,7 @@ class Unit(BaseModel):
         """Sets the end of the timespan covering the given date to the passed date, marking the unit's abolition."""
         last_state = self.find_state_by_date(date)
         last_state.timespan.end = date
+        last_state.timespan.update_middle()
 
     def exists(self, date):
         """Returns True if the state exists for a given date or False if it doesn't."""
@@ -213,7 +210,7 @@ class DistrictRegistry(UnitRegistry):
 
     
     def plot(self, html_file_path, date):
-        from helper_functions import build_plot_from_layers
+        from utils.helper_functions import build_plot_from_layers
 
         layer = self._plot_layer(date)
         layer["color"] = "none"

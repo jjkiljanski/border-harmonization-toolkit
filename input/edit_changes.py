@@ -22,7 +22,7 @@ def process_district_changes():
             entry.pop("current_name")
         if matter.get('change_type') == 'RChange':
             country = ""
-            if matter["take_from"]["region"] in ['CZECHOSŁOWACJA', 'LITWA', 'NIEMCY']:
+            if matter["take_from"]["region"] in ['ZAOLZIE', 'ZIEMIA WILEŃSKA', 'ŚLĄSK NIEMIECKI']:
                 country = "ABROAD"
             else:
                 country = "HOMELAND"
@@ -73,7 +73,7 @@ def process_district_changes():
                 "create": matter["take_to"]["create"]
             }
             if not matter["take_to"]["create"]:
-                new_take_to["current_name"] = matter["take_to"]["current_name"]
+                new_take_to["current_name"] = matter["take_to"]["district_name"]
             else:
                 new_take_to["district"] = {
                     "name_id": matter["take_to"]["district_name"],

@@ -1444,6 +1444,11 @@
       "seat": "BYTOM"
     },
     {
+      "district_name": "GLIWICKI",
+      "district_type": "w",
+      "seat": "GLIWICE"
+    },
+    {
       "district_name": "ZABRSKI",
       "district_type": "w",
       "seat": "ZABRZE"

@@ -213,7 +213,7 @@
   {
     "name_id": "WOŁYŃSKIE",
     "name_variants": [
-      "WOŁYŃSKIE"
+      "WOŁYŃSKIE", "WOŁYŃ"
     ],
     "is_homeland": true,
     "states": [
@@ -255,7 +255,7 @@
   {
     "name_id": "ZIEMIA WILEŃSKA",
     "name_variants": [
-      "ZIEMIA WILEŃSKA"
+      "ZIEMIA WILEŃSKA", "WILEŃSKIE"
     ],
     "is_homeland": true,
     "states": [

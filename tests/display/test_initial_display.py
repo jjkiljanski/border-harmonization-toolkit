@@ -1,16 +1,16 @@
-from ...data_models.adm_change import *
-from ...data_models.adm_timespan import TimeSpan
-from ...data_models.adm_state import AdministrativeState
+from data_models.adm_change import *
+from data_models.adm_timespan import TimeSpan
+from data_models.adm_state import AdministrativeState
 
-from helper_functions import save_plot_to_html
+from utils.helper_functions import save_plot_to_html
 
 import pytest
 import os
 import re
 
-def test_district_registry_plot(change_test_setup):
-    # Extract the district_registry instance from the fixture
-    district_registry = change_test_setup["district_registry"]
+def test_dist_registry_plot(change_test_setup):
+    # Extract the dist_registry instance from the fixture
+    dist_registry = change_test_setup["dist_registry"]
 
     # Define a path for the HTML output (temporary file for the test)
     output_html_path = "./tests/display/initial_state_plot_test.html"
@@ -18,7 +18,7 @@ def test_district_registry_plot(change_test_setup):
     test_date = datetime(1931,1,1)
 
     # Invoke the plot method
-    district_plot = district_registry.plot(output_html_path, test_date)
+    district_plot = dist_registry.plot(output_html_path, test_date)
 
     title="District Borders"
     description=f"Borders of all districts ({test_date.date()})"
@@ -31,7 +31,7 @@ def test_district_registry_plot(change_test_setup):
 def test_administrative_state_plot_appends(change_test_setup):
 
     region_registry = change_test_setup["region_registry"]
-    district_registry = change_test_setup["district_registry"]
+    dist_registry = change_test_setup["dist_registry"]
     administrative_state = change_test_setup["administrative_state"]
     output_html_path = "./tests/display/initial_state_plot_test.html"
 
@@ -44,7 +44,7 @@ def test_administrative_state_plot_appends(change_test_setup):
 
     test_date = datetime(1931,1,1)
 
-    adm_state_plot = administrative_state.plot(region_registry, district_registry, test_date)
+    adm_state_plot = administrative_state.plot(region_registry, dist_registry, test_date)
 
     title="Administrative State"
     description=f"Territorial division into countries, regions, and districts ({test_date.date()})."

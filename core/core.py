@@ -1,30 +1,39 @@
 import json
 from pathlib import Path
 from datetime import datetime
-from copy import deepcopy
 from pydantic import parse_obj_as, ValidationError
 from typing import List
+import shutil
 
 from data_models.adm_timespan import *
 from data_models.adm_unit import *
 from data_models.adm_state import *
 from data_models.adm_change import *
 
-class AdministrativeHistory():
-    def __init__(self, changes_list_path, initial_adm_state_path, initial_region_list_path, initial_dist_list_path, timespan):
-        self.changes_list_path = changes_list_path
-        self.initial_adm_state_path = initial_adm_state_path
-        self.initial_region_list_path = initial_region_list_path
-        self.initial_dist_list_path = initial_dist_list_path
+from utils.helper_functions import load_config
 
-        self.timespan = TimeSpan(start = timespan[0], end = timespan[1])
+class AdministrativeHistory():
+    def __init__(self, config):
+        # Load the configuration
+        config = load_config("config.json")
+        
+        # Input files' paths
+        self.changes_list_path = config["changes_list_path"]
+        self.initial_adm_state_path = config["initial_adm_state_path"]
+        self.initial_region_list_path = config["initial_region_list_path"]
+        self.initial_dist_list_path = config["initial_dist_list_path"]
+
+        # Output files' paths
+        self.adm_states_output_path = config["adm_states_output_path"]
+
+        self.timespan = TimeSpan(start = config["global_timespan"]["start"], end = config["global_timespan"]["end"])
 
         # Create lists to store Change objects and Administrative State objects
         self.changes_list = []
         self.states_list = []
         
         # Create empty attribute to store district and region registries
-        self.district_registry = None
+        self.dist_registry = None
         self.region_registry = None
 
         # Create changes list
@@ -124,7 +133,7 @@ class AdministrativeHistory():
 
         try:
             initial_adm_state = AdministrativeState(**data)
-            initial_adm_state.timespan = deepcopy(self.timespan)
+            initial_adm_state.timespan = self.timespan.model_copy(deep=True)
             self.states_list.append(initial_adm_state)
             print("✅ Loaded initial state.")
         except ValidationError as e:
@@ -159,12 +168,19 @@ class AdministrativeHistory():
         #         change.echo()
 
     def _create_history(self):
-        for date in self.changes_dates:
+        # Delete and recreate the entire folder
+        if os.path.exists(self.adm_states_output_path):
+            shutil.rmtree(self.adm_states_output_path)
+        os.makedirs(self.adm_states_output_path)
+
+        for i, date in enumerate(self.changes_dates):
             changes_list = self.changes_chron_dict[date]
             old_state = self.states_list[-1]
-            new_state, all_units_affected = old_state.apply_changes(changes_list, self.dist_registry, self.dist_registry)
-            print(f"{date}: Changes applied, administrative state {new_state} created.")
+            new_state, all_units_affected = old_state.apply_changes(changes_list, self.region_registry, self.dist_registry)
             self.states_list.append(new_state)
+
+            csv_filename = "/state" + new_state.timespan.start.strftime("%Y-%m-%d")
+            new_state.to_csv(self.adm_states_output_path + csv_filename)
 
     def list_change_dates(self, lang = "pol"):
         # Lists all the dates of administrative changes.

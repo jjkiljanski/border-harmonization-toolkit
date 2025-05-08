@@ -38,7 +38,7 @@ def change_test_setup():
     gdf = gpd.GeoDataFrame.from_features(geojson_data["features"])
 
     # Create districts
-    district_registry = DistrictRegistry(unit_list=[])
+    dist_registry = DistrictRegistry(unit_list=[])
     for suffix in ['a', 'b', 'c', 'd', 'e', 'f']:
         name_id = f"district_{suffix}"
 
@@ -48,7 +48,7 @@ def change_test_setup():
         # Extract the geometry for the current district
         current_territory = district_row.geometry.iloc[0]
 
-        district_registry.add_unit({
+        dist_registry.add_unit({
             "name_id": name_id,
             "name_variants": [name_id, name_id.upper()],
             "seat_name_variants": [f"seat_{suffix}", f"SEAT_{suffix}"],
@@ -123,7 +123,7 @@ def change_test_setup():
         )
 
     return {
-        "district_registry": district_registry,
+        "dist_registry": dist_registry,
         "region_registry": region_registry,
         "administrative_state": administrative_state,
         "district_x": district_x_to_create()

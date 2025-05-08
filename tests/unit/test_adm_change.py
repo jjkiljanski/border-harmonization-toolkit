@@ -374,10 +374,8 @@ def test_change_construction_from_matter_fixtures(
     assert change.description == "Test change"
     assert change.matter == matter
 
-    #assert change.units_affected_ids["District"] == 2
-
     # Check the correctness of the 'units_affected' attribute definition.
-    assert set(change.units_affected_ids["Region"]["before"]) == set(region_before)
-    assert set(change.units_affected_ids["Region"]["after"]) == set(region_after)
-    assert set(change.units_affected_ids["District"]["before"]) == set(district_before)
-    assert set(change.units_affected_ids["District"]["after"]) == set(district_after)
+    assert set(change.units_affected_current_names["Region"]["before"]) == set(region_before)
+    assert set(change.units_affected_current_names["Region"]["after"]) == set(region_after)
+    assert set(change.units_affected_current_names["District"]["before"]) == set(district_before)
+    assert set(change.units_affected_current_names["District"]["after"]) == set(district_after)

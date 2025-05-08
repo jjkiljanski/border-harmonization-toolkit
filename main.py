@@ -1,21 +1,18 @@
 from data_models import *
 from core.core import AdministrativeHistory
-from helper_functions import *
+from utils.helper_functions import *
 
 import os
 import csv
 import pandas as pd
 
 ########## Load and initiate administrative changes list ###########
-# Load changes json
+# Load config
 
-changes_list_path = "input/changes_list.json"
-initial_adm_state_path = "input/initial_adm_state.json"
-region_list = "input/initial_region_state_list.json"
-dist_list = "input/initial_dist_state_list.json"
-timespan = (datetime(1921,2,19), datetime(1939,9,1))
+# Load the configuration
+config = load_config("config.json")
 
-administrative_history = AdministrativeHistory(changes_list_path, initial_adm_state_path, region_list, dist_list, timespan)
+administrative_history = AdministrativeHistory(config)
 
 #administrative_history.list_change_dates()
 #administrative_history.summarize_by_date()
@@ -24,7 +21,7 @@ administrative_history = AdministrativeHistory(changes_list_path, initial_adm_st
 
 administrative_history.print_all_states()
 
-#administrative_history.district_registry.summary(with_alt_names=True)
+#administrative_history.dist_registry.summary(with_alt_names=True)
 
 # # Loop through all files in the input/states_to_identify folder
 # folder_path = 'input/states_to_identify'
@@ -32,7 +29,7 @@ administrative_history.print_all_states()
 #     if filename.endswith(".csv"):
 #         file_path = os.path.join(folder_path, filename)
 #         # Read the CSV
-#         df = load_and_clean_csv(file_path, administrative_history.district_registry)
+#         df = load_and_clean_csv(file_path, administrative_history.dist_registry)
 #         # Create list of (REGION, DISTRICT) pairs in uppercase
 #         r_d_pairs = list(zip(df['region'], df['district']))
 

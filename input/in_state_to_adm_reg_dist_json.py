@@ -57,9 +57,9 @@ for item, count in counts.items():
 with open("initial_adm_state.json", "w", encoding="utf-8") as f:
     json.dump({"unit_hierarchy": adm_state_dict}, f, ensure_ascii=False, indent=2)
 
-# # Dump to JSON
-# with open("input/initial_dist_state_list.json", "w", encoding="utf-8") as f:
-#     json.dump(dist_state_list, f, ensure_ascii=False, indent=2)
+# Dump to JSON
+with open("initial_dist_state_list.json", "w", encoding="utf-8") as f:
+    json.dump(dist_state_list, f, ensure_ascii=False, indent=2)
 
 # # Dump to JSON
 # with open("input/initial_region_state_list.json", "w", encoding="utf-8") as f:

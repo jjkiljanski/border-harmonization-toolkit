@@ -6,7 +6,8 @@ from datetime import datetime, timedelta
 from data_models.adm_timespan import *
 from data_models.adm_unit import *
 from data_models.adm_state import *
-from helper_functions import load_config
+from utils.helper_functions import load_config
+from utils.exceptions import ConsistencyError
 
 # Load the configuration
 config = load_config("config.json")
@@ -30,7 +31,7 @@ class BaseChangeMatter(BaseModel, ABC):
         pass
 
     @abstractmethod
-    def fill_units_affected_ids(self):
+    def fill_units_affected_current_names(self):
         pass
 
 # Definition of the data model for the matter of UnitReform change.
@@ -57,8 +58,8 @@ class UnitReform(BaseChangeMatter):
             )
 
         return values
-    
-    def fill_units_affected_ids(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
+        
+    def fill_units_affected_current_names(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
         if "current_name" in self.after_reform.keys():
             after = self.after_reform["current_name"]
         else:
@@ -69,6 +70,24 @@ class UnitReform(BaseChangeMatter):
                 "after": [after]
             }
         }
+    
+    def verify_and_standardize_all_addresses(self, change, adm_state, region_registry, dist_registry):
+        """No address used as input in this change type. Return."""
+        return
+    
+    def verify_att_to_reform(self, change, adm_state, region_registry, dist_registry):
+        if self.unit_type == "Region":
+            _, unit_state, _ = region_registry.find_unit_state_by_date(self.current_name, change.date)
+        else:
+            _, unit_state, _ = dist_registry.find_unit_state_by_date(self.current_name, change.date)
+        for key, value in self.to_reform.items():
+            if not hasattr(unit_state, key):
+                raise ConsistencyError(f"Change {str(change)} applied to attribute {key} of state of {self.unit_type} {self.current_name}, but the attribute doesn't exist.")
+            if getattr(unit_state, key) != value:
+                raise ConsistencyError(
+                    f"Change {str(change)} expects the {self.unit_type.lower()} {self.current_name} state to have key '{value}', "
+                    f"but found '{getattr(unit_state, key)}' instead."
+                )
     
     def echo(self, date, source, lang = "pol"):
         if lang == "pol":
@@ -141,24 +160,37 @@ class OneToMany(BaseChangeMatter):
     take_from: OneToManyTakeFrom
     take_to: List[OneToManyTakeTo]
 
-    def fill_units_affected_ids(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
+    def fill_units_affected_current_names(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
         unit_type = self.unit_type  # "District" or "Region"
-        before_ids = [self.take_from.current_name]
-        after_ids = []
+        before_current_names = [self.take_from.current_name]
+        after_current_names = []
         if not self.take_from.delete_unit:
-            after_ids.append(self.take_from.current_name)
+            after_current_names.append(self.take_from.current_name)
         
         for take_to_dict in self.take_to:
-            after_ids.append(take_to_dict.current_name)
+            after_current_names.append(take_to_dict.current_name)
             if not take_to_dict.create:
-                before_ids.append(take_to_dict.current_name)
+                before_current_names.append(take_to_dict.current_name)
 
         return {
             unit_type: {
-                "before": before_ids,
-                "after": after_ids
+                "before": before_current_names,
+                "after": after_current_names
             }
         }
+    
+    def verify_and_standardize_all_addresses(self, change, adm_state, region_registry, dist_registry):
+        for take_to_dict in self.take_to:
+            if take_to_dict.create:
+                # Correct only country and region names, the new district is not yet created.
+                new_address = take_to_dict.new_district_address
+                c_name, r_name, d_name = new_address # Assuming address is of length 3
+                c_name_new, r_name_new = adm_state.verify_and_standardize_address((c_name, r_name), region_registry, dist_registry, change.date)
+                take_to_dict.new_district_address = (c_name_new, r_name_new, d_name)
+
+    def verify_att_to_reform(self, change, adm_state, region_registry, dist_registry):
+        """Doesn't apply to the change. Return."""
+        return
 
     def echo(self, date, source, lang = "pol"):
         destination_districts = ", ".join([f"{destination.current_name}" for destination in self.take_to])
@@ -196,15 +228,23 @@ class OneToMany(BaseChangeMatter):
             unit_from.abolish(change.date)
             unit_from.changes.append(("abolished", change))
             change.units_affected[self.unit_type].append(("abolished", unit_from))
+            adm_state.find_and_pop(unit_from.name_id, self.unit_type)
         else:
             units_new_states.append(unit_from.create_next_state(change.date))
             unit_from.changes.append(("territory", change))
             change.units_affected[self.unit_type].append(("territory", unit_from))
         for take_to_dict in self.take_to:
             if take_to_dict.create:
-                unit = dist_registry.add_unit(take_to_dict.district)
+                # Check if the unit existed in the past
+                unit = dist_registry.find_unit(take_to_dict.district.name_id)
+                if unit is not None:
+                    unit_state = take_to_dict.district.states[0]
+                    unit.states.append(unit_state)
+                    print(f"New state {unit_state} appended to states of unit {unit.name_id}.")
+                else:
+                    unit = dist_registry.add_unit(take_to_dict.district)
+                    unit_state = unit.states[0]
                 adm_state.add_address(take_to_dict.new_district_address, {})
-                unit_state = unit.states[0]
                 unit_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
                 units_new_states.append(unit_state)
                 unit.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
@@ -263,23 +303,34 @@ class ManyToOne(BaseModel):
     take_from: List[ManyToOneTakeFrom]
     take_to: ManyToOneTakeTo
 
-    def fill_units_affected_ids(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
+    def fill_units_affected_current_names(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
         unit_type = self.unit_type  # Should be "District" or "Region"
-        before_ids = [take_from_dict.current_name for take_from_dict in self.take_from]
+        before_current_names = [take_from_dict.current_name for take_from_dict in self.take_from]
         if not self.take_to.create:
-            before_ids.append(self.take_to.current_name)
+            before_current_names.append(self.take_to.current_name)
         
-        after_ids = [self.take_to.current_name]
+        after_current_names = [self.take_to.current_name]
         for take_from_dict in self.take_from:
             if not take_from_dict.delete_unit:
-                after_ids.append(take_from_dict.current_name)
+                after_current_names.append(take_from_dict.current_name)
 
         return {
             unit_type: {
-                "before": before_ids,
-                "after": after_ids
+                "before": before_current_names,
+                "after": after_current_names
             }
         }
+    
+    def verify_and_standardize_all_addresses(self, change, adm_state, region_registry, dist_registry):
+        if self.take_to.create:
+            # Correct only country and region names, the new district is not yet created.
+            c_name, r_name, d_name = self.take_to.new_district_address # Assuming address is of length 3
+            c_name_new, r_name_new = adm_state.verify_and_standardize_address((c_name, r_name), region_registry, dist_registry, change.date)
+            self.take_to.new_district_address = (c_name_new, r_name_new, d_name)
+
+    def verify_att_to_reform(self, change, adm_state, region_registry, dist_registry):
+        """Doesn't apply to the change. Return."""
+        return
 
     def echo(self, date, source, lang = "pol"):
         origin_districts_partial = ", ".join([f"{origin.current_name}" for origin in self.take_from if not origin.delete_unit])
@@ -377,16 +428,22 @@ class ManyToOne(BaseModel):
                 unit.abolish(change.date)
                 unit.changes.append(("abolished", change))
                 change.units_affected[self.unit_type].append(("abolished", unit))
-                adm_state.pop_address
+                adm_state.find_and_pop(unit.name_id, self.unit_type)
             else:
                 units_new_states.append(unit.create_next_state(change.date))
                 unit.changes.append(("territory", change))
                 change.units_affected[self.unit_type].append(("territory", unit))
 
         if self.take_to.create:
-            unit_to = dist_registry.add_unit(self.take_to.district)
+            unit_to = dist_registry.find_unit(self.take_to.current_name)
+            if unit_to is not None:
+                unit_to_state = DistState(**self.take_to.district.states[0])
+                unit_to.states.append(unit_to_state)
+                print(f"New state {unit_to_state} appended to states of unit {unit.name_id}.")
+            else:
+                unit_to = dist_registry.add_unit(self.take_to.district)
+                unit_to_state = unit_to.states[0]
             adm_state.add_address(self.take_to.new_district_address, {})
-            unit_to_state = unit_to.states[0]
             unit_to_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
             units_new_states.append(unit_to_state)
             unit_to.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
@@ -430,7 +487,7 @@ class ChangeAdmState(BaseChangeMatter):
             )
         return self
 
-    def fill_units_affected_ids(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
+    def fill_units_affected_current_names(self) -> Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]:
         affected: Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]] = {
             "Region": {
                 "before": [self.take_from[1]],
@@ -445,6 +502,17 @@ class ChangeAdmState(BaseChangeMatter):
                 "after": [self.take_to[2]],
             }
         return affected
+    
+    def verify_and_standardize_all_addresses(self, change, adm_state, region_registry, dist_registry):
+        self.take_from = adm_state.verify_and_standardize_address(self.take_from, region_registry, dist_registry, change.date)
+        if len(self.take_to) == 3:
+            c_name, r_name, d_name = self.take_to
+            c_name_new, r_name_new = adm_state.verify_and_standardize_address((c_name, r_name), region_registry, dist_registry, change.date)
+            self.take_to = (c_name_new, r_name_new, d_name)
+
+    def verify_att_to_reform(self, change, adm_state, region_registry, dist_registry):
+        """Doesn't apply to the change. Return."""
+        return
     
     def echo(self, date, source, lang = "pol"):
         if lang == "pol":
@@ -477,7 +545,6 @@ class ChangeAdmState(BaseChangeMatter):
         # administrative unit stock variables - above all this method has to be rewritten.
         
         address_from = self.take_from
-        print(address_from)
         address_to = self.take_to
         address_content = adm_state.pop_address(address_from)
         adm_state.add_address(address_to, address_content)
@@ -512,7 +579,8 @@ class Change(BaseModel):
     order: Optional[int] = None
     matter: ChangeMatter
     units_affected: Optional[Dict[Literal["Region", "District"], List[Unit]]] = {"Region": [], "District": []}
-    units_affected_ids: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}} # Dict with values: "District" or "Region", the value is dict with values: "before" or "after", its values are lists of affected units.
+    units_affected_current_names: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}} # Dict with values: "District" or "Region", the value is dict with values: "before" or "after", its values are lists of affected units.
+    units_affected_ids: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}} # The attribute is created based on units_created_current_names during change application.
 
     def echo(self) -> str:
         return self.matter.echo(self.date, self.source)
@@ -520,15 +588,54 @@ class Change(BaseModel):
     def districts_involved(self) -> list[str]:
         return self.matter.districts_involved()
 
+    def verify_consistency(self, adm_state, region_registry, dist_registry):
+        # First, verify the consistency between administrative state, region registry and district registry.
+        try:
+            adm_state.verify_consistency(region_registry, dist_registry, check_date = self.date)
+        except Exception as e:
+                raise RuntimeError(f"Error in consistency verification of {str(self)}: {str(e)}") from e
+        
+        # Then, use the self.units_affected_current_names attribute to verify which units
+        # have to be present in the registries for the correct application.
+        for unit_type in ['Region', 'District']:
+            for unit_current_name in self.units_affected_current_names[unit_type]["before"]:
+                if unit_type=="Region":
+                    unit, unit_state, _ = region_registry.find_unit_state_by_date(unit_current_name, self.date)
+                else:
+                    unit, unit_state, _ = dist_registry.find_unit_state_by_date(unit_current_name, self.date)
+                if unit is None: # Check if unit exists in the proper registry
+                    raise ConsistencyError(f"Change {str(self)} applied to {unit_type.lower()} {unit_current_name} but no unit with this name variant exists in the {unit_type.lower()} registry.")
+                if unit_state is None: # Check if state exists for the unit for the given date.
+                    raise ConsistencyError(f"Change {str(self)} applied to {unit_type.lower()} {unit_current_name} but no unit state for this unit exists in the {unit_type.lower()} registry.")
+                
+        # Verify and standardize all addresses
+        self.matter.verify_and_standardize_all_addresses(self, adm_state, region_registry, dist_registry)
+
+        # Verify the existence of all reformed attributes
+        self.matter.verify_att_to_reform(self, adm_state, region_registry, dist_registry)
+
+
     def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry, plot_change = False) -> None:
+        self.verify_consistency(adm_state, region_registry, dist_registry)
+        print(f"Applying change {str(self)}.")
+        # Create self.units_affected_ids["before"] for plotting.
+        self.units_affected_ids['Region']["before"] = [region_registry.find_unit(current_name).name_id for current_name in self.units_affected_current_names['Region']["before"]]
+        # print(f"(District, {before_or_after}): {[current_name for current_name in self.units_affected_current_names['District'][before_or_after]]}")
+        self.units_affected_ids['District']["before"] = [dist_registry.find_unit(current_name).name_id for current_name in self.units_affected_current_names['District']["before"]]
+
+        # If plot_change is True, prepare plot before the application.
         if plot_change:
             plot_before = self._plot(adm_state, region_registry, dist_registry, before_or_after="before")
             print(f"Change {self.matter.change_type} before plot created.")
+        
+        # Apply change
         self.matter.apply(self, adm_state, region_registry, dist_registry)
+        
+        # If plot_change is True, prepare plot after the application.
         if plot_change:
             plot_after = self._plot(adm_state, region_registry, dist_registry, before_or_after="after")
             print(f"Change {self.matter.change_type} after plot created.")
-            from helper_functions import combine_figures
+            from utils.helper_functions import combine_figures
             return combine_figures(plot_before, plot_after)
         return
     
@@ -543,27 +650,27 @@ class Change(BaseModel):
         return value
 
     @model_validator(mode="after")
-    def ensure_complete_units_affected_ids(self):
+    def ensure_complete_units_affected_current_names(self):
         # Start with what's already provided (if any)
-        affected_ids = self.matter.fill_units_affected_ids()
+        affected_current_names = self.matter.fill_units_affected_current_names()
 
         # Ensure top-level keys exist
         for unit_type in ("Region", "District"):
-            if unit_type not in affected_ids:
-                affected_ids[unit_type] = {}
+            if unit_type not in affected_current_names:
+                affected_current_names[unit_type] = {}
 
             # Ensure both 'before' and 'after' lists exist
             for when in ("before", "after"):
-                if when not in affected_ids[unit_type]:
-                    affected_ids[unit_type][when] = []
+                if when not in affected_current_names[unit_type]:
+                    affected_current_names[unit_type][when] = []
 
         # Update the internal state of the model instance directly
-        self.units_affected_ids = affected_ids
+        self.units_affected_current_names = affected_current_names
         
         # Return `self` (the model instance itself)
         return self
     
-    def _plot(self, adm_state, region_registry, district_registry, before_or_after):
+    def _plot(self, adm_state, region_registry, dist_registry, before_or_after):
         """
         This method is PRIVATE as it makes sense to call it only in connection with
         'apply' method to verify the consistency of the change with existing administrative
@@ -573,7 +680,7 @@ class Change(BaseModel):
         The method should be called only through using the 'apply' method with the 'plot'
         argument set to 'True'. """
 
-        from helper_functions import build_plot_from_layers
+        from utils.helper_functions import build_plot_from_layers
 
         if before_or_after=="before":
             time_shift = -timedelta(hours=12)
@@ -581,9 +688,9 @@ class Change(BaseModel):
             time_shift = timedelta(hours=12)
 
         # Prepare the layers
-        country_layer = adm_state._country_plot_layer(district_registry, self.date + time_shift)
-        region_layer = adm_state._region_plot_layer(region_registry, district_registry, self.date + time_shift)
-        district_layer = adm_state._district_plot_layer(district_registry, self.date + time_shift)
+        country_layer = adm_state._country_plot_layer(dist_registry, self.date + time_shift)
+        region_layer = adm_state._region_plot_layer(region_registry, dist_registry, self.date + time_shift)
+        district_layer = adm_state._district_plot_layer(dist_registry, self.date + time_shift)
         
         # Extract all rows where 'region_name_id' is in the list of regions affected
         change_region_layer = region_layer[region_layer['name_id'].isin(self.units_affected_ids["Region"][before_or_after])].copy()
@@ -606,4 +713,11 @@ class Change(BaseModel):
         return fig
     
     def __str__(self):
-        return f"<Change type={self.matter.change_type}, date={self.date.date()}>"
+        if self.matter.change_type == "UnitReform":
+            return f"<Change type={self.matter.change_type}, ({self.units_affected_current_names[self.matter.unit_type]['before']}), date={self.date.date()}>"
+        if self.matter.change_type == "ManyToOne":
+            return f"<Change type={self.matter.change_type}, (... -> {self.units_affected_current_names['District']['after']}), date={self.date.date()}>"
+        if self.matter.change_type == "OneToMany":
+            return f"<Change type={self.matter.change_type}, ({self.units_affected_current_names['District']['before']} -> ...), date={self.date.date()}>"
+        if self.matter.change_type == "ChangeAdmState":
+            return f"<Change type={self.matter.change_type}, ({self.matter.take_from} -> ...), date={self.date.date()}>"

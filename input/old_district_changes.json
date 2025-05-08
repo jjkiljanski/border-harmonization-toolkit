@@ -78,7 +78,7 @@
     "description": "22.06.1922 przyłączono do Polski powiat miejski Katowice pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "NIEMCY",
+        "region": "ŚLĄSK NIEMIECKI",
         "district_name": "KATOWICE"
       },
       "take_to": "ŚLĄSKIE"
@@ -91,7 +91,7 @@
     "description": "22.06.1922 przyłączono do Polski powiat katowicki pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "NIEMCY",
+        "region": "ŚLĄSK NIEMIECKI",
         "district_name": "KATOWICKI"
       },
       "take_to": "ŚLĄSKIE"
@@ -104,7 +104,7 @@
     "description": "22.06.1922 przyłączono do Polski powiat Królewska Huta pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "NIEMCY",
+        "region": "ŚLĄSK NIEMIECKI",
         "district_name": "KRÓLEWSKA HUTA"
       },
       "take_to": "ŚLĄSKIE"
@@ -117,7 +117,7 @@
     "description": "22.06.1922 przyłączono do Polski powiat lubliniecki pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "NIEMCY",
+        "region": "ŚLĄSK NIEMIECKI",
         "district_name": "LUBLINIECKI"
       },
       "take_to": "ŚLĄSKIE"
@@ -130,7 +130,7 @@
     "description": "22.06.1922 przyłączono do Polski powiat pszczyński pozyskany od Niemiec",
     "matter": {
       "take_from": {
-        "region": "NIEMCY",
+        "region": "ŚLĄSK NIEMIECKI",
         "district_name": "PSZCZYŃSKI"
       },
       "take_to": "ŚLĄSKIE"
@@ -144,14 +144,14 @@
     "matter": {
       "take_from": [
         {
-          "region": "NIEMCY",
+          "region": "ŚLĄSK NIEMIECKI",
           "district_name": "ZABRSKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "NIEMCY",
+          "region": "ŚLĄSK NIEMIECKI",
           "district_name": "GLIWICKI",
           "weight_from": null,
           "weight_to": null,
@@ -175,14 +175,14 @@
     "matter": {
       "take_from": [
         {
-          "region": "NIEMCY",
+          "region": "ŚLĄSK NIEMIECKI",
           "district_name": "RYBNICKI",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "NIEMCY",
+          "region": "ŚLĄSK NIEMIECKI",
           "district_name": "RACIBORSKI",
           "weight_from": null,
           "weight_to": null,
@@ -206,14 +206,14 @@
     "matter": {
       "take_from": [
         {
-          "region": "NIEMCY",
+          "region": "ŚLĄSK NIEMIECKI",
           "district_name": "BYTOM WIEŚ",
           "weight_from": null,
           "weight_to": null,
           "delete_district": false
         },
         {
-          "region": "NIEMCY",
+          "region": "ŚLĄSK NIEMIECKI",
           "district_name": "BYTOM MIASTO",
           "weight_from": null,
           "weight_to": null,
@@ -230,21 +230,36 @@
     }
   },
   {
-    "change_type": "ManyToOne",
+    "change_type": "RChange",
+    "order": 0,
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
-    "description": "22.06.1922 powstał z powiatu tarnogórskiego pozyskanego od Niemiec oraz gminy Mikoleska powiatu gliwickiego (siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej)",
+    "description": "22.06.1922 przyłączono do Polski część powiatu tarnogórskiego pozyskanego od Niemiec",
+    "matter": {
+      "take_from": {
+        "region": "ŚLĄSK NIEMIECKI",
+        "district_name": "TARNOGÓRSKI"
+      },
+      "take_to": "ŚLĄSKIE"
+    }
+  },
+  {
+    "change_type": "ManyToOne",
+    "order": 1,
+    "date": "22.06.1922",
+    "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
+    "description": "22.06.1922 po przyłączeniu części powiatu tarnogórskiego z Niemiec do Polski, przyłączono do niego gminę Mikoleska powiatu gliwickiego (siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej)",
     "matter": {
       "take_from": [
         {
-          "region": "NIEMCY",
+          "region": "ŚLĄSK NIEMIECKI",
           "district_name": "TARNOGÓRSKI",
           "weight_from": null,
           "weight_to": null,
-          "delete_district": true
+          "delete_district": false
         },
         {
-          "region": "NIEMCY",
+          "region": "ŚLĄSK NIEMIECKI",
           "district_name": "GLIWICKI",
           "weight_from": null,
           "weight_to": null,
@@ -252,11 +267,9 @@
         }
       ],
       "take_to": {
-        "create": true,
+        "create": false,
         "region": "ŚLĄSKIE",
-        "district_name": "TARNOGÓRSKI",
-        "district_type": "w",
-        "seat": "TARNOWSKIE GÓRY"
+        "district_name": "TARNOGÓRSKI"
       }
     }
   },
@@ -439,7 +452,7 @@
     "description": "X.X.1924 dołączono do powiatu spisko-orawskiego część terytorium powiatu namiestowskiego w zamian za jego część oddaną Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "NAMIESTOWSKI",
         "delete_district": false
       },
@@ -469,7 +482,7 @@
       "take_to": [
         {
           "create": false,
-          "region": "CZECHOSŁOWACJA",
+          "region": "ZAOLZIE",
           "district_name": "NAMIESTOWSKI",
           "weight_from": 0.25,
           "weight_to": 0.25
@@ -1120,7 +1133,7 @@
     "matter": {
       "take_from": {
         "region": "POLESKIE",
-        "district_name": "KOSOWSKI",
+        "district_name": "KOSOWSKI (KOSÓW POLESKI)",
         "delete_district": true
       },
       "take_to": [
@@ -1180,7 +1193,7 @@
         {
           "create": false,
           "region": "KRAKOWSKIE",
-          "district_name": "BIALSKI",
+          "district_name": "BIALSKI (BIAŁA KRAKOWSKA)",
           "weight_from": null,
           "weight_to": null
         },
@@ -1368,7 +1381,7 @@
         {
           "create": false,
           "region": "LUBELSKIE",
-          "district_name": "BIALSKI",
+          "district_name": "BIALSKI (BIAŁA PODLASKA)",
           "weight_from": null,
           "weight_to": null
         },
@@ -1594,7 +1607,7 @@
         {
           "create": false,
           "region": "POZNAŃSKIE",
-          "district_name": "OSTROWSKI",
+          "district_name": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
           "weight_from": null,
           "weight_to": null
         }
@@ -1926,7 +1939,7 @@
     "description": "przyłączono do niego część powiatu bardiowskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "BARDIOWSKI",
         "delete_district": false
       },
@@ -1948,7 +1961,7 @@
     "description": "przyłączono do niego część powiatu starolubowelskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "STAROLUBOWELSKI",
         "delete_district": false
       },
@@ -1970,7 +1983,7 @@
     "description": "przyłączono do niego część powiatu kieżmarskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "KIEŻMARSKI",
         "delete_district": false
       },
@@ -1992,7 +2005,7 @@
     "description": "przyłączono do niego część powiatu namiestowskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "NAMIESTOWSKI",
         "delete_district": false
       },
@@ -2014,7 +2027,7 @@
     "description": "przyłączono do niego część powiatu starowiejskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "STAROWIEJSKI",
         "delete_district": false
       },
@@ -2036,7 +2049,7 @@
     "description": "przyłączono do niego część powiatu trzciańskiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "TRZCIANY",
         "delete_district": false
       },
@@ -2058,7 +2071,7 @@
     "description": "16.11.1938 przyłączono do powiatu leskiego część terytorium powiatu snińskiego anektowanego Czechosłowacji.",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "SNIŃSKI",
         "delete_district": false
       },
@@ -2080,7 +2093,7 @@
     "description": "16.11.1938 przyłączono do niego część powiatu czadeckiego, niewielką część powiatu frydeckiego oraz powiat czeskocieszyński anektowane Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "CZADECKI",
         "delete_district": false
       },
@@ -2102,7 +2115,7 @@
     "description": "16.11.1938 przyłączono do niego część powiatu czadeckiego, niewielką część powiatu frydeckiego oraz powiat czeskocieszyński anektowane Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "CZESKOCIESZYŃSKI",
         "delete_district": true
       },
@@ -2124,7 +2137,7 @@
     "description": "16.11.1938 przyłączono do niego część powiatu frydeckiego anektowanego Czechosłowacji",
     "matter": {
       "take_from": {
-        "region": "CZECHOSŁOWACJA",
+        "region": "ZAOLZIE",
         "district_name": "FRYDECKI",
         "delete_district": true
       },
@@ -2180,7 +2193,7 @@
     "matter": {
       "take_from": {
         "region": "BIAŁOSTOCKIE",
-        "district_name": "OSTROWSKI"
+        "district_name": "OSTROWSKI (OSTRÓW MAZOWIECKA)"
       },
       "take_to": "WARSZAWSKIE"
     }
