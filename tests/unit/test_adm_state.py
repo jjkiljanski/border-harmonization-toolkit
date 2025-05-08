@@ -89,10 +89,10 @@ def test_verify_and_standardize_address(change_test_setup):
     address_1 = ("HOMELAND", "region_a", "district_b")
     assert ("HOMELAND", "region_a", "district_b") == adm_state.verify_and_standardize_address(address_1, region_registry, dist_registry)
 
-    address_2 = ("HOMELAND", "REGION_A", "district_b")
+    address_2 = ("HOMELAND", "region_a_alt", "district_b")
     assert ("HOMELAND", "region_a", "district_b") == adm_state.verify_and_standardize_address(address_2, region_registry, dist_registry)
 
-    address_3 = ("HOMELAND", "region_a", "DISTRICT_B")
+    address_3 = ("HOMELAND", "region_a", "district_b_alt")
     assert ("HOMELAND", "region_a", "district_b") == adm_state.verify_and_standardize_address(address_3, region_registry, dist_registry)
 
     address_4 = ("HOMELAND", "region_a", "district_x")
@@ -210,43 +210,43 @@ def test_to_address_list(change_test_setup):
     with_variants_list = valid_adm_state.to_address_list(with_variants = True, region_registry = region_registry, dist_registry = dist_registry)
     correct_with_variants_list = [
         ('ABROAD', 'region_c', 'district_e'),
-        ('ABROAD', 'region_c', 'DISTRICT_E'),
-        ('ABROAD', 'REGION_C', 'district_e'),
-        ('ABROAD', 'REGION_C', 'DISTRICT_E'),
+        ('ABROAD', 'region_c', 'district_e_alt'),
+        ('ABROAD', 'region_c_alt', 'district_e'),
+        ('ABROAD', 'region_c_alt', 'district_e_alt'),
 
         ('ABROAD', 'region_c', 'district_f'),
-        ('ABROAD', 'region_c', 'DISTRICT_F'),
-        ('ABROAD', 'REGION_C', 'district_f'),
-        ('ABROAD', 'REGION_C', 'DISTRICT_F'),
+        ('ABROAD', 'region_c', 'district_f_alt'),
+        ('ABROAD', 'region_c_alt', 'district_f'),
+        ('ABROAD', 'region_c_alt', 'district_f_alt'),
 
         ('HOMELAND', 'region_a', 'district_a'),
-        ('HOMELAND', 'region_a', 'DISTRICT_A'),
-        ('HOMELAND', 'REGION_A', 'district_a'),
-        ('HOMELAND', 'REGION_A', 'DISTRICT_A'),
+        ('HOMELAND', 'region_a', 'district_a_alt'),
+        ('HOMELAND', 'region_a_alt', 'district_a'),
+        ('HOMELAND', 'region_a_alt', 'district_a_alt'),
 
         ('HOMELAND', 'region_a', 'district_b'),
-        ('HOMELAND', 'region_a', 'DISTRICT_B'),
-        ('HOMELAND', 'REGION_A', 'district_b'),
-        ('HOMELAND', 'REGION_A', 'DISTRICT_B'),
+        ('HOMELAND', 'region_a', 'district_b_alt'),
+        ('HOMELAND', 'region_a_alt', 'district_b'),
+        ('HOMELAND', 'region_a_alt', 'district_b_alt'),
 
         ('HOMELAND', 'region_b', 'district_c'),
-        ('HOMELAND', 'region_b', 'DISTRICT_C'),
-        ('HOMELAND', 'REGION_B', 'district_c'),
-        ('HOMELAND', 'REGION_B', 'DISTRICT_C'),
+        ('HOMELAND', 'region_b', 'district_c_alt'),
+        ('HOMELAND', 'region_b_alt', 'district_c'),
+        ('HOMELAND', 'region_b_alt', 'district_c_alt'),
 
         ('HOMELAND', 'region_b', 'district_d'),
-        ('HOMELAND', 'region_b', 'DISTRICT_D'),
-        ('HOMELAND', 'REGION_B', 'district_d'),
-        ('HOMELAND', 'REGION_B', 'DISTRICT_D'),
+        ('HOMELAND', 'region_b', 'district_d_alt'),
+        ('HOMELAND', 'region_b_alt', 'district_d'),
+        ('HOMELAND', 'region_b_alt', 'district_d_alt'),
     ]
     correct_with_variants_list.sort()
 
     assert with_variants_list == correct_with_variants_list
 
     region_a, region_a_state, _ = region_registry.find_unit_state_by_date('region_a', datetime(1930,1,1))
-    region_a_state.current_name = 'REGION_A'
+    region_a_state.current_name = 'region_a_alt'
     district_a, district_a_state, _ = dist_registry.find_unit_state_by_date('district_c', datetime(1930,1,1))
-    district_a_state.current_name = 'DISTRICT_C'
+    district_a_state.current_name = 'district_c_alt'
 
     normal_names_id_list = valid_adm_state.to_address_list()
     correct_normal_names_id_list = [
@@ -263,9 +263,9 @@ def test_to_address_list(change_test_setup):
     correct_current_names_list = [
         ("ABROAD", "region_c", "district_e"),
         ("ABROAD", "region_c", "district_f"),
-        ("HOMELAND", "REGION_A", "district_a"),
-        ("HOMELAND", "REGION_A", "district_b"),
-        ("HOMELAND", "region_b", "DISTRICT_C"),
+        ("HOMELAND", "region_a_alt", "district_a"),
+        ("HOMELAND", "region_a_alt", "district_b"),
+        ("HOMELAND", "region_b", "district_c_alt"),
         ("HOMELAND", "region_b", "district_d"),
     ]
     assert current_names_list == correct_current_names_list

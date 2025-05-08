@@ -8,28 +8,35 @@ from io import BytesIO
 import base64
 import io
 
-def load_and_clean_csv(file_path, district_registry):
+def load_and_standardize_csv(file_path, region_registry, district_registry):
     # Read the CSV
     df = pd.read_csv(file_path)
 
-    if {'region', 'district'}.issubset(df.columns):
-        df['region'] = df['region'].str.upper()
-        df['district'] = df['district'].str.upper()
+    if {'Region', 'District'}.issubset(df.columns):
+        df['Region'] = df['Region'].str.upper()
+        df['District'] = df['District'].str.upper()
+    else:
+        return ValueError(f"Dataframe loaded from {file_path} must contain 'Region' and 'District' column. Loaded columns: {df.columns}")
 
     r_d_aim_new = []
-    d_not_in_registry = []
+    not_in_registry = {'Region': [], 'District': []}
 
-    for idx, dist_aim in df['district'].items():
-        dist_name = district_registry.find_district(dist_aim)
-        if dist_name is None:
-            d_not_in_registry.append(dist_aim)
-        elif dist_name != dist_aim:
-            print(f"Warning: name {dist_aim} is an alternative district name. Processing further as {dist_name}")
+    for unit_type in ['Region', 'District']:
+        for idx, unit_name_aim in df[unit_type].items():
+            if unit_type == 'Region':
+                unit = region_registry.find_unit(unit_name_aim)
+            else:
+                unit = district_registry.find_unit(unit_name_aim)
+            if unit is None:
+                not_in_registry[unit_type].append(unit_name_aim)
+            elif unit.name_id != unit_name_aim:
+                print(f"Warning: name {unit_name_aim} is an alternative {unit_type.lower()} name. Processing further as {unit.name_id}")
 
-        df.at[idx, 'district'] = dist_name
+            df.at[idx, unit_type] = unit.name_id
 
-    if d_not_in_registry:
-            raise ValueError(f"District names {d_not_in_registry} do not exist in the district registry.")
+    for unit_type in ['Region', 'District']:
+        if not_in_registry[unit_type]:
+            raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
 
     return df
 

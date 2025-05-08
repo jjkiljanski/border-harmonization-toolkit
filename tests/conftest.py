@@ -50,7 +50,7 @@ def change_test_setup():
 
         dist_registry.add_unit({
             "name_id": name_id,
-            "name_variants": [name_id, name_id.upper()],
+            "name_variants": [name_id, name_id + "_alt"],
             "seat_name_variants": [f"seat_{suffix}", f"SEAT_{suffix}"],
             "states": [
                 DistState(
@@ -68,7 +68,7 @@ def change_test_setup():
     for suffix in ['A', 'B', 'C']:
         region_registry.add_unit({
             "name_id": f"region_{suffix.lower()}",
-            "name_variants": [f"region_{suffix.lower()}", f"REGION_{suffix}"],
+            "name_variants": [f"region_{suffix.lower()}", f"region_{suffix.lower()}_alt"],
             "seat_name_variants": [f"seat_region_{suffix.lower()}"],
             "states": [
                 RegionState(
