@@ -60,9 +60,9 @@ class AdministrativeHistory():
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
         # Load the territories
-        self._load_territories()
+        #self._load_territories()
         # Deduce information about district territories where possible
-        self._deduce_territories()
+        #self._deduce_territories()
 
 
     def _load_dist_registry(self):
@@ -252,7 +252,7 @@ class AdministrativeHistory():
         where it is possible.
         """
         for unit_state in self.states_with_loaded_territory:
-            unit_state.spread_territory_information()
+            unit_state.spread_territory_info()
         
     def standardize_address(self):
         """

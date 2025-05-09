@@ -200,9 +200,8 @@ class UnitRegistry(BaseModel):
 class DistState(UnitState):
     current_dist_type: Literal["w", "m"]
     current_territory: Optional[Any] = None
-    territory_checked: bool = False # Attribute used during territory search.
 
-    def spread_territory_information(self):
+    def spread_territory_info(self):
         """
         This method searches recursively through the graph of all links between district states
         and fills all district territories that can be deduced on the basis of type of district
@@ -222,6 +221,47 @@ class DistState(UnitState):
             a. Verifies that they haven't been checked yet - if yes, it returns None,
             b. if no, it calls the 'get_territory' method
         """
+        # This function should be called only for states that have the current_territory attribute defined
+        if self.next_change:
+            if len(self.next_change.next_states) == 1 and len(self.next_change.previous_states)==1:
+                next_state = self.next_change.next_states[0]
+                if next_state.current_territory is None:
+                    next_state.current_territory = self.current_territory
+                    next_state.spread_territory_info()
+            else:
+                all_next_change_states = self.next_change.previous_states + self.next_change.next_states
+                num_ter_unknown = 0
+                for unit_state in all_next_change_states:
+                    if unit_state.current_territory is None:
+                        num_ter_unknown += 1
+                if num_ter_unknown>1:
+                    return
+                else:
+                    # Not implemented yet.
+                    # Here comes the logic of deduction of the n-th territory on the basis of n-1 territories
+                    #  involved in the change.
+                    return
+        # The logic for backward info share mirrors the forward info share logic.
+        if self.previous_change:
+            if len(self.previous_change.previous_states) == 1 and len(self.previous_change.next_states) == 1:
+                previous_state = self.previous_change.previous_states[0]
+                if previous_state.current_territory is None:
+                    previous_state.current_territory = self.current_territory
+                    previous_state.spread_territory_info()
+            else:
+                all_previous_change_states = self.previous_change.previous_states + self.previous_change.next_states
+                num_ter_unknown = 0
+                for unit_state in all_previous_change_states:
+                    if unit_state.current_territory is None:
+                        num_ter_unknown += 1
+                if num_ter_unknown > 1:
+                    return
+                else:
+                    # Not implemented yet.
+                    # Here comes the logic of deduction of the n-th territory on the basis of n-1 territories
+                    #  involved in the change.
+                    return
+                
         if self.current_territory is not None:
             return self.current_territory
         else:
