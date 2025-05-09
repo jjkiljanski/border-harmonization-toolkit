@@ -120,11 +120,18 @@ def test_create_next_state():
     )
 
     # Test: valid date within an existing state's timespan (1925-06-15)
-    new_state = unit.create_next_state(datetime(1925, 6, 15))
+    old_state, new_state = unit.create_next_state(datetime(1925, 6, 15))
 
+    assert old_state == unit.states[-2] # The returned new state should be the last one in the unit states list
+    assert old_state.current_name == "District A"  # Check name correctness
+    assert old_state.timespan.start == datetime(1923, 1, 1)  # The old state should start at 1923-01-01
+    assert old_state.timespan.end == datetime(1925, 6, 15)  # The end date should match change date
+    
+    assert new_state == unit.states[-1] # The returned new state should be the last one in the unit states list
     assert new_state.current_name == "District A"  # The name should be the same as the previous state
     assert new_state.timespan.start == datetime(1925, 6, 15)  # The new state should start at 1925-06-15
     assert new_state.timespan.end == datetime(1930, 12, 31)  # The end date should match start date for now
+    
     assert len(unit.states) == 2  # There should be two states now
 
     # Test: invalid date (1931-01-01) outside the existing state's timespan
@@ -147,8 +154,9 @@ def test_abolish():
     )
 
     # Test: abolish the unit on 1930-12-31
-    unit.abolish(datetime(1928, 12, 31))
+    old_state = unit.abolish(datetime(1928, 12, 31))
 
+    assert old_state is state1 # The method should return the ended state.
     assert state1.timespan.end == datetime(1928, 12, 31)  # The end date should be set to 1930-12-31
     assert state1.timespan.start <= state1.timespan.middle <= state1.timespan.end # The middle was updated
 
@@ -255,11 +263,18 @@ def test_create_next_unit_state():
     registry = UnitRegistry(unit_list=[unit])
     
     # Test: create the next state for the unit starting from 1931-01-01
-    new_state = registry.create_next_unit_state("unitA", datetime(1932, 1, 1))
+    old_state, new_state = registry.create_next_unit_state("unitA", datetime(1932, 1, 1))
     
+    assert old_state == unit.states[-2]
+    assert old_state.current_name == "District B"  # The name should match the previous state
+    assert old_state.timespan.start == datetime(1931, 1, 1)  # The start should be held unchanged 
+    assert old_state.timespan.end == datetime(1932, 1, 1)  # The end date should match the date passed
+    
+    assert new_state == unit.states[-1]
     assert new_state.current_name == "District B"  # The name should match the previous state
     assert new_state.timespan.start == datetime(1932, 1, 1)  # The start of the new state should match the date passed
     assert new_state.timespan.end == datetime(1938, 12, 31)  # The end date should match the start date for now
+    
     assert len(unit.states) == 3  # The unit should now have 3 states
 
     # Test: Appropriate error is raised if unit_name is not found in the registry

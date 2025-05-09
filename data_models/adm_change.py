@@ -106,10 +106,12 @@ class UnitReform(BaseChangeMatter):
             unit = dist_registry.find_unit(self.current_name)
         if unit is None:
             raise ValueError(f"Change ({change.date.date()}, {str(self)}) applied to the unit {self.current_name} that doesn't exist in the registry")
-        new_state = unit.create_next_state(change.date)
+        # Create a new unit state
+        new_state = change.create_next_state(unit)
+
         for key, value in self.to_reform.items():
             if not hasattr(new_state, key):
-                raise ValueError(f"Change ({change.date}, {str(self)}) applied to {self.unit_type.lower()} attribute that doesn't exist.")
+                raise ValueError(f"Change ({change.date}, {str(self)}) applied to {self.unit_type.lower()} attribute that doesn't exist. Current {self.unit_type.lower()} state: {new_state}")
             if getattr(new_state, key) != value:
                 raise ValueError(
                     f"Change on {change.date} ({self}) expects the {self.unit_type.lower()} to have key '{value}', "
@@ -220,17 +222,18 @@ class OneToMany(BaseChangeMatter):
         # describes ONLY exchange of territories between administrative units.
         # It is however very easy to extend the toolkit to work with exchange of other
         # administrative unit stock variables - above all this method has to be rewritten.
-        units_new_states = []
         if(self.unit_type=="Region"):
             raise ValueError(f"Method OneToMany not implemented for regions.")
+        
         unit_from = dist_registry.find_unit(self.take_from.current_name)
+
         if self.take_from.delete_unit:
-            unit_from.abolish(change.date)
+            change.abolish(unit_from)
             unit_from.changes.append(("abolished", change))
             change.units_affected[self.unit_type].append(("abolished", unit_from))
             adm_state.find_and_pop(unit_from.name_id, self.unit_type)
         else:
-            units_new_states.append(unit_from.create_next_state(change.date))
+            change.create_next_state(unit_from)
             unit_from.changes.append(("territory", change))
             change.units_affected[self.unit_type].append(("territory", unit_from))
         for take_to_dict in self.take_to:
@@ -244,20 +247,19 @@ class OneToMany(BaseChangeMatter):
                 else:
                     unit = dist_registry.add_unit(take_to_dict.district)
                     unit_state = unit.states[0]
+                unit_state.previous_change = change
+                change.next_states.append(unit_state)
                 adm_state.add_address(take_to_dict.new_district_address, {})
                 unit_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
-                units_new_states.append(unit_state)
                 unit.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
                 change.units_affected[self.unit_type].append(("created", unit))
             else:
                 unit = dist_registry.find_unit(take_to_dict.current_name)
                 if(unit is None):
                     raise ValueError(f"OneToMany change applied to district {take_to_dict.current_name} that doesn't exist in the registry with 'create'=False.")
-                units_new_states.append(unit.create_next_state(change.date))
+                change.create_next_state(unit)
                 unit.changes.append(("territory", change))
                 change.units_affected[self.unit_type].append(("territory", unit))
-        for state in units_new_states:
-            state.current_territory = None # Territorial change to implement later
         return
     
     def districts_involved(self) -> list[str]:
@@ -417,20 +419,17 @@ class ManyToOne(BaseModel):
         # describes ONLY exchange of territories between administrative units.
         # It is however very easy to extend the toolkit to work with exchange of other
         # administrative unit stock variables - above all this method has to be rewritten.
-        units_from = []
-        units_from_names = [unit.current_name for unit in self.take_from]
-        units_new_states = []
         if(self.unit_type=="Region"):
             raise ValueError(f"Method OneToMany not implemented for regions.")
         for unit_dict in self.take_from:
             unit = dist_registry.find_unit(unit_dict.current_name)
             if unit_dict.delete_unit:
-                unit.abolish(change.date)
+                change.abolish(unit)
                 unit.changes.append(("abolished", change))
                 change.units_affected[self.unit_type].append(("abolished", unit))
                 adm_state.find_and_pop(unit.name_id, self.unit_type)
             else:
-                units_new_states.append(unit.create_next_state(change.date))
+                change.create_next_state(unit)
                 unit.changes.append(("territory", change))
                 change.units_affected[self.unit_type].append(("territory", unit))
 
@@ -443,19 +442,18 @@ class ManyToOne(BaseModel):
             else:
                 unit_to = dist_registry.add_unit(self.take_to.district)
                 unit_to_state = unit_to.states[0]
+            unit_to_state.previous_change = change
+            change.next_states.append(unit_to_state)
             adm_state.add_address(self.take_to.new_district_address, {})
             unit_to_state.timespan = TimeSpan(**{"start": change.date, "end": config["global_timespan"]["end"]})
-            units_new_states.append(unit_to_state)
             unit_to.changes.append(("created", change)) # 'created' changed is always a 'territory' change - districts can only be created by giving them some territory.
             change.units_affected[self.unit_type].append(("created", unit_to))
         else:
             unit_to = dist_registry.find_unit(self.take_to.current_name)
-            units_new_states.append(unit_to.create_next_state(change.date))
+            change.create_next_state(unit_to)
             unit_to.changes.append(("territory", change))
             change.units_affected[self.unit_type].append(("territory", unit_to))
 
-        for state in units_new_states:
-            state.current_territory = None # Territorial change to implement later
         return
     
     def districts_involved(self) -> list[str]:
@@ -582,11 +580,44 @@ class Change(BaseModel):
     units_affected_current_names: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}} # Dict with values: "District" or "Region", the value is dict with values: "before" or "after", its values are lists of affected units.
     units_affected_ids: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}} # The attribute is created based on units_created_current_names during change application.
 
+    previous_states: Optional[List] = []
+    next_states: Optional[List] = []
+
     def echo(self) -> str:
         return self.matter.echo(self.date, self.source)
 
     def districts_involved(self) -> list[str]:
         return self.matter.districts_involved()
+    
+    def create_next_state(self, unit: Unit) -> UnitState:
+        """
+        Creates a next state of a given unit on the self.date,
+        and links the previous state and the next state to self"""
+        # Create a new unit state
+        old_state, new_state = unit.create_next_state(self.date)
+        
+        # Link the states to each other:
+        old_state.next = new_state
+        new_state.previous = old_state
+
+        # Link old state to change:
+        old_state.next_change = self
+        self.previous_states.append(old_state)
+
+        # Link new state to change:
+        new_state.previous_change = self
+        self.next_states.append(new_state)
+
+        return new_state
+
+    def abolish(self, unit: Unit) -> None:
+        """
+        Abolished the given unit and links its state before abolishmend
+        to itself."""
+        old_state = unit.abolish(self.date)
+        old_state.next_change = self
+        self.previous_states.append(old_state)
+
 
     def verify_consistency(self, adm_state, region_registry, dist_registry):
         # First, verify the consistency between administrative state, region registry and district registry.

@@ -32,7 +32,10 @@ def load_and_standardize_csv(file_path, region_registry, district_registry):
             elif unit.name_id != unit_name_aim:
                 print(f"Warning: name {unit_name_aim} is an alternative {unit_type.lower()} name. Processing further as {unit.name_id}")
 
-            df.at[idx, unit_type] = unit.name_id
+            if unit is None:
+                df.at[idx, unit_type] = None
+            else:
+                df.at[idx, unit_type] = unit.name_id
 
     for unit_type in ['Region', 'District']:
         if not_in_registry[unit_type]:

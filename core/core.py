@@ -181,6 +181,11 @@ class AdministrativeHistory():
 
             csv_filename = "/state" + new_state.timespan.start.strftime("%Y-%m-%d")
             new_state.to_csv(self.adm_states_output_path + csv_filename)
+        
+    def standardize_address(self):
+        """
+        To implement later. Every address should be standardized before any use."""
+        pass
 
     def list_change_dates(self, lang = "pol"):
         # Lists all the dates of administrative changes.

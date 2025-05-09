@@ -1,5 +1,6 @@
+from __future__ import annotations
 from pydantic import BaseModel, model_validator
-from typing import Optional, Literal, List, Tuple, Any
+from typing import Optional, Literal, List, Tuple, Any, TYPE_CHECKING
 
 from datetime import datetime
 
@@ -8,6 +9,9 @@ matplotlib.use("Agg")
 import geopandas as gpd
 
 from data_models.adm_timespan import TimeSpan
+
+if TYPE_CHECKING: # Using TYPE_CHECKING to postpone Change import and avoid circular imports
+    from data_models.adm_change import Change
     
 #####################################################################################
 #                   Data models for states of administrative units                  #
@@ -23,9 +27,19 @@ class UnitState(BaseModel):
     """
     current_name: str
     current_seat_name: str
-
-    # The timespan during which this state is valid.
     timespan: Optional[TimeSpan] = None
+
+    # Self-references
+    next: Optional[UnitState] = None
+    previous: Optional[UnitState] = None
+
+    # Forward references to Change
+    next_change: Optional[Any] = None
+    previous_change: Optional[Any] = None
+
+
+# This replaces `update_forward_refs()` in Pydantic v2
+UnitState.model_rebuild()
 
 class Unit(BaseModel):
     """
@@ -79,13 +93,15 @@ class Unit(BaseModel):
         new_state.timespan.update_middle()
         self.states.append(new_state)
         self.states.sort(key=lambda state: state.timespan.start)
-        return new_state
+
+        return last_state, new_state
     
     def abolish(self, date):
         """Sets the end of the timespan covering the given date to the passed date, marking the unit's abolition."""
         last_state = self.find_state_by_date(date)
         last_state.timespan.end = date
         last_state.timespan.update_middle()
+        return last_state
 
     def exists(self, date):
         """Returns True if the state exists for a given date or False if it doesn't."""
@@ -172,6 +188,43 @@ class UnitRegistry(BaseModel):
 class DistState(UnitState):
     current_dist_type: Literal["w", "m"]
     current_territory: Optional[Any] = None
+    territory_checked: bool = False # Attribute used during territory search.
+
+    def get_territory(self):
+        """
+        This method searches recursively through the graph of all links between district states
+        and fills all district territories that can be deduced on the basis of type of district
+        changes linking the consecutive states and the territories of the consecutive states.
+
+        The logic of the method:
+        The method tries to get the territory of the state before and after itself.
+        1. If the state was created by a district attribute reform, the territory is same as of the state before.
+        2. If the state was created by the change of unit address, the territory is the same as of the state before.
+        3. If the state was created by a OneToMany or ManyToOne change involving n districts (including itself), then
+            the state's territory can be deduced if the territories of the n-1 others are knowned.
+        
+        The method reaches to the states before and afterwards (in case of OneToMany and ManyToOne it reaches also to the
+        states of other units involved in the change), and:
+        1. Either retreives their territory,
+        2. Or 
+            a. Verifies that they haven't been checked yet - if yes, it returns None,
+            b. if no, it calls the 'get_territory' method
+        """
+        if self.current_territory is not None:
+            return self.current_territory
+        else:
+            if self.territory_checked:
+                return None
+            else:
+                self.territory_checked = True
+                if len(self.next_change.next_states) == 1 and len(self.next_change.previous_states)==1:
+                    new_territory = self.next_state.get_territory()
+                    if new_territory is not None:
+                        return new_territory
+                elif len(self.previous_change.previous_states) == 1 and len(self.previous_change.next_states)==1:
+                    return self.previous_state.get_territory()
+                else:
+                    other_change_states = self.next_change.previous_states + self.next_change.next_states
 
 class District(Unit):
     """

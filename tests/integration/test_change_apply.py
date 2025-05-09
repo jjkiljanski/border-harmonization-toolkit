@@ -77,10 +77,6 @@ def test_apply_one_to_many(change_test_setup, one_to_many_matter_fixture):
     assert ("created", change) in district_x.changes
     assert ("created", district_x) in change.units_affected["District"]
 
-    # Check that the territory attribute was nulled (as placeholder)
-    for unit in [district_b, district_x]:
-        assert unit.states[-1].current_territory is None
-
 def test_apply_many_to_one(change_test_setup, create_many_to_one_matter_fixture):
     # This change should refer to existing attributes and be valid.
 
@@ -120,10 +116,6 @@ def test_apply_many_to_one(change_test_setup, create_many_to_one_matter_fixture)
     assert not district_x.exists(datetime(1924, 1, 1)) and district_x.exists(datetime(1924, 1, 3))
     assert ("created", change) in district_x.changes
     assert ("created", district_x) in change.units_affected["District"]
-
-    # Check that the territory attribute was nulled (as placeholder)
-    assert district_x.states[-1].current_territory is None
-    assert district_b.states[-1].current_territory is None
 
 def test_apply_change_adm_state(change_test_setup, region_change_adm_state_matter_fixture):
     # This change should refer to existing attributes and be valid.
