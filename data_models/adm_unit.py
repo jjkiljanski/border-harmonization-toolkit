@@ -37,6 +37,18 @@ class UnitState(BaseModel):
     next_change: Optional[Any] = None
     previous_change: Optional[Any] = None
 
+    # Custon __repr__ magic method to avoid infinite recursion loop between Change and UnitState that hold each other as parameters.
+    def __repr__(self):
+        return (
+            f"UnitState(current_name={self.current_name!r}, "
+            f"current_seat_name={self.current_seat_name!r}, "
+            f"timespan={self.timespan!r}, "
+            f"next=..., "
+            f"previous=..., "
+            f"next_change=..., previous_change=...)"
+        )
+
+
 
 # This replaces `update_forward_refs()` in Pydantic v2
 UnitState.model_rebuild()

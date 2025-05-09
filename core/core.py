@@ -213,7 +213,7 @@ class AdministrativeHistory():
         # Find the closest district list:
         r_lists_distance = []
         d_lists_distance = []
-        state_distance = []
+        state_distances = []
         for state in self.states_list:
             r_list_comparison, d_list_comparison, state_comparison = state.compare_to_r_d_list(r_d_aim_list)
             r_list_distance, r_list_differences = r_list_comparison
@@ -221,14 +221,14 @@ class AdministrativeHistory():
             state_distance, state_differences = state_comparison
             r_lists_distance.append((r_list_distance, r_list_differences, str(state)))
             d_lists_distance.append((d_list_distance, d_list_differences, str(state)))
-            state_distance.append((state_distance, state_differences, str(state)))
+            state_distances.append((state_distance, state_differences, str(state)))
             if state_distance == 0:
                 print(f"The state identified as: {state}")
                 return
 
         r_lists_distance.sort()
         d_lists_distance.sort()
-        state_distance.sort()
+        state_distances.sort()
 
         print("No state identified.")
 
@@ -243,6 +243,6 @@ class AdministrativeHistory():
             print(f"{i}. State {state} (distance: {distance}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
         
         print("The closest states:")
-        for i, (distance, diff, state) in enumerate(state_distance[:3]):
+        for i, (distance, diff, state) in enumerate(state_distances[:3]):
             diff_1, diff_2 = diff
             print(f"{i}. State {state} (distance: {distance}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")

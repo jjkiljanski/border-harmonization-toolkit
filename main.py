@@ -31,7 +31,7 @@ for filename in os.listdir(folder_path):
         # Read the CSV
         df = load_and_standardize_csv(file_path, administrative_history.region_registry, administrative_history.dist_registry)
         # Create list of (REGION, DISTRICT) pairs in uppercase
-        r_d_pairs = list(zip(df['region'], df['district']))
+        r_d_pairs = list(zip(df['Region'], df['District']))
 
         print(f"Running {filename} identification.")
         #print(file_pairs)

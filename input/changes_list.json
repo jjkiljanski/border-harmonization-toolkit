@@ -236,7 +236,7 @@
       "change_type": "ManyToOne",
       "take_from": [
         {
-          "current_name": "RYBNICKI",
+          "current_name": "RYBNICKI (ŚLĄSK NIEMIECKI)",
           "weight_from": null,
           "weight_to": null,
           "delete_unit": false
@@ -489,6 +489,28 @@
     }
   },
   {
+    "date": "10.07.1923",
+    "source": "Dz.U. Śl. Nr 29 poz. 162",
+    "description": "10.07.1923 wyłączono gminę Gierałtowice z powiatu rudzkiego i przyłączono ją do powiatu rybnickiego",
+    "matter": {
+      "change_type": "ManyToOne",
+      "take_from": [
+        {
+          "current_name": "RUDZKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        }
+      ],
+      "take_to": {
+        "create": false,
+        "current_name": "RYBNICKI"
+      },
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
     "date": "15.07.1923",
     "source": "Dz.U. z 1922 r. nr 26, poz. 213",
     "description": "X.X.1923 utworzono z terytoriów powiatów wileńskiego i trockiego powiat wileńsko-trocki",
@@ -601,6 +623,38 @@
           "MAKOWSKI (MAKÓW PODHALAŃSKI)"
         ]
       },
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "15.02.1924",
+    "source": "Dz.U. Śl., nr 5, poz. 20",
+    "description": "15.02.1924 zniesiono powiat rudzki, a jego terytorium włączono do powiatów katowickiego, pszczyńskiego, rybnickiego i świętochłowickiego",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": true,
+        "current_name": "RUDZKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "KATOWICKI"
+        },
+        {
+          "create": false,
+          "current_name": "PSZCZYŃSKI"
+        },
+        {
+          "create": false,
+          "current_name": "RYBNICKI"
+        },
+        {
+          "create": false,
+          "current_name": "ŚWIĘTOCHŁOWICKI"
+        }
+      ],
       "unit_attribute": "territory",
       "unit_type": "District"
     }
@@ -1001,8 +1055,7 @@
       },
       "unit_type": "Region",
       "current_name": "ZIEMIA WILEŃSKA"
-    },
-    "unit_type": "Region"
+    }
   },
   {
     "date": "01.01.1927",
@@ -1186,6 +1239,44 @@
       ],
       "unit_attribute": "territory",
       "unit_type": "District"
+    }
+  },
+  {
+    "date": "21.03.1928",
+    "order": 1,
+    "source": "Dz.U. 1928 nr 25 poz. 221",
+    "description": "21.03.1928 zniesiono powiat wejherowski, a jego terytorium włączono do powiatu morskiego.",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": true,
+        "current_name": "WEJHEROWSKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "MORSKI"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "21.03.1928",
+    "order": 2,
+    "source": "Dz.U. 1928 nr 25 poz. 221",
+    "description": "21.03.1928 przeniesiono siedzibę powiatu morskiego do Wejherowa",
+    "matter": {
+      "change_type": "UnitReform",
+      "to_reform": {
+        "current_seat_name": "GDYNIA"
+      },
+      "after_reform": {
+        "current_seat_name": "WEJHEROWO"
+      },
+      "unit_type": "District",
+      "current_name": "MORSKI"
     }
   },
   {
@@ -1582,6 +1673,22 @@
     }
   },
   {
+    "date": "04.03.1931",
+    "source": "M.P. z 1931 r. nr 51, poz. 86",
+    "description": "4 marca 1931 zmieniono nazwę miasta z Lesko na Lisko, a nazwę powiatu z Leski na Liski",
+    "matter": {
+      "change_type": "UnitReform",
+      "to_reform": {
+        "current_name": "LESKI"
+      },
+      "after_reform": {
+        "current_name": "LISKI"
+      },
+      "unit_type": "District",
+      "current_name": "LESKI"
+    }
+  },
+  {
     "date": "1.04.1931",
     "source": "Dz.U. z 1931 r. nr 26, poz. 155",
     "description": "1.04.1931 z części powiatów południowo-warszawskiego i północno-warszawskiego utworzono powiat śródmiejsko-warszawski",
@@ -1676,7 +1783,7 @@
               {
                 "current_name": "IWACEWICKI",
                 "current_seat_name": "IWACEWICZE",
-                "current_dist_type": "m"
+                "current_dist_type": "w"
               }
             ]
           },
@@ -2170,6 +2277,61 @@
     }
   },
   {
+    "date": "01.07.1934",
+    "source": "Dz.U. Śl. z 1934 r. nr 13, poz. 24",
+    "description": "Utworzono powiat miejski Chorzów z całości terytorium miasta Królewska Huta oraz gminy Chorzów powiatu katowickiego i gminy Nowe Hajduki powiatu świętochłowickiego",
+    "matter": {
+      "change_type": "ManyToOne",
+      "take_from": [
+        {
+          "current_name": "KATOWICKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        },
+        {
+          "current_name": "ŚWIĘTOCHŁOWICKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        },
+        {
+          "current_name": "KRÓLEWSKA HUTA",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": true
+        }
+      ],
+      "take_to": {
+        "create": true,
+        "district": {
+          "name_id": "CHORZÓW",
+          "name_variants": [
+            "CHORZÓW"
+          ],
+          "seat_name_variants": [
+            "CHORZÓW"
+          ],
+          "states": [
+            {
+              "current_name": "CHORZÓW",
+              "current_seat_name": "CHORZÓW",
+              "current_dist_type": "m",
+              "timespan": null
+            }
+          ]
+        },
+        "new_district_address": [
+          "HOMELAND",
+          "ŚLĄSKIE",
+          "CHORZÓW"
+        ]
+      },
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
     "date": "01.04.1937",
     "source": "Dz.U. z 1937 r. nr 18, poz. 119",
     "description": "zniesiono powiat ropczycki, a na jego terytorium powołano do życia powiat dębicki z siedzibą w Dębicy",
@@ -2521,6 +2683,24 @@
       ],
       "unit_attribute": "territory",
       "unit_type": "District"
+    }
+  },
+  {
+    "date": "16.1.1939",
+    "source": "Dz.U. 1938 nr 87 poz. 585",
+    "description": "przyłączono powiat frysztacki anektowany Czechosłowacji",
+    "matter": {
+      "change_type": "ChangeAdmState",
+      "take_from": [
+        "ABROAD",
+        "ZAOLZIE",
+        "FRYSZTACKI"
+      ],
+      "take_to": [
+        "HOMELAND",
+        "ŚLĄSKIE",
+        "FRYSZTACKI"
+      ]
     }
   },
   {

@@ -637,7 +637,7 @@ class Change(BaseModel):
                 if unit is None: # Check if unit exists in the proper registry
                     raise ConsistencyError(f"Change {str(self)} applied to {unit_type.lower()} {unit_current_name} but no unit with this name variant exists in the {unit_type.lower()} registry.")
                 if unit_state is None: # Check if state exists for the unit for the given date.
-                    raise ConsistencyError(f"Change {str(self)} applied to {unit_type.lower()} {unit_current_name} but no unit state for this unit exists in the {unit_type.lower()} registry.")
+                    raise ConsistencyError(f"Change {str(self)} applied to {unit_type.lower()} {unit_current_name} but no unit state for this unit exists in the {unit_type.lower()} registry: {unit}.")
                 
         # Verify and standardize all addresses
         self.matter.verify_and_standardize_all_addresses(self, adm_state, region_registry, dist_registry)

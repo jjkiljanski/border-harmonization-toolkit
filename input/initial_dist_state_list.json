@@ -1449,19 +1449,19 @@
     ]
   },
   {
-    "name_id": "LISKI",
+    "name_id": "LESKI",
     "name_variants": [
       "LISKI",
       "LESKI"
     ],
     "seat_name_variants": [
-      "LISKO",
+      "LESKO",
       "LISKO"
     ],
     "states": [
       {
-        "current_name": "LISKI",
-        "current_seat_name": "LISKO",
+        "current_name": "LESKI",
+        "current_seat_name": "LESKO",
         "current_dist_type": "w",
         "timespan": null
       }
@@ -2240,10 +2240,10 @@
   {
     "name_id": "KOSOWSKI (KOSÓW POLESKI)",
     "name_variants": [
-      "KOSOWSKI (KOSÓW POLESKI)"
+      "KOSOWSKI (KOSÓW POLESKI)", "KOSSOWSKI (KOSSÓW POLESKI)"
     ],
     "seat_name_variants": [
-      "KOSÓW POLESKI"
+      "KOSÓW POLESKI", "KOSSÓW POLESKI"
     ],
     "states": [
       {
@@ -2260,12 +2260,12 @@
       "KOSZYRSKI"
     ],
     "seat_name_variants": [
-      "KAMIEŃ KOSZYR"
+      "KAMIEŃ KOSZYRSKI"
     ],
     "states": [
       {
         "current_name": "KOSZYRSKI",
-        "current_seat_name": "KAMIEŃ KOSZYR",
+        "current_seat_name": "KAMIEŃ KOSZYRSKI",
         "current_dist_type": "w",
         "timespan": null
       }
@@ -3618,10 +3618,10 @@
   {
     "name_id": "BIELSKO",
     "name_variants": [
-      "BIELSKO"
+      "BIELSKO", "BIELSKO ŚLĄSKIE"
     ],
     "seat_name_variants": [
-      "BIELSKO"
+      "BIELSKO", "BIELSKO ŚLĄSKIE"
     ],
     "states": [
       {
@@ -4077,7 +4077,7 @@
   {
     "name_id": "MIŃSKI",
     "name_variants": [
-      "MIŃSKI"
+      "MIŃSKI", "MIŃSKO-MAZOWIECKI"
     ],
     "seat_name_variants": [
       "MIŃSK MAZOW."
@@ -4521,7 +4521,7 @@
   {
     "name_id": "CZESKOCIESZYŃSKI",
     "name_variants": [
-      "CZESKOCIESZYŃSKI"
+      "CZESKOCIESZYŃSKI", "CIESZYŃSKI ZACHODNI"
     ],
     "seat_name_variants": [
       "X"
@@ -4575,12 +4575,12 @@
       "KIEŻMARSKI"
     ],
     "seat_name_variants": [
-      "X"
+      "KIEŻMARK"
     ],
     "states": [
       {
         "current_name": "KIEŻMARSKI",
-        "current_seat_name": "X",
+        "current_seat_name": "KIEŻMARK",
         "current_dist_type": "w",
         "timespan": null
       }
@@ -4842,16 +4842,16 @@
     ]
   },
   {
-    "name_id": "RYBNICKI",
+    "name_id": "RYBNICKI (ŚLĄSK NIEMIECKI)",
     "name_variants": [
-      "RYBNICKI"
+      "RYBNICKI (ŚLĄSK NIEMIECKI)"
     ],
     "seat_name_variants": [
       "RYBNIK"
     ],
     "states": [
       {
-        "current_name": "RYBNICKI",
+        "current_name": "RYBNICKI (ŚLĄSK NIEMIECKI)",
         "current_seat_name": "RYBNIK",
         "current_dist_type": "w",
         "timespan": null
