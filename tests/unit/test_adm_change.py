@@ -23,7 +23,7 @@ from ...data_models.adm_change import *
 
 # Fixtures region_reform_matter_fixture and district_reform_matter_fixture are defined in the conftest.py file.
 
-# ─── TESTS USING FIXTURES ──────────────────────────────────────────────────────
+# ─── VALID CONSTRUCTION TESTS ──────────────────────────────────────────────────
 
 @pytest.mark.parametrize(
     "unit_type, current_name, to_reform_seat_name, should_raise",
@@ -115,6 +115,96 @@ def test_district_reform_missing_current_name():
             to_reform={"current_dist_type": "w", "current_seat_name": "seat_A"},
             after_reform={"current_dist_type": "m", "current_name": "district_a_Reformed"}
         )
+
+# ─── METHODS TESTS ─────────────────────────────────────────────────────────────
+
+def test_change_create_next_state(one_to_many_matter_fixture):
+    """
+    Test for 'Change.create_next_state' method.
+    """
+    # Create a unit with one initial state
+    initial_state = UnitState(
+        current_name="region_a",
+        current_seat_name="region_a_seat",
+        timespan=TimeSpan(start=datetime(1920, 1, 1), end=datetime(1938, 1, 1))
+    )
+    unit = Unit(
+        name_id="region_a",
+        name_variants=["region_a", "region_a_alt"],
+        seat_name_variants=["region_a_seat"],
+        states=[initial_state]
+    )
+
+    change = Change(
+        date=datetime(1923, 1, 2),
+        source="Test Source",
+        description="Legal Act X",
+        order=1,
+        matter=one_to_many_matter_fixture,
+        units_affected={"Region": [], "District": []}
+    )
+
+    # Act
+    new_state = change.create_next_state(unit)
+
+    # Verify that states are properly stored as change attributes
+    assert len(unit.states) == 2
+    old_state = unit.states[0]
+    new_state = unit.states[1]
+
+    # Verify links
+    assert old_state.next == new_state
+    assert new_state.previous == old_state
+    assert old_state.next_change == change
+    assert new_state.previous_change == change
+    assert change.previous_states == [old_state]
+    assert change.next_states == [new_state]
+
+    # Verify timespans
+    assert old_state.timespan.end == change.date
+    assert new_state.timespan.start == change.date
+
+def test_change_abolish(one_to_many_matter_fixture):
+    """
+    Test for 'Change.abolish' method.
+    """
+    # Arrange
+    initial_state = UnitState(
+        current_name="region_a",
+        current_seat_name="region_a_seat",
+        timespan=TimeSpan(start=datetime(1920, 1, 1), end=datetime(1938, 1, 1))
+    )
+    unit = Unit(
+        name_id="region_a",
+        name_variants=["region_a", "region_a_alt"],
+        seat_name_variants=["region_a_seat"],
+        states=[initial_state]
+    )
+
+    change = Change(
+        date=datetime(1930, 1, 1),
+        source="Abolishment Decree",
+        description="Region A abolished",
+        order=2,
+        matter=one_to_many_matter_fixture,
+        units_affected={"Region": [], "District": []}
+    )
+
+    # Act
+    change.abolish(unit)
+
+    # Verify that the old state is properly stored as change attribute
+    assert len(unit.states) == 1
+    old_state = unit.states[0]
+
+    # Verify links
+    assert old_state.next == None
+    assert old_state.next_change == change
+    assert change.previous_states == [old_state]
+    assert change.next_states == []
+
+    # Verify timespans
+    assert old_state.timespan.end == change.date
 
 
 ###########################################################################
