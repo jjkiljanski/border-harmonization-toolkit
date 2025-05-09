@@ -12,13 +12,17 @@ def load_and_standardize_csv(file_path, region_registry, district_registry):
     # Read the CSV
     df = pd.read_csv(file_path)
 
+    standardize_df(df, region_registry, district_registry)
+
+    return df
+
+def standardize_df(df, region_registry, district_registry):
     if {'Region', 'District'}.issubset(df.columns):
         df['Region'] = df['Region'].str.upper()
         df['District'] = df['District'].str.upper()
     else:
-        return ValueError(f"Dataframe loaded from {file_path} must contain 'Region' and 'District' column. Loaded columns: {df.columns}")
+        return ValueError(f"Dataframe must contain 'Region' and 'District' column. Dataframe columns: {df.columns}")
 
-    r_d_aim_new = []
     not_in_registry = {'Region': [], 'District': []}
 
     for unit_type in ['Region', 'District']:
@@ -41,8 +45,6 @@ def load_and_standardize_csv(file_path, region_registry, district_registry):
         if not_in_registry[unit_type]:
             raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
 
-    return df
-
 def load_config(config_path="config.json"):
     if not os.path.exists(config_path):
         raise FileNotFoundError(f"Configuration file {config_path} not found.")
@@ -53,9 +55,9 @@ def load_config(config_path="config.json"):
     # Convert global_timespan start and end dates to datetime objects
     global_timespan = config_data.get("global_timespan", {})
     if "start" in global_timespan:
-        global_timespan["start"] = datetime.strptime(global_timespan["start"], "%Y-%m-%d")
+        global_timespan["start"] = datetime.strptime(global_timespan["start"], "%d-%m-%Y")
     if "end" in global_timespan:
-        global_timespan["end"] = datetime.strptime(global_timespan["end"], "%Y-%m-%d")
+        global_timespan["end"] = datetime.strptime(global_timespan["end"], "%d-%m-%Y")
     
     return config_data
 

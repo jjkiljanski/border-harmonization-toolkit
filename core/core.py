@@ -4,13 +4,15 @@ from datetime import datetime
 from pydantic import parse_obj_as, ValidationError
 from typing import List
 import shutil
+import geopandas as gpd
+import os
 
 from data_models.adm_timespan import *
 from data_models.adm_unit import *
 from data_models.adm_state import *
 from data_models.adm_change import *
 
-from utils.helper_functions import load_config
+from utils.helper_functions import load_config, standardize_df
 
 class AdministrativeHistory():
     def __init__(self, config):
@@ -22,10 +24,12 @@ class AdministrativeHistory():
         self.initial_adm_state_path = config["initial_adm_state_path"]
         self.initial_region_list_path = config["initial_region_list_path"]
         self.initial_dist_list_path = config["initial_dist_list_path"]
+        self.territories_path = config["territories_path"]
 
         # Output files' paths
         self.adm_states_output_path = config["adm_states_output_path"]
 
+        # Define the administrative history timespan
         self.timespan = TimeSpan(start = config["global_timespan"]["start"], end = config["global_timespan"]["end"])
 
         # Create lists to store Change objects and Administrative State objects
@@ -52,6 +56,14 @@ class AdministrativeHistory():
 
         # Create states for the whole timespan
         self._create_history()
+
+        # Initiate list with all states for which territory is loaded from GeoJSON
+        self.states_with_loaded_territory = []
+        # Load the territories
+        self._load_territories()
+        # Deduce information about district territories where possible
+        self._deduce_territories()
+
 
     def _load_dist_registry(self):
         """
@@ -181,6 +193,66 @@ class AdministrativeHistory():
 
             csv_filename = "/state" + new_state.timespan.start.strftime("%Y-%m-%d")
             new_state.to_csv(self.adm_states_output_path + csv_filename)
+
+    def _load_territories(self):
+        """
+        Loads a territories from an external JSON file to a Geopandas dataframe
+         and asigns them to the district states based on the name_id in the 'District'
+         column and a date in the district state's timespan defined in the 'territory_date'
+         column.
+        """
+        # Initialize list to store individual territories GeoDataFrames
+        gdf_list = []
+
+        # Loop through all files in the directory
+        for filename in os.listdir(self.territories_path):
+            if filename.endswith(".json") or filename.endswith(".geojson"):
+                file_path = os.path.join(self.territories_path, filename)
+                try:
+                    gdf = gpd.read_file(file_path)
+                    gdf_list.append(gdf)
+                    print(f"Loaded: {filename} ({len(gdf)} rows)")
+                except Exception as e:
+                    print(f"Failed to load {filename}: {e}")
+
+        # Combine all into a single GeoDataFrame
+        if gdf_list:
+            territories_gdf = gpd.GeoDataFrame(gpd.concat(gdf_list, ignore_index=True), crs=gdf_list[0].crs)
+            print(f"\n✅ Combined GeoDataFrame has {len(territories_gdf)} rows.")
+        else:
+            territories_gdf = gpd.GeoDataFrame()
+            print("⚠️ No valid GeoJSON files found.")
+
+        # Standardize district and region names to name_ids in the registries
+        territories_gdf = standardize_df(territories_gdf, self.region_registry, self.dist_registry)
+
+        # Set the territories of the appropriate states
+        for idx, row in territories_gdf.iterrows():
+            # Retrieve the district name and territory date
+            district_name_id = str(row.get("District", ""))
+            territory_date = str(row.get("territory_date", ""))
+            territory_date = datetime.strptime(territory_date, "%d.%m.%Y")
+
+            # Find the appropriate unit state in the registry
+            unit, unit_state, _ = self.dist_registry.find_unit_state_by_date(district_name_id, territory_date)
+            if unit_state is None:
+                print(f"No match found for district '{district_name_id}' on {territory_date.date()}")
+                continue
+            
+            # Set the territory of the appropriate unit state.
+            unit_state.current_territory = row.geometry
+
+            # Store the information that the state has territory loaded
+            self.states_with_loaded_territory.append(unit_state)
+
+    def _deduce_territories(self):
+        """
+        This function takes the list of unit states with territory geometries
+        loaded for GeoJSON and deduces the territory for all other states
+        where it is possible.
+        """
+        for unit_state in self.states_with_loaded_territory:
+            unit_state.spread_territory_information()
         
     def standardize_address(self):
         """
@@ -205,6 +277,15 @@ class AdministrativeHistory():
     def print_all_states(self):
         for state in self.states_list:
             print(state)
+
+    def find_adm_state_by_date(self, date: datetime) -> AdministrativeState:
+        """
+        Returns an administrative state with date encompassing the passed date or None if such state was not found.
+        """
+        for adm_state in self.states_list:
+            if date in adm_state.timespan:
+                return adm_state
+        return None
 
     def identify_state(self, r_d_aim_list):
         """

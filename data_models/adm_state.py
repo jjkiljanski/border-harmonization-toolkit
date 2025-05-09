@@ -352,9 +352,12 @@ class AdministrativeState(BaseModel):
 
         if verbose == True:
             print(f"State {self}:")
+            print("Region list comparison:")
+            print(f"\tDistance from the r_list: {r_list_distance}")
+            print(f"\tAbsent in r_list to identify: {r_list_difference_1}.\n Absent in state: {r_list_difference_2}.")
             print("District list comparison:")
-            print(f"\tDistance from the d_list: {list_distance}")
-            print(f"\tAbsent in d_list to identify: {list_difference_1}.\n Absent in state: {list_difference_2}.")
+            print(f"\tDistance from the d_list: {d_list_distance}")
+            print(f"\tAbsent in d_list to identify: {d_list_difference_1}.\n Absent in state: {d_list_difference_2}.")
             print("(Region,district) pairs comparison:")
             print(f"\tDistance from the r_d_list: {state_distance}")
             print(f"\tAbsent in r_d_list to identify: {state_difference_1}.\n Absent in state: {state_difference_2}.")

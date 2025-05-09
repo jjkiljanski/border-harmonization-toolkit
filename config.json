@@ -4,9 +4,10 @@
     "initial_region_list_path": "input/initial_region_state_list.json",
     "initial_dist_list_path": "input/initial_dist_state_list.json",
     "adm_states_output_path": "output/adm_states",
+    "territories_path": "input/territories/",
     "global_timespan": {
-        "start": "1921-02-19",
-        "end": "1939-09-01"
+        "start": "19-02-1921",
+        "end": "01-09-1939"
     },
     "language": "eng"
 }

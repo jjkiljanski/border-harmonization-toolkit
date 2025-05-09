@@ -202,7 +202,7 @@ class DistState(UnitState):
     current_territory: Optional[Any] = None
     territory_checked: bool = False # Attribute used during territory search.
 
-    def get_territory(self):
+    def spread_territory_information(self):
         """
         This method searches recursively through the graph of all links between district states
         and fills all district territories that can be deduced on the basis of type of district
