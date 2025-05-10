@@ -21,7 +21,7 @@ def standardize_df(df, region_registry, district_registry):
         df['Region'] = df['Region'].str.upper()
         df['District'] = df['District'].str.upper()
     else:
-        return ValueError(f"Dataframe must contain 'Region' and 'District' column. Dataframe columns: {df.columns}")
+        raise ValueError(f"Dataframe must contain 'Region' and 'District' column. Dataframe columns: {df.columns}")
 
     not_in_registry = {'Region': [], 'District': []}
 
@@ -44,6 +44,8 @@ def standardize_df(df, region_registry, district_registry):
     for unit_type in ['Region', 'District']:
         if not_in_registry[unit_type]:
             raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
+        
+    return df
 
 def load_config(config_path="config.json"):
     if not os.path.exists(config_path):

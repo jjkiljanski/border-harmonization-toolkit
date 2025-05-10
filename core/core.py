@@ -5,6 +5,7 @@ from pydantic import parse_obj_as, ValidationError
 from typing import List
 import shutil
 import geopandas as gpd
+import pandas as pd
 import os
 
 from data_models.adm_timespan import *
@@ -60,7 +61,7 @@ class AdministrativeHistory():
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
         # Load the territories
-        #self._load_territories()
+        self._load_territories()
         # Deduce information about district territories where possible
         #self._deduce_territories()
 
@@ -217,14 +218,22 @@ class AdministrativeHistory():
 
         # Combine all into a single GeoDataFrame
         if gdf_list:
-            territories_gdf = gpd.GeoDataFrame(gpd.concat(gdf_list, ignore_index=True), crs=gdf_list[0].crs)
-            print(f"\n✅ Combined GeoDataFrame has {len(territories_gdf)} rows.")
+            try:
+                territories_gdf = gpd.GeoDataFrame(pd.concat(gdf_list, ignore_index=True), crs=gdf_list[0].crs)
+                print(f"\n✅ Combined GeoDataFrame has {len(territories_gdf)} rows.")
+            except ValueError as e:
+                print("❌ Failed to concatenate GeoDataFrames:", e)
+                raise  # Don't assign the error to `territories_gdf`
         else:
             territories_gdf = gpd.GeoDataFrame()
             print("⚠️ No valid GeoJSON files found.")
 
         # Standardize district and region names to name_ids in the registries
-        territories_gdf = standardize_df(territories_gdf, self.region_registry, self.dist_registry)
+        try:
+            territories_gdf = standardize_df(territories_gdf, self.region_registry, self.dist_registry)
+        except ValueError as e:
+            print("❌ Failed during standardization:", e)
+            raise  # Do NOT assign the error to territories_gdf!
 
         # Set the territories of the appropriate states
         for idx, row in territories_gdf.iterrows():

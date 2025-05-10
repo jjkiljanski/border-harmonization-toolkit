@@ -1,4 +1,4 @@
-region,district,territory_date,centroid_lon,centroid_lat
+Region,District,territory_date,centroid_lon,centroid_lat
 poznańskie,bydgoski,18.04.1931,430941.7728698165,593374.7972618621
 poznańskie,Gniezno,18.04.1931,405173.0145342723,517185.06800669484
 poznańskie,czarnkowski,18.04.1931,326618.6203959033,556543.2286882721
