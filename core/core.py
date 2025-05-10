@@ -63,7 +63,7 @@ class AdministrativeHistory():
         # Load the territories
         self._load_territories()
         # Deduce information about district territories where possible
-        #self._deduce_territories()
+        self._deduce_territories()
 
 
     def _load_dist_registry(self):
