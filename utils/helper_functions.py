@@ -16,7 +16,7 @@ def load_and_standardize_csv(file_path, region_registry, district_registry):
 
     return df
 
-def standardize_df(df, region_registry, district_registry):
+def standardize_df(df, region_registry, district_registry, raise_errors = True):
     if {'Region', 'District'}.issubset(df.columns):
         df['Region'] = df['Region'].str.upper()
         df['District'] = df['District'].str.upper()
@@ -42,10 +42,33 @@ def standardize_df(df, region_registry, district_registry):
                 df.at[idx, unit_type] = unit.name_id
 
     for unit_type in ['Region', 'District']:
-        if not_in_registry[unit_type]:
+        if not_in_registry[unit_type] and raise_errors:
             raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
         
     return df
+
+def load_uploaded_csv(uploaded_file):
+    # Step 1: Read a sample to guess encoding and check delimiter
+    try:
+        sample_bytes = uploaded_file.read(2048)
+        uploaded_file.seek(0)  # reset for actual reading
+        try:
+            sample_str = sample_bytes.decode('utf-8')
+            encoding = 'utf-8'
+        except UnicodeDecodeError:
+            sample_str = sample_bytes.decode('windows-1250')
+            encoding = 'windows-1250'
+    except Exception as e:
+        st.error(f"Could not read file preview: {e}")
+        return None
+
+    # Step 2: Read using pandas
+    try:
+        df = pd.read_csv(uploaded_file, encoding=encoding, sep=';', engine='python')
+        return df
+    except Exception as e:
+        st.error(f"Could not parse CSV file. Encoding: {encoding}. Error: {e}")
+        return None
 
 def load_config(config_path="config.json"):
     if not os.path.exists(config_path):
@@ -89,6 +112,7 @@ def build_plot_from_layers(*layers):
                     x, y = row.geometry.centroid.coords[0]
                     ax.text(x, y, str(row[name_col]), ha="center", va="center", fontsize=20, color="black")
 
+    ax.set_aspect('equal', adjustable='datalim')  # Ensure square aspect ratio
     ax.set_axis_off()
     return fig
 

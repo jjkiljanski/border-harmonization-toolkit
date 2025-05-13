@@ -9,5 +9,6 @@
         "start": "19-02-1921",
         "end": "01-09-1939"
     },
+    "territories_crs": "EPSG:4326",
     "language": "eng"
 }

@@ -243,7 +243,6 @@ class OneToMany(BaseChangeMatter):
                 if unit is not None:
                     unit_state = take_to_dict.district.states[0]
                     unit.states.append(unit_state)
-                    print(f"New state {unit_state} appended to states of unit {unit.name_id}.")
                 else:
                     unit = dist_registry.add_unit(take_to_dict.district)
                     unit_state = unit.states[0]
@@ -438,7 +437,6 @@ class ManyToOne(BaseModel):
             if unit_to is not None:
                 unit_to_state = DistState(**self.take_to.district.states[0])
                 unit_to.states.append(unit_to_state)
-                print(f"New state {unit_to_state} appended to states of unit {unit.name_id}.")
             else:
                 unit_to = dist_registry.add_unit(self.take_to.district)
                 unit_to_state = unit_to.states[0]

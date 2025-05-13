@@ -7,6 +7,7 @@ import shutil
 import geopandas as gpd
 import pandas as pd
 import os
+import plotly.express as px
 
 from data_models.adm_timespan import *
 from data_models.adm_unit import *
@@ -61,9 +62,9 @@ class AdministrativeHistory():
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
         # Load the territories
-        self._load_territories()
+        #self._load_territories()
         # Deduce information about district territories where possible
-        self._deduce_territories()
+        #self._deduce_territories()
 
 
     def _load_dist_registry(self):
@@ -83,10 +84,12 @@ class AdministrativeHistory():
         # Use pydantic to parse and validate the list
         try:
             self.dist_registry = parse_obj_as(DistrictRegistry, {"unit_list": data})
+            # Set initial timespans
             for dist in self.dist_registry.unit_list:
                 dist.states[0].timespan = TimeSpan(start = self.timespan.start, end = self.timespan.end)
+            # Set CRS
             n_districts = len(self.dist_registry.unit_list)
-            print(f"✅ Loaded {n_districts} validated districts. Set their initial state timespands to {TimeSpan(start = self.timespan.start, end = self.timespan.end)}")
+            print(f"✅ Loaded {n_districts} validated districts. Set their initial state timespands to {TimeSpan(start = self.timespan.start, end = self.timespan.end)}.")
         except ValidationError as e:
             print(e.json(indent=2))
 
@@ -194,6 +197,9 @@ class AdministrativeHistory():
 
             csv_filename = "/state" + new_state.timespan.start.strftime("%Y-%m-%d")
             new_state.to_csv(self.adm_states_output_path + csv_filename)
+        
+        # Sort district list in the district registry by name_id
+        self.dist_registry.unit_list.sort(key=lambda dist: dist.name_id)
 
     def _load_territories(self):
         """
@@ -202,6 +208,7 @@ class AdministrativeHistory():
          column and a date in the district state's timespan defined in the 'territory_date'
          column.
         """
+        print("Loading territories...")
         # Initialize list to store individual territories GeoDataFrames
         gdf_list = []
 
@@ -211,8 +218,14 @@ class AdministrativeHistory():
                 file_path = os.path.join(self.territories_path, filename)
                 try:
                     gdf = gpd.read_file(file_path)
-                    gdf_list.append(gdf)
                     print(f"Loaded: {filename} ({len(gdf)} rows)")
+                    if gdf.crs is None:
+                        raise ValueError(f"Geometry loaded from '{file_path}' has no defined CRS.")
+                    if gdf.crs != "EPSG:4326":
+                        original_crs = gdf.crs
+                        gdf = gdf.to_crs("EPSG:4326")
+                        print(f"CRS of the geometry loaded from file '{file_path}' converted. Original: {original_crs}. New: 'EPSG:4326'.")
+                    gdf_list.append(gdf)
                 except Exception as e:
                     print(f"Failed to load {filename}: {e}")
 
@@ -220,7 +233,7 @@ class AdministrativeHistory():
         if gdf_list:
             try:
                 territories_gdf = gpd.GeoDataFrame(pd.concat(gdf_list, ignore_index=True), crs=gdf_list[0].crs)
-                print(f"\n✅ Combined GeoDataFrame has {len(territories_gdf)} rows.")
+                print(f"\n✅ Combined GeoDataFrame has {len(territories_gdf)} rows. CRS: 'EPSG:4326'")
             except ValueError as e:
                 print("❌ Failed to concatenate GeoDataFrames:", e)
                 raise  # Don't assign the error to `territories_gdf`
@@ -336,3 +349,108 @@ class AdministrativeHistory():
         for i, (distance, diff, state) in enumerate(state_distances[:3]):
             diff_1, diff_2 = diff
             print(f"{i}. State {state} (distance: {distance}).\n Absent in list to identify: {diff_1}.\n Absent in state: {diff_2}.")
+
+    def plot_dist_changes_by_year(self, homeland_only = True, black_and_white=False):
+        """
+        Counts the number of districts that were ever changed in administrative history.
+        Plots the number of districts with borders changed by year and returns the plot.
+
+        If homeland_only is True, counts only districts that were ever in 'HOMELAND'
+        during self.timespan.
+
+        If black_and_white is True, plots in black and white.
+        """
+        n_dist_changed = 0 # Total number of districts that were changed
+        n_districts = 0
+
+        # List of (datetime(year,1,1), datetime(year+1,1,1)) pairs
+        year_timespans = [TimeSpan(start = datetime(year, 1, 1), end = datetime(year + 1, 1, 1)) for year in range(self.timespan.start.year, self.timespan.end.year+1)]
+        # List to store change type, number of changes and districts affected per year.
+        change_records = []
+        # Convert each timespan to a label like "1921–1922" (for plotting)
+        timespan_labels = [str(year_timespan.start.year) for year_timespan in year_timespans]
+
+        for district in self.dist_registry.unit_list:
+            # Check if district was ever homeland:
+            was_homeland = False
+            for year_timespan in year_timespans:
+                current_dist_address = self.find_adm_state_by_date(year_timespan.middle).find_address(district.name_id, 'District')
+                if current_dist_address:
+                    if current_dist_address[0] == 'HOMELAND':
+                        was_homeland = True
+            # Count districts if homeland_only is False or the district ever was in 'HOMELAND'
+            if not homeland_only or was_homeland:
+                n_districts += 1
+                print(f"District {district.name_id} belonged to homeland. Num changes: {len(district.changes)}")
+                # Count changes per year. We use the 'district.changes', not the 'self.changes_list' list, because we want to count only districts that were ever in 'homeland'.
+                # Start with assuring that district changes are sorted. Every element in the district.changes is a pair (change_type, change). We sort first by 'date', then by 'order' attribute.
+                district.changes.sort(key=lambda change_pair: (change_pair[1].date, change_pair[1].order))
+                for i, year_timespan in enumerate(year_timespans):
+                    for j, (change_type, change) in enumerate(district.changes):
+                        if max(year_timespan.start, self.timespan.start)<change.date<year_timespan.end:
+                            # Omit changes if another change followed on the same day (this is simply an artefact of how we describe changes in the toolkit)
+                            if j<len(district.changes)-1:
+                                if change.date!=district.changes[j+1]:
+                                    print(f"Change of type {change_type} was applied to district {district.name_id} on {change.date}.")
+                                    change_records.append({
+                                        'Year': year_timespan.start.year,
+                                        'District': district.name_id,
+                                        'Change Type': change_type
+                                    })
+                            else:
+                                print(f"Change of type {change_type} was applied to district {district.name_id} on {change.date}.")
+                                change_records.append({
+                                        'Year': year_timespan.start.year,
+                                        'District': district.name_id,
+                                        'Change Type': change_type
+                                })
+                # Count the district, it it was ever changed or created
+                if len(district.changes)>0:
+                    n_dist_changed += 1
+
+        print(f"{n_dist_changed}/{n_districts} ({round(n_dist_changed/n_districts*100, 2)}%) of districts{' in homeland' if homeland_only else ''} had their borders changed, were created, abolished, or moved between regions in the given period.")
+        
+        # Convert the list of change records into a DataFrame
+        df_changes = pd.DataFrame(change_records)
+
+        # Group by Year and Change Type to get:
+        # - Count of changes
+        # - List of district names
+        grouped = df_changes.groupby(['Year', 'Change Type']).agg(
+            Change_Count=('District', 'count'),
+            Districts_List = (
+                'District',
+                # Truncate the list if it's too long
+                lambda districts: (
+                    '<br>'.join(sorted(set(districts))[:10]) + 
+                    (f"<br>... (+{len(set(districts)) - 10} more)" if len(set(districts)) > 10 else '')
+                )
+
+            )
+        ).reset_index()
+
+        # Create the stacked bar chart with custom hover text
+        fig = px.bar(
+            grouped,
+            x='Year',
+            y='Change_Count',
+            color='Change Type',
+            hover_data={'Districts_List': True, 'Year': False, 'Change_Count': True},
+            title='District Changes by Year and Type',
+            labels={'Change_Count': 'Number of Districts Affected'}
+        )
+
+        # Use stacked bar mode
+        fig.update_layout(
+            barmode='stack',
+            xaxis_title='Year',
+            yaxis_title='Number of Districts Affected',
+            bargap=0.1
+        )
+
+        # Customize hover template to display just the districts
+        fig.update_traces(
+            hovertemplate='<b>%{x}</b><br>%{customdata[0]}<extra></extra>'
+        )
+
+        return fig

@@ -2,6 +2,8 @@ from data_models import *
 from core.core import AdministrativeHistory
 from utils.helper_functions import *
 
+from visualization.adm_unit_plots import plot_district_map
+
 import os
 import csv
 import pandas as pd
@@ -29,6 +31,28 @@ state_info = [
     ('powiaty_1921.csv', datetime(1921,2,20)),
     ('powiaty_1931.csv', datetime(1931,4,18))
     ]
+
+
+# dist_changes_hist_plot = administrative_history.plot_dist_changes_by_year(black_and_white=True)
+# dist_changes_hist_plot.write_html("output/dist_changes_hist_plot.html")
+
+# gdf = administrative_history.dist_registry._plot_layer(datetime(1931,4,18))
+# print(f"gdf.crs: {gdf.crs}.")
+# print(gdf)
+print(administrative_history.dist_registry._plot_layer(datetime(1931,4,18)))
+
+fig_plotly = plot_district_map(administrative_history.dist_registry, datetime(1931,4,18))
+fig_plotly.write_html("output/district_map_1931_plotly.html")
+
+for adm_state in administrative_history.states_list:
+    region_registry = administrative_history.region_registry
+    dist_registry = administrative_history.dist_registry
+    fig = adm_state.plot(region_registry, dist_registry, adm_state.timespan.middle)
+    fig.savefig(f"output/adm_states_maps/adm_state_{adm_state.timespan.start.date()}.png", bbox_inches=None)
+    print(f"Saved adm_state_{adm_state.timespan.start.date()}.png.")
+fig_matplotlib = administrative_history.dist_registry.plot("abc", datetime(1931,4,18), shownames = False)
+fig_matplotlib.savefig("output/district_map_1931_matplotlib.png", bbox_inches="tight", pad_inches=0.1)
+
 for filename, state_date in state_info:
     file_path = folder_path + filename
     # Read the CSV

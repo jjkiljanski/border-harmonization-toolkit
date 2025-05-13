@@ -7,6 +7,7 @@ from datetime import datetime
 import matplotlib
 matplotlib.use("Agg")
 import geopandas as gpd
+from shapely.ops import unary_union
 
 from data_models.adm_timespan import TimeSpan
 
@@ -229,17 +230,41 @@ class DistState(UnitState):
                     next_state.current_territory = self.current_territory
                     next_state.spread_territory_info()
             else:
-                all_next_change_states = self.next_change.previous_states + self.next_change.next_states
                 num_ter_unknown = 0
-                for unit_state in all_next_change_states:
+                state_with_ter_unknown = None # Holder for state with an unknown territory
+                ter_unknown_after_or_before = None # If the state with an unknown territory exists after or before the change
+                for unit_state in self.next_change.previous_states:
                     if unit_state.current_territory is None:
                         num_ter_unknown += 1
-                if num_ter_unknown>1:
+                        state_with_ter_unknown = unit_state
+                        ter_unknown_after_or_before = 'before'
+                for unit_state in self.next_change.next_states:
+                    if unit_state.current_territory is None:
+                        state_with_ter_unknown = unit_state
+                        ter_unknown_after_or_before = 'after'
+                        num_ter_unknown += 1
+                if not (num_ter_unknown == 1):
                     return
                 else:
-                    # Not implemented yet.
-                    # Here comes the logic of deduction of the n-th territory on the basis of n-1 territories
-                    #  involved in the change.
+                    # Deduction of the n-th territory on the basis of n-1 territories involved in the change.
+                    territories_before = [unit_state.current_territory for unit_state in self.next_change.previous_states if unit_state.current_territory is not None]
+                    territories_after = [unit_state.current_territory for unit_state in self.next_change.next_states if unit_state.current_territory is not None]
+                    # Merge territories before and after (respectively) into unified geometries
+                    merged_territory_before = unary_union(territories_before)
+                    merged_territory_after = unary_union(territories_after)
+                    # Deduce the territory:
+                    if ter_unknown_after_or_before == 'before':
+                        # The unknown territory can be deduced as the union of the known ones AFTER the change minus
+                        #   the union of the known ones BEFORE the change
+                        unknown_before_territory = merged_territory_after.difference(merged_territory_before)
+                        state_with_ter_unknown.current_territory = unknown_before_territory
+                    else:
+                        # The unknown territory can be deduced as the union of the known ones BEFORE the change minus
+                        #   the union of the known ones AFTER the change
+                        unknown_after_territory = merged_territory_before.difference(merged_territory_after)
+                        state_with_ter_unknown.current_territory = unknown_after_territory
+                    # Run the spread_territory for the state for which territory was deduced
+                    state_with_ter_unknown.spread_territory_info()
                     return
         # The logic for backward info share mirrors the forward info share logic.
         if self.previous_change:
@@ -249,17 +274,41 @@ class DistState(UnitState):
                     previous_state.current_territory = self.current_territory
                     previous_state.spread_territory_info()
             else:
-                all_previous_change_states = self.previous_change.previous_states + self.previous_change.next_states
                 num_ter_unknown = 0
-                for unit_state in all_previous_change_states:
+                state_with_ter_unknown = None # Holder for state with an unknown territory
+                ter_unknown_after_or_before = None # If the state with an unknown territory exists after or before the change
+                for unit_state in self.previous_change.previous_states:
                     if unit_state.current_territory is None:
                         num_ter_unknown += 1
-                if num_ter_unknown > 1:
+                        state_with_ter_unknown = unit_state
+                        ter_unknown_after_or_before = 'before'
+                for unit_state in self.previous_change.next_states:
+                    if unit_state.current_territory is None:
+                        state_with_ter_unknown = unit_state
+                        ter_unknown_after_or_before = 'after'
+                        num_ter_unknown += 1
+                if not (num_ter_unknown == 1):
                     return
                 else:
-                    # Not implemented yet.
-                    # Here comes the logic of deduction of the n-th territory on the basis of n-1 territories
-                    #  involved in the change.
+                    # Deduction of the n-th territory on the basis of n-1 territories involved in the change.
+                    territories_before = [unit_state.current_territory for unit_state in self.previous_change.previous_states if unit_state.current_territory is not None]
+                    territories_after = [unit_state.current_territory for unit_state in self.previous_change.next_states if unit_state.current_territory is not None]
+                    # Merge territories before and after (respectively) into unified geometries
+                    merged_territory_before = unary_union(territories_before)
+                    merged_territory_after = unary_union(territories_after)
+                    # Deduce the territory:
+                    if ter_unknown_after_or_before == 'before':
+                        # The unknown territory can be deduced as the union of the known ones AFTER the change minus
+                        #   the union of the known ones BEFORE the change
+                        unknown_before_territory = merged_territory_after.difference(merged_territory_before)
+                        state_with_ter_unknown.current_territory = unknown_before_territory
+                    else:
+                        # The unknown territory can be deduced as the union of the known ones BEFORE the change minus
+                        #   the union of the known ones AFTER the change
+                        unknown_after_territory = merged_territory_before.difference(merged_territory_after)
+                        state_with_ter_unknown.current_territory = unknown_after_territory
+                    # Run the spread_territory for the state for which territory was deduced
+                    state_with_ter_unknown.spread_territory_info()
                     return
                 
         if self.current_territory is not None:
@@ -311,18 +360,18 @@ class DistrictRegistry(UnitRegistry):
         dist_name_id = [name for state, name in states_and_names if state.current_territory is not None]  # Extract names for each district
         
         # Return a GeoDataFrame with district names and corresponding geometries
-        return gpd.GeoDataFrame({'name_id': dist_name_id, 'geometry': geometries})
+        return gpd.GeoDataFrame({'name_id': dist_name_id, 'geometry': geometries}, crs = "EPSG:4326")
 
     
-    def plot(self, html_file_path, date):
+    def plot(self, html_file_path, date, shownames = True):
         from utils.helper_functions import build_plot_from_layers
 
         layer = self._plot_layer(date)
         layer["color"] = "none"
         layer["edgecolor"] = "black"
         layer["linewidth"] = 1
-        layer["shownames"] = True
-
+        layer["shownames"] = shownames
+    
         fig = build_plot_from_layers(layer)
         return fig
 

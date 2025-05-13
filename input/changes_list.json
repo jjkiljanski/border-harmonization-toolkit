@@ -326,37 +326,55 @@
   },
   {
     "date": "22.06.1922",
+    "order": 1,
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 przyłączono do Polski część powiatu tarnogórskiego pozyskanego od Niemiec",
-    "order": 0,
     "matter": {
-      "change_type": "ChangeAdmState",
+      "change_type": "ManyToOne",
       "take_from": [
-        "ABROAD",
-        "ŚLĄSK NIEMIECKI",
-        "TARNOGÓRSKI"
+        {
+          "current_name": "TARNOGÓRSKI (ŚLĄSK NIEMIECKI)",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        }
       ],
-      "take_to": [
-        "HOMELAND",
-        "ŚLĄSKIE",
-        "TARNOGÓRSKI"
-      ]
+      "take_to": {
+        "create": true,
+        "district": {
+          "name_id": "TARNOGÓRSKI",
+          "name_variants": [
+            "TARNOGÓRSKI"
+          ],
+          "seat_name_variants": [
+            "TARNOWSKIE GÓRY"
+          ],
+          "states": [
+            {
+              "current_name": "TARNOGÓRSKI",
+              "current_seat_name": "TARNOWSKIE GÓRY",
+              "current_dist_type": "w"
+            }
+          ]
+        },
+        "new_district_address": [
+          "HOMELAND",
+          "ŚLĄSKIE",
+          "TARNOGÓRSKI"
+        ]
+      },
+      "unit_attribute": "territory",
+      "unit_type": "District"
     }
   },
   {
     "date": "22.06.1922",
     "source": "Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43",
     "description": "22.06.1922 po przyłączeniu części powiatu tarnogórskiego z Niemiec do Polski, przyłączono do niego gminę Mikoleska powiatu gliwickiego (siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej)",
-    "order": 1,
+    "order": 2,
     "matter": {
       "change_type": "ManyToOne",
       "take_from": [
-        {
-          "current_name": "TARNOGÓRSKI",
-          "weight_from": null,
-          "weight_to": null,
-          "delete_unit": false
-        },
         {
           "current_name": "GLIWICKI",
           "weight_from": null,

@@ -1,9 +1,13 @@
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
+import json
 from datetime import datetime
+import geopandas as gpd
+from shapely.geometry import MultiPolygon, Polygon
 
-def plot_district_existence(dist_registry, start_date, end_date):
+from data_models.adm_unit import DistrictRegistry
+
+def plot_dist_history(dist_registry, start_date, end_date):
 
     districts = dist_registry.unit_list
     districts.sort(key=lambda d: d.name_id)
@@ -68,7 +72,7 @@ def plot_district_existence(dist_registry, start_date, end_date):
 
     return fig
     
-def plot_territorial_state_info(dist_registry, start_date, end_date):
+def plot_dist_ter_info_history(dist_registry, start_date, end_date):
     districts = dist_registry.unit_list
     districts.sort(key=lambda d: d.name_id)
 
@@ -129,5 +133,59 @@ def plot_territorial_state_info(dist_registry, start_date, end_date):
 
     fig.update_yaxes(autorange="reversed")
     fig.update_traces(width=0.6)
+
+    return fig
+
+def plot_district_map(registry, date: datetime, opacity: float = 0.6):
+    """
+    Plots the district geometries at a given date using Plotly (no Mapbox).
+
+    Args:
+        registry (DistrictRegistry): The registry containing district data.
+        date (datetime): The date at which the district states are to be plotted.
+    
+    Returns:
+        plotly.graph_objs.Figure: A Plotly figure object.
+    """
+    # Get GeoDataFrame of district states existing on the given date
+    gdf = registry._plot_layer(date)
+
+    # Ensure geometries are in WGS84 (EPSG:4326)
+    if gdf.crs is not None and gdf.crs.to_epsg() != 4326:
+        gdf = gdf.to_crs(epsg=4326)
+
+    # Convert GeoDataFrame to GeoJSON
+    geojson_data = json.loads(gdf.to_json())
+
+    # Use district names as unique identifiers
+    district_ids = gdf["name_id"].tolist()
+
+    # Create dummy DataFrame for mapping
+    df = pd.DataFrame({
+        "District": district_ids,
+        "value": [1] * len(district_ids),  # Dummy uniform value
+        "hover": [f"{district}<br>state for: {date.date}" for district in district_ids]
+    })
+
+    # Generate the choropleth map
+    fig = px.choropleth_mapbox(
+        df,
+        geojson=geojson_data,
+        locations="District",
+        featureidkey="properties.name_id",
+        color="value",
+        custom_data=["hover"],
+        color_continuous_scale=["gray", "gray"],  # All districts same color
+        mapbox_style="carto-positron",
+        zoom=5,
+        center={"lat": 52.0, "lon": 19.0},  # Adjust to your region
+        opacity=opacity
+    )
+
+    # Layout cleanup
+    fig.update_layout(
+        margin={"r": 0, "t": 0, "l": 0, "b": 0},
+        coloraxis_showscale=False
+    )
 
     return fig

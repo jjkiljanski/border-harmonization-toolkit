@@ -8,14 +8,11 @@ from utils.exceptions import ConsistencyError
 
 import matplotlib
 matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import geopandas as gpd
 from shapely.ops import unary_union
 from shapely.geometry import Polygon
-import base64
 import io
-import os
-import csv
+import pandas as pd
 
 #############################################################################################
 # Models to store information about current region-districts relations.
@@ -285,25 +282,33 @@ class AdministrativeState(BaseModel):
         address_list.sort()
         return address_list
 
-    def to_csv(self, csv_filepath, only_homeland = True):
+    def to_csv(self, csv_filepath: Optional[Union[str, io.StringIO]] = None, only_homeland=True) -> Optional[str]:
         """
-        Write the list returned by self.to_address_list(only_homeland=True)
-        to a CSV file at the specified path.
+        Export the administrative state to a CSV file or return it as a string.
+
+        This method is designed to support both:
+        - File-based export for scripting and data storage (when `csv_filepath` is a path)
+        - In-memory string export for GUI usage (e.g., download via Streamlit) when `csv_filepath=None`.
 
         Args:
-            csv_filepath (str): The file path to write the CSV to.
+            csv_filepath (str or StringIO, optional): File path or buffer to write CSV to. If None, returns CSV as string.
+            only_homeland (bool): Whether to include only homeland addresses.
+
+        Returns:
+            Optional[str]: CSV content as string if `csv_filepath` is None, otherwise None.
         """
-        address_list = self.to_address_list(only_homeland)
+        address_list = self.to_address_list(only_homeland=only_homeland)
 
         if not address_list:
             raise ValueError("Address list is empty; nothing to write.")
 
-        with open(csv_filepath, mode='w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(["Location Type", "Region", "District"])  # Adjust header as needed
+        df = pd.DataFrame(address_list, columns=["Region", "District"])
 
-            for address in address_list:
-                writer.writerow(address)
+        if csv_filepath is None:
+            return df.to_csv(index=False)
+        else:
+            df.to_csv(csv_filepath, index=False)
+            return None
 
     def compare_to_r_d_list(self, r_d_list, verbose = False):
         """
@@ -364,15 +369,21 @@ class AdministrativeState(BaseModel):
 
         return r_list_comparison, d_list_comparison, state_comparison
     
-    def _district_plot_layer(self, dist_registry: DistrictRegistry, date: datetime):
+    def _district_plot_layer(self, dist_registry: DistrictRegistry, date: datetime, test=False):
+        if test:
+            shownames = True
+            color = "none"
+        else:
+            shownames = False
+            color = "gray"
         gdf = dist_registry._plot_layer(date)
-        gdf["color"] = "none"
+        gdf["color"] = color
         gdf["edgecolor"] = "black"
         gdf["linewidth"] = 1
-        gdf["shownames"] = True
+        gdf["shownames"] = shownames
         return gdf
     
-    def _region_plot_layer(self, region_registry, dist_registry: DistrictRegistry, date: datetime):
+    def _region_plot_layer(self, region_registry, dist_registry: DistrictRegistry, date: datetime, test=False):
         records = []
         for area_type, regions in self.unit_hierarchy.items():
             for region_name, districts in regions.items():
@@ -383,6 +394,13 @@ class AdministrativeState(BaseModel):
                     if(d.exists(date)):
                         if d_state.current_territory is not None:
                             district_geoms.append(d_state.current_territory)
+                # Set values for testing and examples:
+                if test:
+                    linewidth = 10
+                    shownames = True
+                else:
+                    linewidth = 2
+                    shownames = False
                 if district_geoms:  # Only proceed if there is at least one valid geometry
                     region_shape = unary_union(district_geoms)
                     records.append({
@@ -390,15 +408,15 @@ class AdministrativeState(BaseModel):
                         "geometry": region_shape,
                         "color": "none",
                         "edgecolor": "black",
-                        "linewidth": 10,
-                        "shownames": False
+                        "linewidth": linewidth,
+                        "shownames": shownames
                     })
         return gpd.GeoDataFrame(
             records,
             columns=["name_id", "geometry", "color", "edgecolor", "linewidth", "shownames"]
         )
     
-    def _country_plot_layer(self, dist_registry: DistrictRegistry, date: datetime):
+    def _country_plot_layer(self, dist_registry: DistrictRegistry, date: datetime, test = False):
         country_geoms = {}
         for country_name in self.unit_hierarchy.keys():
             country_geoms[country_name] = []
@@ -409,39 +427,50 @@ class AdministrativeState(BaseModel):
                         if dist_state.current_territory:
                             country_geoms[country_name].append(dist_state.current_territory)
         records = []
+        # Set values for testing and examples:
+        if test:
+            homeland_color = "green"
+        else:
+            homeland_color = "white"
+
         if country_geoms.get("HOMELAND", None):
             records.append({
                 "name_id": "HOMELAND",
                 "geometry": unary_union(country_geoms["HOMELAND"]),
-                "color": "green",
+                "color": homeland_color,
                 "edgecolor": "black",
                 "linewidth": 0.5,
                 "shownames": False
             })
-        if country_geoms.get("ABROAD", None):
-            records.append({
-                "name_id": "HOMELAND",
-                "geometry": unary_union(country_geoms["ABROAD"]),
-                "color": "blue",
-                "edgecolor": "black",
-                "linewidth": 0.5,
-                "shownames": False
-            })
+        if plot_abroad:
+            if country_geoms.get("ABROAD", None):
+                records.append({
+                    "name_id": "HOMELAND",
+                    "geometry": unary_union(country_geoms["ABROAD"]),
+                    "color": "blue",
+                    "edgecolor": "black",
+                    "linewidth": 0.5,
+                    "shownames": False
+                })
         return gpd.GeoDataFrame(
             records,
             columns=["name_id", "geometry", "color", "edgecolor", "linewidth", "shownames"]
         )
     
-    def plot(self, region_registry, dist_registry, date):
+    def plot(self, region_registry, dist_registry, date, plot_abroad = False):
         from utils.helper_functions import build_plot_from_layers
 
         # Prepare the layers
-        country_layer = self._country_plot_layer(dist_registry, date)
+        if plot_abroad:
+            country_layer = self._country_plot_layer(dist_registry, date)
         region_layer = self._region_plot_layer(region_registry, dist_registry, date)
         district_layer = self._district_plot_layer(dist_registry, date)
 
         # Build the figure
-        fig = build_plot_from_layers(country_layer, district_layer, region_layer)
+        if plot_abroad:
+            fig = build_plot_from_layers(country_layer, district_layer, region_layer)
+        else:
+            fig = build_plot_from_layers(district_layer, region_layer)
         return fig
     
     def apply_changes(self, changes_list, region_registry, dist_registry):

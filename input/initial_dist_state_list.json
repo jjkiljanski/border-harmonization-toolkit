@@ -4859,16 +4859,16 @@
     ]
   },
   {
-    "name_id": "TARNOGÓRSKI",
+    "name_id": "TARNOGÓRSKI (ŚLĄSK NIEMIECKI)",
     "name_variants": [
-      "TARNOGÓRSKI"
+      "TARNOGÓRSKI (ŚLĄSK NIEMIECKI)"
     ],
     "seat_name_variants": [
       "TARNOWSKIE GÓRY"
     ],
     "states": [
       {
-        "current_name": "TARNOGÓRSKI",
+        "current_name": "TARNOGÓRSKI (ŚLĄSK NIEMIECKI)",
         "current_seat_name": "TARNOWSKIE GÓRY",
         "current_dist_type": "w",
         "timespan": null
