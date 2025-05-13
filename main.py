@@ -56,7 +56,7 @@ fig_matplotlib.savefig("output/district_map_1931_matplotlib.png", bbox_inches="t
 for filename, state_date in state_info:
     file_path = folder_path + filename
     # Read the CSV
-    df = load_and_standardize_csv(file_path, administrative_history.region_registry, administrative_history.dist_registry)
+    df = load_and_standardize_csv(file_path, administrative_history.region_registry, administrative_history.dist_registry, use_unique_seat_names = True)
     # Create list of (REGION, DISTRICT) pairs in uppercase
     r_d_pairs = list(zip(df['Region'], df['District']))
 

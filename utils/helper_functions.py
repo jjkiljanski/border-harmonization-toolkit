@@ -7,16 +7,17 @@ from matplotlib.image import imread
 from io import BytesIO
 import base64
 import io
+import streamlit as st
 
-def load_and_standardize_csv(file_path, region_registry, district_registry):
+def load_and_standardize_csv(file_path, region_registry, district_registry, use_unique_seat_names = False):
     # Read the CSV
     df = pd.read_csv(file_path)
 
-    standardize_df(df, region_registry, district_registry)
+    standardize_df(df, region_registry, district_registry, use_unique_seat_names)
 
     return df
 
-def standardize_df(df, region_registry, district_registry, raise_errors = True):
+def standardize_df(df, region_registry, district_registry, raise_errors = True, use_unique_seat_names = False):
     if {'Region', 'District'}.issubset(df.columns):
         df['Region'] = df['Region'].str.upper()
         df['District'] = df['District'].str.upper()
@@ -28,9 +29,9 @@ def standardize_df(df, region_registry, district_registry, raise_errors = True):
     for unit_type in ['Region', 'District']:
         for idx, unit_name_aim in df[unit_type].items():
             if unit_type == 'Region':
-                unit = region_registry.find_unit(unit_name_aim)
+                unit = region_registry.find_unit(unit_name_aim, use_unique_seat_names=use_unique_seat_names)
             else:
-                unit = district_registry.find_unit(unit_name_aim)
+                unit = district_registry.find_unit(unit_name_aim, use_unique_seat_names=use_unique_seat_names)
             if unit is None:
                 not_in_registry[unit_type].append(unit_name_aim)
             elif unit.name_id != unit_name_aim:

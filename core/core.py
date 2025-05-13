@@ -7,6 +7,7 @@ import shutil
 import geopandas as gpd
 import pandas as pd
 import os
+from collections import defaultdict
 import plotly.express as px
 
 from data_models.adm_timespan import *
@@ -58,6 +59,8 @@ class AdministrativeHistory():
 
         # Create states for the whole timespan
         self._create_history()
+
+        self._define_unique_seat_names()
 
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
@@ -200,6 +203,37 @@ class AdministrativeHistory():
         
         # Sort district list in the district registry by name_id
         self.dist_registry.unit_list.sort(key=lambda dist: dist.name_id)
+
+    def _define_unique_seat_names(self):
+        """
+        Define list of unique seat names for the Region and District registries.
+        """
+
+        # Define list of unique seat names for the District registry
+        dist_seat_name_lists= [dist.seat_name_variants for dist in self.dist_registry.unit_list]
+        # A mapping from seat name to count of how many district lists it appears in
+        dist_seat_name_to_count = defaultdict(int)
+        # Count how many different lists each seat name appears in
+        for seat_list in dist_seat_name_lists:
+            if seat_list:
+                for seat in set(seat_list):  # Use set to avoid double-counting within a single list
+                    dist_seat_name_to_count[seat] += 1
+
+        # Extract seat names that appear in only one district's list
+        self.dist_registry.unique_seat_names = [seat for seat, count in dist_seat_name_to_count.items() if count == 1]
+
+        # Define list of unique seat names for the Region registry
+        region_seat_name_lists= [region.seat_name_variants for region in self.region_registry.unit_list]
+        # A mapping from seat name to count of how many region lists it appears in
+        region_seat_name_to_count = defaultdict(int)
+        # Count how many different lists each seat name appears in
+        for seat_list in region_seat_name_lists:
+            if seat_list:
+                for seat in set(seat_list):  # Use set to avoid double-counting within a single list
+                    region_seat_name_to_count[seat] += 1
+
+        # Extract seat names that appear in only one region's list
+        self.region_registry.unique_seat_names = [seat for seat, count in region_seat_name_to_count.items() if count == 1]
 
     def _load_territories(self):
         """

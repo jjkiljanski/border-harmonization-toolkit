@@ -81,13 +81,20 @@ elif plot_type == "District Maps":
 elif plot_type == "Administrative States History":
     st.subheader("Administrative States History Viewer")
 
-    selected_date = st.slider(
-        "Select Date",
-        min_value=adm_state_middles[0],
-        max_value=adm_state_middles[-1],
-        value=adm_state_middles[len(adm_state_middles)//2],
-        format="YYYY-MM-DD"
-    )
+    # Create container placeholders for flexible layout
+    upload_container = st.container()
+    state_df_container = st.container()
+    uploaded_df_container = st.container()
+    editor_container = st.container()
+
+    with state_df_container:
+        selected_date = st.slider(
+            "Select Date",
+            min_value=adm_state_middles[0],
+            max_value=adm_state_middles[-1],
+            value=adm_state_middles[len(adm_state_middles)//2],
+            format="YYYY-MM-DD"
+        )
 
     # Get administrative state for selected date
     adm_state = administrative_history.find_adm_state_by_date(selected_date)
@@ -95,10 +102,10 @@ elif plot_type == "Administrative States History":
     if not adm_state or "HOMELAND" not in adm_state.unit_hierarchy:
         st.warning("No administrative data available for selected date.")
     else:
-        homeland_data = adm_state.unit_hierarchy["HOMELAND"]
+        homeland_hierarchy = adm_state.unit_hierarchy["HOMELAND"]
         region_district_map = {
             region_key: list(region_value.keys())
-            for region_key, region_value in homeland_data.items()
+            for region_key, region_value in homeland_hierarchy.items()
         }
 
         # Create a DataFrame where each column is a region, and rows are district keys
@@ -108,25 +115,7 @@ elif plot_type == "Administrative States History":
             for region, districts in region_district_map.items()
         }
 
-        df = pd.DataFrame(df_data)
-
-        column_config = {column_name: st.column_config.Column(disabled=True) for column_name in df.columns}
-
-        st.markdown("#### Districts grouped by Region")
-        edited_df = st.dataframe(df, column_config=column_config, hide_index=True)
-
-        st.success("Click a cell to highlight and edit. Edits are not persisted automatically.")
-
-    # Generate CSV string in-memory using the new version of to_csv
-    csv_data = adm_state.to_csv(csv_filepath=None, only_homeland=True)
-
-    # Download button
-    st.download_button(
-        label="Download CSV template",
-        data=csv_data,
-        file_name="region_district_template.csv",
-        mime="text/csv"
-    )
+        adm_state_df = pd.DataFrame(df_data)
 
     st.markdown("### Upload CSV to Compare Against Administrative State")
 
@@ -155,7 +144,8 @@ elif plot_type == "Administrative States History":
                         standard_df,
                         region_registry=administrative_history.region_registry,
                         district_registry=administrative_history.dist_registry,
-                        raise_errors=False  # We handle errors below
+                        raise_errors=False,  # We handle errors below
+                        use_unique_seat_names=True
                     )
 
                     # Reassign standardized columns
@@ -169,43 +159,118 @@ elif plot_type == "Administrative States History":
                     other_cols = [col for col in uploaded_df.columns if col not in priority_cols]
                     uploaded_df = uploaded_df[priority_cols + other_cols]
 
+                    # Sort uploaded_df by region, then by district (case insensitive)
+                    uploaded_df = uploaded_df.sort_values(
+                        by=["Region", "District"],
+                        key=lambda col: col.str.lower() if col.dtype == "object" else col
+                    )
+
                     # Extract all district values for comparison
                     adm_state_dist_ids = set(
                         district
-                        for region in df.columns
-                        for district in df[region].dropna()
+                        for region in adm_state_df.columns
+                        for district in adm_state_df[region].dropna()
                     )
 
-                    loaded_file_dist_ids = set(uploaded_df['Standardized District Name'].dropna())
+                    with editor_container:
+                        st.markdown(f"#### Edit Dataframe - Define Missing Standardized District Name")
+                        # Use st.data_editor and capture the edited version of uploaded_df
+                        edited_df = st.data_editor(uploaded_df, hide_index=True)
+
+                    loaded_file_dist_ids = set(edited_df['Standardized District Name'].dropna())
 
                     # Apply conditional formatting to the DataFrame
 
                     # Function to paint the DataFrame
                     def style_cells(val, ref_list, color_if_found, color_if_not_found):
-                        return f"background-color: {color_if_found}" if val in ref_list else f"background-color: {color_if_not_found}"
+                        if val in ref_list and val != "":
+                            return f"background-color: {color_if_found}"
+                        elif val == "":
+                            return ""
+                        else: 
+                            return f"background-color: {color_if_not_found}"
 
                     # Format first DataFrame (adm_state) - light green for matches and light blue for others
-                    def highlight_cells_first_dataframe(val):
+                    def highlight_cells_adm_state_dataframe(val):
                         return style_cells(val, loaded_file_dist_ids, "#90EE90", "#ADD8E6")
 
                     # Format second DataFrame (uploaded_df) - light green for matches and light red for others
-                    def highlight_cells_second_dataframe(val):
+                    def highlight_cells_uploaded_dataframe(val):
                         return style_cells(val, adm_state_dist_ids, "#90EE90", "#FFB6C1")
 
-                    # Apply styles
-                    styled_df_first = df.style.applymap(highlight_cells_first_dataframe)
-                    styled_df_second = uploaded_df.style.applymap(highlight_cells_second_dataframe, subset=["Standardized District Name"])
+                    # Use edited_df to create a dataframe with region names as column names and district names in the colums.
+                    # Use standardized names where possible and non-standardized names where they were not recognized.
+                    names_standardized_where_possible = [
+                        row["Standardized District Name"] if row["Standardized District Name"] in adm_state_dist_ids else row["District"]
+                        for _, row in edited_df.iterrows()
+                    ]
+                    new_r_d_list = list(zip(list(edited_df["Standardized Region Name"]), list(names_standardized_where_possible)))
+                    loaded_region_district_map = {}
+                    for region_name, dist_name in new_r_d_list:
+                        if region_name not in loaded_region_district_map:
+                            loaded_region_district_map[region_name] = []
+                        if dist_name:
+                            loaded_region_district_map[region_name].append(dist_name)
 
-                    # Show standardized tables with highlights
-                    st.markdown("#### Standardized CSV Preview with Highlights")
-                    st.dataframe(styled_df_first, hide_index=True)
-                    st.dataframe(styled_df_second, hide_index=True)
+                    # Create a DataFrame where each column is a region, and rows are district keys
+                    max_rows = max(len(districts) for districts in loaded_region_district_map.values())
+                    df_data = {
+                        region: districts + [""] * (max_rows - len(districts))
+                        for region, districts in loaded_region_district_map.items()
+                    }
+
+                    edited_df_display = pd.DataFrame(df_data)
+
+                    # Now use edited_df to create styled_uploaded_df
+                    styled_uploaded_df = edited_df_display.style.applymap(highlight_cells_uploaded_dataframe)
+
+                    with uploaded_df_container:
+                        st.markdown(f"#### Names Recognized in the Uploaded File")
+                        # Show the second dataframe, now reflecting edits
+                        st.dataframe(styled_uploaded_df, hide_index=True)
+
+                    with state_df_container:
+                        # Generate CSV string in-memory using the new version of to_csv
+                        csv_data = adm_state.to_csv(csv_filepath=None, only_homeland=True)
+
+                        # Show the first dataframe with styles
+                        styled_df_first = adm_state_df.style.applymap(highlight_cells_adm_state_dataframe)
+                        st.markdown(f"#### Administrative State {adm_state.timespan}")
+                        st.dataframe(styled_df_first, hide_index=True)
+
+                        st.caption(f"Download CSV template for administrative state {adm_state.timespan} of (Region, District) pairs.")
+
+                        st.download_button(
+                            label="Download",
+                            data=csv_data,
+                            file_name="region_district_template.csv",
+                            mime="text/csv"
+                        )
+
 
                 except Exception as e:
                     st.error(f"An error occurred during standardization: {str(e)}")
 
         except Exception as e:
             st.error(f"Could not process uploaded file: {str(e)}")
+    else:
+        # If file not uploaded, create adm_state_df without styling.
+        with state_df_container:
+            # Generate CSV string in-memory using the new version of to_csv
+            csv_data = adm_state.to_csv(csv_filepath=None, only_homeland=True)
+
+            # Show the adm state dataframe with styles
+            st.markdown(f"#### Administrative State {adm_state.timespan}")
+            st.dataframe(adm_state_df, hide_index=True)
+
+            st.caption(f"Download CSV template for administrative state {adm_state.timespan} of (Region, District) pairs.")
+
+            st.download_button(
+                label="Download",
+                data=csv_data,
+                file_name="region_district_template.csv",
+                mime="text/csv"
+            )
 
 else:
     st.warning("Unsupported plot type selected.")

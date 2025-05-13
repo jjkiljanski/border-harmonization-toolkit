@@ -224,8 +224,25 @@ def test_find_unit():
     assert found_unit is None  # No such unit
 
     # Test: should return None when unit is searched by seat
-    found_unit = registry.find_unit("seat B")
+    found_unit = registry.find_unit("seatB")
     assert found_unit is None  # No such unit
+
+    # Test: should raise an error if 'use_unique_seat_names' set to True, but attribute self.unique_seat_names is None.
+    with pytest.raises(ValueError, match="attribute self.unique_seat_names is None"):
+        registry.find_unit("seatB", use_unique_seat_names=True)
+
+    # Now define the self.unique_seat_names attribute.
+    registry.unique_seat_names=["seatA", "seatB"]
+
+    # Test: should STILL return None when unit is searched by seat
+    # AND use_unique_seat_names NOT set to True
+    found_unit = registry.find_unit("seatB")
+    assert found_unit is None  # No such unit
+
+    # Test: should return the unit when searched by seat
+    # AND use_unique_seat_names IS set to True
+    found_unit = registry.find_unit("seatB", use_unique_seat_names=True)
+    assert found_unit is unit  # Should find the unit
 
 # Test for find_unit_state_by_date method
 def test_find_unit_state_by_date():

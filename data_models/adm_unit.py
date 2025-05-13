@@ -130,8 +130,9 @@ class UnitRegistry(BaseModel):
     A registry to manage a list of one type of units (districts/regions) and handle unit state transitions.
     """
     unit_list: List[Unit]
+    unique_seat_names: Optional[List[str]] = None # This should be defined only after the whole unitregistry has been created.
 
-    def find_unit(self, unit_name: str) -> Optional[Unit]:
+    def find_unit(self, unit_name: str, use_unique_seat_names = False) -> Optional[Unit]:
         """
         Finds a unit by its name or variant.
 
@@ -141,9 +142,15 @@ class UnitRegistry(BaseModel):
         Returns:
             Optional[Unit]: The unit if found, or None.
         """
+        if use_unique_seat_names:
+            if self.unique_seat_names is None:
+                raise ValueError(f"Method 'find_unit' used with parameter 'use_unique_seat_names' set to True, but attribute self.unique_seat_names is None.")
         for unit in self.unit_list:
             if unit_name in unit.name_variants:
                 return unit
+            if use_unique_seat_names and unit.seat_name_variants:
+                if unit_name in unit.seat_name_variants and unit_name in self.unique_seat_names:
+                    return unit
         return None
     
     def find_unit_state_by_date(self, unit_name: str, date: datetime) -> Tuple[Unit, UnitState, TimeSpan]:
