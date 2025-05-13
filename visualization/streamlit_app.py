@@ -169,9 +169,37 @@ elif plot_type == "Administrative States History":
                     other_cols = [col for col in uploaded_df.columns if col not in priority_cols]
                     uploaded_df = uploaded_df[priority_cols + other_cols]
 
-                    # Show standardized table
-                    st.markdown("#### Standardized CSV Preview")
-                    st.dataframe(uploaded_df, hide_index = True)
+                    # Extract all district values for comparison
+                    adm_state_dist_ids = set(
+                        district
+                        for region in df.columns
+                        for district in df[region].dropna()
+                    )
+
+                    loaded_file_dist_ids = set(uploaded_df['Standardized District Name'].dropna())
+
+                    # Apply conditional formatting to the DataFrame
+
+                    # Function to paint the DataFrame
+                    def style_cells(val, ref_list, color_if_found, color_if_not_found):
+                        return f"background-color: {color_if_found}" if val in ref_list else f"background-color: {color_if_not_found}"
+
+                    # Format first DataFrame (adm_state) - light green for matches and light blue for others
+                    def highlight_cells_first_dataframe(val):
+                        return style_cells(val, loaded_file_dist_ids, "#90EE90", "#ADD8E6")
+
+                    # Format second DataFrame (uploaded_df) - light green for matches and light red for others
+                    def highlight_cells_second_dataframe(val):
+                        return style_cells(val, adm_state_dist_ids, "#90EE90", "#FFB6C1")
+
+                    # Apply styles
+                    styled_df_first = df.style.applymap(highlight_cells_first_dataframe)
+                    styled_df_second = uploaded_df.style.applymap(highlight_cells_second_dataframe, subset=["Standardized District Name"])
+
+                    # Show standardized tables with highlights
+                    st.markdown("#### Standardized CSV Preview with Highlights")
+                    st.dataframe(styled_df_first, hide_index=True)
+                    st.dataframe(styled_df_second, hide_index=True)
 
                 except Exception as e:
                     st.error(f"An error occurred during standardization: {str(e)}")
