@@ -62,7 +62,7 @@ def standardize_df(df, region_registry, district_registry, raise_errors = True):
                 if unit_type == 'Region':
                     unit_suggestions['Region'][unit_name_aim] = [unit.name_id for unit in found_units]
                 else:
-                    unit_suggestions['District'][(df.at[idx,'Region'],unit_name_aim)] = [unit.name_id for unit in found_units]
+                    unit_suggestions['District'][(df.at[idx,'Region'],unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
             else:
                 unit = found_units
             if unit is None:

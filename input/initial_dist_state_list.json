@@ -53,7 +53,7 @@
   {
     "name_id": "BIELSKI (BIELSK PODLASKI)",
     "name_variants": [
-      "BIELSKI (BIELSK PODLASKI)"
+      "BIELSKI (BIELSK PODLASKI)", "BIELSKI"
     ],
     "seat_name_variants": [
       "BIELSK PODLASKI"
@@ -138,10 +138,10 @@
   {
     "name_id": "OSTROWSKI (OSTRÓW MAZOWIECKA)",
     "name_variants": [
-      "OSTROWSKI (OSTRÓW MAZOWIECKA)"
+      "OSTROWSKI (OSTRÓW MAZOWIECKA)", "OSTROWSKI"
     ],
     "seat_name_variants": [
-      "OSTRÓW MAZOWIECKA"
+      "OSTRÓW MAZOWIECKA", "OSTRÓW"
     ],
     "states": [
       {
@@ -206,10 +206,10 @@
   {
     "name_id": "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)",
     "name_variants": [
-      "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)"
+      "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)", "SZCZUCZYŃSKI"
     ],
     "seat_name_variants": [
-      "GRAJEWO"
+      "GRAJEWO", "SZCZUCZYN"
     ],
     "states": [
       {
@@ -530,11 +530,11 @@
   {
     "name_id": "BIALSKI (BIAŁA KRAKOWSKA)",
     "name_variants": [
-      "BIALSKI (BIAŁA KRAKOWSKA)"
+      "BIALSKI (BIAŁA KRAKOWSKA)", "BIALSKI"
     ],
     "seat_name_variants": [
       "BIAŁA KRAKOWSKA",
-      "BIAŁA KRAKOWSKA"
+      "BIAŁA"
     ],
     "states": [
       {
@@ -940,11 +940,11 @@
   {
     "name_id": "BIALSKI (BIAŁA PODLASKA)",
     "name_variants": [
-      "BIALSKI (BIAŁA PODLASKA)"
+      "BIALSKI (BIAŁA PODLASKA)", "BIALSKI"
     ],
     "seat_name_variants": [
       "BIAŁA PODLASKA",
-      "BIAŁA PODLASKA"
+      "BIAŁA"
     ],
     "states": [
       {
@@ -1199,7 +1199,7 @@
       "SOKOŁOWSKI"
     ],
     "seat_name_variants": [
-      "SOKOŁÓW PODLASKI"
+      "SOKOŁÓW PODLASKI", "SOKOŁÓW"
     ],
     "states": [
       {
@@ -1589,10 +1589,10 @@
   {
     "name_id": "RAWSKI (RAWA RUSKA)",
     "name_variants": [
-      "RAWSKI (RAWA RUSKA)"
+      "RAWSKI (RAWA RUSKA)", "RAWSKI"
     ],
     "seat_name_variants": [
-      "RAWA RUSKA"
+      "RAWA RUSKA", "RAWA"
     ],
     "states": [
       {
@@ -2241,10 +2241,10 @@
   {
     "name_id": "KOSOWSKI (KOSÓW POLESKI)",
     "name_variants": [
-      "KOSOWSKI (KOSÓW POLESKI)", "KOSSOWSKI (KOSSÓW POLESKI)"
+      "KOSOWSKI (KOSÓW POLESKI)", "KOSSOWSKI (KOSSÓW POLESKI)", "KOSOWSKI", "KOSSOWSKI"
     ],
     "seat_name_variants": [
-      "KOSÓW POLESKI", "KOSSÓW POLESKI"
+      "KOSÓW POLESKI", "KOSSÓW POLESKI", "KOSÓW", "KOSSÓW"
     ],
     "states": [
       {
@@ -3006,10 +3006,10 @@
   {
     "name_id": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)",
     "name_variants": [
-      "OSTROWSKI (OSTRÓW WIELKOPOLSKI)"
+      "OSTROWSKI (OSTRÓW WIELKOPOLSKI)", "OSTROWSKI"
     ],
     "seat_name_variants": [
-      "OSTRÓW WIELKOPOLSKI"
+      "OSTRÓW WIELKOPOLSKI", "OSTRÓW"
     ],
     "states": [
       {
@@ -3415,10 +3415,10 @@
   {
     "name_id": "KOSOWSKI (KOSÓW HUCULSKI)",
     "name_variants": [
-      "KOSOWSKI (KOSÓW HUCULSKI)"
+      "KOSOWSKI (KOSÓW HUCULSKI)", "KOSOWSKI"
     ],
     "seat_name_variants": [
-      "KOSÓW"
+      "KOSÓW", "KOSÓW"
     ],
     "states": [
       {
@@ -3537,12 +3537,12 @@
       "ŚNIATYŃSKI"
     ],
     "seat_name_variants": [
-      "ŚNIATYŃ"
+      "ŚNIATYN"
     ],
     "states": [
       {
         "current_name": "ŚNIATYŃSKI",
-        "current_seat_name": "ŚNIATYŃ",
+        "current_seat_name": "ŚNIATYN",
         "current_dist_type": "w",
         "timespan": null
       }
@@ -3602,7 +3602,7 @@
   {
     "name_id": "BIELSKI (BIELSKO)",
     "name_variants": [
-      "BIELSKI (BIELSKO)"
+      "BIELSKI (BIELSKO)", "BIELSKI"
     ],
     "seat_name_variants": [
       "BIELSKO (BIELSKO)"
@@ -4216,10 +4216,12 @@
     "name_id": "RAWSKI (RAWA MAZOWIECKA)",
     "name_variants": [
       "RAWSKI (RAWA MAZOWIECKA)",
-      "RAWSKO-MAZOWIECKI"
+      "RAWSKO-MAZOWIECKI",
+      "RAWSKI"
     ],
     "seat_name_variants": [
-      "RAWA MAZOWIECKA"
+      "RAWA MAZOWIECKA",
+      "RAWA"
     ],
     "states": [
       {

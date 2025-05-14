@@ -89,6 +89,10 @@ elif plot_type == "Administrative States History":
     with comparison_container:
         state_df_col, uploaded_df_col = st.columns(2)
     editor_container = st.container()
+    with editor_container:
+        edit_dataframe_container = st.container()
+        suggestions_container = st.container()
+        download_edited_csv_container = st.container()
 
     with slider_container:
         selected_date = st.slider(
@@ -174,11 +178,37 @@ elif plot_type == "Administrative States History":
                         for district in adm_state_df[region].dropna()
                     )
 
-                    with editor_container:
-                        st.markdown("#### Edit Dataframe - Define Missing Standardized District Name")
+                    # Initialize the edited dataframe and persist it in the session state
+                    file_id = uploaded_file.name
+                    if (
+                        "uploaded_file_id" not in st.session_state
+                        or st.session_state.uploaded_file_id != file_id
+                    ):
+                        st.session_state.uploaded_file_id = file_id
+                        st.session_state.edited_df = uploaded_df.copy()
+
+
+                    with suggestions_container:
+                        st.header("... or select suggested name:")
+                        for (region_name, district_name), options in unit_suggestions["District"].items():
+                            current_standard_name = st.session_state.edited_df.loc[st.session_state.edited_df["District"].str.upper() == district_name, "Standardized District Name"].values[0]
+                            if current_standard_name is None or current_standard_name not in options:
+                                selected = st.selectbox(
+                                    f"Select standardized name for ({region_name}, {district_name})",
+                                    options,
+                                    index = None,
+                                    key=f"{region_name}_{district_name}",
+                                    placeholder = "Select the correct standardized name."
+                                )
+                                st.session_state.edited_df.loc[st.session_state.edited_df["District"].str.upper() == district_name, "Standardized District Name"] = selected
+                            
+
+                    with edit_dataframe_container:
+                        st.markdown("#### Edit Dataframe - define missing standardized district names")
                         
                         # Let the user edit the dataframe
-                        edited_df = st.data_editor(uploaded_df, hide_index=True)
+                        edited_df = st.data_editor(st.session_state.edited_df, hide_index=True)
+                        st.session_state.edited_df = edited_df  # Save any edits the user makes
 
                         # Prepare dataframe for download
                         download_df = edited_df.copy()
@@ -193,12 +223,13 @@ elif plot_type == "Administrative States History":
                         download_df = download_df.drop(columns=["Standardized Region Name", "Standardized District Name"])
 
                         # Convert to CSV
-                        csv_data = download_df.to_csv(index=False)
+                        csv_data = download_df.to_csv(index=False, sep = ";")
 
                         # Append "_edited" to the file name before the extension
                         name, ext = os.path.splitext(uploaded_file.name)
                         new_file_name = f"{name}_edited{ext}"
 
+                    with download_edited_csv_container:
                         # Download button
                         st.caption("Download edited dataframe as a CSV with standardized names where available.")
                         st.download_button(
@@ -210,7 +241,7 @@ elif plot_type == "Administrative States History":
                         )
 
 
-                    loaded_file_dist_ids = set(edited_df['Standardized District Name'].dropna())
+                    loaded_file_dist_ids = set(st.session_state.edited_df['Standardized District Name'].dropna())
 
                     # Apply conditional formatting to the DataFrame
 
@@ -231,13 +262,13 @@ elif plot_type == "Administrative States History":
                     def highlight_cells_uploaded_dataframe(val):
                         return style_cells(val, adm_state_dist_ids, "#90EE90", "#FFB6C1")
 
-                    # Use edited_df to create a dataframe with region names as column names and district names in the colums.
+                    # Use st.session_state.edited_df to create a dataframe with region names as column names and district names in the colums.
                     # Use standardized names where possible and non-standardized names where they were not recognized.
                     names_standardized_where_possible = [
                         row["Standardized District Name"] if row["Standardized District Name"] in adm_state_dist_ids else row["District"]
-                        for _, row in edited_df.iterrows()
+                        for _, row in st.session_state.edited_df.iterrows()
                     ]
-                    new_r_d_list = list(zip(list(edited_df["Standardized Region Name"]), list(names_standardized_where_possible)))
+                    new_r_d_list = list(zip(list(st.session_state.edited_df["Standardized Region Name"]), list(names_standardized_where_possible)))
                     loaded_region_district_map = {}
                     for region_name, dist_name in new_r_d_list:
                         if region_name not in loaded_region_district_map:
