@@ -244,7 +244,7 @@
       "WYSOKO-MAZOWIECKI"
     ],
     "seat_name_variants": [
-      "WYSOKIE MAZOWIECKIE"
+      "WYSOKIE MAZOWIECKIE", "WYSOKIE MAZOW."
     ],
     "states": [
       {
@@ -1165,7 +1165,7 @@
       "RADZYŃSKI"
     ],
     "seat_name_variants": [
-      "RADZYN"
+      "RADZYŃ"
     ],
     "states": [
       {
@@ -1369,7 +1369,7 @@
       "GRÓDECKI"
     ],
     "seat_name_variants": [
-      "GRÓDEK JAGIEL."
+      "GRÓDEK JAGIEL.", "GRÓDEK JAGIELL.", "GRÓDEK JAGIELLOŃSKI"
     ],
     "states": [
       {
@@ -2050,7 +2050,7 @@
   {
     "name_id": "DZIŚNIEŃSKI",
     "name_variants": [
-      "DZIŚNIEŃSKI"
+      "DZIŚNIEŃSKI", "DZISNA"
     ],
     "seat_name_variants": [
       "GŁĘBOKIE"
@@ -2191,7 +2191,8 @@
     "seat_name_variants": [
       "BRZEŚĆ N.BUG.",
       "BRZEŚĆ N.BUGIEM",
-      "BRZEŚĆ NAD BUGIEM"
+      "BRZEŚĆ NAD BUGIEM",
+      "BRZEŚĆ N/BUGIEM"
     ],
     "states": [
       {
@@ -2209,7 +2210,7 @@
       "DROHICZYŃSKI"
     ],
     "seat_name_variants": [
-      "DROHICZYN (POLESKI)"
+      "DROHICZYN (POLESKI)", "DROHICZYN"
     ],
     "states": [
       {
@@ -2260,7 +2261,7 @@
       "KOSZYRSKI"
     ],
     "seat_name_variants": [
-      "KAMIEŃ KOSZYRSKI"
+      "KAMIEŃ KOSZYRSKI", "KAMIEŃ KOSZ."
     ],
     "states": [
       {
@@ -2495,7 +2496,7 @@
   {
     "name_id": "LUBAWSKI",
     "name_variants": [
-      "LUBAWSKI"
+      "LUBAWSKI", "LUBAWA"
     ],
     "seat_name_variants": [
       "NOWE MIASTO LUBAWSKIE"
@@ -3757,7 +3758,7 @@
       "KAMIONECKI"
     ],
     "seat_name_variants": [
-      "KAMIONKA STRUMIŁOWA"
+      "KAMIONKA STRUMIŁOWA", "KAMIONKA STRUM."
     ],
     "states": [
       {
@@ -4080,7 +4081,7 @@
       "MIŃSKI", "MIŃSKO-MAZOWIECKI"
     ],
     "seat_name_variants": [
-      "MIŃSK MAZOW."
+      "MIŃSK MAZOW.", "MIŃSK MAZ."
     ],
     "states": [
       {
@@ -4898,12 +4899,12 @@
       "OSZMIAŃSKI"
     ],
     "seat_name_variants": [
-      "OSZMIANY"
+      "OSZMIANA"
     ],
     "states": [
       {
         "current_name": "OSZMIAŃSKI",
-        "current_seat_name": "OSZMIANY",
+        "current_seat_name": "OSZMIANA",
         "current_dist_type": "w",
         "timespan": null
       }

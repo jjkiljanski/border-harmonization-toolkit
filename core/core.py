@@ -18,7 +18,7 @@ from data_models.adm_change import *
 from utils.helper_functions import load_config, standardize_df
 
 class AdministrativeHistory():
-    def __init__(self, config):
+    def __init__(self, config, load_territories=True):
         # Load the configuration
         config = load_config("config.json")
         
@@ -28,6 +28,8 @@ class AdministrativeHistory():
         self.initial_region_list_path = config["initial_region_list_path"]
         self.initial_dist_list_path = config["initial_dist_list_path"]
         self.territories_path = config["territories_path"]
+
+        self.load_territories = load_territories
 
         # Output files' paths
         self.adm_states_output_path = config["adm_states_output_path"]
@@ -60,14 +62,13 @@ class AdministrativeHistory():
         # Create states for the whole timespan
         self._create_history()
 
-        self._define_unique_seat_names()
-
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
-        # Load the territories
-        #self._load_territories()
-        # Deduce information about district territories where possible
-        #self._deduce_territories()
+        if self.load_territories:
+            # Load the territories
+            self._load_territories()
+            # Deduce information about district territories where possible
+            self._deduce_territories()
 
 
     def _load_dist_registry(self):
@@ -204,37 +205,6 @@ class AdministrativeHistory():
         # Sort district list in the district registry by name_id
         self.dist_registry.unit_list.sort(key=lambda dist: dist.name_id)
 
-    def _define_unique_seat_names(self):
-        """
-        Define list of unique seat names for the Region and District registries.
-        """
-
-        # Define list of unique seat names for the District registry
-        dist_seat_name_lists= [dist.seat_name_variants for dist in self.dist_registry.unit_list]
-        # A mapping from seat name to count of how many district lists it appears in
-        dist_seat_name_to_count = defaultdict(int)
-        # Count how many different lists each seat name appears in
-        for seat_list in dist_seat_name_lists:
-            if seat_list:
-                for seat in set(seat_list):  # Use set to avoid double-counting within a single list
-                    dist_seat_name_to_count[seat] += 1
-
-        # Extract seat names that appear in only one district's list
-        self.dist_registry.unique_seat_names = [seat for seat, count in dist_seat_name_to_count.items() if count == 1]
-
-        # Define list of unique seat names for the Region registry
-        region_seat_name_lists= [region.seat_name_variants for region in self.region_registry.unit_list]
-        # A mapping from seat name to count of how many region lists it appears in
-        region_seat_name_to_count = defaultdict(int)
-        # Count how many different lists each seat name appears in
-        for seat_list in region_seat_name_lists:
-            if seat_list:
-                for seat in set(seat_list):  # Use set to avoid double-counting within a single list
-                    region_seat_name_to_count[seat] += 1
-
-        # Extract seat names that appear in only one region's list
-        self.region_registry.unique_seat_names = [seat for seat, count in region_seat_name_to_count.items() if count == 1]
-
     def _load_territories(self):
         """
         Loads a territories from an external JSON file to a Geopandas dataframe
@@ -277,7 +247,7 @@ class AdministrativeHistory():
 
         # Standardize district and region names to name_ids in the registries
         try:
-            territories_gdf = standardize_df(territories_gdf, self.region_registry, self.dist_registry)
+            territories_gdf, unit_suggestions = standardize_df(territories_gdf, self.region_registry, self.dist_registry)
         except ValueError as e:
             print("❌ Failed during standardization:", e)
             raise  # Do NOT assign the error to territories_gdf!

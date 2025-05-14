@@ -184,69 +184,96 @@ def test_exists():
 #                         UnitRegistry class tests                         #
 ############################################################################
 # Test data setup
-def create_test_unit():
+def create_test_units():
     state1 = UnitState(
         current_name="District A",
         current_seat_name="Seat A",
         current_dist_type="w",
-        timespan=TimeSpan(start=datetime(1923, 1, 1), end=datetime(1930, 12, 31))
+        timespan=TimeSpan(start=datetime(1923, 1, 1), end=datetime(1930, 1, 1))
     )
     state2 = UnitState(
         current_name="District B",
-        current_seat_name="Seat B",
-        current_dist_type="m",
-        timespan=TimeSpan(start=datetime(1931, 1, 1), end=datetime(1938, 12, 31))
+        current_seat_name="Seat A",
+        current_dist_type="w",
+        timespan=TimeSpan(start=datetime(1930, 1, 1), end=datetime(1938, 1, 1))
     )
-    
-    unit = Unit(
+    unit1 = Unit(
         name_id="unit1",
-        name_variants=["unit1", "unitA", "unitB"],
-        seat_name_variants=["seatA", "seatB"],
+        name_variants=["unit1", "unitA", "unitB", "unitS"], # Name "unitS" is shared between unit1 and unit2
+        seat_name_variants=["seatA", "seatB", "seatS"], # Name "seatS" is shared between unit1 and unit2
         states=[state1, state2],
     )
-    return unit
+    state3 = UnitState(
+        current_name="District B",
+        current_seat_name="Seat B",
+        current_dist_type="w",
+        timespan=TimeSpan(start=datetime(1923, 1, 1), end=datetime(1930, 1, 1))
+    )
+    unit2 = Unit(
+        name_id="unit2",
+        name_variants=["unit2", "unitC", "unitD", "unitS"], # Name "unitS" is shared between unit1 and unit2
+        seat_name_variants=["seatC", "seatD", "seatS"], # Name "seatS" is shared between unit1 and unit2
+        states=[state3],
+    )
+    return unit1,unit2
 
 # Test for find_unit method
 def test_find_unit():
-    unit = create_test_unit()
-    registry = UnitRegistry(unit_list=[unit])
+    unit1,unit2 = create_test_units()
+    registry = UnitRegistry(unit_list=[unit1,unit2])
     
     # Test: find a unit by name variant
     found_unit = registry.find_unit("unitA")
-    assert found_unit == unit  # Should find the unit
+    assert found_unit == unit1  # Should find the unit
 
     # Test: find a unit by another name variant
     found_unit = registry.find_unit("unitB")
-    assert found_unit == unit  # Should also find the unit
+    assert found_unit == unit1  # Should also find the unit
 
     # Test: should return None when no unit is found
     found_unit = registry.find_unit("unitX")
     assert found_unit is None  # No such unit
 
-    # Test: should return None when unit is searched by seat
+    # Test: find a unit by seat name variant
     found_unit = registry.find_unit("seatB")
+    assert found_unit is unit1  # No such unit
+    
+    # Test: should return None when unit is searched by seat and 'use_seat_names' set to False
+    found_unit = registry.find_unit("seatB", use_seat_names=False)
     assert found_unit is None  # No such unit
 
-    # Test: should raise an error if 'use_unique_seat_names' set to True, but attribute self.unique_seat_names is None.
-    with pytest.raises(ValueError, match="attribute self.unique_seat_names is None"):
-        registry.find_unit("seatB", use_unique_seat_names=True)
+    # Test: should return None when unit searched by inexistent seat name
+    found_unit = registry.find_unit("seatX")
+    assert found_unit is None # Should find the unit
 
-    # Now define the self.unique_seat_names attribute.
-    registry.unique_seat_names=["seatA", "seatB"]
+    # Test: should return None when unit searched by a shared name "unitS"
+    found_unit = registry.find_unit("seatS")
+    assert found_unit is None # Should find the unit
 
-    # Test: should STILL return None when unit is searched by seat
-    # AND use_unique_seat_names NOT set to True
-    found_unit = registry.find_unit("seatB")
-    assert found_unit is None  # No such unit
+    # Test: should return None when unit searched by a shared seat name "seatS"
+    found_unit = registry.find_unit("seatS")
+    assert found_unit is None # Should find the unit
 
-    # Test: should return the unit when searched by seat
-    # AND use_unique_seat_names IS set to True
-    found_unit = registry.find_unit("seatB", use_unique_seat_names=True)
-    assert found_unit is unit  # Should find the unit
+    # Test: should return BOTH units when unit searched by a shared name "unitS"
+    # and allow_non_unique is True
+    found_units = registry.find_unit("seatS", allow_non_unique=True)
+    assert isinstance(found_units, list)
+    assert found_units == [unit1, unit2] # Should find both units
+
+    # Test: should return BOTH units when unit searched by a shared seat name "seatS"
+    # and allow_non_unique is True
+    found_units = registry.find_unit("seatS", allow_non_unique=True)
+    assert isinstance(found_units, list)
+    assert found_units == [unit1,unit2] # Should find the unit
+
+    # Test: should None when unit searched by a shared seat name "seatS",
+    # allow_non_unique is True, BUT use_seat_names is False
+    found_units = registry.find_unit("seatS", use_seat_names=False, allow_non_unique=True)
+    assert found_units is None # Should find the unit
 
 # Test for find_unit_state_by_date method
 def test_find_unit_state_by_date():
-    expected_unit = create_test_unit()
+    expected_unit, _ = create_test_units()
     registry = UnitRegistry(unit_list=[expected_unit])
     
     # Test: find a unit state by a date within the first state period
@@ -259,7 +286,7 @@ def test_find_unit_state_by_date():
     unit, unit_state, timespan = registry.find_unit_state_by_date("unitB", datetime(1935, 7, 20))
     assert unit == expected_unit  # The correct unit should be returned
     assert unit_state.current_name == "District B"  # The state should match the correct name
-    assert timespan.start == datetime(1931, 1, 1)  # The timespan start date should match
+    assert timespan.start == datetime(1930, 1, 1)  # The timespan start date should match
 
     # Test: searching for a (unit, date), where unit exists, but date is outside any of its state ranges
     # Should return (expected_unit, None, None)
@@ -276,7 +303,7 @@ def test_find_unit_state_by_date():
 
 # Test for create_next_unit_state method
 def test_create_next_unit_state():
-    unit = create_test_unit()
+    unit, _ = create_test_units()
     registry = UnitRegistry(unit_list=[unit])
     
     # Test: create the next state for the unit starting from 1931-01-01
@@ -284,13 +311,13 @@ def test_create_next_unit_state():
     
     assert old_state == unit.states[-2]
     assert old_state.current_name == "District B"  # The name should match the previous state
-    assert old_state.timespan.start == datetime(1931, 1, 1)  # The start should be held unchanged 
+    assert old_state.timespan.start == datetime(1930, 1, 1)  # The start should be held unchanged 
     assert old_state.timespan.end == datetime(1932, 1, 1)  # The end date should match the date passed
     
     assert new_state == unit.states[-1]
     assert new_state.current_name == "District B"  # The name should match the previous state
     assert new_state.timespan.start == datetime(1932, 1, 1)  # The start of the new state should match the date passed
-    assert new_state.timespan.end == datetime(1938, 12, 31)  # The end date should match the start date for now
+    assert new_state.timespan.end == datetime(1938, 1, 1)  # The end date should match the start date for now
     
     assert len(unit.states) == 3  # The unit should now have 3 states
 
@@ -304,37 +331,10 @@ def test_create_next_unit_state():
 
 # Test for all_unit_states_by_date method
 def test_all_unit_states_by_date():
-    state1 = UnitState(
-        current_name="District A",
-        current_seat_name="Seat A",
-        current_dist_type="w",
-        timespan=TimeSpan(start=datetime(1923, 1, 1), end=datetime(1930, 1, 1))
-    )
-    state2 = UnitState(
-        current_name="District A",
-        current_seat_name="Seat A",
-        current_dist_type="w",
-        timespan=TimeSpan(start=datetime(1930, 1, 1), end=datetime(1938, 1, 1))
-    )
-    unit1 = Unit(
-        name_id="unit1",
-        name_variants=["unit1", "unitA", "unitB"],
-        seat_name_variants=["seatA", "seatB"],
-        states=[state1, state2],
-    )
-    state3 = UnitState(
-        current_name="District B",
-        current_seat_name="Seat B",
-        current_dist_type="w",
-        timespan=TimeSpan(start=datetime(1923, 1, 1), end=datetime(1930, 1, 1))
-    )
-    unit2 = Unit(
-        name_id="unit2",
-        name_variants=["unit2", "unitC", "unitD"],
-        seat_name_variants=["seatC", "seatD"],
-        states=[state3],
-    )
-
+    unit1, unit2 = create_test_units()
+    state1 = unit1.states[0]
+    state2 = unit1.states[1]
+    state3 = unit2.states[0]
     registry = UnitRegistry(unit_list=[unit1, unit2])
     assert registry.all_unit_states_by_date(datetime(1927,1,1)) == [(unit1, state1), (unit2, state3)]
     assert registry.all_unit_states_by_date(datetime(1933,1,1)) == [(unit1, state2)]

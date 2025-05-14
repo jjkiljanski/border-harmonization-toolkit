@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 import pandas as pd
 from datetime import datetime
 import io
+import os
 
 from core.core import AdministrativeHistory
 from utils.helper_functions import load_config, standardize_df, load_uploaded_csv
@@ -23,7 +24,7 @@ st.title("District Visualization Dashboard")
 @st.cache_resource
 def load_history():
     config = load_config("config.json")
-    return AdministrativeHistory(config)
+    return AdministrativeHistory(config, load_territories=False)
 
 administrative_history = load_history()
 dist_registry = administrative_history.dist_registry
@@ -83,11 +84,13 @@ elif plot_type == "Administrative States History":
 
     # Create container placeholders for flexible layout
     upload_container = st.container()
-    state_df_container = st.container()
-    uploaded_df_container = st.container()
+    slider_container = st.container()
+    comparison_container = st.container()
+    with comparison_container:
+        state_df_col, uploaded_df_col = st.columns(2)
     editor_container = st.container()
 
-    with state_df_container:
+    with slider_container:
         selected_date = st.slider(
             "Select Date",
             min_value=adm_state_middles[0],
@@ -117,9 +120,9 @@ elif plot_type == "Administrative States History":
 
         adm_state_df = pd.DataFrame(df_data)
 
-    st.markdown("### Upload CSV to Compare Against Administrative State")
-
-    uploaded_file = st.file_uploader("Upload a CSV with columns 'Region' and 'District'", type=["csv"])
+    with upload_container:
+        st.markdown("### Upload CSV to Compare Against Administrative State")
+        uploaded_file = st.file_uploader("Upload a CSV with columns 'Region' and 'District'", type=["csv"])
 
     if uploaded_file:
         try:
@@ -140,12 +143,12 @@ elif plot_type == "Administrative States History":
                 try:
                     # Use a copy to preserve original for highlighting if needed
                     standard_df = uploaded_df.copy()
-                    standard_df = standardize_df(
+                    standard_df, unit_suggestions = standardize_df(
                         standard_df,
                         region_registry=administrative_history.region_registry,
                         district_registry=administrative_history.dist_registry,
                         raise_errors=False,  # We handle errors below
-                        use_unique_seat_names=True
+                        use_seat_names=True
                     )
 
                     # Reassign standardized columns
@@ -173,9 +176,40 @@ elif plot_type == "Administrative States History":
                     )
 
                     with editor_container:
-                        st.markdown(f"#### Edit Dataframe - Define Missing Standardized District Name")
-                        # Use st.data_editor and capture the edited version of uploaded_df
+                        st.markdown("#### Edit Dataframe - Define Missing Standardized District Name")
+                        
+                        # Let the user edit the dataframe
                         edited_df = st.data_editor(uploaded_df, hide_index=True)
+
+                        # Prepare dataframe for download
+                        download_df = edited_df.copy()
+                        download_df["District"] = download_df["Standardized District Name"].where(
+                            download_df["Standardized District Name"].notna(), download_df["District"]
+                        )
+                        download_df["Region"] = download_df["Standardized Region Name"].where(
+                            download_df["Standardized Region Name"].notna(), download_df["Region"]
+                        )
+
+                        # Drop the standardized columns
+                        download_df = download_df.drop(columns=["Standardized Region Name", "Standardized District Name"])
+
+                        # Convert to CSV
+                        csv_data = download_df.to_csv(index=False)
+
+                        # Append "_edited" to the file name before the extension
+                        name, ext = os.path.splitext(uploaded_file.name)
+                        new_file_name = f"{name}_edited{ext}"
+
+                        # Download button
+                        st.caption("Download edited dataframe as a CSV with standardized names where available.")
+                        st.download_button(
+                            label="Download Edited CSV",
+                            data=csv_data,
+                            file_name=new_file_name,
+                            mime="text/csv",
+                            key="download_edited_csv"  # Add a unique key
+                        )
+
 
                     loaded_file_dist_ids = set(edited_df['Standardized District Name'].dropna())
 
@@ -224,12 +258,12 @@ elif plot_type == "Administrative States History":
                     # Now use edited_df to create styled_uploaded_df
                     styled_uploaded_df = edited_df_display.style.applymap(highlight_cells_uploaded_dataframe)
 
-                    with uploaded_df_container:
+                    with uploaded_df_col:
                         st.markdown(f"#### Names Recognized in the Uploaded File")
                         # Show the second dataframe, now reflecting edits
                         st.dataframe(styled_uploaded_df, hide_index=True)
 
-                    with state_df_container:
+                    with state_df_col:
                         # Generate CSV string in-memory using the new version of to_csv
                         csv_data = adm_state.to_csv(csv_filepath=None, only_homeland=True)
 
@@ -241,7 +275,7 @@ elif plot_type == "Administrative States History":
                         st.caption(f"Download CSV template for administrative state {adm_state.timespan} of (Region, District) pairs.")
 
                         st.download_button(
-                            label="Download",
+                            label="Download State Template",
                             data=csv_data,
                             file_name="region_district_template.csv",
                             mime="text/csv"
@@ -255,7 +289,7 @@ elif plot_type == "Administrative States History":
             st.error(f"Could not process uploaded file: {str(e)}")
     else:
         # If file not uploaded, create adm_state_df without styling.
-        with state_df_container:
+        with state_df_col:
             # Generate CSV string in-memory using the new version of to_csv
             csv_data = adm_state.to_csv(csv_filepath=None, only_homeland=True)
 
@@ -266,7 +300,7 @@ elif plot_type == "Administrative States History":
             st.caption(f"Download CSV template for administrative state {adm_state.timespan} of (Region, District) pairs.")
 
             st.download_button(
-                label="Download",
+                label="Download State Template",
                 data=csv_data,
                 file_name="region_district_template.csv",
                 mime="text/csv"

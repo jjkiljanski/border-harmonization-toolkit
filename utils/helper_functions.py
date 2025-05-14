@@ -9,15 +9,35 @@ import base64
 import io
 import streamlit as st
 
-def load_and_standardize_csv(file_path, region_registry, district_registry, use_unique_seat_names = False):
+def load_and_standardize_csv(file_path, region_registry, district_registry, use_seat_names = False):
     # Read the CSV
     df = pd.read_csv(file_path)
 
-    standardize_df(df, region_registry, district_registry, use_unique_seat_names)
+    df, unit_suggestions = standardize_df(df, region_registry, district_registry, use_seat_names)
 
     return df
 
-def standardize_df(df, region_registry, district_registry, raise_errors = True, use_unique_seat_names = False):
+def standardize_df(df, region_registry, district_registry, raise_errors = True):
+    """
+    Standardizes the 'Region' and 'District' names in a DataFrame using the provided unit registries.
+
+    This function looks up each name in the 'Region' and 'District' columns against the corresponding
+    registry. If a name uniquely identifies a unit, it is replaced with that unit's `name_id`.
+    A dictionary of name-to-matching-unit-ID(s) (`unit_suggestions`) is built along the way to record 
+    ambiguous or alternative names.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing 'Region' and 'District' columns to be standardized.
+        region_registry (UnitRegistry): Registry containing region units.
+        district_registry (UnitRegistry): Registry containing district units.
+        raise_errors (bool): If True, raises a ValueError when an unrecognized name is encountered.
+        use_seat_names (bool): If True, includes seat name variants during name matching.
+
+    Returns:
+        tuple:
+            pd.DataFrame: The updated DataFrame with standardized 'Region' and 'District' values.
+            dict: A dictionary mapping each original name to a list of matching unit `name_id`s.
+    """
     if {'Region', 'District'}.issubset(df.columns):
         df['Region'] = df['Region'].str.upper()
         df['District'] = df['District'].str.upper()
@@ -25,13 +45,19 @@ def standardize_df(df, region_registry, district_registry, raise_errors = True, 
         raise ValueError(f"Dataframe must contain 'Region' and 'District' column. Dataframe columns: {df.columns}")
 
     not_in_registry = {'Region': [], 'District': []}
+    # suggestions dict collects (unit_name_aim : list of units that have the name variant) key:value pairs
+    # (case where a name variant is used by many units)
+    unit_suggestions = {'Region': {}, 'District': {}}
 
     for unit_type in ['Region', 'District']:
         for idx, unit_name_aim in df[unit_type].items():
             if unit_type == 'Region':
-                unit = region_registry.find_unit(unit_name_aim, use_unique_seat_names=use_unique_seat_names)
+                found_units = region_registry.find_unit(unit_name_aim, allow_non_unique = True)
             else:
-                unit = district_registry.find_unit(unit_name_aim, use_unique_seat_names=use_unique_seat_names)
+                found_units = district_registry.find_unit(unit_name_aim, allow_non_unique = True)
+            if isinstance(found_units, list):
+                unit = None
+                unit_suggestions[unit_type][unit_name_aim] = [unit.name_id for unit in found_units]
             if unit is None:
                 not_in_registry[unit_type].append(unit_name_aim)
             elif unit.name_id != unit_name_aim:
@@ -46,7 +72,7 @@ def standardize_df(df, region_registry, district_registry, raise_errors = True, 
         if not_in_registry[unit_type] and raise_errors:
             raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
         
-    return df
+    return df, unit_suggestions
 
 def load_uploaded_csv(uploaded_file):
     # Step 1: Read a sample to guess encoding and check delimiter

@@ -8,6 +8,7 @@ import matplotlib
 matplotlib.use("Agg")
 import geopandas as gpd
 from shapely.ops import unary_union
+from collections import Counter
 
 from data_models.adm_timespan import TimeSpan
 
@@ -130,11 +131,49 @@ class UnitRegistry(BaseModel):
     A registry to manage a list of one type of units (districts/regions) and handle unit state transitions.
     """
     unit_list: List[Unit]
-    unique_seat_names: Optional[List[str]] = None # This should be defined only after the whole unitregistry has been created.
+    unit_name_ids: Optional[List[str]] = None # Atttribute defined in the model validator
+    unique_name_variants: Optional[List[str]] = None # Atttribute defined in the model validator
+    unique_seat_names: Optional[List[str]] = None # Atttribute defined in the model validator
 
-    def find_unit(self, unit_name: str, use_unique_seat_names = False) -> Optional[Unit]:
+    @model_validator(mode="after")
+    def compute_unique_variants(self) -> "UnitRegistry":
+        # Define the self.unit_name_ids attribute
+        unit_name_ids = [unit.name_id for unit in self.unit_list]
+        dupplicate_name_ids = [name_id for name_id, count in Counter(unit_name_ids).items() if count > 1]
+        if dupplicate_name_ids:
+            raise ValueError(f"Some unit name_id parameters in the registry are not unique: {dupplicate_name_ids}")
+        
+        self.unit_name_ids = unit_name_ids
+        
+        # Check that no unit has name_variants or seat_name_variants values that are other unit's name_id
+        for unit in self.unit_list:
+            other_ids = [name_id for name_id in self.unit_name_ids if name_id != unit.name_id]
+            for name in unit.name_variants:
+                if name in other_ids:
+                    raise ValueError(f"Unit {unit.name_id} has a name variant that is used as other unit's name_id. Please delete the name variant or change the name_id of the unit {unit.name_id} to a name_id that uniquely describes the unit.")
+            for name in unit.seat_name_variants:
+                if name in other_ids:
+                    raise ValueError(f"Unit {unit.name_id} has a name variant that is used as other unit's name_id. Please delete the name variant or change the name_id of the unit {unit.name_id} to a name_id that uniquely describes the unit.")
+        
+        # Flatten and count all name_variants
+        name_counts = Counter(
+            name for unit in self.unit_list for name in set(unit.name_variants+unit.seat_name_variants) # Use set(...) to count only once the names that are BOTH a seat name and a name of THE SAME unit.
+        )
+
+        all_name_variants = [name for unit in self.unit_list for name in unit.name_variants]
+        all_seat_name_variants = [name for unit in self.unit_list for name in unit.seat_name_variants]
+
+        # Only keep variants that occur exactly once
+        self.unique_name_variants = [name for name in all_name_variants if name_counts[name] == 1]
+        self.unique_seat_names = [seat_name for seat_name in all_seat_name_variants if name_counts[seat_name] == 1]
+
+        return self
+
+    def find_unit(self, unit_name: str, use_seat_names = True, allow_non_unique = False) -> Optional[Unit]:
         """
         Finds a unit by its name or variant.
+
+        If use_unique_seat_names is True, checks also seat names that are in the in the 
 
         Args:
             unit_name: The name to search for.
@@ -142,16 +181,30 @@ class UnitRegistry(BaseModel):
         Returns:
             Optional[Unit]: The unit if found, or None.
         """
-        if use_unique_seat_names:
-            if self.unique_seat_names is None:
-                raise ValueError(f"Method 'find_unit' used with parameter 'use_unique_seat_names' set to True, but attribute self.unique_seat_names is None.")
+        if allow_non_unique:
+            unit_list = []
         for unit in self.unit_list:
+            if unit_name == unit.name_id:
+                return unit # name_id is always unique - the unit is returned immediately.
             if unit_name in unit.name_variants:
-                return unit
-            if use_unique_seat_names and unit.seat_name_variants:
-                if unit_name in unit.seat_name_variants and unit_name in self.unique_seat_names:
-                    return unit
-        return None
+                if unit_name in self.unique_name_variants:
+                    return unit # is name variant is unique, return the name immediately
+                elif allow_non_unique:
+                    unit_list.append(unit)
+            if use_seat_names:
+                if unit_name in unit.seat_name_variants:
+                    if unit_name in self.unique_seat_names:
+                        return unit
+                    elif allow_non_unique:
+                        unit_list.append(unit)
+        if allow_non_unique:
+            if unit_list:
+                unit_list.sort(key=lambda unit: unit.name_id)
+                return unit_list
+            else:
+                return None
+        else:
+            return None
     
     def find_unit_state_by_date(self, unit_name: str, date: datetime) -> Tuple[Unit, UnitState, TimeSpan]:
         """
@@ -200,6 +253,43 @@ class UnitRegistry(BaseModel):
             if unit.exists(date):
                 all_existent.append((unit, unit.find_state_by_date(date)))
         return all_existent
+    
+    def assure_consistency_of_new_unit(self,new_unit: Unit):
+        """
+        This method verifies:
+            1) that the name_id if the new_unit passed is not used as a name variant of seat name variant
+                of any other unit;
+            2) that any name variant or seat name variant of the new_unit passed is not used as a name_id
+                of any other unit.
+        
+        This method edits the self.unique_name_variants and self.unique_seat_name_variants attributes
+        of the registry by checking if they do not repeat with the new unit's attributes.
+        """
+        for unit in self.unit_list:
+            if new_unit.name_id in unit.name_variants:
+                raise ValueError(f"The name_id '{new_unit.name_id}' of the new unit is used as another unit's name variant.")
+            if new_unit.name_id in unit.seat_name_variants:
+                raise ValueError(f"The name_id '{new_unit.name_id}' of the new unit is used as another unit's seat name variant.")
+
+        self.unit_list.append(new_unit)
+        for name_variant in new_unit.name_variants:
+            if name_variant in self.unit_name_ids:
+                raise ValueError(f"The name variant {name_variant} of the new unit is used as another unit's name_id.")
+            elif name_variant in self.unique_name_variants:
+                self.unique_name_variants.remove(name_variant)
+            elif name_variant in self.unique_seat_names:
+                self.unique_seat_names.remove(name_variant)
+            else:
+                self.unique_name_variants.append(name_variant)
+        for seat_name_variant in new_unit.seat_name_variants:
+            if seat_name_variant in self.unit_name_ids:
+                raise ValueError(f"The seat name variant {seat_name_variant} of the appended new unit is used as another unit's name_id.")
+            elif seat_name_variant in self.unique_name_variants:
+                self.unique_name_variants.remove(name_variant)
+            elif seat_name_variant in self.unique_seat_names:
+                self.unique_seat_names.remove(seat_name_variant)
+            else:
+                self.unique_seat_names.append(seat_name_variant)
 
     
 #############################################################################################
@@ -355,8 +445,8 @@ class DistrictRegistry(UnitRegistry):
             district = District(**district_data)
         else:
             raise TypeError("add_unit expects a District instance or a dictionary of District parameters.")
-
-        self.unit_list.append(district)
+        
+        self.assure_consistency_of_new_unit(district)
         return district
     
     def _plot_layer(self, date: datetime):
@@ -406,6 +496,16 @@ class RegionRegistry(UnitRegistry):
             raise TypeError("add_unit expects a Region instance or a dictionary of Region parameters.")
 
         self.unit_list.append(region)
+        for name_variant in region.name_variants:
+            if name_variant in self.unique_name_variants:
+                self.unique_name_variants.pop(name_variant)
+            else:
+                self.unique_name_variants.append(name_variant)
+        for seat_name_variant in region.seat_name_variants:
+            if seat_name_variant in self.unique_seat_names:
+                self.unique_seat_names.pop(seat_name_variant)
+            else:
+                self.unique_seat_names.append(seat_name_variant)
         return region
 
 ################################## DistrictEventLog model ##################################
