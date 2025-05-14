@@ -62,7 +62,7 @@ class Unit(BaseModel):
     Attributes that do change through time (e.g. current_name should be handled as UnitState attributes)"""
     name_id: str
     name_variants: List[str]
-    seat_name_variants: Optional[List[str]] = None # Optional
+    seat_name_variants: Optional[List[str]] = [] # Optional
     states: List[UnitState]
     changes: Optional[List] = []
 
