@@ -147,8 +147,7 @@ elif plot_type == "Administrative States History":
                         standard_df,
                         region_registry=administrative_history.region_registry,
                         district_registry=administrative_history.dist_registry,
-                        raise_errors=False,  # We handle errors below
-                        use_seat_names=True
+                        raise_errors=False  # We handle errors below
                     )
 
                     # Reassign standardized columns

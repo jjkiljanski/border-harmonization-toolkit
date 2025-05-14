@@ -9,13 +9,13 @@ import base64
 import io
 import streamlit as st
 
-def load_and_standardize_csv(file_path, region_registry, district_registry, use_seat_names = False):
+def load_and_standardize_csv(file_path, region_registry, district_registry):
     # Read the CSV
     df = pd.read_csv(file_path)
 
-    df, unit_suggestions = standardize_df(df, region_registry, district_registry, use_seat_names)
+    df, unit_suggestions = standardize_df(df, region_registry, district_registry)
 
-    return df
+    return df, unit_suggestions
 
 def standardize_df(df, region_registry, district_registry, raise_errors = True):
     """
@@ -23,8 +23,9 @@ def standardize_df(df, region_registry, district_registry, raise_errors = True):
 
     This function looks up each name in the 'Region' and 'District' columns against the corresponding
     registry. If a name uniquely identifies a unit, it is replaced with that unit's `name_id`.
-    A dictionary of name-to-matching-unit-ID(s) (`unit_suggestions`) is built along the way to record 
-    ambiguous or alternative names.
+    A dictionary (`unit_suggestions`) of name-to-matching-region-ID(s) (for regions)
+    pr (region_name, dist_name)-to-matching-dist-ID(s) is built along the way to record ambiguous
+    or alternative names.
 
     Parameters:
         df (pd.DataFrame): DataFrame containing 'Region' and 'District' columns to be standardized.
@@ -36,7 +37,8 @@ def standardize_df(df, region_registry, district_registry, raise_errors = True):
     Returns:
         tuple:
             pd.DataFrame: The updated DataFrame with standardized 'Region' and 'District' values.
-            dict: A dictionary mapping each original name to a list of matching unit `name_id`s.
+            dict: A dictionary mapping each original region name or (standardized region name, original dist name)
+                to a list of matching unit `name_id`s.
     """
     if {'Region', 'District'}.issubset(df.columns):
         df['Region'] = df['Region'].str.upper()
@@ -57,7 +59,12 @@ def standardize_df(df, region_registry, district_registry, raise_errors = True):
                 found_units = district_registry.find_unit(unit_name_aim, allow_non_unique = True)
             if isinstance(found_units, list):
                 unit = None
-                unit_suggestions[unit_type][unit_name_aim] = [unit.name_id for unit in found_units]
+                if unit_type == 'Region':
+                    unit_suggestions['Region'][unit_name_aim] = [unit.name_id for unit in found_units]
+                else:
+                    unit_suggestions['District'][(df.at[idx,'Region'],unit_name_aim)] = [unit.name_id for unit in found_units]
+            else:
+                unit = found_units
             if unit is None:
                 not_in_registry[unit_type].append(unit_name_aim)
             elif unit.name_id != unit_name_aim:
