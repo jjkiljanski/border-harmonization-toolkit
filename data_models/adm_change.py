@@ -149,6 +149,8 @@ class OneToManyTakeTo(BaseModel):
                 raise ValueError(f"A dict coherent with District data model must be passed as 'district' attribute when 'create' is True.")
             if not self.new_district_address:
                 raise ValueError(f"The address of the new district must be passed as 'new_district_address' attribute when 'create' is True.")
+            if not self.district.name_id == self.new_district_address[2]:
+                raise ValueError(f"The district name_id passed in the 'new_district_address' attribute ({self.new_district_address[2]}) doesn't agree with the district.name_id ({self.district.name_id}).")
         else:
             if not self.current_name:
                 raise ValueError(f"A string must be passed as 'name_id' attribute when 'create' is False.")
@@ -292,6 +294,8 @@ class ManyToOneTakeTo(BaseModel):
                 raise ValueError(f"A dict coherent with District data model must be passed as 'district' attribute when 'create' is True.")
             if not self.new_district_address:
                 raise ValueError(f"The address of the new district must be passed as 'new_district_address' attribute when 'create' is True.")
+            if not self.district.name_id == self.new_district_address[2]:
+                raise ValueError(f"The district name_id passed in the 'new_district_address' attribute ({self.new_district_address[2]}) doesn't agree with the district.name_id ({self.district.name_id}).")
         else:
             if not self.current_name:
                 raise ValueError(f"A string must be passed as 'name_id' attribute when 'create' is False.")

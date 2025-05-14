@@ -99,12 +99,12 @@
       "take_from": [
         "ABROAD",
         "ŚLĄSK NIEMIECKI",
-        "KATOWICE"
+        "KATOWICE (POWIAT)"
       ],
       "take_to": [
         "HOMELAND",
         "ŚLĄSKIE",
-        "KATOWICE"
+        "KATOWICE (POWIAT)"
       ]
     }
   },
@@ -398,7 +398,7 @@
       "change_type": "OneToMany",
       "take_from": {
         "delete_unit": true,
-        "current_name": "LUBLIN"
+        "current_name": "LUBLIN (POWIAT)"
       },
       "take_to": [
         {
@@ -950,16 +950,16 @@
       "take_to": {
         "create": true,
         "district": {
-          "name_id": "GNIEZNO",
+          "name_id": "GNIEZNO (POWIAT)",
           "name_variants": [
-            "GNIEZNO"
+            "GNIEZNO", "GNIEZNO (POWIAT)"
           ],
           "seat_name_variants": [
             "GNIEZNO"
           ],
           "states": [
             {
-              "current_name": "GNIEZNO",
+              "current_name": "GNIEZNO (POWIAT)",
               "current_seat_name": "GNIEZNO",
               "current_dist_type": "m"
             }
@@ -968,7 +968,7 @@
         "new_district_address": [
           "HOMELAND",
           "POZNAŃSKIE",
-          "GNIEZNO"
+          "GNIEZNO (POWIAT)"
         ]
       },
       "unit_attribute": "territory",
@@ -992,16 +992,16 @@
       "take_to": {
         "create": true,
         "district": {
-          "name_id": "INOWROCŁAW",
+          "name_id": "INOWROCŁAW (POWIAT)",
           "name_variants": [
-            "INOWROCŁAW"
+            "INOWROCŁAW", "INOWROCŁAW (POWIAT)"
           ],
           "seat_name_variants": [
             "INOWROCŁAW"
           ],
           "states": [
             {
-              "current_name": "INOWROCŁAW",
+              "current_name": "INOWROCŁAW (POWIAT)",
               "current_seat_name": "INOWROCŁAW",
               "current_dist_type": "m"
             }
@@ -1010,7 +1010,7 @@
         "new_district_address": [
           "HOMELAND",
           "POZNAŃSKIE",
-          "INOWROCŁAW"
+          "INOWROCŁAW (POWIAT)"
         ]
       },
       "unit_attribute": "territory",
@@ -1439,16 +1439,16 @@
           "weight_from": null,
           "weight_to": null,
           "district": {
-            "name_id": "LUBLIN",
+            "name_id": "LUBLIN (POWIAT)",
             "name_variants": [
-              "LUBLIN"
+              "LUBLIN", "LUBLIN (POWIAT)"
             ],
             "seat_name_variants": [
               "LUBLIN"
             ],
             "states": [
               {
-                "current_name": "LUBLIN",
+                "current_name": "LUBLIN (POWIAT)",
                 "current_seat_name": "LUBLIN",
                 "current_dist_type": "m"
               }
@@ -1457,7 +1457,7 @@
           "new_district_address": [
             "HOMELAND",
             "LUBELSKIE",
-            "LUBLIN"
+            "LUBLIN (POWIAT)"
           ]
         }
       ],
@@ -1579,16 +1579,16 @@
       "take_to": {
         "create": true,
         "district": {
-          "name_id": "GDYNIA",
+          "name_id": "GDYNIA (POWIAT)",
           "name_variants": [
-            "GDYNIA"
+            "GDYNIA", "GDYNIA (POWIAT)"
           ],
           "seat_name_variants": [
             "GDYNIA"
           ],
           "states": [
             {
-              "current_name": "GDYNIA",
+              "current_name": "GDYNIA (POWIAT)",
               "current_seat_name": "GDYNIA",
               "current_dist_type": "m"
             }
@@ -1597,7 +1597,7 @@
         "new_district_address": [
           "HOMELAND",
           "POMORSKIE",
-          "GDYNIA"
+          "GDYNIA (POWIAT)"
         ]
       },
       "unit_attribute": "territory",
@@ -2472,12 +2472,12 @@
       "take_from": [
         "HOMELAND",
         "POZNAŃSKIE",
-        "BYDGOSZCZ"
+        "BYDGOSZCZ (POWIAT)"
       ],
       "take_to": [
         "HOMELAND",
         "POMORSKIE",
-        "BYDGOSZCZ"
+        "BYDGOSZCZ (POWIAT)"
       ]
     }
   },
@@ -2544,12 +2544,12 @@
       "take_from": [
         "HOMELAND",
         "POZNAŃSKIE",
-        "INOWROCŁAW"
+        "INOWROCŁAW (POWIAT)"
       ],
       "take_to": [
         "HOMELAND",
         "POMORSKIE",
-        "INOWROCŁAW"
+        "INOWROCŁAW (POWIAT)"
       ]
     }
   },
@@ -2677,16 +2677,16 @@
           "weight_from": null,
           "weight_to": null,
           "district": {
-            "name_id": "LUBLIN",
+            "name_id": "LUBLIN (POWIAT)",
             "name_variants": [
-              "LUBLIN"
+              "LUBLIN", "LUBLIN (POWIAT)"
             ],
             "seat_name_variants": [
               "LUBLIN"
             ],
             "states": [
               {
-                "current_name": "LUBLIN",
+                "current_name": "LUBLIN (POWIAT)",
                 "current_seat_name": "LUBLIN",
                 "current_dist_type": "m"
               }
@@ -2695,7 +2695,7 @@
           "new_district_address": [
             "HOMELAND",
             "LUBELSKIE",
-            "LUBLIN"
+            "LUBLIN (POWIAT)"
           ]
         }
       ],

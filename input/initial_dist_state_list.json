@@ -682,16 +682,16 @@
     ]
   },
   {
-    "name_id": "KRAKÓW",
+    "name_id": "KRAKÓW (POWIAT)",
     "name_variants": [
-      "KRAKÓW"
+      "KRAKÓW (POWIAT)", "KRAKÓW"
     ],
     "seat_name_variants": [
       "KRAKÓW"
     ],
     "states": [
       {
-        "current_name": "KRAKÓW",
+        "current_name": "KRAKÓW (POWIAT)",
         "current_seat_name": "KRAKÓW",
         "current_dist_type": "m",
         "timespan": null
@@ -1109,16 +1109,16 @@
     ]
   },
   {
-    "name_id": "LUBLIN",
+    "name_id": "LUBLIN (POWIAT)",
     "name_variants": [
-      "LUBLIN"
+      "LUBLIN (POWIAT)", "LUBLIN"
     ],
     "seat_name_variants": [
       "LUBLIN"
     ],
     "states": [
       {
-        "current_name": "LUBLIN",
+        "current_name": "LUBLIN (POWIAT)",
         "current_seat_name": "LUBLIN",
         "current_dist_type": "m",
         "timespan": null
@@ -1485,16 +1485,16 @@
     ]
   },
   {
-    "name_id": "LWÓW",
+    "name_id": "LWÓW (POWIAT)",
     "name_variants": [
-      "LWÓW"
+      "LWÓW (POWIAT)", "LWÓW"
     ],
     "seat_name_variants": [
       "LWÓW"
     ],
     "states": [
       {
-        "current_name": "LWÓW",
+        "current_name": "LWÓW (POWIAT)",
         "current_seat_name": "LWÓW",
         "current_dist_type": "m",
         "timespan": null
@@ -1876,16 +1876,16 @@
     ]
   },
   {
-    "name_id": "ŁÓDŹ",
+    "name_id": "ŁÓDŹ (POWIAT)",
     "name_variants": [
-      "ŁÓDŹ"
+      "ŁÓDŹ (POWIAT)", "ŁÓDŹ"
     ],
     "seat_name_variants": [
       "ŁÓDŹ"
     ],
     "states": [
       {
-        "current_name": "ŁÓDŹ",
+        "current_name": "ŁÓDŹ (POWIAT)",
         "current_seat_name": "ŁÓDŹ",
         "current_dist_type": "m",
         "timespan": null
@@ -2426,16 +2426,16 @@
     ]
   },
   {
-    "name_id": "GRUDZIĄDZ",
+    "name_id": "GRUDZIĄDZ (POWIAT)",
     "name_variants": [
-      "GRUDZIĄDZ"
+      "GRUDZIĄDZ (POWIAT)", "GRUDZIĄDZ"
     ],
     "seat_name_variants": [
       "GRUDZIĄDZ"
     ],
     "states": [
       {
-        "current_name": "GRUDZIĄDZ",
+        "current_name": "GRUDZIĄDZ (POWIAT)",
         "current_seat_name": "GRUDZIĄDZ",
         "current_dist_type": "m",
         "timespan": null
@@ -2596,16 +2596,16 @@
     ]
   },
   {
-    "name_id": "TORUŃ",
+    "name_id": "TORUŃ (POWIAT)",
     "name_variants": [
-      "TORUŃ"
+      "TORUŃ (POWIAT)", "TORUŃ"
     ],
     "seat_name_variants": [
       "TORUŃ"
     ],
     "states": [
       {
-        "current_name": "TORUŃ",
+        "current_name": "TORUŃ (POWIAT)",
         "current_seat_name": "TORUŃ",
         "current_dist_type": "m",
         "timespan": null
@@ -2698,16 +2698,16 @@
     ]
   },
   {
-    "name_id": "BYDGOSZCZ",
+    "name_id": "BYDGOSZCZ (POWIAT)",
     "name_variants": [
-      "BYDGOSZCZ"
+      "BYDGOSZCZ (POWIAT)", "BYDGOSZCZ"
     ],
     "seat_name_variants": [
       "BYDGOSZCZ"
     ],
     "states": [
       {
-        "current_name": "BYDGOSZCZ",
+        "current_name": "BYDGOSZCZ (POWIAT)",
         "current_seat_name": "BYDGOSZCZ",
         "current_dist_type": "m",
         "timespan": null
@@ -3055,16 +3055,16 @@
     ]
   },
   {
-    "name_id": "POZNAŃ",
+    "name_id": "POZNAŃ (POWIAT)",
     "name_variants": [
-      "POZNAŃ"
+      "POZNAŃ (POWIAT)"
     ],
     "seat_name_variants": [
       "POZNAŃ"
     ],
     "states": [
       {
-        "current_name": "POZNAŃ",
+        "current_name": "POZNAŃ (POWIAT)",
         "current_seat_name": "POZNAŃ",
         "current_dist_type": "m",
         "timespan": null
@@ -4741,16 +4741,16 @@
     ]
   },
   {
-    "name_id": "KATOWICE",
+    "name_id": "KATOWICE (POWIAT)",
     "name_variants": [
-      "KATOWICE"
+      "KATOWICE (POWIAT)", "KATOWICE"
     ],
     "seat_name_variants": [
       "KATOWICE"
     ],
     "states": [
       {
-        "current_name": "KATOWICE",
+        "current_name": "KATOWICE (POWIAT)",
         "current_seat_name": "KATOWICE",
         "current_dist_type": "m",
         "timespan": null
@@ -4962,16 +4962,16 @@
     ]
   },
   {
-    "name_id": "WILNO",
+    "name_id": "WILNO (POWIAT)",
     "name_variants": [
-      "WILNO"
+      "WILNO", "WILNO (POWIAT)"
     ],
     "seat_name_variants": [
       "WILNO"
     ],
     "states": [
       {
-        "current_name": "WILNO",
+        "current_name": "WILNO (POWIAT)",
         "current_seat_name": "WILNO",
         "current_dist_type": "m",
         "timespan": null
