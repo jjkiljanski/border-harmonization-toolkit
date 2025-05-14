@@ -217,6 +217,51 @@ def create_test_units():
     )
     return unit1,unit2
 
+def test_unit_registry_model_initialization():
+    unit1, unit2 = create_test_units()
+
+    # Test: successful creation
+    registry = UnitRegistry(unit_list=[unit1, unit2])
+
+    assert registry.unit_name_ids == [unit1.name_id, unit2.name_id]
+
+    # shared names like 'unitS' and 'seatS' should be excluded from unique lists
+    assert sorted(registry.unique_name_variants) == sorted(["unit1", "unitA", "unitB", "unit2", "unitC", "unitD"])
+    assert sorted(registry.unique_seat_names) == sorted(["seatA", "seatB", "seatC", "seatD"])
+
+    # ----------- Case 1: Duplicate name_id -----------
+    unit3_dup_id = Unit(
+        name_id="unit1",  # duplicate of unit1
+        name_variants=["unit1", "unitX"],
+        seat_name_variants=["seatX"],
+        states=[],
+    )
+
+    with pytest.raises(ValueError, match=r".*name_id.*not unique.*unit1.*"):
+        UnitRegistry(unit_list=[unit1, unit3_dup_id])
+
+    # ----------- Case 2: name_variant conflicts with other unit's name_id -----------
+    unit3_conflict_variant = Unit(
+        name_id="unit3",
+        name_variants=["unit3", "unit1", "variantX"],  # "unit1" is unit1’s name_id
+        seat_name_variants=["seatX"],
+        states=[],
+    )
+
+    with pytest.raises(ValueError, match=r".*name variant.*used as other unit's name_id.*unit3.*"):
+        UnitRegistry(unit_list=[unit1, unit3_conflict_variant])
+
+    # ----------- Case 3: seat_name_variant conflicts with other unit's name_id -----------
+    unit3_conflict_seat = Unit(
+        name_id="unit4",
+        name_variants=["unit4", "variantY"],
+        seat_name_variants=["unit1"],  # "unit1" is unit1’s name_id
+        states=[],
+    )
+
+    with pytest.raises(ValueError, match=r".*name variant.*used as other unit's name_id.*unit4.*"):
+        UnitRegistry(unit_list=[unit1, unit3_conflict_seat])
+
 # Test for find_unit method
 def test_find_unit():
     unit1,unit2 = create_test_units()
@@ -328,6 +373,66 @@ def test_create_next_unit_state():
     # Test: Appropriate error is raised if no state exists that covers the given date
     with pytest.raises(ValueError, match="Invalid date: 1922-01-01"):
         registry.create_next_unit_state("unitA", datetime(1922, 1, 1))
+
+def test_assure_consistency_and_append_new_unit():
+    unit1, unit2 = create_test_units()
+    registry = UnitRegistry(unit_list=[unit1, unit2])
+
+    # --------- ✅ Case: successful addition (no conflicts) ---------
+    new_unit = Unit(
+        name_id="unit3",
+        name_variants=["unit3", "unitX"],
+        seat_name_variants=["seatX"],
+        states=[],
+    )
+    registry.assure_consistency_and_append_new_unit(new_unit)
+
+    # Check unit was appended
+    assert registry.unit_list[-1] == new_unit
+    # Check updated unique name/seat name variants
+    assert "unitX" in registry.unique_name_variants
+    assert "seatX" in registry.unique_seat_names
+
+    # --------- ❌ Case 1: name_id used as another unit's name_variant ---------
+    conflict_unit1 = Unit(
+        name_id="unitA",  # "unitA" is a variant of unit1
+        name_variants=["unitA"],
+        seat_name_variants=["seatX"],
+        states=[],
+    )
+    with pytest.raises(ValueError, match="name_id 'unitA'.*used as another unit's name variant"):
+        registry.assure_consistency_and_append_new_unit(conflict_unit1)
+
+    # --------- ❌ Case 2: name_id used as another unit's seat_name_variant ---------
+    conflict_unit2 = Unit(
+        name_id="seatD",  # "seatD" is a seat variant of unit2
+        name_variants=["seatD", "someName"],
+        seat_name_variants=["someSeat"],
+        states=[],
+    )
+    with pytest.raises(ValueError, match="name_id 'seatD'.*used as another unit's seat name variant"):
+        registry.assure_consistency_and_append_new_unit(conflict_unit2)
+
+    # --------- ❌ Case 3: name_variant used as another unit's name_id ---------
+    conflict_unit3 = Unit(
+        name_id="uniqueID",
+        name_variants=["uniqueID", "unit1"],  # "unit1" is the name_id of unit1
+        seat_name_variants=["seatX"],
+        states=[],
+    )
+    with pytest.raises(ValueError, match="name variant unit1.*used as another unit's name_id"):
+        registry.assure_consistency_and_append_new_unit(conflict_unit3)
+
+    # --------- ❌ Case 4: seat_name_variant used as another unit's name_id ---------
+    conflict_unit4 = Unit(
+        name_id="uniqueID2",
+        name_variants=["uniqueID2", "variantZ"],
+        seat_name_variants=["unit2"],  # "unit2" is the name_id of unit2
+        states=[],
+    )
+    with pytest.raises(ValueError, match="seat name variant unit2.*used as another unit's name_id"):
+        registry.assure_consistency_and_append_new_unit(conflict_unit4)
+
 
 # Test for all_unit_states_by_date method
 def test_all_unit_states_by_date():

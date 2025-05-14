@@ -254,7 +254,7 @@ class UnitRegistry(BaseModel):
                 all_existent.append((unit, unit.find_state_by_date(date)))
         return all_existent
     
-    def assure_consistency_of_new_unit(self,new_unit: Unit):
+    def assure_consistency_and_append_new_unit(self,new_unit: Unit):
         """
         This method verifies:
             1) that the name_id if the new_unit passed is not used as a name variant of seat name variant
@@ -446,7 +446,7 @@ class DistrictRegistry(UnitRegistry):
         else:
             raise TypeError("add_unit expects a District instance or a dictionary of District parameters.")
         
-        self.assure_consistency_of_new_unit(district)
+        self.assure_consistency_and_append_new_unit(district)
         return district
     
     def _plot_layer(self, date: datetime):
