@@ -137,7 +137,7 @@ def test_change_create_next_state(one_to_many_matter_fixture):
 
     change = Change(
         date=datetime(1923, 1, 2),
-        source="Test Source",
+        sources=["Test Source"],
         description="Legal Act X",
         order=1,
         matter=one_to_many_matter_fixture,
@@ -183,7 +183,7 @@ def test_change_abolish(one_to_many_matter_fixture):
 
     change = Change(
         date=datetime(1930, 1, 1),
-        source="Abolishment Decree",
+        sources=["Abolishment Decree"],
         description="Region A abolished",
         order=2,
         matter=one_to_many_matter_fixture,
@@ -218,7 +218,7 @@ def test_echo_pol_region(region_reform_matter_fixture):
         # Now call the 'echo' method on the region reform object.
         # This will trigger the print statements inside echo, but instead of printing to the console,
         # the output will be captured by the StringIO object (fake_out).
-        region_reform_matter_fixture.echo(date=datetime(1927,4,30), source="Test Source", lang="pol")
+        region_reform_matter_fixture.echo(date=datetime(1927,4,30), sources=["Test Source"], lang="pol")
         
         # After the echo method runs, I can get the captured output from StringIO using getvalue().
         # This will return the exact string that was "printed" by the echo method.
@@ -227,44 +227,44 @@ def test_echo_pol_region(region_reform_matter_fixture):
             "1927-04-30 dokonano reformy województwa region_a. "
             "Przed reformą: dict_items([('current_name', 'region_a'), ('current_seat_name', 'seat_region_a')]) "
             "vs po reformie: dict_items([('current_name', 'region_a_Reformed'), ('current_seat_name', 'seat_a_Reformed')]) "
-            "(Test Source).")
+            "(['Test Source']).")
         # Assert that the captured output is exactly what we expect.
         assert printed_output == expected_output
 
 # Test for English language and Region reform
 def test_echo_eng_region(region_reform_matter_fixture):
     with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
-        region_reform_matter_fixture.echo(date=datetime(1927,4,30), source="Test Source", lang="eng")
+        region_reform_matter_fixture.echo(date=datetime(1927,4,30), sources=["Test Source"], lang="eng")
         printed_output = mock_stdout.getvalue().strip()
         expected_output = (
             "1927-04-30 region region_a was reformed. "
             "Before the reform: dict_items([('current_name', 'region_a'), ('current_seat_name', 'seat_region_a')]) "
             "vs after the reform: dict_items([('current_name', 'region_a_Reformed'), ('current_seat_name', 'seat_a_Reformed')]) "
-            "(Test Source).")
+            "(['Test Source']).")
         assert printed_output == expected_output
 
 # Test for Polish language and District reform
 def test_echo_pol_district(district_reform_matter_fixture):
     with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
-        district_reform_matter_fixture.echo(date=datetime(1927,4,30), source="Test Source", lang="pol")
+        district_reform_matter_fixture.echo(date=datetime(1927,4,30), sources=["Test Source"], lang="pol")
         printed_output = mock_stdout.getvalue().strip()
         expected_output = (
             "1927-04-30 dokonano reformy powiatu district_a. "
             "Przed reformą: dict_items([('current_dist_type', 'w'), ('current_name', 'district_a'), ('current_seat_name', 'seat_a')]) "
             "vs po reformie: dict_items([('current_dist_type', 'm'), ('current_name', 'district_a_Reformed'), ('current_seat_name', 'seat_a_Reformed')]) "
-            "(Test Source).")
+            "(['Test Source']).")
         assert printed_output == expected_output
 
 # Test for English language and District reform
 def test_echo_eng_district(district_reform_matter_fixture):
     with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
-        district_reform_matter_fixture.echo(date=datetime(1927,4,30), source="Test Source", lang="eng")
+        district_reform_matter_fixture.echo(date=datetime(1927,4,30), sources=["Test Source"], lang="eng")
         printed_output = mock_stdout.getvalue().strip()
         expected_output = (
             "1927-04-30 district district_a was reformed. "
             "Before the reform: dict_items([('current_dist_type', 'w'), ('current_name', 'district_a'), ('current_seat_name', 'seat_a')]) "
             "vs after the reform: dict_items([('current_dist_type', 'm'), ('current_name', 'district_a_Reformed'), ('current_seat_name', 'seat_a_Reformed')]) "
-            "(Test Source).")
+            "(['Test Source']).")
         assert printed_output == expected_output
 
 ############################################################################
@@ -453,7 +453,7 @@ def test_change_construction_from_matter_fixtures(
 
     change = Change(
         date=datetime(1930, 5, 1),
-        source="Legal Act XYZ",
+        sources=["Legal Act XYZ"],
         description="Test change",
         order=1,
         matter=matter

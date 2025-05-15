@@ -19,7 +19,7 @@ config = load_config("config.json")
 class BaseChangeMatter(BaseModel, ABC):
 
     @abstractmethod
-    def echo(self, date, source) -> str:
+    def echo(self, date, sources) -> str:
         pass
 
     @abstractmethod
@@ -89,13 +89,13 @@ class UnitReform(BaseChangeMatter):
                     f"but found '{getattr(unit_state, key)}' instead."
                 )
     
-    def echo(self, date, source, lang = "pol"):
+    def echo(self, date, sources, lang = "pol"):
         if lang == "pol":
             if self.unit_type == "Region": jednostka = "województwa"
             else: jednostka = "powiatu"
-            print(f"{date.date()} dokonano reformy {jednostka} {self.current_name}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({source}).")
+            print(f"{date.date()} dokonano reformy {jednostka} {self.current_name}. Przed reformą: {self.to_reform.items()} vs po reformie: {self.after_reform.items()} ({sources}).")
         elif lang == "eng":
-            print(f"{date.date()} {self.unit_type.lower()} {self.current_name} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({source}).")
+            print(f"{date.date()} {self.unit_type.lower()} {self.current_name} was reformed. Before the reform: {self.to_reform.items()} vs after the reform: {self.after_reform.items()} ({sources}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
@@ -196,7 +196,7 @@ class OneToMany(BaseChangeMatter):
         """Doesn't apply to the change. Return."""
         return
 
-    def echo(self, date, source, lang = "pol"):
+    def echo(self, date, sources, lang = "pol"):
         destination_districts = ", ".join([f"{destination.current_name}" for destination in self.take_to])
         if lang == "pol":
             if self.take_from.delete_unit:
@@ -206,16 +206,16 @@ class OneToMany(BaseChangeMatter):
                     do_jednostki = "powiat"
                 else:
                     raise ValueError("Method 'echo' of class 'OneToMany' is only implemented for self.unit_type='District'.")
-                print(f"{date} zniesiono {do_jednostki} {self.take_from.current_name}, a jego terytorium włączono do {z_jednostki} {destination_districts} ({source}).")
+                print(f"{date} zniesiono {do_jednostki} {self.take_from.current_name}, a jego terytorium włączono do {z_jednostki} {destination_districts} ({sources}).")
             else:
-                print(f"{date} fragment terytorium {do_jednostki}u {self.takie_from.current_name} włączono do {z_jednostki} {destination_districts} ({source}).")
+                print(f"{date} fragment terytorium {do_jednostki}u {self.takie_from.current_name} włączono do {z_jednostki} {destination_districts} ({sources}).")
         elif lang == "eng":
             if self.take_from.delete_unit:
                 if len(self.take_to)>1: s = "s:"
                 else: s = ""
-                print(f"{date} the district {self.take_from.current_name} was abolished and its territory was integrated into the district{s} {destination_districts} ({source}).")
+                print(f"{date} the district {self.take_from.current_name} was abolished and its territory was integrated into the district{s} {destination_districts} ({sources}).")
             else:
-                print(f"{date} part of the territory of the district {self.take_from.current_name} was integrated into the district{s} {destination_districts} ({source}).")
+                print(f"{date} part of the territory of the district {self.take_from.current_name} was integrated into the district{s} {destination_districts} ({sources}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
@@ -339,7 +339,7 @@ class ManyToOne(BaseModel):
         """Doesn't apply to the change. Return."""
         return
 
-    def echo(self, date, source, lang = "pol"):
+    def echo(self, date, sources, lang = "pol"):
         origin_districts_partial = ", ".join([f"{origin.current_name}" for origin in self.take_from if not origin.delete_unit])
         origin_districts_whole = ", ".join([f"{origin.current_name}" for origin in self.take_from if origin.delete_unit])
         if lang == "pol":
@@ -373,9 +373,9 @@ class ManyToOne(BaseModel):
             if len(origin_districts_whole)>0 and len(origin_districts_partial)>0:
                 oraz = "oraz "
             if self.take_to.create:
-                print(f"{date} {z_cz_jednostki}{oraz}{z_calej_jednostki} utworzono powiat {self.take_to.current_name} ({source})")
+                print(f"{date} {z_cz_jednostki}{oraz}{z_calej_jednostki} utworzono powiat {self.take_to.current_name} ({sources})")
             else:
-                print(f"{date} {z_cz_jednostki}{oraz}{z_calej_jednostki} włączono do powiatu {self.take_to.current_name} ({source})")
+                print(f"{date} {z_cz_jednostki}{oraz}{z_calej_jednostki} włączono do powiatu {self.take_to.current_name} ({sources})")
         elif lang == "eng":
             if lang == "eng":
                 if self.unit_type != "District":
@@ -413,9 +413,9 @@ class ManyToOne(BaseModel):
                 if len(origin_districts_whole) > 0 and len(origin_districts_partial) > 0:
                     and_word = "and "
                 if self.take_to.create:
-                    print(f"{date} {from_partial_unit}{and_word}{from_whole_unit}the district {self.take_to.current_name} was created ({source})")
+                    print(f"{date} {from_partial_unit}{and_word}{from_whole_unit}the district {self.take_to.current_name} was created ({sources})")
                 else:
-                    print(f"{date} {from_partial_unit}{and_word}{from_whole_unit}{were_or_was} merged into the district {self.take_to.current_name} ({source})")
+                    print(f"{date} {from_partial_unit}{and_word}{from_whole_unit}{were_or_was} merged into the district {self.take_to.current_name} ({sources})")
         else:
             raise ValueError("Wrong value for the lang parameter.")
 
@@ -519,7 +519,7 @@ class ChangeAdmState(BaseChangeMatter):
         """Doesn't apply to the change. Return."""
         return
     
-    def echo(self, date, source, lang = "pol"):
+    def echo(self, date, sources, lang = "pol"):
         if lang == "pol":
             if len(self.take_from) == 2:
                 z_kraj, z_woj = self.take_from
@@ -539,7 +539,7 @@ class ChangeAdmState(BaseChangeMatter):
                     do_adres = f"Polski (woj. {do_woj})"
             print(f"Od {date} {jednostka} {': '.join(self.take_from)} należał do {': '.join(self.take_to[:-1])}")
         elif lang == "eng":
-            print(f"From {date} on, the district {self.take_from[-1]} belonged to {': '.join(self.take_to[:-1])} ({source}).")
+            print(f"From {date} on, the district {self.take_from[-1]} belonged to {': '.join(self.take_to[:-1])} ({sources}).")
         else:
             raise ValueError("Wrong value for the lang parameter.")
         
@@ -591,7 +591,7 @@ class Change(BaseModel):
     next_states: Optional[List] = []
 
     def echo(self) -> str:
-        return self.matter.echo(self.date, self.source)
+        return self.matter.echo(self.date, self.sources)
 
     def districts_involved(self) -> list[str]:
         return self.matter.districts_involved()

@@ -160,7 +160,7 @@ def parametrized_region_change(parametrized_region_reform_matter):
         matter = parametrized_region_reform_matter(unit_type, current_name, to_reform_seat_name)
         return Change(
             date=datetime(1922, 1, 1),
-            source="Test Source",
+            sources=["Test Source"],
             description="Test region reform",
             order=1,
             matter=matter,

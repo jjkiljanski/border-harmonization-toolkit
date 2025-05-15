@@ -47,7 +47,7 @@ def test_apply_one_to_many(change_test_setup, one_to_many_matter_fixture):
     
     change = Change(
         date=datetime(1923, 1, 2),
-        source="Test Source",
+        sources=["Test Source"],
         description="Legal Act X",
         order=1,
         matter=one_to_many_matter_fixture,
@@ -87,7 +87,7 @@ def test_apply_many_to_one(change_test_setup, create_many_to_one_matter_fixture)
     
     change = Change(
         date=datetime(1924, 1, 2),
-        source="Test Source",
+        sources=["Test Source"],
         description="Legal Act X",
         order=1,
         matter=create_many_to_one_matter_fixture,
@@ -127,7 +127,7 @@ def test_apply_change_adm_state(change_test_setup, region_change_adm_state_matte
     
     change = Change(
         date=datetime(1924, 1, 2),
-        source="Test Source",
+        sources=["Test Source"],
         description="Legal Act X",
         order=1,
         matter=region_change_adm_state_matter_fixture,
@@ -167,7 +167,7 @@ def test_administrative_state_apply(request, change_test_setup):
         matter = request.getfixturevalue(fixture_name)
         change = Change(
             date=datetime(1930, 5, 1),
-            source="Legal Act XYZ",
+            sources=["Legal Act XYZ"],
             description="Test change",
             order=3-i,
             matter=matter
