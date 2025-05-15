@@ -67,8 +67,8 @@ class AdministrativeHistory():
         if self.load_territories:
             # Load the territories
             self._load_territories()
-            # Deduce information about district territories where possible
-            self._deduce_territories()
+        # Deduce information about district territories where possible
+        self._deduce_territories()
 
 
     def _load_dist_registry(self):
@@ -218,18 +218,24 @@ class AdministrativeHistory():
 
         # Loop through all files in the directory
         for filename in os.listdir(self.territories_path):
-            if filename.endswith(".json") or filename.endswith(".geojson"):
+            if filename.endswith((".json", ".geojson", ".shp")):
                 file_path = os.path.join(self.territories_path, filename)
                 try:
                     gdf = gpd.read_file(file_path)
                     print(f"Loaded: {filename} ({len(gdf)} rows)")
+
+                    # Check for CRS
                     if gdf.crs is None:
                         raise ValueError(f"Geometry loaded from '{file_path}' has no defined CRS.")
+
+                    # Reproject if necessary
                     if gdf.crs != "EPSG:4326":
                         original_crs = gdf.crs
                         gdf = gdf.to_crs("EPSG:4326")
                         print(f"CRS of the geometry loaded from file '{file_path}' converted. Original: {original_crs}. New: 'EPSG:4326'.")
+
                     gdf_list.append(gdf)
+
                 except Exception as e:
                     print(f"Failed to load {filename}: {e}")
 

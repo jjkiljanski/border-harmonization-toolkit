@@ -1912,7 +1912,7 @@
   {
     "name_id": "RADOMSZCZAŃSKI",
     "name_variants": [
-      "RADOMSZCZAŃSKI"
+      "RADOMSZCZAŃSKI", "RADOMSKOWSKI"
     ],
     "seat_name_variants": [
       "RADOMSKO"
@@ -2258,7 +2258,7 @@
   {
     "name_id": "KOSZYRSKI",
     "name_variants": [
-      "KOSZYRSKI"
+      "KOSZYRSKI", "KAMIEŃSKO-KOSZYRSKI"
     ],
     "seat_name_variants": [
       "KAMIEŃ KOSZYRSKI", "KAMIEŃ KOSZ."
@@ -4337,7 +4337,7 @@
   {
     "name_id": "DUBIEŃSKI",
     "name_variants": [
-      "DUBIEŃSKI"
+      "DUBIEŃSKI", "DUBNOWSKI"
     ],
     "seat_name_variants": [
       "DUBNO"

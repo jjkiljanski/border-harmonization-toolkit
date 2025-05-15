@@ -240,9 +240,11 @@ class OneToMany(BaseChangeMatter):
             change.units_affected[self.unit_type].append(("territory", unit_from))
         for take_to_dict in self.take_to:
             if take_to_dict.create:
-                # Check if the unit existed in the past
-                unit = dist_registry.find_unit(take_to_dict.district.name_id)
+                # Check if the unit existed in the past and assure that it doesn't exist now
+                unit, unit_state, _ = dist_registry.find_unit_state_by_date(take_to_dict.district.name_id, change.date)
                 if unit is not None:
+                    if unit_state is not None:
+                        raise ValueError(f"OneToMany change attempted to create unit {unit.name_id} on {change.date}, but the unit already exists on the date.")
                     unit_state = take_to_dict.district.states[0]
                     unit.states.append(unit_state)
                 else:
@@ -437,8 +439,11 @@ class ManyToOne(BaseModel):
                 change.units_affected[self.unit_type].append(("territory", unit))
 
         if self.take_to.create:
-            unit_to = dist_registry.find_unit(self.take_to.current_name)
-            if unit_to is not None:
+            # Check if the unit existed in the past and assure that it doesn't exist now
+            unit, unit_state, _ = dist_registry.find_unit_state_by_date(self.take_to.current_name, change.date)
+            if unit is not None:
+                if unit_state is not None:
+                    raise ValueError(f"ManyToOne change attempted to create unit {unit.name_id} on {change.date}, but the unit already exists on the date.")
                 unit_to_state = DistState(**self.take_to.district.states[0])
                 unit_to.states.append(unit_to_state)
             else:
