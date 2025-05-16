@@ -394,7 +394,7 @@ class AdministrativeHistory():
                 print(f"District {district.name_id} belonged to homeland. Num changes: {len(district.changes)}")
                 # Count changes per year. We use the 'district.changes', not the 'self.changes_list' list, because we want to count only districts that were ever in 'homeland'.
                 # Start with assuring that district changes are sorted. Every element in the district.changes is a pair (change_type, change). We sort first by 'date', then by 'order' attribute.
-                district.changes.sort(key=lambda change_pair: (change_pair[1].date, change_pair[1].order))
+                district.changes.sort(key=lambda change_pair: (change_pair[1].date, change_pair[1].order is None, change_pair[1].order))
                 for i, year_timespan in enumerate(year_timespans):
                     for j, (change_type, change) in enumerate(district.changes):
                         if max(year_timespan.start, self.timespan.start)<change.date<year_timespan.end:
@@ -439,6 +439,8 @@ class AdministrativeHistory():
             )
         ).reset_index()
 
+        color_sequence = ['black'] if black_and_white else px.colors.qualitative.Set2 # or any other color scale
+
         # Create the stacked bar chart with custom hover text
         fig = px.bar(
             grouped,
@@ -447,7 +449,8 @@ class AdministrativeHistory():
             color='Change Type',
             hover_data={'Districts_List': True, 'Year': False, 'Change_Count': True},
             title='District Changes by Year and Type',
-            labels={'Change_Count': 'Number of Districts Affected'}
+            labels={'Change_Count': 'Number of Districts Affected'},
+            color_discrete_sequence=color_sequence
         )
 
         # Use stacked bar mode
