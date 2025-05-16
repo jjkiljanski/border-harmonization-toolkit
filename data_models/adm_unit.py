@@ -95,12 +95,26 @@ class Unit(BaseModel):
         """
         Creates a new state starting at the given date, ending the previous state, 
         and sorting the states list. The date must fall within an existing state's timespan.
+
+        This method assumes that the state that is ended is THE LAST STATE in the 'self.states' list.
         """
-        last_state = self.find_state_by_date(date)
+        last_state = self.states[-1] # States should be stored according to the timely order.
         if last_state is None:
             raise ValueError(f"Invalid date: {date.date()}. No state covers this date.")
-            
-        new_state = last_state.model_copy(deep=True)
+        
+        # Copy the last state, but avoid infinite referencing loop.
+        data = last_state.model_dump(
+            exclude={"next", "previous", "next_change", "previous_change"},
+            round_trip=True  # Ensures correct types
+        )
+        new_state = last_state.__class__.model_validate({
+            **data,
+            'next': None,
+            'previous': None,
+            'next_change': None,
+            'previous_change': None
+        })
+
         last_state.timespan.end = date
         last_state.timespan.update_middle()
         new_state.timespan.start = date

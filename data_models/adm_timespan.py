@@ -1,4 +1,4 @@
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, model_validator, model_serializer
 from typing import List, Union, Optional
 
 from datetime import datetime, timedelta
@@ -41,6 +41,14 @@ class TimeSpan(BaseModel):
 
         model.middle = middle
         return model
+    
+    @model_serializer(mode="plain")
+    def serializer(self):
+        # Do not serialize timespan middle attribute - it should be created automatically by model initialization.
+        return {
+            "start": self.start,
+            "end": self.end
+        }
     
     def update_middle(self):
         # Updated middle to be in half between self.start and self.end

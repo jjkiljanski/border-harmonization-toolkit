@@ -244,6 +244,7 @@ class OneToMany(BaseChangeMatter):
                 unit, unit_state, _ = dist_registry.find_unit_state_by_date(take_to_dict.district.name_id, change.date)
                 if unit is not None:
                     if unit_state is not None:
+                        # unit_state will be found ALSO if there is a change that created the unit on the same day and was applied before the one that is currently applied.
                         raise ValueError(f"OneToMany change attempted to create unit {unit.name_id} on {change.date}, but the unit already exists on the date.")
                     unit_state = take_to_dict.district.states[0]
                     unit.states.append(unit_state)

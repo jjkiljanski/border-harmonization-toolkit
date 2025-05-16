@@ -209,7 +209,7 @@ class AdministrativeHistory():
         """
         Loads a territories from an external JSON file to a Geopandas dataframe
          and asigns them to the district states based on the name_id in the 'District'
-         column and a date in the district state's timespan defined in the 'territory_date'
+         column and a date in the district state's timespan defined in the 'ter_date'
          column.
         """
         print("Loading territories...")
@@ -253,7 +253,7 @@ class AdministrativeHistory():
 
         # Standardize district and region names to name_ids in the registries
         try:
-            territories_gdf, unit_suggestions = standardize_df(territories_gdf, self.region_registry, self.dist_registry)
+            territories_gdf, unit_suggestions = standardize_df(territories_gdf, self.region_registry, self.dist_registry, columns = ["District"])
         except ValueError as e:
             print("❌ Failed during standardization:", e)
             raise  # Do NOT assign the error to territories_gdf!
@@ -262,13 +262,13 @@ class AdministrativeHistory():
         for idx, row in territories_gdf.iterrows():
             # Retrieve the district name and territory date
             district_name_id = str(row.get("District", ""))
-            territory_date = str(row.get("territory_date", ""))
-            territory_date = datetime.strptime(territory_date, "%d.%m.%Y")
+            ter_date = str(row.get("ter_date", ""))
+            ter_date = datetime.strptime(ter_date, "%d.%m.%Y")
 
             # Find the appropriate unit state in the registry
-            unit, unit_state, _ = self.dist_registry.find_unit_state_by_date(district_name_id, territory_date)
+            unit, unit_state, _ = self.dist_registry.find_unit_state_by_date(district_name_id, ter_date)
             if unit_state is None:
-                print(f"No match found for district '{district_name_id}' on {territory_date.date()}")
+                print(f"No match found for district '{district_name_id}' on {ter_date.date()}")
                 continue
             
             # Set the territory of the appropriate unit state.

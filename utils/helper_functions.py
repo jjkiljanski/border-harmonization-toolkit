@@ -17,7 +17,7 @@ def load_and_standardize_csv(file_path, region_registry, district_registry):
 
     return df, unit_suggestions
 
-def standardize_df(df, region_registry, district_registry, raise_errors = True):
+def standardize_df(df, region_registry, district_registry, columns = ["Region", "District"], raise_errors = True):
     """
     Standardizes the 'Region' and 'District' names in a DataFrame using the provided unit registries.
 
@@ -31,8 +31,8 @@ def standardize_df(df, region_registry, district_registry, raise_errors = True):
         df (pd.DataFrame): DataFrame containing 'Region' and 'District' columns to be standardized.
         region_registry (UnitRegistry): Registry containing region units.
         district_registry (UnitRegistry): Registry containing district units.
+        columns (List): List of columns to standardize. This version supports only: ["Region", "District"]
         raise_errors (bool): If True, raises a ValueError when an unrecognized name is encountered.
-        use_seat_names (bool): If True, includes seat name variants during name matching.
 
     Returns:
         tuple:
@@ -52,6 +52,8 @@ def standardize_df(df, region_registry, district_registry, raise_errors = True):
     unit_suggestions = {'Region': {}, 'District': {}}
 
     for unit_type in ['Region', 'District']:
+        if unit_type not in columns:
+            continue
         for idx, unit_name_aim in df[unit_type].items():
             if unit_type == 'Region':
                 found_units = region_registry.find_unit(unit_name_aim, allow_non_unique = True)

@@ -307,7 +307,7 @@ elif plot_type == "Administrative States History":
                         st.download_button(
                             label="Download State Template",
                             data=csv_data,
-                            file_name="region_district_template.csv",
+                            file_name=f"{adm_state.timespan.middle.date()}-region_district_template.csv",
                             mime="text/csv"
                         )
 

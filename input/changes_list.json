@@ -1470,6 +1470,50 @@
     }
   },
   {
+    "date": "20.01.1926",
+    "sources": ["Dz.U. 1926 nr 66 poz. 391"],
+    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260660391",
+    "description": "20.01.1926 gminę Lelików wyłączono z powiatu kamień-koszyrskiego i włącza się do powiatu kobryńskiego.",
+    "order": 5,
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": false,
+        "current_name": "KAMIEŃSKO-KOSZYRSKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "KOBRYŃSKI"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "15.12.1926",
+    "sources": ["Dz.U. 1926 nr 66 poz. 391"],
+    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260660391",
+    "description": "20.01.1926 gminy Uhrynicze i Lubieszów wyłącza się z powiatu pińskiego i włącza się do powiatu kamieńsko-koszyrskiego.",
+    "order": 5,
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": false,
+        "current_name": "PIŃSKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "KAMIEŃSKO-KOSZYRSKI"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
     "date": "01.01.1927",
     "sources": ["Dz.U. z 1926 r. nr 117, poz. 678", "Dz.U. z 1926 r. nr 128, poz. 760"],
     "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19261170678", "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19261280760"],

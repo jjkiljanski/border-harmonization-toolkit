@@ -44,11 +44,13 @@ dist_changes_hist_plot.write_html("output/dist_changes_hist_plot.html")
 # fig_plotly = plot_district_map(administrative_history.dist_registry, datetime(1931,4,18))
 # fig_plotly.write_html("output/district_map_1931_plotly.html")
 
+print("Creating map plots for every administrative state.")
 for adm_state in administrative_history.states_list:
     region_registry = administrative_history.region_registry
     dist_registry = administrative_history.dist_registry
-    fig = adm_state.plot(region_registry, dist_registry, adm_state.timespan.middle)
+    fig = adm_state.plot(region_registry, dist_registry, adm_state.timespan.middle, facecolor="darkgreen")
     fig.savefig(f"output/adm_states_maps/adm_state_{adm_state.timespan.start.date()}.png", bbox_inches=None)
+    plt.close(fig)  # prevent memory buildup
     print(f"Saved adm_state_{adm_state.timespan.start.date()}.png.")
 # fig_matplotlib = administrative_history.dist_registry.plot("abc", datetime(1931,4,18), shownames = False)
 # fig_matplotlib.savefig("output/district_map_1931_matplotlib.png", bbox_inches="tight", pad_inches=0.1)
