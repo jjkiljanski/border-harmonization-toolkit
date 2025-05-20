@@ -24,7 +24,7 @@ st.title("District Visualization Dashboard")
 @st.cache_resource
 def load_history():
     config = load_config("config.json")
-    return AdministrativeHistory(config, load_territories=False)
+    return AdministrativeHistory(config, load_territories=True)
 
 administrative_history = load_history()
 dist_registry = administrative_history.dist_registry
@@ -41,7 +41,8 @@ plot_type = st.sidebar.selectbox("Choose Plot Type", [
     "District History Plot",
     "Territorial State Information Plot",
     "District Maps",
-    "Administrative States History"
+    "Administrative States History",
+    "View Change History"
 ])
 
 # Dynamic plotting based on selection
@@ -335,6 +336,32 @@ elif plot_type == "Administrative States History":
                 file_name="region_district_template.csv",
                 mime="text/csv"
             )
+elif plot_type == "View Change History":
+    st.subheader("Administrative Change History")
+
+    # Extract relevant change data
+    change_data = []
+    for change in administrative_history.changes_list:
+        date = change.date
+        sources = ", ".join(change.sources)
+        change_type = getattr(change.matter, "change_type", "Unknown")
+        districts_before = change.units_affected_ids["District"].get("before", [])
+        districts_after = change.units_affected_ids["District"].get("after", [])
+        districts_affected = set(districts_before + districts_after)
+        change_data.append({
+            "date": date,
+            "sources": sources,
+            "districts affected": ", ".join(sorted(districts_affected)),
+            "Change Type": change_type
+        })
+
+    # Convert to DataFrame
+    change_df = pd.DataFrame(change_data).sort_values("date")
+
+    # Display in Streamlit
+    st.dataframe(change_df, use_container_width=True)
+
+
 
 else:
     st.warning("Unsupported plot type selected.")

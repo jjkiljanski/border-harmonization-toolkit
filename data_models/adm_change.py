@@ -581,6 +581,7 @@ ChangeMatter = Annotated[
 class Change(BaseModel):
     date: datetime
     sources: List[str]
+    links: Optional[List[str]] = None
     description: str
     order: Optional[int] = None
     matter: ChangeMatter

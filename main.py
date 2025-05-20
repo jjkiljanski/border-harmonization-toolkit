@@ -48,7 +48,7 @@ print("Creating map plots for every administrative state.")
 for adm_state in administrative_history.states_list:
     region_registry = administrative_history.region_registry
     dist_registry = administrative_history.dist_registry
-    fig = adm_state.plot(region_registry, dist_registry, adm_state.timespan.middle, facecolor="darkgreen")
+    fig = adm_state.plot(region_registry, dist_registry, adm_state.timespan.middle)
     fig.savefig(f"output/adm_states_maps/adm_state_{adm_state.timespan.start.date()}.png", bbox_inches=None)
     plt.close(fig)  # prevent memory buildup
     print(f"Saved adm_state_{adm_state.timespan.start.date()}.png.")

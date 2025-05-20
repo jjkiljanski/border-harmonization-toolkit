@@ -23,6 +23,7 @@
   {
     "date": "13.04.1922",
     "sources": ["Dz.U. z 1922 r. nr 26, poz. 213"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19220260213"],
     "description": "Ziemia Wileńska włączona do Polski po buncie Żeligowskiego i aneksji Litwie",
     "order": 1,
     "matter": {
@@ -40,6 +41,7 @@
   {
     "date": "13.04.1922",
     "sources": ["Dz.U. z 1922 r. nr 26, poz. 213"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19220260213"],
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -58,6 +60,7 @@
   {
     "date": "13.04.1922",
     "sources": ["Dz.U. z 1922 r. nr 26, poz. 213"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19220260213"],
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -76,6 +79,7 @@
   {
     "date": "13.04.1922",
     "sources": ["Dz.U. z 1922 r. nr 26, poz. 213"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19220260213"],
     "description": "od 13.04.1922 należał do Ziemi Wileńskiej",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -93,7 +97,8 @@
   },
   {
     "date": "22.06.1922",
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 przyłączono do Polski powiat miejski Katowice pozyskany od Niemiec",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -111,7 +116,8 @@
   },
   {
     "date": "22.06.1922",
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 przyłączono do Polski powiat katowicki pozyskany od Niemiec",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -129,7 +135,8 @@
   },
   {
     "date": "22.06.1922",
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 przyłączono do Polski powiat Królewska Huta pozyskany od Niemiec",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -147,7 +154,8 @@
   },
   {
     "date": "22.06.1922",
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 przyłączono do Polski powiat lubliniecki pozyskany od Niemiec",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -165,7 +173,8 @@
   },
   {
     "date": "22.06.1922",
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 przyłączono do Polski powiat pszczyński pozyskany od Niemiec",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -183,7 +192,8 @@
   },
   {
     "date": "22.06.1922",
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 powstał z części powiatów zabrskiego (siedziba powiatu Zabrze pozostała po stronie niemieckiej) i gliwickiego (oprócz gminy Mikoleska, siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej) pozyskanych od Niemiec",
     "matter": {
       "change_type": "ManyToOne",
@@ -231,7 +241,8 @@
   },
   {
     "date": "22.06.1922",
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 powstał z terytorium części powiatu rybnickiego (część powiatu pozostała po stronie niemieckiej) oraz części powiatu raciborskiego (siedziba powiatu Racibórz pozostała po stronie niemieckiej) pozyskanych od Niemiec",
     "matter": {
       "change_type": "ManyToOne",
@@ -279,7 +290,8 @@
   },
   {
     "date": "22.06.1922",
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 powstał z części powiatów Bytom wieś i Bytom miasto (Bytom pozostał po stronie niemieckiej) pozyskanych od Niemiec",
     "matter": {
       "change_type": "ManyToOne",
@@ -328,7 +340,8 @@
   {
     "date": "22.06.1922",
     "order": 1,
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 przyłączono do Polski część powiatu tarnogórskiego pozyskanego od Niemiec",
     "matter": {
       "change_type": "ManyToOne",
@@ -370,7 +383,8 @@
   },
   {
     "date": "22.06.1922",
-    "sources": ["Dz.U. Śl. Nr 1 poz. 3; załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "sources": ["Dz.U. Śl. Nr 1 poz. 3", "załącznik: Dz.U. Śl. Nr 13 poz. 43"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5345", "https://sbc.org.pl/dlibra/publication/5357"],
     "description": "22.06.1922 po przyłączeniu części powiatu tarnogórskiego z Niemiec do Polski, przyłączono do niego gminę Mikoleska powiatu gliwickiego (siedziba powiatu gliwickiego Gliwice pozostała po stronie niemieckiej)",
     "order": 2,
     "matter": {
@@ -394,6 +408,7 @@
   {
     "date": "26.07.1922",
     "sources": ["Dz.U. z 1922 r. nr 56, poz. 510"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19220560510"],
     "description": "26.07.1922 roku powiat miejski Lublin został zniesiony",
     "matter": {
       "change_type": "OneToMany",
@@ -413,7 +428,8 @@
   },
   {
     "date": "1.01.1923",
-    "sources": ["M.P. z 1922 r. nr 282, poz. 204"],
+    "sources": ["X"],
+    "links": ["X"],
     "description": "1.01.1923 przeniesiono siedzibę urzędu starostwa powiatu cieszanowskiego do Lubaczowa i zmieniono nazwę powiatu na powiat lubaczowski",
     "matter": {
       "change_type": "OneToMany",
@@ -456,6 +472,7 @@
   {
     "date": "01.01.1923",
     "sources": ["Dz.U. z 1922 r. nr 116, poz. 1051"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19221161051"],
     "description": "1.01.1923 utworzono powiat stoliński z części powiatów łuninieckiego, sarneńskiego i pińskiego",
     "matter": {
       "change_type": "ManyToOne",
@@ -510,6 +527,7 @@
   {
     "date": "10.07.1923",
     "sources": ["Dz.U. Śl. Nr 29 poz. 162"],
+    "links": ["https://sbc.org.pl/dlibra/publication/5550"],
     "description": "10.07.1923 wyłączono gminę Gierałtowice z powiatu rudzkiego i przyłączono ją do powiatu rybnickiego",
     "matter": {
       "change_type": "ManyToOne",
@@ -532,6 +550,7 @@
   {
     "date": "15.07.1923",
     "sources": ["Dz.U. z 1922 r. nr 26, poz. 213"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19220260213"],
     "description": "X.X.1923 utworzono z terytoriów powiatów wileńskiego i trockiego powiat wileńsko-trocki",
     "matter": {
       "change_type": "ManyToOne",
@@ -601,6 +620,7 @@
   {
     "date": "01.01.1924",
     "sources": ["Dz.U. z 1923 r. nr 122, poz. 991"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19231220991"],
     "description": "utworzono powiat makowski (Maków Podhalański) z części terytoriów powiatu żywieckiego i myślenickiego",
     "matter": {
       "change_type": "ManyToOne",
@@ -650,6 +670,7 @@
   {
     "date": "15.02.1924",
     "sources": ["Dz.U. Śl., nr 5, poz. 20"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19210050020"],
     "description": "15.02.1924 zniesiono powiat rudzki, a jego terytorium włączono do powiatów katowickiego, pszczyńskiego, rybnickiego i świętochłowickiego",
     "matter": {
       "change_type": "OneToMany",
@@ -816,6 +837,7 @@
     "date": "01.01.1925",
     "order": 1,
     "sources": ["Dz.U. z 1924 r. nr 68, poz. 655"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19240680655"],
     "description": "1.01.1925 utworzono powiat kostopolski z części powiatu rówieńskiego",
     "matter": {
       "change_type": "ManyToOne",
@@ -859,6 +881,7 @@
     "date": "01.01.1925",
     "order": 2,
     "sources": ["Dz.U. z 1924 r. nr 68, poz. 655"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19240680655"],
     "description": "1.01.1925 wyłączono z powiatu rówieńskiego gminę Zdołbica i włączono ją do powiatu ostrogskiego",
     "matter": {
       "change_type": "ManyToOne",
@@ -882,6 +905,7 @@
     "date": "01.01.1925",
     "order": 3,
     "sources": ["Dz.U. z 1924 r. nr 68, poz. 655"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19240680655"],
     "description": "1.01.1925 kilka gmin powiatu dubnowskiego zostało przeniesionych do innych powiatów: ostrogskiego (Buderaż i Mizocz), łuckiego (Ołyka), horochowskiego (Ołyka)",
     "matter": {
       "change_type": "OneToMany",
@@ -911,6 +935,7 @@
     "date": "01.01.1925",
     "order": 4,
     "sources": ["Dz.U. z 1924 r. nr 68, poz. 655"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19240680655"],
     "description": "1.01.1925 wyłączono gminę Radziwiłłów z powiatu krzemienieckiego i włączono ją do powiatu dubnowskiego",
     "matter": {
       "change_type": "OneToMany",
@@ -932,6 +957,7 @@
     "date": "01.01.1925",
     "order": 5,
     "sources": ["Dz.U. z 1924 r. nr 68, poz. 655"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19240680655"],
     "description": "1.01.1925 wyłączono gminę Majków z powiatu ostrogskiego i włączono ją do powiatu rówieńskiego",
     "matter": {
       "change_type": "OneToMany",
@@ -1060,6 +1086,7 @@
   {
     "date": "01.07.1925",
     "sources": ["Dz.U. z 1925 r. nr 59, poz. 416"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19250590416"],
     "description": "1.07.1925 roku wyodrębniono z powiatu gnieźnieńskiego powiat miejski w Gnieźnie",
     "matter": {
       "change_type": "ManyToOne",
@@ -1102,6 +1129,7 @@
   {
     "date": "01.07.1925",
     "sources": ["Dz.U. z 1925 r. nr 59, poz. 417"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19250590417"],
     "description": "1.07.1925 roku z powiatu inowrocławskiego wyodrębniono Inowrocław i utworzono powiat miejski w Inowrocławiu",
     "matter": {
       "change_type": "ManyToOne",
@@ -1181,6 +1209,55 @@
           ]
         }
       ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.04.1927",
+    "sources": ["Dz.U. 1925 nr 67 poz. 472", "Dz.U. z 1927 r. nr 8, poz. 62"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19250670472", "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19270080062"],
+    "description": "1.04.1927 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
+    "matter": {
+      "change_type": "ManyToOne",
+      "take_from": [
+        {
+          "current_name": "WILEJSKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        },
+        {
+          "current_name": "OSZMIAŃSKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        }
+      ],
+      "take_to": {
+        "create": true,
+        "district": {
+          "name_id": "MOŁODECZAŃSKI",
+          "name_variants": [
+            "MOŁODECZAŃSKI"
+          ],
+          "seat_name_variants": [
+            "MOŁODECZNO"
+          ],
+          "states": [
+            {
+              "current_name": "MOŁODECZAŃSKI",
+              "current_seat_name": "MOŁODECZNO",
+              "current_dist_type": "w"
+            }
+          ]
+        },
+        "new_district_address": [
+          "HOMELAND",
+          "WILEŃSKIE",
+          "MOŁODECZAŃSKI"
+        ]
+      },
       "unit_attribute": "territory",
       "unit_type": "District"
     }
@@ -1338,6 +1415,7 @@
   {
     "date": "20.01.1926",
     "sources": ["Dz.U. z 1926 r. nr 6, poz. 29"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260060029"],
     "description": "20.01.1926 przekształcono Ziemię Wileńską w województwo wileńskie",
     "matter": {
       "change_type": "UnitReform",
@@ -1354,7 +1432,7 @@
   {
     "date": "20.01.1926",
     "sources": ["Dz.U. 1926 nr 7 poz. 43"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043"],
     "description": "20.01.1926 z powiatu wołożyńskiego wyłączono gminy Derewna, Subotniki, Iwje, Lipniszki, Siedlisko i włączono do powiatu stołpeckiego (Derewna), lidzkiego (Subotniki, Iwje, Lipniszki, Siedlisko)",
     "order": 1,
     "matter": {
@@ -1380,7 +1458,7 @@
   {
     "date": "20.01.1926",
     "sources": ["Dz.U. 1926 nr 7 poz. 43"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043"],
     "description": "20.01.1926 z powiatu stołpeckiego wyłączono gminy Pierszaje, Iwieniec, Wołma i włączono do powiatu wołożyńskiego (Pierszaje, Iwieniec, Wołma)",
     "order": 2,
     "matter": {
@@ -1402,7 +1480,7 @@
   {
     "date": "20.01.1926",
     "sources": ["Dz.U. 1926 nr 7 poz. 43"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043"],
     "description": "20.01.1926 z powiatu nowogródzkiego wyłączono gminy Jeremicze i Horodyszcze i włączono je do powiatu stołpeckiego (Jeremicze) i baranowickiego (Horodyszcze)",
     "order": 3,
     "matter": {
@@ -1424,7 +1502,7 @@
   {
     "date": "20.01.1926",
     "sources": ["Dz.U. 1926 nr 7 poz. 43"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043"],
     "description": "20.01.1926 z powiatu nieświeskiego wyłączono gminy Mir, Zuchowicze i włączono je do powiatu stołpeckiego",
     "order": 4,
     "matter": {
@@ -1446,7 +1524,7 @@
   {
     "date": "20.01.1926",
     "sources": ["Dz.U. 1926 nr 7 poz. 43"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260070043"],
     "description": "20.01.1926 z powiatu słonimskiego wyłączono gminy Mołczadź, Dobromyś! z osiedlami Mogilica, Czemioty, Józefówka, Domanowo, Gnojno, Dobryniewo z gminy Byteń i włączono je do powiatu baranowickiego, wyłączono też z niego gminy Dworzec, Zdzięcioł i włączono do powiatu nowogródzkiego. Gminę Pacowszczyzna w powiecie słonimskim rozwiązano i podzielono wchodzące w jej skład obszary między gminy: Kozłowszczyzna w powiecie słonimskim (gromady Nowosiółki i Ruda Jaworska), Zdzięcioł w powiecie nowogródzkim (gromady Pogire, Aleksandrowicze, Zyborty, Rzepiszcze, Dąbrówka, Łudzicze, Sieratowszczyzna, Strzała, Krahle, Girycze, Chwiniewicze), Bielica w powiecie lidzkim (gromady Kołpińskie i Nahorodowicze)",
     "order": 5,
     "matter": {
@@ -1472,7 +1550,7 @@
   {
     "date": "20.01.1926",
     "sources": ["Dz.U. 1926 nr 66 poz. 391"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260660391",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260660391"],
     "description": "20.01.1926 gminę Lelików wyłączono z powiatu kamień-koszyrskiego i włącza się do powiatu kobryńskiego.",
     "order": 5,
     "matter": {
@@ -1494,7 +1572,7 @@
   {
     "date": "15.12.1926",
     "sources": ["Dz.U. 1926 nr 66 poz. 391"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260660391",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260660391"],
     "description": "20.01.1926 gminy Uhrynicze i Lubieszów wyłącza się z powiatu pińskiego i włącza się do powiatu kamieńsko-koszyrskiego.",
     "order": 5,
     "matter": {
@@ -1630,57 +1708,8 @@
   },
   {
     "date": "01.04.1927",
-    "sources": ["Dz.U. 1925 nr 67 poz. 472", "Dz.U. z 1927 r. nr 8, poz. 62"],
-    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19250670472", "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19270080062"],
-    "description": "1.04.1927 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
-    "matter": {
-      "change_type": "ManyToOne",
-      "take_from": [
-        {
-          "current_name": "WILEJSKI",
-          "weight_from": null,
-          "weight_to": null,
-          "delete_unit": false
-        },
-        {
-          "current_name": "OSZMIAŃSKI",
-          "weight_from": null,
-          "weight_to": null,
-          "delete_unit": false
-        }
-      ],
-      "take_to": {
-        "create": true,
-        "district": {
-          "name_id": "MOŁODECZAŃSKI",
-          "name_variants": [
-            "MOŁODECZAŃSKI"
-          ],
-          "seat_name_variants": [
-            "MOŁODECZNO"
-          ],
-          "states": [
-            {
-              "current_name": "MOŁODECZAŃSKI",
-              "current_seat_name": "MOŁODECZNO",
-              "current_dist_type": "w"
-            }
-          ]
-        },
-        "new_district_address": [
-          "HOMELAND",
-          "WILEŃSKIE",
-          "MOŁODECZAŃSKI"
-        ]
-      },
-      "unit_attribute": "territory",
-      "unit_type": "District"
-    }
-  },
-  {
-    "date": "01.04.1927",
     "sources": ["Dz.U. 1927 nr 11 poz. 89"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19270110089",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19270110089"],
     "description": "1.04.1927 z gminy Skupie, powiatu siedleckiego, wyłączono wieś Wyszomierz, i włączono ją do gminy Kowiesy w powiecie sokołowskim.",
     "matter": {
       "change_type": "OneToMany",
@@ -1790,7 +1819,7 @@
     "date": "01.04.1927",
     "sources": ["Dz.U. 1927 nr 35 poz. 310"],
     "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19270350310"],
-    "description": "1.04.1927 zniesiono gminę wiejską Czarna-Wieś w powiecie sokólskim, a jej terytorium włączono do gminy wiejskiej Czarna Wieś w powiedzie białostockim.",
+    "description": "1.0.1927 zniesiono gminę wiejską Czarna-Wieś w powiecie sokólskim, a jej terytorium włączono do gminy wiejskiej Czarna Wieś w powiedzie białostockim.",
     "matter": {
       "change_type": "OneToMany",
       "take_from": {
@@ -1803,6 +1832,145 @@
           "current_name": "BIAŁOSTOCKI"
         }
       ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.07.1927",
+    "sources": ["Dz.U. 1926 nr 45 poz. 277"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260450277"],
+    "description": "1.07.1927 wyłączono gminę Raków z powiatu stołpeckiego i gminę Połoczany z powiatu wołożyńskiego (woj. nowogródzkie) i włączono je do powiatu mołodeczańskiego (woj. wileńskie).",
+    "matter": {
+      "change_type": "ManyToOne",
+      "take_from": [
+        {
+          "current_name": "STOŁPECKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        },
+        {
+          "current_name": "WOŁOŻYŃSKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        }
+      ],
+      "take_to": {
+        "create": false,
+        "current_name": "MOŁODECZAŃSKI"
+      },
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.07.1927",
+    "sources": ["Dz.U. 1926 nr 45 poz. 277"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260450277"],
+    "description": "1.07.1927 wyłączono gminy Koniawa i Orany z powiatu lidzkiego (woj. nowogródzkie) i włączono je do powiatu wileńsko-trockiego (woj. wileńskie).",
+    "matter": {
+      "change_type": "ManyToOne",
+      "take_from": [
+        {
+          "current_name": "LIDZKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        }
+      ],
+      "take_to": {
+        "create": false,
+        "current_name": "WILEŃSKO-TROCKI"
+      },
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.07.1927",
+    "sources": ["Dz.U. 1926 nr 45 poz. 277"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260450277"],
+    "description": "1.07.1927 gminę Zaostrowiecze wyłącza się z powiatu łuninieckiego województwa poleskiego i włącza się do powiatu nieświeskiego województwa nowogródzkiego.",
+    "matter": {
+      "change_type": "ManyToOne",
+      "take_from": [
+        {
+          "current_name": "ŁUNINIECKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        },
+        {
+          "current_name": "NIEŚWIESKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        }
+      ],
+      "take_to": {
+        "create": false,
+        "current_name": "WILEŃSKO-TROCKI"
+      },
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.07.1927",
+    "sources": ["Dz.U. 1926 nr 45 poz. 277"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260450277"],
+    "description": "1.04.1927 wyłączono fragmenty z gminy Dziewieniszki powiatu oszmiańskiego województwa wileńskiego i włącza się do gminy Bieniakonie powiatu lidzkiego województwa nowogródzkiego.",
+    "matter": {
+      "change_type": "ManyToOne",
+      "take_from": [
+        {
+          "current_name": "OSZMIAŃSKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        },
+        {
+          "current_name": "LIDZKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        }
+      ],
+      "take_to": {
+        "create": false,
+        "current_name": "WILEŃSKO-TROCKI"
+      },
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.07.1927",
+    "sources": ["Dz.U. 1926 nr 45 poz. 277"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19260450277"],
+    "description": "1.04.1927 kolonje Ost i Folwark wyłącza się z gminy Stepańskiej powiatu kostopolskiego województwa wołyńskiego i włącza się do gminy nienowickiej powiatu sarneńskiego województwa poleskiego.",
+    "matter": {
+      "change_type": "ManyToOne",
+      "take_from": [
+        {
+          "current_name": "KOSTOPOLSKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        },
+        {
+          "current_name": "SARNEŃSKI",
+          "weight_from": null,
+          "weight_to": null,
+          "delete_unit": false
+        }
+      ],
+      "take_to": {
+        "create": false,
+        "current_name": "WILEŃSKO-TROCKI"
+      },
       "unit_attribute": "territory",
       "unit_type": "District"
     }
@@ -1833,6 +2001,7 @@
     "date": "21.03.1928",
     "order": 2,
     "sources": ["Dz.U. 1928 nr 25 poz. 221"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19280250221"],
     "description": "21.03.1928 przeniesiono siedzibę powiatu morskiego do Wejherowa",
     "matter": {
       "change_type": "UnitReform",
@@ -2277,6 +2446,7 @@
   {
     "date": "24.01.1929",
     "sources": ["Dz.U. z 1929 r. nr 4, poz. 35"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290040035"],
     "description": "24.01.1929 wyłączono z powiatu morskiego gminę miejską Gdynia i utworzono z niej odrębny powiat miejski",
     "matter": {
       "change_type": "ManyToOne",
@@ -2472,7 +2642,7 @@
   {
     "date": "25.05.1929",
     "sources": ["Dz.U. 1929 nr 35 poz. 316"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290350316",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290350316"],
     "description": "31.05.1929 wyłączono fragment gminy Tłuchowo, w powiecie lipnowskim, województwie warszawskiem, i włączono go do gminy Lisewo w powiecie sierpeckim w temże województwie.",
     "matter": {
       "change_type": "ManyToOne",
@@ -2495,7 +2665,7 @@
   {
     "date": "31.05.1929",
     "sources": ["Dz.U. 1929 nr 37 poz. 328"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290370328",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290370328"],
     "description": "31.05.1929 wyłączono z gminy Wolna w powiecie baranowickim, woj. nowogródzkiem, wsie Mała Niedźwiadka, Wielka Niedźwiadka, Chhupieze, Jurewicze, Szeremowicze, Szczerbowicze, Zadźwieja, Rzepiszcze, miasteczko Połoneczka, osadę Husaki, folwarki: Połoneczka, Niedźwiadka, Zadźwieja, Daleńszczyzna, Marysin, Ulanowszczyzna, Kolonję Niechnicze i włączono je do powiatu stołpeckiego, do gminy Żuchowicze",
     "matter": {
       "change_type": "ManyToOne",
@@ -2519,7 +2689,7 @@
     "date": "01.10.1929",
     "order": 1,
     "sources": ["Dz.U. 1929 nr 55 poz. 436"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290550436",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290550436"],
     "description": "01.10.1929 wyłączono z powiatu wielickiego gminy należące do okręgu sądu grodzkiego w Dobczycach, z wyjątkiem gmin: Biiezyce, Gdów i Liplas, oraz gminy: Czechówka, Sieprow, Stojowice i Zakliczyn. Gminy te włączono następnie do powiatu myślenickiego.",
     "matter": {
       "change_type": "OneToMany",
@@ -2541,7 +2711,7 @@
     "date": "30.11.1929",
     "order": 1,
     "sources": ["Dz.U. 1929 nr 81 poz. 599"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290810599",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290810599"],
     "description": "30.11.1929 gminę wiejską Kamionka wyłącza się z powiatu dolińskiego w województwie stanisławowskiem i włącza się ją do powiatu skolskiego w tymże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -2563,7 +2733,7 @@
     "date": "30.11.1929",
     "order": 2,
     "sources": ["Dz.U. 1929 nr 81 poz. 600"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290810600",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290810600"],
     "description": "30.11.1929 wyłączono z powiatu nowotarskiego gminy Chabówka, Ponica i Rdzawka i włączono ją do powiatu makowskiego.",
     "matter": {
       "change_type": "OneToMany",
@@ -2585,7 +2755,7 @@
     "date": "01.04.1930",
     "order": 1,
     "sources": ["Dz.U. 1929 nr 81 poz. 602"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290810602",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290810602"],
     "description": "01.04.1930 gminy wiejskie: Batiatycze, Różanka, Konstantynówka i Zubowmosty wyłączono z powiatu żółkiewskiego w województwie Jwowskiem i włączono je do powiatu kamioneckiego w województwie tarnopolskiem.",
     "matter": {
       "change_type": "OneToMany",
@@ -2607,7 +2777,7 @@
     "date": "01.04.1930",
     "order": 2,
     "sources": ["Dz.U. 1929 nr 86 poz. 643"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290860643",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290860643"],
     "description": "01.04.1930 wyłączono fragment obszaru dworskiego Mielno w powiecie gnieźnieńskim, województwie poznańskiem, i włączono go do gminy Bożacin w powiecie żnińskim, w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -2629,7 +2799,7 @@
     "date": "01.04.1930",
     "order": 3,
     "sources": ["Dz.U. 1929 nr 86 poz. 643"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290860643",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290860643"],
     "description": "01.04.1930 wyłączono fragment gminy Bożacin w powiecie żnińskim, w woj. poznańskiem, i włączono go do obszaru dworskiego Mielno w powiecie gnieźnieńskim, w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -2651,7 +2821,7 @@
     "date": "01.04.1930",
     "order": 4,
     "sources": ["Dz.U. 1929 nr 87 poz. 655"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290870655",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290870655"],
     "description": "01.04.1930 z powiatu jaworowskiego w województwie lwowskiem wyłączono gminy wiejskie Tuczapy oraz Zbadyá-Kutenberg i włączono je do powiatu Gródek Jagielloński w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -2673,7 +2843,7 @@
     "date": "10.05.1930",
     "order": 1,
     "sources": ["Dz.U. 1930 nr 35 poz. 286"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19300350286",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19300350286"],
     "description": "10.05.1930 z powiatu lwowskiego w województwie lwowskiem wyłączono gminy wiejskie: Zamarstynów, Kleparów, Hołosko Małe, Zniesienie, Sygniówka, Kulparków; z gmíny wiejskiej Biłohorszcze przysiółek Lewandówka, z gminy wiejskiej Kozielniki część północną, część gminy wiejskiej Krzywczyce - i włączono je do miasta Lwowa w województwie lwowskiem.",
     "matter": {
       "change_type": "OneToMany",
@@ -2695,7 +2865,7 @@
     "date": "26.08.1930",
     "order": 1,
     "sources": ["Dz.U. 1930 nr 59 poz. 474"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19300590474",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19300590474"],
     "description": "26.08.1930 wyłączono z powiatu częstochowskiego fragmenty gmin Grabówka i Huta-Stara i włączono je do miasta Częstochowy.",
     "matter": {
       "change_type": "OneToMany",
@@ -2717,7 +2887,7 @@
     "date": "23.07.1930",
     "order": 1,
     "sources": ["Dz.U. 1930 nr 51 poz. 429"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19300510429",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19300510429"],
     "description": "23.07.1930 wyłączono z powiatu makowskiego gminę wiejską Rdzawka i włączono ją do powiatu nowotarskiego w tym województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -2739,7 +2909,7 @@
     "date": "30.09.1930",
     "order": 1,
     "sources": ["Dz.U. 1930 nr 68 poz. 540"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19300680540",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19300680540"],
     "description": "23.07.1930 przyłączono część gminy wiejskiej Młociny w powiecie i województwie warszawskiem - do przyległego powiatu miejskiego Warszawa-Północ w m. st. Warszawie.",
     "matter": {
       "change_type": "OneToMany",
@@ -2800,6 +2970,7 @@
   {
     "date": "04.03.1931",
     "sources": ["M.P. z 1931 r. nr 51, poz. 86"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WMP19310510086"],
     "description": "4 marca 1931 zmieniono nazwę miasta z Lesko na Lisko, a nazwę powiatu z Leski na Liski",
     "matter": {
       "change_type": "UnitReform",
@@ -2816,6 +2987,7 @@
   {
     "date": "1.04.1931",
     "sources": ["Dz.U. z 1931 r. nr 26, poz. 155"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310260155"],
     "description": "1.04.1931 z części powiatów południowo-warszawskiego i północno-warszawskiego utworzono powiat śródmiejsko-warszawski",
     "matter": {
       "change_type": "ManyToOne",
@@ -2866,7 +3038,7 @@
   {
     "date": "01.04.1931",
     "sources": ["Dz.U. 1931 nr 17 poz. 95"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310170095",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310170095"],
     "description": "1.05.1931 wyłączono z gminy wiejskiej Opatowiec powiatu pińczowskiego kolonię Kopałówka o powierzchni 14 ha 95 a i włączono ją do gminy wiejskiej Busko w powiecie stopnickim",
     "matter": {
       "change_type": "OneToMany",
@@ -2887,6 +3059,7 @@
   {
     "date": "17.04.1931",
     "sources": ["Dz.U. z 1931 r. nr 34, poz. 238"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310340238"],
     "description": "Powiat turczański, woj. Stanisławowskie, od 17.04.1931 należał do województwa lwowskiego",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -2905,7 +3078,7 @@
   {
     "date": "01.05.1931",
     "sources": ["Dz.U. 1931 nr 41 poz. 359"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310410359",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310410359"],
     "description": "1.05.1931 wyłączono z gminy Berszty powiatu grodzieńskiego miejscowości  Motyle, Kropiwnica, Dudki, Zamościany, Romanowo, Pogorzelec, Horodyszcze, Bieńki, Ryski, Kucy Las, Ugły, Jakubowicze, Szczeniec, Ciemne Błoto, Siniaciówka, Nowiszcze, Horaczy Bór, Zubrowo, Las Kobyli, Grug, Razłuka, Kurgany, Dziwicza Mogiła, Daszki, Krasna, Dołga Łoza, Mchy, Puste Błoto i włączono je do powiatu szczuczyńskiego: do gminy Sobakińce (Motyle, Dudki, Zamościany, Komanowo, Bieńki, Ryski, Kropiwnica, Pogorzelec, Horodyszcze, Horaczy Bór, Zubrowo, Las Kobyli, Krug, Razłuka, Kurgany, Dziwicza Mogiła, Daszki), do gminy Nowy Dwór ( Krasna, Kucy Las, Jaku- bowicze, Ugly, Dolga Łoza, Mchy, Puste Bloto), do gminy Ostryna (Szczeniec, Ciemne Błoto, Siniaciówka, Nowiszcz)",
     "matter": {
       "change_type": "OneToMany",
@@ -2927,7 +3100,7 @@
     "date": "02.05.1931",
     "order": 1,
     "sources": ["Dz.U. 1931 nr 42 poz. 374"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310420374",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310420374"],
     "description": "2.05.1931 wyłączono z gminy Szczepanowice powiatu tarnowskiego część zwaną 'Zawodzie' i włączono ją do gminy wiejskiej Łukanowice w powiecie brzeskim.",
     "matter": {
       "change_type": "OneToMany",
@@ -2949,7 +3122,7 @@
     "date": "02.05.1931",
     "order": 1,
     "sources": ["Dz.U. 1931 nr 42 poz. 374"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310420374",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310420374"],
     "description": "2.05.1931 wyłączono z gminy Łukanowice powiatu brzeskiego część zwaną 'Nakłe' i włączono ją do gminy wiejskiej Szczepanowice w powiecie tarnowskim.",
     "matter": {
       "change_type": "OneToMany",
@@ -2971,7 +3144,7 @@
     "date": "02.05.1931",
     "order": 2,
     "sources": ["Dz.U. 1931 nr 42 poz. 375"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310420375",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310420375"],
     "description": "2.05.1931 gminy wiejskie Majdan i Przysłup wyłącza się z powiatu kałuskiego w województwie stanisławowskiem i włącza się je do powiatu bohorodczańskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -2992,7 +3165,7 @@
   {
     "date": "15.05.1931",
     "sources": ["Dz.U. 1931 nr 46 poz. 393"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310460393",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310460393"],
     "description": "15.05.1931 wyłączono z gminy Zemborzyce powiatu lubelskiego część gruntów wsi Dziesiąta o obszarze 280 ha 5229 m^2 pod nazwą 'folwark Dziesiąta' i włączono ją do miasta Lublina.",
     "matter": {
       "change_type": "OneToMany",
@@ -3013,7 +3186,7 @@
   {
     "date": "01.10.1931",
     "sources": ["Dz.U. 1931 nr 84 poz. 650"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310840650",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19310840650"],
     "description": "01.10.1931 wyłączono z gminy Telatyn powiatu tomaszowskiego kolonję Borsuk i włączono ją do gminy wiejskiej Mircze w powiecie hrubieszowskim.",
     "matter": {
       "change_type": "OneToMany",
@@ -3553,6 +3726,7 @@
   {
     "date": "18.05.1932",
     "sources": ["Dz.U. z 1932 r. nr 41, poz. 408"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320410408"],
     "description": "18.05.1932 utworzono powiat miejski w Radomiu",
     "matter": {
       "change_type": "OneToMany",
@@ -3892,7 +4066,7 @@
     "date": "30.04.1934",
     "order": 1,
     "sources": ["Dz.U. 1934 nr 36 poz. 327"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340360327",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340360327"],
     "description": "15.06.1934 z powiatu nadwórniańskiego w województwie stanisławowskiem wyłącza się gminę wiejską Bredtheim-Siedliska i włącza się ją do powiatu kołomyjskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -3914,7 +4088,7 @@
     "date": "30.04.1934",
     "order": 2,
     "sources": ["Dz.U. 1934 nr 36 poz. 328"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340360328",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340360328"],
     "description": "15.06.1934 z powiatu rzeszowskiego w województwie lwowskiem wyłączono gminy wiejskie Cierpisz i Kraczkowa i włączono je do powiatu łańcuckiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -3936,7 +4110,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 47 poz. 404"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470404",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470404"],
     "description": "15.06.1934 z powiatu inowrocławskiego w województwie poznańskiem wyłącza się gminy wiejskie: Szymborze i Rąbin oraz obszary dworskie: Rąbinek i Kruśliwiec - i włącza się je do miasta Inowrocławia w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -3958,7 +4132,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 47 poz. 405"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470405",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470405"],
     "description": "15.06.1934 z powíatu borszczowskiego w województwie tarnopolskiem wyłącza się gminy wiejskie: Kapuścińce, Tarnawka i Zwiahel i włącza się je do powiatu czortkowskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -3980,7 +4154,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 47 poz. 406"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470406",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470406"],
     "description": "15.06.1934 z powiatu brzeżańskiego w województwie tarnopolskiem wyłącza się gminy wiejskie: Dmuchawiec, Horodyszcze i Słobódkę i włącza się je do powiatu tarnopolskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4002,7 +4176,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 47 poz. 407"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470407",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470407"],
     "description": "15.06.1934 z powiatu podhajeckiego w województwie tarnopolskiem wyłącza się gminy wiejskie Szczepanów i Uwsie i włącza się je do powiatu brzeżańskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4024,7 +4198,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 47 poz. 408"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470408",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470408"],
     "description": "15.06.1934 z powiatu skałackiego w województwie tarnopclskiem wyłącza się pming wiejską Sorocko i włącza się ją do powiatu trembowelskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4046,7 +4220,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 47 poz. 409"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470409",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470409"],
     "description": "15.06.1934 z powiatu trembowelskiego w województwie tarnopolskiem wyłącza się gminę wiejską Skomorosze i włącza się ją do powiatu czortkowskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4068,7 +4242,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 47 poz. 410"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470410",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470410"],
     "description": "15.06.1934 z powiatu tarnopolskiego w województwie tarnopolskiem wyłącza się gminę wiejską Suszczyn i włącza się ją do powiatu trembowelskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4090,7 +4264,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 47 poz. 411"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470411",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470411"],
     "description": "15.06.1934 z powiatu zaleszczyckiego w województwie tarnopolskiem wyłącza się gminę Milowce i włącza się ja do powiatu czortkowskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4112,7 +4286,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 47 poz. 412"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470412",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340470412"],
     "description": "15.06.1934 z powiatu zborowskiego w województwie tarnopolskiem wyłącza się gminy wiejskie: Lukawiec, Batków i Markopol - i włącza się je do powiatu brodzkiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4134,7 +4308,7 @@
     "date": "15.06.1934",
     "order": 0,
     "sources": ["Dz.U. 1934 nr 48 poz. 421"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480421",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480421"],
     "description": "15.06.1934 z powiatu toruńskiego wyłączono fragmenty niektórych gmin - miasta Podgórza (łącznie 9,6800 ha), gminy wiejskiej Piaski (łącznie 4,4765 ha) - i włączono je do miasta Torunia.",
     "matter": {
       "change_type": "OneToMany",
@@ -4156,7 +4330,7 @@
     "date": "15.06.1934",
     "order": 1,
     "sources": ["Dz.U. 1934 nr 48 poz. 423"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480423",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480423"],
     "description": "15.06.1934 z powiatu samborskiego w województwie lwowskiem wyłączono gminę wiejską Wołoszcza i włączono ją do powiatu drohobyckiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4178,7 +4352,7 @@
     "date": "15.06.1934",
     "order": 2,
     "sources": ["Dz.U. 1934 nr 48 poz. 424"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480424",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480424"],
     "description": "15.06.1934 z powiatu jarosławskiego w województwie lwowskiem wyłączono gminę wiejską Nowa Grobla i włączono ją do powiatu lubaczowskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4200,7 +4374,7 @@
     "date": "15.06.1934",
     "order": 3,
     "sources": ["Dz.U. 1934 nr 48 poz. 424"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480424",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480424"],
     "description": "15.06.1934 z powiatu lubaczowskiego w województwie lwowskiem wyłączono gminy wiejskie: Zapałów i Wólka Zapałowska, oraz przysiółek Ignacze z gminy wiejskiej Stare Sioło, i włączono je do powiatu jarosławskiego w temże województwie. Przysiółek Ignacze włączono do gminy wiejskiej Radawa w tymże powiecie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4222,7 +4396,7 @@
     "date": "15.06.1934",
     "order": 4,
     "sources": ["Dz.U. 1934 nr 48 poz. 425"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480425",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480425"],
     "description": "15.06.1934 z powiatu lubaczowskiego w województwie lwowskiem wyłączono gminę wiejską Lipowiec z przysiółkami Lindenau i Majdan i włączono ją do powiatu jaworowskiego w temże województwie",
     "matter": {
       "change_type": "OneToMany",
@@ -4244,7 +4418,7 @@
     "date": "15.06.1934",
     "order": 5,
     "sources": ["Dz.U. 1934 nr 48 poz. 425"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480425",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480425"],
     "description": "15.06.1934 z powiatu jaworowskiego w województwie lwowskiem wyłączono gminy wiejskie Budomierz i Hruszów i włączono je do powiatu lubaczowskiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -4266,7 +4440,7 @@
     "date": "15.06.1934",
     "order": 6,
     "sources": ["Dz.U. 1934 nr 48 poz. 426"],
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480426",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340480426"],
     "description": "15.06.1934 z powiatu rudeckiego w województwie Iwowskiem wyłączono gminę wiejską Hodwisznia i włączono ją do powiatu gródeckiego w temże województwie.",
     "matter": {
       "change_type": "OneToMany",
@@ -5483,6 +5657,7 @@
   {
     "date": "01.07.1934",
     "sources": ["Dz.U. Śl. z 1934 r. nr 13, poz. 24"],
+    "links": ["https://sbc.org.pl/dlibra/publication/7035"],
     "description": "Utworzono powiat miejski Chorzów z całości terytorium miasta Królewska Huta oraz gminy Chorzów powiatu katowickiego i gminy Nowe Hajduki powiatu świętochłowickiego.",
     "matter": {
       "change_type": "ManyToOne",
@@ -5538,7 +5713,7 @@
   {
     "date": "23.07.1934",
     "order": 1,
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640531",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640531"],
     "sources": ["Dz.U. 1934 nr 64 poz. 531"],
     "description": "23.07.1934 z powiatu nowosądeckiego w woj. krakowskiem wyłączono gminy wiejskie Brzana Górna i Lipniczka i włączono je do powiatu gorlickiego.",
     "matter": {
@@ -5560,7 +5735,7 @@
   {
     "date": "23.07.1934",
     "order": 2,
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640531",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640531"],
     "sources": ["Dz.U. 1934 nr 64 poz. 531"],
     "description": "23.07.1934 z powiatu gorlickiego w woj. krakowskiem wyłączono gminy wiejskie Pławna Ostrusza, Ostrusza i Zborowice, i włączono je do powiatu tarnowskiego.",
     "matter": {
@@ -5582,7 +5757,7 @@
   {
     "date": "23.07.1934",
     "order": 3,
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640531",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640531"],
     "sources": ["Dz.U. 1934 nr 64 poz. 531"],
     "description": "23.07.1934 z powiatu tarnowskiego w woj. krakowskiem wyłączono gminę wiejską Bukowiec i włączono ją do powiatu nowosądeckiego.",
     "matter": {
@@ -5604,7 +5779,7 @@
   {
     "date": "23.07.1934",
     "order": 4,
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640531",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640531"],
     "sources": ["Dz.U. 1934 nr 64 poz. 531"],
     "description": "23.07.1934 z powiatu ropczyckiego w woj. krakowskiem wyłączono gminy wiejskie Gorzejowa, Lubcza, Wola Lubecka, Dzwonowa i Zagórze, i włączono ją do powiatu jasielskiego.",
     "matter": {
@@ -5626,7 +5801,7 @@
   {
     "date": "23.07.1934",
     "order": 5,
-    "link": "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640530",
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19340640530"],
     "sources": ["Dz.U. 1934 nr 64 poz. 530"],
     "description": "23.07.1934 z powiatu mieleckiego w woj. krakowskiem wyłączono gminę wiejską Toporów i włączono ją do powiatu kolbuszowskiego.",
     "matter": {
@@ -6396,6 +6571,7 @@
   {
     "date": "16.11.1938",
     "sources": ["Dz.U. 1938 nr 87 poz. 585"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19380870585"],
     "description": "przyłączono powiat frysztacki anektowany Czechosłowacji",
     "matter": {
       "change_type": "ChangeAdmState",
@@ -6414,6 +6590,7 @@
   {
     "date": "16.11.1938",
     "sources": ["Dz.U. 1938 nr 87 poz. 585"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19380870585"],
     "description": "przyłączono do niego część powiatu bardiowskiego anektowanego Czechosłowacji",
     "matter": {
       "change_type": "OneToMany",
@@ -6434,6 +6611,7 @@
   {
     "date": "16.11.1938",
     "sources": ["Dz.U. 1938 nr 87 poz. 585"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19380870585"],
     "description": "przyłączono do niego część powiatu starolubowelskiego anektowanego Czechosłowacji",
     "matter": {
       "change_type": "OneToMany",
@@ -6454,6 +6632,7 @@
   {
     "date": "16.11.1938",
     "sources": ["Dz.U. 1938 nr 87 poz. 585"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19380870585"],
     "description": "przyłączono do niego część powiatu kieżmarskiego anektowanego Czechosłowacji",
     "matter": {
       "change_type": "OneToMany",
@@ -6474,6 +6653,7 @@
   {
     "date": "16.11.1938",
     "sources": ["Dz.U. 1938 nr 87 poz. 585"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19380870585"],
     "description": "przyłączono do niego część powiatu namiestowskiego anektowanego Czechosłowacji",
     "matter": {
       "change_type": "OneToMany",
@@ -6494,6 +6674,7 @@
   {
     "date": "16.11.1938",
     "sources": ["Dz.U. 1938 nr 87 poz. 585"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19380870585"],
     "description": "przyłączono do niego część powiatu starowiejskiego anektowanego Czechosłowacji",
     "matter": {
       "change_type": "OneToMany",
@@ -6514,6 +6695,7 @@
   {
     "date": "16.11.1938",
     "sources": ["Dz.U. 1938 nr 87 poz. 585"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19380870585"],
     "description": "przyłączono do niego część powiatu trzciańskiego anektowanego Czechosłowacji",
     "matter": {
       "change_type": "OneToMany",
@@ -6534,6 +6716,7 @@
   {
     "date": "16.11.1938",
     "sources": ["Dz.U. 1938 nr 87 poz. 585"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19380870585"],
     "description": "16.11.1938 przyłączono do powiatu leskiego część terytorium powiatu snińskiego anektowanego Czechosłowacji.",
     "matter": {
       "change_type": "OneToMany",
@@ -6554,6 +6737,7 @@
   {
     "date": "16.11.1938",
     "sources": ["Dz.U. 1938 nr 87 poz. 585"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19380870585"],
     "description": "16.11.1938 przyłączono do powiatu cieszyńskiego część powiatu czadeckiego, niewielką część powiatu frydeckiego oraz powiat czeskocieszyński anektowane Czechosłowacji",
     "matter": {
       "change_type": "OneToMany",
