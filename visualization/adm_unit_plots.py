@@ -15,14 +15,21 @@ def plot_dist_history(dist_registry, start_date, end_date):
     # Flatten states into a dataframe, assigning a unique task name for each state
     timeline_data = []
     for district in districts:
+        state_i = 0
+        if district.states:
+            state_date = district.states[0].timespan.start
         for i, state in enumerate(district.states):
+            if state.timespan.start>state_date:
+                state_i += 1 # Increment state_i for coloring only if the date changes
             timeline_data.append({
                 "StateInfo": f"{district.name_id} {str(state.timespan)}",
                 "Start": state.timespan.start,
                 "Finish": state.timespan.end,
-                "District": district.name_id
+                "District": district.name_id,
+                "Color": str(state_i%2)
             })
-
+            state_date = state.timespan.start
+    
     df = pd.DataFrame(timeline_data)
 
     # Create thick horizontal bars using px.timeline
@@ -31,7 +38,11 @@ def plot_dist_history(dist_registry, start_date, end_date):
         x_start="Start",
         x_end="Finish",
         y="District",       # This maps to 'Resource' in your example
-        color="District",   # Optional: use to color by district
+        color="Color",   # Optional: use to color by district
+        color_discrete_map={
+            "1": "#5989cb",  # darker blue
+            "0": "#3865a2",  # medium-dark royal blue
+        },
         title="Districts Existence Over Time",
         hover_name="StateInfo"
     )
@@ -65,6 +76,8 @@ def plot_dist_history(dist_registry, start_date, end_date):
         xaxis_range=[start_date, end_date],
         showlegend=False,
     )
+
+    fig.for_each_trace(lambda t: t.update(showlegend=False))  # <- This hides legend for all traces
 
     fig.update_yaxes(autorange="reversed")
 

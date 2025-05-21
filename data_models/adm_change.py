@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from data_models.adm_timespan import *
 from data_models.adm_unit import *
 from data_models.adm_state import *
-from utils.helper_functions import load_config
+from utils.helper_functions import load_config, normalize_spaces
 from utils.exceptions import ConsistencyError
 
 # Load the configuration
@@ -578,19 +578,55 @@ ChangeMatter = Annotated[
     Field(discriminator="change_type")
 ]
 
+from pydantic import BaseModel, model_validator
+from typing import List, Optional, Dict, Literal
+
+def normalize_spaces(text: str) -> str:
+    # Replace non-breaking spaces (U+00A0) with normal spaces and strip
+    return text.replace("\u00A0", " ").strip()
+
 class Change(BaseModel):
     date: datetime
     sources: List[str]
-    links: Optional[List[str]] = None
+    links: List[Optional[str]]
     description: str
     order: Optional[int] = None
     matter: ChangeMatter
     units_affected: Optional[Dict[Literal["Region", "District"], List[Unit]]] = {"Region": [], "District": []}
-    units_affected_current_names: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}} # Dict with values: "District" or "Region", the value is dict with values: "before" or "after", its values are lists of affected units.
-    units_affected_ids: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}} # The attribute is created based on units_created_current_names during change application.
-
+    units_affected_current_names: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}}
+    units_affected_ids: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}}
     previous_states: Optional[List] = []
     next_states: Optional[List] = []
+
+    @model_validator(mode='before')
+    def clean_sources_links_and_normalize_matter(cls, values):
+        sources = values.get("sources", [])
+        links = values.get("links", [])
+
+        # Normalize and clean sources
+        normalized_sources = [
+            normalize_spaces(src) if isinstance(src, str) else "" for src in sources
+        ]
+
+        # Normalize links: replace invalid with None
+        cleaned_links = []
+        for link in links:
+            if link is None or link == "X" or not (isinstance(link, str) and link.startswith("http")):
+                cleaned_links.append(None)
+            else:
+                cleaned_links.append(link)
+
+        # Pad to length 2
+        while len(normalized_sources) < 2:
+            normalized_sources.append("")
+        while len(cleaned_links) < 2:
+            cleaned_links.append(None)
+
+        values["sources"] = normalized_sources
+        values["links"] = cleaned_links
+
+        return values
+
 
     def echo(self) -> str:
         return self.matter.echo(self.date, self.sources)

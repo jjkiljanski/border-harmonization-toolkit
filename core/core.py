@@ -135,14 +135,26 @@ class AdministrativeHistory():
         if not isinstance(data, list):
             raise ValueError("Expected a list of changes in the JSON file")
 
+        # Check for non-string elements in links before parsing
+        for i, change in enumerate(data):
+            links = change.get("links", "MISSING")
+            #print(f"Change {i} links type: {type(links).__name__}, value: {links}")
+            if isinstance(links, list):
+                for j, link in enumerate(links):
+                    if not isinstance(link, str):
+                        print(f"{change.get('date')}: {change.get('sources')} - Non-string link at index {j}: {link} (type: {type(link).__name__})")
+            else:
+                print(f"{change.get('date')}: {change.get('sources')} - Links is not a list!")
+
         # Use pydantic to parse and validate the list
         try:
             self.changes_list = parse_obj_as(List[Change], data)
-            self.changes_list.sort(key=lambda change: (change.order is None, change.order)) # Changes with change.order = None, will be moved to the end of the list.
+            self.changes_list.sort(key=lambda change: (change.order is None, change.order))  # Moves None order to end
             n_changes = len(self.changes_list)
             print(f"✅ Loaded {n_changes} validated changes.")
         except ValidationError as e:
             print(e.json(indent=2))
+
 
     def _load_state_from_json(self):
         """
@@ -450,16 +462,16 @@ class AdministrativeHistory():
             hover_data={'Districts_List': True, 'Year': False, 'Change_Count': True},
             title='District Changes by Year and Type',
             labels={'Change_Count': 'Number of Districts Affected'},
-            color_discrete_sequence=color_sequence
+            color_discrete_sequence=color_sequence,
+            barmode='stack'  # <- Use stacked mode
         )
 
-        # Use stacked bar mode
         fig.update_layout(
-            barmode='stack',
             xaxis_title='Year',
             yaxis_title='Number of Districts Affected',
             bargap=0.1
         )
+
 
         # Customize hover template to display just the districts
         fig.update_traces(

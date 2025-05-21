@@ -703,6 +703,7 @@
   {
     "date": "15.07.1924",
     "sources": ["X"],
+    "links": ["X"],
     "description": "X.X.1924 dołączono do powiatu spisko-orawskiego część terytorium powiatu namiestowskiego w zamian za jego część oddaną Czechosłowacji",
     "order": 1,
     "matter": {
@@ -724,6 +725,7 @@
   {
     "date": "15.07.1924",
     "sources": ["X"],
+    "links": ["X"],
     "description": "X.X.1924 dołączono do powiatu spisko-orawskiego część terytorium powiatu namiestowskiego w zamian za jego część oddaną Czechosłowacji",
     "order": 1,
     "matter": {
@@ -1214,7 +1216,7 @@
     }
   },
   {
-    "date": "01.04.1927",
+    "date": "01.01.1926",
     "sources": ["Dz.U. 1925 nr 67 poz. 472", "Dz.U. z 1927 r. nr 8, poz. 62"],
     "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19250670472", "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19270080062"],
     "description": "1.04.1927 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
@@ -2594,6 +2596,7 @@
   {
     "date": "21.05.1929",
     "sources": ["Dz.U. z 1929 r. nr 33, poz. 307"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19290330307"],
     "description": "21.05.1929 utworzono powiat szczuczyński z części powiatu lidzkiego i grodzieńskiego",
     "matter": {
       "change_type": "ManyToOne",

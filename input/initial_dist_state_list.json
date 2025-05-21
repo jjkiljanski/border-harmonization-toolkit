@@ -56,7 +56,7 @@
       "BIELSKI (BIELSK PODLASKI)", "BIELSKI"
     ],
     "seat_name_variants": [
-      "BIELSK PODLASKI"
+      "BIELSK PODLASKI", "BIELSK"
     ],
     "states": [
       {
@@ -4061,7 +4061,8 @@
   {
     "name_id": "MAKOWSKI (MAKÓW MAZOWIECKI)",
     "name_variants": [
-      "MAKOWSKI (MAKÓW MAZOWIECKI)"
+      "MAKOWSKI (MAKÓW MAZOWIECKI)",
+      "MAKÓW"
     ],
     "seat_name_variants": [
       "MAKÓW MAZOWIECKI"

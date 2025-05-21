@@ -289,19 +289,21 @@ class UnitRegistry(BaseModel):
         for name_variant in new_unit.name_variants:
             if name_variant in self.unit_name_ids:
                 raise ValueError(f"The name variant {name_variant} of the new unit is used as another unit's name_id.")
-            elif name_variant in self.unique_name_variants:
-                self.unique_name_variants.remove(name_variant)
-            elif name_variant in self.unique_seat_names:
-                self.unique_seat_names.remove(name_variant)
+            elif name_variant in self.unique_name_variants or name_variant in self.unique_seat_names:
+                if name_variant in self.unique_name_variants:
+                    self.unique_name_variants.remove(name_variant)
+                if name_variant in self.unique_seat_names:
+                    self.unique_seat_names.remove(name_variant)
             else:
                 self.unique_name_variants.append(name_variant)
         for seat_name_variant in new_unit.seat_name_variants:
             if seat_name_variant in self.unit_name_ids:
                 raise ValueError(f"The seat name variant {seat_name_variant} of the appended new unit is used as another unit's name_id.")
-            elif seat_name_variant in self.unique_name_variants:
-                self.unique_name_variants.remove(name_variant)
-            elif seat_name_variant in self.unique_seat_names:
-                self.unique_seat_names.remove(seat_name_variant)
+            if seat_name_variant in self.unique_name_variants or seat_name_variant in self.unique_seat_names:
+                if seat_name_variant in self.unique_name_variants:
+                    self.unique_name_variants.remove(name_variant)
+                if seat_name_variant in self.unique_seat_names:
+                    self.unique_seat_names.remove(seat_name_variant)
             else:
                 self.unique_seat_names.append(seat_name_variant)
 

@@ -9,6 +9,10 @@ import base64
 import io
 import streamlit as st
 
+def normalize_spaces(text: str) -> str:
+    # Replace non-breaking spaces (U+00A0) with normal spaces and strip
+    return text.replace("\u00A0", " ").strip()
+
 def load_and_standardize_csv(file_path, region_registry, district_registry):
     # Read the CSV
     df = pd.read_csv(file_path)
@@ -65,6 +69,7 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
                     unit_suggestions['Region'][unit_name_aim] = [unit.name_id for unit in found_units]
                 else:
                     unit_suggestions['District'][(df.at[idx,'Region'],unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
+                print(f"unit_suggestions: {unit_suggestions}")
             else:
                 unit = found_units
             if unit is None:
