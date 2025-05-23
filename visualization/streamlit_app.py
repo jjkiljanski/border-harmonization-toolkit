@@ -234,20 +234,29 @@ elif plot_type == "Standardize Data":
                                     key=f"{region_name}_{district_name}",
                                     placeholder = "Select the correct standardized name."
                                 )
-                                st.session_state.edited_df.loc[st.session_state.edited_df["District"].str.upper() == district_name, "Standardized District Name"] = selected
+                                st.session_state.edited_df.loc[
+                                    (st.session_state.edited_df["Region"].str.upper() == region_name) &
+                                    (st.session_state.edited_df["District"].str.upper() == district_name),
+                                    "Standardized District Name"
+                                ] = selected
+
                             
                     ###################### Create editable dataframe #######################
                     with edit_dataframe_container:
                         st.markdown("#### Edit Dataframe - define missing standardized district names")
                         
-                        # Let the user edit the dataframe
-                        edited_df = st.data_editor(st.session_state.edited_df, hide_index=True)
-                        st.session_state.edited_df = edited_df  # Save any edits the user makes
+                        # Let the user edit the dataframe, but don't overwrite session state yet
+                        temp_edited_df = st.data_editor(st.session_state.edited_df, hide_index=True, key="editable_df")
+
+                        # Button to apply changes to session state
+                        if st.button("Apply Changes"):
+                            st.session_state.edited_df = temp_edited_df
+                            st.success("Changes applied.")
 
                     ###################### Prepare download edited CSV data #######################
 
                     # Prepare dataframe for download
-                    download_df = edited_df.copy()
+                    download_df = temp_edited_df.copy()
                     download_df["District"] = download_df["Standardized District Name"].where(
                         download_df["Standardized District Name"].notna(), download_df["District"]
                     )

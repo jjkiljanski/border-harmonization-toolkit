@@ -45,8 +45,8 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
                 to a list of matching unit `name_id`s.
     """
     if {'Region', 'District'}.issubset(df.columns):
-        df['Region'] = df['Region'].str.upper()
-        df['District'] = df['District'].str.upper()
+        df['Region'] = df['Region'].str.strip().str.upper()
+        df['District'] = df['District'].str.strip().str.upper()
     else:
         raise ValueError(f"Dataframe must contain 'Region' and 'District' column. Dataframe columns: {df.columns}")
 

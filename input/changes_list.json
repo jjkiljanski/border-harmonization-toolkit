@@ -3229,7 +3229,7 @@
               "IWACEWICKI"
             ],
             "seat_name_variants": [
-              "IWACEWICZE"
+              "IWACEWICZE", "KOSSÓW"
             ],
             "states": [
               {
@@ -3414,6 +3414,31 @@
   },
   {
     "date": "01.04.1932",
+    "sources": ["Dz.U. z 1932 r. nr 6, poz. 33"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060033"],
+    "description": "01.04.1932 zniesiono powiat konstantynowski, a jego terytorium włączono do powiatów bialskiego (Bohukały, Hołowczyce, Pawłów, Rokitno, Witulin, Zakanale i Janów Podłaski) i siedleckiego (gminy Górki, Huszlew, Kornica, Łysów, Olszanka, Sarnaki, Świniarów, Łosice).",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": true,
+        "current_name": "KONSTANTYNOWSKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "BIALSKI (BIAŁA PODLASKA)"
+        },
+        {
+          "create": false,
+          "current_name": "SIEDLECKI"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.04.1932",
     "sources": ["Dz.U. z 1932 r. nr 6, poz. 34"],
     "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060034"],
     "description": "1.04.1932 zniesiono powiat słupecki i włączono jego terytorium do powiatu konińskiego.",
@@ -3435,23 +3460,145 @@
   },
   {
     "date": "01.04.1932",
-    "sources": ["Dz.U. z 1932 r. nr 6, poz. 33"],
-    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060033"],
-    "description": "01.04.1932 zniesiono powiat konstantynowski, a jego terytorium włączono do powiatów bialskiego (Bohukały, Hołowczyce, Pawłów, Rokitno, Witulin, Zakanale i Janów Podłaski) i siedleckiego (gminy Górki, Huszlew, Kornica, Łysów, Olszanka, Sarnaki, Świniarów, Łosice).",
+    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
+    "description": "1.04.1932 zniesiono powiat ostrzeszowski, a jego terytorium włączono do powiatu kępińskiego.",
     "matter": {
       "change_type": "OneToMany",
       "take_from": {
         "delete_unit": true,
-        "current_name": "KONSTANTYNOWSKI"
+        "current_name": "OSTRZESZOWSKI"
       },
       "take_to": [
         {
           "create": false,
-          "current_name": "BIALSKI (BIAŁA PODLASKA)"
-        },
+          "current_name": "KĘPIŃSKI"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.04.1932",
+    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
+    "description": "1.04.1932 zniesiono powiat odolanowski, a jego terytorium włączono do powiatu ostrowskiego",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": true,
+        "current_name": "ODOLANOWSKI"
+      },
+      "take_to": [
         {
           "create": false,
-          "current_name": "SIEDLECKI"
+          "current_name": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.04.1932",
+    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
+    "description": "1.04.1932 zniesiono powiat koźmiński, a jego terytorium włączono do powiatu krotoszyńskiego",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": true,
+        "current_name": "KOŹMIŃSKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "KROTOSZYŃSKI"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.04.1932",
+    "sources": ["Dz.U. 1932 nr 6 poz. 35"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
+    "description": "1.04.1932 zniesiono powiat pleszewski, a jego terytorium włączono do powiatu jarocińskiego",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": true,
+        "current_name": "PLESZEWSKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "JAROCIŃSKI"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.04.1932",
+    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
+    "description": "1.04.1932 zniesiono powiat strzelneński, a jego terytorium włączono do powiatu mogileńskiego",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": true,
+        "current_name": "STRZELNEŃSKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "MOGILEŃSKI"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.04.1932",
+    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
+    "description": "1.04.1932 zniesiono powiat śmigielski, a jego terytorium włączono do powiatu kościańskiego",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": true,
+        "current_name": "ŚMIGIELSKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "KOŚCIAŃSKI"
+        }
+      ],
+      "unit_attribute": "territory",
+      "unit_type": "District"
+    }
+  },
+  {
+    "date": "01.04.1932",
+    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
+    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
+    "description": "1.04.1932 zniesiono powiat grodziski i włączono jego terytorium do powiatu nowotomyskiego",
+    "matter": {
+      "change_type": "OneToMany",
+      "take_from": {
+        "delete_unit": true,
+        "current_name": "GRODZISKI"
+      },
+      "take_to": [
+        {
+          "create": false,
+          "current_name": "NOWOTOMYSKI"
         }
       ],
       "unit_attribute": "territory",
@@ -3527,132 +3674,6 @@
         {
           "create": false,
           "current_name": "TCZEWSKI"
-        }
-      ],
-      "unit_attribute": "territory",
-      "unit_type": "District"
-    }
-  },
-  {
-    "date": "01.04.1932",
-    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
-    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
-    "description": "1.04.1932 zniesiono powiat grodziski i włączono jego terytorium do powiatu nowotomyskiego",
-    "matter": {
-      "change_type": "OneToMany",
-      "take_from": {
-        "delete_unit": true,
-        "current_name": "GRODZISKI"
-      },
-      "take_to": [
-        {
-          "create": false,
-          "current_name": "NOWOTOMYSKI"
-        }
-      ],
-      "unit_attribute": "territory",
-      "unit_type": "District"
-    }
-  },
-  {
-    "date": "01.04.1932",
-    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
-    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
-    "description": "1.04.1932 zniesiono powiat ostrzeszowski, a jego terytorium włączono do powiatu kępińskiego.",
-    "matter": {
-      "change_type": "OneToMany",
-      "take_from": {
-        "delete_unit": true,
-        "current_name": "OSTRZESZOWSKI"
-      },
-      "take_to": [
-        {
-          "create": false,
-          "current_name": "KĘPIŃSKI"
-        }
-      ],
-      "unit_attribute": "territory",
-      "unit_type": "District"
-    }
-  },
-  {
-    "date": "01.04.1932",
-    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
-    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
-    "description": "1.04.1932 zniesiono powiat śmigielski, a jego terytorium włączono do powiatu kościańskiego",
-    "matter": {
-      "change_type": "OneToMany",
-      "take_from": {
-        "delete_unit": true,
-        "current_name": "ŚMIGIELSKI"
-      },
-      "take_to": [
-        {
-          "create": false,
-          "current_name": "KOŚCIAŃSKI"
-        }
-      ],
-      "unit_attribute": "territory",
-      "unit_type": "District"
-    }
-  },
-  {
-    "date": "01.04.1932",
-    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
-    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
-    "description": "1.04.1932 zniesiono powiat koźmiński, a jego terytorium włączono do powiatu krotoszyńskiego",
-    "matter": {
-      "change_type": "OneToMany",
-      "take_from": {
-        "delete_unit": true,
-        "current_name": "KOŹMIŃSKI"
-      },
-      "take_to": [
-        {
-          "create": false,
-          "current_name": "KROTOSZYŃSKI"
-        }
-      ],
-      "unit_attribute": "territory",
-      "unit_type": "District"
-    }
-  },
-  {
-    "date": "01.04.1932",
-    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
-    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
-    "description": "1.04.1932 zniesiono powiat strzelneński, a jego terytorium włączono do powiatu mogileńskiego",
-    "matter": {
-      "change_type": "OneToMany",
-      "take_from": {
-        "delete_unit": true,
-        "current_name": "STRZELNEŃSKI"
-      },
-      "take_to": [
-        {
-          "create": false,
-          "current_name": "MOGILEŃSKI"
-        }
-      ],
-      "unit_attribute": "territory",
-      "unit_type": "District"
-    }
-  },
-  {
-    "date": "01.04.1932",
-    "sources": ["Dz.U. z 1932 r. nr 6, poz. 35"],
-    "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19320060035"],
-    "description": "1.04.1932 zniesiono powiat odolanowski, a jego terytorium włączono do powiatu ostrowskiego",
-    "matter": {
-      "change_type": "OneToMany",
-      "take_from": {
-        "delete_unit": true,
-        "current_name": "ODOLANOWSKI"
-      },
-      "take_to": [
-        {
-          "create": false,
-          "current_name": "OSTROWSKI (OSTRÓW WIELKOPOLSKI)"
         }
       ],
       "unit_attribute": "territory",

@@ -61,6 +61,8 @@ class AdministrativeHistory():
 
         # Create states for the whole timespan
         self._create_history()
+        print(f"self.dist_registry.unique_name_variants: {self.dist_registry.unique_name_variants}")
+        print(f"self.dist_registry.unique_seat_names: {self.dist_registry.unique_seat_names}")
 
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
@@ -216,6 +218,10 @@ class AdministrativeHistory():
         
         # Sort district list in the district registry by name_id
         self.dist_registry.unit_list.sort(key=lambda dist: dist.name_id)
+        self.dist_registry.unique_name_variants.sort()
+        self.dist_registry.unique_seat_names.sort()
+        self.region_registry.unique_name_variants.sort()
+        self.region_registry.unique_seat_names.sort()
 
     def _load_territories(self):
         """
