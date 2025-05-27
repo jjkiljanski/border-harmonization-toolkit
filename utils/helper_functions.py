@@ -75,11 +75,12 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
                         if unit_name_aim not in unit_suggestions['Region']:
                             unit_suggestions['Region'][unit_name_aim] = [unit.name_id for unit in found_units]
                     elif unit_type == 'District':
-                        if unit_name_aim not in [dist_name for _, dist_name in unit_suggestions['District']]:
-                            if 'Region' in columns:
-                                unit_suggestions['District'][(df.at[idx,'Region'],unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
-                            else:
-                                unit_suggestions['District'][(None, unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
+                        if 'Region' in columns:
+                            region_name = df.at[idx,'Region']
+                        else:
+                            region_name = None
+                        if (region_name, unit_name_aim) not in [r_d_pair for r_d_pair in unit_suggestions['District']]:
+                            unit_suggestions['District'][(region_name,unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
                 else:
                     unit = found_units
                 if unit is None:
@@ -93,7 +94,7 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
                 else:
                     df.at[idx, unit_type] = unit.name_id
 
-        for unit_type in ['Region', 'District']:
+        for unit_type in columns:
             if not_in_registry[unit_type] and raise_errors:
                 raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
         

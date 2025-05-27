@@ -270,7 +270,7 @@ class UnitRegistry(BaseModel):
                 all_existent.append((unit, unit.find_state_by_date(date)))
         return all_existent
     
-    def assure_consistency_and_append_new_unit(self,new_unit: Unit):
+    def assure_consistency_and_append_new_unit(self,new_unit: Unit, verbose = False):
         """
         This method verifies:
             1) that the name_id if the new_unit passed is not used as a name variant of seat name variant
@@ -302,7 +302,8 @@ class UnitRegistry(BaseModel):
         # Correct the registries of unique unit name variants
         all_unit_name_variants = set(new_unit.name_variants + new_unit.seat_name_variants)
         for name_variant in all_unit_name_variants:
-            print(f"Checking the name variant {name_variant}.")
+            if verbose:
+                print(f"Checking the name variant {name_variant}.")
             #print(f"Current self.unique_name_variants: {self.unique_name_variants}")
             #print(f"Current self.unique_seat_names: {self.unique_seat_names}")
             if name_variant in self.all_name_variants or name_variant in self.all_seat_name_variants:
@@ -312,10 +313,12 @@ class UnitRegistry(BaseModel):
                     self.all_name_variants.append(name_variant)
                 if name_variant in self.unique_name_variants:
                     self.unique_name_variants.remove(name_variant)
-                    print(f"Removed name variant '{name_variant}' from unique_name_variants.")
+                    if verbose:
+                        print(f"Removed name variant '{name_variant}' from unique_name_variants.")
                 if name_variant in self.unique_seat_names:
                     self.unique_seat_names.remove(name_variant)
-                    print(f"Removed name variant '{name_variant}' from unique_seat_names.")
+                    if verbose:
+                        print(f"Removed name variant '{name_variant}' from unique_seat_names.")
             else:
                 if name_variant in new_unit.name_variants:
                     self.unique_name_variants.append(name_variant)
