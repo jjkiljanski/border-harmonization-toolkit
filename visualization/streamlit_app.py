@@ -114,14 +114,13 @@ elif plot_type == "District Maps":
 
 elif plot_type == "Standardize Data":
     ################# Create containers #################
-    # Create container placeholders for flexible layout
     upload_container = st.container()
     with upload_container:
         st.markdown("### Upload CSV to Compare Against Administrative State")
         upload_column, comparison_type_column = st.columns(2)
     with comparison_type_column:
         st.markdown("")
-        st.radio(label = "Compare against:", options = ["Region x District table", "District list"])
+        comparison = st.radio(label = "Compare against:", options = ["Region x District table", "District list"])
     slider_container = st.container()
     comparison_container = st.container()
     with comparison_container:
@@ -141,28 +140,51 @@ elif plot_type == "Standardize Data":
             format="YYYY-MM-DD"
         )
 
-    ################ Prepare the data ###################
+    if comparison == "Region x District table":
+        ################ Prepare the administrative state df ###################
 
-    # Get administrative state for selected date
-    adm_state = administrative_history.find_adm_state_by_date(selected_date)
+        # Get administrative state for selected date
+        adm_state = administrative_history.find_adm_state_by_date(selected_date)
 
-    if not adm_state or "HOMELAND" not in adm_state.unit_hierarchy:
-        st.warning("No administrative data available for selected date.")
-    else:
-        homeland_hierarchy = adm_state.unit_hierarchy["HOMELAND"]
-        region_district_map = {
-            region_key: list(region_value.keys())
-            for region_key, region_value in homeland_hierarchy.items()
-        }
+        if not adm_state or "HOMELAND" not in adm_state.unit_hierarchy:
+            st.warning("No administrative data available for selected date.")
+        else:
+            homeland_hierarchy = adm_state.unit_hierarchy["HOMELAND"]
+            region_district_map = {
+                region_key: list(region_value.keys())
+                for region_key, region_value in homeland_hierarchy.items()
+            }
 
-        # Create a DataFrame where each column is a region, and rows are district keys
-        max_rows = max(len(districts) for districts in region_district_map.values())
-        df_data = {
-            region: districts + [""] * (max_rows - len(districts))
-            for region, districts in region_district_map.items()
-        }
+            # Create a DataFrame where each column is a region, and rows are district keys
+            max_rows = max(len(districts) for districts in region_district_map.values())
+            df_data = {
+                region: districts + [""] * (max_rows - len(districts))
+                for region, districts in region_district_map.items()
+            }
 
-        adm_state_df = pd.DataFrame(df_data)
+            adm_state_df = pd.DataFrame(df_data)
+    elif comparison == "District list":
+        ################ Prepare the administrative state District list ###################
+
+        # Get administrative state for selected date
+        adm_state = administrative_history.find_adm_state_by_date(selected_date)
+
+        if not adm_state or "HOMELAND" not in adm_state.unit_hierarchy:
+            st.warning("No administrative data available for selected date.")
+        else:
+            homeland_hierarchy = adm_state.unit_hierarchy["HOMELAND"]
+            adm_state_d_list = {
+                district_name
+                for region_value in homeland_hierarchy.values()
+                for district_name in list(region_value.keys())
+            }
+
+            # Create a DataFrame with one 'District' column
+            df_data = {
+                'District': adm_state_d_list
+            }
+
+            adm_state_df = pd.DataFrame(df_data)
 
     with upload_column:
         uploaded_file = st.file_uploader("Upload a CSV with columns 'Region' and 'District'", type=["csv"])
@@ -173,19 +195,31 @@ elif plot_type == "Standardize Data":
             uploaded_df = load_uploaded_csv(uploaded_file)
             if uploaded_df is None:
                 st.stop()
+            if comparison == "Region x District table":
+                # Validate columns
+                required_cols = {'Region', 'District'}
+            elif comparison == "District list":
+                required_cols = {'District'}
 
-            # Validate columns
-            required_cols = {'Region', 'District'}
             if not required_cols.issubset(uploaded_df.columns):
-                st.error(f"CSV must contain columns: {required_cols}. Found: {list(uploaded_df.columns)}")
+                    st.error(f"CSV must contain columns: {required_cols}. Found: {list(uploaded_df.columns)}")
             else:
-                # Sort uploaded_df by region, then by district (case insensitive)
-                uploaded_df = uploaded_df.sort_values(
-                    by=["Region", "District"],
-                    key=lambda col: col.str.lower() if col.dtype == "object" else col
-                )
-                edit_names_df = uploaded_df.copy()[['Region', 'District']]
-                edit_names_df = edit_names_df.drop_duplicates(subset=["Region", "District"])
+                ############################# Sort the uploaded df and create df with names to edit ###########################
+                if 'Region' in uploaded_df.columns:
+                    # Sort uploaded_df by region, then by district (case insensitive)
+                    uploaded_df = uploaded_df.sort_values(
+                        by=["Region", "District"],
+                        key=lambda col: col.str.lower() if col.dtype == "object" else col
+                    )
+                    edit_names_df = uploaded_df.copy()[['Region', 'District']]
+                    edit_names_df = edit_names_df.drop_duplicates(subset=["Region", "District"])
+                else:
+                    uploaded_df = uploaded_df.sort_values(
+                        by=["District"],
+                        key=lambda col: col.str.lower() if col.dtype == "object" else col
+                    )
+                    edit_names_df = uploaded_df.copy()[['District']]
+                    edit_names_df = edit_names_df.drop_duplicates(subset=["District"])
 
                 try:
                     ############################# Add columns with standardized names and sort #################################
@@ -261,7 +295,7 @@ elif plot_type == "Standardize Data":
                 name, ext = os.path.splitext(uploaded_file.name)
                 edited_file_name = f"{name}_edited{ext}"
 
-                ###################### Prepare download ready CSV data ########################
+                ###################### Prepare (Region,District) lists ########################
                 # Extract all (region, district) pairs set from adm_state
                 adm_state_r_d_list = set(
                     (region, district)
@@ -278,6 +312,24 @@ elif plot_type == "Standardize Data":
                 missing_r_d_pairs = adm_state_r_d_set-edited_df_r_d_set
                 missing_r_d_pairs = {pair for pair in missing_r_d_pairs if pair[1] != ''}
 
+                ###################### Prepare District lists ########################
+                # Extract all (region, district) pairs set from adm_state
+                adm_state_d_list = set(
+                    district
+                    for region in adm_state_df.columns
+                    for district in adm_state_df[region].dropna()
+                )
+                adm_state_r_d_set = set(adm_state_r_d_list)
+
+                # Extract all (region, district) pairs set from the edited dataframe download_df
+                edited_df_r_d_list = list(zip(list(display_df["Region"]), list(display_df["District"])))
+                edited_df_r_d_set = set(edited_df_r_d_list)
+
+                # Find all missing pairs
+                missing_r_d_pairs = adm_state_r_d_set-edited_df_r_d_set
+                missing_r_d_pairs = {pair for pair in missing_r_d_pairs if pair[1] != ''}
+
+                ###################### Prepare download ready CSV data ########################
                 # Create a DataFrame for the missing pairs
                 missing_df = pd.DataFrame(missing_r_d_pairs, columns=["Region", "District"])
 
