@@ -99,8 +99,8 @@ class Unit(BaseModel):
         This method assumes that the state that is ended is THE LAST STATE in the 'self.states' list.
         """
         last_state = self.states[-1] # States should be stored according to the timely order.
-        if last_state is None:
-            raise ValueError(f"Invalid date: {date.date()}. No state covers this date.")
+        if date not in last_state.timespan:
+            raise ValueError(f"Invalid date: {date.date()}. The last unit state doesn't cover this date. The last state ends at {last_state.timespan.end.date()}.")
         
         # Copy the last state, but avoid infinite referencing loop.
         data = last_state.model_dump(
@@ -146,11 +146,13 @@ class UnitRegistry(BaseModel):
     """
     unit_list: List[Unit]
     unit_name_ids: Optional[List[str]] = None # Atttribute defined in the model validator
+    all_name_variants: Optional[List[str]] = None
+    all_seat_name_variants: Optional[List[str]] = None
     unique_name_variants: Optional[List[str]] = None # Atttribute defined in the model validator
     unique_seat_names: Optional[List[str]] = None # Atttribute defined in the model validator
 
     @model_validator(mode="after")
-    def compute_unique_variants(self) -> "UnitRegistry":
+    def compute_name_variants(self) -> "UnitRegistry":
         # Define the self.unit_name_ids attribute
         unit_name_ids = [unit.name_id for unit in self.unit_list]
         dupplicate_name_ids = [name_id for name_id, count in Counter(unit_name_ids).items() if count > 1]
@@ -174,12 +176,12 @@ class UnitRegistry(BaseModel):
             name for unit in self.unit_list for name in set(unit.name_variants+unit.seat_name_variants) # Use set(...) to count only once the names that are BOTH a seat name and a name of THE SAME unit.
         )
 
-        all_name_variants = [name for unit in self.unit_list for name in unit.name_variants]
-        all_seat_name_variants = [name for unit in self.unit_list for name in unit.seat_name_variants]
+        self.all_name_variants = [name for unit in self.unit_list for name in unit.name_variants]
+        self.all_seat_name_variants = [name for unit in self.unit_list for name in unit.seat_name_variants]
 
         # Only keep variants that occur exactly once
-        self.unique_name_variants = [name for name in all_name_variants if name_counts[name] == 1]
-        self.unique_seat_names = [seat_name for seat_name in all_seat_name_variants if name_counts[seat_name] == 1]
+        self.unique_name_variants = [name for name in self.all_name_variants if name_counts[name] == 1]
+        self.unique_seat_names = [seat_name for seat_name in self.all_seat_name_variants if name_counts[seat_name] == 1]
 
         return self
 
@@ -285,7 +287,10 @@ class UnitRegistry(BaseModel):
             if new_unit.name_id in unit.seat_name_variants:
                 raise ValueError(f"The name_id '{new_unit.name_id}' of the new unit is used as another unit's seat name variant.")
 
+        # Append the unit
         self.unit_list.append(new_unit)
+
+        # Verify that none of its name variants collides with existing name_ids
         for name_variant in new_unit.name_variants:
             if name_variant in self.unit_name_ids:
                 raise ValueError(f"The name variant {name_variant} of the new unit is used as another unit's name_id.")
@@ -293,22 +298,31 @@ class UnitRegistry(BaseModel):
         for seat_name_variant in new_unit.seat_name_variants:
             if seat_name_variant in self.unit_name_ids:
                 raise ValueError(f"The seat name variant {seat_name_variant} of the appended new unit is used as another unit's name_id.")
-        
+            
+        # Correct the registries of unique unit name variants
         all_unit_name_variants = set(new_unit.name_variants + new_unit.seat_name_variants)
         for name_variant in all_unit_name_variants:
-            if name_variant in self.unique_name_variants or name_variant in self.unique_seat_names:
+            print(f"Checking the name variant {name_variant}.")
+            #print(f"Current self.unique_name_variants: {self.unique_name_variants}")
+            #print(f"Current self.unique_seat_names: {self.unique_seat_names}")
+            if name_variant in self.all_name_variants or name_variant in self.all_seat_name_variants:
+                if name_variant not in self.all_name_variants:
+                    self.all_name_variants.append(name_variant)
+                if name_variant not in self.all_seat_name_variants:
+                    self.all_name_variants.append(name_variant)
                 if name_variant in self.unique_name_variants:
                     self.unique_name_variants.remove(name_variant)
-                    #print(f"Removed name variant '{name_variant}' from unique_name_variants.")
+                    print(f"Removed name variant '{name_variant}' from unique_name_variants.")
                 if name_variant in self.unique_seat_names:
                     self.unique_seat_names.remove(name_variant)
-                    #print(f"Removed name variant '{name_variant}' from unique_seat_names.")
+                    print(f"Removed name variant '{name_variant}' from unique_seat_names.")
             else:
                 if name_variant in new_unit.name_variants:
                     self.unique_name_variants.append(name_variant)
+                    self.all_name_variants.append(name_variant)
                 else:
-                    self.unique_seat_names.append(seat_name_variant)
-                
+                    self.unique_seat_names.append(name_variant)
+                    self.all_seat_name_variants.append(name_variant)
 
     
 #############################################################################################

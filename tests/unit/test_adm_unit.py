@@ -135,7 +135,7 @@ def test_create_next_state():
     assert len(unit.states) == 2  # There should be two states now
 
     # Test: invalid date (1931-01-01) outside the existing state's timespan
-    with pytest.raises(ValueError, match="Invalid date: 1931-01-01. No state covers this date."):
+    with pytest.raises(ValueError, match="Invalid date: 1931-01-01. The last unit state doesn't cover this date. The last state ends at 1930-12-31"):
         unit.create_next_state(datetime(1931, 1, 1))
 
 # Test for abolish method

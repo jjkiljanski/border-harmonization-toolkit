@@ -28,7 +28,7 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
     This function looks up each name in the 'Region' and 'District' columns against the corresponding
     registry. If a name uniquely identifies a unit, it is replaced with that unit's `name_id`.
     A dictionary (`unit_suggestions`) of name-to-matching-region-ID(s) (for regions)
-    pr (region_name, dist_name)-to-matching-dist-ID(s) is built along the way to record ambiguous
+    or (region_name, dist_name)-to-matching-dist-ID(s) is built along the way to record ambiguous
     or alternative names.
 
     Parameters:
@@ -42,24 +42,28 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
             dict: A dictionary mapping each original region name or (standardized region name, original dist name)
                 to a list of matching unit `name_id`s.
     """
-    if {'Region', 'District'}.issubset(df.columns):
-        df['Region'] = df['Region'].str.strip().str.upper()
-        df['District'] = df['District'].str.strip().str.upper()
+    if not set(columns).issubset({'Region', 'District'}):
+        raise ValueError(f"Parameter 'columns' passed to the function must be a sublist of ['Region', 'District'] list, but argument columns={columns} was passed.")
+    
+    if set(columns).issubset(df.columns):
+        for column_name in columns:
+            df[column_name] = df[column_name].str.strip().str.upper()
     else:
-        raise ValueError(f"Dataframe must contain 'Region' and 'District' column. Dataframe columns: {df.columns}")
+        raise ValueError(f"Attempted to standardize {columns} columns, but the dataframe passed as argument doesn't contain {set(columns)-set(df.columns)}.")
 
-    not_in_registry = {'Region': [], 'District': []}
+    # Dict with 'Region' and 'District' keys (if the values are passed in 'columns' parameter)
+    # with lists of names missing in the registry.
+    not_in_registry = {column_name: [] for column_name in columns}
+
     # suggestions dict collects (unit_name_aim : list of units that have the name variant) key:value pairs
     # (case where a name variant is used by many units)
-    unit_suggestions = {'Region': {}, 'District': {}}
+    unit_suggestions = {column_name: {} for column_name in columns}
 
     if df.empty:
         print("The dafaframe passed to standardization is empty.")
         return unit_suggestions
     else:
-        for unit_type in ['Region', 'District']:
-            if unit_type not in columns:
-                continue
+        for unit_type in columns:
             for idx, unit_name_aim in df[unit_type].items():
                 if unit_type == 'Region':
                     found_units = region_registry.find_unit(unit_name_aim, allow_non_unique = True)
@@ -70,10 +74,12 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
                     if unit_type == 'Region':
                         if unit_name_aim not in unit_suggestions['Region']:
                             unit_suggestions['Region'][unit_name_aim] = [unit.name_id for unit in found_units]
-                    else:
-                        if unit_name_aim not in unit_suggestions['District']:
-                            unit_suggestions['District'][(df.at[idx,'Region'],unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
-                    print(f"unit_suggestions: {unit_suggestions}")
+                    elif unit_type == 'District':
+                        if unit_name_aim not in [dist_name for _, dist_name in unit_suggestions['District']]:
+                            if 'Region' in columns:
+                                unit_suggestions['District'][(df.at[idx,'Region'],unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
+                            else:
+                                unit_suggestions['District'][(None, unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
                 else:
                     unit = found_units
                 if unit is None:
@@ -92,6 +98,7 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
                 raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
         
         print("Successfully standardized the given dataframe.")
+        print(f"unit_suggestions: {unit_suggestions}")
         return unit_suggestions
 
 def load_uploaded_csv(uploaded_file):
