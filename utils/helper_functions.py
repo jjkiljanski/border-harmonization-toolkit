@@ -17,7 +17,7 @@ def load_and_standardize_csv(file_path, region_registry, district_registry):
     # Read the CSV
     df = pd.read_csv(file_path)
 
-    df, unit_suggestions = standardize_df(df, region_registry, district_registry)
+    unit_suggestions = standardize_df(df, region_registry, district_registry)
 
     return df, unit_suggestions
 
@@ -39,8 +39,6 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
         raise_errors (bool): If True, raises a ValueError when an unrecognized name is encountered.
 
     Returns:
-        tuple:
-            pd.DataFrame: The updated DataFrame with standardized 'Region' and 'District' values.
             dict: A dictionary mapping each original region name or (standardized region name, original dist name)
                 to a list of matching unit `name_id`s.
     """
@@ -55,38 +53,46 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
     # (case where a name variant is used by many units)
     unit_suggestions = {'Region': {}, 'District': {}}
 
-    for unit_type in ['Region', 'District']:
-        if unit_type not in columns:
-            continue
-        for idx, unit_name_aim in df[unit_type].items():
-            if unit_type == 'Region':
-                found_units = region_registry.find_unit(unit_name_aim, allow_non_unique = True)
-            else:
-                found_units = district_registry.find_unit(unit_name_aim, allow_non_unique = True)
-            if isinstance(found_units, list):
-                unit = None
+    if df.empty:
+        print("The dafaframe passed to standardization is empty.")
+        return unit_suggestions
+    else:
+        for unit_type in ['Region', 'District']:
+            if unit_type not in columns:
+                continue
+            for idx, unit_name_aim in df[unit_type].items():
                 if unit_type == 'Region':
-                    unit_suggestions['Region'][unit_name_aim] = [unit.name_id for unit in found_units]
+                    found_units = region_registry.find_unit(unit_name_aim, allow_non_unique = True)
                 else:
-                    unit_suggestions['District'][(df.at[idx,'Region'],unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
-                print(f"unit_suggestions: {unit_suggestions}")
-            else:
-                unit = found_units
-            if unit is None:
-                not_in_registry[unit_type].append(unit_name_aim)
-            elif unit.name_id != unit_name_aim:
-                print(f"Warning: name {unit_name_aim} is an alternative {unit_type.lower()} name. Processing further as {unit.name_id}")
+                    found_units = district_registry.find_unit(unit_name_aim, allow_non_unique = True)
+                if isinstance(found_units, list):
+                    unit = None
+                    if unit_type == 'Region':
+                        if unit_name_aim not in unit_suggestions['Region']:
+                            unit_suggestions['Region'][unit_name_aim] = [unit.name_id for unit in found_units]
+                    else:
+                        if unit_name_aim not in unit_suggestions['District']:
+                            unit_suggestions['District'][(df.at[idx,'Region'],unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
+                    print(f"unit_suggestions: {unit_suggestions}")
+                else:
+                    unit = found_units
+                if unit is None:
+                    if unit_name_aim not in not_in_registry[unit_type]:
+                        not_in_registry[unit_type].append(unit_name_aim)
+                elif unit.name_id != unit_name_aim:
+                    print(f"Warning: name {unit_name_aim} is an alternative {unit_type.lower()} name. Processing further as {unit.name_id}")
 
-            if unit is None:
-                df.at[idx, unit_type] = None
-            else:
-                df.at[idx, unit_type] = unit.name_id
+                if unit is None:
+                    df.at[idx, unit_type] = None
+                else:
+                    df.at[idx, unit_type] = unit.name_id
 
-    for unit_type in ['Region', 'District']:
-        if not_in_registry[unit_type] and raise_errors:
-            raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
+        for unit_type in ['Region', 'District']:
+            if not_in_registry[unit_type] and raise_errors:
+                raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
         
-    return df, unit_suggestions
+        print("Successfully standardized the given dataframe.")
+        return unit_suggestions
 
 def load_uploaded_csv(uploaded_file):
     # Step 1: Read a sample to guess encoding and check delimiter

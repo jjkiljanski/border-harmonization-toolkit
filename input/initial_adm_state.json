@@ -46,7 +46,7 @@
         "GRYBOWSKI": {},
         "JASIELSKI": {},
         "KRAKOWSKI": {},
-        "KRAKÓW (POWIAT)": {},
+        "KRAKÓW (MIASTO)": {},
         "LIMANOWSKI": {},
         "MIELECKI": {},
         "MYŚLENICKI": {},
@@ -73,7 +73,7 @@
         "KRASNOSTAWSKI": {},
         "LUBARTOWSKI": {},
         "LUBELSKI": {},
-        "LUBLIN (POWIAT)": {},
+        "LUBLIN (MIASTO)": {},
         "ŁUKOWSKI": {},
         "PUŁAWSKI": {},
         "RADZYŃSKI": {},
@@ -97,7 +97,7 @@
         "KROŚNIEŃSKI": {},
         "LESKI": {},
         "LWOWSKI": {},
-        "LWÓW (POWIAT)": {},
+        "LWÓW (MIASTO)": {},
         "ŁAŃCUCKI": {},
         "MOŚCISKI": {},
         "NIŻAŃSKI": {},
@@ -122,7 +122,7 @@
         "ŁASKI": {},
         "ŁĘCZYCKI": {},
         "ŁÓDZKI": {},
-        "ŁÓDŹ (POWIAT)": {},
+        "ŁÓDŹ (MIASTO)": {},
         "PIOTRKOWSKI": {},
         "RADOMSZCZAŃSKI": {},
         "SIERADZKI": {},
@@ -162,7 +162,7 @@
         "CHOJNICKI": {},
         "DZIAŁDOWSKI": {},
         "GNIEWSKI": {},
-        "GRUDZIĄDZ (POWIAT)": {},
+        "GRUDZIĄDZ (MIASTO)": {},
         "GRUDZIĄDZKI": {},
         "KARTUSKI": {},
         "KOŚCIERSKI": {},
@@ -172,7 +172,7 @@
         "STAROGARDZKI": {},
         "ŚWIECKI": {},
         "TCZEWSKI": {},
-        "TORUŃ (POWIAT)": {},
+        "TORUŃ (MIASTO)": {},
         "TORUŃSKI": {},
         "TUCHOLSKI": {},
         "WĄBRZESKI": {},
@@ -180,7 +180,7 @@
       },
       "POZNAŃSKIE": {
         "BYDGOSKI": {},
-        "BYDGOSZCZ (POWIAT)": {},
+        "BYDGOSZCZ (MIASTO)": {},
         "CHODZIESKI": {},
         "CZARNKOWSKI": {},
         "GNIEŹNIEŃSKI": {},
@@ -201,7 +201,7 @@
         "OSTROWSKI (OSTRÓW WIELKOPOLSKI)": {},
         "OSTRZESZOWSKI": {},
         "PLESZEWSKI": {},
-        "POZNAŃ (POWIAT)": {},
+        "POZNAŃ (MIASTO)": {},
         "POZNAŃSKI WSCHODNI": {},
         "POZNAŃSKI ZACHODNI": {},
         "RAWICKI": {},
@@ -238,7 +238,7 @@
       },
       "ŚLĄSKIE": {
         "BIELSKI (BIELSKO)": {},
-        "BIELSKO": {},
+        "BIELSKO (MIASTO)": {},
         "CIESZYŃSKI": {}
       },
       "TARNOPOLSKIE": {
@@ -316,7 +316,7 @@
         "BYTOM MIASTO": {},
         "GLIWICKI": {},
         "ZABRSKI": {},
-        "KATOWICE (POWIAT)": {},
+        "KATOWICE (MIASTO)": {},
         "KATOWICKI": {},
         "KRÓLEWSKA HUTA": {},
         "LUBLINIECKI": {},
@@ -331,7 +331,7 @@
         "ŚWIĘCIAŃSKI": {},
         "TROCKI": {},
         "WILEŃSKI": {},
-        "WILNO (POWIAT)": {}
+        "WILNO (MIASTO)": {}
       }
     }
   }

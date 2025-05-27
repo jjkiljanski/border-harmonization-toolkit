@@ -4,6 +4,9 @@
     "name_variants": [
       "BIAŁOSTOCKIE"
     ],
+    "seat_name_variants": [
+      "BIAŁYSTOK"
+    ],
     "is_homeland": true,
     "states": [
       {
@@ -17,6 +20,9 @@
     "name_id": "KIELECKIE",
     "name_variants": [
       "KIELECKIE"
+    ],
+    "seat_name_variants": [
+      "KIELCE"
     ],
     "is_homeland": true,
     "states": [
@@ -32,6 +38,9 @@
     "name_variants": [
       "KRAKOWSKIE"
     ],
+    "seat_name_variants": [
+      "KRAKÓW"
+    ],
     "is_homeland": true,
     "states": [
       {
@@ -45,6 +54,9 @@
     "name_id": "LUBELSKIE",
     "name_variants": [
       "LUBELSKIE"
+    ],
+    "seat_name_variants": [
+      "LUBLIN"
     ],
     "is_homeland": true,
     "states": [
@@ -60,6 +72,9 @@
     "name_variants": [
       "LWOWSKIE"
     ],
+    "seat_name_variants": [
+      "LWÓW"
+    ],
     "is_homeland": true,
     "states": [
       {
@@ -74,6 +89,9 @@
     "name_variants": [
       "ŁÓDZKIE"
     ],
+    "seat_name_variants": [
+      "ŁÓDŹ"
+    ],
     "is_homeland": true,
     "states": [
       {
@@ -87,6 +105,10 @@
     "name_id": "M. ST. WARSZAWA",
     "name_variants": [
       "M. ST. WARSZAWA", "M. STOŁECZNE WARSZAWA"
+    ]
+    ,
+    "seat_name_variants": [
+      "WARSZAWA", "M. ST. WARSZAWA"
     ],
     "is_homeland": true,
     "states": [
@@ -102,6 +124,9 @@
     "name_variants": [
       "NOWOGRÓDZKIE"
     ],
+    "seat_name_variants": [
+      "NOWOGRÓDEK"
+    ],
     "is_homeland": true,
     "states": [
       {
@@ -114,7 +139,7 @@
   {
     "name_id": "POLESKIE",
     "name_variants": [
-      "POLESKIE"
+      "POLESKIE", "POLESIE"
     ],
     "seat_name_variants": ["PIŃSK", "BRZEŚĆ LITEWSKI", "BRZEŚĆ NAD BUGIEM"],
     "is_homeland": true,
@@ -129,7 +154,10 @@
   {
     "name_id": "POMORSKIE",
     "name_variants": [
-      "POMORSKIE"
+      "POMORSKIE", "POMORZE"
+    ],
+    "seat_name_variants": [
+      "TORUŃ"
     ],
     "is_homeland": true,
     "states": [
@@ -145,6 +173,9 @@
     "name_variants": [
       "POZNAŃSKIE"
     ],
+    "seat_name_variants": [
+      "POZNAŃ"
+    ],
     "is_homeland": true,
     "states": [
       {
@@ -159,6 +190,9 @@
     "name_variants": [
       "STANISŁAWOWSKIE"
     ],
+    "seat_name_variants": [
+      "STANISŁAWÓW"
+    ],
     "is_homeland": true,
     "states": [
       {
@@ -171,7 +205,11 @@
   {
     "name_id": "ŚLĄSKIE",
     "name_variants": [
-      "ŚLĄSKIE"
+      "ŚLĄSKIE", "ŚLĄSK"
+    ]
+    ,
+    "seat_name_variants": [
+      "KATOWICE"
     ],
     "is_homeland": true,
     "states": [
@@ -187,6 +225,9 @@
     "name_variants": [
       "TARNOPOLSKIE"
     ],
+    "seat_name_variants": [
+      "TARNOPOL"
+    ],
     "is_homeland": true,
     "states": [
       {
@@ -200,6 +241,10 @@
     "name_id": "WARSZAWSKIE",
     "name_variants": [
       "WARSZAWSKIE"
+    ]
+    ,
+    "seat_name_variants": [
+      "WARSZAWA"
     ],
     "is_homeland": true,
     "states": [
@@ -214,6 +259,9 @@
     "name_id": "WOŁYŃSKIE",
     "name_variants": [
       "WOŁYŃSKIE", "WOŁYŃ"
+    ],
+    "seat_name_variants": [
+      "ŁUCK"
     ],
     "is_homeland": true,
     "states": [
@@ -255,7 +303,10 @@
   {
     "name_id": "ZIEMIA WILEŃSKA",
     "name_variants": [
-      "ZIEMIA WILEŃSKA", "WILEŃSKIE"
+      "ZIEMIA WILEŃSKA", "WILEŃSKIE", "OKR. ADM. WILEŃSKI"
+    ],
+    "seat_name_variants": [
+      "WILNO"
     ],
     "is_homeland": true,
     "states": [

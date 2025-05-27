@@ -105,12 +105,12 @@
       "take_from": [
         "ABROAD",
         "ŚLĄSK NIEMIECKI",
-        "KATOWICE (POWIAT)"
+        "KATOWICE (MIASTO)"
       ],
       "take_to": [
         "HOMELAND",
         "ŚLĄSKIE",
-        "KATOWICE (POWIAT)"
+        "KATOWICE (MIASTO)"
       ]
     }
   },
@@ -414,7 +414,7 @@
       "change_type": "OneToMany",
       "take_from": {
         "delete_unit": true,
-        "current_name": "LUBLIN (POWIAT)"
+        "current_name": "LUBLIN (MIASTO)"
       },
       "take_to": [
         {
@@ -573,7 +573,7 @@
         "district": {
           "name_id": "WILEŃSKO-TROCKI",
           "name_variants": [
-            "WILEŃSKO-TROCKI"
+            "WILEŃSKO-TROCKI", "WILNO-TROKI"
           ],
           "seat_name_variants": [
             "WILNO"
@@ -643,7 +643,7 @@
         "district": {
           "name_id": "MAKOWSKI (MAKÓW PODHALAŃSKI)",
           "name_variants": [
-            "MAKOWSKI (MAKÓW PODHALAŃSKI)"
+            "MAKOWSKI (MAKÓW PODHALAŃSKI)", "MAKOWSKI"
           ],
           "seat_name_variants": [
             "MAKÓW",
@@ -828,7 +828,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "POZNAŃ (POWIAT)"
+          "current_name": "POZNAŃ (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -1103,16 +1103,16 @@
       "take_to": {
         "create": true,
         "district": {
-          "name_id": "GNIEZNO (POWIAT)",
+          "name_id": "GNIEZNO (MIASTO)",
           "name_variants": [
-            "GNIEZNO", "GNIEZNO (POWIAT)"
+            "GNIEZNO", "GNIEZNO - MIASTO", "GNIEZNO (MIASTO)", "GNIEZNO MIASTO"
           ],
           "seat_name_variants": [
             "GNIEZNO"
           ],
           "states": [
             {
-              "current_name": "GNIEZNO (POWIAT)",
+              "current_name": "GNIEZNO (MIASTO)",
               "current_seat_name": "GNIEZNO",
               "current_dist_type": "m"
             }
@@ -1121,7 +1121,7 @@
         "new_district_address": [
           "HOMELAND",
           "POZNAŃSKIE",
-          "GNIEZNO (POWIAT)"
+          "GNIEZNO (MIASTO)"
         ]
       },
       "unit_attribute": "territory",
@@ -1146,16 +1146,16 @@
       "take_to": {
         "create": true,
         "district": {
-          "name_id": "INOWROCŁAW (POWIAT)",
+          "name_id": "INOWROCŁAW (MIASTO)",
           "name_variants": [
-            "INOWROCŁAW", "INOWROCŁAW (POWIAT)"
+            "INOWROCŁAW", "INOWROCŁAW - MIASTO", "INOWROCŁAW (MIASTO)", "INOWROCŁAW MIASTO"
           ],
           "seat_name_variants": [
             "INOWROCŁAW"
           ],
           "states": [
             {
-              "current_name": "INOWROCŁAW (POWIAT)",
+              "current_name": "INOWROCŁAW (MIASTO)",
               "current_seat_name": "INOWROCŁAW",
               "current_dist_type": "m"
             }
@@ -1164,7 +1164,7 @@
         "new_district_address": [
           "HOMELAND",
           "POZNAŃSKIE",
-          "INOWROCŁAW (POWIAT)"
+          "INOWROCŁAW (MIASTO)"
         ]
       },
       "unit_attribute": "territory",
@@ -1219,7 +1219,7 @@
     "date": "01.01.1926",
     "sources": ["Dz.U. 1925 nr 67 poz. 472", "Dz.U. z 1927 r. nr 8, poz. 62"],
     "links": ["https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19250670472", "https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19270080062"],
-    "description": "1.04.1927 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
+    "description": "1.01.1926 utworzono powiat mołodeczański z części terytoriów powiatów wilejskiego i oszmiańskiego",
     "matter": {
       "change_type": "ManyToOne",
       "take_from": [
@@ -2035,16 +2035,16 @@
           "weight_from": null,
           "weight_to": null,
           "district": {
-            "name_id": "BIAŁYSTOK (POWIAT)",
+            "name_id": "BIAŁYSTOK (MIASTO)",
             "name_variants": [
-              "BIAŁYSTOK", "BIAŁYSTOK (POWIAT)"
+              "BIAŁYSTOK", "BIAŁYSTOK - MIASTO", "BIAŁYSTOK (MIASTO)", "BIAŁYSTOK MIASTO"
             ],
             "seat_name_variants": [
               "BIAŁYSTOK"
             ],
             "states": [
               {
-                "current_name": "BIAŁYSTOK (POWIAT)",
+                "current_name": "BIAŁYSTOK (MIASTO)",
                 "current_seat_name": "BIAŁYSTOK",
                 "current_dist_type": "m"
               }
@@ -2053,7 +2053,7 @@
           "new_district_address": [
             "HOMELAND",
             "BIAŁOSTOCKIE",
-            "BIAŁYSTOK (POWIAT)"
+            "BIAŁYSTOK (MIASTO)"
           ]
         }
       ],
@@ -2079,16 +2079,16 @@
           "weight_from": null,
           "weight_to": null,
           "district": {
-            "name_id": "CZĘSTOCHOWA (POWIAT)",
+            "name_id": "CZĘSTOCHOWA (MIASTO)",
             "name_variants": [
-              "CZĘSTOCHOWA", "CZĘSTOCHOWA (POWIAT)"
+              "CZĘSTOCHOWA", "CZĘSTOCHOWA - MIASTO", "CZĘSTOCHOWA (MIASTO)", "CZĘSTOCHOWA MIASTO"
             ],
             "seat_name_variants": [
               "CZĘSTOCHOWA"
             ],
             "states": [
               {
-                "current_name": "CZĘSTOCHOWA (POWIAT)",
+                "current_name": "CZĘSTOCHOWA (MIASTO)",
                 "current_seat_name": "CZĘSTOCHOWA",
                 "current_dist_type": "m"
               }
@@ -2097,7 +2097,7 @@
           "new_district_address": [
             "HOMELAND",
             "KIELECKIE",
-            "CZĘSTOCHOWA (POWIAT)"
+            "CZĘSTOCHOWA (MIASTO)"
           ]
         }
       ],
@@ -2167,16 +2167,16 @@
           "weight_from": null,
           "weight_to": null,
           "district": {
-            "name_id": "LUBLIN (POWIAT)",
+            "name_id": "LUBLIN (MIASTO)",
             "name_variants": [
-              "LUBLIN", "LUBLIN (POWIAT)"
+              "LUBLIN", "LUBLIN - MIASTO", "LUBLIN (MIASTO)", "LUBLIN MIASTO"
             ],
             "seat_name_variants": [
               "LUBLIN"
             ],
             "states": [
               {
-                "current_name": "LUBLIN (POWIAT)",
+                "current_name": "LUBLIN (MIASTO)",
                 "current_seat_name": "LUBLIN",
                 "current_dist_type": "m"
               }
@@ -2185,7 +2185,7 @@
           "new_district_address": [
             "HOMELAND",
             "LUBELSKIE",
-            "LUBLIN (POWIAT)"
+            "LUBLIN (MIASTO)"
           ]
         }
       ],
@@ -2463,16 +2463,16 @@
       "take_to": {
         "create": true,
         "district": {
-          "name_id": "GDYNIA (POWIAT)",
+          "name_id": "GDYNIA (MIASTO)",
           "name_variants": [
-            "GDYNIA", "GDYNIA (POWIAT)"
+            "GDYNIA", "GDYNIA - MIASTO", "GDYNIA (MIASTO)", "GDYNIA MIASTO"
           ],
           "seat_name_variants": [
             "GDYNIA"
           ],
           "states": [
             {
-              "current_name": "GDYNIA (POWIAT)",
+              "current_name": "GDYNIA (MIASTO)",
               "current_seat_name": "GDYNIA",
               "current_dist_type": "m"
             }
@@ -2481,7 +2481,7 @@
         "new_district_address": [
           "HOMELAND",
           "POMORSKIE",
-          "GDYNIA (POWIAT)"
+          "GDYNIA (MIASTO)"
         ]
       },
       "unit_attribute": "territory",
@@ -2857,7 +2857,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "LWÓW (POWIAT)"
+          "current_name": "LWÓW (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -2879,7 +2879,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "CZĘSTOCHOWA (POWIAT)"
+          "current_name": "CZĘSTOCHOWA (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -3179,7 +3179,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "LUBLIN (POWIAT)"
+          "current_name": "LUBLIN (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -3764,16 +3764,16 @@
           "weight_from": null,
           "weight_to": null,
           "district": {
-            "name_id": "RADOM (POWIAT)",
+            "name_id": "RADOM (MIASTO)",
             "name_variants": [
-              "RADOM", "RADOM (POWIAT)"
+              "RADOM", "RADOM - MIASTO", "RADOM (MIASTO)", "RADOM MIASTO"
             ],
             "seat_name_variants": [
               "RADOM"
             ],
             "states": [
               {
-                "current_name": "RADOM (POWIAT)",
+                "current_name": "RADOM (MIASTO)",
                 "current_seat_name": "RADOM",
                 "current_dist_type": "m"
               }
@@ -3782,7 +3782,7 @@
           "new_district_address": [
             "HOMELAND",
             "KIELECKIE",
-            "RADOM (POWIAT)"
+            "RADOM (MIASTO)"
           ]
         }
       ],
@@ -3804,7 +3804,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "GDYNIA (POWIAT)"
+          "current_name": "GDYNIA (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -4145,7 +4145,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "INOWROCŁAW (POWIAT)"
+          "current_name": "INOWROCŁAW (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -4343,7 +4343,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "TORUŃ (POWIAT)"
+          "current_name": "TORUŃ (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -5091,7 +5091,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "GRUDZIĄDZ (POWIAT)"
+          "current_name": "GRUDZIĄDZ (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -5553,7 +5553,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "BYDGOSZCZ (POWIAT)"
+          "current_name": "BYDGOSZCZ (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -5575,7 +5575,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "GNIEZNO (POWIAT)"
+          "current_name": "GNIEZNO (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -5902,7 +5902,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "TORUŃ (POWIAT)"
+          "current_name": "TORUŃ (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -5946,7 +5946,7 @@
       "take_to": [
         {
           "create": false,
-          "current_name": "TORUŃ (POWIAT)"
+          "current_name": "TORUŃ (MIASTO)"
         }
       ],
       "unit_attribute": "territory",
@@ -6315,12 +6315,12 @@
       "take_from": [
         "HOMELAND",
         "POZNAŃSKIE",
-        "BYDGOSZCZ (POWIAT)"
+        "BYDGOSZCZ (MIASTO)"
       ],
       "take_to": [
         "HOMELAND",
         "POMORSKIE",
-        "BYDGOSZCZ (POWIAT)"
+        "BYDGOSZCZ (MIASTO)"
       ]
     }
   },
@@ -6353,12 +6353,12 @@
       "take_from": [
         "HOMELAND",
         "POZNAŃSKIE",
-        "INOWROCŁAW (POWIAT)"
+        "INOWROCŁAW (MIASTO)"
       ],
       "take_to": [
         "HOMELAND",
         "POMORSKIE",
-        "INOWROCŁAW (POWIAT)"
+        "INOWROCŁAW (MIASTO)"
       ]
     }
   },
@@ -7263,7 +7263,7 @@
         },
         {
           "create": false,
-          "current_name": "GNIEZNO (POWIAT)"
+          "current_name": "GNIEZNO (MIASTO)"
         },
         {
           "create": false,
@@ -7283,7 +7283,7 @@
       "change_type": "OneToMany",
       "take_from": {
         "delete_unit": false,
-        "current_name": "GNIEZNO (POWIAT)"
+        "current_name": "GNIEZNO (MIASTO)"
       },
       "take_to": [
         {
