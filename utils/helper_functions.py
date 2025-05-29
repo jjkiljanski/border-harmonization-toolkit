@@ -21,7 +21,7 @@ def load_and_standardize_csv(file_path, region_registry, district_registry):
 
     return df, unit_suggestions
 
-def standardize_df(df, region_registry, district_registry, columns = ["Region", "District"], raise_errors = True):
+def standardize_df(df, region_registry, district_registry, columns = ["Region", "District"], raise_errors = True, verbose = False):
     """
     Standardizes the 'Region' and 'District' names in a DataFrame using the provided unit registries.
 
@@ -69,11 +69,27 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
                     found_units = region_registry.find_unit(unit_name_aim, allow_non_unique = True)
                 else:
                     found_units = district_registry.find_unit(unit_name_aim, allow_non_unique = True)
-                if isinstance(found_units, list):
+
+
+                if verbose:
+                    if isinstance(found_units, list):
+                        print(f"Standardizing {unit_type} name {unit_name_aim}. Found: {list(set([unit.name_id for unit in found_units]))}.")
+                    elif found_units is None or found_units == []:
+                        print(f"Standardizing {unit_type} name {unit_name_aim}. Found: None.")
+                    else:
+                        print(f"Standardizing {unit_type} name {unit_name_aim}. Found: {found_units.name_id}.")
+                
+
+                if found_units is None:
+                    unit = None
+                    if unit_name_aim not in not_in_registry[unit_type]:
+                        not_in_registry[unit_type].append(unit_name_aim)
+
+                elif isinstance(found_units, list):
                     unit = None
                     if unit_type == 'Region':
                         if unit_name_aim not in unit_suggestions['Region']:
-                            unit_suggestions['Region'][unit_name_aim] = [unit.name_id for unit in found_units]
+                            unit_suggestions['Region'][unit_name_aim] = list(set([unit.name_id for unit in found_units]))
                     elif unit_type == 'District':
                         if 'Region' in columns:
                             region_name = df.at[idx,'Region']
@@ -83,11 +99,9 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
                             unit_suggestions['District'][(region_name,unit_name_aim)] = list(set([unit.name_id for unit in found_units]))
                 else:
                     unit = found_units
-                if unit is None:
-                    if unit_name_aim not in not_in_registry[unit_type]:
-                        not_in_registry[unit_type].append(unit_name_aim)
-                elif unit.name_id != unit_name_aim:
-                    print(f"Warning: name {unit_name_aim} is an alternative {unit_type.lower()} name. Processing further as {unit.name_id}")
+                    if unit.name_id != unit_name_aim and verbose:
+                        print(f"Warning: name {unit_name_aim} is an alternative {unit_type.lower()} name. Processing further as {unit.name_id}")
+
 
                 if unit is None:
                     df.at[idx, unit_type] = None
@@ -98,8 +112,9 @@ def standardize_df(df, region_registry, district_registry, columns = ["Region", 
             if not_in_registry[unit_type] and raise_errors:
                 raise ValueError(f"{unit_type} names {not_in_registry[unit_type]} do not exist in the {unit_type.lower()} registry.")
         
-        print("Successfully standardized the given dataframe.")
-        print(f"unit_suggestions: {unit_suggestions}")
+        if verbose:
+            print("Successfully standardized the given dataframe.")
+            print(f"unit_suggestions: {unit_suggestions}")
         return unit_suggestions
 
 def load_uploaded_csv(uploaded_file):

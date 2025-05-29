@@ -67,12 +67,11 @@ class AdministrativeHistory():
 
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
-        if self.load_geometries:
-            # Load the territories
-            self._load_territories()
+        self._load_territories()
 
-        # Create a territory representing the unary union of all territories (the "whole map" shape)
-        self.whole_map = unary_union([state.current_territory for state in self.states_with_loaded_territory])
+        if self.load_geometries:
+            # Create a territory representing the unary union of all territories (the "whole map" shape)
+            self.whole_map = unary_union([state.current_territory for state in self.states_with_loaded_territory])
 
         # Deduce information about district territories where possible
         self._deduce_territories()
@@ -246,11 +245,12 @@ class AdministrativeHistory():
                 try:
                     if self.load_geometries:
                         gdf = gpd.read_file(file_path)
+                        print(f"Loaded: {filename} ({len(gdf)} rows)")
                     else:
                         with fiona.open(file_path) as src:
                             records = [feat["properties"] for feat in src]
                             gdf = pd.DataFrame(records)
-                    print(f"Loaded: {filename} ({len(gdf)} rows)")
+                        print(f"Loaded: {filename} attribute table ({len(gdf)} rows)")
 
                     # If geometry is loaded, ensure CRS and projection
                     if self.load_geometries:
@@ -279,10 +279,12 @@ class AdministrativeHistory():
         # If geometries are loaded, set the CRS of the concatenated Geopandas dataframe
         if self.load_geometries:
             territories_gdf = gpd.GeoDataFrame(territories_df, crs="EPSG:4326")
+        else:
+            territories_gdf = territories_df
 
         # Standardize district and region names to name_ids in the registries
         try:
-            territories_gdf, unit_suggestions = standardize_df(territories_gdf, self.region_registry, self.dist_registry, columns = ["District"])
+            unit_suggestions = standardize_df(territories_gdf, self.region_registry, self.dist_registry, columns = ["District"], verbose = True)
         except ValueError as e:
             print("❌ Failed during names standardization of the loaded geometry dataframes:", e)
             raise  # Do NOT assign the error to territories_gdf!
@@ -336,20 +338,28 @@ class AdministrativeHistory():
             # Backward pass: fill with next known territory
             for i in range(len(dist.states)-1, -1, -1): # Loop descending from len(dist.states)-1 to 0
                 # If the dist state has a defined territory, save it as the best guess for the previous territories
-                if dist.states[i].current_territory is not None:
-                    current_ter = dist.states[i].current_territory
+                if dist.states[i].current_territory_info is not None:
+                    current_ter_info = dist.states[i].current_territory_info
+                    if self.load_geometries:
+                        current_ter = dist.states[i].current_territory
                     if n_last_state_with_ter is None:
                         n_last_state_with_ter = i
                 else: # If not, use the currently best guess as the state territory
-                    if current_ter is not None:
-                        dist.states[i].current_territory = current_ter
+                    if current_ter_info is not None:
+                        dist.states[i].current_territory_info = current_ter_info
+                        if self.load_geometries:
+                            dist.states[i].current_territory = current_ter
                         dist.states[i].territory_is_fallback = True
             
             # Forward fill for states after the last one with known territory
             if n_last_state_with_ter is not None:
-                current_ter = dist.states[n_last_state_with_ter].current_territory
+                current_ter_info = dist.states[n_last_state_with_ter].current_territory_info
+                if self.load_geometries:
+                    current_ter = dist.states[n_last_state_with_ter].current_territory
                 for i in range(n_last_state_with_ter, len(dist.states)):
-                    dist.states[i].current_territory = current_ter
+                    dist.states[i].current_territory_info = current_ter_info
+                    if self.load_geometries:
+                        dist.states[i].current_territory = current_ter
                     dist.states[i].territory_is_fallback = True
             else:
                 print(f"[Warning] The district '{dist.name_id}' has no defined territory in any state. All district states' territories left as undefined (None).")   

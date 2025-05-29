@@ -93,7 +93,7 @@ def plot_dist_ter_info_history(dist_registry, start_date, end_date):
     timeline_data = []
     for district in districts:
         for state in district.states:
-            has_territory = state.current_territory is not None
+            has_territory = state.current_territory_info is not None
             timeline_data.append({
                 "StateInfo": f"{district.name_id} {str(state.timespan)}",
                 "Start": state.timespan.start,
