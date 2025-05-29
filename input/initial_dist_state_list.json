@@ -19,7 +19,7 @@
   {
     "name_id": "BIAŁOSTOCKI",
     "name_variants": [
-      "BIAŁOSTOCKI"
+      "BIAŁOSTOCKI", "POW. BIAŁYSTOK", "BIAŁYSTOK - POWIAT", "BIAŁYSTOK POWIAT", "POWIAT BIAŁYSTOK", "BIAŁYSTOK (POWIAT)"
     ],
     "seat_name_variants": [
       "BIAŁYSTOK"
@@ -53,7 +53,7 @@
   {
     "name_id": "BIELSKI (BIELSK PODLASKI)",
     "name_variants": [
-      "BIELSKI (BIELSK PODLASKI)", "BIELSKI"
+      "BIELSKI (BIELSK PODLASKI)", "BIELSKI", "POW. BIELSK"
     ],
     "seat_name_variants": [
       "BIELSK PODLASKI", "BIELSK"
@@ -70,7 +70,7 @@
   {
     "name_id": "GRODZIEŃSKI",
     "name_variants": [
-      "GRODZIEŃSKI"
+      "GRODZIEŃSKI", "POW. GRODNO"
     ],
     "seat_name_variants": [
       "GRODNO"
@@ -206,7 +206,7 @@
   {
     "name_id": "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)",
     "name_variants": [
-      "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)", "SZCZUCZYŃSKI"
+      "SZCZUCZYŃSKI (WOJ. BIAŁOSTOCKIE)", "SZCZUCZYŃSKI", "POW. SZCZUCZYN"
     ],
     "seat_name_variants": [
       "GRAJEWO", "SZCZUCZYN"
@@ -275,7 +275,7 @@
   {
     "name_id": "CZĘSTOCHOWSKI",
     "name_variants": [
-      "CZĘSTOCHOWSKI"
+      "CZĘSTOCHOWSKI", "POW. CZĘSTOCHOWSKI", "CZĘSTOCHOWA (POWIAT)", "CZĘSTOCHOWA POWIAT", "POWIAT CZĘSTOCHOWA", "CZĘSTOCHOWA - POWIAT"
     ],
     "seat_name_variants": [
       "CZĘSTOCHOWA"
@@ -295,12 +295,12 @@
       "IŁŻECKI"
     ],
     "seat_name_variants": [
-      "IŁŻA"
+      "WIERZBNIK", "IŁŻA"
     ],
     "states": [
       {
         "current_name": "IŁŻECKI",
-        "current_seat_name": "IŁŻA",
+        "current_seat_name": "WIERZBNIK",
         "current_dist_type": "w",
         "timespan": null
       }
@@ -465,7 +465,7 @@
       "RADOMSKI"
     ],
     "seat_name_variants": [
-      "RADOM"
+      "RADOM", "RADOM (POWIAT)", "RADOM POWIAT", "POWIAT RADOM", "POW. RADOM", "RADOM - POWIAT"
     ],
     "states": [
       {
@@ -499,12 +499,12 @@
       "STOPNICKI"
     ],
     "seat_name_variants": [
-      "STOPNICA"
+      "BUSKO", "STOPNICA", "POW. STOPNICA"
     ],
     "states": [
       {
         "current_name": "STOPNICKI",
-        "current_seat_name": "STOPNICA",
+        "current_seat_name": "BUSKO",
         "current_dist_type": "w",
         "timespan": null
       }
@@ -667,7 +667,7 @@
   {
     "name_id": "KRAKOWSKI",
     "name_variants": [
-      "KRAKOWSKI"
+      "KRAKOWSKI", "KRAKÓW POWIAT", "POWIAT KRAKÓW", "KRAKÓW (POWIAT)", "POW. KRAKÓW", "KRAKÓW - POWIAT"
     ],
     "seat_name_variants": [
       "KRAKÓW"
@@ -684,7 +684,7 @@
   {
     "name_id": "KRAKÓW (MIASTO)",
     "name_variants": [
-      "KRAKÓW", "KRAKÓW - MIASTO", "KRAKÓW MIASTO", "KRAKÓW (MIASTO)"
+      "KRAKÓW", "KRAKÓW - MIASTO", "KRAKÓW MIASTO", "MIASTO KRAKÓW", "KRAKÓW (MIASTO)", "M. KRAKÓW"
     ],
     "seat_name_variants": [
       "KRAKÓW"
@@ -1029,7 +1029,7 @@
       "JANOWSKI"
     ],
     "seat_name_variants": [
-      "JANÓW"
+      "JANÓW", "JANÓW LUBELSKI"
     ],
     "states": [
       {
@@ -1046,12 +1046,12 @@
       "KONSTANTYNOWSKI"
     ],
     "seat_name_variants": [
-      "KONSTANTYNÓW"
+      "JANÓW PODLASKI", "KONSTANTYNÓW"
     ],
     "states": [
       {
         "current_name": "KONSTANTYNOWSKI",
-        "current_seat_name": "KONSTANTYNÓW",
+        "current_seat_name": "JANÓW PODLASKI",
         "current_dist_type": "w",
         "timespan": null
       }
@@ -1094,7 +1094,7 @@
   {
     "name_id": "LUBELSKI",
     "name_variants": [
-      "LUBELSKI"
+      "LUBELSKI", "LUBLIN POWIAT", "POWIAT LUBLIN", "LUBLIN (POWIAT)", "POW. LUBLIN", "LUBLIN - POWIAT"
     ],
     "seat_name_variants": [
       "LUBLIN"
@@ -1111,7 +1111,7 @@
   {
     "name_id": "LUBLIN (MIASTO)",
     "name_variants": [
-      "LUBLIN", "LUBLIN - MIASTO", "LUBLIN (MIASTO)", "LUBLIN MIASTO"
+      "LUBLIN", "LUBLIN - MIASTO", "LUBLIN (MIASTO)", "LUBLIN MIASTO", "MIASTO LUBLIN", "M. LUBLIN"
     ],
     "seat_name_variants": [
       "LUBLIN"
@@ -1216,7 +1216,7 @@
       "TOMASZOWSKI"
     ],
     "seat_name_variants": [
-      "TOMASZÓW"
+      "TOMASZÓW", "TOMASZÓW LUBELSKI"
     ],
     "states": [
       {
@@ -1318,7 +1318,7 @@
       "CIESZANOWSKI"
     ],
     "seat_name_variants": [
-      "CIESZANÓW"
+      "CIESZANÓW", "CIESZANÓW (LUBACZÓW)"
     ],
     "states": [
       {
@@ -1369,7 +1369,7 @@
       "GRÓDECKI"
     ],
     "seat_name_variants": [
-      "GRÓDEK JAGIEL.", "GRÓDEK JAGIELL.", "GRÓDEK JAGIELLOŃSKI"
+      "GRÓDEK JAGIEL.", "GRÓDEK JAGIELL.", "GRÓDEK JAGIELLOŃSKI", "GRÓDEK"
     ],
     "states": [
       {
@@ -1470,7 +1470,7 @@
   {
     "name_id": "LWOWSKI",
     "name_variants": [
-      "LWOWSKI"
+      "LWOWSKI", "LWÓW POWIAT", "POWIAT LWÓW", "LWÓW (POWIAT)", "POW. LWÓW", "LWÓW - POWIAT"
     ],
     "seat_name_variants": [
       "LWÓW"
@@ -1487,7 +1487,7 @@
   {
     "name_id": "LWÓW (MIASTO)",
     "name_variants": [
-      "LWÓW", "LWÓW - MIASTO", "LWÓW (MIASTO)", "LWÓW MIASTO"
+      "LWÓW", "LWÓW - MIASTO", "LWÓW (MIASTO)", "LWÓW MIASTO", "MIASTO LWÓW", "M. LWÓW"
     ],
     "seat_name_variants": [
       "LWÓW"
@@ -1861,7 +1861,7 @@
   {
     "name_id": "ŁÓDZKI",
     "name_variants": [
-      "ŁÓDZKI"
+      "ŁÓDZKI", "ŁÓDŹ POWIAT", "POWIAT ŁÓDŹ", "ŁÓDŹ (POWIAT)", "POW. ŁÓDŹ", "ŁÓDŹ - POWIAT"
     ],
     "seat_name_variants": [
       "ŁÓDŹ"
@@ -1878,7 +1878,7 @@
   {
     "name_id": "ŁÓDŹ (MIASTO)",
     "name_variants": [
-      "ŁÓDŹ", "ŁÓDŹ - MIASTO", "ŁÓDŹ (MIASTO)", "ŁÓDŹ MIASTO"
+      "ŁÓDŹ", "ŁÓDŹ - MIASTO", "ŁÓDŹ (MIASTO)", "ŁÓDŹ MIASTO", "MIASTO ŁÓDŹ"
     ],
     "seat_name_variants": [
       "ŁÓDŹ"
@@ -2050,7 +2050,7 @@
   {
     "name_id": "DZIŚNIEŃSKI",
     "name_variants": [
-      "DZIŚNIEŃSKI", "DZISNA"
+      "DZIŚNIEŃSKI", "DZISNA", "DZISNA (GŁĘBOKIE)"
     ],
     "seat_name_variants": [
       "GŁĘBOKIE"
@@ -2193,7 +2193,8 @@
       "BRZEŚĆ N.BUGIEM",
       "BRZEŚĆ NAD BUGIEM",
       "BRZEŚĆ N/BUGIEM",
-      "BRZEŚĆ N/B."
+      "BRZEŚĆ N/B.",
+      "BRZEŚĆ"
     ],
     "states": [
       {
@@ -2429,7 +2430,7 @@
   {
     "name_id": "GRUDZIĄDZ (MIASTO)",
     "name_variants": [
-      "GRUDZIĄDZ", "GRUDZIĄDZ - MIASTO", "GRUDZIĄDZ (MIASTO)", "GRUDZIĄDZ MIASTO"
+      "GRUDZIĄDZ", "GRUDZIĄDZ - MIASTO", "GRUDZIĄDZ (MIASTO)", "GRUDZIĄDZ MIASTO", "MIASTO GRUDZIĄDZ", "M. GRUDZIĄDZ"
     ],
     "seat_name_variants": [
       "GRUDZIĄDZ"
@@ -2446,7 +2447,7 @@
   {
     "name_id": "GRUDZIĄDZKI",
     "name_variants": [
-      "GRUDZIĄDZKI"
+      "GRUDZIĄDZKI", "POW. GRUDZIĄDZ", "GRUDZIĄDZ POWIAT", "POWIAT GRUDZIĄDZ", "GRUDZIĄDZ (POWIAT)", "GRUDZIĄDZ - POWIAT"
     ],
     "seat_name_variants": [
       "GRUDZIĄDZ"
@@ -2463,7 +2464,7 @@
   {
     "name_id": "KARTUSKI",
     "name_variants": [
-      "KARTUSKI"
+      "KARTUSKI", "KARTUZY (POWIAT)", "KARTUZY POWIAT", "POWIAT KARTUZY", "POW. KARTUZY"
     ],
     "seat_name_variants": [
       "KARTUZY"
@@ -2599,7 +2600,7 @@
   {
     "name_id": "TORUŃ (MIASTO)",
     "name_variants": [
-      "TORUŃ", "TORUŃ - MIASTO", "TORUŃ (MIASTO)", "TORUŃ MIASTO"
+      "TORUŃ", "TORUŃ - MIASTO", "TORUŃ (MIASTO)", "TORUŃ MIASTO", "MIASTO TORUŃ", "M. TORUŃ"
     ],
     "seat_name_variants": [
       "TORUŃ"
@@ -2616,7 +2617,7 @@
   {
     "name_id": "TORUŃSKI",
     "name_variants": [
-      "TORUŃSKI"
+      "TORUŃSKI", "TORUŃ (POWIAT)", "TORUŃ POWIAT", "POWIAT TORUŃ", "POW. TORUŃ", "TORUŃ - POWIAT"
     ],
     "seat_name_variants": [
       "TORUŃ"
@@ -2633,7 +2634,7 @@
   {
     "name_id": "TUCHOLSKI",
     "name_variants": [
-      "TUCHOLSKI"
+      "TUCHOLSKI", "TUCHOLA (POWIAT)", "TUCHOLA POWIAT", "POWIAT TUCHOLA", "POW. TUCHOLA"
     ],
     "seat_name_variants": [
       "TUCHOLA"
@@ -2684,7 +2685,7 @@
   {
     "name_id": "BYDGOSKI",
     "name_variants": [
-      "BYDGOSKI"
+      "BYDGOSKI", "BYDGOSZCZ POWIAT", "POWIAT BYDGOSZCZ", "BYDGOSZCZ (POWIAT)", "POW. BYDGOSZCZ", "BYDGOSZCZ - POWIAT"
     ],
     "seat_name_variants": [
       "BYDGOSZCZ"
@@ -2701,7 +2702,7 @@
   {
     "name_id": "BYDGOSZCZ (MIASTO)",
     "name_variants": [
-      "BYDGOSZCZ", "BYDGOSZCZ - MIASTO", "BYDGOSZCZ (MIASTO)", "BYDGOSZCZ MIASTO"
+      "BYDGOSZCZ", "BYDGOSZCZ - MIASTO", "BYDGOSZCZ (MIASTO)", "BYDGOSZCZ MIASTO", "MIASTO BYDGOSZCZ", "M. BYDGOSZCZ"
     ],
     "seat_name_variants": [
       "BYDGOSZCZ"
@@ -2752,7 +2753,7 @@
   {
     "name_id": "GNIEŹNIEŃSKI",
     "name_variants": [
-      "GNIEŹNIEŃSKI"
+      "GNIEŹNIEŃSKI", "GNIEZNO (POWIAT)", "GNIEZNO POWIAT", "POWIAT GNIEZNO", "POW. GNIEZNO", "GNIEZNO - POWIAT"
     ],
     "seat_name_variants": [
       "GNIEZNO"
@@ -2803,7 +2804,7 @@
   {
     "name_id": "INOWROCŁAWSKI",
     "name_variants": [
-      "INOWROCŁAWSKI"
+      "INOWROCŁAWSKI", "INOWROCŁAW (POWIAT)", "INOWROCŁAW POWIAT", "POWIAT INOWROCŁAW", "POW. INOWROCŁAW", "INOWROCŁAW - POWIAT"
     ],
     "seat_name_variants": [
       "INOWROCŁAW"
@@ -3058,7 +3059,7 @@
   {
     "name_id": "POZNAŃ (MIASTO)",
     "name_variants": [
-      "POZNAŃ", "POZNAŃ - MIASTO", "POZNAŃ (MIASTO)", "POZNAŃ MIASTO"
+      "POZNAŃ", "POZNAŃ - MIASTO", "POZNAŃ (MIASTO)", "POZNAŃ MIASTO", "MIASTO POZNAŃ", "M. POZNAŃ"
     ],
     "seat_name_variants": [
       "POZNAŃ"
@@ -3075,10 +3076,10 @@
   {
     "name_id": "POZNAŃSKI WSCHODNI",
     "name_variants": [
-      "POZNAŃSKI WSCHODNI"
+      "POZNAŃSKI WSCHODNI", "POZNAŃ WSCHÓD", "POZNAŃ WSCH."
     ],
     "seat_name_variants": [
-      "POZNAŃ WSCH."
+      "POZNAŃ"
     ],
     "states": [
       {
@@ -3092,10 +3093,10 @@
   {
     "name_id": "POZNAŃSKI ZACHODNI",
     "name_variants": [
-      "POZNAŃSKI ZACHODNI"
+      "POZNAŃSKI ZACHODNI", "POZNAŃ ZACHÓD", "POZNAŃ ZACH."
     ],
     "seat_name_variants": [
-      "POZNAŃ ZACH."
+      "POZNAŃ"
     ],
     "states": [
       {
@@ -3572,7 +3573,7 @@
       "TURCZAŃSKI"
     ],
     "seat_name_variants": [
-      "TURKA"
+      "TURKA", "TURKA NAD STRYJEM", "TURKA N. STRYJEM"
     ],
     "states": [
       {
@@ -3603,7 +3604,7 @@
   {
     "name_id": "BIELSKI (BIELSKO)",
     "name_variants": [
-      "BIELSKI (BIELSKO)", "BIELSKI"
+      "BIELSKI (BIELSKO)", "BIELSKI", "POW. BIELSKO", "BIELSKO - POWIAT", "BIELSKO POWIAT", "POWIAT BIELSKO"
     ],
     "seat_name_variants": [
       "BIELSKO"
@@ -3620,7 +3621,7 @@
   {
     "name_id": "BIELSKO (MIASTO)",
     "name_variants": [
-      "BIELSKO", "BIELSKO (MIASTO)", "BIELSKO ŚLĄSKIE", "BIELSKO MIASTO"
+      "BIELSKO", "BIELSKO (MIASTO)", "BIELSKO ŚLĄSKIE", "BIELSKO MIASTO", "MIASTO BIELSKO", "M. BIELSKO", "BIELSKO - MIASTO"
     ],
     "seat_name_variants": [
       "BIELSKO", "BIELSKO ŚLĄSKIE"
@@ -3637,7 +3638,7 @@
   {
     "name_id": "CIESZYŃSKI",
     "name_variants": [
-      "CIESZYŃSKI"
+      "CIESZYŃSKI", "POW. CIESZYN"
     ],
     "seat_name_variants": [
       "CIESZYN"
@@ -3946,7 +3947,7 @@
       "BŁOŃSKI"
     ],
     "seat_name_variants": [
-      "BŁONIE"
+      "BŁONIE", "GRODZISK MAZOW.", "GRODZISK MAZOWIECKI", "GRODZISK (BŁONIE)"
     ],
     "states": [
       {
@@ -4117,7 +4118,7 @@
       "NIESZAWSKI"
     ],
     "seat_name_variants": [
-      "NIESZAWA"
+      "NIESZAWA", "ALEKSANDRÓW", "ALEKSANDRÓW KUJAWSKI"
     ],
     "states": [
       {
@@ -4305,7 +4306,7 @@
   {
     "name_id": "WARSZAWSKI",
     "name_variants": [
-      "WARSZAWSKI"
+      "WARSZAWSKI", "WARSZAWA POWIAT", "POWIAT WARSZAWA", "WARSZAWA (POWIAT)", "POW. WARSZAWA", "WARSZAWA - POWIAT"
     ],
     "seat_name_variants": [
       "WARSZAWA"
@@ -4747,7 +4748,7 @@
   {
     "name_id": "KATOWICE (MIASTO)",
     "name_variants": [
-      "KATOWICE", "KATOWICE - MIASTO", "KATOWICE (MIASTO)", "KATOWICE MIASTO"
+      "KATOWICE", "KATOWICE - MIASTO", "KATOWICE (MIASTO)", "KATOWICE MIASTO", "MIASTO KATOWICE", "M. KATOWICE"
     ],
     "seat_name_variants": [
       "KATOWICE"
@@ -4764,7 +4765,7 @@
   {
     "name_id": "KATOWICKI",
     "name_variants": [
-      "KATOWICKI"
+      "KATOWICKI", "POW. KATOWICE", "KATOWICE (POWIAT)", "KATOWICE POWIAT", "POWIAT KATOWICE", "KATOWICE - POWIAT"
     ],
     "seat_name_variants": [
       "KATOWICE"
@@ -4951,7 +4952,7 @@
   {
     "name_id": "WILEŃSKI",
     "name_variants": [
-      "WILEŃSKI"
+      "WILEŃSKI", "WILNO (POWIAT)", "WILNO POWIAT", "POWIAT WILNO", "POW. WILNO"
     ],
     "seat_name_variants": [
       "WILNO"
@@ -4968,7 +4969,7 @@
   {
     "name_id": "WILNO (MIASTO)",
     "name_variants": [
-      "WILNO", "WILNO - MIASTO", "WILNO (MIASTO)", "WILNO MIASTO"
+      "WILNO", "WILNO - MIASTO", "WILNO (MIASTO)", "WILNO MIASTO", "MIASTO WILNO", "M. WILNO"
     ],
     "seat_name_variants": [
       "WILNO"

@@ -445,7 +445,7 @@
           "district": {
             "name_id": "LUBACZOWSKI",
             "name_variants": [
-              "LUBACZOWSKI"
+              "LUBACZOWSKI", "CIESZANÓW (LUBACZÓW)"
             ],
             "seat_name_variants": [
               "LUBACZÓW"
@@ -794,7 +794,7 @@
             "POZNAŃSKI"
           ],
           "seat_name_variants": [
-            "POZNAŃ"
+            "POZNAŃ", "POZNAŃ POWIAT", "POWIAT POZNAŃ", "POZNAŃ (POWIAT)", "POW. POZNAŃ", "POZNAŃ - POWIAT"
           ],
           "states": [
             {
@@ -1105,7 +1105,7 @@
         "district": {
           "name_id": "GNIEZNO (MIASTO)",
           "name_variants": [
-            "GNIEZNO", "GNIEZNO - MIASTO", "GNIEZNO (MIASTO)", "GNIEZNO MIASTO"
+            "GNIEZNO", "GNIEZNO - MIASTO", "GNIEZNO (MIASTO)", "GNIEZNO MIASTO", "MIASTO GNIEZNO", "M. GNIEZNO"
           ],
           "seat_name_variants": [
             "GNIEZNO"
@@ -1148,7 +1148,7 @@
         "district": {
           "name_id": "INOWROCŁAW (MIASTO)",
           "name_variants": [
-            "INOWROCŁAW", "INOWROCŁAW - MIASTO", "INOWROCŁAW (MIASTO)", "INOWROCŁAW MIASTO"
+            "INOWROCŁAW", "INOWROCŁAW - MIASTO", "INOWROCŁAW (MIASTO)", "INOWROCŁAW MIASTO", "MIASTO INOWROCŁAW", "M. INOWROCŁAW"
           ],
           "seat_name_variants": [
             "INOWROCŁAW"
@@ -2037,7 +2037,7 @@
           "district": {
             "name_id": "BIAŁYSTOK (MIASTO)",
             "name_variants": [
-              "BIAŁYSTOK", "BIAŁYSTOK - MIASTO", "BIAŁYSTOK (MIASTO)", "BIAŁYSTOK MIASTO"
+              "BIAŁYSTOK", "BIAŁYSTOK - MIASTO", "BIAŁYSTOK (MIASTO)", "BIAŁYSTOK MIASTO", "MIASTO BIAŁYSTOK", "M. BIAŁYSTOK"
             ],
             "seat_name_variants": [
               "BIAŁYSTOK"
@@ -2081,7 +2081,7 @@
           "district": {
             "name_id": "CZĘSTOCHOWA (MIASTO)",
             "name_variants": [
-              "CZĘSTOCHOWA", "CZĘSTOCHOWA - MIASTO", "CZĘSTOCHOWA (MIASTO)", "CZĘSTOCHOWA MIASTO"
+              "CZĘSTOCHOWA", "CZĘSTOCHOWA - MIASTO", "CZĘSTOCHOWA (MIASTO)", "CZĘSTOCHOWA MIASTO", "MIASTO CZĘSTOCHOWA", "M. CZĘSTOCHOWA"
             ],
             "seat_name_variants": [
               "CZĘSTOCHOWA"
@@ -2125,7 +2125,7 @@
           "district": {
             "name_id": "SOSNOWIEC",
             "name_variants": [
-              "SOSNOWIEC"
+              "SOSNOWIEC", "SOSNOWIEC (MIASTO)", "SOSNOWIEC MIASTO", "MIASTO SOSNOWIEC", "M. SOSNOWIEC", "SOSNOWIEC - MIASTO"
             ],
             "seat_name_variants": [
               "SOSNOWIEC"
@@ -2169,7 +2169,7 @@
           "district": {
             "name_id": "LUBLIN (MIASTO)",
             "name_variants": [
-              "LUBLIN", "LUBLIN - MIASTO", "LUBLIN (MIASTO)", "LUBLIN MIASTO"
+              "LUBLIN", "LUBLIN - MIASTO", "LUBLIN (MIASTO)", "LUBLIN MIASTO", "MIASTO LUBLIN"
             ],
             "seat_name_variants": [
               "LUBLIN"
@@ -2465,7 +2465,7 @@
         "district": {
           "name_id": "GDYNIA (MIASTO)",
           "name_variants": [
-            "GDYNIA", "GDYNIA - MIASTO", "GDYNIA (MIASTO)", "GDYNIA MIASTO"
+            "GDYNIA", "GDYNIA - MIASTO", "GDYNIA (MIASTO)", "GDYNIA MIASTO", "MIASTO GDYNIA", "M. GDYNIA"
           ],
           "seat_name_variants": [
             "GDYNIA"
@@ -2619,7 +2619,7 @@
         "district": {
           "name_id": "SZCZUCZYŃSKI (WOJ. NOWOGRÓDZKIE)",
           "name_variants": [
-            "SZCZUCZYŃSKI (WOJ. NOWOGRÓDZKIE)", "SZCZUCZYN"
+            "SZCZUCZYŃSKI (WOJ. NOWOGRÓDZKIE)", "SZCZUCZYN", "POW. SZCZUCZYN"
           ],
           "seat_name_variants": [
             "SZCZUCZYN"
@@ -3766,7 +3766,7 @@
           "district": {
             "name_id": "RADOM (MIASTO)",
             "name_variants": [
-              "RADOM", "RADOM - MIASTO", "RADOM (MIASTO)", "RADOM MIASTO"
+              "RADOM", "RADOM - MIASTO", "RADOM (MIASTO)", "RADOM MIASTO", "MIASTO RADOM", "M. RADOM"
             ],
             "seat_name_variants": [
               "RADOM"
@@ -5710,7 +5710,7 @@
         "district": {
           "name_id": "CHORZÓW",
           "name_variants": [
-            "CHORZÓW"
+            "CHORZÓW", "M. CHORZÓW"
           ],
           "seat_name_variants": [
             "CHORZÓW"
