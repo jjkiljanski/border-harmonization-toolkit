@@ -5,6 +5,7 @@ from pydantic import parse_obj_as, ValidationError
 from typing import List
 import shutil
 import geopandas as gpd
+import fiona
 import pandas as pd
 import os
 from collections import defaultdict
@@ -18,7 +19,7 @@ from data_models.adm_change import *
 from utils.helper_functions import load_config, standardize_df
 
 class AdministrativeHistory():
-    def __init__(self, config, load_territories=True):
+    def __init__(self, config, load_geometries=True):
         # Load the configuration
         config = load_config("config.json")
         
@@ -29,7 +30,7 @@ class AdministrativeHistory():
         self.initial_dist_list_path = config["initial_dist_list_path"]
         self.territories_path = config["territories_path"]
 
-        self.load_territories = load_territories
+        self.load_geometries = load_geometries
 
         # Output files' paths
         self.adm_states_output_path = config["adm_states_output_path"]
@@ -66,7 +67,7 @@ class AdministrativeHistory():
 
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
-        if self.load_territories:
+        if self.load_geometries:
             # Load the territories
             self._load_territories()
 
@@ -243,41 +244,47 @@ class AdministrativeHistory():
             if filename.endswith((".json", ".geojson", ".shp")):
                 file_path = os.path.join(self.territories_path, filename)
                 try:
-                    gdf = gpd.read_file(file_path)
+                    if self.load_geometries:
+                        gdf = gpd.read_file(file_path)
+                    else:
+                        with fiona.open(file_path) as src:
+                            records = [feat["properties"] for feat in src]
+                            gdf = pd.DataFrame(records)
                     print(f"Loaded: {filename} ({len(gdf)} rows)")
 
-                    # Check for CRS
-                    if gdf.crs is None:
-                        raise ValueError(f"Geometry loaded from '{file_path}' has no defined CRS.")
+                    # If geometry is loaded, ensure CRS and projection
+                    if self.load_geometries:
+                        # Check for CRS
+                        if gdf.crs is None:
+                            raise ValueError(f"Geometry loaded from '{file_path}' has no defined CRS.")
 
-                    # Reproject if necessary
-                    if gdf.crs != "EPSG:4326":
-                        original_crs = gdf.crs
-                        gdf = gdf.to_crs("EPSG:4326")
-                        print(f"CRS of the geometry loaded from file '{file_path}' converted. Original: {original_crs}. New: 'EPSG:4326'.")
+                        # Reproject if necessary
+                        if gdf.crs != "EPSG:4326":
+                            original_crs = gdf.crs
+                            gdf = gdf.to_crs("EPSG:4326")
+                            print(f"CRS of the geometry loaded from file '{file_path}' converted. Original: {original_crs}. New: 'EPSG:4326'.")
 
                     gdf_list.append(gdf)
 
                 except Exception as e:
                     print(f"Failed to load {filename}: {e}")
+        
+        if not gdf_list:
+            print("⚠️ No valid territory files found.")
+            return
 
-        # Combine all into a single GeoDataFrame
-        if gdf_list:
-            try:
-                territories_gdf = gpd.GeoDataFrame(pd.concat(gdf_list, ignore_index=True), crs=gdf_list[0].crs)
-                print(f"\n✅ Combined GeoDataFrame has {len(territories_gdf)} rows. CRS: 'EPSG:4326'")
-            except ValueError as e:
-                print("❌ Failed to concatenate GeoDataFrames:", e)
-                raise  # Don't assign the error to `territories_gdf`
-        else:
-            territories_gdf = gpd.GeoDataFrame()
-            print("⚠️ No valid GeoJSON files found.")
+        # Combine all into one DataFrame
+        territories_df = pd.concat(gdf_list, ignore_index=True)
+
+        # If geometries are loaded, set the CRS of the concatenated Geopandas dataframe
+        if self.load_geometries:
+            territories_gdf = gpd.GeoDataFrame(territories_df, crs="EPSG:4326")
 
         # Standardize district and region names to name_ids in the registries
         try:
             territories_gdf, unit_suggestions = standardize_df(territories_gdf, self.region_registry, self.dist_registry, columns = ["District"])
         except ValueError as e:
-            print("❌ Failed during standardization:", e)
+            print("❌ Failed during names standardization of the loaded geometry dataframes:", e)
             raise  # Do NOT assign the error to territories_gdf!
 
         # Set the territories of the appropriate states
@@ -293,8 +300,13 @@ class AdministrativeHistory():
                 print(f"No match found for district '{district_name_id}' on {ter_date.date()}")
                 continue
             
-            # Set the territory of the appropriate unit state.
-            unit_state.current_territory = row.geometry
+            # Always set the territory info
+            unit_state.current_territory_info = unit.name_id+str(ter_date.date())
+
+            # Set the territory of the appropriate unit state ONLY if self.load_geometries is True.
+            if self.load_geometries:
+                unit_state.current_territory = row.geometry
+            
             unit_state.territory_is_fallback = False
 
             # Store the information that the state has territory loaded
@@ -307,7 +319,10 @@ class AdministrativeHistory():
         where it is possible.
         """
         for unit_state in self.states_with_loaded_territory:
-            unit_state.spread_territory_info()
+            # Spread territory info for every state.
+            # If self.load_geometries is True (and so the geometries were loaded), share geometries and territory info.
+            # If self.load_geometries is False, share ONLY territory info.
+            unit_state.spread_territory_info(compute_geometries=self.load_geometries)
     
     def _populate_territories_fallback(self):
         """

@@ -14,7 +14,7 @@ import pandas as pd
 # Load the configuration
 config = load_config("config.json")
 
-administrative_history = AdministrativeHistory(config, load_territories=True)
+administrative_history = AdministrativeHistory(config, load_geometries=True)
 
 #administrative_history.list_change_dates()
 #administrative_history.summarize_by_date()
