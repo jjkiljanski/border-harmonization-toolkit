@@ -69,6 +69,10 @@ class AdministrativeHistory():
         if self.load_territories:
             # Load the territories
             self._load_territories()
+
+        # Create a territory representing the unary union of all territories (the "whole map" shape)
+        self.whole_map = unary_union([state.current_territory for state in self.states_with_loaded_territory])
+
         # Deduce information about district territories where possible
         self._deduce_territories()
 
@@ -291,6 +295,7 @@ class AdministrativeHistory():
             
             # Set the territory of the appropriate unit state.
             unit_state.current_territory = row.geometry
+            unit_state.territory_is_fallback = False
 
             # Store the information that the state has territory loaded
             self.states_with_loaded_territory.append(unit_state)
@@ -330,8 +335,9 @@ class AdministrativeHistory():
                 current_ter = dist.states[n_last_state_with_ter].current_territory
                 for i in range(n_last_state_with_ter, len(dist.states)):
                     dist.states[i].current_territory = current_ter
+                    dist.states[i].territory_is_fallback = True
             else:
-                print(f"[Warning] The district '{dist.name_id}' has no defined territory in any state. All states' territories left as undefined (None).")   
+                print(f"[Warning] The district '{dist.name_id}' has no defined territory in any state. All district states' territories left as undefined (None).")   
         
     def standardize_address(self):
         """

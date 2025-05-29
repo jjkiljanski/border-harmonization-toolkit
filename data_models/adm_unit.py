@@ -334,6 +334,7 @@ class UnitRegistry(BaseModel):
 class DistState(UnitState):
     current_dist_type: Literal["w", "m"]
     current_territory: Optional[Any] = None
+    territory_is_fallback: Optional[bool] = None
 
     def spread_territory_info(self):
         """
@@ -361,6 +362,7 @@ class DistState(UnitState):
                 next_state = self.next_change.next_states[0]
                 if next_state.current_territory is None:
                     next_state.current_territory = self.current_territory
+                    next_state.territory_is_fallback = False
                     next_state.spread_territory_info()
             else:
                 num_ter_unknown = 0
@@ -391,11 +393,13 @@ class DistState(UnitState):
                         #   the union of the known ones BEFORE the change
                         unknown_before_territory = merged_territory_after.difference(merged_territory_before)
                         state_with_ter_unknown.current_territory = unknown_before_territory
+                        state_with_ter_unknown.territory_is_fallback = False
                     else:
                         # The unknown territory can be deduced as the union of the known ones BEFORE the change minus
                         #   the union of the known ones AFTER the change
                         unknown_after_territory = merged_territory_before.difference(merged_territory_after)
                         state_with_ter_unknown.current_territory = unknown_after_territory
+                        state_with_ter_unknown.territory_is_fallback = False
                     # Run the spread_territory for the state for which territory was deduced
                     state_with_ter_unknown.spread_territory_info()
                     return
@@ -405,6 +409,7 @@ class DistState(UnitState):
                 previous_state = self.previous_change.previous_states[0]
                 if previous_state.current_territory is None:
                     previous_state.current_territory = self.current_territory
+                    previous_state.territory_is_fallback = False
                     previous_state.spread_territory_info()
             else:
                 num_ter_unknown = 0
@@ -435,30 +440,16 @@ class DistState(UnitState):
                         #   the union of the known ones BEFORE the change
                         unknown_before_territory = merged_territory_after.difference(merged_territory_before)
                         state_with_ter_unknown.current_territory = unknown_before_territory
+                        state_with_ter_unknown.territory_is_fallback = False
                     else:
                         # The unknown territory can be deduced as the union of the known ones BEFORE the change minus
                         #   the union of the known ones AFTER the change
                         unknown_after_territory = merged_territory_before.difference(merged_territory_after)
                         state_with_ter_unknown.current_territory = unknown_after_territory
+                        state_with_ter_unknown.territory_is_fallback = False
                     # Run the spread_territory for the state for which territory was deduced
                     state_with_ter_unknown.spread_territory_info()
                     return
-                
-        if self.current_territory is not None:
-            return self.current_territory
-        else:
-            if self.territory_checked:
-                return None
-            else:
-                self.territory_checked = True
-                if len(self.next_change.next_states) == 1 and len(self.next_change.previous_states)==1:
-                    new_territory = self.next_state.get_territory()
-                    if new_territory is not None:
-                        return new_territory
-                elif len(self.previous_change.previous_states) == 1 and len(self.previous_change.next_states)==1:
-                    return self.previous_state.get_territory()
-                else:
-                    other_change_states = self.next_change.previous_states + self.next_change.next_states
 
 class District(Unit):
     """
