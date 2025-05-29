@@ -303,6 +303,35 @@ class AdministrativeHistory():
         """
         for unit_state in self.states_with_loaded_territory:
             unit_state.spread_territory_info()
+    
+    def _populate_territories_fallback(self):
+        """
+        Fills fallback district state territories for all states with missing territory information.
+        Uses simply the next later existing state with territory, or the last earlier one if no later one exists.
+        """
+        for dist in self.dist_registry.unit_list:
+            n_last_state_with_ter = None # Index of the last state with defined territory in the dist.states list.
+            current_ter = None
+
+            # Backward pass: fill with next known territory
+            for i in range(len(dist.states)-1, -1, -1): # Loop descending from len(dist.states)-1 to 0
+                # If the dist state has a defined territory, save it as the best guess for the previous territories
+                if dist.states[i].current_territory is not None:
+                    current_ter = dist.states[i].current_territory
+                    if n_last_state_with_ter is None:
+                        n_last_state_with_ter = i
+                else: # If not, use the currently best guess as the state territory
+                    if current_ter is not None:
+                        dist.states[i].current_territory = current_ter
+                        dist.states[i].territory_is_fallback = True
+            
+            # Forward fill for states after the last one with known territory
+            if n_last_state_with_ter is not None:
+                current_ter = dist.states[n_last_state_with_ter].current_territory
+                for i in range(n_last_state_with_ter, len(dist.states)):
+                    dist.states[i].current_territory = current_ter
+            else:
+                print(f"[Warning] The district '{dist.name_id}' has no defined territory in any state. All states' territories left as undefined (None).")   
         
     def standardize_address(self):
         """
