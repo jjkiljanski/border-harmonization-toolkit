@@ -370,14 +370,15 @@ class AdministrativeState(BaseModel):
         return r_list_comparison, d_list_comparison, state_comparison
     
     def _district_plot_layer(self, dist_registry: DistrictRegistry, date: datetime, test=False):
+        gdf = dist_registry._plot_layer(date)
+
         if test:
             shownames = True
-            color = "none"
+            gdf["color"] = "none"
         else:
             shownames = False
-            color = "gray"
-        gdf = dist_registry._plot_layer(date)
-        gdf["color"] = color
+            # Keep the color returned by the dist_registry._plot_layer() method
+
         gdf["edgecolor"] = "black"
         gdf["linewidth"] = 1
         gdf["shownames"] = shownames
@@ -457,20 +458,33 @@ class AdministrativeState(BaseModel):
             columns=["name_id", "geometry", "color", "edgecolor", "linewidth", "shownames"]
         )
     
-    def plot(self, region_registry, dist_registry, date, plot_abroad = False):
+    def _whole_map_plot_layer(self, whole_map):
+        whole_map_gpd = gpd.GeoDataFrame({
+            "name_id": ["WHOLE_MAP"],
+            "geometry": [whole_map],
+            "color": ["gray"],
+            "edgecolor": ["black"],
+            "linewidth": [0.5],
+            "shownames": [False]
+        })
+
+        return whole_map_gpd
+    
+    def plot(self, region_registry, dist_registry, whole_map, date, plot_abroad = False):
         from utils.helper_functions import build_plot_from_layers
 
         # Prepare the layers
         if plot_abroad:
             country_layer = self._country_plot_layer(dist_registry, date)
+        whole_map_layer = self._whole_map_plot_layer(whole_map)
         region_layer = self._region_plot_layer(region_registry, dist_registry, date)
         district_layer = self._district_plot_layer(dist_registry, date)
 
         # Build the figure
         if plot_abroad:
-            fig = build_plot_from_layers(country_layer, district_layer, region_layer)
+            fig = build_plot_from_layers(whole_map_layer, country_layer, district_layer, region_layer)
         else:
-            fig = build_plot_from_layers(district_layer, region_layer)
+            fig = build_plot_from_layers(whole_map_layer, district_layer, region_layer)
         return fig
     
     def apply_changes(self, changes_list, region_registry, dist_registry):

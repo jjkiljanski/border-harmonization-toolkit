@@ -120,6 +120,14 @@ class UnitReform(BaseChangeMatter):
             setattr(new_state, key, self.after_reform[key])
         unit.changes.append(("reform", change))
         change.units_affected[self.unit_type].append(("reform", unit))
+
+        # Define change.dist_ter_from and change.dist_ter_to values.
+        if self.unit_type == 'District':
+            change.dist_ter_from = [(unit, new_state.previous)]
+            change.dist_ter_to = [(unit, new_state)]
+        else:
+            change.dist_ter_from = []
+            change.dist_ter_to = []
         return
     
     def __repr__(self):
@@ -229,6 +237,8 @@ class OneToMany(BaseChangeMatter):
         
         unit_from = dist_registry.find_unit(self.take_from.current_name)
 
+        change.dist_ter_from = [(unit_from, unit_from.states[-1])]
+
         if self.take_from.delete_unit:
             change.abolish(unit_from)
             unit_from.changes.append(("abolished", change))
@@ -238,6 +248,9 @@ class OneToMany(BaseChangeMatter):
             change.create_next_state(unit_from)
             unit_from.changes.append(("territory", change))
             change.units_affected[self.unit_type].append(("territory", unit_from))
+
+        change.dist_ter_to = []
+
         for take_to_dict in self.take_to:
             if take_to_dict.create:
                 # Check if the unit existed in the past and assure that it doesn't exist now
@@ -264,6 +277,8 @@ class OneToMany(BaseChangeMatter):
                 change.create_next_state(unit)
                 unit.changes.append(("territory", change))
                 change.units_affected[self.unit_type].append(("territory", unit))
+            
+            change.dist_ter_to.append((unit, unit.states[-1]))
         return
     
     def districts_involved(self) -> list[str]:
@@ -427,8 +442,12 @@ class ManyToOne(BaseModel):
         # administrative unit stock variables - above all this method has to be rewritten.
         if(self.unit_type=="Region"):
             raise ValueError(f"Method OneToMany not implemented for regions.")
+        
+        change.dist_ter_from = []
+
         for unit_dict in self.take_from:
             unit = dist_registry.find_unit(unit_dict.current_name)
+            change.dist_ter_from.append((unit, unit.states[-1]))
             if unit_dict.delete_unit:
                 change.abolish(unit)
                 unit.changes.append(("abolished", change))
@@ -461,6 +480,8 @@ class ManyToOne(BaseModel):
             change.create_next_state(unit_to)
             unit_to.changes.append(("territory", change))
             change.units_affected[self.unit_type].append(("territory", unit_to))
+        
+        change.dist_ter_to.append((unit_to, unit_to.states[-1]))
 
         return
     
@@ -564,6 +585,13 @@ class ChangeAdmState(BaseChangeMatter):
             district_affected = dist_registry.find_unit(address_to[2])
             district_affected.changes.append(("adm_affiliation", change))
             change.units_affected["District"].append(("adm_affiliation", district_affected))
+
+            # Define change.dist_ter_from and change.dist_ter_to values.
+            change.dist_ter_from = [(district_affected, district_affected.states[-1])]
+            change.dist_ter_to = [(district_affected, district_affected.states[-1])]
+        else:
+            change.dist_ter_from = []
+            change.dist_ter_to = []
         return
     
     def districts_involved(self) -> list[str]:
@@ -597,8 +625,8 @@ class Change(BaseModel):
     units_affected_ids: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}}
     previous_states: Optional[List] = []
     next_states: Optional[List] = []
-    ter_from: Optional[List[Tuple[District,DistState]]]=[]
-    ter_to: Optional[List[Tuple[District,DistState]]]=[]
+    dist_ter_from: Optional[List[Tuple[District,DistState]]]=[]
+    dist_ter_to: Optional[List[Tuple[District,DistState]]]=[]
 
     @model_validator(mode='before')
     def clean_sources_links_and_normalize_matter(cls, values):

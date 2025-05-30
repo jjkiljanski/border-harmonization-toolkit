@@ -6,6 +6,7 @@ from datetime import datetime
 
 import matplotlib
 matplotlib.use("Agg")
+import pandas as pd
 import geopandas as gpd
 from shapely.ops import unary_union
 from shapely.geometry.base import BaseGeometry
@@ -518,12 +519,13 @@ class DistState(UnitState):
                     state_with_ter_unknown.spread_territory_info(compute_geometries=compute_geometries)
                     return
 
-    def get_states_related_by_ter(self, search_date):
+    def get_states_related_by_ter(self, parent, search_date):
         """
         Returns all DistrictState instances that existed on the given search_date and whose territories
         can overlap with the territory of this DistrictState as a result of administrative territory exchange sequence.
 
         Parameters:
+            parent      (str):      The name_id of the district that the state refers to.
             search_date (datetime): The date on which to search for existing district states.
 
         Returns:
@@ -531,16 +533,16 @@ class DistState(UnitState):
                                 with this instance and were active on the specified date.
         """
         if search_date in self.timespan:
-            return [self]
+            return {parent: self}
         elif search_date>self.timespan.end:
             all_related_states = []
-            for state in self.next_change.next_states:
-                all_related_states += state.get_states_related_by_ter(search_date)
+            for dist, state in self.next_change.dist_ter_to:
+                all_related_states.update(state.get_states_related_by_ter(dist.name_id, search_date))
             return all_related_states
         elif search_date<self.timespan.start:
             all_related_states = []
-            for state in self.previous_change_change.previous_states:
-                all_related_states += state.get_states_related_by_ter(search_date)
+            for dist, state in self.previous_change_change.dist_ter_from:
+                all_related_states.update(state.get_states_related_by_ter(dist.name_id, search_date))
             return all_related_states
 
 class District(Unit):
@@ -573,10 +575,15 @@ class DistrictRegistry(UnitRegistry):
         states_and_names = [(district.find_state_by_date(date), district.name_id) for district in self.unit_list if district.exists(date)]
         # Extract geometries and district names
         geometries = [state.current_territory for state, _ in states_and_names if state.current_territory is not None]
+        colors = [
+            "green" if not state.territory_is_fallback else "orange"
+            for state, _ in states_and_names
+            if state.current_territory is not None
+        ]
         dist_name_id = [name for state, name in states_and_names if state.current_territory is not None]  # Extract names for each district
         
         # Return a GeoDataFrame with district names and corresponding geometries
-        return gpd.GeoDataFrame({'name_id': dist_name_id, 'geometry': geometries}, crs = "EPSG:4326")
+        return gpd.GeoDataFrame({'name_id': dist_name_id, 'geometry': geometries, 'color': colors}, crs = "EPSG:4326")
 
     
     def plot(self, html_file_path, date, shownames = True):
@@ -590,6 +597,80 @@ class DistrictRegistry(UnitRegistry):
     
         fig = build_plot_from_layers(layer)
         return fig
+    
+    def _construct_conversion_dict(self, date_from, date_to):
+        """
+        Constructs a dictionary that maps each district (by name_id) existing on `date_from`
+        to a dictionary of districts existing on `date_to`, with each entry indicating the
+        proportion of the territory that overlaps between the two.
+
+        This mapping is intended to support the harmonization of spatial datasets between
+        administrative states valid at different times. Specifically, it provides the proportion
+        of each `date_from` district’s territory that should be reassigned to corresponding
+        `date_to` districts during a temporal boundary adjustment or data transformation process.
+
+        Returns:
+            dict[str, dict[str, float]]: A nested dictionary in the form:
+                {
+                    "district_id_on_date_from": {
+                        "district_id_on_date_to": proportion_of_overlap,
+                        ...
+                    },
+                    ...
+                }
+        """
+        conversion_dict = {}
+        for current_dist in self.unit_list:
+            current_state = current_dist.find_state_by_date(date_from)
+            if current_state is not None:
+                ter_related_dict = current_state.get_states_related_by_ter(date_to)
+                current_state_dict = {}
+                for dist_name_id, dist_state in ter_related_dict:
+                    intersection_with_dist_area = current_state.current_territory.intersection(dist_state.current_territory).area
+                    current_state_area = current_state.current_territory.area
+                    current_state_dict[dist_name_id] = intersection_with_dist_area / current_state_area if current_state_area else 0
+            conversion_dict[current_dist.name_id] = current_state_dict
+        
+        return conversion_dict
+    
+    
+    def construct_conversion_matrix(self, date_from, date_to):
+        """
+        Constructs a pandas DataFrame representing a conversion matrix that maps districts from
+        `date_from` to districts at `date_to`, with values indicating the proportion of each
+        district's area that should be transferred.
+
+        The rows of the matrix correspond to districts existing on `date_from`,
+        and the columns correspond to districts existing on `date_to`.
+
+        Returns:
+            pd.DataFrame: A DataFrame with shape (len(dists_from), len(dists_to)),
+                        where each cell [i, j] represents the proportion of the
+                        territory of district i (at date_from) that maps to
+                        district j (at date_to).
+        """
+        # Get district name_ids for both dates
+        dists_from_list = [dist.name_id for dist in self.unit_list if dist.exists(date_from)]
+        dists_to_list = [dist.name_id for dist in self.unit_list if dist.exists(date_to)]
+
+        # Initialize empty DataFrame with 0s
+        conversion_matrix = pd.DataFrame(
+            0.0,
+            index=dists_from_list,
+            columns=dists_to_list
+        )
+
+        # Get the conversion dictionary with proportions
+        conversion_dict = self._construct_conversion_dict(date_from, date_to)
+
+        # Fill the matrix
+        for from_dist, to_dists_dict in conversion_dict.items():
+            for to_dist, proportion in to_dists_dict.items():
+                if from_dist in conversion_matrix.index and to_dist in conversion_matrix.columns:
+                    conversion_matrix.at[from_dist, to_dist] = proportion
+
+        return conversion_matrix
+                
 
 #############################################################################################
 # Hierarchy of models to store Region states: RegionState ∈ Region ∈ RegionRegistry

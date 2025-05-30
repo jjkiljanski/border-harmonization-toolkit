@@ -54,7 +54,11 @@ if plot_type == "District History Plot":
     # Collect district change data
     district_change_rows = []
     for dist in dist_registry.unit_list:
-        change_entries = list(set([(change.date.strftime("%Y-%m-%d"), change_type) for change_type, change in dist.changes]))
+        change_entries = []
+        for change_type, change in dist.changes:
+            dists_from = "(" + ", ".join([dist.name_id for dist, _ in change.dist_ter_from]) + ")"
+            dists_to = "(" + ", ".join([dist.name_id for dist, _ in change.dist_ter_to]) + ")"
+            change_entries.append("DATE: " + change.date.strftime("%Y-%m-%d") + ", CHANGE TYPE: " + change_type + ", TER. FLOW: " + dists_from + "->" + dists_to)
         change_entries.sort()
         district_change_rows.append({
             "District": dist.name_id,
