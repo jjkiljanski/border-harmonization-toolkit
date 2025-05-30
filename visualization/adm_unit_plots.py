@@ -93,13 +93,21 @@ def plot_dist_ter_info_history(dist_registry, start_date, end_date):
     timeline_data = []
     for district in districts:
         for state in district.states:
-            has_territory = state.current_territory_info is not None
+            if state.current_territory_info is not None:
+                if state.territory_is_fallback:
+                    color = "#ff7f0e"  # orange
+                else:
+                    color = "#2ca02c"  # green
+            else:
+                color = "#a9a9a9"  # grey
+
             timeline_data.append({
                 "StateInfo": f"{district.name_id} {str(state.timespan)}",
                 "Start": state.timespan.start,
                 "Finish": state.timespan.end,
                 "District": district.name_id,
-                "Color": "#2ca02c" if has_territory else "#a9a9a9"  # Assign color based on the territory information
+                "Color": color,
+                "TerritoryInfo": state.current_territory_info
             })
 
     df = pd.DataFrame(timeline_data)
@@ -112,6 +120,7 @@ def plot_dist_ter_info_history(dist_registry, start_date, end_date):
         y="District",
         color_discrete_sequence=["#a9a9a9"],  # Default grey, will override per trace
         hover_name="StateInfo",
+        hover_data=["TerritoryInfo"],
         title="Territorial State Information"
     )
 

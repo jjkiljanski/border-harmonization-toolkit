@@ -579,7 +579,7 @@ ChangeMatter = Annotated[
 ]
 
 from pydantic import BaseModel, model_validator
-from typing import List, Optional, Dict, Literal
+from typing import List, Optional, Dict, Literal, Tuple
 
 def normalize_spaces(text: str) -> str:
     # Replace non-breaking spaces (U+00A0) with normal spaces and strip
@@ -597,6 +597,8 @@ class Change(BaseModel):
     units_affected_ids: Optional[Dict[Literal["Region", "District"], Dict[Literal["before", "after"], List[str]]]] = {"Region": {"before": [], "after": []}, "District": {"before": [], "after": []}}
     previous_states: Optional[List] = []
     next_states: Optional[List] = []
+    ter_from: Optional[List[Tuple[District,DistState]]]=[]
+    ter_to: Optional[List[Tuple[District,DistState]]]=[]
 
     @model_validator(mode='before')
     def clean_sources_links_and_normalize_matter(cls, values):

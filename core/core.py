@@ -76,6 +76,9 @@ class AdministrativeHistory():
         # Deduce information about district territories where possible
         self._deduce_territories()
 
+        # Populate missing territories with fallback values
+        self._populate_territories_fallback()
+
 
     def _load_dist_registry(self):
         """
@@ -333,6 +336,7 @@ class AdministrativeHistory():
         """
         for dist in self.dist_registry.unit_list:
             n_last_state_with_ter = None # Index of the last state with defined territory in the dist.states list.
+            current_ter_info = None
             current_ter = None
 
             # Backward pass: fill with next known territory
@@ -356,13 +360,17 @@ class AdministrativeHistory():
                 current_ter_info = dist.states[n_last_state_with_ter].current_territory_info
                 if self.load_geometries:
                     current_ter = dist.states[n_last_state_with_ter].current_territory
-                for i in range(n_last_state_with_ter, len(dist.states)):
+                for i in range(n_last_state_with_ter+1, len(dist.states)):
                     dist.states[i].current_territory_info = current_ter_info
                     if self.load_geometries:
                         dist.states[i].current_territory = current_ter
                     dist.states[i].territory_is_fallback = True
             else:
-                print(f"[Warning] The district '{dist.name_id}' has no defined territory in any state. All district states' territories left as undefined (None).")   
+                print(f"[Warning] The district '{dist.name_id}' has no defined territory in any state. All district states' territories left as undefined (None).")
+    
+    def generate_harmonization_matrix(self, date_from, date_to):
+        """
+        """
         
     def standardize_address(self):
         """
