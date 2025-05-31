@@ -721,9 +721,10 @@ class Change(BaseModel):
         self.matter.verify_att_to_reform(self, adm_state, region_registry, dist_registry)
 
 
-    def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry, plot_change = False) -> None:
+    def apply(self, adm_state: AdministrativeState, region_registry: RegionRegistry, dist_registry: DistrictRegistry, plot_change: bool = False, verbose: bool = True) -> None:
         self.verify_consistency(adm_state, region_registry, dist_registry)
-        print(f"Applying change {str(self)}.")
+        if verbose:
+            print(f"Applying change {str(self)}.")
         # Create self.units_affected_ids["before"] for plotting.
         self.units_affected_ids['Region']["before"] = [region_registry.find_unit(current_name).name_id for current_name in self.units_affected_current_names['Region']["before"]]
         # print(f"(District, {before_or_after}): {[current_name for current_name in self.units_affected_current_names['District'][before_or_after]]}")

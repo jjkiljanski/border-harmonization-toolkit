@@ -3,6 +3,7 @@ from pydantic import BaseModel, model_validator
 from typing import Optional, Literal, List, Tuple, Any, Union, TYPE_CHECKING
 
 from datetime import datetime
+import time
 
 import matplotlib
 matplotlib.use("Agg")
@@ -373,7 +374,7 @@ class DistState(UnitState):
         else:
             raise ValueError(f"DistState._ter_difference method expects a pair of BaseGeometry or str type elements. The elements passed are of type ({type(ter_1)}, {type(ter_2)}).")
 
-    def spread_territory_info(self, compute_geometries=True):
+    def spread_territory_info(self, compute_geometries=True, verbose = False):
         """
         This method searches recursively through the graph of all links between district states
         and fills all district territories that can be deduced on the basis of type of district
@@ -407,16 +408,29 @@ class DistState(UnitState):
                 num_ter_unknown = 0
                 state_with_ter_unknown = None # Holder for state with an unknown territory
                 ter_unknown_after_or_before = None # If the state with an unknown territory exists after or before the change
+                territory_before_info = []
                 for unit_state in self.next_change.previous_states:
+                    territory_before_info.append((unit_state.current_name, unit_state.current_territory_info))
                     if unit_state.current_territory_info is None:
                         num_ter_unknown += 1
                         state_with_ter_unknown = unit_state
                         ter_unknown_after_or_before = 'before'
+                territory_after_info = []
                 for unit_state in self.next_change.next_states:
+                    territory_after_info.append((unit_state.current_name, unit_state.current_territory_info))
                     if unit_state.current_territory_info is None:
                         state_with_ter_unknown = unit_state
                         ter_unknown_after_or_before = 'after'
                         num_ter_unknown += 1
+                if verbose:
+                    dists_from = "(" + ", ".join([dist.name_id for dist, _ in self.next_change.dist_ter_from]) + ")"
+                    dists_to = "(" + ", ".join([dist.name_id for dist, _ in self.next_change.dist_ter_to]) + ")"
+                    change_str = "DATE: " + self.next_change.date.strftime("%Y-%m-%d") + ", CHANGE TYPE: " + self.next_change.matter.change_type + ", TER. FLOW: " + dists_from + "->" + dists_to
+                    if not (num_ter_unknown == 1):
+                        print(f"Unable to share territory farther. Change:")
+                    else:
+                        print(f"Sharing territory farther. Change:")
+                    print(f"{change_str}\nKnown territories before:\n{territory_before_info}\nKnown territories after:\n{territory_after_info}")
                 if not (num_ter_unknown == 1):
                     return
                 else:
@@ -453,6 +467,8 @@ class DistState(UnitState):
                             unknown_after_territory = self._ter_difference(merged_territory_before,merged_territory_after, is_geometry=True)
                             state_with_ter_unknown.current_territory = unknown_after_territory
                         state_with_ter_unknown.territory_is_fallback = False
+                    if verbose:
+                        print(f"Deduced territory: {state_with_ter_unknown.current_name}: {state_with_ter_unknown.current_territory_info}.")
                     # Run the spread_territory for the state for which territory was deduced
                     state_with_ter_unknown.spread_territory_info(compute_geometries=compute_geometries)
                     return
@@ -470,16 +486,32 @@ class DistState(UnitState):
                 num_ter_unknown = 0
                 state_with_ter_unknown = None # Holder for state with an unknown territory
                 ter_unknown_after_or_before = None # If the state with an unknown territory exists after or before the change
+
+                territory_before_info = []
                 for unit_state in self.previous_change.previous_states:
+                    territory_before_info.append((unit_state.current_name, unit_state.current_territory_info))
                     if unit_state.current_territory_info is None:
                         num_ter_unknown += 1
                         state_with_ter_unknown = unit_state
                         ter_unknown_after_or_before = 'before'
+
+                territory_after_info = []
                 for unit_state in self.previous_change.next_states:
                     if unit_state.current_territory_info is None:
                         state_with_ter_unknown = unit_state
                         ter_unknown_after_or_before = 'after'
                         num_ter_unknown += 1
+                
+                if verbose:
+                    dists_from = "(" + ", ".join([dist.name_id for dist, _ in self.previous_change.dist_ter_from]) + ")"
+                    dists_to = "(" + ", ".join([dist.name_id for dist, _ in self.previous_change.dist_ter_to]) + ")"
+                    change_str = "DATE: " + self.previous_change.date.strftime("%Y-%m-%d") + ", CHANGE TYPE: " + self.previous_change.matter.change_type + ", TER. FLOW: " + dists_from + "->" + dists_to
+                    if not (num_ter_unknown == 1):
+                        print(f"Unable to share territory farther. Change:")
+                    else:
+                        print(f"Sharing territory farther. Change:")
+                    print(f"{change_str}\nKnown territories before:\n{territory_before_info}\nKnown territories after:\n{territory_after_info}")
+
                 if not (num_ter_unknown == 1):
                     return
                 else:
@@ -515,17 +547,21 @@ class DistState(UnitState):
                             unknown_after_territory = self._ter_difference(merged_territory_before,merged_territory_after, is_geometry=True)
                             state_with_ter_unknown.current_territory = unknown_after_territory
                         state_with_ter_unknown.territory_is_fallback = False
+
+                    if verbose:
+                        print(f"Deduced territory: {state_with_ter_unknown.current_name}: {state_with_ter_unknown.current_territory_info}.")
+
                     # Run the spread_territory for the state for which territory was deduced
                     state_with_ter_unknown.spread_territory_info(compute_geometries=compute_geometries)
                     return
 
-    def get_states_related_by_ter(self, parent, search_date):
+    def get_states_related_by_ter(self, parent_name, search_date, verbose = True):
         """
         Returns all DistrictState instances that existed on the given search_date and whose territories
         can overlap with the territory of this DistrictState as a result of administrative territory exchange sequence.
 
         Parameters:
-            parent      (str):      The name_id of the district that the state refers to.
+            parent_name      (str): The name_id of the district that the state refers to.
             search_date (datetime): The date on which to search for existing district states.
 
         Returns:
@@ -533,17 +569,40 @@ class DistState(UnitState):
                                 with this instance and were active on the specified date.
         """
         if search_date in self.timespan:
-            return {parent: self}
-        elif search_date>self.timespan.end:
-            all_related_states = []
-            for dist, state in self.next_change.dist_ter_to:
-                all_related_states.update(state.get_states_related_by_ter(dist.name_id, search_date))
-            return all_related_states
+            if verbose:
+                print(f"Adding district '{parent_name}' state {str(self.timespan)} to related territories for search_date {search_date.date()}.")
+            return {parent_name: self}
+        elif search_date>=self.timespan.end:
+            all_related_states = {}
+            if self in [state for dist, state in self.next_change.dist_ter_from]:
+                if verbose:
+                    directly_related_territories = [dist.name_id for dist, state in self.next_change.dist_ter_to]+[parent_name]
+                    if self.next is not None:
+                        directly_related_territories.append(parent_name)
+                    print(f"Searching through territories {directly_related_territories} related by the change on the date {self.next_change.date.date()}.")
+                for dist, state in self.next_change.dist_ter_to:
+                    all_related_states.update(state.get_states_related_by_ter(dist.name_id, search_date, verbose = verbose))
+                if self.next is not None:
+                    all_related_states.update(self.next.get_states_related_by_ter(parent_name, search_date, verbose = verbose))
+                return all_related_states
+            else:
+                return self.next.get_states_related_by_ter(parent_name, search_date, verbose = verbose)
         elif search_date<self.timespan.start:
-            all_related_states = []
-            for dist, state in self.previous_change_change.dist_ter_from:
-                all_related_states.update(state.get_states_related_by_ter(dist.name_id, search_date))
-            return all_related_states
+            all_related_states = {}
+            if self in [state for dist, state in self.previous_change.dist_ter_to]:
+                if verbose:
+                    directly_related_territories = [dist.name_id for dist, state in self.previous_change.dist_ter_from]
+                    if self.previous is not None:
+                        directly_related_territories.append(parent_name)
+                    print(f"Searching through territories {directly_related_territories} related by the change on the date {self.previous_change.date.date()}.")
+
+                for dist, state in self.previous_change.dist_ter_from:
+                    all_related_states.update(state.get_states_related_by_ter(dist.name_id, search_date, verbose = verbose))
+                if self.previous is not None:
+                    all_related_states.update(self.previous.get_states_related_by_ter(parent_name, search_date, verbose = verbose))
+                return all_related_states
+            else:
+                return self.previous.get_states_related_by_ter(parent_name, search_date, verbose = verbose)
 
 class District(Unit):
     """
@@ -597,79 +656,6 @@ class DistrictRegistry(UnitRegistry):
     
         fig = build_plot_from_layers(layer)
         return fig
-    
-    def _construct_conversion_dict(self, date_from, date_to):
-        """
-        Constructs a dictionary that maps each district (by name_id) existing on `date_from`
-        to a dictionary of districts existing on `date_to`, with each entry indicating the
-        proportion of the territory that overlaps between the two.
-
-        This mapping is intended to support the harmonization of spatial datasets between
-        administrative states valid at different times. Specifically, it provides the proportion
-        of each `date_from` district’s territory that should be reassigned to corresponding
-        `date_to` districts during a temporal boundary adjustment or data transformation process.
-
-        Returns:
-            dict[str, dict[str, float]]: A nested dictionary in the form:
-                {
-                    "district_id_on_date_from": {
-                        "district_id_on_date_to": proportion_of_overlap,
-                        ...
-                    },
-                    ...
-                }
-        """
-        conversion_dict = {}
-        for current_dist in self.unit_list:
-            current_state = current_dist.find_state_by_date(date_from)
-            if current_state is not None:
-                ter_related_dict = current_state.get_states_related_by_ter(date_to)
-                current_state_dict = {}
-                for dist_name_id, dist_state in ter_related_dict:
-                    intersection_with_dist_area = current_state.current_territory.intersection(dist_state.current_territory).area
-                    current_state_area = current_state.current_territory.area
-                    current_state_dict[dist_name_id] = intersection_with_dist_area / current_state_area if current_state_area else 0
-            conversion_dict[current_dist.name_id] = current_state_dict
-        
-        return conversion_dict
-    
-    
-    def construct_conversion_matrix(self, date_from, date_to):
-        """
-        Constructs a pandas DataFrame representing a conversion matrix that maps districts from
-        `date_from` to districts at `date_to`, with values indicating the proportion of each
-        district's area that should be transferred.
-
-        The rows of the matrix correspond to districts existing on `date_from`,
-        and the columns correspond to districts existing on `date_to`.
-
-        Returns:
-            pd.DataFrame: A DataFrame with shape (len(dists_from), len(dists_to)),
-                        where each cell [i, j] represents the proportion of the
-                        territory of district i (at date_from) that maps to
-                        district j (at date_to).
-        """
-        # Get district name_ids for both dates
-        dists_from_list = [dist.name_id for dist in self.unit_list if dist.exists(date_from)]
-        dists_to_list = [dist.name_id for dist in self.unit_list if dist.exists(date_to)]
-
-        # Initialize empty DataFrame with 0s
-        conversion_matrix = pd.DataFrame(
-            0.0,
-            index=dists_from_list,
-            columns=dists_to_list
-        )
-
-        # Get the conversion dictionary with proportions
-        conversion_dict = self._construct_conversion_dict(date_from, date_to)
-
-        # Fill the matrix
-        for from_dist, to_dists_dict in conversion_dict.items():
-            for to_dist, proportion in to_dists_dict.items():
-                if from_dist in conversion_matrix.index and to_dist in conversion_matrix.columns:
-                    conversion_matrix.at[from_dist, to_dist] = proportion
-
-        return conversion_matrix
                 
 
 #############################################################################################

@@ -43,21 +43,42 @@ class AdministrativeState(BaseModel):
         new_state.timespan.update_middle()
         return new_state
     
-    def all_region_names(self):
-        all_region_names = [
-            region
-            for _, country_dict in self.unit_hierarchy.items()
-            for region in country_dict.keys()
-        ]
+    def all_region_names(self, homeland_only = False):
+        """
+        Returns all region names. If homeland_only is True, returns only regions in HOMELAND.
+        """
+        if homeland_only:
+            country_dict = self.unit_hierarchy['HOMELAND']
+            all_region_names = [
+                region
+                for region in country_dict.keys()
+            ]
+        else:
+            all_region_names = [
+                region
+                for _, country_dict in self.unit_hierarchy.items()
+                for region in country_dict.keys()
+            ]
         return all_region_names
     
-    def all_district_names(self):
-        all_district_names = [
-            district
-            for _, country_dict in self.unit_hierarchy.items()
-            for _, region_dict in country_dict.items()
-            for district in region_dict.keys()
-        ]
+    def all_district_names(self, homeland_only = False):
+        """
+        Returns all district names. If homeland_only is True, returns only districts in HOMELAND.
+        """
+        if homeland_only:
+            country_dict = self.unit_hierarchy['HOMELAND']
+            all_district_names = [
+                district
+                for _, region_dict in country_dict.items()
+                for district in region_dict.keys()
+            ]
+        else:
+            all_district_names = [
+                district
+                for _, country_dict in self.unit_hierarchy.items()
+                for _, region_dict in country_dict.items()
+                for district in region_dict.keys()
+            ]
         return all_district_names
     
     def pop_address(self, address):
@@ -222,7 +243,6 @@ class AdministrativeState(BaseModel):
         for district, district_state in dist_registry.all_unit_states_by_date(check_date):
             if district.name_id not in self.all_district_names():
                 raise ConsistencyError(f"District {district.name_id} exists on {check_date.date()}, but doesn't belong to the current administrative state hierarchy.")
-
     
     def to_address_list(self, only_homeland = False, with_variants = False, current_not_id = False, region_registry = None, dist_registry = None):
         """
@@ -473,6 +493,8 @@ class AdministrativeState(BaseModel):
     def plot(self, region_registry, dist_registry, whole_map, date, plot_abroad = False):
         from utils.helper_functions import build_plot_from_layers
 
+        start_time = time.time()
+
         # Prepare the layers
         if plot_abroad:
             country_layer = self._country_plot_layer(dist_registry, date)
@@ -485,9 +507,13 @@ class AdministrativeState(BaseModel):
             fig = build_plot_from_layers(whole_map_layer, country_layer, district_layer, region_layer)
         else:
             fig = build_plot_from_layers(whole_map_layer, district_layer, region_layer)
+
+        end_time = time.time()
+        execution_time = end_time-start_time
+        print(f"Successfully created plot for administrative state {str(self)} in {execution_time:.2f} seconds.")
         return fig
     
-    def apply_changes(self, changes_list, region_registry, dist_registry):
+    def apply_changes(self, changes_list, region_registry, dist_registry, verbose = True):
         # Creates a copy of itself, applies all changes to the copy and returns it as a new state.
 
         # Take the date of the change and ensure that all changes have the same date.
@@ -506,7 +532,7 @@ class AdministrativeState(BaseModel):
         for change in changes_list:
             try:
                 # Apply change and store information on the affected districts
-                change.apply(new_state, region_registry, dist_registry, plot_change = False)
+                change.apply(new_state, region_registry, dist_registry, plot_change = False, verbose = verbose)
                 all_units_affected["Region"] += change.units_affected["Region"]
                 all_units_affected["District"] += change.units_affected["District"]
             except Exception as e:

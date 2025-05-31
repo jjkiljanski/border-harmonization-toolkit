@@ -10,6 +10,7 @@ import pandas as pd
 import os
 from collections import defaultdict
 import plotly.express as px
+import time
 
 from data_models.adm_timespan import *
 from data_models.adm_unit import *
@@ -62,19 +63,14 @@ class AdministrativeHistory():
 
         # Create states for the whole timespan
         self._create_history()
-        print(f"self.dist_registry.unique_name_variants: {self.dist_registry.unique_name_variants}")
-        print(f"self.dist_registry.unique_seat_names: {self.dist_registry.unique_seat_names}")
 
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
         self._load_territories()
 
-        if self.load_geometries:
-            # Create a territory representing the unary union of all territories (the "whole map" shape)
-            self.whole_map = unary_union([state.current_territory for state in self.states_with_loaded_territory])
 
         # Deduce information about district territories where possible
-        self._deduce_territories()
+        self._deduce_territories(verbose = False)
 
         # Populate missing territories with fallback values
         self._populate_territories_fallback()
@@ -88,6 +84,8 @@ class AdministrativeHistory():
         Args:
             file_path (str): Path to the JSON file containing the list of changes.
         """
+        print("Loading initial district registry...")
+        start_time = time.time()
         with open(self.initial_dist_list_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
@@ -102,7 +100,9 @@ class AdministrativeHistory():
                 dist.states[0].timespan = TimeSpan(start = self.timespan.start, end = self.timespan.end)
             # Set CRS
             n_districts = len(self.dist_registry.unit_list)
-            print(f"✅ Loaded {n_districts} validated districts. Set their initial state timespands to {TimeSpan(start = self.timespan.start, end = self.timespan.end)}.")
+            end_time = time.time()
+            execution_time = end_time - start_time
+            print(f"✅ Loaded {n_districts} validated districts in {execution_time:.2f} seconds. Set their initial state timespands to {TimeSpan(start = self.timespan.start, end = self.timespan.end)}.")
         except ValidationError as e:
             print(e.json(indent=2))
 
@@ -114,6 +114,9 @@ class AdministrativeHistory():
         Args:
             file_path (str): Path to the JSON file containing the list of changes.
         """
+        print("Loading initial region registry...")
+        start_time = time.time()
+
         with open(self.initial_region_list_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
@@ -126,7 +129,10 @@ class AdministrativeHistory():
             for region in self.region_registry.unit_list:
                 region.states[0].timespan = TimeSpan(start = self.timespan.start, end = self.timespan.end)
             n_regions = len(self.region_registry.unit_list)
-            print(f"✅ Loaded {n_regions} validated regions. Set their initial state timespands to {TimeSpan(start = self.timespan.start, end = self.timespan.end)}")
+
+            end_time = time.time()
+            execution_time = end_time - start_time
+            print(f"✅ Loaded {n_regions} validated regions in {execution_time:.2f} seconds. Set their initial state timespands to {TimeSpan(start = self.timespan.start, end = self.timespan.end)}")
         except ValidationError as e:
             print(e.json(indent=2))
 
@@ -138,6 +144,9 @@ class AdministrativeHistory():
         Args:
             file_path (str): Path to the JSON file containing the list of changes.
         """
+        print("Loading changes list...")
+        start_time = time.time()
+
         with open(self.changes_list_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
@@ -160,7 +169,10 @@ class AdministrativeHistory():
             self.changes_list = parse_obj_as(List[Change], data)
             self.changes_list.sort(key=lambda change: (change.order is None, change.order))  # Moves None order to end
             n_changes = len(self.changes_list)
-            print(f"✅ Loaded {n_changes} validated changes.")
+
+            end_time = time.time()
+            execution_time = end_time - start_time
+            print(f"✅ Loaded {n_changes} validated changes in {execution_time:.2f} seconds.")
         except ValidationError as e:
             print(e.json(indent=2))
 
@@ -169,6 +181,7 @@ class AdministrativeHistory():
         """
         Load the administrative state from a JSON file and validate according to the AdministrativeState model.
         """
+        print("Loading initial state...")
         with open(self.initial_adm_state_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
@@ -209,6 +222,9 @@ class AdministrativeHistory():
         #         change.echo()
 
     def _create_history(self):
+        print(f"Creating administrative history (sequentially applying changes)...")
+        start_time = time.time()
+
         # Delete and recreate the entire folder
         if os.path.exists(self.adm_states_output_path):
             shutil.rmtree(self.adm_states_output_path)
@@ -217,7 +233,7 @@ class AdministrativeHistory():
         for i, date in enumerate(self.changes_dates):
             changes_list = self.changes_chron_dict[date]
             old_state = self.states_list[-1]
-            new_state, all_units_affected = old_state.apply_changes(changes_list, self.region_registry, self.dist_registry)
+            new_state, all_units_affected = old_state.apply_changes(changes_list, self.region_registry, self.dist_registry, verbose = False)
             self.states_list.append(new_state)
 
             csv_filename = "/state" + new_state.timespan.start.strftime("%Y-%m-%d")
@@ -230,13 +246,18 @@ class AdministrativeHistory():
         self.region_registry.unique_name_variants.sort()
         self.region_registry.unique_seat_names.sort()
 
-    def _load_territories(self):
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ Successfully applied all changes in {execution_time:.2f} seconds. Administrative history database created.")
+
+    def _load_territories(self, verbose = False):
         """
         Loads a territories from an external JSON file to a Geopandas dataframe
          and asigns them to the district states based on the name_id in the 'District'
          column and a date in the district state's timespan defined in the 'ter_date'
          column.
         """
+        start_time = time.time()
         print("Loading territories...")
         # Initialize list to store individual territories GeoDataFrames
         gdf_list = []
@@ -265,7 +286,8 @@ class AdministrativeHistory():
                         if gdf.crs != "EPSG:4326":
                             original_crs = gdf.crs
                             gdf = gdf.to_crs("EPSG:4326")
-                            print(f"CRS of the geometry loaded from file '{file_path}' converted. Original: {original_crs}. New: 'EPSG:4326'.")
+                            if verbose:
+                                print(f"CRS of the geometry loaded from file '{file_path}' converted. Original: {original_crs}. New: 'EPSG:4326'.")
 
                     gdf_list.append(gdf)
 
@@ -287,7 +309,7 @@ class AdministrativeHistory():
 
         # Standardize district and region names to name_ids in the registries
         try:
-            unit_suggestions = standardize_df(territories_gdf, self.region_registry, self.dist_registry, columns = ["District"], verbose = True)
+            unit_suggestions = standardize_df(territories_gdf, self.region_registry, self.dist_registry, columns = ["District"], verbose = False)
         except ValueError as e:
             print("❌ Failed during names standardization of the loaded geometry dataframes:", e)
             raise  # Do NOT assign the error to territories_gdf!
@@ -316,24 +338,37 @@ class AdministrativeHistory():
 
             # Store the information that the state has territory loaded
             self.states_with_loaded_territory.append(unit_state)
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ Successfully loaded all territories in {execution_time:.2f} seconds.")
 
-    def _deduce_territories(self):
+    def _deduce_territories(self, verbose = False):
         """
         This function takes the list of unit states with territory geometries
         loaded for GeoJSON and deduces the territory for all other states
         where it is possible.
         """
+        print("Deducing all possible dist territories on the basis of the loaded ones.")
+        start_time = time.time()
         for unit_state in self.states_with_loaded_territory:
             # Spread territory info for every state.
             # If self.load_geometries is True (and so the geometries were loaded), share geometries and territory info.
             # If self.load_geometries is False, share ONLY territory info.
-            unit_state.spread_territory_info(compute_geometries=self.load_geometries)
+            unit_state.spread_territory_info(compute_geometries=self.load_geometries, verbose = verbose)
+
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ All possible information on territories deduced {execution_time:.2f} seconds.")
+        
     
     def _populate_territories_fallback(self):
         """
         Fills fallback district state territories for all states with missing territory information.
         Uses simply the next later existing state with territory, or the last earlier one if no later one exists.
         """
+        print("Defining fallback territories for states with missing state information (where possible).")
+        start_time = time.time()
+        
         for dist in self.dist_registry.unit_list:
             n_last_state_with_ter = None # Index of the last state with defined territory in the dist.states list.
             current_ter_info = None
@@ -367,6 +402,199 @@ class AdministrativeHistory():
                     dist.states[i].territory_is_fallback = True
             else:
                 print(f"[Warning] The district '{dist.name_id}' has no defined territory in any state. All district states' territories left as undefined (None).")
+        
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ Successfully created fallback territories in {execution_time:.2f} seconds.")
+
+    def _construct_conversion_dict(self, date_from: datetime, date_to: datetime, verbose: bool = False):
+        """
+        Constructs a dictionary that maps each district (by name_id) existing on `date_from`
+        in the dist_registry and in 'HOMELAND' for the date date_from to a dict. of districts
+        existing on `date_to` and in 'HOMELAND' on that date, with each entry indicating
+        the proportion of the territory that overlaps between the two.
+
+        If no territory is defined for one of the districts that are related between the changes,
+        fallback computations are used.
+
+        This mapping is intended to support the harmonization of spatial datasets between
+        administrative states valid at different times. Specifically, it provides the proportion
+        of each `date_from` district’s territory that should be reassigned to corresponding
+        `date_to` districts during a temporal boundary adjustment or data transformation process.
+
+        Returns:
+            dict[str, dict[str, float]]: A nested dictionary in the form:
+                {
+                    "district_id_on_date_from": {
+                        "district_id_on_date_to": proportion_of_overlap,
+                        ...
+                    },
+                    ...
+                }
+        """
+        start_time = time.time()
+
+        if verbose:
+            print(f"Constructing conversion dict between adm. states valid for dates {date_from.date()} and {date_to.date()}")
+
+        conversion_dict = {}
+
+        state_from = self.find_adm_state_by_date(date_from)
+        from_dist_names = state_from.all_district_names(homeland_only=True)
+
+        state_to = self.find_adm_state_by_date(date_to)
+        to_dist_names = state_to.all_district_names(homeland_only=True)
+
+        # If date_from.date() == date_to.date(), return mapping of every district to itself.
+        if date_from.date()==date_to.date():
+            return {dist_name: {dist_name: 1.0} for dist_name in from_dist_names}
+
+        for from_dist in self.dist_registry.unit_list:
+            if from_dist.name_id in from_dist_names:
+                from_state = from_dist.find_state_by_date(date_from)
+                if from_state is not None:
+                    from_state_dict = {}
+                    if from_state.current_territory is None:
+                        # If neither deduced or fallback teritory is defined for a dist at date 'date_from',
+                        # pass all its values to itself if the dist still exists at date_to
+                        if from_dist.exists(date_to):
+                            from_state_dict = {from_dist.name_id: 1.0}
+                            if verbose:
+                                print(f"Territory of the district {from_dist.name_id} is not defined for {date_from.date()}. Ascribed the whole proportion of its territory to itself on date {date_to.date()}.")
+                        else:
+                            # if not, distribute the dist values evenly across the districts:
+                            #   - the dist was dissolved to if date_to>date_from
+                            #   - the dist was created from if date_to<date_from
+                            if date_to>date_from:
+                                # Find the last state of the dist that existed before date_to
+                                last_state_from_dist = from_state
+                                next_state_to_consider = last_state_from_dist.next
+                                while next_state_to_consider is not None:
+                                    if next_state_to_consider.timespan.end > date_to:
+                                        raise ValueError(f"The district {from_dist.name_id} on the date {date_to.date()} didn't exist according to the method 'District.exists' but it has a state with timespan {str(from_dist.timespan)}.")
+                                    else:
+                                        last_state_from_dist = next_state_to_consider
+                                        next_state_to_consider = last_state_from_dist.next
+                                # Find districts the dist was dissolved to and that still exist at date_to
+                                dists_after_abolishment = [dist.name_id for dist, dist_state in last_state_from_dist.next_change.dist_ter_to if dist.exists(date_to)]
+                                # Ascribe same proportion to every district in dists_after_abolishment
+                                if len(dists_after_abolishment) == 0:
+                                    print(f"No districts that the dist {from_dist.name_id} was dissolved to exist on the date {date_to.date()}. Its data will not be ascribed to any district.")
+                                    from_state_dict = {}
+                                else:
+                                    from_state_dict = {dist_name: 1.0/len(dists_after_abolishment) for dist_name in dists_after_abolishment}
+                            else:
+                                # Find the first state of the dist that existed after date_to
+                                first_state_from_dist = from_state
+                                previous_state_to_consider = first_state_from_dist.previous
+                                while previous_state_to_consider is not None:
+                                    if previous_state_to_consider.timespan.start < date_to:
+                                        raise ValueError(f"The district {from_dist.name_id} on the date {date_from.date()} didn't exist according to the method 'District.exists', but it has a state with timespan {str(from_dist.timespan)}.")
+                                    else:
+                                        first_state_from_dist = previous_state_to_consider
+                                        previous_state_to_consider = first_state_from_dist.previous
+                                # Find districts the dist was dissolved to and that existed at date_from
+                                dists_created_from = [dist.name_id for dist, dist_state in first_state_from_dist.previous_change.dist_ter_from if dist.exists(date_from)]
+                                # Ascribe same proportion to every district in dists_after_abolishment
+                                if len(dists_created_from) == 0:
+                                    print(f"No districts that the dist {from_dist.name_id} was created from exist on the date {date_to.date()}. Its data will not be ascribed to any district.")
+                                    from_state_dict = {}
+                                else:
+                                    from_state_dict = {dist_name: 1.0/len(dists_created_from) for dist_name in dists_created_from}
+
+                            if verbose:
+                                print(f"Territory of the district {from_dist.name_id} is not defined for {date_from.date()}. Distributed its territory evenly.")
+                    else:
+                        dists_no_ter_defined = []
+                        if verbose:
+                            print(f"Searching districts related by territory to the district {from_dist.name_id}.")
+                        ter_related_dict = from_state.get_states_related_by_ter(from_dist.name_id, date_to, verbose = verbose)
+                        # Compute the intersection of every district in ter_related_dict with the from_dist if it has a territory defined.
+                        # If not, add it to the dists_no_ter_defined list.
+                        for to_dist_name_id, to_state in ter_related_dict.items():
+                            if to_dist_name_id in to_dist_names:
+                                if to_state.current_territory is None:
+                                    dists_no_ter_defined.append(to_dist_name_id)
+                                else:
+                                    intersection_with_dist_area = from_state.current_territory.intersection(to_state.current_territory).area
+                                    from_state_area = from_state.current_territory.area
+                                    from_state_dict[to_dist_name_id] = intersection_with_dist_area / from_state_area if from_state_area else 0
+                        # Now take the proportion left after all other proportions are subtracted from 1.0
+                        # and distribute it evenly across the districts in ter_related_dict that have no territory defined.
+                        proportions_sum = sum(from_state_dict.values())
+                        # Compute proportion left. If it's negative (e.g. because some territories are fallback and so inaccurate), set it to 0.
+                        proportion_left = max(0, 1.0-proportions_sum)
+                        # Distribute the proportion left evenly across the dists with no territory information.
+                        if len(dists_no_ter_defined)>0:
+                            for to_dist_name_id in dists_no_ter_defined:
+                                from_state_dict[to_dist_name_id] = proportion_left/len(dists_no_ter_defined)
+                        
+                        # Standardize the proportions to 1.0:
+                        all_proportions_sum = sum(from_state_dict.values())
+                        if all_proportions_sum>0:
+                            from_state_dict = {dist_name: proportion/all_proportions_sum for dist_name, proportion in from_state_dict.items()}
+                        else:
+                            if verbose:
+                                print(f"Cannot standardize values in the dict {from_state_dict}.")
+
+                        # Print message if verbose is True
+                        if verbose:
+                            if len(dists_no_ter_defined)>0:
+                                dists_no_ter_defined_dict = {dist_name: from_state_dict[dist_name] for dist_name in dists_no_ter_defined}
+                                print(f"Territory of district {from_dist.name_id} on the date {date_from.date()} is defined, but between {date_from.date()} and {date_to.date()} it shared territories with districts with no territory information on {date_to.date()}. Ascribed the following proportions to the districts: {dists_no_ter_defined_dict}.")
+                
+                conversion_dict[from_dist.name_id] = from_state_dict
+                if verbose:
+                    print(f"Conversion dict for district {from_dist.name_id} constructed: {from_state_dict}")
+
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ Successfully constructed conversion dict in {execution_time:.2f} seconds.")
+        return conversion_dict
+    
+    def construct_conversion_matrix(self, date_from, date_to, verbose = False):
+        """
+        Constructs a pandas DataFrame representing a conversion matrix between administrative
+        state valid for date 'date_from and administrative state valid for date 'date_to'.
+
+        The rows of the matrix correspond to districts existing on `date_from` in 'HOMELAND',
+        and the columns correspond to districts existing on `date_to` in 'HOMELAND'.
+
+        Returns:
+            pd.DataFrame: A DataFrame with shape (len(dists_from), len(dists_to)),
+                        where each cell [i, j] represents the proportion of the
+                        territory of district i (at date_from) that maps to
+                        district j (at date_to).
+        """
+
+        start_time = time.time()
+        
+        # Get district name_ids for both dates
+        dists_from_list = self.find_adm_state_by_date(date_from).all_district_names(homeland_only=True)
+        dists_to_list = self.find_adm_state_by_date(date_to).all_district_names(homeland_only=True)
+
+        # Initialize empty DataFrame with 0s
+        conversion_matrix = pd.DataFrame(
+            0.0,
+            index=dists_from_list,
+            columns=dists_to_list
+        )
+
+        # Get the conversion dictionary with proportions
+        conversion_dict = self._construct_conversion_dict(date_from, date_to, verbose = verbose)
+
+        print("Constructing conversion matrix based on the dict.")
+        # Fill the matrix
+        for from_dist, to_dists_dict in conversion_dict.items():
+            for to_dist, proportion in to_dists_dict.items():
+                if from_dist in conversion_matrix.index and to_dist in conversion_matrix.columns:
+                    conversion_matrix.at[from_dist, to_dist] = proportion
+
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ Successfully constructed conversion matrix in {execution_time:.2f} seconds.")
+
+        return conversion_matrix
     
     def generate_harmonization_matrix(self, date_from, date_to):
         """
@@ -553,3 +781,31 @@ class AdministrativeHistory():
         )
 
         return fig
+    
+    def generate_adm_state_plots(self):
+        import matplotlib.pyplot as plt
+
+        start_time = time.time()
+        print("Computing the unary union of all district territories in the registry ('whole_map' geometry).")
+
+        # Create a territory representing the unary union of all territories (the "whole map" shape)
+        self.whole_map = unary_union([state.current_territory for state in self.states_with_loaded_territory])
+
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ Successfully computed 'whole_map' in {execution_time:.2f} seconds.")
+        
+        print("Creating map plots for every administrative state...")
+        start_time = time.time()
+        for adm_state in self.states_list:
+            region_registry = self.region_registry
+            dist_registry = self.dist_registry
+            fig = adm_state.plot(region_registry, dist_registry, self.whole_map, adm_state.timespan.middle)
+            fig.savefig(f"output/adm_states_maps/adm_state_{adm_state.timespan.start.date()}.png", bbox_inches=None)
+            plt.close(fig)  # prevent memory buildup
+            print(f"Saved adm_state_{adm_state.timespan.start.date()}.png.")
+
+
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ Successfully generated all administrative state plots in {execution_time:.2f} seconds and saved to 'output' folder.")

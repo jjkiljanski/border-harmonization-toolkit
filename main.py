@@ -25,35 +25,45 @@ administrative_history.print_all_states()
 
 #administrative_history.dist_registry.summary(with_alt_names=True)
 
-# Loop through all files in the input/states_to_identify folder
-folder_path = 'input/states_to_identify/'
-state_info = [
-    ('powiaty_1921.csv', datetime(1921,2,20)),
-    ('powiaty_1931.csv', datetime(1931,4,18))
-    ]
-
-
+"""
 dist_changes_hist_plot = administrative_history.plot_dist_changes_by_year(black_and_white=False)
 dist_changes_hist_plot.write_html("output/dist_changes_hist_plot.html")
-
-# gdf = administrative_history.dist_registry._plot_layer(datetime(1931,4,18))
-# print(f"gdf.crs: {gdf.crs}.")
-# print(gdf)
-# print(administrative_history.dist_registry._plot_layer(datetime(1931,4,18)))
+"""
 
 # fig_plotly = plot_district_map(administrative_history.dist_registry, datetime(1931,4,18))
 # fig_plotly.write_html("output/district_map_1931_plotly.html")
 
-print("Creating map plots for every administrative state.")
-for adm_state in administrative_history.states_list:
-    region_registry = administrative_history.region_registry
-    dist_registry = administrative_history.dist_registry
-    fig = adm_state.plot(region_registry, dist_registry, administrative_history.whole_map, adm_state.timespan.middle)
-    fig.savefig(f"output/adm_states_maps/adm_state_{adm_state.timespan.start.date()}.png", bbox_inches=None)
-    plt.close(fig)  # prevent memory buildup
-    print(f"Saved adm_state_{adm_state.timespan.start.date()}.png.")
+############# Create an example conversion dict and conversion matrix and save them to CSV #############
+date_from = datetime(1924,1,1)
+date_to = datetime(1938,4,1)
+conversion_dict = administrative_history._construct_conversion_dict(date_from, date_to, verbose = True)
+
+# Ensure output directory for matrices exists
+os.makedirs("output/conversion_matrices", exist_ok=True)
+
+# Save an example conversion dict as CSV
+with open('output/conversion_matrices/example_dict.csv', mode='w', newline='', encoding='utf-8') as f:
+    writer = csv.writer(f)
+    writer.writerow(['From_District', 'To_District', 'Proportion'])  # header
+    for from_dist, to_dists in conversion_dict.items():
+        for to_dist, proportion in to_dists.items():
+            writer.writerow([from_dist, to_dist, proportion])
+
+# Create an example conversion matrix
+conversion_matrix = administrative_history.construct_conversion_matrix(date_from, date_to, verbose = True)
+
+# Save to CSV
+conversion_matrix.to_csv('output/conversion_matrices/example_matrix.csv', index=True)
+
 # fig_matplotlib = administrative_history.dist_registry.plot("abc", datetime(1931,4,18), shownames = False)
 # fig_matplotlib.savefig("output/district_map_1931_matplotlib.png", bbox_inches="tight", pad_inches=0.1)
+
+# # Loop through all files in the input/states_to_identify folder
+# folder_path = 'input/states_to_identify/'
+# state_info = [
+#     ('powiaty_1921.csv', datetime(1921,2,20)),
+#     ('powiaty_1931.csv', datetime(1931,4,18))
+#     ]
 
 # for filename, state_date in state_info:
 #     file_path = folder_path + filename
