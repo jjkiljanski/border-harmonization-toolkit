@@ -1,0 +1,610 @@
+[
+    {
+        "dataset_id": "9.12.1931-occupation_central_eastern_voivodships_ready_clean",
+        "category": "Census 1931",
+        "description": {
+            "pol": "Struktura zatrudnienia wg. spisu powszechnego 1931 (stan na 9.12.1931). Aktywni zawodowo.",
+            "eng": "Employment structure according to the 1931 national census (as of December 9, 1931). Economically active population."
+        },
+        "date": "09.12.1931",
+        "adm_state_date": "01.01.1933",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw centralnych i wschodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "9.12.1931-occupation_southern_western_voivodships_ready_clean",
+        "category": "Census 1931",
+        "description": {
+            "pol": "Struktura zatrudnienia wg. spisu powszechnego 1931 (stan na 9.12.1931). Aktywni zawodowo.",
+            "eng": "Employment structure according to the 1931 national census (as of December 9, 1931). Economically active population."
+        },
+        "date": "09.12.1931",
+        "adm_state_date": "01.08.1934",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw południowych i zachodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1923-1924-crops_area_ha_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Powierzchnia upraw 5 najważniejszych ziemiopłodów.",
+            "eng": "Cultivated area of the 5 most important crops."
+        },
+        "unit": "hectar",
+        "date": "08.1924",
+        "adm_state_date": "07.01.1924",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1923-1924-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory 5 najważniejszych ziemiopłodów.",
+            "eng": "Harvest of the 5 most important crops."
+        },
+        "unit": "quintal",
+        "date": "08.1924",
+        "adm_state_date": "07.01.1924",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1923-1924-sugarbeet_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory i powierzchnia upraw buraków cukrowych.",
+            "eng": "Harvest and cultivated area of sugar beets."  
+        },
+        "date": "08.1924",
+        "adm_state_date": "07.01.1924",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1925-1926-crops_area_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Powierzchnia upraw 5 najważniejszych ziemiopłodów.",
+            "eng": "Cultivated area of the 5 most important crops."
+        },
+        "date": "08.1926",
+        "adm_state_date": "07.10.1926",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1925-1926-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory 5 najważniejszych ziemiopłodów.",
+            "eng": "Harvest of the 5 most important crops."
+        },
+        "unit": "quintal",
+        "date": "08.1926",
+        "adm_state_date": "07.10.1926",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1925-1926-sugarbeet_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Przeciętny zbiór buraków cukrowych.",
+            "eng": "Agerage harvest of sugar beets."  
+        },
+        "date": "08.1926",
+        "adm_state_date": "07.10.1926",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1927-1928-crops_area_ha_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Powierzchnia upraw ziemiopłodów.",
+            "eng": "Cultivated area of crops."
+        },
+        "unit": "hectar",
+        "date": "08.1928",
+        "adm_state_date": "07.01.1929",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1927-1928-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory 6 najważniejszych ziemiopłodów.",
+            "eng": "Harvest of the 6 most important crops."
+        },
+        "unit": "quintal",
+        "date": "08.1928",
+        "adm_state_date": "07.01.1929",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1930-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory 6 najważniejszych ziemiopłodów.",
+            "eng": "Harvest of the 6 most important crops."
+        },
+        "unit": "quintal",
+        "date": "08.1930",
+        "adm_state_date": "07.10.1930",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1931-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory 6 najważniejszych ziemiopłodów.",
+            "eng": "Harvest of the 6 most important crops."
+        },
+        "unit": "quintal",
+        "date": "08.1931",
+        "adm_state_date": "07.10.1931",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1932-crops_area_ha_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Powierzchnia upraw ziemiopłodów.",
+            "eng": "Cultivated area of crops."
+        },
+        "unit": "hectar",
+        "date": "08.1932",
+        "adm_state_date": "07.10.1932",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1932-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory ziemiopłodów.",
+            "eng": "Harvest of crops."
+        },
+        "unit": "quintal",
+        "date": "08.1932",
+        "adm_state_date": "07.10.1932",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1934-crops_area_ha_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Powierzchnia upraw ziemiopłodów.",
+            "eng": "Cultivated area of crops."
+        },
+        "unit": "hectar",
+        "date": "08.1934",
+        "adm_state_date": "07.10.1934",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1934-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory ziemiopłodów.",
+            "eng": "Harvest of crops."
+        },
+        "unit": "quintal",
+        "date": "08.1934",
+        "adm_state_date": "07.10.1934",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1935-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory ziemiopłodów.",
+            "eng": "Harvest of crops."
+        },
+        "unit": "quintal",
+        "date": "08.1935",
+        "adm_state_date": "07.10.1935",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1936-crops_area_ha_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Powierzchnia upraw ziemiopłodów.",
+            "eng": "Cultivated area of crops."
+        },
+        "unit": "hectar",
+        "date": "08.1936",
+        "adm_state_date": "07.10.1936",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1936-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory ziemiopłodów.",
+            "eng": "Harvest of crops."
+        },
+        "unit": "quintal",
+        "date": "08.1936",
+        "adm_state_date": "07.10.1936",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1938-crops_area_ha_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Powierzchnia upraw ziemiopłodów.",
+            "eng": "Cultivated area of crops."
+        },
+        "unit": "hectar",
+        "date": "08.1938",
+        "adm_state_date": "07.09.1938",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1938-crops_q_ready",
+        "category": "Crops",
+        "description": {
+            "pol": "Zbiory ziemiopłodów.",
+            "eng": "Harvest of crops."
+        },
+        "unit": "quintal",
+        "date": "08.1938",
+        "adm_state_date": "07.09.1938",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1930-forests_area_ha_ready",
+        "category": "Forests",
+        "description": {
+            "pol": "Powierzchnia lasów.",
+            "eng": "Forest area."
+        },
+        "unit": "hectar",
+        "date": "1930",
+        "adm_state_date": "07.10.1930",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1924-industrial_occupations_permissions_ready_clean",
+        "category": "Industrial Occupations Permissions",
+        "description": {
+            "pol": "Liczba zezwoleń na zajęcia przemysłowe.",
+            "eng": "Number of industrial occupations permissions."
+        },
+        "date": "1924",
+        "adm_state_date": "07.10.1925",
+        "standardization_comments": "Okręgi skarbowe w przypadku okręgów miejskich zostały zsumowane (np. Okręgi Kraków I, II i III traktowane są jak jeden powiat Kraków (miasto)). Okręgi Poznań Zachód i Poznań Wschód zostały zsumowane do powiatu Poznań. Okręgi lubelski i Lublin miasto zostały zsumowane do okręgu lubelskiego (powiat Lublin (miasto) nie istniał między 1922 i 1928 rokiem). Okręgi Huta Laura, Mysłowice i Katowice zostały zsumowane jako Katowice, okręgi Będziński, Sosnowiec i Zawierciański jako Będziński. Liczby pozwoleń z okręgów obejmujących dwa powiaty (Brześć n. B. i Kamień Koszyrski, Kobryń i Drohiczyn oraz Prużana i Kossów) zostały rozdzielone po połowie między oba powiaty.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1925-industrial_occupations_permissions_ready_clean",
+        "category": "Industrial Occupations Permissions",
+        "description": {
+            "pol": "Liczba zezwoleń na zajęcia przemysłowe.",
+            "eng": "Number of industrial occupations permissions."
+        },
+        "date": "1925",
+        "adm_state_date": "07.10.1925",
+        "standardization_comments": "Okręgi skarbowe w przypadku okręgów miejskich zostały zsumowane (np. Okręgi Kraków I, II i III traktowane są jak jeden powiat Kraków (miasto)). Okręgi Poznań Zachód i Poznań Wschód zostały zsumowane do powiatu Poznań. Okręgi lubelski i Lublin miasto zostały zsumowane do okręgu lubelskiego (powiat Lublin (miasto) nie istniał między 1922 i 1928 rokiem). Okręgi Huta Laura, Mysłowice i Katowice zostały zsumowane jako Katowice, okręgi Będziński, Sosnowiec i Zawierciański jako Będziński. Liczby pozwoleń z okręgów obejmujących dwa powiaty (Brześć n. B. i Kamień Koszyrski, Kobryń i Drohiczyn oraz Prużana i Kossów) zostały rozdzielone po połowie między oba powiaty.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1928-industrial_occupations_permissions_ready_clean",
+        "category": "Industrial Occupations Permissions",
+        "description": {
+            "pol": "Liczba zezwoleń na zajęcia przemysłowe.",
+            "eng": "Number of industrial occupations permissions."
+        },
+        "date": "1928",
+        "adm_state_date": "07.04.1928",
+        "standardization_comments": "Okręgi skarbowe w przypadku okręgów miejskich zostały zsumowane (np. Okręgi Kraków I, II i III traktowane są jak jeden powiat Kraków (miasto)). Ponieważ okręgi skarbowe istniały tylko dla części powiatów miejskich utworzonych 12.04.1928, wybrano datę po zniesieniu powiatów puckiego i wejherowskiego (ich dane zostały zsumowane w ramach powiatu morskiego) i przed 12.04.1928. Dane z urzędów skarbowych dla powiatów miejskich utworzonych po 12.04.1928 zsumowano w ramach powiatów istniejących przed 12.04.1928 (dane z okręgu Białystok (miasto) połączono z powiatem białostockim, z Sosnowca z powiatem będzińskim, z Lublina z powiatem lubelskim). Dane z okręgów Huta Laura (Siemianowice Śląskie) i Mysłowice zostały dodane do powiatu Katowice. Dane z Chełmży zostały przypisane do powiatu toruńskiego. Dane z miasta Kalisz oraz z powiatu kaliskiego potraktowano łącznie jako powiat kaliski. Dane z miasta Równe oraz z powiatu rówieńskiego zostały zsumowane w ramach powiatu rówieńskiego.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1924-industry_permissions_ready_clean",
+        "category": "Industry Permissions",
+        "description": {
+            "pol": "Liczba świadectw przemysłowych.",
+            "eng": "Number of industry permissions."
+        },
+        "date": "1924",
+        "adm_state_date": "07.10.1925",
+        "standardization_comments": "Okręgi skarbowe w przypadku okręgów miejskich zostały zsumowane (np. Okręgi Kraków I, II i III traktowane są jak jeden powiat Kraków (miasto)). Okręgi Poznań Zachód i Poznań Wschód zostały zsumowane do powiatu Poznań. Okręgi lubelski i Lublin miasto zostały zsumowane do okręgu lubelskiego (powiat Lublin (miasto) nie istniał między 1922 i 1928 rokiem). Okręgi Huta Laura, Mysłowice i Katowice zostały zsumowane jako Katowice, okręgi Będziński, Sosnowiec i Zawierciański jako Będziński. Liczby pozwoleń z okręgów obejmujących dwa powiaty (Brześć n. B. i Kamień Koszyrski, Kobryń i Drohiczyn oraz Prużana i Kossów) zostały rozdzielone po połowie między oba powiaty.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1925-industry_permissions_ready_clean",
+        "category": "Industry Permissions",
+        "description": {
+            "pol": "Liczba świadectw przemysłowych.",
+            "eng": "Number of industry permissions."
+        },
+        "date": "1925",
+        "adm_state_date": "07.10.1925",
+        "standardization_comments": "Okręgi skarbowe w przypadku okręgów miejskich zostały zsumowane (np. Okręgi Kraków I, II i III traktowane są jak jeden powiat Kraków (miasto)). Okręgi Poznań Zachód i Poznań Wschód zostały zsumowane do powiatu Poznań. Okręgi lubelski i Lublin miasto zostały zsumowane do okręgu lubelskiego (powiat Lublin (miasto) nie istniał między 1922 i 1928 rokiem). Okręgi Huta Laura, Mysłowice i Katowice zostały zsumowane jako Katowice, okręgi Będziński, Sosnowiec i Zawierciański jako Będziński. Liczby pozwoleń z okręgów obejmujących dwa powiaty (Brześć n. B. i Kamień Koszyrski, Kobryń i Drohiczyn oraz Prużana i Kossów) zostały rozdzielone po połowie między oba powiaty.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1928-industry_permissions_ready_clean",
+        "category": "Industry Permissions",
+        "description": {
+            "pol": "Liczba świadectw przemysłowych.",
+            "eng": "Number of industry permissions."
+        },
+        "date": "1928",
+        "adm_state_date": "07.04.1928",
+        "standardization_comments": "Okręgi skarbowe w przypadku okręgów miejskich zostały zsumowane (np. Okręgi Kraków I, II i III traktowane są jak jeden powiat Kraków (miasto)). Ponieważ okręgi skarbowe istniały tylko dla części powiatów miejskich utworzonych 12.04.1928, wybrano datę po zniesieniu powiatów puckiego i wejherowskiego (ich dane zostały zsumowane w ramach powiatu morskiego) i przed 12.04.1928. Dane z urzędów skarbowych dla powiatów miejskich utworzonych po 12.04.1928 zsumowano w ramach powiatów istniejących przed 12.04.1928 (dane z okręgu Białystok (miasto) połączono z powiatem białostockim, z Sosnowca z powiatem będzińskim, z Lublina z powiatem lubelskim). Dane z okręgów Huta Laura (Siemianowice Śląskie) i Mysłowice zostały dodane do powiatu Katowice. Dane z Chełmży zostały przypisane do powiatu toruńskiego. Dane z miasta Kalisz oraz z powiatu kaliskiego potraktowano łącznie jako powiat kaliski. Dane z miasta Równe oraz z powiatu rówieńskiego zostały zsumowane w ramach powiatu rówieńskiego.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1935-industry_permissions_ready_clean",
+        "category": "Industry Permissions",
+        "description": {
+            "pol": "Liczba świadectw przemysłowych.",
+            "eng": "Number of industry permissions."
+        },
+        "date": "1935",
+        "adm_state_date": "07.10.1935",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.11.1927-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.11.1927",
+        "adm_state_date": "22.03.1928",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.06.1929-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.06.1929",
+        "adm_state_date": "30.06.1929",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.06.1930-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.06.1930",
+        "adm_state_date": "30.06.1930",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.06.1931-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.06.1931",
+        "adm_state_date": "30.06.1931",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.06.1932-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.06.1932",
+        "adm_state_date": "30.06.1932",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.06.1933-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.06.1933",
+        "adm_state_date": "30.06.1933",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.06.1934-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.06.1934",
+        "adm_state_date": "07.07.1934",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.06.1935-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.06.1935",
+        "adm_state_date": "30.06.1935",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.06.1936-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.06.1936",
+        "adm_state_date": "30.06.1936",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "30.06.1938-livestock_ready",
+        "category": "Livestock",
+        "description": {
+            "pol": "Inwentarz żywy.",
+            "eng": "Livestock."
+        },
+        "date": "30.06.1938",
+        "adm_state_date": "30.06.1938",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "08.1926_prices_ready",
+        "category": "Crops prices",
+        "description": {
+            "pol": "Ceny lokalne płacone producentom.",
+            "eng": "Crops local prices paid to producers."
+        },
+        "date": "08.1926",
+        "adm_state_date": "07.01.1927",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": "take_from_closest_centroid"
+    },
+    {
+        "dataset_id": "08.1928_prices_ready",
+        "category": "Crops prices",
+        "description": {
+            "pol": "Ceny lokalne płacone producentom.",
+            "eng": "Crops local prices paid to producers."
+        },
+        "date": "08.1928",
+        "adm_state_date": "07.01.1929",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": "take_from_closest_centroid"
+    },
+    {
+        "dataset_id": "08.1930_prices_ready",
+        "category": "Crops prices",
+        "description": {
+            "pol": "Ceny lokalne płacone producentom.",
+            "eng": "Crops local prices paid to producers."
+        },
+        "date": "08.1930",
+        "adm_state_date": "07.01.1931",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": "take_from_closest_centroid"
+    },
+    {
+        "dataset_id": "08.1931_prices_ready",
+        "category": "Crops prices",
+        "description": {
+            "pol": "Ceny lokalne płacone producentom.",
+            "eng": "Crops local prices paid to producers."
+        },
+        "date": "08.1931",
+        "adm_state_date": "07.10.1931",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": "take_from_closest_centroid"
+    },
+    {
+        "dataset_id": "08.1932_prices_ready",
+        "category": "Crops prices",
+        "description": {
+            "pol": "Ceny lokalne płacone producentom.",
+            "eng": "Crops local prices paid to producers."
+        },
+        "date": "08.1932",
+        "adm_state_date": "07.01.1933",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": "take_from_closest_centroid"
+    },
+    {
+        "dataset_id": "08.1934_prices_ready",
+        "category": "Crops prices",
+        "description": {
+            "pol": "Ceny lokalne płacone producentom.",
+            "eng": "Crops local prices paid to producers."
+        },
+        "date": "08.1934",
+        "adm_state_date": "07.01.1935",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": "take_from_closest_centroid"
+    },
+    {
+        "dataset_id": "08.1935_prices_ready",
+        "category": "Crops prices",
+        "description": {
+            "pol": "Ceny lokalne płacone producentom.",
+            "eng": "Crops local prices paid to producers."
+        },
+        "date": "08.1935",
+        "adm_state_date": "07.01.1936",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": "take_from_closest_centroid"
+    },
+    {
+        "dataset_id": "08.1936_prices_ready",
+        "category": "Crops prices",
+        "description": {
+            "pol": "Ceny lokalne płacone producentom.",
+            "eng": "Crops local prices paid to producers."
+        },
+        "date": "08.1936",
+        "adm_state_date": "07.01.1937",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": "take_from_closest_centroid"
+    }
+]

@@ -7,6 +7,7 @@ import shutil
 import geopandas as gpd
 import fiona
 import pandas as pd
+import numpy as np
 import os
 from collections import defaultdict
 import plotly.express as px
@@ -16,6 +17,7 @@ from data_models.adm_timespan import *
 from data_models.adm_unit import *
 from data_models.adm_state import *
 from data_models.adm_change import *
+from data_models.dataset_metadata import *
 
 from utils.helper_functions import load_config, standardize_df
 
@@ -30,6 +32,7 @@ class AdministrativeHistory():
         self.initial_region_list_path = config["initial_region_list_path"]
         self.initial_dist_list_path = config["initial_dist_list_path"]
         self.territories_path = config["territories_path"]
+        self.harmonized_data_metadata_path = config["harmonized_data_metadata_path"]
 
         self.load_geometries = load_geometries
 
@@ -63,6 +66,8 @@ class AdministrativeHistory():
 
         # Create states for the whole timespan
         self._create_history()
+
+        self.harmonize_data(date_to=(1938,4,1))
 
         # Initiate list with all states for which territory is loaded from GeoJSON
         self.states_with_loaded_territory = []
@@ -595,6 +600,135 @@ class AdministrativeHistory():
         print(f"✅ Successfully constructed conversion matrix in {execution_time:.2f} seconds.")
 
         return conversion_matrix
+    
+    def harmonize_data(self, date_to):
+        """
+        Load all data from the 'input/data_to_harmonize' folder, impute the missing data
+        according to the methods defined in the metadata json, and harmonize all data
+        to the borders for administrative date valid for the self.harmonize_to_date date.
+        """
+        start_time = time.time()
+        print("Harmonizing example data in the 'input/data_to_harmonize' folder.")
+
+        with open(self.harmonized_data_metadata_path, 'r', encoding='utf-8') as f:
+            harmonization_metadata_raw = json.load(f)
+
+        # Convert each dict to a DataTableMetadata instance
+        harmonization_metadata: List[DataTableMetadata] = [
+            DataTableMetadata(**metadata_dict) for metadata_dict in harmonization_metadata_raw
+        ]
+
+        # Sort by adm_state_date
+        harmonization_metadata.sort(key=lambda metadata: metadata.adm_state_date)
+
+        harmonize_from_dict = {} # Dict with adm_state.timespan.middle.date() as key and all datasets within the borders of the adminitrative state as keys.
+        for dataset_metadata_dict in harmonization_metadata:
+            currently_considered_adm_state = self.find_adm_state_by_date(dataset_metadata_dict.adm_state_date)
+            if str(currently_considered_adm_state) not in harmonize_from_dict:
+                harmonize_from_dict[str(currently_considered_adm_state)] = []
+            harmonize_from_dict[str(currently_considered_adm_state)].append(dataset_metadata_dict.dataset_id)
+
+        """Not finished yet..."""
+
+    def harmonize_csv_file(self, input_csv_path: str, output_csv_path: str, conv_matrix: Optional[pd.DataFrame] = None):
+        """
+        Harmonizes district-level numerical data from an input CSV to match the administrative
+        districts defined at self.harmonize_to_date. Saves the harmonized data to output_csv_path.
+
+        Args:
+            input_csv_path (str): Path to the input CSV. Must contain a 'District' column (or similar identifiable column).
+            output_csv_path (str): Path to save the harmonized output CSV.
+            conv_matrix (Optional[pd.DataFrame]): Optional precomputed conversion matrix. If not provided, one will be constructed.
+
+        Notes:
+            - The function auto-detects delimiters and handles missing values like 'X'.
+            - Only numeric columns are harmonized. Non-numeric columns are ignored.
+        """
+        import csv
+
+        # --- Step 1: Load data with delimiter detection ---
+        with open(input_csv_path, 'r', encoding='utf-8') as f:
+            sniffer = csv.Sniffer()
+            sample = f.read(2048)
+            delimiter = sniffer.sniff(sample).delimiter
+
+        df_input = pd.read_csv(input_csv_path, sep=delimiter, encoding='utf-8', dtype=str).replace("X", np.nan)
+
+        # Try to identify the district column
+        possible_district_cols = [col for col in df_input.columns if 'district' in col.lower()]
+        if not possible_district_cols:
+            raise ValueError("Could not identify the district column. Make sure one of the columns contains 'District' in its name.")
+        district_col = possible_district_cols[0]
+
+        df_input[district_col] = df_input[district_col].str.strip()
+        df_input.set_index(district_col, inplace=True)
+
+        # Convert numeric-looking columns with commas and missing values
+        for col in df_input.columns:
+            df_input[col] = df_input[col].str.replace(',', '.', regex=False)
+            try:
+                df_input[col] = df_input[col].astype(float)
+            except ValueError:
+                continue  # Skip non-numeric columns
+
+        numeric_cols = df_input.select_dtypes(include=[np.number]).columns.tolist()
+        if not numeric_cols:
+            raise ValueError("No numeric columns found to harmonize.")
+
+        # --- Step 2: Get or build the conversion matrix ---
+        if conv_matrix is None:
+            print(f"⏳ Building conversion matrix to {self.harmonize_to_date.date()}...")
+            date_from = self.find_adm_state_by_date_for_districts(df_input.index)
+            conv_matrix = self.construct_conversion_matrix(date_from=date_from, date_to=self.harmonize_to_date, verbose=True)
+
+        # --- Step 3: Diagnostics ---
+        input_districts = set(df_input.index)
+        matrix_districts = set(conv_matrix.index)
+
+        missing_in_input = matrix_districts - input_districts
+        missing_in_matrix = input_districts - matrix_districts
+
+        if missing_in_input:
+            print("⚠️ Districts in conversion matrix but NOT in input data:")
+            for dist in sorted(missing_in_input):
+                print(f"  - {dist}")
+
+        if missing_in_matrix:
+            print("⚠️ Districts in input data but NOT in conversion matrix:")
+            for dist in sorted(missing_in_matrix):
+                print(f"  - {dist}")
+
+        # Filter matrix and input to only overlapping districts
+        common_districts = list(input_districts & matrix_districts)
+        conv_matrix_filtered = conv_matrix.loc[common_districts]
+        df_input_filtered = df_input.loc[common_districts]
+
+        if conv_matrix_filtered.empty:
+            raise ValueError("No matching districts found between input data and conversion matrix.")
+        
+        # --- Step 4: Compute data completeness ---
+        # Count of non-NaN values used in each aggregation (optional)
+        data_mask = df_input_filtered[numeric_cols].notna().astype(float)
+        completeness_matrix = conv_matrix_filtered.T @ data_mask
+        print("📊 Data completeness per column:")
+        for col, completeness in completeness_matrix.mean().items():
+            print(f"  - {col}: {completeness:.2%}")
+
+        # --- Step 5: Harmonization ---
+        print("🔄 Applying harmonization...")
+        # Fill NaNs with 0s to avoid NaN propagation in dot product
+        df_input_filled = df_input_filtered[numeric_cols].fillna(0)
+        df_harmonized = conv_matrix_filtered.T @ df_input_filtered[numeric_cols]
+
+        # --- Step 6: Save to CSV ---
+        df_harmonized = df_harmonized.reset_index().rename(columns={'index': 'District'})
+        df_harmonized.to_csv(output_csv_path, index=False)
+        print(f"✅ Harmonized data saved to {output_csv_path}")
+
+
+
+        
+        
     
     def generate_harmonization_matrix(self, date_from, date_to):
         """
