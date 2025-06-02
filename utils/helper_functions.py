@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import json
 import os
 from datetime import datetime
@@ -231,3 +232,66 @@ def save_plot_to_html(fig, html_path, title, description, append=False):
         f.write(html_content)
 
     print(f"Plot {'appended to' if append else 'saved to'} {html_path}")
+
+def robust_read_csv(input_csv_path):
+    print(f"Attempting to read: {input_csv_path}")
+    
+    if not os.path.exists(input_csv_path):
+        print(f"File does not exist: {input_csv_path}")
+        raise ValueError(f"File {input_csv_path} not found.")
+
+    encodings_to_try = ['utf-8', 'cp1250', 'latin1']
+    encoding = None
+    df = None
+
+    for enc in encodings_to_try:
+        try:
+            df = pd.read_csv(
+                input_csv_path,
+                sep=';',
+                encoding=enc,
+                dtype=str,
+                on_bad_lines='warn'
+            ).replace("X", np.nan)
+            encoding = enc
+            break  # success
+        except UnicodeDecodeError:
+            print(...)
+            continue
+        except pd.errors.ParserError as e:
+            print(...)
+            continue
+        except Exception as e:
+            print(...)
+            continue
+
+
+    if df is None:
+        raise ValueError(f"Failed to read CSV with tried encodings: {encodings_to_try}")
+    
+    print(f"Successfully read CSV using encoding: {encoding}")
+
+    # Check for parse failure: all content lumped into one column
+    if len(df.columns) == 1 and ';' in df.columns[0]:
+        raise ValueError(f"CSV appears not to be parsed correctly. First column: {df.columns[0]}")
+       
+    # Try to identify the district column
+    if 'District' not in df.columns:
+        raise ValueError(
+            f"The input file '{input_csv_path}' must contain a 'District' column. "
+            f"Columns found: {df.columns.tolist()}"
+        )
+
+    # Define the 'District' column as index
+    df.set_index('District', inplace=True)
+
+    # Check for non-unique indices and raise error if found
+    if not df.index.is_unique:
+        duplicated_indices = df.index[df.index.duplicated(keep=False)].unique()
+        raise ValueError(
+            f"Input data contains non-unique district indices: {list(duplicated_indices)}. "
+            "Please ensure all districts are uniquely named in the input CSV."
+            )
+    
+    return df
+

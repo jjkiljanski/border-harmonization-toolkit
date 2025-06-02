@@ -12,6 +12,7 @@ class DataTableMetadata(BaseModel):
     standardization_comments: Optional[str] = ""
     harmonization_method: Literal["proportional_to_territory"]
     imputation_method: Optional[Literal["take_from_closest_centroid"]] = None
+    dict[str, dict[str, Any]]
 
     @model_validator(mode="before")
     @classmethod

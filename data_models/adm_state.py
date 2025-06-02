@@ -7,6 +7,7 @@ from data_models.adm_unit import *
 from utils.exceptions import ConsistencyError
 
 import matplotlib
+import matplotlib.patches as mpatches
 matplotlib.use("Agg")
 import geopandas as gpd
 from shapely.ops import unary_union
@@ -31,7 +32,28 @@ class AdministrativeState(BaseModel):
     timespan: Optional[TimeSpan] = None
     unit_hierarchy: Dict[Literal["HOMELAND", "ABROAD"], Dict[str, Dict[str, Any]]]
 
+    def to_label(self) -> str:
+        """
+        Generates a short, filesystem-safe string label representing the administrative state
+        based on its timespan.
+
+        Returns:
+            str: A string like 'adm_state_1922-07-26_to_1923-01-01'
+        """
+        # Ensure dates are in YYYY-MM-DD format
+        start_str = self.timespan.start.strftime("%Y-%m-%d") if self.timespan.start else "unknown_start"
+        end_str = self.timespan.end.strftime("%Y-%m-%d") if self.timespan.end else "unknown_end"
+
+        # Compose the label
+        label = f"adm_state_{start_str}_to_{end_str}"
+
+        return label
+
     def create_new(self, date):
+        """
+        Creates a new administrative state that is a copy of itself, the date passed as argument
+        as self.timespan.end and new_state.timespan.start.
+        """
         # Create a deep copy of itself
         new_state = self.model_copy(deep=True)
         # Define the end and origin of states
@@ -507,6 +529,16 @@ class AdministrativeState(BaseModel):
             fig = build_plot_from_layers(whole_map_layer, country_layer, district_layer, region_layer)
         else:
             fig = build_plot_from_layers(whole_map_layer, district_layer, region_layer)
+
+        # 🎨 Add custom legend
+        ax = fig.axes[0]  # Get the primary axis
+        legend_patches = [
+            mpatches.Patch(color="gray", label="No territory info"),
+            mpatches.Patch(color="orange", label="Fallback territory"),
+            mpatches.Patch(color="lightgreen", label="Deduced territory"),
+            mpatches.Patch(color="green", label="Loaded territory"),
+        ]
+        ax.legend(handles=legend_patches, loc="lower left", fontsize="medium", frameon=True)
 
         end_time = time.time()
         execution_time = end_time-start_time

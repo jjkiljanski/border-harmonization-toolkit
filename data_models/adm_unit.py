@@ -340,6 +340,7 @@ class DistState(UnitState):
     current_territory: Optional[Any] = None
     current_territory_info: Optional[str] = None
     territory_is_fallback: Optional[bool] = None
+    territory_is_deduced: Optional[bool] = False
 
     def _ter_union(self, ter_list: Union[List[BaseGeometry],List[str]], is_geometry = False):
         """
@@ -400,6 +401,7 @@ class DistState(UnitState):
                 next_state = self.next_change.next_states[0]
                 if next_state.current_territory_info is None:
                     next_state.current_territory_info = self.current_territory_info
+                    next_state.territory_is_deduced = True
                     if compute_geometries:
                         next_state.current_territory = self.current_territory
                     next_state.territory_is_fallback = False
@@ -457,6 +459,7 @@ class DistState(UnitState):
                         if compute_geometries:
                             unknown_before_territory = self._ter_difference(merged_territory_after, merged_territory_before, is_geometry=True)
                             state_with_ter_unknown.current_territory = unknown_before_territory
+                        state_with_ter_unknown.territory_is_deduced = True
                         state_with_ter_unknown.territory_is_fallback = False
                     else:
                         # The unknown territory can be deduced as the union of the known ones BEFORE the change minus
@@ -466,6 +469,7 @@ class DistState(UnitState):
                         if compute_geometries:
                             unknown_after_territory = self._ter_difference(merged_territory_before,merged_territory_after, is_geometry=True)
                             state_with_ter_unknown.current_territory = unknown_after_territory
+                            state_with_ter_unknown.territory_is_deduced = True
                         state_with_ter_unknown.territory_is_fallback = False
                     if verbose:
                         print(f"Deduced territory: {state_with_ter_unknown.current_name}: {state_with_ter_unknown.current_territory_info}.")
@@ -480,6 +484,7 @@ class DistState(UnitState):
                     previous_state.current_territory_info = self.current_territory_info
                     if compute_geometries:
                         previous_state.current_territory = self.current_territory
+                    previous_state.territory_is_deduced = True
                     previous_state.territory_is_fallback = False
                     previous_state.spread_territory_info(compute_geometries=compute_geometries)
             else:
@@ -537,6 +542,7 @@ class DistState(UnitState):
                         if compute_geometries:
                             unknown_before_territory = self._ter_difference(merged_territory_after,merged_territory_before, is_geometry=True)
                             state_with_ter_unknown.current_territory = unknown_before_territory
+                        state_with_ter_unknown.territory_is_deduced = True
                         state_with_ter_unknown.territory_is_fallback = False
                     else:
                         # The unknown territory can be deduced as the union of the known ones BEFORE the change minus
@@ -546,6 +552,7 @@ class DistState(UnitState):
                         if compute_geometries:
                             unknown_after_territory = self._ter_difference(merged_territory_before,merged_territory_after, is_geometry=True)
                             state_with_ter_unknown.current_territory = unknown_after_territory
+                        state_with_ter_unknown.territory_is_deduced = True
                         state_with_ter_unknown.territory_is_fallback = False
 
                     if verbose:
@@ -635,7 +642,9 @@ class DistrictRegistry(UnitRegistry):
         # Extract geometries and district names
         geometries = [state.current_territory for state, _ in states_and_names if state.current_territory is not None]
         colors = [
-            "green" if not state.territory_is_fallback else "orange"
+            "green" if not state.territory_is_fallback and not state.territory_is_deduced
+            else "lightgreen" if not state.territory_is_fallback and state.territory_is_deduced
+            else "orange"
             for state, _ in states_and_names
             if state.current_territory is not None
         ]

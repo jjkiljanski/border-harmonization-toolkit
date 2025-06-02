@@ -95,9 +95,11 @@ def plot_dist_ter_info_history(dist_registry, start_date, end_date):
         for state in district.states:
             if state.current_territory_info is not None:
                 if state.territory_is_fallback:
-                    color = "#ff7f0e"  # orange
+                    color = "#FFA500"  # orange
+                elif state.territory_is_deduced:
+                    color = "#90EE90"
                 else:
-                    color = "#2ca02c"  # green
+                    color = "#008000"  # green
             else:
                 color = "#a9a9a9"  # grey
 

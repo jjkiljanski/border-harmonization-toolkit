@@ -5,12 +5,16 @@
     "initial_dist_list_path": "input/initial_dist_state_list.json",
     "adm_states_output_path": "output/adm_states",
     "territories_path": "input/territories/",
-    "harmonized_data_metadata_path": "input/data_to_harmonize/metadata.json",
+    "data_to_harmonize_metadata_path": "input/data_to_harmonize/metadata.json",
+    "data_harmonization_input_folder": "input/data_to_harmonize/",
+    "data_harmonization_output_folder": "output/harmonized_data/",
+    "harmonization_errors_output_path": "output/harmonized_data/harmonization_errors.txt",
+    "harmonization_metadata_output_path": "output/harmonized_data/harmonization_metadata.json",
     "global_timespan": {
         "start": "19-02-1921",
         "end": "01-09-1939"
     },
     "territories_crs": "EPSG:4326",
     "language": "eng",
-    "harmonize_to": "1.04.1938"
+    "harmonize_to_date": "01.04.1938"
 }
