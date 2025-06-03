@@ -5,7 +5,6 @@ from pydantic import parse_obj_as, ValidationError
 from typing import List
 import shutil
 import geopandas as gpd
-import fiona
 import pandas as pd
 import numpy as np
 import os
@@ -279,6 +278,8 @@ class AdministrativeHistory():
             print("Loading territories...")
         else:
             print(f"Loading territories information (metadata only)...")
+            # Import fiona for looking into the geometry files without loading them
+            import fiona
         # Initialize list to store individual territories GeoDataFrames
         gdf_list = []
 
