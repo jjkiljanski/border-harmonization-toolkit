@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 from typing import Union, Optional, Literal, Dict, Any, Tuple
 from datetime import datetime
+import sys
+
+# Add the project root directory to sys.path to ensure that imports work
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from data_models.adm_timespan import TimeSpan
 from data_models.adm_unit import *
