@@ -4,9 +4,11 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 from datetime import datetime
-import io
+import json
 import os
 
+from typing import List
+from data_models.dataset_metadata import DataTableMetadata
 from core.core import AdministrativeHistory
 from utils.helper_functions import load_config, standardize_df, load_uploaded_csv
 
@@ -107,6 +109,14 @@ elif selected_database == "Economic Database":
             except Exception as e:
                 print(f"Failed to load {filename}: {e}")
 
+    # # Load harmonization metadata
+    # with open(harmonized_data_dir+'/harmonization_metadata.json', 'r', encoding='utf-8') as f:
+    #     harmonization_metadata_raw = json.load(f)
+    #     # Convert each dict to a DataTableMetadata instance
+    #     harmonization_data_metadata: List[DataTableMetadata] = [
+    #         DataTableMetadata(**metadata_dict) for metadata_dict in harmonization_metadata_raw
+    #     ]
+
     # Get base GeoDataFrame (with geometries and name_id)
     gdf = administrative_history.dist_registry._plot_layer(administrative_history.harmonize_to_date)
 
@@ -142,6 +152,12 @@ elif selected_database == "Economic Database":
 
     if selected_category is None:
         st.write("This streamlit view is only preliminary and will be removed in the future. In the later phase of the project, the python layer will serve only as a data standardization and injection layer to an underlying SQL database.")
+
+        # n_data_points = [col.n_not_na for metadata_dataset in harmonization_data_metadata for col in metadata_dataset.columns]
+        # n_na = [col.n_na for metadata_dataset in harmonization_data_metadata for col in metadata_dataset.columns]
+        # st.write(f"### Total number of data points: {n_data_points+n_na}. Non-missing: {n_data_points}/{n_data_points+n_na} ({(n_data_points/(n_data_points+n_na))*100}%)")
+        st.write(f"### Total number of data points: {all_data_df.size} ({all_data_df.shape[1]} standardized datasets for {all_data_df.shape[0]} districts).")
+
         st.write("### All datasets stored in the harmonized csv files.")
         st.write(datasets_dict)
     else:

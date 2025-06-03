@@ -1,7 +1,7 @@
 [
     {
         "dataset_id": "9.12.1931-occupation_central_eastern_voivodships_ready_clean",
-        "category": "Census 1931",
+        "category": "Census 1931 - occupations",
         "description": {
             "pol": "Struktura zatrudnienia wg. spisu powszechnego 1931 (stan na 9.12.1931). Aktywni zawodowo.",
             "eng": "Employment structure according to the 1931 national census (as of December 9, 1931). Economically active population."
@@ -14,7 +14,7 @@
     },
     {
         "dataset_id": "9.12.1931-occupation_southern_western_voivodships_ready_clean",
-        "category": "Census 1931",
+        "category": "Census 1931 - occupations",
         "description": {
             "pol": "Struktura zatrudnienia wg. spisu powszechnego 1931 (stan na 9.12.1931). Aktywni zawodowo.",
             "eng": "Employment structure according to the 1931 national census (as of December 9, 1931). Economically active population."
@@ -22,6 +22,58 @@
         "date": "09.12.1931",
         "adm_state_date": "01.08.1934",
         "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw południowych i zachodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1921-occupation_ready_clean",
+        "category": "Census 1921 - occupations",
+        "description": {
+            "pol": "Struktura zatrudnienia wg. spisu powszechnego 1921 (stan na 30.09.1921). Aktywni i pasywni zawodowo (?).",
+            "eng": "Employment structure according to the 1931 national census (as of September 30, 1921). Economically active and passive population (?)."
+        },
+        "date": "30.09.1921",
+        "adm_state_date": "30.07.1921",
+        "standardization_comments": "Brakuje danych dla powiatu warszawskiego (jest tylko Warszawa). Podobnie może być w przypadku innych miast.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1921-ethnicity_ready_clean",
+        "category": "Census 1921 - ethnicity",
+        "description": {
+            "pol": "Struktura narodowościowa wg. spisu powszechnego 1921 (stan na 30.09.1921).",
+            "eng": "Ethnicity structure according to the 1931 national census (as of September 30, 1921)."
+        },
+        "date": "30.09.1921",
+        "adm_state_date": "30.07.1921",
+        "standardization_comments": "Brakuje danych dla powiatu warszawskiego (jest tylko Warszawa). Podobnie może być w przypadku innych miast.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1921-total_population_ready_clean",
+        "category": "Census 1921 - total population",
+        "description": {
+            "pol": "Całkowita liczba ludności wg. spisu powszechnego 1921 (stan na 30.09.1921).",
+            "eng": "Total population according to the 1931 national census (as of September 30, 1921)."
+        },
+        "date": "30.09.1921",
+        "adm_state_date": "30.07.1921",
+        "standardization_comments": "Brakuje danych dla powiatu warszawskiego (jest tylko Warszawa). Podobnie może być w przypadku innych miast.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null
+    },
+    {
+        "dataset_id": "1921-religion_ready_clean",
+        "category": "Census 1921 - religion",
+        "description": {
+            "pol": "Struktura wyznaniowa wg. spisu powszechnego 1921 (stan na 30.09.1921).",
+            "eng": "Confessional population structure according to the 1931 national census (as of September 30, 1921)."
+        },
+        "date": "30.09.1921",
+        "adm_state_date": "30.07.1921",
+        "standardization_comments": "Brakuje danych dla powiatu warszawskiego (jest tylko Warszawa). Podobnie może być w przypadku innych miast.",
         "harmonization_method": "proportional_to_territory",
         "imputation_method": null
     },
