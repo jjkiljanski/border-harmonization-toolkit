@@ -15,8 +15,6 @@ from shapely.geometry.base import BaseGeometry
 
 from collections import Counter
 
-# Add the project root directory to sys.path to ensure that imports work
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from data_models.adm_timespan import TimeSpan
 

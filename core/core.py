@@ -13,8 +13,7 @@ from collections import defaultdict
 import plotly.express as px
 import time
 
-# Add the project root directory to sys.path to ensure that imports work
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 
 from data_models.adm_timespan import *
 from data_models.adm_unit import *
