@@ -8,3 +8,9 @@ pydantic==2.11.5
 pytest==8.3.5
 Shapely==2.1.1
 streamlit==1.45.0
+
+
+# Optional: Required only for shapefile metadata inspection
+# Needed for AdministrativeHistory initiated with load_geometries=True
+# Install with: pip install fiona
+# fiona>=1.9.0

@@ -6,8 +6,13 @@ import pandas as pd
 from datetime import datetime
 import json
 import os
+import sys
 
 from typing import List
+
+# Add the project root directory to sys.path to ensure that imports work
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from data_models.dataset_metadata import DataTableMetadata
 from core.core import AdministrativeHistory
 from utils.helper_functions import load_config, standardize_df, load_uploaded_csv
