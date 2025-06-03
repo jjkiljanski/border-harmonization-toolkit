@@ -279,7 +279,11 @@ class AdministrativeHistory():
         else:
             print(f"Loading territories information (metadata only)...")
             # Import fiona for looking into the geometry files without loading them
-            import fiona
+            try:
+                import fiona
+            except ImportError:
+                print("The `fiona` package is required for reading shapefile metadata. Please install it locally with `pip install fiona`.")
+                return None
         # Initialize list to store individual territories GeoDataFrames
         gdf_list = []
 
