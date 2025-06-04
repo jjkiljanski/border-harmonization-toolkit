@@ -18,8 +18,7 @@ from data_models.adm_unit import *
 from data_models.adm_state import *
 from data_models.adm_change import *
 from data_models.dataset_metadata import *
-
-from data_processing.imputation_methods import *
+from data_models.harmonization_config import *
 
 from utils.helper_functions import load_config, standardize_df, robust_read_csv
 from utils.exceptions import TerritoryNotLoadedError
@@ -36,6 +35,7 @@ class AdministrativeHistory():
         self.initial_dist_list_path = config["initial_dist_list_path"]
         self.territories_path = config["territories_path"]
         self.data_to_harmonize_metadata_path = config["data_to_harmonize_metadata_path"]
+        self.harmonization_config_path = config["harmonization_config_path"]
         self.harmonize_to_date = datetime.strptime(config["harmonize_to_date"], "%d.%m.%Y")
         self.data_harmonization_input_folder = config["data_harmonization_input_folder"]
         self.data_harmonization_output_folder = config["data_harmonization_output_folder"]
@@ -455,11 +455,12 @@ class AdministrativeHistory():
     
     def _load_harmonization_metadata(self):
         """
-        Loads harmonization metadata from JSON stored in self.data_to_harmonize_metadata_path path.
+        Loads datasets metadata and harmonization config from JSONs stored in relevant paths.
         """
+        ################## Load datasets metadata ###################
         start_time = time.time()
-        print(f"Loading harmonization metadata...")
-        # Load harmonization metadata:
+        print(f"Loading metadata of the datasets that will be harmonized...")
+        # Load harmonization metadata from JSON:
         with open(self.data_to_harmonize_metadata_path, 'r', encoding='utf-8') as f:
             harmonization_metadata_raw = json.load(f)
         # Convert each dict to a DataTableMetadata instance
@@ -472,7 +473,21 @@ class AdministrativeHistory():
         # Print success message
         end_time = time.time()
         execution_time = end_time - start_time
-        print(f"✅ Successfully loaded harmonization metadata in {execution_time:.2f} seconds.")
+        print(f"✅ Successfully loaded harmonization datasets metadata in {execution_time:.2f} seconds.")
+
+        ################# Load harmonization config ##################
+        start_time = time.time()
+        print(f"Loading harmonization config...")
+        # Load harmonization config from JSON:
+        with open(self.harmonization_config_path, 'r', encoding='utf-8') as f:
+            harmonization_config_raw = json.load(f)
+        # Convert each dict to a DataTableMetadata instance
+        self.harmonization_config = HarmonizationConfig(**harmonization_config_raw)
+
+        # Print success message
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ Successfully loaded harmonization config in {execution_time:.2f} seconds.")
 
     def _construct_conversion_dict(self, date_from: datetime, date_to: datetime, verbose: bool = False):
         """
@@ -874,18 +889,26 @@ class AdministrativeHistory():
         for col, completeness in column_completeness.items():
             print(f"  - {col}: {completeness:.2%}")
 
-        # --- Step 6: Imputation ---
+        # --- Step 5: Imputation ---
         if imputation_method is not None:
-            self.impute_data(df=df_input_filtered, adm_state_date=adm_state_date_from, method = imputation_method, )
+            df_input_filtered = self.impute_data(df=df_input_filtered, adm_state_date=adm_state_date_from, numeric_cols=numeric_cols, method = imputation_method)
+
+            # Compute the completeness after imputation
+            column_completeness_after_imputation = df_input_filtered[numeric_cols].notna().mean()
+            column_n_not_na_after_imputation = df_input_filtered[numeric_cols].notna().sum()
+            column_n_na_after_imputation = df_input_filtered[numeric_cols].isna().sum()
+            print("📊 Data completeness of all numeric columns found:")
+            for col, completeness in column_completeness.items():
+                print(f"  - {col}: {completeness:.2%}")
 
         # --- Step 6: Harmonization ---
         print("🔄 Applying harmonization...")
         # Fill NaNs with 0s to avoid NaN propagation in dot product
         df_input_filled = df_input_filtered[numeric_cols].fillna(0)
         df_harmonized = conv_matrix_filtered.T @ df_input_filled[numeric_cols]
+        df_harmonized = df_harmonized.reset_index().rename(columns={'index': 'District'})
 
         # --- Step 7: Save to CSV ---
-        df_harmonized = df_harmonized.reset_index().rename(columns={'index': 'District'})
         df_harmonized.to_csv(output_csv_path, index=False)
         end_time = time.time()
         execution_time = end_time - start_time
@@ -896,13 +919,16 @@ class AdministrativeHistory():
             harmonization_metadata["columns"][col]["completeness"] = column_completeness[col]
             harmonization_metadata["columns"][col]["n_na"] = column_n_na[col]
             harmonization_metadata["columns"][col]["n_not_na"] = column_n_not_na[col]
+
+            if imputation_method is not None:
+                harmonization_metadata["columns"][col]["completeness_after_imputation"] = column_completeness_after_imputation[col]
+                harmonization_metadata["columns"][col]["n_na_after_imputation"] = column_n_na_after_imputation[col]
+                harmonization_metadata["columns"][col]["n_not_na_after_imputation"] = column_n_not_na_after_imputation[col]
         print(f"✅ Successfully harmonized '{input_csv_path}' and saved to '{output_csv_path}' in {execution_time:.2f} seconds")       
 
         return harmonization_metadata
-    
-    import pandas as pd
 
-    def impute_data(self, df: pd.DataFrame, adm_state_date: datetime, method: str) -> pd.DataFrame:
+    def impute_data(self, df: pd.DataFrame, adm_state_date: datetime, numeric_cols: List[str], method: str) -> pd.DataFrame:
         """
         Imputes missing data in a DataFrame using the specified method.
 
@@ -921,10 +947,25 @@ class AdministrativeHistory():
         elif method == "mode":
             return df.fillna(df.mode().iloc[0])
         elif method == "take_from_closest_centroid":
-            return take_from_closest_centroid(administrative_history=self, df: df, adm_state_date=adm_state_date)
+            from data_processing.imputation import take_from_closest_centroid
+            return take_from_closest_centroid(administrative_history=self, df=df, numeric_cols=numeric_cols, adm_state_date=adm_state_date)
         else:
             raise ValueError(f"Unknown imputation method: {method}")
+        
+    def post_organization_reorganize_datasets(self):
+        """
+        Reorganizes datasets (e.g. sums them up to one) after the harmonization of all data.
+        Takes arguments defined in self.harmonization_config and reorganized generated data, as well as metadata.
 
+        Parameters:
+
+        Returns:
+
+        """
+        for method_dict in self.harmonization_config.post_harmonization_reorganize_datasets:
+            if method_dict.method_name == "sum_up_datasets":
+                from data_processing.post_processing import sum_up_datasets
+                sum_up_datasets(self, method_dict.arguments)
         
     def standardize_address(self):
         """

@@ -83,7 +83,7 @@
         "source": "Kwartalnik Statystyczny Tom II Zeszyt 1 Rok 1925",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DNGG45F3IK33B4XREYF367KTTRMAG4.pdf",
         "page": "133",
-        "pdf-page": "143",
+        "pdf_page": "143",
         "table": "3. Powierzchnia zasiana i ogólny zbiór według powiatów. Pięć najważniejszych ziemiopłodów. Rok 1923/1924.",
         "description": {
             "pol": "Powierzchnia upraw 5 najważniejszych ziemiopłodów.",
@@ -101,7 +101,7 @@
         "source": "Kwartalnik Statystyczny Tom II Zeszyt 1 Rok 1925",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DNGG45F3IK33B4XREYF367KTTRMAG4.pdf",
         "page": "133",
-        "pdf-page": "143",
+        "pdf_page": "143",
         "table": "3. Powierzchnia zasiana i ogólny zbiór według powiatów. Pięć najważniejszych ziemiopłodów. Rok 1923/1924.",
         "description": {
             "pol": "Zbiory 5 najważniejszych ziemiopłodów.",
@@ -119,7 +119,7 @@
         "source": "Kwartalnik Statystyczny Tom II Zeszyt 1 Rok 1925",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DNGG45F3IK33B4XREYF367KTTRMAG4.pdf",
         "page": 141,
-        "pdf-page": 151,
+        "pdf_page": 151,
         "table": "5. Buraki cukrowe. Rok 1923/1924",
         "description": {
             "pol": "Zbiory i powierzchnia upraw buraków cukrowych.",
@@ -136,7 +136,7 @@
         "source": "Kwartalnik Statystyczny Tom IV Zeszyt 1 Rok 1927",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/LN77QKXCYYXK63Q2IN54IMXPRK1RD5.pdf",
         "page": 147,
-        "pdf-page": 155,
+        "pdf_page": 155,
         "table": "3. Powierzchnia zasiana i ogólny zbiór według powiatów. Pięć ważniejszych ziemiopłodów. Rok 1925/1926",
         "description": {
             "pol": "Powierzchnia upraw 5 najważniejszych ziemiopłodów.",
@@ -153,7 +153,7 @@
         "source": "Kwartalnik Statystyczny Tom IV Zeszyt 1 Rok 1927",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/LN77QKXCYYXK63Q2IN54IMXPRK1RD5.pdf",
         "page": 147,
-        "pdf-page": 155,
+        "pdf_page": 155,
         "table": "3. Powierzchnia zasiana i ogólny zbiór według powiatów. Pięć ważniejszych ziemiopłodów. Rok 1925/1926",
         "description": {
             "pol": "Zbiory 5 najważniejszych ziemiopłodów.",
@@ -171,7 +171,7 @@
         "source": "Kwartalnik Statystyczny Tom IV Zeszyt 1 Rok 1927",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/LN77QKXCYYXK63Q2IN54IMXPRK1RD5.pdf",
         "page": 155,
-        "pdf-page": 163,
+        "pdf_page": 163,
         "table": "5. Obszar plantacyj buraków cukrowych. Rok 1925/1926",
         "description": {
             "pol": "Przeciętny zbiór buraków cukrowych.",
@@ -188,7 +188,7 @@
         "source": "Kwartalnik Statystyczny Tom VI Zeszyt 2 Rok 1929",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/5PS1QH3PHI177F1H8XQ89U9KCBC9SH.pdf",
         "page": 911,
-        "pdf-page": 408,
+        "pdf_page": 408,
         "table": "3. Powierzchnia zasiana według powiatów. 1927/1928",
         "description": {
             "pol": "Powierzchnia upraw ziemiopłodów.",
@@ -206,7 +206,7 @@
         "source": "Kwartalnik Statystyczny Tom VI Zeszyt 2 Rok 1929",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/5PS1QH3PHI177F1H8XQ89U9KCBC9SH.pdf",
         "page": 926,
-        "pdf-page": 423,
+        "pdf_page": 423,
         "table": "4. Zbiór według powiatów. 1927/1928",
         "description": {
             "pol": "Zbiory 6 najważniejszych ziemiopłodów.",
@@ -228,7 +228,7 @@
         "source": "Kwartalnik Statystyczny Tom VIII Zeszyt 2 Rok 1931",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/HEU2RGSQUJ3UPVUR8VFQQ3VNB74P6L.pdf",
         "page": 444,
-        "pdf-page": 37,
+        "pdf_page": 37,
         "table": "9. Zbiory głównych ziemiopłodów według powiatów. 1930.",
         "unit": "quintal",
         "date": "30.08.1930",
@@ -242,7 +242,7 @@
         "source": "Statystyka Rolnicza 1931 (Tom I) (Warszawa 1932)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/8IXVBJ5DES5338Y9T16LEAEU2MGP3F.pdf",
         "page": 42,
-        "pdf-page": 44,
+        "pdf_page": 44,
         "table": "10. Zbiory głównych ziemiopłodów według powiatów. 1931.",
         "description": {
             "pol": "Zbiory 6 najważniejszych ziemiopłodów.",
@@ -260,7 +260,7 @@
         "source": "Statystyka Rolnicza 1931-1932 (Tom II) (Warszawa 1933)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/PU8HTQ6C9KE2U986FPPEGU44G6MRKP.pdf",
         "page": 45,
-        "pdf-page": 64,
+        "pdf_page": 64,
         "table": "7. Powierzchnia upraw i zbiory według powiatów. 1932.",
         "description": {
             "pol": "Powierzchnia upraw ziemiopłodów.",
@@ -278,7 +278,7 @@
         "source": "Statystyka Rolnicza 1931-1932 (Tom II) (Warszawa 1933)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/PU8HTQ6C9KE2U986FPPEGU44G6MRKP.pdf",
         "page": 45,
-        "pdf-page": 64,
+        "pdf_page": 64,
         "table": "7. Powierzchnia upraw i zbiory według powiatów. 1932.",
         "description": {
             "pol": "Zbiory ziemiopłodów.",
@@ -297,7 +297,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/XR7QGU6DIR588G31LYPPK1E15QTLP3.pdf",
         "table": "11. Powierzchnia zasiewów i zbiory według powiatów. 1934.",
         "page": 18,
-        "pdf-page": 27,
+        "pdf_page": 27,
         "description": {
             "pol": "Powierzchnia upraw ziemiopłodów.",
             "eng": "Cultivated area of crops."
@@ -315,7 +315,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/XR7QGU6DIR588G31LYPPK1E15QTLP3.pdf",
         "table": "11. Powierzchnia zasiewów i zbiory według powiatów. 1934.",
         "page": 18,
-        "pdf-page": 27,
+        "pdf_page": 27,
         "description": {
             "pol": "Zbiory ziemiopłodów.",
             "eng": "Harvest of crops."
@@ -333,7 +333,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/S74SF8XSI7XED4RS3F5XFKE1VK9RET.pdf",
         "table": "13. Powierzchnia zasiewów i zbiory według powiatów. 1935. (fragment)",
         "page": 24,
-        "pdf-page": 33,
+        "pdf_page": 33,
         "description": {
             "pol": "Zbiory ziemiopłodów.",
             "eng": "Harvest of crops."
@@ -351,7 +351,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/I2M57E4L5BF7XB7ENAVGR1XI7THFQJ.pdf",
         "table": "13. Powierzchnia zasiewów i zbiory według powiatów. 1936. (fragment)",
         "page": 26,
-        "pdf-page": 35,
+        "pdf_page": 35,
         "description": {
             "pol": "Powierzchnia upraw ziemiopłodów.",
             "eng": "Cultivated area of crops."
@@ -369,7 +369,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/I2M57E4L5BF7XB7ENAVGR1XI7THFQJ.pdf",
         "table": "13. Powierzchnia zasiewów i zbiory według powiatów. 1936. (fragment)",
         "page": 26,
-        "pdf-page": 35,
+        "pdf_page": 35,
         "description": {
             "pol": "Zbiory ziemiopłodów.",
             "eng": "Harvest of crops."
@@ -387,7 +387,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/2XRA53RJPRF6H6MPQD1F4CBKAMMPHD.pdf",
         "table": "12. Powierzchnia zasiewów i zbiory według powiatów. 1936. (fragment)",
         "page": 24,
-        "pdf-page": 32,
+        "pdf_page": 32,
         "description": {
             "pol": "Powierzchnia upraw ziemiopłodów.",
             "eng": "Cultivated area of crops."
@@ -405,7 +405,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/2XRA53RJPRF6H6MPQD1F4CBKAMMPHD.pdf",
         "table": "12. Powierzchnia zasiewów i zbiory według powiatów. 1936. (fragment)",
         "page": 24,
-        "pdf-page": 32,
+        "pdf_page": 32,
         "description": {
             "pol": "Zbiory ziemiopłodów.",
             "eng": "Harvest of crops."
@@ -422,7 +422,7 @@
         "source": "Kwartalnik Statystyczny Tom VIII Zeszyt 2 Rok 1931",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/HEU2RGSQUJ3UPVUR8VFQQ3VNB74P6L.pdf",
         "page": 421,
-        "pdf-page": 14,
+        "pdf_page": 14,
         "table": "1. Użytkowanie gruntów. Powierzchnia w ha. 1930. (fragment).",
         "description": {
             "pol": "Powierzchnia lasów.",
@@ -442,7 +442,7 @@
         "table": "4. ZAJĘCIA PRZEMYSŁOWE, HANDEL JARMARCZNY I KARTY REJESTRACYJNE.",
         "comment": "W skanie w podanym linku brakuje kluczowych stron (stan na 04.06.2025). Dane przepisane z innego skanu, niedostępnego publicznie.",
         "page": 46,
-        "pdf-page": null,
+        "pdf_page": null,
         "description": {
             "pol": "Liczba zezwoleń na zajęcia przemysłowe.",
             "eng": "Number of industrial occupations permissions."
@@ -461,7 +461,7 @@
         "table": "4. ZAJĘCIA PRZEMYSŁOWE, HANDEL JARMARCZNY I KARTY REJESTRACYJNE.",
         "comment": "W skanie w podanym linku brakuje kluczowych stron (stan na 04.06.2025). Dane przepisane z innego skanu, niedostępnego publicznie.",
         "page": 46,
-        "pdf-page": null,
+        "pdf_page": null,
         "description": {
             "pol": "Liczba zezwoleń na zajęcia przemysłowe.",
             "eng": "Number of industrial occupations permissions."
@@ -479,7 +479,7 @@
         "link": "https://wbc.poznan.pl/dlibra/publication/641779/edition/552149/content",
         "table": "4. ZAJĘCIA PRZEMYSŁOWE, HANDEL JARMARCZNY I KARTY REJESTRACYJNE.",
         "page": 91,
-        "pdf-page": 102,
+        "pdf_page": 102,
         "description": {
             "pol": "Liczba zezwoleń na zajęcia przemysłowe.",
             "eng": "Number of industrial occupations permissions."
@@ -501,7 +501,7 @@
         "table": "3. PRZEDSIĘBIORSTWA PRZEMYSŁOWE",
         "comment": "W skanie w podanym linku brakuje kluczowych stron (stan na 04.06.2025). Dane przepisane z innego skanu, niedostępnego publicznie.",
         "page": 36,
-        "pdf-page": null,
+        "pdf_page": null,
         "date": "01.01.1924",
         "adm_state_date": "07.10.1925",
         "standardization_comments": "Okręgi skarbowe w przypadku okręgów miejskich zostały zsumowane (np. Okręgi Kraków I, II i III traktowane są jak jeden powiat Kraków (miasto)). Okręgi Poznań Zachód i Poznań Wschód zostały zsumowane do powiatu Poznań. Okręgi lubelski i Lublin miasto zostały zsumowane do okręgu lubelskiego (powiat Lublin (miasto) nie istniał między 1922 i 1928 rokiem). Okręgi Huta Laura, Mysłowice i Katowice zostały zsumowane jako Katowice, okręgi Będziński, Sosnowiec i Zawierciański jako Będziński. Liczby pozwoleń z okręgów obejmujących dwa powiaty (Brześć n. B. i Kamień Koszyrski, Kobryń i Drohiczyn oraz Prużana i Kossów) zostały rozdzielone po połowie między oba powiaty.",
@@ -516,7 +516,7 @@
         "table": "3. PRZEDSIĘBIORSTWA PRZEMYSŁOWE",
         "comment": "W skanie w podanym linku brakuje kluczowych stron (stan na 04.06.2025). Dane przepisane z innego skanu, niedostępnego publicznie.",
         "page": 36,
-        "pdf-page": null,
+        "pdf_page": null,
         "description": {
             "pol": "Liczba świadectw przemysłowych.",
             "eng": "Number of industry permissions."
@@ -534,7 +534,7 @@
         "link": "https://wbc.poznan.pl/dlibra/publication/641779/edition/552149/content",
         "table": "3. PRZEDSIĘBIORSTWA PRZEMYSŁOWE",
         "page": 86,
-        "pdf-page": 97,
+        "pdf_page": 97,
         "description": {
             "pol": "Liczba świadectw przemysłowych.",
             "eng": "Number of industry permissions."
@@ -551,7 +551,7 @@
         "source": "Statystyka Zakładów Przemysłowych i Handlowych. 1935. Warszawa 1938. Główny Urząd Statystyczny.",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/BPY7NTM2URVHF7DJ4QL9AU7K8CGPN8.pdf",
         "page": 6,
-        "pdf-page": 13,
+        "pdf_page": 13,
         "table": "3. Liczba zakładów przemysłowych według rodzajów przemysłu i powiatów. 1935.",
         "description": {
             "pol": "Liczba świadectw przemysłowych.",
@@ -571,7 +571,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/KVPDS2VFNCV4E5N479967L2T518KIF.pdf",
         "table": "1b. Inwentarz żywy. Spis 30.XI 1927 (fragment)",
         "page": 610,
-        "pdf-page": 284,
+        "pdf_page": 284,
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -589,7 +589,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/3BPEMS4ERIRVL5UDUCG3ECQDQM7RXA.pdf",
         "table": "2. Inwentarz żywy. Według powiatów. Rejestracja 30.VI 1929 (fragment)",
         "page": 496,
-        "pdf-page": 519,
+        "pdf_page": 519,
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -607,7 +607,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/HEU2RGSQUJ3UPVUR8VFQQ3VNB74P6L.pdf",
         "table": "2. Inwentarz żywy. Rejestracja z dn. 30. VI 1930. Według powiatów (fragment)",
         "page": 466,
-        "pdf-page": 59,
+        "pdf_page": 59,
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -625,7 +625,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/8IXVBJ5DES5338Y9T16LEAEU2MGP3F.pdf",
         "table": "2. Inwentarz żywy według powiatów. Rejestracja z dn. 30.VI 1931. (fragment)",
         "page": 62,
-        "pdf-page": 64,
+        "pdf_page": 64,
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -643,7 +643,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/PU8HTQ6C9KE2U986FPPEGU44G6MRKP.pdf",
         "table": "2.Inwentarz żywy według powiatów. Rejestracja z dn. 30.VI 1932. (fragment)",
         "page": 102,
-        "pdf-page": 135,
+        "pdf_page": 135,
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -661,7 +661,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/T5L7T9RD37AMQUI8XJ1JK5SG25Y29F.pdf",
         "table": "2.Inwentarz żywy według powiatów. Rejestracja z dn. 30.VI 1933. (fragment)",
         "page": 82,
-        "pdf-page": 91,
+        "pdf_page": 91,
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -679,7 +679,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/XR7QGU6DIR588G31LYPPK1E15QTLP3.pdf",
         "table": "2. Inwentarz żywy według powiatów. Rejestracja z dn. 30.VI 1934. (fragment)",
         "page": 58,
-        "pdf-page": 67,
+        "pdf_page": 67,
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -697,7 +697,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/S74SF8XSI7XED4RS3F5XFKE1VK9RET.pdf",
         "table": "2. Inwentarz żywy według powiatów. Rejestracja z dn. 30.VI 1935. (fragment)",
         "page": 64,
-        "pdf-page": 73,
+        "pdf_page": 73,
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -715,7 +715,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/I2M57E4L5BF7XB7ENAVGR1XI7THFQJ.pdf",
         "table": "2. Inwentarz żywy według powiatów. (fragment)",
         "page": 66,
-        "pdf-page": 75, 
+        "pdf_page": 75, 
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -733,7 +733,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/2XRA53RJPRF6H6MPQD1F4CBKAMMPHD.pdf",
         "table": "3. Inwentarz żywy. (fragment)",
         "page": 48,
-        "pdf-page": 56,
+        "pdf_page": 56,
         "description": {
             "pol": "Inwentarz żywy.",
             "eng": "Livestock."
@@ -751,7 +751,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/48PVGJR1NFPKUMELYKXSQSPNXDC2VD.pdf",
         "table": "12. Ceny miejscowe ziemiopłodów, paszy i inwentarza żywego. 1926. B. Według powiatów. Przeciętne płacone producentom w złotych.",
         "page": 677,
-        "pdf-page": 77,
+        "pdf_page": 77,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -770,7 +770,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/C5BL74DXYM9PC5KHNT5BEN5VN2I7F3.pdf",
         "table": "11. Ceny miejscowe płacone producentom. 1928. A. Główne ziemiopłody, pasza i inwentarz żywy. b. Według powiatów.",
         "page": 1731,
-        "pdf-page": 423,
+        "pdf_page": 423,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -789,7 +789,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/866KY6R4P5E18UQEHIDVIK8NJCKTIL.pdf",
         "table": "10. Ceny miejscowe płacone producentom. A. Główne ziemiopłody i pasza. b. Według powiatów. 1930 (fragment)",
         "page": 188,
-        "pdf-page": 27,
+        "pdf_page": 27,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -808,7 +808,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/INY5AN5IUDRSH8LJM2YE57GU2DM5IF.pdf",
         "table": "10. Ceny miejscowe płacone producentom. A. Główne ziemiopłody i pasza. b. Według powiatów. 1931 (fragment)",
         "page": 154,
-        "pdf-page": 26,
+        "pdf_page": 26,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -827,7 +827,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/RAMDHCTVYNH3XXC6LD2SJDVL3GRG2P.pdf",
         "table": "10. Ceny miejscowe płacone producentom. A. Główne ziemiopłody i pasza. b. Według powiatów. 1932 (fragment)",
         "page": 152,
-        "pdf-page": 26,
+        "pdf_page": 26,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -846,7 +846,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/S3YAATCJEFJNTP8I1XXXHN3497SVIE.pdf",
         "table": "10. Ceny miejscowe płacone producentom. A. Główne ziemiopłody i pasze. b. Według powiatów. VII-IX 1934 (fragment)",
         "page": 164,
-        "pdf-page": 28,
+        "pdf_page": 28,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -865,7 +865,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/EYUXKMQVTJ3CIYKVVA2A5DTXBGMSYD.pdf",
         "table": "8. Ceny miejscowe płacone producentom. Złote. B. Według powiatów. VII-IX 1935 (fragment)",
         "page": 122,
-        "pdf-page": 24,
+        "pdf_page": 24,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -884,7 +884,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/EYUXKMQVTJ3CIYKVVA2A5DTXBGMSYD.pdf",
         "table": "8. Ceny miejscowe płacone producentom. Złote. B. Według powiatów. VII-IX 1935 (fragment)",
         "page": 122,
-        "pdf-page": 24,
+        "pdf_page": 24,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -903,7 +903,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/EYUXKMQVTJ3CIYKVVA2A5DTXBGMSYD.pdf",
         "table": "8. Ceny miejscowe płacone producentom. Złote. B. Według powiatów. VII-IX 1935 (fragment)",
         "page": 122,
-        "pdf-page": 24,
+        "pdf_page": 24,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -922,7 +922,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/P8DF145ALJDBGMKSVVC16FIF53NP2P.pdf",
         "table": "10. Ceny miejscowe płacone producentom. Złote. B. Według powiatów. I-XII 1936 (fragment)",
         "page": 102,
-        "pdf-page": 113,
+        "pdf_page": 113,
         "description": {
             "pol": "Ceny lokalne płacone producentom.",
             "eng": "Crops local prices paid to producers."
@@ -942,7 +942,7 @@
         "table": "4. PRZEDSIĘBIORSTWA HANDLOWE.",
         "comment": "W skanie w podanym linku brakuje kluczowych stron (stan na 04.06.2025). Dane przepisane z innego skanu, niedostępnego publicznie.",
         "page": 26,
-        "pdf-page": null,
+        "pdf_page": null,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -962,7 +962,7 @@
         "table": "4. PRZEDSIĘBIORSTWA HANDLOWE.",
         "comment": "W skanie w podanym linku brakuje kluczowych stron (stan na 04.06.2025). Dane przepisane z innego skanu, niedostępnego publicznie.",
         "page": 26,
-        "pdf-page": null,
+        "pdf_page": null,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -981,7 +981,7 @@
         "link": "https://wbc.poznan.pl/dlibra/publication/641779/edition/552149/content",
         "table": "4. PRZEDSIĘBIORSTWA HANDLOWE.",
         "page": 81,
-        "pdf-page": 92,
+        "pdf_page": 92,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -1000,7 +1000,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
         "table": "Świadectwa przemysłowe dla przedsiębiorstw handlowych według kategoryj (c.d.). C. Powiaty.",
         "page": 41,
-        "pdf-page": 52,
+        "pdf_page": 52,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -1018,7 +1018,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
         "table": "Świadectwa przemysłowe dla przedsiębiorstw handlowych według kategoryj (c.d.). C. Powiaty.",
         "page": 41,
-        "pdf-page": 52,
+        "pdf_page": 52,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -1036,7 +1036,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
         "table": "Świadectwa przemysłowe dla przedsiębiorstw handlowych według kategoryj (c.d.). C. Powiaty.",
         "page": 41,
-        "pdf-page": 52,
+        "pdf_page": 52,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -1054,7 +1054,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
         "table": "Świadectwa przemysłowe dla przedsiębiorstw handlowych według kategoryj (c.d.). C. Powiaty.",
         "page": 41,
-        "pdf-page": 52,
+        "pdf_page": 52,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -1072,7 +1072,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
         "table": "Świadectwa przemysłowe dla przedsiębiorstw handlowych według kategoryj (c.d.). C. Powiaty.",
         "page": 41,
-        "pdf-page": 52,
+        "pdf_page": 52,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -1090,7 +1090,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
         "table": "Świadectwa przemysłowe dla przedsiębiorstw handlowych według kategoryj (c.d.). C. Powiaty.",
         "page": 41,
-        "pdf-page": 52,
+        "pdf_page": 52,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -1108,7 +1108,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
         "table": "Świadectwa przemysłowe dla przedsiębiorstw handlowych według kategoryj (c.d.). C. Powiaty.",
         "page": 41,
-        "pdf-page": 52,
+        "pdf_page": 52,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -1126,7 +1126,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/BPY7NTM2URVHF7DJ4QL9AU7K8CGPN8.pdf",
         "table": "4. Liczba zakładów handlowych według ważniejszych branż i powiatów. 1935.",
         "page": 81,
-        "pdf-page": 88,
+        "pdf_page": 88,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
@@ -1145,7 +1145,7 @@
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/BPY7NTM2URVHF7DJ4QL9AU7K8CGPN8.pdf",
         "table": "4. Liczba zakładów handlowych według ważniejszych branż i powiatów. 1935.",
         "page": 81,
-        "pdf-page": 88,
+        "pdf_page": 88,
         "description": {
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."

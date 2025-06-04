@@ -1,0 +1,14 @@
+{
+    "post_harmonization_reorganize_datasets": [
+        {
+            "method_name": "sum_up_datasets",
+            "arguments": {
+                "datasets_list": [
+                    "9.12.1931-occupation_central_eastern_voivodships_ready_clean",
+                    "9.12.1931-occupation_southern_western_voivodships_ready_clean"
+                ],
+                "new_dataset_name": "1931_occupation_ready_clean"
+            }
+        }
+    ]
+}

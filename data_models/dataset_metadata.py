@@ -6,6 +6,11 @@ from datetime import datetime, timedelta
 class DataTableMetadata(BaseModel):
     dataset_id: str
     category: str
+    source: Optional[str] = ""
+    link: Optional[str] = ""
+    table: Optional[str] = ""
+    page: Optional[int] = None
+    pdf_page: Optional[int] = None
     description: Dict[Union[Literal["pol", "eng"]], str]
     date: str
     adm_state_date: datetime  # parsed from multiple formats

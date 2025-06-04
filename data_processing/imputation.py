@@ -3,11 +3,18 @@ from datetime import datetime
 import geopandas as gpd
 from shapely.ops import nearest_points
 from shapely.geometry import Point
+from typing import List
 
 from core.core import AdministrativeHistory
 from data_models.adm_unit import DistrictRegistry
 
-def take_from_closest_centroid(administrative_history: AdministrativeHistory, df: pd.DataFrame, adm_state_date: datetime, data_completeness_threshold = 0.2) -> pd.DataFrame:
+def take_from_closest_centroid(
+        administrative_history: AdministrativeHistory,
+        df: pd.DataFrame,
+        adm_state_date: datetime,
+        numeric_cols: List[str],
+        data_completeness_threshold=0.2
+    ) -> pd.DataFrame:
     # Step 1: Get the GeoDataFrame of districts and compute centroids
     gdf = administrative_history.dist_registry.gdf(adm_state_date).copy()
     gdf["centroid"] = gdf.geometry.centroid
@@ -24,7 +31,7 @@ def take_from_closest_centroid(administrative_history: AdministrativeHistory, df
 
     # Step 4: Loop through each column (except 'District' and 'centroid') and impute selectively
     columns_to_impute = [
-        col for col in df.columns
+        col for col in numeric_cols
         if col != "District" and df[col].isna().mean() < data_completeness_threshold
     ]
 
