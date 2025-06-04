@@ -638,11 +638,19 @@ class DistrictRegistry(UnitRegistry):
         self.assure_consistency_and_append_new_unit(district)
         return district
     
+    def gdf(self, date: datetime):
+        states_and_names = [(district.find_state_by_date(date), district.name_id) for district in self.unit_list if district.exists(date)]
+        # Extract geometries and district names
+        geometries = [state.current_territory for state, _ in states_and_names if state.current_territory is not None]
+        dist_name_id = [name for state, name in states_and_names if state.current_territory is not None]
+        return gpd.GeoDataFrame({'District': dist_name_id, 'geometry': geometries}, crs = "EPSG:4326")
+    
     def _plot_layer(self, date: datetime):
     # Collect district states and names for districts that exist on the given date
         states_and_names = [(district.find_state_by_date(date), district.name_id) for district in self.unit_list if district.exists(date)]
         # Extract geometries and district names
         geometries = [state.current_territory for state, _ in states_and_names if state.current_territory is not None]
+        dist_name_id = [name for state, name in states_and_names if state.current_territory is not None]  # Extract names for each district
         colors = [
             "green" if not state.territory_is_fallback and not state.territory_is_deduced
             else "lightgreen" if not state.territory_is_fallback and state.territory_is_deduced
@@ -650,8 +658,6 @@ class DistrictRegistry(UnitRegistry):
             for state, _ in states_and_names
             if state.current_territory is not None
         ]
-        dist_name_id = [name for state, name in states_and_names if state.current_territory is not None]  # Extract names for each district
-        
         # Return a GeoDataFrame with district names and corresponding geometries
         return gpd.GeoDataFrame({'name_id': dist_name_id, 'geometry': geometries, 'color': colors}, crs = "EPSG:4326")
 

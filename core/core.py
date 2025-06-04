@@ -13,13 +13,13 @@ from collections import defaultdict
 import plotly.express as px
 import time
 
-
-
 from data_models.adm_timespan import *
 from data_models.adm_unit import *
 from data_models.adm_state import *
 from data_models.adm_change import *
 from data_models.dataset_metadata import *
+
+from data_processing.imputation_methods import *
 
 from utils.helper_functions import load_config, standardize_df, robust_read_csv
 from utils.exceptions import TerritoryNotLoadedError
@@ -753,7 +753,7 @@ class AdministrativeHistory():
         else:
             print("🎉 All datasets harmonized successfully.")
 
-    def harmonize_csv_file(self, input_csv_path: str, output_csv_path: str, adm_state_date_from: datetime, date_to: Optional[datetime] = None, conv_matrix: Optional[pd.DataFrame] = None):
+    def harmonize_csv_file(self, input_csv_path: str, output_csv_path: str, adm_state_date_from: datetime, date_to: Optional[datetime] = None, conv_matrix: Optional[pd.DataFrame] = None, imputation_method = None):
         """
         Harmonizes district-level numerical data from an input CSV file to match the administrative
         division defined by a target date. The result is saved to the specified output CSV path.
@@ -765,6 +765,7 @@ class AdministrativeHistory():
                 If not provided, one is constructed automatically.
             adm_state_date_from (Optional[datetime]): Date of the administrative state borders that the dataset is defined in (not necessarily the date of data collection!!!)
             date_to (Optional[datetime]): Target administrative state date. Defaults to `self.harmonize_to_date`.
+            imputation_method (None): Method used for data imputation.
 
         Returns:
             harmonization_output (dict): Dict with metadata from the harmonization process (e.g. column completeness).
@@ -819,7 +820,7 @@ class AdministrativeHistory():
         missing_in_matrix = input_districts - matrix_districts
 
         if missing_in_input:
-            print("⚠️ Districts in conversion matrix but NOT in input data:")
+            raise ValueError("⚠️ Districts in conversion matrix but NOT in input data:")
             for dist in sorted(missing_in_input):
                 print(f"  - {dist}")
 
@@ -873,19 +874,23 @@ class AdministrativeHistory():
         for col, completeness in column_completeness.items():
             print(f"  - {col}: {completeness:.2%}")
 
-        # --- Step 5: Harmonization ---
+        # --- Step 6: Imputation ---
+        if imputation_method is not None:
+            self.impute_data(df=df_input_filtered, adm_state_date=adm_state_date_from, method = imputation_method, )
+
+        # --- Step 6: Harmonization ---
         print("🔄 Applying harmonization...")
         # Fill NaNs with 0s to avoid NaN propagation in dot product
         df_input_filled = df_input_filtered[numeric_cols].fillna(0)
         df_harmonized = conv_matrix_filtered.T @ df_input_filled[numeric_cols]
 
-        # --- Step 6: Save to CSV ---
+        # --- Step 7: Save to CSV ---
         df_harmonized = df_harmonized.reset_index().rename(columns={'index': 'District'})
         df_harmonized.to_csv(output_csv_path, index=False)
         end_time = time.time()
         execution_time = end_time - start_time
 
-        # --- Step 7: Create harmonization dataset metadata dict
+        # --- Step 8: Create harmonization dataset metadata dict
         harmonization_metadata = {"columns": {col: {} for col in numeric_cols}}
         for col in numeric_cols:
             harmonization_metadata["columns"][col]["completeness"] = column_completeness[col]
@@ -893,7 +898,33 @@ class AdministrativeHistory():
             harmonization_metadata["columns"][col]["n_not_na"] = column_n_not_na[col]
         print(f"✅ Successfully harmonized '{input_csv_path}' and saved to '{output_csv_path}' in {execution_time:.2f} seconds")       
 
-        return harmonization_metadata 
+        return harmonization_metadata
+    
+    import pandas as pd
+
+    def impute_data(self, df: pd.DataFrame, adm_state_date: datetime, method: str) -> pd.DataFrame:
+        """
+        Imputes missing data in a DataFrame using the specified method.
+
+        Parameters:
+        - df (pd.DataFrame): The input DataFrame with missing values.
+        - method (str): The imputation method ('mean', 'median', 'mode', etc.).
+
+        Returns:
+        - pd.DataFrame: The imputed DataFrame.
+        """
+        # Example implementation:
+        if method == "mean":
+            return df.fillna(df.mean())
+        elif method == "median":
+            return df.fillna(df.median())
+        elif method == "mode":
+            return df.fillna(df.mode().iloc[0])
+        elif method == "take_from_closest_centroid":
+            return take_from_closest_centroid(administrative_history=self, df: df, adm_state_date=adm_state_date)
+        else:
+            raise ValueError(f"Unknown imputation method: {method}")
+
         
     def standardize_address(self):
         """
