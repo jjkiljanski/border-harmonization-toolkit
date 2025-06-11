@@ -662,11 +662,30 @@ class DistrictRegistry(UnitRegistry):
         return gpd.GeoDataFrame({'name_id': dist_name_id, 'geometry': geometries, 'color': colors}, crs = "EPSG:4326")
 
     
-    def plot(self, html_file_path, date, shownames = True):
+    def plot(self, adm_state_date: datetime, shownames: bool = True, df: pd.DataFrame = None):
         from utils.helper_functions import build_plot_from_layers
 
-        layer = self._plot_layer(date)
-        layer["color"] = "none"
+        layer = self._plot_layer(adm_state_date)
+        
+        if df is not None:
+            if df.index.name != 'District' or df.shape[1] != 1:
+                raise ValueError("DataFrame must have 'District' as index and exactly one data column.")
+
+            # Reset index to turn 'District' into a column
+            df_reset = df.reset_index()
+
+            # Identify the single data column (other than 'District')
+            data_col = df_reset.columns.difference(['District'])[0]
+
+            # Rename for merge compatibility
+            df_reset = df_reset.rename(columns={'District': 'name_id'})
+            layer = layer.merge(df_reset, on='name_id', how='left')
+
+            # Assign the data column to 'color', using a fallback for missing data
+            layer["color"] = layer[data_col].fillna("lightgray")
+        else:
+            layer["color"] = "none"
+
         layer["edgecolor"] = "black"
         layer["linewidth"] = 1
         layer["shownames"] = shownames

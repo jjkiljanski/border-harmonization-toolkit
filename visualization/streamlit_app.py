@@ -13,7 +13,7 @@ from typing import List
 # Add the project root directory to sys.path to ensure that imports work
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from data_models.dataset_metadata import DataTableMetadata
+from data_models.econ_data_metadata import DataTableMetadata
 from core.core import AdministrativeHistory
 from utils.helper_functions import load_config, standardize_df, load_uploaded_csv
 
@@ -45,7 +45,7 @@ selected_database = st.sidebar.selectbox(
     ["Administrative States Database", "Economic Database"]
 )
 
-# Dictionary to store loaded datasets
+# Dictionary to store loaded data_tables
 harmonized_dataframes = {}
 
 # If "Administrative States Database" is selected
@@ -85,7 +85,7 @@ elif selected_database == "Economic Database":
 
     # Collect and prefix all dataframes
     all_data_df = None
-    n_loaded_datasets = 0
+    n_loaded_data_tables = 0
     harmonized_dataframe_cols = {}
     for filename in os.listdir(harmonized_data_dir):
         if filename.endswith(".csv"):
@@ -137,14 +137,14 @@ elif selected_database == "Economic Database":
 
     # Create sorted list of unique categories
     categories = sorted(set([
-        dataset_metadata.category
-        for dataset_metadata in administrative_history.harmonization_metadata
+        data_table_metadata.category
+        for data_table_metadata in administrative_history.harmonization_metadata
     ]))
 
-    # Create a dict with all datasets
-    datasets_dict = {
+    # Create a dict with all data tables
+    data_tables_dict = {
         category: {
-            meta.dataset_id: list(harmonized_dataframe_cols[meta.dataset_id])
+            meta.data_table_id: list(harmonized_dataframe_cols[meta.data_table_id])
             for meta in administrative_history.harmonization_metadata
             if meta.category == category
         }
@@ -158,38 +158,38 @@ elif selected_database == "Economic Database":
     if selected_category is None:
         st.write("This streamlit view is only preliminary and will be removed in the future. In the later phase of the project, the python layer will serve only as a data standardization and injection layer to an underlying SQL database.")
 
-        # n_data_points = [col.n_not_na for metadata_dataset in harmonization_data_metadata for col in metadata_dataset.columns]
-        # n_na = [col.n_na for metadata_dataset in harmonization_data_metadata for col in metadata_dataset.columns]
+        # n_data_points = [col.n_not_na for metadata_data_table in harmonization_data_metadata for col in metadata_data_table.columns]
+        # n_na = [col.n_na for metadata_data_table in harmonization_data_metadata for col in metadata_data_table.columns]
         # st.write(f"### Total number of data points: {n_data_points+n_na}. Non-missing: {n_data_points}/{n_data_points+n_na} ({(n_data_points/(n_data_points+n_na))*100}%)")
-        st.write(f"### Total number of data points: {all_data_df.size} ({all_data_df.shape[1]} standardized datasets for {all_data_df.shape[0]} districts).")
+        st.write(f"### Total number of data points: {all_data_df.size} ({all_data_df.shape[1]} standardized data sets for {all_data_df.shape[0]} districts).")
 
-        st.write("### All datasets stored in the harmonized csv files.")
-        st.write(datasets_dict)
+        st.write("### All data tables stored in the harmonized csv files.")
+        st.write(data_tables_dict)
     else:
-        # Filter and sort dataset IDs for the selected category
+        # Filter and sort data table IDs for the selected category
         filtered_ids = sorted([
-            dataset_metadata.dataset_id
-            for dataset_metadata in administrative_history.harmonization_metadata
-            if dataset_metadata.category == selected_category
+            data_table_metadata.data_table_id
+            for data_table_metadata in administrative_history.harmonization_metadata
+            if data_table_metadata.category == selected_category
         ])
 
-        selected_dataset_id = st.sidebar.selectbox("Choose Dataset", filtered_ids, index = None)
+        selected_data_table_id = st.sidebar.selectbox("Choose Dataset", filtered_ids, index = None)
 
-        if selected_dataset_id is None:
+        if selected_data_table_id is None:
             st.write(f"### Select dataset.")
         else:
-            dataset_description = [dataset_metadata.description["eng"] for dataset_metadata in administrative_history.harmonization_metadata if dataset_metadata.dataset_id == selected_dataset_id][0]
-            dataset_date = [dataset_metadata.date for dataset_metadata in administrative_history.harmonization_metadata if dataset_metadata.dataset_id == selected_dataset_id][0]
+            data_table_description = [data_table_metadata.description["eng"] for data_table_metadata in administrative_history.harmonization_metadata if data_table_metadata.data_table_id == selected_data_table_id][0]
+            data_table_date = [data_table_metadata.date for data_table_metadata in administrative_history.harmonization_metadata if data_table_metadata.data_table_id == selected_data_table_id][0]
 
-            st.write(f"### {dataset_description} ({dataset_date})")
+            st.write(f"### {data_table_description} ({data_table_date})")
 
-            # Display column selector if dataset is found
-            if selected_dataset_id in harmonized_dataframe_cols:
-                available_columns = harmonized_dataframe_cols[selected_dataset_id]
-                selected_column = st.sidebar.selectbox("Choose Column", available_columns, index = None)
+            # Display column selector if data_table is found
+            if selected_data_table_id in harmonized_dataframe_cols:
+                available_columns = harmonized_dataframe_cols[selected_data_table_id]
+                selected_column = st.sidebar.selectbox("Choose Dataset", available_columns, index = None)
                 if selected_column is None:
-                    st.write(f"### Select dataset column.")
+                    st.write(f"### Select dataset.")
                 else:
-                    display_data_map(geojson, all_data_df, selected_dataset_id, selected_column)
+                    display_data_map(geojson, all_data_df, selected_data_table_id, selected_column)
             else:
-                st.warning(f"The dataset `{selected_dataset_id}` was not found in the loaded files.")
+                st.warning(f"The data table `{selected_data_table_id}` was not found in the loaded files.")

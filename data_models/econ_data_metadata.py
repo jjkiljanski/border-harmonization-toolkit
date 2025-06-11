@@ -3,8 +3,19 @@ from typing import Union, Optional, Literal, List, Dict, Annotated, Any
 from abc import ABC, abstractmethod
 from datetime import datetime, timedelta
 
+class ColumnMetadata(BaseModel):
+    unit: str
+    subcategory: str
+    subsubcategory: Optional[str] = "Together"
+    data_type: str
+    completeness: Optional[float] = None
+    n_na: Optional[int] = None
+    n_not_na: Optional[int] = None
+    completeness_after_imputation: Optional[float] = None
+    n_na_after_imputation: Optional[int] = None
+    n_not_na_after_imputation: Optional[int] = None
 class DataTableMetadata(BaseModel):
-    dataset_id: str
+    data_table_id: str
     category: str
     source: Optional[str] = ""
     link: Optional[str] = ""
@@ -13,21 +24,23 @@ class DataTableMetadata(BaseModel):
     pdf_page: Optional[int] = None
     description: Dict[Union[Literal["pol", "eng"]], str]
     date: str
-    adm_state_date: datetime  # parsed from multiple formats
+    orig_adm_state_date: datetime  # parsed from multiple formats
+    adm_state_date: Optional[datetime] = None
     standardization_comments: Optional[str] = ""
     harmonization_method: Literal["proportional_to_territory"]
     imputation_method: Optional[Literal["take_from_closest_centroid"]] = None
-    columns: List[Dict[str, Any]] = []
+    columns: Dict[str, ColumnMetadata] = {}
 
     @model_validator(mode="before")
     @classmethod
     def parse_flexible_date(cls, data: Any) -> Any:
         if isinstance(data, dict):
-            adm_date = data.get("adm_state_date")
+            adm_date = data.get("orig_adm_state_date")
             if isinstance(adm_date, str):
                 for fmt in ("%d.%m.%Y", "%Y-%m-%dT%H:%M:%S"):
                     try:
-                        data["adm_state_date"] = datetime.strptime(adm_date, fmt)
+                        data["orig_adm_state_date"] = datetime.strptime(adm_date, fmt)
+                        data["adm_state_date"] = data["orig_adm_state_date"]
                         break
                     except ValueError:
                         continue

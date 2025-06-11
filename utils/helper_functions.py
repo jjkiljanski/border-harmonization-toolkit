@@ -22,6 +22,40 @@ def load_and_standardize_csv(file_path, region_registry, district_registry):
 
     return df, unit_suggestions
 
+def extract_date_parts(date_str: str):
+    """
+    Extracts year, month, and day as strings from a date string.
+    
+    Accepted formats:
+    - 'YYYY'
+    - 'MM.YYYY'
+    - 'DD.MM.YYYY'
+
+    Parameters:
+    - date_str (str): Date string in one of the accepted formats.
+
+    Returns:
+    - year (str): Year in 'YYYY' format.
+    - month (str or None): Month in 'MM' format or None if not provided.
+    - day (str or None): Day in 'DD' format or None if not provided.
+    """
+    try:
+        parts = date_str.strip().split(".")
+        if len(parts) == 1 and len(parts[0]) == 4:
+            year = parts[0]
+            return year, None, None
+        elif len(parts) == 2 and len(parts[0]) == 2 and len(parts[1]) == 4:
+            month, year = parts
+            return year, month, None
+        elif len(parts) == 3 and len(parts[0]) == 2 and len(parts[1]) == 2 and len(parts[2]) == 4:
+            day, month, year = parts
+            return year, month, day
+        else:
+            raise ValueError("Date must be in 'YYYY', 'MM.YYYY', or 'DD.MM.YYYY' format.")
+    except Exception as e:
+        raise ValueError(f"Invalid date format '{date_str}': {e}")
+
+
 def standardize_df(df, region_registry, district_registry, columns = ["Region", "District"], raise_errors = True, verbose = False):
     """
     Standardizes the 'Region' and 'District' names in a DataFrame using the provided unit registries.
@@ -233,7 +267,10 @@ def save_plot_to_html(fig, html_path, title, description, append=False):
 
     print(f"Plot {'appended to' if append else 'saved to'} {html_path}")
 
-def robust_read_csv(input_csv_path):
+def read_economic_csv_input(input_csv_path):
+    """
+    Reads in and standardizes csv file with economic data for data harmonization from path passed in input_csv_path.
+    """
     print(f"Attempting to read: {input_csv_path}")
     
     if not os.path.exists(input_csv_path):
@@ -293,5 +330,25 @@ def robust_read_csv(input_csv_path):
             "Please ensure all districts are uniquely named in the input CSV."
             )
     
-    return df
+    if df is None:
+            return
+
+    # Standardize the columns format for conversion ---
+    for col in df.columns:
+        # Remove spaces and non-breaking spaces (e.g., '15 500' → '15500')
+        df[col] = df[col].astype(str).str.replace('\xa0', '', regex=False)  # non-breaking space
+        df[col] = df[col].astype(str).str.replace(' ', '', regex=False)     # regular space
+        df[col] = df[col].astype(str).str.replace(',', '.', regex=False)    # optional: comma to dot
+        try:
+            df[col] = df[col].astype(float)
+        except ValueError:
+            continue  # If still not convertible, skip
+
+    numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+    if not numeric_cols:
+        raise ValueError(f"No numeric columns found to harmonize in file '{input_csv_path}'.")
+    else:
+        df_numeric = df[numeric_cols]
+    
+    return df_numeric
 

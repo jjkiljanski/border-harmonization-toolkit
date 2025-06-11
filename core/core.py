@@ -17,10 +17,10 @@ from data_models.adm_timespan import *
 from data_models.adm_unit import *
 from data_models.adm_state import *
 from data_models.adm_change import *
-from data_models.dataset_metadata import *
+from data_models.econ_data_metadata import *
 from data_models.harmonization_config import *
 
-from utils.helper_functions import load_config, standardize_df, robust_read_csv
+from utils.helper_functions import load_config, standardize_df, read_economic_csv_input
 from utils.exceptions import TerritoryNotLoadedError
 
 class AdministrativeHistory():
@@ -40,6 +40,7 @@ class AdministrativeHistory():
         self.data_harmonization_input_folder = config["data_harmonization_input_folder"]
         self.data_harmonization_output_folder = config["data_harmonization_output_folder"]
         self.harmonization_errors_output_path = config["harmonization_errors_output_path"]
+        self.post_processing_errors_output_path = config["post_processing_errors_output_path"]
         self.harmonization_metadata_output_path = config["harmonization_metadata_output_path"]
 
         self.load_geometries = load_geometries
@@ -455,11 +456,12 @@ class AdministrativeHistory():
     
     def _load_harmonization_metadata(self):
         """
-        Loads datasets metadata and harmonization config from JSONs stored in relevant paths.
+        Loads data_tables metadata, harmonization config, and the metadata of previously harmonized data from JSONs stored in relevant paths.
+        If the 'harmonize_data' method is called, self.harmonized_data_metadata is overwritten.
         """
-        ################## Load datasets metadata ###################
+        ################## Load data tables metadata ###################
         start_time = time.time()
-        print(f"Loading metadata of the datasets that will be harmonized...")
+        print(f"Loading metadata of the data tables that will be harmonized...")
         # Load harmonization metadata from JSON:
         with open(self.data_to_harmonize_metadata_path, 'r', encoding='utf-8') as f:
             harmonization_metadata_raw = json.load(f)
@@ -467,13 +469,13 @@ class AdministrativeHistory():
         self.harmonization_metadata: List[DataTableMetadata] = [
             DataTableMetadata(**metadata_dict) for metadata_dict in harmonization_metadata_raw
         ]
-        # Sort by adm_state_date
-        self.harmonization_metadata.sort(key=lambda metadata: metadata.adm_state_date)
+        # Sort by orig_adm_state_date
+        self.harmonization_metadata.sort(key=lambda metadata: metadata.orig_adm_state_date)
 
         # Print success message
         end_time = time.time()
         execution_time = end_time - start_time
-        print(f"✅ Successfully loaded harmonization datasets metadata in {execution_time:.2f} seconds.")
+        print(f"✅ Successfully loaded harmonization data tables metadata in {execution_time:.2f} seconds.")
 
         ################# Load harmonization config ##################
         start_time = time.time()
@@ -488,6 +490,28 @@ class AdministrativeHistory():
         end_time = time.time()
         execution_time = end_time - start_time
         print(f"✅ Successfully loaded harmonization config in {execution_time:.2f} seconds.")
+
+        ################# Load harmonized data metadata ##################
+        start_time = time.time()
+        print(f"Loading harmonized data metadata...")
+        try:
+            # Load harmonized data metadata from JSON:
+            with open(self.harmonization_metadata_output_path, 'r', encoding='utf-8') as f:
+                harmonized_data_metadata_raw = json.load(f)
+            # Convert each dict to a DataTableMetadata instance
+            self.harmonized_data_metadata: List[DataTableMetadata] = [
+                DataTableMetadata(**metadata_dict) for metadata_dict in harmonized_data_metadata_raw
+            ]
+            # Sort by orig_adm_state_date
+            self.harmonized_data_metadata.sort(key=lambda metadata: metadata.orig_adm_state_date)
+        except Exception as e:
+            print(f"⚠️ Failed to load harmonized data metadata: {e}")
+            self.harmonized_data_metadata = []
+
+        # Print success message
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"✅ Successfully loaded harmonized data metadata in {execution_time:.2f} seconds.")
 
     def _construct_conversion_dict(self, date_from: datetime, date_to: datetime, verbose: bool = False):
         """
@@ -663,7 +687,7 @@ class AdministrativeHistory():
             raise TerritoryNotLoadedError(f"Attempted to construct conversion matrix, but the fallback territories were not created yet.")
 
         start_time = time.time()
-        print(f"Constructing conversion matrix between two administrative states:\nAdministrative State from: {self.find_adm_state_by_date(date_from)}\Administrative State to: {self.find_adm_state_by_date(date_to)}")
+        print(f"Constructing conversion matrix between two administrative states:\nAdministrative State from: {self.find_adm_state_by_date(date_from)}\nAdministrative State to: {self.find_adm_state_by_date(date_to)}")
         
         # Get district name_ids for both dates
         dists_from_list = self.find_adm_state_by_date(date_from).all_district_names(homeland_only=True)
@@ -714,9 +738,9 @@ class AdministrativeHistory():
         self.harmonized_data_metadata = []
         failed_files = []
 
-        for dataset_metadata_dict in self.harmonization_metadata:
+        for data_table_metadata_dict in self.harmonization_metadata:
             try:
-                currently_considered_adm_state = self.find_adm_state_by_date(dataset_metadata_dict.adm_state_date)
+                currently_considered_adm_state = self.find_adm_state_by_date(data_table_metadata_dict.orig_adm_state_date)
                 if str(currently_considered_adm_state) not in harmonize_from_dict:
                     harmonize_from_dict[str(currently_considered_adm_state)] = []
                     conv_matrix = self.construct_conversion_matrix(
@@ -724,24 +748,23 @@ class AdministrativeHistory():
                         date_to=self.harmonize_to_date,
                         verbose=False
                     )
-                harmonize_from_dict[str(currently_considered_adm_state)].append(dataset_metadata_dict.dataset_id)
+                harmonize_from_dict[str(currently_considered_adm_state)].append(data_table_metadata_dict.data_table_id)
 
-                input_csv_path = self.data_harmonization_input_folder + dataset_metadata_dict.dataset_id + ".csv"
-                output_csv_path = self.data_harmonization_output_folder + dataset_metadata_dict.dataset_id + ".csv"
+                input_csv_path = self.data_harmonization_input_folder + data_table_metadata_dict.data_table_id + ".csv"
+                output_csv_path = self.data_harmonization_output_folder + data_table_metadata_dict.data_table_id + ".csv"
 
-                harmonization_output = self.harmonize_csv_file(
+                harmonized_data_table_dict = self.harmonize_csv_file(
                     input_csv_path=input_csv_path,
                     output_csv_path=output_csv_path,
-                    adm_state_date_from=dataset_metadata_dict.adm_state_date,
+                    data_table_metadata_dict=data_table_metadata_dict,
                     date_to=self.harmonize_to_date,
                     conv_matrix=conv_matrix
                 )
 
-                harmonized_dataset_dict = dataset_metadata_dict.copy(update={"columns": harmonization_output["columns"]})
-                self.harmonized_data_metadata.append(harmonized_dataset_dict)
+                self.harmonized_data_metadata.append(harmonized_data_table_dict)
 
             except Exception as e:
-                error_msg = f"❌ {dataset_metadata_dict.dataset_id}: {e}"
+                error_msg = f"❌ {data_table_metadata_dict.data_table_id}: {e}"
                 print(error_msg)
                 failed_files.append(error_msg)
 
@@ -764,11 +787,11 @@ class AdministrativeHistory():
                 f.write(error + '\n')
         # Write errors to file if any
         if failed_files:
-            print(f"\n⚠️ The following datasets failed to harmonize. See log at: {self.harmonization_errors_output_path}")
+            print(f"\n⚠️ The following data tables failed to harmonize. See log at: {self.harmonization_errors_output_path}")
         else:
-            print("🎉 All datasets harmonized successfully.")
+            print("🎉 All data tables harmonized successfully.")
 
-    def harmonize_csv_file(self, input_csv_path: str, output_csv_path: str, adm_state_date_from: datetime, date_to: Optional[datetime] = None, conv_matrix: Optional[pd.DataFrame] = None, imputation_method = None):
+    def harmonize_csv_file(self, input_csv_path: str, output_csv_path: str, data_table_metadata_dict: DataTableMetadata, date_to: Optional[datetime] = None, conv_matrix: Optional[pd.DataFrame] = None):
         """
         Harmonizes district-level numerical data from an input CSV file to match the administrative
         division defined by a target date. The result is saved to the specified output CSV path.
@@ -778,12 +801,11 @@ class AdministrativeHistory():
             output_csv_path (str): Path to save the harmonized output CSV.
             conv_matrix (Optional[pd.DataFrame]): Optional precomputed conversion matrix.
                 If not provided, one is constructed automatically.
-            adm_state_date_from (Optional[datetime]): Date of the administrative state borders that the dataset is defined in (not necessarily the date of data collection!!!)
+            data_table_metadata_dict (DataTableMetadata): A DataTableMetadata instance holding metadata about the data table.
             date_to (Optional[datetime]): Target administrative state date. Defaults to `self.harmonize_to_date`.
-            imputation_method (None): Method used for data imputation.
 
         Returns:
-            harmonization_output (dict): Dict with metadata from the harmonization process (e.g. column completeness).
+            data_table_metadata_dict (DataTableMetadata): The updated DataTableMetadata instance with the data table's metadata dict.
 
         Notes:
             - Automatically detects CSV delimiter and handles missing values (e.g., 'X').
@@ -799,45 +821,31 @@ class AdministrativeHistory():
         start_time = time.time()
         if date_to is None:
             date_to = self.harmonize_to_date
-        print(f"Harmonizing csv file '{input_csv_path}' from {adm_state_date_from.date()} to {date_to.date()}.\Original borders: {str(self.find_adm_state_by_date(adm_state_date_from))}.\nTarget borders: {str(self.find_adm_state_by_date(date_to))}.")
+        adm_state_date_from=data_table_metadata_dict.orig_adm_state_date
+        print(f"Harmonizing csv file '{input_csv_path}' from {adm_state_date_from.date()} to {date_to.date()}.\nOriginal borders: {str(self.find_adm_state_by_date(adm_state_date_from))}.\nTarget borders: {str(self.find_adm_state_by_date(date_to))}.")
         
-        df_input = robust_read_csv(input_csv_path)
-
-        if df_input is None:
-            return
-
-        # Standardize the columns format for conversion ---
-        for col in df_input.columns:
-            # Remove spaces and non-breaking spaces (e.g., '15 500' → '15500')
-            df_input[col] = df_input[col].astype(str).str.replace('\xa0', '', regex=False)  # non-breaking space
-            df_input[col] = df_input[col].astype(str).str.replace(' ', '', regex=False)     # regular space
-            df_input[col] = df_input[col].astype(str).str.replace(',', '.', regex=False)    # optional: comma to dot
-            try:
-                df_input[col] = df_input[col].astype(float)
-            except ValueError:
-                continue  # If still not convertible, skip
-
-        numeric_cols = df_input.select_dtypes(include=[np.number]).columns.tolist()
-        if not numeric_cols:
-            raise ValueError(f"No numeric columns found to harmonize in file '{input_csv_path}'.")
+        # --- Step 1: Load and clean the input data file ---
+        df_input_numeric = read_economic_csv_input(input_csv_path)
+        numeric_cols = list(set(df_input_numeric.columns)-{'District'})
 
         # --- Step 2: Get or build the conversion matrix ---
         if conv_matrix is None:
             print(f"⏳ Building conversion matrix from {adm_state_date_from.date()} to {self.harmonize_to_date.date()}...")
-            date_from = self.find_adm_state_by_date_for_districts(df_input.index)
+            date_from = data_table_metadata_dict.orig_adm_state_date
             conv_matrix = self.construct_conversion_matrix(date_from=date_from, date_to=date_to, verbose=True)
 
         # --- Step 3: Diagnostics ---
-        input_districts = set(df_input.index)
+        input_districts = set(df_input_numeric.index)
         matrix_districts = set(conv_matrix.index)
 
         missing_in_input = matrix_districts - input_districts
         missing_in_matrix = input_districts - matrix_districts
 
         if missing_in_input:
-            raise ValueError("⚠️ Districts in conversion matrix but NOT in input data:")
+            message_lines = ["⚠️ Districts in conversion matrix but NOT in input data:"]
             for dist in sorted(missing_in_input):
-                print(f"  - {dist}")
+                message_lines.append(f"  - {dist}")
+            raise ValueError("\n".join(message_lines))
 
         if missing_in_matrix:
             print("⚠️ Districts in input data but NOT in conversion matrix:")
@@ -847,7 +855,7 @@ class AdministrativeHistory():
         # Filter matrix and input to only overlapping districts
         common_districts = list(input_districts & matrix_districts)
         conv_matrix_filtered = conv_matrix.loc[common_districts]
-        df_input_filtered = df_input.loc[common_districts]
+        df_input_filtered = df_input_numeric.loc[common_districts]
 
         print(f"df_input_filtered.shape before sorting: {df_input_filtered.shape}")
 
@@ -868,13 +876,13 @@ class AdministrativeHistory():
         print(f"df_input.shape: {df_input.shape}")
         print(f"df_input_filtered.shape after sorting: {df_input_filtered.shape}.")
         print(f"len(numeric_cols) = {len(numeric_cols)}.")
-        print(f"df_input_filtered[numeric_cols].shape = {df_input_filtered[numeric_cols].shape}.")
-        print(f"df_input_filtered[numeric_cols].notna().shape = {df_input_filtered[numeric_cols].notna().shape}")
-        print(f"df_input_filtered[numeric_cols].notna().astype(float).shape = {df_input_filtered[numeric_cols].notna().astype(float).shape}.")
+        print(f"df_input_filtered.shape = {df_input_filtered.shape}.")
+        print(f"df_input_filtered.notna().shape = {df_input_filtered.notna().shape}")
+        print(f"df_input_filtered.notna().astype(float).shape = {df_input_filtered.notna().astype(float).shape}.")
         """
 
         # Now compute the data mask
-        data_mask = df_input_filtered[numeric_cols].notna().astype(float)
+        data_mask = df_input_filtered.notna().astype(float)
 
         print("Matrix shapes:")
         print(" - conv_matrix_filtered.T:", conv_matrix_filtered.T.shape)
@@ -882,30 +890,36 @@ class AdministrativeHistory():
         print(" - common index alignment:", df_input_filtered.index.equals(conv_matrix_filtered.index))
 
         # Compute the completeness
-        column_completeness = df_input_filtered[numeric_cols].notna().mean()
-        column_n_not_na = df_input_filtered[numeric_cols].notna().sum()
-        column_n_na = df_input_filtered[numeric_cols].isna().sum()
+        column_completeness = df_input_filtered.notna().mean()
+        column_n_not_na = df_input_filtered.notna().sum()
+        column_n_na = df_input_filtered.isna().sum()
         print("📊 Data completeness of all numeric columns found:")
         for col, completeness in column_completeness.items():
             print(f"  - {col}: {completeness:.2%}")
 
         # --- Step 5: Imputation ---
+        imputation_method = data_table_metadata_dict.imputation_method
         if imputation_method is not None:
             df_input_filtered = self.impute_data(df=df_input_filtered, adm_state_date=adm_state_date_from, numeric_cols=numeric_cols, method = imputation_method)
 
             # Compute the completeness after imputation
-            column_completeness_after_imputation = df_input_filtered[numeric_cols].notna().mean()
-            column_n_not_na_after_imputation = df_input_filtered[numeric_cols].notna().sum()
-            column_n_na_after_imputation = df_input_filtered[numeric_cols].isna().sum()
-            print("📊 Data completeness of all numeric columns found:")
-            for col, completeness in column_completeness.items():
+            column_completeness_after_imputation = df_input_filtered.notna().mean()
+            column_n_not_na_after_imputation = df_input_filtered.notna().sum()
+            column_n_na_after_imputation = df_input_filtered.isna().sum()
+            print("📊 Data completeness of all numeric columns after imputation:")
+            for col, completeness in column_completeness_after_imputation.items():
                 print(f"  - {col}: {completeness:.2%}")
+
+        print("Matrix shapes after imputation:")
+        print(" - conv_matrix_filtered.T:", conv_matrix_filtered.T.shape)
+        print(" - df_input_filtered:", df_input_filtered.shape)
+        print(" - common index alignment:", df_input_filtered.index.equals(conv_matrix_filtered.index))
 
         # --- Step 6: Harmonization ---
         print("🔄 Applying harmonization...")
         # Fill NaNs with 0s to avoid NaN propagation in dot product
-        df_input_filled = df_input_filtered[numeric_cols].fillna(0)
-        df_harmonized = conv_matrix_filtered.T @ df_input_filled[numeric_cols]
+        df_input_filled = df_input_filtered.fillna(0)
+        df_harmonized = conv_matrix_filtered.T @ df_input_filled
         df_harmonized = df_harmonized.reset_index().rename(columns={'index': 'District'})
 
         # --- Step 7: Save to CSV ---
@@ -913,20 +927,26 @@ class AdministrativeHistory():
         end_time = time.time()
         execution_time = end_time - start_time
 
-        # --- Step 8: Create harmonization dataset metadata dict
+        # --- Step 8: Create harmonization data table metadata dict
         harmonization_metadata = {"columns": {col: {} for col in numeric_cols}}
+        # numpy.float64 and numpy.int64 are cast to native python float and int types to allow for pydantic serialization.
         for col in numeric_cols:
-            harmonization_metadata["columns"][col]["completeness"] = column_completeness[col]
-            harmonization_metadata["columns"][col]["n_na"] = column_n_na[col]
-            harmonization_metadata["columns"][col]["n_not_na"] = column_n_not_na[col]
+            if col in data_table_metadata_dict.columns.keys():
+                data_table_metadata_dict.columns[col].completeness = float(column_completeness[col])
+                data_table_metadata_dict.columns[col].n_na = int(column_n_na[col])
+                data_table_metadata_dict.columns[col].n_not_na = int(column_n_not_na[col])
 
-            if imputation_method is not None:
-                harmonization_metadata["columns"][col]["completeness_after_imputation"] = column_completeness_after_imputation[col]
-                harmonization_metadata["columns"][col]["n_na_after_imputation"] = column_n_na_after_imputation[col]
-                harmonization_metadata["columns"][col]["n_not_na_after_imputation"] = column_n_not_na_after_imputation[col]
+                if imputation_method is not None:
+                    data_table_metadata_dict.columns[col].completeness_after_imputation = float(column_completeness_after_imputation[col])
+                    data_table_metadata_dict.columns[col].n_na_after_imputation = int(column_n_na_after_imputation[col])
+                    data_table_metadata_dict.columns[col].n_not_na_after_imputation = int(column_n_not_na_after_imputation[col])
+            else:
+                raise ValueError(f"Column '{col}' found in the data table '{input_csv_path}', but it doesn't exist in the data tables harmonization metadata.")
+            
+        data_table_metadata_dict.adm_state_date = self.harmonize_to_date
         print(f"✅ Successfully harmonized '{input_csv_path}' and saved to '{output_csv_path}' in {execution_time:.2f} seconds")       
 
-        return harmonization_metadata
+        return data_table_metadata_dict
 
     def impute_data(self, df: pd.DataFrame, adm_state_date: datetime, numeric_cols: List[str], method: str) -> pd.DataFrame:
         """
@@ -952,9 +972,9 @@ class AdministrativeHistory():
         else:
             raise ValueError(f"Unknown imputation method: {method}")
         
-    def post_organization_reorganize_datasets(self):
+    def post_organization_reorganize_data_tables(self):
         """
-        Reorganizes datasets (e.g. sums them up to one) after the harmonization of all data.
+        Reorganizes data tables (e.g. sums them up to one) after the harmonization of all data.
         Takes arguments defined in self.harmonization_config and reorganized generated data, as well as metadata.
 
         Parameters:
@@ -962,10 +982,105 @@ class AdministrativeHistory():
         Returns:
 
         """
-        for method_dict in self.harmonization_config.post_harmonization_reorganize_datasets:
-            if method_dict.method_name == "sum_up_datasets":
-                from data_processing.post_processing import sum_up_datasets
-                sum_up_datasets(self, method_dict.arguments)
+        failed_methods = []
+
+        print(f"Beginning post-processing. Total number of methods to apply: {len(self.harmonization_config.post_harmonization_reorganize_data_tables)}")
+
+        for i, method_dict in enumerate(self.harmonization_config.post_harmonization_reorganize_data_tables):
+            try:
+                if method_dict.method_name == "sum_up_data_tables":
+                    print("Calling sum_up_data_tables method...")
+                    from data_processing.post_processing import sum_up_data_tables
+                    sum_up_data_tables(self, method_dict.arguments)
+                elif method_dict.method_name == "create_dist_area_dataset":
+                    print("Calling create_dist_area_dataset method...")
+                    from data_processing.post_processing import create_dist_area_dataset
+                    create_dist_area_dataset(self, method_dict.arguments)
+                else:
+                    raise ValueError(f"The method {method_dict.method_name} is not supported.")
+            except Exception as e:
+                error_msg = f"❌ {i}. method in the post_processing sequence ({method_dict.method_name}): {e}"
+                print(error_msg)
+                failed_methods.append(error_msg)
+        
+        # Dump harmonization_metadata (overwriting the previous instance)
+        with open(self.harmonization_metadata_output_path, 'w', encoding='utf-8') as f:
+            json_str = json.dumps([model.model_dump(mode="json") for model in self.harmonized_data_metadata], ensure_ascii=False, indent=4)
+            f.write(json_str)
+
+        # Create log file with harmonization errors
+        with open(self.post_processing_errors_output_path, 'w', encoding='utf-8') as f:
+            f.write("Post-Processing Errors:\n\n")
+            for error in failed_methods:
+                f.write(error + '\n')
+        # Write errors to file if any
+        if failed_methods:
+            print(f"\n⚠️ The following post-processing methods failed. See log at: {self.post_processing_errors_output_path}")
+        else:
+            print("🎉 All post-processing methods applied successfully.")
+    
+    def load_data_table(
+                        self,
+                        data_table_id: str,
+                        version: Union[Literal['original'], Literal['harmonized']],
+                        region_column: bool = False
+                    ):
+        """
+        This function is the basic API accesspoint to the economic database.
+        It imports the given data_table in the original form or its harmonized version.
+        
+        Parameters:
+        - data_table_id (str): Name of the data table to be imported.
+        - version (Union[Literal['original'], Literal['harmonized']]): Defines if the original ('original')
+            or the already harmonized ('harmonized') version of the data table should be returned.
+        - region_column (bool): If True, returned dataframe will contain the 'Region' column. Default is False.
+        
+        Returns:
+        - df (pd.DataFrame): Pandas Dataframe with the data table with Districts column.
+        - data_table_metadata (data_models.data_table_metadata.DataTableMetadata): pydantic data model with data table metadata.
+        - adm_state_date (datetime): date of the administrative state the data is represented in.
+        """
+        if version == 'harmonized':
+            data_table_metadata = [data_table for data_table in self.harmonized_data_metadata if data_table.data_table_id == data_table_id][0]
+            adm_state_date = self.harmonize_to_date
+            folder = self.data_harmonization_output_folder
+            path = os.path.join(folder, f"{data_table_id}.csv")
+            df = pd.read_csv(path)
+
+            if 'District' not in df.columns:
+                raise ValueError(f"'District' column missing in data table: {data_table_id}")
+        else:
+            data_table_metadata = [data_table for data_table in self.harmonization_metadata if data_table.data_table_id == data_table_id][0]
+            adm_state_date = data_table_metadata.adm_state_date
+            folder = self.data_harmonization_input_folder
+            path = os.path.join(folder, f"{data_table_id}.csv")
+            df = read_economic_csv_input()
+
+        col_rename_dict = {
+            col_name: f"{data_table_metadata.columns[col_name].subcategory}: {data_table_metadata.columns[col_name].subsubcategory}"
+            for col_name in df.columns
+            if col_name in data_table_metadata.columns
+        }
+        df.rename(columns=col_rename_dict, inplace = True)
+
+        # Check that the loaded dataframe contains all districts        
+        adm_state = self.find_adm_state_by_date(adm_state_date)
+        all_dist_names = adm_state.all_district_names(homeland_only=True)
+
+        if set(all_dist_names)!=set(df['District']):
+            missing_in_df = set(all_dist_names)-set(df['District'])
+            missing_in_adm_state = set(df['District'])-set(all_dist_names)
+            raise RuntimeError(f"District set for the loaded dataframe doesn't agree with the district set for its adm. state!\nMissing in df: {missing_in_df}\nMissing in adm. state: {missing_in_adm_state}.")
+        
+        if region_column:
+            address_list = adm_state.to_address_list(only_homeland=True)
+            district_to_region = {district: region for region, district in address_list}
+
+            # Step 2: Map the index (districts) to regions
+            df['Region'] = df.index.map(district_to_region)
+        
+        return df, data_table_metadata, adm_state_date
+
         
     def standardize_address(self):
         """
@@ -1176,3 +1291,64 @@ class AdministrativeHistory():
         end_time = time.time()
         execution_time = end_time - start_time
         print(f"✅ Successfully generated all administrative state plots in {execution_time:.2f} seconds and saved to 'output' folder.")
+
+    def plot_dataset(self, df: pd.DataFrame, col_name: str, adm_level: Union[Literal['Region'], Literal['District']], adm_state_date: datetime):
+        """
+        Generates a choropleth map of the specified data table column.
+
+        Parameters:
+        - df (pd.DataFrame): DataFrame containing the data to be visualized.
+        - col_name (str): Name of the column in the DataFrame to be plotted.
+        - adm_level (Literal['Region'] or Literal['District']): Administrative level for the map.
+        - adm_state_date (datetime): Date representing the administrative boundaries to use.
+
+        Returns:
+        - fig (matplotlib.figure.Figure): A matplotlib Figure object representing the choropleth map.
+        """
+        import matplotlib.pyplot as plt
+
+        if adm_level == 'Region':
+            if 'Region' not in df.columns:
+                raise ValueError(f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='Region' argument, but the passed df doesn't have 'Region' column.")
+            adm_state_regions = self.find_adm_state_by_date(adm_state_date).all_region_names(homeland_only=True)
+            if set(df['Region']) != set(adm_state_regions):
+                absent_in_df = set(adm_state_regions) - set(df['Region'])
+                absent_in_adm_state = set(df['Region']) - set(adm_state_regions)
+                raise ValueError (f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='Region' argument, but the values in the df 'Region' column don't fit the existing region names.\n Absent in set(df['Region']): {absent_in_df}.\nAbsent in adm_state: {absent_in_adm_state}.")
+        elif adm_level == 'District':
+            if 'District' not in df.columns:
+                raise ValueError (f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='District' argument, but the passed df doesn't have 'District' column.")
+            adm_state_dists = self.find_adm_state_by_date(adm_state_date).all_district_names(homeland_only=True)
+            if set(df['District']) != set(adm_state_dists):
+                absent_in_df = set(adm_state_dists) - set(df['District'])
+                absent_in_adm_state = set(df['District']) - set(adm_state_dists)
+                raise ValueError (f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='District' argument, but the values in the df 'District' column don't fit the existing district names.\n Absent in set(df['District']): {absent_in_df}.\nAbsent in adm_state: {absent_in_adm_state}.")
+        else:
+            raise ValueError(f"adm_level must be 'Region' or 'District', but '{adm_level}' was passed.")
+        
+        if adm_level == 'Region':
+            raise ValueError(f"Method 'AdministrativeHistory.plot_dataset' for adm_level='Region' not implemented yet.")
+        else:
+            dist_plot_layer = self.dist_registry._plot_layer(adm_state_date)
+            dist_plot_layer.rename(columns={'name_id': 'District'}, inplace = True)
+            dist_plot_layer = dist_plot_layer.merge(df, on='District', how='left')
+            
+            fig, ax = plt.subplots(figsize=(10, 8))
+            dist_plot_layer.plot(
+                ax=ax,
+                column=col_name,
+                cmap='OrRd',
+                legend=True,
+                missing_kwds={
+                    "color": "lightgrey",
+                    "label": "Missing values",
+                },
+                edgecolor='black',
+                linewidth=1
+            )
+            ax.axis('off')
+            ax.set_title(f"{col_name} by District")
+            plt.tight_layout()
+
+        return fig
+        

@@ -85,9 +85,16 @@ class AdministrativeState(BaseModel):
             ]
         return all_region_names
     
-    def all_district_names(self, homeland_only = False):
+    def all_district_names(self, homeland_only: bool = False):
         """
-        Returns all district names. If homeland_only is True, returns only districts in HOMELAND.
+        Returns all district names for the current state. If homeland_only is True,
+        returns only districts in HOMELAND.
+
+        Parameters:
+        - homeland_only (bool): If True, return only district names in homeland.
+        
+        Returns:
+        - all_district_names (List[str]): List of district names existent in the adm. state.
         """
         if homeland_only:
             country_dict = self.unit_hierarchy['HOMELAND']
