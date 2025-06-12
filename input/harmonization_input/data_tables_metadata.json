@@ -5467,7 +5467,7 @@
             },
             "Total - all  ": {
                 "unit": "",
-                "subcategory": "Total - all  ",
+                "subcategory": "Total - all",
                 "data_type": "int"
             },
             "1-2 Industrial plants: Categories I-V - f  ": {
@@ -7040,7 +7040,7 @@
             },
             "Total - all  ": {
                 "unit": "",
-                "subcategory": "Total - all  ",
+                "subcategory": "Total - all",
                 "data_type": "int"
             },
             "1-2 Industrial plants: Categories I-V - f  ": {

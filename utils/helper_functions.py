@@ -267,7 +267,7 @@ def save_plot_to_html(fig, html_path, title, description, append=False):
 
     print(f"Plot {'appended to' if append else 'saved to'} {html_path}")
 
-def read_economic_csv_input(input_csv_path):
+def read_economic_csv_input(input_csv_path: str):
     """
     Reads in and standardizes csv file with economic data for data harmonization from path passed in input_csv_path.
     """

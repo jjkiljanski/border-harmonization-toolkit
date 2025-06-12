@@ -1054,8 +1054,9 @@ class AdministrativeHistory():
             adm_state_date = data_table_metadata.adm_state_date
             folder = self.data_harmonization_input_folder
             path = os.path.join(folder, f"{data_table_id}.csv")
-            df = read_economic_csv_input()
-
+            df = read_economic_csv_input(path)
+            df = df.reset_index()
+            
         col_rename_dict = {
             col_name: f"{data_table_metadata.columns[col_name].subcategory}: {data_table_metadata.columns[col_name].subsubcategory}"
             for col_name in df.columns
@@ -1292,7 +1293,7 @@ class AdministrativeHistory():
         execution_time = end_time - start_time
         print(f"✅ Successfully generated all administrative state plots in {execution_time:.2f} seconds and saved to 'output' folder.")
 
-    def plot_dataset(self, df: pd.DataFrame, col_name: str, adm_level: Union[Literal['Region'], Literal['District']], adm_state_date: datetime):
+    def plot_dataset(self, df: pd.DataFrame, col_name: str, adm_level: Union[Literal['Region'], Literal['District']], adm_state_date: datetime, save_to_path: str = None, title: str = None, legend_min: float = None, legend_max: float = None):
         """
         Generates a choropleth map of the specified data table column.
 
@@ -1332,23 +1333,38 @@ class AdministrativeHistory():
             dist_plot_layer = self.dist_registry._plot_layer(adm_state_date)
             dist_plot_layer.rename(columns={'name_id': 'District'}, inplace = True)
             dist_plot_layer = dist_plot_layer.merge(df, on='District', how='left')
-            
+
             fig, ax = plt.subplots(figsize=(10, 8))
-            dist_plot_layer.plot(
-                ax=ax,
-                column=col_name,
-                cmap='OrRd',
-                legend=True,
-                missing_kwds={
-                    "color": "lightgrey",
-                    "label": "Missing values",
-                },
-                edgecolor='black',
-                linewidth=1
-            )
+
+            if legend_min is not None and legend_max is not None:
+                dist_plot_layer.plot(
+                    ax=ax,
+                    column=col_name,
+                    cmap='OrRd',
+                    legend=True,
+                    edgecolor='black',
+                    linewidth=1,
+                    vmin = legend_min,
+                    vmax = legend_max
+                )
+            else:
+                dist_plot_layer.plot(
+                    ax=ax,
+                    column=col_name,
+                    cmap='OrRd',
+                    legend=True,
+                    edgecolor='black',
+                    linewidth=1
+                )
             ax.axis('off')
-            ax.set_title(f"{col_name} by District")
+            if title is not None:
+                ax.set_title(title)
+            else:
+                ax.set_title(f"{col_name} by District")
             plt.tight_layout()
+
+            if save_to_path:
+                fig.savefig(save_to_path, dpi=300, bbox_inches='tight')
 
         return fig
         
