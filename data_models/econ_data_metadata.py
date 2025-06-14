@@ -16,6 +16,7 @@ class ColumnMetadata(BaseModel):
     n_not_na_after_imputation: Optional[int] = None
 class DataTableMetadata(BaseModel):
     data_table_id: str
+    adm_level: Union[Literal['District'], Literal['Region']]
     category: str
     source: Optional[str] = ""
     link: Optional[str] = ""
@@ -24,8 +25,8 @@ class DataTableMetadata(BaseModel):
     pdf_page: Optional[int] = None
     description: Dict[Union[Literal["pol", "eng"]], str]
     date: str
-    orig_adm_state_date: datetime  # parsed from multiple formats
-    adm_state_date: Optional[datetime] = None
+    orig_adm_state_date: datetime = None  # parsed from multiple formats
+    adm_state_date: Optional[datetime]
     standardization_comments: Optional[str] = ""
     harmonization_method: Literal["proportional_to_territory"]
     imputation_method: Optional[Literal["take_from_closest_centroid"]] = None
@@ -40,7 +41,8 @@ class DataTableMetadata(BaseModel):
                 for fmt in ("%d.%m.%Y", "%Y-%m-%dT%H:%M:%S"):
                     try:
                         data["orig_adm_state_date"] = datetime.strptime(adm_date, fmt)
-                        data["adm_state_date"] = data["orig_adm_state_date"]
+                        if data.get("adm_state_date", None) is None:
+                            data["adm_state_date"] = data["orig_adm_state_date"]
                         break
                     except ValueError:
                         continue

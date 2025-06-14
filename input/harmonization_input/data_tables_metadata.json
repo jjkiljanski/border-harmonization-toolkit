@@ -1,6 +1,7 @@
 [
     {
         "data_table_id": "1921-occupation_ready_clean",
+        "adm_level": "District",
         "category": "Census 1921 - Economically Active Population",
         "source": "",
         "link": "",
@@ -71,6 +72,7 @@
     },
     {
         "data_table_id": "1921-ethnicity_ready_clean",
+        "adm_level": "District",
         "category": "Census 1921 - Ethnicity",
         "source": "",
         "link": "",
@@ -171,6 +173,7 @@
     },
     {
         "data_table_id": "1921-total_population_ready_clean",
+        "adm_level": "District",
         "category": "Census 1921 - Total Population",
         "source": "",
         "link": "",
@@ -196,6 +199,7 @@
     },
     {
         "data_table_id": "1921-religion_ready_clean",
+        "adm_level": "District",
         "category": "Census 1921 - Religion",
         "source": "",
         "link": "",
@@ -286,6 +290,7 @@
     },
     {
         "data_table_id": "1923-1924-crops_area_ha_ready",
+        "adm_level": "District",
         "category": "Crops - Area",
         "source": "Kwartalnik Statystyczny Tom II Zeszyt 1 Rok 1925",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DNGG45F3IK33B4XREYF367KTTRMAG4.pdf",
@@ -332,6 +337,7 @@
     },
     {
         "data_table_id": "1923-1924-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Kwartalnik Statystyczny Tom II Zeszyt 1 Rok 1925",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DNGG45F3IK33B4XREYF367KTTRMAG4.pdf",
@@ -377,6 +383,7 @@
     },
     {
         "data_table_id": "1923-1924-sugarbeet_ready",
+        "adm_level": "District",
         "category": "Crops",
         "source": "Kwartalnik Statystyczny Tom II Zeszyt 1 Rok 1925",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DNGG45F3IK33B4XREYF367KTTRMAG4.pdf",
@@ -412,6 +419,7 @@
     },
     {
         "data_table_id": "1924-industrial_occupations_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Industrial Occupations Permissions",
         "source": "Statystyka akcji wymiarowej i poborowej podatków bezpośrednich i opłat stemplowych za rok 1925",
         "link": "https://wbc.poznan.pl/dlibra/publication/641777/edition/552147/content",
@@ -512,6 +520,7 @@
     },
     {
         "data_table_id": "1925-industrial_occupations_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Industrial Occupations Permissions",
         "source": "Statystyka akcji wymiarowej i poborowej podatków bezpośrednich i opłat stemplowych za rok 1925",
         "link": "https://wbc.poznan.pl/dlibra/publication/641777/edition/552147/content",
@@ -612,6 +621,7 @@
     },
     {
         "data_table_id": "1924-industry_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Industry Permissions",
         "source": "",
         "link": "https://wbc.poznan.pl/dlibra/publication/641777/edition/552147/content",
@@ -712,6 +722,7 @@
     },
     {
         "data_table_id": "1925-industry_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Industry Permissions",
         "source": "Statystyka akcji wymiarowej i poborowej podatków bezpośrednich i opłat stemplowych za rok 1925",
         "link": "https://wbc.poznan.pl/dlibra/publication/641777/edition/552147/content",
@@ -812,6 +823,7 @@
     },
     {
         "data_table_id": "1924-trade_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka akcji wymiarowej i poborowej podatków bezpośrednich i opłat stemplowych za rok 1925",
         "link": "https://wbc.poznan.pl/dlibra/publication/641777/edition/552147/content",
@@ -892,6 +904,7 @@
     },
     {
         "data_table_id": "1925-trade_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka akcji wymiarowej i poborowej podatków bezpośrednich i opłat stemplowych za rok 1925",
         "link": "https://wbc.poznan.pl/dlibra/publication/641777/edition/552147/content",
@@ -972,6 +985,7 @@
     },
     {
         "data_table_id": "1925-1926-crops_area_ready",
+        "adm_level": "District",
         "category": "Crops - Area",
         "source": "Kwartalnik Statystyczny Tom IV Zeszyt 1 Rok 1927",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/LN77QKXCYYXK63Q2IN54IMXPRK1RD5.pdf",
@@ -1017,6 +1031,7 @@
     },
     {
         "data_table_id": "1925-1926-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Kwartalnik Statystyczny Tom IV Zeszyt 1 Rok 1927",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/LN77QKXCYYXK63Q2IN54IMXPRK1RD5.pdf",
@@ -1062,6 +1077,7 @@
     },
     {
         "data_table_id": "1925-1926-sugarbeet_ready",
+        "adm_level": "District",
         "category": "Crops - yields from ha",
         "source": "Kwartalnik Statystyczny Tom IV Zeszyt 1 Rok 1927",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/LN77QKXCYYXK63Q2IN54IMXPRK1RD5.pdf",
@@ -1087,6 +1103,7 @@
     },
     {
         "data_table_id": "08.1926_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Kwartalnik Statystyczny 1926, Tom III, Zeszyt 4",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/48PVGJR1NFPKUMELYKXSQSPNXDC2VD.pdf",
@@ -1195,6 +1212,7 @@
     },
     {
         "data_table_id": "30.11.1927-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Kwartalnik Statystyczny Tom V Zeszyt 1 Rok 1928",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/KVPDS2VFNCV4E5N479967L2T518KIF.pdf",
@@ -1240,6 +1258,7 @@
     },
     {
         "data_table_id": "1928-industrial_occupations_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Industrial Occupations Permissions",
         "source": "Statystyka akcji wymiarowej i poborowej podatków bezpośrednich i opłat stemplowych za rok 1928",
         "link": "https://wbc.poznan.pl/dlibra/publication/641779/edition/552149/content",
@@ -1340,6 +1359,7 @@
     },
     {
         "data_table_id": "1928-industry_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Industry Permissions",
         "source": "Statystyka akcji wymiarowej i poborowej podatków bezpośrednich i opłat stemplowych za rok 1928",
         "link": "https://wbc.poznan.pl/dlibra/publication/641779/edition/552149/content",
@@ -1450,6 +1470,7 @@
     },
     {
         "data_table_id": "1928-trade_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka akcji wymiarowej i poborowej podatków bezpośrednich i opłat stemplowych za rok 1928",
         "link": "https://wbc.poznan.pl/dlibra/publication/641779/edition/552149/content",
@@ -1530,6 +1551,7 @@
     },
     {
         "data_table_id": "1927-1928-crops_area_ha_ready",
+        "adm_level": "District",
         "category": "Crops - Area",
         "source": "Kwartalnik Statystyczny Tom VI Zeszyt 2 Rok 1929",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/5PS1QH3PHI177F1H8XQ89U9KCBC9SH.pdf",
@@ -1665,6 +1687,7 @@
     },
     {
         "data_table_id": "1927-1928-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Kwartalnik Statystyczny Tom VI Zeszyt 2 Rok 1929",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/5PS1QH3PHI177F1H8XQ89U9KCBC9SH.pdf",
@@ -1715,6 +1738,7 @@
     },
     {
         "data_table_id": "08.1928_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Kwartalnik Statystyczny, Tom  1928, Tom V, Zeszyt 4",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/C5BL74DXYM9PC5KHNT5BEN5VN2I7F3.pdf",
@@ -1817,6 +1841,7 @@
     },
     {
         "data_table_id": "30.06.1929-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Kwartalnik Statystyczny Tom VII Zeszyt 1 Rok 1930",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/3BPEMS4ERIRVL5UDUCG3ECQDQM7RXA.pdf",
@@ -1857,6 +1882,7 @@
     },
     {
         "data_table_id": "30.06.1930-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Kwartalnik Statystyczny Tom VIII Zeszyt 2 Rok 1931",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/HEU2RGSQUJ3UPVUR8VFQQ3VNB74P6L.pdf",
@@ -1902,6 +1928,7 @@
     },
     {
         "data_table_id": "1930-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Kwartalnik Statystyczny Tom VIII Zeszyt 2 Rok 1931",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/HEU2RGSQUJ3UPVUR8VFQQ3VNB74P6L.pdf",
@@ -1952,6 +1979,7 @@
     },
     {
         "data_table_id": "1930-forests_area_ha_ready",
+        "adm_level": "District",
         "category": "Forests",
         "source": "Kwartalnik Statystyczny Tom VIII Zeszyt 2 Rok 1931",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/HEU2RGSQUJ3UPVUR8VFQQ3VNB74P6L.pdf",
@@ -1977,6 +2005,7 @@
     },
     {
         "data_table_id": "08.1930_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Statystyka Cen. Tom II. Zeszyt 3",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/866KY6R4P5E18UQEHIDVIK8NJCKTIL.pdf",
@@ -2075,6 +2104,7 @@
     },
     {
         "data_table_id": "30.06.1931-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Statystyka Rolnicza 1931 (Tom I) (Warszawa 1932)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/8IXVBJ5DES5338Y9T16LEAEU2MGP3F.pdf",
@@ -2120,6 +2150,7 @@
     },
     {
         "data_table_id": "1931-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Statystyka Rolnicza 1931 (Tom I) (Warszawa 1932)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/8IXVBJ5DES5338Y9T16LEAEU2MGP3F.pdf",
@@ -2170,6 +2201,7 @@
     },
     {
         "data_table_id": "08.1931_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Statystyka Cen. Tom III. Zeszyt 3",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/INY5AN5IUDRSH8LJM2YE57GU2DM5IF.pdf",
@@ -2268,6 +2300,7 @@
     },
     {
         "data_table_id": "1932_trade_permissions_cat_1_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka przedsiębiorstw handlowych w Polsce",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
@@ -2546,6 +2579,7 @@
     },
     {
         "data_table_id": "1932_trade_permissions_cat_2_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka przedsiębiorstw handlowych w Polsce",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
@@ -2824,6 +2858,7 @@
     },
     {
         "data_table_id": "1932_trade_permissions_cat_3_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka przedsiębiorstw handlowych w Polsce",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
@@ -3102,6 +3137,7 @@
     },
     {
         "data_table_id": "1932_trade_permissions_cat_4_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka przedsiębiorstw handlowych w Polsce",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
@@ -3380,6 +3416,7 @@
     },
     {
         "data_table_id": "1932_trade_permissions_cat_5a_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka przedsiębiorstw handlowych w Polsce",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
@@ -3658,6 +3695,7 @@
     },
     {
         "data_table_id": "1932_trade_permissions_cat_5b_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka przedsiębiorstw handlowych w Polsce",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
@@ -3936,6 +3974,7 @@
     },
     {
         "data_table_id": "1932_trade_permissions_total_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka przedsiębiorstw handlowych w Polsce",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/DC75SQ7MX5P8MFLT5V9898VJLXAYMA.pdf",
@@ -4214,6 +4253,7 @@
     },
     {
         "data_table_id": "30.06.1932-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Statystyka Rolnicza 1931-1932 (Tom II) (Warszawa 1933)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/PU8HTQ6C9KE2U986FPPEGU44G6MRKP.pdf",
@@ -4259,6 +4299,7 @@
     },
     {
         "data_table_id": "1932-crops_area_ha_ready",
+        "adm_level": "District",
         "category": "Crops - Area",
         "source": "Statystyka Rolnicza 1931-1932 (Tom II) (Warszawa 1933)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/PU8HTQ6C9KE2U986FPPEGU44G6MRKP.pdf",
@@ -4275,6 +4316,31 @@
         "harmonization_method": "proportional_to_territory",
         "imputation_method": null,
         "columns": {
+            "Gryka": {
+                "unit": "ha",
+                "subcategory": "Gryka",
+                "data_type": "float"
+            },
+            "Proso": {
+                "unit": "ha",
+                "subcategory": "Proso",
+                "data_type": "float"
+            },
+            "Kukurydza": {
+                "unit": "ha",
+                "subcategory": "Kukurydza",
+                "data_type": "float"
+            },
+            "Buraki cukrowe": {
+                "unit": "ha",
+                "subcategory": "Buraki Cukrowe",
+                "data_type": "float"
+            },
+            "Pszenica": {
+                "unit": "ha",
+                "subcategory": "Pszenica",
+                "data_type": "float"
+            },
             "Owies": {
                 "unit": "ha",
                 "subcategory": "Owies",
@@ -4297,13 +4363,56 @@
             },
             "Mieszanki na ziarno: Jęczmień": {
                 "unit": "ha",
-                "subcategory": "Mieszanki na ziarno: Jęczmień",
+                "subcategory": "Mieszanki na ziarno",
+                "subsubcategory": "Jęczmień",
+                "data_type": "float"
+            },
+            "Mieszanki na ziarno: Inne mieszanki zbóż": {
+                "unit": "ha",
+                "subcategory": "Mieszanki na ziarno",
+                "subsubcategory": "Inne mieszanki zbóż",
+                "data_type": "float"
+            },
+            "Groch": {
+                "unit": "ha",
+                "subcategory": "Groch",
+                "data_type": "float"
+            },
+            "Fasola, bób, soczewica": {
+                "unit": "ha",
+                "subcategory": "Fasola, bób, soczewica",
+                "data_type": "float"
+            },
+            "Len": {
+                "unit": "ha",
+                "subcategory": "Len",
+                "data_type": "float"
+            },
+            "Konopie": {
+                "unit": "ha",
+                "subcategory": "Len",
+                "data_type": "float"
+            },
+            "Rzepak i rzepik": {
+                "unit": "ha",
+                "subcategory": "Rzepak i rzepik",
+                "data_type": "float"
+            },
+            "Chmiel": {
+                "unit": "ha",
+                "subcategory": "Chmiel",
+                "data_type": "float"
+            },
+            "Tytoń": {
+                "unit": "ha",
+                "subcategory": "Tytoń",
                 "data_type": "float"
             }
         }
     },
     {
         "data_table_id": "1932-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Statystyka Rolnicza 1931-1932 (Tom II) (Warszawa 1933)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/PU8HTQ6C9KE2U986FPPEGU44G6MRKP.pdf",
@@ -4320,14 +4429,34 @@
         "harmonization_method": "proportional_to_territory",
         "imputation_method": null,
         "columns": {
-            "Owies": {
+            "Gryka": {
                 "unit": "quintal",
-                "subcategory": "Owies",
+                "subcategory": "Gryka",
+                "data_type": "float"
+            },
+            "Proso": {
+                "unit": "quintal",
+                "subcategory": "Proso",
+                "data_type": "float"
+            },
+            "Kukurydza": {
+                "unit": "quintal",
+                "subcategory": "Kukurydza",
+                "data_type": "float"
+            },
+            "Buraki cukrowe": {
+                "unit": "quintal",
+                "subcategory": "Buraki Cukrowe",
                 "data_type": "float"
             },
             "Pszenica": {
                 "unit": "quintal",
                 "subcategory": "Pszenica",
+                "data_type": "float"
+            },
+            "Owies": {
+                "unit": "quintal",
+                "subcategory": "Owies",
                 "data_type": "float"
             },
             "Ziemniaki": {
@@ -4347,13 +4476,70 @@
             },
             "Mieszanki na ziarno: Jęczmień": {
                 "unit": "quintal",
-                "subcategory": "Mieszanki na ziarno: Jęczmień",
+                "subcategory": "Mieszanki na ziarno",
+                "subsubcategory": "Jęczmień",
+                "data_type": "float"
+            },
+            "Mieszanki na ziarno: Inne mieszanki zbóż": {
+                "unit": "quintal",
+                "subcategory": "Mieszanki na ziarno",
+                "subsubcategory": "Inne mieszanki zbóż",
+                "data_type": "float"
+            },
+            "Groch": {
+                "unit": "quintal",
+                "subcategory": "Groch",
+                "data_type": "float"
+            },
+            "Fasola, bób, soczewica": {
+                "unit": "quintal",
+                "subcategory": "Fasola, bób, soczewica",
+                "data_type": "float"
+            },
+            "Len: Nasienie": {
+                "unit": "quintal",
+                "subcategory": "Len",
+                "subsubcategory": "Nasienie",
+                "data_type": "float"
+            },
+            "Len: Włókno": {
+                "unit": "quintal",
+                "subcategory": "Len",
+                "subsubcategory": "Włókno",
+                "data_type": "float"
+            },
+            "Konopie: Nasienie": {
+                "unit": "quintal",
+                "subcategory": "Konopie",
+                "subsubcategory": "Nasienie",
+                "data_type": "float"
+            },
+            "Konopie: Włókno": {
+                "unit": "quintal",
+                "subcategory": "Konopie",
+                "subsubcategory": "Włókno",
+                "data_type": "float"
+            },
+            "Rzepak i rzepik": {
+                "unit": "quintal",
+                "subcategory": "Rzepak i rzepik",
+                "data_type": "float"
+            },
+            "Chmiel": {
+                "unit": "quintal",
+                "subcategory": "Chmiel",
+                "data_type": "float"
+            },
+            "Tytoń": {
+                "unit": "quintal",
+                "subcategory": "Tytoń",
                 "data_type": "float"
             }
         }
     },
     {
         "data_table_id": "9.12.1931-occupation_central_eastern_voivodships_ready_clean",
+        "adm_level": "District",
         "category": "Census 1931 - Economically Active Population",
         "source": "",
         "link": "",
@@ -5739,6 +5925,7 @@
     },
     {
         "data_table_id": "08.1932_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Statystyka Cen. Tom IV. Zeszyt 3",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/RAMDHCTVYNH3XXC6LD2SJDVL3GRG2P.pdf",
@@ -5837,6 +6024,7 @@
     },
     {
         "data_table_id": "30.06.1933-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Statystyka Rolnicza 1933 (Tom III) (Warszawa 1934)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/T5L7T9RD37AMQUI8XJ1JK5SG25Y29F.pdf",
@@ -5882,6 +6070,7 @@
     },
     {
         "data_table_id": "30.06.1934-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Statystyka Rolnicza 1934 (Tom IV) (Warszawa 1935)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/XR7QGU6DIR588G31LYPPK1E15QTLP3.pdf",
@@ -5927,6 +6116,7 @@
     },
     {
         "data_table_id": "9.12.1931-occupation_southern_western_voivodships_ready_clean",
+        "adm_level": "District",
         "category": "Census 1931 - Economically Active Population",
         "source": "",
         "link": "",
@@ -7312,6 +7502,7 @@
     },
     {
         "data_table_id": "1934-crops_area_ha_ready",
+        "adm_level": "District",
         "category": "Crops - Area",
         "source": "Statystyka Rolnicza 1934 (Tom IV) (Warszawa 1935)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/XR7QGU6DIR588G31LYPPK1E15QTLP3.pdf",
@@ -7343,6 +7534,21 @@
                 "subcategory": "Ziemniaki",
                 "data_type": "float"
             },
+            "Buraki cukrowe": {
+                "unit": "ha",
+                "subcategory": "Buraki Cukrowe",
+                "data_type": "float"
+            },
+            "Gryka": {
+                "unit": "ha",
+                "subcategory": "Gryka",
+                "data_type": "float"
+            },
+            "Proso": {
+                "unit": "ha",
+                "subcategory": "Proso",
+                "data_type": "float"
+            },
             "Żyto": {
                 "unit": "ha",
                 "subcategory": "Żyto",
@@ -7357,6 +7563,7 @@
     },
     {
         "data_table_id": "1934-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Statystyka Rolnicza 1934 (Tom IV) (Warszawa 1935)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/XR7QGU6DIR588G31LYPPK1E15QTLP3.pdf",
@@ -7417,6 +7624,7 @@
     },
     {
         "data_table_id": "08.1934_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Statystyka Cen 1934. Tom VI. Zeszyt 3.",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/S3YAATCJEFJNTP8I1XXXHN3497SVIE.pdf",
@@ -7515,6 +7723,7 @@
     },
     {
         "data_table_id": "30.06.1935-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Statystyka Rolnicza 1935 (Tom V). Część I-II. (Warszawa 1936)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/S74SF8XSI7XED4RS3F5XFKE1VK9RET.pdf",
@@ -7560,6 +7769,7 @@
     },
     {
         "data_table_id": "1935-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Statystyka Rolnicza 1935 (Tom V). Część I-II. (Warszawa 1936)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/S74SF8XSI7XED4RS3F5XFKE1VK9RET.pdf",
@@ -7581,14 +7791,14 @@
                 "subcategory": "Owies",
                 "data_type": "float"
             },
+            "Buraki cukrowe": {
+                "unit": "quintal",
+                "subcategory": "Buraki Cukrowe",
+                "data_type": "float"
+            },
             "Pszenica": {
                 "unit": "quintal",
                 "subcategory": "Pszenica",
-                "data_type": "float"
-            },
-            "Gryka": {
-                "unit": "quintal",
-                "subcategory": "Gryka",
                 "data_type": "float"
             },
             "Ziemniaki": {
@@ -7605,16 +7815,12 @@
                 "unit": "quintal",
                 "subcategory": "Jęczmień",
                 "data_type": "float"
-            },
-            "Proso": {
-                "unit": "quintal",
-                "subcategory": "Proso",
-                "data_type": "float"
             }
         }
     },
     {
         "data_table_id": "1935-industry_permissions_ready_clean",
+        "adm_level": "District",
         "category": "Industry Permissions",
         "source": "Statystyka Zakładów Przemysłowych i Handlowych. 1935. Warszawa 1938. Główny Urząd Statystyczny.",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/BPY7NTM2URVHF7DJ4QL9AU7K8CGPN8.pdf",
@@ -8010,6 +8216,7 @@
     },
     {
         "data_table_id": "1935-trade_permissions_total_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka Zakładów Przemysłowych i Handlowych. 1935. Warszawa 1938. Główny Urząd Statystyczny.",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/BPY7NTM2URVHF7DJ4QL9AU7K8CGPN8.pdf",
@@ -8435,6 +8642,7 @@
     },
     {
         "data_table_id": "1935-trade_permissions_no_fixed_location_ready_clean",
+        "adm_level": "District",
         "category": "Trade Permissions",
         "source": "Statystyka Zakładów Przemysłowych i Handlowych. 1935. Warszawa 1938. Główny Urząd Statystyczny.",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/BPY7NTM2URVHF7DJ4QL9AU7K8CGPN8.pdf",
@@ -8860,6 +9068,7 @@
     },
     {
         "data_table_id": "07.1935_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Statystyka Cen 1935. Tom VII. Zeszyt 3.",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/EYUXKMQVTJ3CIYKVVA2A5DTXBGMSYD.pdf",
@@ -8958,6 +9167,7 @@
     },
     {
         "data_table_id": "08.1935_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Statystyka Cen 1935. Tom VII. Zeszyt 3.",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/EYUXKMQVTJ3CIYKVVA2A5DTXBGMSYD.pdf",
@@ -9056,6 +9266,7 @@
     },
     {
         "data_table_id": "09.1935_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Statystyka Cen 1935. Tom VII. Zeszyt 3.",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/EYUXKMQVTJ3CIYKVVA2A5DTXBGMSYD.pdf",
@@ -9154,6 +9365,7 @@
     },
     {
         "data_table_id": "30.06.1936-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Statystyka Rolnicza 1936 (Tom VI) (Warszawa 1937)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/I2M57E4L5BF7XB7ENAVGR1XI7THFQJ.pdf",
@@ -9199,6 +9411,7 @@
     },
     {
         "data_table_id": "1936-crops_area_ha_ready",
+        "adm_level": "District",
         "category": "Crops - Area",
         "source": "Statystyka Rolnicza 1936 (Tom VI). Część I-II. (Warszawa 1937)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/I2M57E4L5BF7XB7ENAVGR1XI7THFQJ.pdf",
@@ -9218,6 +9431,16 @@
             "Owies": {
                 "unit": "ha",
                 "subcategory": "Owies",
+                "data_type": "float"
+            },
+            "Buraki cukrowe": {
+                "unit": "ha",
+                "subcategory": "Buraki Cukrowe",
+                "data_type": "float"
+            },
+            "Gryka": {
+                "unit": "ha",
+                "subcategory": "Gryka",
                 "data_type": "float"
             },
             "Pszenica": {
@@ -9244,6 +9467,7 @@
     },
     {
         "data_table_id": "1936-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Statystyka Rolnicza 1936 (Tom VI). Część I-II. (Warszawa 1937)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/I2M57E4L5BF7XB7ENAVGR1XI7THFQJ.pdf",
@@ -9284,11 +9508,22 @@
                 "unit": "quintal",
                 "subcategory": "Jęczmień",
                 "data_type": "float"
+            },
+            "Buraki cukrowe": {
+                "unit": "quintal",
+                "subcategory": "Buraki Cukrowe",
+                "data_type": "float"
+            },
+            "Gryka": {
+                "unit": "quintal",
+                "subcategory": "Gryka",
+                "data_type": "float"
             }
         }
     },
     {
         "data_table_id": "08.1936_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Statystyka Cen 1936 (Warszawa 1937)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/P8DF145ALJDBGMKSVVC16FIF53NP2P.pdf",
@@ -9387,6 +9622,7 @@
     },
     {
         "data_table_id": "30.06.1938-livestock_ready",
+        "adm_level": "District",
         "category": "Livestock",
         "source": "Statystyka Rolnicza 1938 (Tom VIII). Część I-II. (Warszawa 1939)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/2XRA53RJPRF6H6MPQD1F4CBKAMMPHD.pdf",
@@ -9432,6 +9668,7 @@
     },
     {
         "data_table_id": "1938-crops_area_ha_ready",
+        "adm_level": "District",
         "category": "Crops - Area",
         "source": "Statystyka Rolnicza 1938 (Tom VIII). Część I-II. (Warszawa 1939)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/2XRA53RJPRF6H6MPQD1F4CBKAMMPHD.pdf",
@@ -9463,6 +9700,26 @@
                 "subcategory": "Ziemniaki",
                 "data_type": "float"
             },
+            "Buraki cukrowe": {
+                "unit": "ha",
+                "subcategory": "Buraki Cukrowe",
+                "data_type": "float"
+            },
+            "Gryka": {
+                "unit": "ha",
+                "subcategory": "Gryka",
+                "data_type": "float"
+            },
+            "Proso": {
+                "unit": "ha",
+                "subcategory": "Proso",
+                "data_type": "float"
+            },
+            "Kukurydza": {
+                "unit": "ha",
+                "subcategory": "Kukurydza",
+                "data_type": "float"
+            },
             "Żyto": {
                 "unit": "ha",
                 "subcategory": "Żyto",
@@ -9477,6 +9734,7 @@
     },
     {
         "data_table_id": "1938-crops_q_ready",
+        "adm_level": "District",
         "category": "Crops - Size",
         "source": "Statystyka Rolnicza 1938 (Tom VIII). Część I-II. (Warszawa 1939)",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/2XRA53RJPRF6H6MPQD1F4CBKAMMPHD.pdf",
@@ -9516,6 +9774,26 @@
             "Jęczmień": {
                 "unit": "quintal",
                 "subcategory": "Jęczmień",
+                "data_type": "float"
+            },
+            "Buraki cukrowe": {
+                "unit": "quintal",
+                "subcategory": "Buraki Cukrowe",
+                "data_type": "float"
+            },
+            "Gryka": {
+                "unit": "quintal",
+                "subcategory": "Gryka",
+                "data_type": "float"
+            },
+            "Proso": {
+                "unit": "quintal",
+                "subcategory": "Proso",
+                "data_type": "float"
+            },
+            "Kukurydza": {
+                "unit": "quintal",
+                "subcategory": "Kukurydza",
                 "data_type": "float"
             }
         }

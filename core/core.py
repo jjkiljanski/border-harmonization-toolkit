@@ -665,19 +665,25 @@ class AdministrativeHistory():
         print(f"✅ Successfully constructed conversion dict in {execution_time:.2f} seconds.")
         return conversion_dict
     
-    def construct_conversion_matrix(self, date_from, date_to, verbose = False):
+    def construct_conversion_matrix(self, adm_level: Union[Literal['Region'], Literal['District']], date_from: datetime, date_to: datetime, verbose: bool = False):
         """
         Constructs a pandas DataFrame representing a conversion matrix between administrative
         state valid for date 'date_from and administrative state valid for date 'date_to'.
 
-        The rows of the matrix correspond to districts existing on `date_from` in 'HOMELAND',
-        and the columns correspond to districts existing on `date_to` in 'HOMELAND'.
+        If adm_level == 'District':
+            The rows of the matrix correspond to districts existing on `date_from` in 'HOMELAND',
+            and the columns correspond to districts existing on `date_to` in 'HOMELAND'.
+        If adm_level == 'Region':
+            The rows of the matrix correspond to districts existing on `date_from` in 'HOMELAND',
+            and the columns correspond to districts existing on `date_to` in 'HOMELAND'.
+            In the current version of the tookit the data on the region level are NOT harmonized
+            - i.e. the function returns an identity matrix.
 
         Returns:
             pd.DataFrame: A DataFrame with shape (len(dists_from), len(dists_to)),
                         where each cell [i, j] represents the proportion of the
-                        territory of district i (at date_from) that maps to
-                        district j (at date_to).
+                        territory of district/region i (at date_from) that maps to
+                        district/region j (at date_to).
         """
         if not self.territories_loaded:
             raise TerritoryNotLoadedError(f"Attempted to construct conversion matrix, but territories were not loaded.")
@@ -690,30 +696,53 @@ class AdministrativeHistory():
         print(f"Constructing conversion matrix between two administrative states:\nAdministrative State from: {self.find_adm_state_by_date(date_from)}\nAdministrative State to: {self.find_adm_state_by_date(date_to)}")
         
         # Get district name_ids for both dates
-        dists_from_list = self.find_adm_state_by_date(date_from).all_district_names(homeland_only=True)
-        dists_to_list = self.find_adm_state_by_date(date_to).all_district_names(homeland_only=True)
+        if adm_level == 'District':
+            units_from_list = self.find_adm_state_by_date(date_from).all_district_names(homeland_only=True)
+            units_to_list = self.find_adm_state_by_date(date_to).all_district_names(homeland_only=True)
+        elif adm_level == 'Region':
+            units_from_list = self.find_adm_state_by_date(date_from).all_region_names(homeland_only=True)
+            units_to_list = self.find_adm_state_by_date(date_to).all_region_names(homeland_only=True)
+        else:
+            raise ValueError(f"Method AdministrativeHistory.construct_conversion_matrix takes only 'Region' or 'District' as adm_level argument. Passed: {adm_level}.")
 
-        # Initialize empty DataFrame with 0s
-        conversion_matrix = pd.DataFrame(
-            0.0,
-            index=dists_from_list,
-            columns=dists_to_list
-        )
+        if adm_level == 'District':
+            # Initialize empty DataFrame with 0s
+            conversion_matrix = pd.DataFrame(
+                0.0,
+                index=units_from_list,
+                columns=units_to_list
+            )
 
-        # Get the conversion dictionary with proportions
-        conversion_dict = self._construct_conversion_dict(date_from, date_to, verbose = verbose)
+            # Get the conversion dictionary with proportions
+            conversion_dict = self._construct_conversion_dict(date_from, date_to, verbose = verbose)
 
-        print("Constructing conversion matrix based on the dict.")
-        # Fill the matrix
-        for from_dist, to_dists_dict in conversion_dict.items():
-            for to_dist, proportion in to_dists_dict.items():
-                if from_dist in conversion_matrix.index and to_dist in conversion_matrix.columns:
-                    conversion_matrix.at[from_dist, to_dist] = proportion
+            print("Constructing conversion matrix based on the dict.")
+            # Fill the matrix
+            for from_dist, to_dists_dict in conversion_dict.items():
+                for to_dist, proportion in to_dists_dict.items():
+                    if from_dist in conversion_matrix.index and to_dist in conversion_matrix.columns:
+                        conversion_matrix.at[from_dist, to_dist] = proportion
 
-        end_time = time.time()
-        execution_time = end_time - start_time
-        print(f"✅ Successfully constructed conversion matrix in {execution_time:.2f} seconds.")
-
+            end_time = time.time()
+            execution_time = end_time - start_time
+            print(f"✅ Successfully constructed conversion matrix in {execution_time:.2f} seconds.")
+        else:
+            # This is a mock function written only for the current version of the toolkit.
+            # Check if the list of from- and to-regions is the same. If not, raise error.
+            if set(units_from_list) != set(units_to_list):
+                missing_adm_state_from = set(units_to_list) - set(units_from_list)
+                missing_adm_state_to = set(units_from_list) - set(units_to_list)
+                raise ValueError(f"In the current version of the toolkit regions are not harmonized, but there are {len(units_from_list)} regions in the adm. state the data comes from and {len(units_to_list)} regions in the adm. state the data in the whole database is harmonized to.\nMissing in adm_state_from: {missing_adm_state_from}.\nMissing in adm_state_to: {missing_adm_state_to}.")
+            else:
+                conversion_matrix = pd.DataFrame(
+                    0.0,
+                    index=units_from_list,
+                    columns=units_to_list
+                )
+                # Fill identity (1.0 where index == column)
+                for unit in set(units_from_list) & set(units_to_list):
+                    conversion_matrix.loc[unit, unit] = 1.0
+        
         return conversion_matrix
     
     def harmonize_data(self):
@@ -738,12 +767,17 @@ class AdministrativeHistory():
         self.harmonized_data_metadata = []
         failed_files = []
 
-        for data_table_metadata_dict in self.harmonization_metadata:
+        ################################################    Harmonize district data    #####################################################
+
+        district_metadata_dicts = [metadata_dict for metadata_dict in self.harmonization_metadata if metadata_dict.adm_level == 'District']
+
+        for data_table_metadata_dict in district_metadata_dicts:
             try:
                 currently_considered_adm_state = self.find_adm_state_by_date(data_table_metadata_dict.orig_adm_state_date)
                 if str(currently_considered_adm_state) not in harmonize_from_dict:
                     harmonize_from_dict[str(currently_considered_adm_state)] = []
                     conv_matrix = self.construct_conversion_matrix(
+                        adm_level='District',
                         date_from=currently_considered_adm_state.timespan.middle,
                         date_to=self.harmonize_to_date,
                         verbose=False
@@ -753,6 +787,37 @@ class AdministrativeHistory():
                 input_csv_path = self.data_harmonization_input_folder + data_table_metadata_dict.data_table_id + ".csv"
                 output_csv_path = self.data_harmonization_output_folder + data_table_metadata_dict.data_table_id + ".csv"
 
+                harmonized_data_table_dict = self.harmonize_csv_file(
+                    input_csv_path=input_csv_path,
+                    output_csv_path=output_csv_path,
+                    data_table_metadata_dict=data_table_metadata_dict,
+                    date_to=self.harmonize_to_date,
+                    conv_matrix=conv_matrix
+                )
+
+                self.harmonized_data_metadata.append(harmonized_data_table_dict)
+
+            except Exception as e:
+                error_msg = f"❌ {data_table_metadata_dict.data_table_id}: {e}"
+                print(error_msg)
+                failed_files.append(error_msg)
+
+        ################################################     Harmonize region data     #####################################################
+
+        region_metadata_dicts = [metadata_dict for metadata_dict in self.harmonization_metadata if metadata_dict.adm_level == 'Region']
+
+        for data_table_metadata_dict in region_metadata_dicts:
+            try:
+                input_csv_path = self.data_harmonization_input_folder + data_table_metadata_dict.data_table_id + ".csv"
+                output_csv_path = self.data_harmonization_output_folder + data_table_metadata_dict.data_table_id + ".csv"
+
+                conv_matrix = self.construct_conversion_matrix(
+                    adm_level='Region',
+                    date_from=currently_considered_adm_state.timespan.middle,
+                    date_to=self.harmonize_to_date,
+                    verbose=False
+                )
+                
                 harmonized_data_table_dict = self.harmonize_csv_file(
                     input_csv_path=input_csv_path,
                     output_csv_path=output_csv_path,
@@ -799,10 +864,10 @@ class AdministrativeHistory():
         Args:
             input_csv_path (str): Path to the input CSV. Must contain a 'District' column (or similar).
             output_csv_path (str): Path to save the harmonized output CSV.
+            date_to (Optional[datetime]): Target administrative state date. Defaults to `self.harmonize_to_date`.
+            data_table_metadata_dict (DataTableMetadata): A DataTableMetadata instance holding metadata about the data table.
             conv_matrix (Optional[pd.DataFrame]): Optional precomputed conversion matrix.
                 If not provided, one is constructed automatically.
-            data_table_metadata_dict (DataTableMetadata): A DataTableMetadata instance holding metadata about the data table.
-            date_to (Optional[datetime]): Target administrative state date. Defaults to `self.harmonize_to_date`.
 
         Returns:
             data_table_metadata_dict (DataTableMetadata): The updated DataTableMetadata instance with the data table's metadata dict.
@@ -822,17 +887,18 @@ class AdministrativeHistory():
         if date_to is None:
             date_to = self.harmonize_to_date
         adm_state_date_from=data_table_metadata_dict.orig_adm_state_date
-        print(f"Harmonizing csv file '{input_csv_path}' from {adm_state_date_from.date()} to {date_to.date()}.\nOriginal borders: {str(self.find_adm_state_by_date(adm_state_date_from))}.\nTarget borders: {str(self.find_adm_state_by_date(date_to))}.")
+        adm_level = data_table_metadata_dict.adm_level
+        print(f"Harmonizing csv with {adm_level} data file '{input_csv_path}' from {adm_state_date_from.date()} to {date_to.date()}.\nOriginal borders: {str(self.find_adm_state_by_date(adm_state_date_from))}.\nTarget borders: {str(self.find_adm_state_by_date(date_to))}.")
         
         # --- Step 1: Load and clean the input data file ---
-        df_input_numeric = read_economic_csv_input(input_csv_path)
-        numeric_cols = list(set(df_input_numeric.columns)-{'District'})
+        df_input_numeric = read_economic_csv_input(adm_level = adm_level, input_csv_path=input_csv_path)
+        numeric_cols = list(set(df_input_numeric.columns)-{adm_level})
 
         # --- Step 2: Get or build the conversion matrix ---
         if conv_matrix is None:
             print(f"⏳ Building conversion matrix from {adm_state_date_from.date()} to {self.harmonize_to_date.date()}...")
             date_from = data_table_metadata_dict.orig_adm_state_date
-            conv_matrix = self.construct_conversion_matrix(date_from=date_from, date_to=date_to, verbose=True)
+            conv_matrix = self.construct_conversion_matrix(adm_level=adm_level, date_from=date_from, date_to=date_to, verbose=True)
 
         # --- Step 3: Diagnostics ---
         input_districts = set(df_input_numeric.index)
@@ -842,13 +908,13 @@ class AdministrativeHistory():
         missing_in_matrix = input_districts - matrix_districts
 
         if missing_in_input:
-            message_lines = ["⚠️ Districts in conversion matrix but NOT in input data:"]
+            message_lines = [f"⚠️ {adm_level}s in conversion matrix but NOT in input data:"]
             for dist in sorted(missing_in_input):
                 message_lines.append(f"  - {dist}")
             raise ValueError("\n".join(message_lines))
 
         if missing_in_matrix:
-            print("⚠️ Districts in input data but NOT in conversion matrix:")
+            print(f"⚠️ {adm_level}s in input data but NOT in conversion matrix:")
             for dist in sorted(missing_in_matrix):
                 print(f"  - {dist}")
 
@@ -944,6 +1010,7 @@ class AdministrativeHistory():
                 raise ValueError(f"Column '{col}' found in the data table '{input_csv_path}', but it doesn't exist in the data tables harmonization metadata.")
             
         data_table_metadata_dict.adm_state_date = self.harmonize_to_date
+        print(f"Set data_table_metadata_dict.adm_state_date to {self.harmonize_to_date.date()}.\data_table_metadata_dict: {data_table_metadata_dict}.")
         print(f"✅ Successfully harmonized '{input_csv_path}' and saved to '{output_csv_path}' in {execution_time:.2f} seconds")       
 
         return data_table_metadata_dict
@@ -1041,7 +1108,10 @@ class AdministrativeHistory():
         - adm_state_date (datetime): date of the administrative state the data is represented in.
         """
         if version == 'harmonized':
-            data_table_metadata = [data_table for data_table in self.harmonized_data_metadata if data_table.data_table_id == data_table_id][0]
+            data_table_metadata_list = [data_table for data_table in self.harmonized_data_metadata if data_table.data_table_id == data_table_id]
+            if len(data_table_metadata_list) == 0:
+                raise ValueError(f"No data table with the given id exists.")
+            data_table_metadata = data_table_metadata_list[0]
             adm_state_date = self.harmonize_to_date
             folder = self.data_harmonization_output_folder
             path = os.path.join(folder, f"{data_table_id}.csv")
@@ -1049,12 +1119,17 @@ class AdministrativeHistory():
 
             if 'District' not in df.columns:
                 raise ValueError(f"'District' column missing in data table: {data_table_id}")
+            
+            df.set_index('District', inplace=True)
         else:
-            data_table_metadata = [data_table for data_table in self.harmonization_metadata if data_table.data_table_id == data_table_id][0]
+            data_table_metadata_list = [data_table for data_table in self.harmonization_metadata if data_table.data_table_id == data_table_id]
+            if len(data_table_metadata_list) == 0:
+                raise ValueError(f"No data table with the given id exists.")
+            data_table_metadata = data_table_metadata_list[0]
             adm_state_date = data_table_metadata.adm_state_date
             folder = self.data_harmonization_input_folder
             path = os.path.join(folder, f"{data_table_id}.csv")
-            df = read_economic_csv_input(path)
+            df = read_economic_csv_input(adm_level='District', input_csv_path=path)
             df = df.reset_index()
             
         col_rename_dict = {
@@ -1068,9 +1143,9 @@ class AdministrativeHistory():
         adm_state = self.find_adm_state_by_date(adm_state_date)
         all_dist_names = adm_state.all_district_names(homeland_only=True)
 
-        if set(all_dist_names)!=set(df['District']):
-            missing_in_df = set(all_dist_names)-set(df['District'])
-            missing_in_adm_state = set(df['District'])-set(all_dist_names)
+        if set(all_dist_names)!=set(df.index):
+            missing_in_df = set(all_dist_names)-set(df.index)
+            missing_in_adm_state = set(df.index)-set(all_dist_names)
             raise RuntimeError(f"District set for the loaded dataframe doesn't agree with the district set for its adm. state!\nMissing in df: {missing_in_df}\nMissing in adm. state: {missing_in_adm_state}.")
         
         if region_column:
@@ -1293,12 +1368,12 @@ class AdministrativeHistory():
         execution_time = end_time - start_time
         print(f"✅ Successfully generated all administrative state plots in {execution_time:.2f} seconds and saved to 'output' folder.")
 
-    def plot_dataset(self, df: pd.DataFrame, col_name: str, adm_level: Union[Literal['Region'], Literal['District']], adm_state_date: datetime, save_to_path: str = None, title: str = None, legend_min: float = None, legend_max: float = None):
+    def plot_dataset(self, df: pd.DataFrame, col_name: str, adm_level: Union[Literal['Region'], Literal['District']], adm_state_date: datetime, save_to_path: str = None, title: str = None, legend_min: float = None, legend_max: float = None, cmap = 'OrRd'):
         """
         Generates a choropleth map of the specified data table column.
 
         Parameters:
-        - df (pd.DataFrame): DataFrame containing the data to be visualized.
+        - df (pd.DataFrame): DataFrame containing the data to be visualized with index name equal to the value passed in adm_level argument.
         - col_name (str): Name of the column in the DataFrame to be plotted.
         - adm_level (Literal['Region'] or Literal['District']): Administrative level for the map.
         - adm_state_date (datetime): Date representing the administrative boundaries to use.
@@ -1308,31 +1383,32 @@ class AdministrativeHistory():
         """
         import matplotlib.pyplot as plt
 
+        ##################################### Check proper input df form #######################################
+
         if adm_level == 'Region':
-            if 'Region' not in df.columns:
-                raise ValueError(f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='Region' argument, but the passed df doesn't have 'Region' column.")
-            adm_state_regions = self.find_adm_state_by_date(adm_state_date).all_region_names(homeland_only=True)
-            if set(df['Region']) != set(adm_state_regions):
-                absent_in_df = set(adm_state_regions) - set(df['Region'])
-                absent_in_adm_state = set(df['Region']) - set(adm_state_regions)
-                raise ValueError (f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='Region' argument, but the values in the df 'Region' column don't fit the existing region names.\n Absent in set(df['Region']): {absent_in_df}.\nAbsent in adm_state: {absent_in_adm_state}.")
+            adm_state_units = self.find_adm_state_by_date(adm_state_date).all_region_names(homeland_only=True)
         elif adm_level == 'District':
-            if 'District' not in df.columns:
-                raise ValueError (f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='District' argument, but the passed df doesn't have 'District' column.")
-            adm_state_dists = self.find_adm_state_by_date(adm_state_date).all_district_names(homeland_only=True)
-            if set(df['District']) != set(adm_state_dists):
-                absent_in_df = set(adm_state_dists) - set(df['District'])
-                absent_in_adm_state = set(df['District']) - set(adm_state_dists)
-                raise ValueError (f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='District' argument, but the values in the df 'District' column don't fit the existing district names.\n Absent in set(df['District']): {absent_in_df}.\nAbsent in adm_state: {absent_in_adm_state}.")
+            adm_state_units = self.find_adm_state_by_date(adm_state_date).all_district_names(homeland_only=True)
         else:
             raise ValueError(f"adm_level must be 'Region' or 'District', but '{adm_level}' was passed.")
+
+        if df.index.name != adm_level:
+            raise ValueError(f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='{adm_level}' argument, but the passed df doesn't have '{adm_level}' as index.")
+            
+        if set(df.index) != set(adm_state_units):
+            absent_in_df = set(adm_state_units) - set(df.index)
+            absent_in_adm_state = set(df.index) - set(adm_state_units)
+            raise ValueError (f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='{adm_level}' argument, but the values in the df '{adm_level}' index don't fit the existing {adm_level.lower()} names.\n Absent in set(df.index): {absent_in_df}.\nAbsent in adm_state: {absent_in_adm_state}.")
+        
+        #####################################             Plot           #######################################      
         
         if adm_level == 'Region':
             raise ValueError(f"Method 'AdministrativeHistory.plot_dataset' for adm_level='Region' not implemented yet.")
         else:
             dist_plot_layer = self.dist_registry._plot_layer(adm_state_date)
             dist_plot_layer.rename(columns={'name_id': 'District'}, inplace = True)
-            dist_plot_layer = dist_plot_layer.merge(df, on='District', how='left')
+            dist_plot_layer.set_index('District', inplace = True)
+            dist_plot_layer = dist_plot_layer.merge(df, left_index=True, right_index=True, how='left')
 
             fig, ax = plt.subplots(figsize=(10, 8))
 
@@ -1340,7 +1416,7 @@ class AdministrativeHistory():
                 dist_plot_layer.plot(
                     ax=ax,
                     column=col_name,
-                    cmap='OrRd',
+                    cmap=cmap,
                     legend=True,
                     edgecolor='black',
                     linewidth=1,
@@ -1351,7 +1427,7 @@ class AdministrativeHistory():
                 dist_plot_layer.plot(
                     ax=ax,
                     column=col_name,
-                    cmap='OrRd',
+                    cmap=cmap,
                     legend=True,
                     edgecolor='black',
                     linewidth=1

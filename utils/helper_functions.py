@@ -9,6 +9,7 @@ from io import BytesIO
 import base64
 import io
 import streamlit as st
+from typing import Union, Literal
 
 def normalize_spaces(text: str) -> str:
     # Replace non-breaking spaces (U+00A0) with normal spaces and strip
@@ -43,13 +44,13 @@ def extract_date_parts(date_str: str):
         parts = date_str.strip().split(".")
         if len(parts) == 1 and len(parts[0]) == 4:
             year = parts[0]
-            return year, None, None
+            return int(year), None, None
         elif len(parts) == 2 and len(parts[0]) == 2 and len(parts[1]) == 4:
             month, year = parts
-            return year, month, None
+            return int(year), int(month), None
         elif len(parts) == 3 and len(parts[0]) == 2 and len(parts[1]) == 2 and len(parts[2]) == 4:
             day, month, year = parts
-            return year, month, day
+            return int(year), int(month), int(day)
         else:
             raise ValueError("Date must be in 'YYYY', 'MM.YYYY', or 'DD.MM.YYYY' format.")
     except Exception as e:
@@ -267,10 +268,12 @@ def save_plot_to_html(fig, html_path, title, description, append=False):
 
     print(f"Plot {'appended to' if append else 'saved to'} {html_path}")
 
-def read_economic_csv_input(input_csv_path: str):
+def read_economic_csv_input(adm_level: Union[Literal['District'], Literal['Region']], input_csv_path: str):
     """
     Reads in and standardizes csv file with economic data for data harmonization from path passed in input_csv_path.
     """
+    if adm_level not in ['District', 'Region']:
+        raise ValueError(f"Argument adm_level must be 'District' or 'Region'. Passsed: {adm_level}.")
     print(f"Attempting to read: {input_csv_path}")
     
     if not os.path.exists(input_csv_path):
@@ -289,7 +292,11 @@ def read_economic_csv_input(input_csv_path: str):
                 encoding=enc,
                 dtype=str,
                 on_bad_lines='warn'
-            ).replace("X", np.nan)
+            )
+
+            # Strip whitespace and replace "X" and "-" with NaN
+            df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
+            df.replace(to_replace=["X", "-"], value=np.nan, inplace=True)
             encoding = enc
             break  # success
         except UnicodeDecodeError:
@@ -313,14 +320,14 @@ def read_economic_csv_input(input_csv_path: str):
         raise ValueError(f"CSV appears not to be parsed correctly. First column: {df.columns[0]}")
        
     # Try to identify the district column
-    if 'District' not in df.columns:
+    if adm_level not in df.columns:
         raise ValueError(
-            f"The input file '{input_csv_path}' must contain a 'District' column. "
+            f"The input file '{input_csv_path}' must contain a {adm_level} column. "
             f"Columns found: {df.columns.tolist()}"
         )
 
     # Define the 'District' column as index
-    df.set_index('District', inplace=True)
+    df.set_index(adm_level, inplace=True)
 
     # Check for non-unique indices and raise error if found
     if not df.index.is_unique:

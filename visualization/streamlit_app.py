@@ -34,7 +34,7 @@ st.title("Interwar Poland Database")
 @st.cache_resource
 def load_history():
     config = load_config("config.json")
-    return AdministrativeHistory(config, load_geometries=True)
+    return AdministrativeHistory(config, load_geometries=False)
 
 administrative_history = load_history()
 dist_registry = administrative_history.dist_registry

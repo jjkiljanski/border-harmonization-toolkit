@@ -1,6 +1,7 @@
 [
     {
         "data_table_id": "07.1935_prices_ready",
+        "adm_level": "District",
         "category": "Crops prices",
         "source": "Statystyka Cen 1935. Tom VII. Zeszyt 3.",
         "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/EYUXKMQVTJ3CIYKVVA2A5DTXBGMSYD.pdf",
