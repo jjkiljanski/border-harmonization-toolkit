@@ -2,15 +2,15 @@
     {
         "data_table_id": "1921-occupation_ready_clean",
         "adm_level": "District",
-        "category": "Census 1921 - Economically Active Population",
+        "category": "Census 1921 - Indirect Occupation",
         "source": "",
         "link": "",
         "table": "",
         "page": null,
         "pdf_page": null,
         "description": {
-            "pol": "Struktura zatrudnienia wg. spisu powszechnego 1921 (stan na 30.09.1921). Aktywni i pasywni zawodowo (?).",
-            "eng": "Employment structure according to the 1931 national census (as of September 30, 1921). Economically active and passive population (?)."
+            "pol": "Struktura zatrudnienia wg. spisu powszechnego 1921 (stan na 30.09.1921). Aktywni zawodowo wraz z członkami rodzin, bezrobotni itd.",
+            "eng": "Employment structure according to the 1921 national census (as of September 30, 1921). Economically active together with family members, unemployed etc."
         },
         "date": "30.09.1921",
         "orig_adm_state_date": "30.07.1921",
@@ -18,52 +18,52 @@
         "harmonization_method": "proportional_to_territory",
         "imputation_method": null,
         "columns": {
-            "Economically active population - B. Mining and industry": {
+            "Indirect Occupation - B. Mining and industry": {
                 "unit": "",
                 "subcategory": "B. Mining and industry",
                 "data_type": "int"
             },
-            "Economically active population - Total": {
+            "Indirect Occupation - Total": {
                 "unit": "",
                 "subcategory": "Total",
                 "data_type": "int"
             },
-            "Economically active population - C. Trade and insurance": {
+            "Indirect Occupation - C. Trade and insurance": {
                 "unit": "",
                 "subcategory": "C. Trade and insurance",
                 "data_type": "int"
             },
-            "Economically active population - G. Domestic service": {
+            "Indirect Occupation - G. Domestic service": {
                 "unit": "",
                 "subcategory": "G. Domestic service",
                 "data_type": "int"
             },
-            "Economically active population - E. Public service, liberal professions": {
+            "Indirect Occupation - E. Public service, liberal professions": {
                 "unit": "",
                 "subcategory": "E. Public service, liberal professions",
                 "data_type": "int"
             },
-            "Economically active population - A. Agriculture and forestry": {
+            "Indirect Occupation - A. Agriculture and forestry": {
                 "unit": "",
                 "subcategory": "A. Agriculture and forestry",
                 "data_type": "int"
             },
-            "Economically active population - H. Unemployed": {
+            "Indirect Occupation - H. Unemployed": {
                 "unit": "",
                 "subcategory": "H. Unemployed",
                 "data_type": "int"
             },
-            "Economically active population - F. Army": {
+            "Indirect Occupation - F. Army": {
                 "unit": "",
                 "subcategory": "F. Army",
                 "data_type": "int"
             },
-            "Economically active population - N. Not further specified": {
+            "Indirect Occupation - N. Not further specified": {
                 "unit": "",
                 "subcategory": "N. Not further specified",
                 "data_type": "int"
             },
-            "Economically active population - D. Transport and communication": {
+            "Indirect Occupation - D. Transport and communication": {
                 "unit": "",
                 "subcategory": "D. Transport and communication",
                 "data_type": "int"
@@ -81,7 +81,7 @@
         "pdf_page": null,
         "description": {
             "pol": "Struktura narodowościowa wg. spisu powszechnego 1921 (stan na 30.09.1921).",
-            "eng": "Ethnicity structure according to the 1931 national census (as of September 30, 1921)."
+            "eng": "Ethnicity structure according to the 1921 national census (as of September 30, 1921)."
         },
         "date": "30.09.1921",
         "orig_adm_state_date": "30.07.1921",
@@ -182,7 +182,7 @@
         "pdf_page": null,
         "description": {
             "pol": "Całkowita liczba ludności wg. spisu powszechnego 1921 (stan na 30.09.1921).",
-            "eng": "Total population according to the 1931 national census (as of September 30, 1921)."
+            "eng": "Total population according to the 1921 national census (as of September 30, 1921)."
         },
         "date": "30.09.1921",
         "orig_adm_state_date": "30.07.1921",
@@ -208,7 +208,7 @@
         "pdf_page": null,
         "description": {
             "pol": "Struktura wyznaniowa wg. spisu powszechnego 1921 (stan na 30.09.1921).",
-            "eng": "Confessional population structure according to the 1931 national census (as of September 30, 1921)."
+            "eng": "Confessional population structure according to the 1921 national census (as of September 30, 1921)."
         },
         "date": "30.09.1921",
         "orig_adm_state_date": "30.07.1921",
@@ -4534,6 +4534,644 @@
                 "unit": "quintal",
                 "subcategory": "Tytoń",
                 "data_type": "float"
+            }
+        }
+    },
+    {
+        "data_table_id": "1931-total_population_central_eastern_voivodships",
+        "adm_level": "District",
+        "category": "Census 1931 - Total Population",
+        "source": "",
+        "link": "",
+        "table": "",
+        "page": null,
+        "pdf_page": null,
+        "description": {
+            "pol": "Całkowita liczba ludności wg. spisu powszechnego 1931 (stan na 09.12.1931).",
+            "eng": "Total population according to the 1931 national census (as of December 09, 1931)."
+        },
+        "date": "09.12.1931",
+        "orig_adm_state_date": "01.01.1933",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw centralnych i wschodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Total population": {
+                "unit": "",
+                "subcategory": "Total population",
+                "data_type": "int"
+            }
+        }
+    },
+    {
+        "data_table_id": "1931-ethnicity_central_eastern_voivodships",
+        "adm_level": "District",
+        "category": "Census 1931 - Ethnicity",
+        "source": "",
+        "link": "",
+        "table": "",
+        "page": null,
+        "pdf_page": null,
+        "description": {
+            "pol": "Struktura narodowościowa wg. spisu powszechnego 1931 (stan na 09.12.1931).",
+            "eng": "Ethnicity structure according to the 1931 national census (as of December 09, 1931)."
+        },
+        "date": "09.12.1931",
+        "orig_adm_state_date": "01.01.1933",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw centralnych i wschodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Polish": {
+                "unit": "",
+                "subcategory": "Polish",
+                "data_type": "int"
+            },
+            "% Polish": {
+                "unit": "",
+                "subcategory": "% Polish",
+                "data_type": "int"
+            },
+            "Ukrainian": {
+                "unit": "",
+                "subcategory": "Ukrainian",
+                "data_type": "int"
+            },
+            "% Ukrainian": {
+                "unit": "",
+                "subcategory": "% Ukrainian",
+                "data_type": "int"
+            },
+            "Ruthenian": {
+                "unit": "",
+                "subcategory": "Ruthenian",
+                "data_type": "int"
+            },
+            "% Ruthenian": {
+                "unit": "",
+                "subcategory": "% Ruthenian",
+                "data_type": "int"
+            },
+            "Belarusian": {
+                "unit": "",
+                "subcategory": "Belarusian",
+                "data_type": "int"
+            },
+            "% Belarusian": {
+                "unit": "",
+                "subcategory": "% Belarusian",
+                "data_type": "int"
+            },
+            "Russian": {
+                "unit": "",
+                "subcategory": "Russian",
+                "data_type": "int"
+            },
+            "% Russian": {
+                "unit": "",
+                "subcategory": "% Russian",
+                "data_type": "int"
+            },
+            "German": {
+                "unit": "",
+                "subcategory": "German",
+                "data_type": "int"
+            },
+            "% German": {
+                "unit": "",
+                "subcategory": "% German",
+                "data_type": "int"
+            },
+            "Jewish": {
+                "unit": "",
+                "subcategory": "Jewish",
+                "data_type": "int"
+            },
+            "% Jewish": {
+                "unit": "",
+                "subcategory": "% Jewish",
+                "data_type": "int"
+            },
+            "Hebrew": {
+                "unit": "",
+                "subcategory": "Hebrew",
+                "data_type": "int"
+            },
+            "% Hebrew": {
+                "unit": "",
+                "subcategory": "% Hebrew",
+                "data_type": "int"
+            },
+            "Other and unknown: total": {
+                "unit": "",
+                "subcategory": "Other and unknown: total",
+                "data_type": "int"
+            },
+            "% Other: total": {
+                "unit": "",
+                "subcategory": "% Other: total",
+                "data_type": "int"
+            },
+            "Minorities total (excluding Polish nationality)": {
+                "unit": "",
+                "subcategory": "Minorities total (excluding Polish nationality)",
+                "data_type": "int"
+            },
+            "% Minorities total": {
+                "unit": "",
+                "subcategory": "% Minorities total",
+                "data_type": "int"
+            }
+        }
+    },
+    {
+        "data_table_id": "1931-indirect_occupation_central_eastern_voivodships",
+        "adm_level": "District",
+        "category": "Census 1931 - Indirect Occupation",
+        "source": "",
+        "link": "",
+        "table": "",
+        "page": null,
+        "pdf_page": null,
+        "description": {
+            "pol": "Struktura zatrudnienia wg. spisu powszechnego 1931 (stan na 09.12.1931). Aktywni zawodowo wraz z członkami rodzin, bezrobotni itd.",
+            "eng": "Employment structure according to the 1931 national census (as of December 09, 1931). Economically active together with family members, unemployed etc."
+        },
+        "date": "09.12.1931",
+        "orig_adm_state_date": "01.01.1933",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw centralnych i wschodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Indirect Occupation - Total": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - Total",
+                "data_type": "int"
+            },
+            "Indirect Occupation - A. Agriculture": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - A. Agriculture",
+                "data_type": "int"
+            },
+            "Indirect Occupation - Excluding Agriculture - Total": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - Excluding Agriculture - Total",
+                "data_type": "int"
+            },
+            "Indirect Occupation  - Horticulture": {
+                "unit": "",
+                "subcategory": "Indirect Occupation  - Horticulture",
+                "data_type": "int"
+            },
+            "Indirect Occupation - B. Mining and industry": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - B. Mining and industry",
+                "data_type": "int"
+            },
+            "Indirect Occupation - C. Trade and insurance": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - C. Trade and insurance",
+                "data_type": "int"
+            },
+            "Indirect Occupation - D. Transport and communication": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - D. Transport and communication",
+                "data_type": "int"
+            },
+            "Indirect Occupation - E. Public service, liberal professions": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - E. Public service, liberal professions",
+                "data_type": "int"
+            },
+            "Indirect Occupation - Schooling, Education, and Culture": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - Schooling, Education, and Culture",
+                "data_type": "int"
+            },
+            "Indirect Occupation - Public Hygiene and Sanitation": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - Public Hygiene and Sanitation",
+                "data_type": "int"
+            },
+            "Indirect Occupation - G. Domestic service": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - G. Domestic service",
+                "data_type": "int"
+            },
+            "Indirect Occupation - N. Not further specified": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - N. Not further specified",
+                "data_type": "int"
+            }
+        }
+    },
+    {
+        "data_table_id": "1931-religion_central_eastern_voivodships",
+        "adm_level": "District",
+        "category": "Census 1931 - Religion",
+        "source": "",
+        "link": "",
+        "table": "",
+        "page": null,
+        "pdf_page": null,
+        "description": {
+            "pol": "Struktura wyznaniowa wg. spisu powszechnego 1931 (stan na 09.12.1931).",
+            "eng": "Confessional population structure according to the 1931 national census (as of December 09, 1931)."
+        },
+        "date": "09.12.1931",
+        "orig_adm_state_date": "01.01.1933",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw centralnych i wschodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Roman Catholic": {
+                "unit": "",
+                "subcategory": "Roman Catholic",
+                "data_type": "int"
+            },
+            "% Roman Catholic": {
+                "unit": "",
+                "subcategory": "% Roman Catholic",
+                "data_type": "int"
+            },
+            "Greek Catholic": {
+                "unit": "",
+                "subcategory": "Greek Catholic",
+                "data_type": "int"
+            },
+            "% Greek Catholic": {
+                "unit": "",
+                "subcategory": "% Greek Catholic",
+                "data_type": "int"
+            },
+            "Orthodox": {
+                "unit": "",
+                "subcategory": "Orthodox",
+                "data_type": "int"
+            },
+            "% Orthodox": {
+                "unit": "",
+                "subcategory": "% Orthodox",
+                "data_type": "int"
+            },
+            "Evangelical": {
+                "unit": "",
+                "subcategory": "Evangelical",
+                "data_type": "int"
+            },
+            "% Evangelical": {
+                "unit": "",
+                "subcategory": "% Evangelical",
+                "data_type": "int"
+            },
+            "Mosaic (Jewish)": {
+                "unit": "",
+                "subcategory": "Mosaic (Jewish)",
+                "data_type": "int"
+            },
+            "% Mosaic (Jewish)": {
+                "unit": "",
+                "subcategory": "% Mosaic (Jewish)",
+                "data_type": "int"
+            },
+            "Other Christian denominations": {
+                "unit": "",
+                "subcategory": "Other Christian denominations",
+                "data_type": "int"
+            },
+            "% Other Christian": {
+                "unit": "",
+                "subcategory": "% Other Christian",
+                "data_type": "int"
+            },
+            "Other or unknown": {
+                "unit": "",
+                "subcategory": "Other or unknown",
+                "data_type": "int"
+            },
+            "% Other": {
+                "unit": "",
+                "subcategory": "% Other",
+                "data_type": "int"
+            }
+        }
+    },
+    {
+        "data_table_id": "1931-total_population_southern_western_voivodships",
+        "adm_level": "District",
+        "category": "Census 1931 - Total Population",
+        "source": "",
+        "link": "",
+        "table": "",
+        "page": null,
+        "pdf_page": null,
+        "description": {
+            "pol": "Całkowita liczba ludności wg. spisu powszechnego 1931 (stan na 09.12.1931).",
+            "eng": "Total population according to the 1931 national census (as of December 09, 1931)."
+        },
+        "date": "09.12.1931",
+        "orig_adm_state_date": "01.08.1934",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw południowych i zachodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Total population": {
+                "unit": "",
+                "subcategory": "Total population",
+                "data_type": "int"
+            }
+        }
+    },
+    {
+        "data_table_id": "1931-ethnicity_southern_western_voivodships",
+        "adm_level": "District",
+        "category": "Census 1931 - Ethnicity",
+        "source": "",
+        "link": "",
+        "table": "",
+        "page": null,
+        "pdf_page": null,
+        "description": {
+            "pol": "Struktura narodowościowa wg. spisu powszechnego 1931 (stan na 09.12.1931).",
+            "eng": "Ethnicity structure according to the 1931 national census (as of December 09, 1931)."
+        },
+        "date": "09.12.1931",
+        "orig_adm_state_date": "01.08.1934",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw południowych i zachodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Polish": {
+                "unit": "",
+                "subcategory": "Polish",
+                "data_type": "int"
+            },
+            "% Polish": {
+                "unit": "",
+                "subcategory": "% Polish",
+                "data_type": "int"
+            },
+            "Ukrainian": {
+                "unit": "",
+                "subcategory": "Ukrainian",
+                "data_type": "int"
+            },
+            "% Ukrainian": {
+                "unit": "",
+                "subcategory": "% Ukrainian",
+                "data_type": "int"
+            },
+            "Ruthenian": {
+                "unit": "",
+                "subcategory": "Ruthenian",
+                "data_type": "int"
+            },
+            "% Ruthenian": {
+                "unit": "",
+                "subcategory": "% Ruthenian",
+                "data_type": "int"
+            },
+            "Belarusian": {
+                "unit": "",
+                "subcategory": "Belarusian",
+                "data_type": "int"
+            },
+            "% Belarusian": {
+                "unit": "",
+                "subcategory": "% Belarusian",
+                "data_type": "int"
+            },
+            "Russian": {
+                "unit": "",
+                "subcategory": "Russian",
+                "data_type": "int"
+            },
+            "% Russian": {
+                "unit": "",
+                "subcategory": "% Russian",
+                "data_type": "int"
+            },
+            "German": {
+                "unit": "",
+                "subcategory": "German",
+                "data_type": "int"
+            },
+            "% German": {
+                "unit": "",
+                "subcategory": "% German",
+                "data_type": "int"
+            },
+            "Jewish": {
+                "unit": "",
+                "subcategory": "Jewish",
+                "data_type": "int"
+            },
+            "% Jewish": {
+                "unit": "",
+                "subcategory": "% Jewish",
+                "data_type": "int"
+            },
+            "Hebrew": {
+                "unit": "",
+                "subcategory": "Hebrew",
+                "data_type": "int"
+            },
+            "% Hebrew": {
+                "unit": "",
+                "subcategory": "% Hebrew",
+                "data_type": "int"
+            },
+            "Other and unknown: total": {
+                "unit": "",
+                "subcategory": "Other and unknown: total",
+                "data_type": "int"
+            },
+            "% Other: total": {
+                "unit": "",
+                "subcategory": "% Other: total",
+                "data_type": "int"
+            },
+            "Minorities total (excluding Polish nationality)": {
+                "unit": "",
+                "subcategory": "Minorities total (excluding Polish nationality)",
+                "data_type": "int"
+            },
+            "% Minorities total": {
+                "unit": "",
+                "subcategory": "% Minorities total",
+                "data_type": "int"
+            }
+        }
+    },
+    {
+        "data_table_id": "1931-indirect_occupation_southern_western_voivodships",
+        "adm_level": "District",
+        "category": "Census 1931 - Indirect Occupation",
+        "source": "",
+        "link": "",
+        "table": "",
+        "page": null,
+        "pdf_page": null,
+        "description": {
+            "pol": "Struktura zatrudnienia wg. spisu powszechnego 1931 (stan na 09.12.1931). Aktywni zawodowo wraz z członkami rodzin, bezrobotni itd.",
+            "eng": "Employment structure according to the 1931 national census (as of December 09, 1931). Economically active together with family members, unemployed etc."
+        },
+        "date": "09.12.1931",
+        "orig_adm_state_date": "01.08.1934",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw południowych i zachodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Indirect Occupation - Total": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - Total",
+                "data_type": "int"
+            },
+            "Indirect Occupation - A. Agriculture": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - A. Agriculture",
+                "data_type": "int"
+            },
+            "Indirect Occupation - Excluding Agriculture - Total": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - Excluding Agriculture - Total",
+                "data_type": "int"
+            },
+            "Indirect Occupation  - Horticulture": {
+                "unit": "",
+                "subcategory": "Indirect Occupation  - Horticulture",
+                "data_type": "int"
+            },
+            "Indirect Occupation - B. Mining and industry": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - B. Mining and industry",
+                "data_type": "int"
+            },
+            "Indirect Occupation - C. Trade and insurance": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - C. Trade and insurance",
+                "data_type": "int"
+            },
+            "Indirect Occupation - D. Transport and communication": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - D. Transport and communication",
+                "data_type": "int"
+            },
+            "Indirect Occupation - E. Public service, liberal professions": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - E. Public service, liberal professions",
+                "data_type": "int"
+            },
+            "Indirect Occupation - Schooling, Education, and Culture": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - Schooling, Education, and Culture",
+                "data_type": "int"
+            },
+            "Indirect Occupation - Public Hygiene and Sanitation": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - Public Hygiene and Sanitation",
+                "data_type": "int"
+            },
+            "Indirect Occupation - G. Domestic service": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - G. Domestic service",
+                "data_type": "int"
+            },
+            "Indirect Occupation - N. Not further specified": {
+                "unit": "",
+                "subcategory": "Indirect Occupation - N. Not further specified",
+                "data_type": "int"
+            }
+        }
+    },
+    {
+        "data_table_id": "1931-religion_southern_western_voivodships",
+        "adm_level": "District",
+        "category": "Census 1931 - Religion",
+        "source": "",
+        "link": "",
+        "table": "",
+        "page": null,
+        "pdf_page": null,
+        "description": {
+            "pol": "Struktura wyznaniowa wg. spisu powszechnego 1931 (stan na 09.12.1931).",
+            "eng": "Confessional population structure according to the 1931 national census (as of December 09, 1931)."
+        },
+        "date": "09.12.1931",
+        "orig_adm_state_date": "01.08.1934",
+        "standardization_comments": "Dane zebrane z wszystkich publikacji dla województw południowych i zachodnich.",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Roman Catholic": {
+                "unit": "",
+                "subcategory": "Roman Catholic",
+                "data_type": "int"
+            },
+            "% Roman Catholic": {
+                "unit": "",
+                "subcategory": "% Roman Catholic",
+                "data_type": "int"
+            },
+            "Greek Catholic": {
+                "unit": "",
+                "subcategory": "Greek Catholic",
+                "data_type": "int"
+            },
+            "% Greek Catholic": {
+                "unit": "",
+                "subcategory": "% Greek Catholic",
+                "data_type": "int"
+            },
+            "Orthodox": {
+                "unit": "",
+                "subcategory": "Orthodox",
+                "data_type": "int"
+            },
+            "% Orthodox": {
+                "unit": "",
+                "subcategory": "% Orthodox",
+                "data_type": "int"
+            },
+            "Evangelical": {
+                "unit": "",
+                "subcategory": "Evangelical",
+                "data_type": "int"
+            },
+            "% Evangelical": {
+                "unit": "",
+                "subcategory": "% Evangelical",
+                "data_type": "int"
+            },
+            "Mosaic (Jewish)": {
+                "unit": "",
+                "subcategory": "Mosaic (Jewish)",
+                "data_type": "int"
+            },
+            "% Mosaic (Jewish)": {
+                "unit": "",
+                "subcategory": "% Mosaic (Jewish)",
+                "data_type": "int"
+            },
+            "Other Christian denominations": {
+                "unit": "",
+                "subcategory": "Other Christian denominations",
+                "data_type": "int"
+            },
+            "% Other Christian": {
+                "unit": "",
+                "subcategory": "% Other Christian",
+                "data_type": "int"
+            },
+            "Other or unknown": {
+                "unit": "",
+                "subcategory": "Other or unknown",
+                "data_type": "int"
+            },
+            "% Other": {
+                "unit": "",
+                "subcategory": "% Other",
+                "data_type": "int"
             }
         }
     },

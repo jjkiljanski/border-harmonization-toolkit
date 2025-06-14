@@ -11,6 +11,46 @@
             }
         },
         {
+            "method_name": "sum_up_data_tables",
+            "arguments": {
+                "data_tables_list": [
+                    "1931-total_population_central_eastern_voivodships",
+                    "1931-total_population_southern_western_voivodships"
+                ],
+                "new_data_table_name": "1931-total_population"
+            }
+        },
+        {
+            "method_name": "sum_up_data_tables",
+            "arguments": {
+                "data_tables_list": [
+                    "1931-ethnicity_central_eastern_voivodships",
+                    "1931-ethnicity_southern_western_voivodships"
+                ],
+                "new_data_table_name": "1931-ethnicity"
+            }
+        },
+        {
+            "method_name": "sum_up_data_tables",
+            "arguments": {
+                "data_tables_list": [
+                    "1931-indirect_occupation_central_eastern_voivodships",
+                    "1931-indirect_occupation_southern_western_voivodships"
+                ],
+                "new_data_table_name": "1931-indirect_occupation"
+            }
+        },
+        {
+            "method_name": "sum_up_data_tables",
+            "arguments": {
+                "data_tables_list": [
+                    "1931-religion_central_eastern_voivodships",
+                    "1931-religion_southern_western_voivodships"
+                ],
+                "new_data_table_name": "1931-religion"
+            }
+        },
+        {
             "method_name": "create_dist_area_dataset",
             "arguments": {
                 "data_table_metadata": {
