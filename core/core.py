@@ -986,15 +986,14 @@ class AdministrativeHistory():
         # Fill NaNs with 0s to avoid NaN propagation in dot product
         df_input_filled = df_input_filtered.fillna(0)
         df_harmonized = conv_matrix_filtered.T @ df_input_filled
-        df_harmonized = df_harmonized.reset_index().rename(columns={'index': 'District'})
+        df_harmonized = df_harmonized.reset_index().rename(columns={'index': adm_level})
 
         # --- Step 7: Save to CSV ---
         df_harmonized.to_csv(output_csv_path, index=False)
         end_time = time.time()
         execution_time = end_time - start_time
 
-        # --- Step 8: Create harmonization data table metadata dict
-        harmonization_metadata = {"columns": {col: {} for col in numeric_cols}}
+        # --- Step 8: Update harmonization data table metadata dict
         # numpy.float64 and numpy.int64 are cast to native python float and int types to allow for pydantic serialization.
         for col in numeric_cols:
             if col in data_table_metadata_dict.columns.keys():
@@ -1089,8 +1088,7 @@ class AdministrativeHistory():
     def load_data_table(
                         self,
                         data_table_id: str,
-                        version: Union[Literal['original'], Literal['harmonized']],
-                        region_column: bool = False
+                        version: Union[Literal['original'], Literal['harmonized']]
                     ):
         """
         This function is the basic API accesspoint to the economic database.
@@ -1117,10 +1115,12 @@ class AdministrativeHistory():
             path = os.path.join(folder, f"{data_table_id}.csv")
             df = pd.read_csv(path)
 
-            if 'District' not in df.columns:
-                raise ValueError(f"'District' column missing in data table: {data_table_id}")
+            adm_level = data_table_metadata.adm_level
+
+            if adm_level not in df.columns:
+                raise ValueError(f"'{adm_level}' column missing in data table: {data_table_id}")
             
-            df.set_index('District', inplace=True)
+            df.set_index(adm_level, inplace=True)
         else:
             data_table_metadata_list = [data_table for data_table in self.harmonization_metadata if data_table.data_table_id == data_table_id]
             if len(data_table_metadata_list) == 0:
@@ -1129,8 +1129,7 @@ class AdministrativeHistory():
             adm_state_date = data_table_metadata.adm_state_date
             folder = self.data_harmonization_input_folder
             path = os.path.join(folder, f"{data_table_id}.csv")
-            df = read_economic_csv_input(adm_level='District', input_csv_path=path)
-            df = df.reset_index()
+            df = read_economic_csv_input(adm_level=adm_level, input_csv_path=path)
             
         col_rename_dict = {
             col_name: f"{data_table_metadata.columns[col_name].subcategory}: {data_table_metadata.columns[col_name].subsubcategory}"
@@ -1139,21 +1138,18 @@ class AdministrativeHistory():
         }
         df.rename(columns=col_rename_dict, inplace = True)
 
-        # Check that the loaded dataframe contains all districts        
+        # Check that the loaded dataframe contains all districts/regions:        
         adm_state = self.find_adm_state_by_date(adm_state_date)
-        all_dist_names = adm_state.all_district_names(homeland_only=True)
 
-        if set(all_dist_names)!=set(df.index):
-            missing_in_df = set(all_dist_names)-set(df.index)
-            missing_in_adm_state = set(df.index)-set(all_dist_names)
-            raise RuntimeError(f"District set for the loaded dataframe doesn't agree with the district set for its adm. state!\nMissing in df: {missing_in_df}\nMissing in adm. state: {missing_in_adm_state}.")
-        
-        if region_column:
-            address_list = adm_state.to_address_list(only_homeland=True)
-            district_to_region = {district: region for region, district in address_list}
+        if adm_level == 'District':
+            all_unit_names = adm_state.all_district_names(homeland_only=True)
+        else:
+            all_unit_names = adm_state.all_region_names(homeland_only=True)
 
-            # Step 2: Map the index (districts) to regions
-            df['Region'] = df.index.map(district_to_region)
+        if set(all_unit_names)!=set(df.index):
+            missing_in_df = set(all_unit_names)-set(df.index)
+            missing_in_adm_state = set(df.index)-set(all_unit_names)
+            raise RuntimeError(f"{adm_level} set for the loaded dataframe doesn't agree with the {adm_level.lower()} set for its adm. state!\nMissing in df: {missing_in_df}\nMissing in adm. state: {missing_in_adm_state}.")
         
         return df, data_table_metadata, adm_state_date
 

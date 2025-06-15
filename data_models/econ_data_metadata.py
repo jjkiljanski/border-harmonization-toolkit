@@ -21,7 +21,7 @@ class DataTableMetadata(BaseModel):
     source: Optional[str] = ""
     link: Optional[str] = ""
     table: Optional[str] = ""
-    page: Optional[int] = None
+    page: Optional[Union[int, str]] = None
     pdf_page: Optional[int] = None
     description: Dict[Union[Literal["pol", "eng"]], str]
     date: str

@@ -4705,17 +4705,17 @@
         "columns": {
             "Indirect Occupation - Total": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - Total",
+                "subcategory": "Total",
                 "data_type": "int"
             },
             "Indirect Occupation - A. Agriculture": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - A. Agriculture",
+                "subcategory": "A. Agriculture",
                 "data_type": "int"
             },
             "Indirect Occupation - Excluding Agriculture - Total": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - Excluding Agriculture - Total",
+                "subcategory": "Excluding Agriculture - Total",
                 "data_type": "int"
             },
             "Indirect Occupation  - Horticulture": {
@@ -4725,42 +4725,42 @@
             },
             "Indirect Occupation - B. Mining and industry": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - B. Mining and industry",
+                "subcategory": "B. Mining and industry",
                 "data_type": "int"
             },
             "Indirect Occupation - C. Trade and insurance": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - C. Trade and insurance",
+                "subcategory": "C. Trade and insurance",
                 "data_type": "int"
             },
             "Indirect Occupation - D. Transport and communication": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - D. Transport and communication",
+                "subcategory": "D. Transport and communication",
                 "data_type": "int"
             },
             "Indirect Occupation - E. Public service, liberal professions": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - E. Public service, liberal professions",
+                "subcategory": "E. Public service, liberal professions",
                 "data_type": "int"
             },
             "Indirect Occupation - Schooling, Education, and Culture": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - Schooling, Education, and Culture",
+                "subcategory": "Schooling, Education, and Culture",
                 "data_type": "int"
             },
             "Indirect Occupation - Public Hygiene and Sanitation": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - Public Hygiene and Sanitation",
+                "subcategory": "Public Hygiene and Sanitation",
                 "data_type": "int"
             },
             "Indirect Occupation - G. Domestic service": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - G. Domestic service",
+                "subcategory": "G. Domestic service",
                 "data_type": "int"
             },
             "Indirect Occupation - N. Not further specified": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - N. Not further specified",
+                "subcategory": "N. Not further specified",
                 "data_type": "int"
             }
         }
@@ -5024,17 +5024,17 @@
         "columns": {
             "Indirect Occupation - Total": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - Total",
+                "subcategory": "Total",
                 "data_type": "int"
             },
             "Indirect Occupation - A. Agriculture": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - A. Agriculture",
+                "subcategory": "A. Agriculture",
                 "data_type": "int"
             },
             "Indirect Occupation - Excluding Agriculture - Total": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - Excluding Agriculture - Total",
+                "subcategory": "Excluding Agriculture - Total",
                 "data_type": "int"
             },
             "Indirect Occupation  - Horticulture": {
@@ -5044,42 +5044,42 @@
             },
             "Indirect Occupation - B. Mining and industry": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - B. Mining and industry",
+                "subcategory": "B. Mining and industry",
                 "data_type": "int"
             },
             "Indirect Occupation - C. Trade and insurance": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - C. Trade and insurance",
+                "subcategory": "C. Trade and insurance",
                 "data_type": "int"
             },
             "Indirect Occupation - D. Transport and communication": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - D. Transport and communication",
+                "subcategory": "D. Transport and communication",
                 "data_type": "int"
             },
             "Indirect Occupation - E. Public service, liberal professions": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - E. Public service, liberal professions",
+                "subcategory": "E. Public service, liberal professions",
                 "data_type": "int"
             },
             "Indirect Occupation - Schooling, Education, and Culture": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - Schooling, Education, and Culture",
+                "subcategory": "Schooling, Education, and Culture",
                 "data_type": "int"
             },
             "Indirect Occupation - Public Hygiene and Sanitation": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - Public Hygiene and Sanitation",
+                "subcategory": "Public Hygiene and Sanitation",
                 "data_type": "int"
             },
             "Indirect Occupation - G. Domestic service": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - G. Domestic service",
+                "subcategory": "G. Domestic service",
                 "data_type": "int"
             },
             "Indirect Occupation - N. Not further specified": {
                 "unit": "",
-                "subcategory": "Indirect Occupation - N. Not further specified",
+                "subcategory": "N. Not further specified",
                 "data_type": "int"
             }
         }
@@ -10433,6 +10433,398 @@
                 "unit": "quintal",
                 "subcategory": "Kukurydza",
                 "data_type": "float"
+            }
+        }
+    },
+    {
+        "data_table_id": "regions_1935_total_num_workers",
+        "adm_level": "Region",
+        "category": "Industry Statistics",
+        "source": "Statystyka Przemysłowa. Produkcja i zatrudnienie w zakładach I-VII kategorii. 1935. (Warszawa 1937)",
+        "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/5LKRDK3JHHC6X91KQKHEMQGHDJ7NYR.pdf",
+        "table": "XIX. Ogólne zatrudnienie w górnictwie, przemyśle i na robotach publicznych według poszczególnych grup wytwórczości. 1935. (fragment)",
+        "page": "LVIII",
+        "pdf_page": 59,
+        "description": {
+            "pol": "Przeciętna liczba robotników zatrudnionych w ciągu roku 1935 - według gałęzi przemysłu i województwa.",
+            "eng": "Average number of workers employed in the year 1935 - by industry and voivodship."
+        },
+        "date": "01.07.1938",
+        "orig_adm_state_date": "01.07.1935",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Total": {
+                "unit": "",
+                "subcategory": "Total",
+                "data_type": "int"
+            },
+            "Mining and Industry - Total": {
+                "unit": "",
+                "subcategory": "Mining and Industry - Total",
+                "data_type": "int"
+            },
+            "Mining": {
+                "unit": "",
+                "subcategory": "Mining",
+                "data_type": "int"
+            },
+            "Mineral": {
+                "unit": "",
+                "subcategory": "Mineral",
+                "data_type": "int"
+            },
+            "Metal": {
+                "unit": "",
+                "subcategory": "Metal and electrotechnical",
+                "data_type": "int"
+            },
+            "Chemical": {
+                "unit": "",
+                "subcategory": "Chemical",
+                "data_type": "int"
+            },
+            "Textile": {
+                "unit": "",
+                "subcategory": "Textile",
+                "data_type": "int"
+            },
+            "Paper": {
+                "unit": "",
+                "subcategory": "Paper",
+                "data_type": "int"
+            },
+            "Leather": {
+                "unit": "",
+                "subcategory": "Leather",
+                "data_type": "int"
+            },
+            "Wood": {
+                "unit": "",
+                "subcategory": "Wood",
+                "data_type": "int"
+            },
+            "Food": {
+                "unit": "",
+                "subcategory": "Food",
+                "data_type": "int"
+            },
+            "Clothing and Toymaking": {
+                "unit": "",
+                "subcategory": "Clothing and Toymaking",
+                "data_type": "int"
+            },
+            "Printing": {
+                "unit": "",
+                "subcategory": "Printing",
+                "data_type": "int"
+            },
+            "Construction": {
+                "unit": "",
+                "subcategory": "Construction",
+                "data_type": "int"
+            },
+            "Power plants and waterworks": {
+                "unit": "",
+                "subcategory": "Power plants and waterworks",
+                "data_type": "int"
+            },
+            "Public works": {
+                "unit": "",
+                "subcategory": "Public works",
+                "data_type": "int"
+            }
+        }
+    },
+    {
+        "data_table_id": "regions_1935_share_workers_by_enterprise_type_size",
+        "adm_level": "Region",
+        "category": "Industry Statistics",
+        "source": "Statystyka Przemysłowa. Produkcja i zatrudnienie w zakładach I-VII kategorii. 1935. (Warszawa 1937)",
+        "link": "https://statlibr.stat.gov.pl/exlibris/aleph/a22_1/apache_media/5LKRDK3JHHC6X91KQKHEMQGHDJ7NYR.pdf",
+        "table": "VI. Udział zakładów wielkich, średnich i drobnych w górnictwie i w poszczególnych gałęziach przemysłu według województw. 1935. (fragment)",
+        "page": "XLIV",
+        "pdf_page": 45,
+        "description": {
+            "pol": "Udział zakładów wielkich, średnich i drobnych w górnictwie i w poszczególnych gałęziach przemysłu według województw.",
+            "eng": "Share of large, medium, and small establishments in mining and various branches of industry by voivodeship."
+        },
+        "date": "01.07.1938",
+        "orig_adm_state_date": "01.07.1935",
+        "standardization_comments": "",
+        "harmonization_method": "proportional_to_territory",
+        "imputation_method": null,
+        "columns": {
+            "Plants I-III": {
+                "unit": "",
+                "subcategory": "Plants",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Mining I-III": {
+                "unit": "",
+                "subcategory": "Mining",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Mineral I-III": {
+                "unit": "",
+                "subcategory": "Mineral",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Metal I-III": {
+                "unit": "",
+                "subcategory": "Metal",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Electrotechnical I-III": {
+                "unit": "",
+                "subcategory": "Electrotechnical",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Chemical I-III": {
+                "unit": "",
+                "subcategory": "Chemical",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Textile I-III": {
+                "unit": "",
+                "subcategory": "Textile",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Paper I-III": {
+                "unit": "",
+                "subcategory": "Paper",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Leather I-III": {
+                "unit": "",
+                "subcategory": "Leather",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Wood I-III": {
+                "unit": "",
+                "subcategory": "Wood",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Food I-III": {
+                "unit": "",
+                "subcategory": "Food",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Clothing and Toymaking I-III": {
+                "unit": "",
+                "subcategory": "Clothing and Toymaking",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Printing I-III": {
+                "unit": "",
+                "subcategory": "Printing",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Construction I-III": {
+                "unit": "",
+                "subcategory": "Construction",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Power plants and waterworks I-III": {
+                "unit": "",
+                "subcategory": "Power plants and waterworks",
+                "subsubcategory": "I-III",
+                "data_type": "int"
+            },
+            "Plants IV-V": {
+                "unit": "",
+                "subcategory": "Plants",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Mining IV-V": {
+                "unit": "",
+                "subcategory": "Mining",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Mineral IV-V": {
+                "unit": "",
+                "subcategory": "Mineral",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Metal IV-V": {
+                "unit": "",
+                "subcategory": "Metal",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Electrotechnical IV-V": {
+                "unit": "",
+                "subcategory": "Electrotechnical",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Chemical IV-V": {
+                "unit": "",
+                "subcategory": "Chemical",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Textile IV-V": {
+                "unit": "",
+                "subcategory": "Textile",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Paper IV-V": {
+                "unit": "",
+                "subcategory": "Paper",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Leather IV-V": {
+                "unit": "",
+                "subcategory": "Leather",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Wood IV-V": {
+                "unit": "",
+                "subcategory": "Wood",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Food IV-V": {
+                "unit": "",
+                "subcategory": "Food",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Clothing and Toymaking IV-V": {
+                "unit": "",
+                "subcategory": "Clothing and Toymaking",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Printing IV-V": {
+                "unit": "",
+                "subcategory": "Printing",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Construction IV-V": {
+                "unit": "",
+                "subcategory": "Construction",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Power plants and waterworks IV-V": {
+                "unit": "",
+                "subcategory": "Power plants and waterworks",
+                "subsubcategory": "IV-V",
+                "data_type": "int"
+            },
+            "Plants VI-VII": {
+                "unit": "",
+                "subcategory": "Plants",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Mining VI-VII": {
+                "unit": "",
+                "subcategory": "Mining",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Mineral VI-VII": {
+                "unit": "",
+                "subcategory": "Mineral",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Metal VI-VII": {
+                "unit": "",
+                "subcategory": "Metal",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Electrotechnical VI-VII": {
+                "unit": "",
+                "subcategory": "Electrotechnical",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Chemical VI-VII": {
+                "unit": "",
+                "subcategory": "Chemical",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Textile VI-VII": {
+                "unit": "",
+                "subcategory": "Textile",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Paper VI-VII": {
+                "unit": "",
+                "subcategory": "Paper",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Leather VI-VII": {
+                "unit": "",
+                "subcategory": "Leather",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Wood VI-VII": {
+                "unit": "",
+                "subcategory": "Wood",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Food VI-VII": {
+                "unit": "",
+                "subcategory": "Food",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Clothing and Toymaking VI-VII": {
+                "unit": "",
+                "subcategory": "Clothing and Toymaking",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Printing VI-VII": {
+                "unit": "",
+                "subcategory": "Printing",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Construction VI-VII": {
+                "unit": "",
+                "subcategory": "Construction",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
+            },
+            "Power plants and waterworks VI-VII": {
+                "unit": "",
+                "subcategory": "Power plants and waterworks",
+                "subsubcategory": "VI-VII",
+                "data_type": "int"
             }
         }
     }
