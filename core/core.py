@@ -1400,6 +1400,9 @@ class AdministrativeHistory():
         """
         Generates a choropleth map of the specified data table column.
 
+        If custom_grouping is passed, it is assumed that df was already grouped
+            (i.e. it has the index equal to custom_grouping.values()).
+
         Parameters:
         - df (pd.DataFrame): DataFrame with index as District or Region names.
         - col_name (str): Column name to visualize.
@@ -1425,11 +1428,11 @@ class AdministrativeHistory():
             raise ValueError(f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='{adm_level}' argument, but the passed df doesn't have '{adm_level}' as index.")
             
         if custom_grouping:
-            grouped_units = set(custom_grouping.keys())
+            grouped_units = set(custom_grouping.values())
             if grouped_units != set(df.index):
                 absent_in_df = grouped_units - set(df.index)
                 absent_in_custom_grouping = set(df.index) - grouped_units
-                raise ValueError(f"Index in the df to plot doesn't correspond to the custom_grouping keys. \nAbsent in set(df.index): {absent_in_df}.\nAbsent in custom_grouping keys: {absent_in_custom_grouping}.")
+                raise ValueError(f"Index in the df to plot doesn't correspond to the custom_grouping values. \nAbsent in set(df.index): {absent_in_df}.\nAbsent in custom_grouping values: {absent_in_custom_grouping}.")
         else:
             if set(df.index) != set(adm_state_units):
                 absent_in_df = set(adm_state_units) - set(df.index)
@@ -1447,11 +1450,6 @@ class AdministrativeHistory():
 
             # --------------------------- Merge ---------------------------
             if custom_grouping:
-                # Add group label to both df and geometry
-                df = df.copy()
-                df['__group__'] = df.index.map(custom_grouping)
-                df = df.groupby('__group__').sum()
-
                 dist_plot_layer = dist_plot_layer.copy()
                 dist_plot_layer['__group__'] = dist_plot_layer.index.map(custom_grouping)
                 dist_plot_layer = dist_plot_layer.dissolve(by='__group__')
