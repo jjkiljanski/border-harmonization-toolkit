@@ -115,11 +115,11 @@ elif selected_database == "Economic Database":
                 print(f"Failed to load {filename}: {e}")
 
     # # Load harmonization metadata
-    # with open(harmonized_data_dir+'/harmonization_metadata.json', 'r', encoding='utf-8') as f:
-    #     harmonization_metadata_raw = json.load(f)
+    # with open(harmonized_data_dir+'/harmonized_data_metadata.json', 'r', encoding='utf-8') as f:
+    #     harmonized_data_metadata_raw = json.load(f)
     #     # Convert each dict to a DataTableMetadata instance
-    #     harmonization_data_metadata: List[DataTableMetadata] = [
-    #         DataTableMetadata(**metadata_dict) for metadata_dict in harmonization_metadata_raw
+    #     harmonized_data_data_metadata: List[DataTableMetadata] = [
+    #         DataTableMetadata(**metadata_dict) for metadata_dict in harmonized_data_metadata_raw
     #     ]
 
     # Get base GeoDataFrame (with geometries and name_id)
@@ -138,14 +138,14 @@ elif selected_database == "Economic Database":
     # Create sorted list of unique categories
     categories = sorted(set([
         data_table_metadata.category
-        for data_table_metadata in administrative_history.harmonization_metadata
+        for data_table_metadata in administrative_history.harmonized_data_metadata
     ]))
 
     # Create a dict with all data tables
     data_tables_dict = {
         category: {
-            meta.data_table_id: list(harmonized_dataframe_cols[meta.data_table_id])
-            for meta in administrative_history.harmonization_metadata
+meta.data_table_id: sorted([f'{c_name} (completeness: Undefined)' if c_dict.completeness is None else f'{c_name} (completeness: {c_dict.completeness*100:.2f}%)' for c_name, c_dict in meta.columns.items()])
+            for meta in administrative_history.harmonized_data_metadata
             if meta.category == category
         }
         for category in {
@@ -158,7 +158,7 @@ elif selected_database == "Economic Database":
     if selected_category is None:
         st.write("This streamlit view is only preliminary and will be removed in the future. In the later phase of the project, the python layer will serve only as a data standardization and injection layer to an underlying SQL database.")
 
-        # n_data_points = [col.n_not_na for metadata_data_table in harmonization_data_metadata for col in metadata_data_table.columns]
+        # n_data_points = [col.n_not_na for metadata_data_table in harmonized_data_metadata for col in metadata_data_table.columns]
         # n_na = [col.n_na for metadata_data_table in harmonization_data_metadata for col in metadata_data_table.columns]
         # st.write(f"### Total number of data points: {n_data_points+n_na}. Non-missing: {n_data_points}/{n_data_points+n_na} ({(n_data_points/(n_data_points+n_na))*100}%)")
         st.write(f"### Total number of data points: {all_data_df.size} ({all_data_df.shape[1]} standardized data sets for {all_data_df.shape[0]} districts).")
@@ -169,7 +169,7 @@ elif selected_database == "Economic Database":
         # Filter and sort data table IDs for the selected category
         filtered_ids = sorted([
             data_table_metadata.data_table_id
-            for data_table_metadata in administrative_history.harmonization_metadata
+            for data_table_metadata in administrative_history.harmonized_data_metadata
             if data_table_metadata.category == selected_category
         ])
 
@@ -178,8 +178,8 @@ elif selected_database == "Economic Database":
         if selected_data_table_id is None:
             st.write(f"### Select dataset.")
         else:
-            data_table_description = [data_table_metadata.description["eng"] for data_table_metadata in administrative_history.harmonization_metadata if data_table_metadata.data_table_id == selected_data_table_id][0]
-            data_table_date = [data_table_metadata.date for data_table_metadata in administrative_history.harmonization_metadata if data_table_metadata.data_table_id == selected_data_table_id][0]
+            data_table_description = [data_table_metadata.description["eng"] for data_table_metadata in administrative_history.harmonized_data_metadata if data_table_metadata.data_table_id == selected_data_table_id][0]
+            data_table_date = [data_table_metadata.date for data_table_metadata in administrative_history.harmonized_data_metadata if data_table_metadata.data_table_id == selected_data_table_id][0]
 
             st.write(f"### {data_table_description} ({data_table_date})")
 

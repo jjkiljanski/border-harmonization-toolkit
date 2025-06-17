@@ -2311,7 +2311,7 @@
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
         },
-        "date": "1.03.1932",
+        "date": "01.03.1932",
         "orig_adm_state_date": "01.03.1932",
         "standardization_comments": "",
         "harmonization_method": "proportional_to_territory",
@@ -2590,7 +2590,7 @@
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
         },
-        "date": "1.03.1932",
+        "date": "01.03.1932",
         "orig_adm_state_date": "01.03.1932",
         "standardization_comments": "",
         "harmonization_method": "proportional_to_territory",
@@ -2869,7 +2869,7 @@
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
         },
-        "date": "1.03.1932",
+        "date": "01.03.1932",
         "orig_adm_state_date": "01.03.1932",
         "standardization_comments": "",
         "harmonization_method": "proportional_to_territory",
@@ -3148,7 +3148,7 @@
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
         },
-        "date": "1.03.1932",
+        "date": "01.03.1932",
         "orig_adm_state_date": "01.03.1932",
         "standardization_comments": "",
         "harmonization_method": "proportional_to_territory",
@@ -3427,7 +3427,7 @@
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
         },
-        "date": "1.03.1932",
+        "date": "01.03.1932",
         "orig_adm_state_date": "01.03.1932",
         "standardization_comments": "",
         "harmonization_method": "proportional_to_territory",
@@ -3706,7 +3706,7 @@
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
         },
-        "date": "1.03.1932",
+        "date": "01.03.1932",
         "orig_adm_state_date": "01.03.1932",
         "standardization_comments": "",
         "harmonization_method": "proportional_to_territory",
@@ -3985,7 +3985,7 @@
             "pol": "Liczba świadectw handlowych.",
             "eng": "Number of trade permissions."
         },
-        "date": "1.03.1932",
+        "date": "01.03.1932",
         "orig_adm_state_date": "01.03.1932",
         "standardization_comments": "",
         "harmonization_method": "proportional_to_territory",
@@ -10475,7 +10475,7 @@
                 "subcategory": "Mineral",
                 "data_type": "int"
             },
-            "Metal": {
+            "Metal and electrotechnical": {
                 "unit": "",
                 "subcategory": "Metal and electrotechnical",
                 "data_type": "int"

@@ -1088,22 +1088,24 @@ class AdministrativeHistory():
     def load_data_table(
                         self,
                         data_table_id: str,
-                        version: Union[Literal['original'], Literal['harmonized']]
+                        version: Union[Literal['original'], Literal['harmonized']],
+                        custom_grouping: Dict[str, str] = None,
+                        custom_grouping_method: Union[Literal['sum'], Literal['average']] = 'average'
                     ):
         """
         This function is the basic API accesspoint to the economic database.
         It imports the given data_table in the original form or its harmonized version.
         
         Parameters:
-        - data_table_id (str): Name of the data table to be imported.
-        - version (Union[Literal['original'], Literal['harmonized']]): Defines if the original ('original')
-            or the already harmonized ('harmonized') version of the data table should be returned.
-        - region_column (bool): If True, returned dataframe will contain the 'Region' column. Default is False.
+        - data_table_id (str): ID of the data table.
+        - version (str): 'original' or 'harmonized'.
+        - custom_grouping (dict): Optional mapping from index to custom group name.
+        - custom_grouping_method (str): 'sum' or 'average' for how to aggregate grouped data.
         
         Returns:
-        - df (pd.DataFrame): Pandas Dataframe with the data table with Districts column.
-        - data_table_metadata (data_models.data_table_metadata.DataTableMetadata): pydantic data model with data table metadata.
-        - adm_state_date (datetime): date of the administrative state the data is represented in.
+        - df (pd.DataFrame): The processed data table.
+        - data_table_metadata: Metadata object.
+        - adm_state_date: Reference date of administrative state.
         """
         if version == 'harmonized':
             data_table_metadata_list = [data_table for data_table in self.harmonized_data_metadata if data_table.data_table_id == data_table_id]
@@ -1150,6 +1152,26 @@ class AdministrativeHistory():
             missing_in_df = set(all_unit_names)-set(df.index)
             missing_in_adm_state = set(df.index)-set(all_unit_names)
             raise RuntimeError(f"{adm_level} set for the loaded dataframe doesn't agree with the {adm_level.lower()} set for its adm. state!\nMissing in df: {missing_in_df}\nMissing in adm. state: {missing_in_adm_state}.")
+        
+        # Apply custom grouping if provided
+        if custom_grouping:
+            df = df.copy()
+            df['__group__'] = df.index.map(custom_grouping)
+
+            if df['__group__'].isnull().any():
+                missing_keys = df.index[df['__group__'].isnull()].tolist()
+                raise ValueError(f"Missing entries in custom_grouping for: {missing_keys}")
+
+            grouped = df.groupby('__group__')
+
+            if custom_grouping_method == 'sum':
+                df = grouped.sum()
+            elif custom_grouping_method == 'average':
+                df = grouped.mean()
+            else:
+                raise ValueError("custom_grouping_method must be either 'sum' or 'average'.")
+
+            df.index.name = adm_level  # restore the expected index name
         
         return df, data_table_metadata, adm_state_date
 
@@ -1364,15 +1386,26 @@ class AdministrativeHistory():
         execution_time = end_time - start_time
         print(f"✅ Successfully generated all administrative state plots in {execution_time:.2f} seconds and saved to 'output' folder.")
 
-    def plot_dataset(self, df: pd.DataFrame, col_name: str, adm_level: Union[Literal['Region'], Literal['District']], adm_state_date: datetime, save_to_path: str = None, title: str = None, legend_min: float = None, legend_max: float = None, cmap = 'OrRd'):
+    def plot_dataset(self,
+                    df: pd.DataFrame,
+                    col_name: str,
+                    adm_level: Union[Literal['Region'], Literal['District']],
+                    adm_state_date: datetime,
+                    save_to_path: str = None,
+                    title: str = None,
+                    legend_min: float = None,
+                    legend_max: float = None,
+                    cmap='OrRd',
+                    custom_grouping: Dict[str, str] = None):
         """
         Generates a choropleth map of the specified data table column.
 
         Parameters:
-        - df (pd.DataFrame): DataFrame containing the data to be visualized with index name equal to the value passed in adm_level argument.
-        - col_name (str): Name of the column in the DataFrame to be plotted.
-        - adm_level (Literal['Region'] or Literal['District']): Administrative level for the map.
-        - adm_state_date (datetime): Date representing the administrative boundaries to use.
+        - df (pd.DataFrame): DataFrame with index as District or Region names.
+        - col_name (str): Column name to visualize.
+        - adm_level (str): 'District' (currently only this is supported).
+        - adm_state_date (datetime): Reference date for administrative boundaries.
+        - custom_grouping (dict, optional): Mapping of unit names to custom groups.
 
         Returns:
         - fig (matplotlib.figure.Figure): A matplotlib Figure object representing the choropleth map.
@@ -1391,11 +1424,18 @@ class AdministrativeHistory():
         if df.index.name != adm_level:
             raise ValueError(f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='{adm_level}' argument, but the passed df doesn't have '{adm_level}' as index.")
             
-        if set(df.index) != set(adm_state_units):
-            absent_in_df = set(adm_state_units) - set(df.index)
-            absent_in_adm_state = set(df.index) - set(adm_state_units)
-            raise ValueError (f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='{adm_level}' argument, but the values in the df '{adm_level}' index don't fit the existing {adm_level.lower()} names.\n Absent in set(df.index): {absent_in_df}.\nAbsent in adm_state: {absent_in_adm_state}.")
-        
+        if custom_grouping:
+            grouped_units = set(custom_grouping.keys())
+            if grouped_units != set(df.index):
+                absent_in_df = grouped_units - set(df.index)
+                absent_in_custom_grouping = set(df.index) - grouped_units
+                raise ValueError(f"Index in the df to plot doesn't correspond to the custom_grouping keys. \nAbsent in set(df.index): {absent_in_df}.\nAbsent in custom_grouping keys: {absent_in_custom_grouping}.")
+        else:
+            if set(df.index) != set(adm_state_units):
+                absent_in_df = set(adm_state_units) - set(df.index)
+                absent_in_adm_state = set(df.index) - set(adm_state_units)
+                raise ValueError (f"Method 'AdministrativeHistory.plot_dataset' used with adm_level='{adm_level}' argument, but the values in the df '{adm_level}' index don't fit the existing {adm_level.lower()} names.\nAbsent in set(df.index): {absent_in_df}.\nAbsent in adm_state: {absent_in_adm_state}.")
+            
         #####################################             Plot           #######################################      
         
         if adm_level == 'Region':
@@ -1404,8 +1444,24 @@ class AdministrativeHistory():
             dist_plot_layer = self.dist_registry._plot_layer(adm_state_date)
             dist_plot_layer.rename(columns={'name_id': 'District'}, inplace = True)
             dist_plot_layer.set_index('District', inplace = True)
-            dist_plot_layer = dist_plot_layer.merge(df, left_index=True, right_index=True, how='left')
 
+            # --------------------------- Merge ---------------------------
+            if custom_grouping:
+                # Add group label to both df and geometry
+                df = df.copy()
+                df['__group__'] = df.index.map(custom_grouping)
+                df = df.groupby('__group__').sum()
+
+                dist_plot_layer = dist_plot_layer.copy()
+                dist_plot_layer['__group__'] = dist_plot_layer.index.map(custom_grouping)
+                dist_plot_layer = dist_plot_layer.dissolve(by='__group__')
+
+                dist_plot_layer = dist_plot_layer.merge(df, left_index=True, right_index=True, how='left')
+            else:
+                dist_plot_layer = dist_plot_layer.merge(df, left_index=True, right_index=True, how='left')
+
+            # --------------------------- Plot ----------------------------
+            
             fig, ax = plt.subplots(figsize=(10, 8))
 
             if legend_min is not None and legend_max is not None:

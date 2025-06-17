@@ -52,7 +52,7 @@ def extract_date_parts(date_str: str):
             day, month, year = parts
             return int(year), int(month), int(day)
         else:
-            raise ValueError("Date must be in 'YYYY', 'MM.YYYY', or 'DD.MM.YYYY' format.")
+            raise ValueError(f"Date must be in 'YYYY', 'MM.YYYY', or 'DD.MM.YYYY' format. Passed: {date_str}")
     except Exception as e:
         raise ValueError(f"Invalid date format '{date_str}': {e}")
 
